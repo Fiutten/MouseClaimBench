@@ -1,45 +1,27 @@
 \section{Related Work}
 \label{sec:related-work}
 
-\subsection{Verification, validation, and credibility of computational models}
-\label{subsec:vandv}
-
 Verification and validation (V\&V) define how computational models should be assessed before their results are used for decisions or scientific interpretation. Classical treatments distinguish implementation correctness, agreement with observed behaviour, uncertainty, and the intended context of use \citep{oberkampf2010verification,sargent2013verification}. This distinction is directly relevant to scientific AI. A reproducible program can still be invalid for a specific claim, and a valid predictor can still be unsupported as a causal explanation.
 
 Digital-twin literature makes the problem sharper because the term often suggests a strong relation between a computational representation and a real system \citep{fuller2020digitaltwin,jones2020digitaltwin}. In engineering contexts, a digital twin is expected to support monitoring, prediction, or intervention under a defined scope. In biological and neurocomputational contexts, the risk of overclaiming is higher because the available data can be partial, heterogeneous, and measured at different scales. A local cortical dataset, a mesoscopic connectivity model, and a predictive neural response benchmark provide different kinds of evidence. They cannot be merged into a complete biological claim without additional assumptions.
 
 ClaimBench adopts the V\&V view but changes the operational target. Instead of asking only whether a model is credible, it asks whether a specific manuscript-level claim is supported by the evidence available in the repository. This moves validation closer to publication practice. The unit of audit is not only the model, but the relation between model, evidence artifact, and written claim.
 
-\subsection{Scientific claim verification and evidence retrieval}
-\label{subsec:claim-verification}
-
 Scientific claim verification benchmarks such as SciFact evaluate whether a system can retrieve scientific evidence and classify whether it supports or refutes a claim \citep{wadden2020scifact}. This line of work is important because it connects natural language claims to external evidence. However, these benchmarks are usually designed around textual entailment and retrieval quality. They do not directly verify whether a computational experiment authorizes a mechanistic, causal, or digital-twin claim.
 
 ClaimBench uses SciFact differently. It is included as an external control for claim auditing rather than as a target for state-of-the-art verification. The goal is to show that evidence retrieval, support classification, abstention, and overclaiming risk must be reported separately. A retrieval score can be high while the resulting support decision remains uncertain. A lexical shortcut can appear plausible while producing unsupported claim authorization. This supports the broader methodological point that scientific AI needs claim-level controls, not only predictive or retrieval metrics.
-
-\subsection{Causal direction and overclaiming controls}
-\label{subsec:causal-controls}
 
 Causal discovery benchmarks test whether algorithms can infer causal structure or direction from observational data under specified assumptions. The Tuebingen cause-effect benchmark is a widely used resource for evaluating pairwise cause-effect direction \citep{mooij2016distinguishing}. Methods such as additive noise models, information-geometric causal inference, and linear non-Gaussian approaches provide transparent baselines, but their results remain assumption-sensitive.
 
 For ClaimBench, the Tuebingen benchmark is not used to claim causal discovery performance. It is used to quantify a failure mode. If a system allows correlation to authorize causal direction, unsupported causal claims become easy to produce. This is precisely the type of failure that a claim-governance layer should block. The benchmark therefore acts as an external stress test for causal wording rather than as a performance competition.
 
-\subsection{Neurocomputational models and mouse-brain resources}
-\label{subsec:neuro-resources}
-
 Mouse-brain modelling provides a useful application setting because it contains strong resources at different scales. BMTK and SONATA support construction and simulation of biologically grounded neural models \citep{dai2020bmtk}. The Virtual Mouse Brain demonstrates connectome-based whole-brain dynamics at the mesoscopic level \citep{melozzi2017virtualmouse}. Sensorium and Dynamic Sensorium provide predictive benchmarks for modelling neural responses to visual stimuli \citep{willeke2022sensorium,turishcheva2023dynamic}. MICrONS provides a high-resolution local resource linking cortical anatomy and function \citep{bae2025microns}.
 
 These resources are powerful, but they do not remove the claim-boundary problem. A Sensorium model can be predictive without being mechanistic. A MICrONS association can support a local observational structure-function statement without authorizing whole-brain causality. A mesoscopic simulation can be useful without being a complete digital mouse brain. ClaimBench was originally developed in this setting because these distinctions matter for reviewers and for scientific communication.
 
-\subsection{LLMs in scientific workflows}
-\label{subsec:llm-workflows}
-
 LLMs are increasingly used to summarize papers, generate hypotheses, inspect code, and support writing. In claim-sensitive scientific workflows, this creates both an opportunity and a risk. The opportunity is that LLMs can help detect candidate claims, identify ambiguous wording, and accelerate manuscript review. The risk is that the same systems can make unsupported claims appear coherent.
 
 ClaimBench therefore uses an LLM-ready design with a strict boundary. The reproducible configuration does not call an LLM API. It uses a deterministic extractor and can optionally load externally generated LLM candidates from a local JSON file. The LLM output is never authoritative. It only provides candidate statements that are subsequently checked against executable claim contracts. This design makes the LLM layer useful for productivity while avoiding the methodological error of treating language fluency as evidence.
-
-\subsection{Reproducibility and model reporting}
-\label{subsec:reproducibility-reporting}
 
 Machine learning reproducibility work has emphasized that models, data, code, and experimental settings must be reported in ways that make independent inspection possible \citep{pineau2021reproducibility}. Documentation proposals such as model cards and datasheets provide structured templates for describing intended use, limitations, and dataset properties \citep{mitchell2019modelcards,gebru2021datasheets}. These contributions are complementary to ClaimBench. They improve the information available around models and datasets, while ClaimBench focuses on whether a particular scientific claim is authorized by executable evidence.
 

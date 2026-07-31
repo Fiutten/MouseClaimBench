@@ -13,4 +13,6 @@ Table~\ref{tab:evaluation-matrix} summarizes the evaluation matrix. The main des
 
 \input{tables/evaluation_matrix}
 
+The protocol was also designed to avoid circular evidence. The synthetic cases check whether the rules behave as specified. The external benchmarks test whether the same rules expose known risks outside the original neurocomputational setting. The manuscript audit then evaluates whether the writing respects the same limits. Finally, the release check confirms that the package being described is the package that can actually be inspected. This order matters because the paper would be weaker if it only reported a clean manuscript audit without external stress tests, or if it only reported external tests without checking the manuscript itself.
+
 All reported numerical artifacts were generated before this manuscript draft. This draft does not manually edit JSON result files and does not regenerate numerical outcomes. The reported release artifact indicates a clean v2 package with no missing, dirty, or failing required artifacts.
