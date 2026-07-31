@@ -1,0 +1,17 @@
+\section{Research Contributions}
+\label{sec:contributions}
+
+The main contribution of ClaimBench is the explicit transformation of a scientific AI validation problem into a decision-support problem. The framework does not attempt to rank models as if all evidence dimensions were interchangeable. Instead, it asks which claims can be defended, which claims must be weakened, and which claims require additional evidence before publication. This view is relevant for decision-support research because the object of the decision is not only an algorithmic output, but the admissible interpretation of that output in a scientific manuscript.
+
+The proposal makes five specific contributions. First, it introduces an executable claim-governance formulation in which predictive, reproducibility, topology-specific, directional, causal, structure-function, digital-twin, and state-of-the-art claims are represented as explicit contracts. This contract view forces the evaluator to state the evidence required for each interpretation before reporting the result.
+
+Second, ClaimBench implements a non-compensatory decision gate. Conventional evaluation can hide missing evidence inside a global score. ClaimBench prevents this by blocking stronger claims when a required evidence dimension is absent, even if other dimensions are strong. This is critical in scientific AI because prediction, reproducibility, topology, and causality answer different questions.
+
+Third, the framework adds an LLM-ready but non-authoritative claim extraction layer. The LLM component is intentionally limited to candidate detection and conservative wording support. It cannot authorize a scientific statement. This design allows modern writing assistance to be included without making language fluency a substitute for evidence.
+
+Fourth, the proposal evaluates the decision process with synthetic known-truth cases and external controls. SciFact is used to test scientific claim-evidence handling, while the Tuebingen cause-effect benchmark is used to expose causal-direction overclaiming. These controls are not presented as leaderboard tasks. They are used to test whether the audit blocks unsupported interpretations under realistic failure modes.
+
+Fifth, ClaimBench provides a reproducible release package that links numerical artifacts, manuscript wording, ablation results, threat modelling, and final claim boundaries. This creates a practical object for review: an author or reviewer can inspect not only the reported result, but also the reason why a claim was supported, blocked, or marked uncertain.
+
+These contributions define the scope of the paper. ClaimBench is not a new neural simulator, not a causal-discovery method, not a SciFact state-of-the-art system, and not a complete biological digital twin. Its contribution is the decision-support layer that keeps those claims separated.
+

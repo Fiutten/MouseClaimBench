@@ -1,0 +1,18 @@
+\begin{table}[t]
+\centering
+\caption{ClaimBench decision states and the corresponding manuscript action.}
+\label{tab:decision-actions}
+\small
+\begin{tabularx}{\textwidth}{p{0.18\textwidth}p{0.28\textwidth}X}
+\toprule
+Decision state & Evidence status & Recommended manuscript action \\
+\midrule
+Supported & All required evidence blocks are present and stable under the declared controls & Keep the claim, but preserve the bounded wording and cite the decision artifact \\
+Blocked & At least one non-interchangeable evidence block is missing & Remove the claim or replace it with a weaker statement supported by the available evidence \\
+Uncertain & Evidence is present but unstable, threshold-sensitive, or insufficiently confirmed & Report the result as exploratory or requiring confirmation, not as established support \\
+Out of scope & The claim family requires evidence not collected by the study & State the limitation explicitly and avoid implying that the framework has evaluated it \\
+Needs external review & The decision depends on domain judgement outside the executable artifact & Use the artifact as review support, but keep the final judgement with human experts \\
+\bottomrule
+\end{tabularx}
+\end{table}
+

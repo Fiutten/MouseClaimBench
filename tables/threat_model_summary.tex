@@ -1,0 +1,20 @@
+\begin{table}[t]
+\centering
+\caption{Reviewer-oriented threat model used to harden ClaimBench v2. Each threat is mapped to the artifact family that constrains it.}
+\label{tab:threat-model}
+\small
+\begin{tabularx}{\textwidth}{p{0.24\textwidth}p{0.25\textwidth}X}
+\toprule
+Threat & Control artifact & Manuscript consequence \\
+\midrule
+Rules without value & Component ablation & The paper must show what fails when a component is removed \\
+Threshold arbitrariness & Threshold sensitivity & Safe and dangerous regions must be reported explicitly \\
+Synthetic overfitting & SciFact external control & Known-truth tests are not sufficient by themselves \\
+Causal overclaiming & Tuebingen control and causal abstention & Causal wording remains blocked without directional evidence \\
+Wording drift & Manuscript claim audit & Final text must be checked against executable claim contracts \\
+LLM authority drift & LLM claim extraction audit & LLM outputs can suggest claims but cannot authorize them \\
+Hidden uncertainty & Uncertainty gate & Borderline evidence cannot be silently converted into support \\
+\bottomrule
+\end{tabularx}
+\end{table}
+

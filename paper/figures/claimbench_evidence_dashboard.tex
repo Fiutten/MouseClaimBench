@@ -1,48 +1,33 @@
 \begin{figure}[t!]
 \centering
-\resizebox{\textwidth}{!}{%
-\begin{tikzpicture}[font=\small]
-\node[align=left, text width=6.0cm] at (0,4.6) {\textbf{Executable package checks}};
-\foreach \x/\h/\lab/\val/\col in {
-0/3.8/Reproduction/15 of 15/blue!55,
-1.45/3.8/Unified criteria/10 of 10/green!55,
-2.9/3.8/Threat model/7 of 7/purple!55,
-4.35/3.8/Release check/clean/red!45}
-{
-  \fill[\col] (\x,0) rectangle +(0.85,\h);
-  \node[rotate=35, anchor=east] at (\x+0.72,-0.15) {\lab};
-  \node at (\x+0.43,\h+0.28) {\val};
-}
-\draw[->] (-0.25,0) -- (5.55,0);
-\draw[->] (-0.25,0) -- (-0.25,4.25);
-\node[rotate=90] at (-0.75,2.05) {Passed fraction};
+\fbox{%
+\begin{minipage}{0.92\textwidth}
+\small
+\begin{tabularx}{0.90\textwidth}{p{0.31\textwidth}p{0.18\textwidth}X}
+\toprule
+\textbf{Audit component} & \textbf{Observed result} & \textbf{Decision-support interpretation} \\
+\midrule
+Reproduction manifest & 15 / 15 stages & End-to-end package is executable from the frozen artifacts. \\
+Unified report & 10 / 10 criteria & The claim-governance criteria are jointly satisfied. \\
+Threat model & 7 / 7 threats & Reviewer-facing risks are mapped to explicit boundaries. \\
+Release check & clean & No required artifact is missing, dirty, or failing. \\
+LLM claim extraction & 120 candidates & Candidate extraction is active, but non-authoritative. \\
+\bottomrule
+\end{tabularx}
+\vspace{0.7em}
 
-\node[align=left, text width=6.0cm] at (8.0,4.6) {\textbf{Candidate claims extracted for audit}};
-\foreach \y/\w/\lab in {
-3.7/4.3/mechanistic,
-3.25/4.1/prediction,
-2.8/1.0/causal,
-2.35/0.8/digital twin,
-1.9/0.7/structure-function,
-1.45/0.6/reproducibility,
-1.0/0.3/generalization,
-0.55/0.2/SOTA}
-{
-  \fill[cyan!55] (6.45,\y) rectangle +(0.09*\w,0.28);
-  \node[anchor=east] at (6.35,\y+0.14) {\lab};
-}
-\node[anchor=west] at (10.55,3.84) {43};
-\node[anchor=west] at (10.25,3.39) {41};
-\node[anchor=west] at (7.5,2.94) {10};
-\node[anchor=west] at (7.3,2.49) {8};
-\node[anchor=west] at (7.2,2.04) {7};
-\node[anchor=west] at (7.1,1.59) {6};
-\node[anchor=west] at (6.85,1.14) {3};
-\node[anchor=west] at (6.75,0.69) {2};
-\node[align=left, text width=5.2cm] at (8.8,0.0) {No LLM API was called. Candidate extraction is not claim authorization.};
-\end{tikzpicture}%
-}
-\caption{Summary of the current ClaimBench v2 evidence package. The left panel reports executable package checks. The right panel reports the distribution of candidate claims extracted for audit.}
+\begin{tabularx}{0.90\textwidth}{p{0.20\textwidth}X p{0.11\textwidth}}
+\toprule
+\textbf{Claim type} & \textbf{Role in audit} & \textbf{Count} \\
+\midrule
+Mechanistic & Requires topology and direction before stronger wording. & 43 \\
+Prediction & Can be supported without becoming mechanism. & 41 \\
+Causal & Blocked unless causal evidence is available. & 10 \\
+Digital twin & Requires scope control and cannot be inferred from local evidence. & 8 \\
+Other bounded claims & Structure-function, reproducibility, generalization, and SOTA wording. & 18 \\
+\bottomrule
+\end{tabularx}
+\end{minipage}}
+\caption{Evidence dashboard for the current ClaimBench v2 package. The figure reports both the executable release checks and the candidate-claim distribution that motivates the audit.}
 \label{fig:evidence-dashboard}
 \end{figure}
-

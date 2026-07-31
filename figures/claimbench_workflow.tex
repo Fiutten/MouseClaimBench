@@ -1,31 +1,26 @@
 \begin{figure}[t!]
 \centering
-\resizebox{\textwidth}{!}{%
-\begin{tikzpicture}[
-  node distance=1.25cm,
-  box/.style={draw, rounded corners, align=center, minimum width=2.65cm, minimum height=1.05cm, font=\small},
-  arrow/.style={-Latex, thick}
-]
-\node[box, fill=blue!10] (input) {Scientific AI\\manuscript and artifacts};
-\node[box, fill=cyan!10, right=of input] (extract) {Candidate claim\\extraction};
-\node[box, fill=green!10, right=of extract] (contracts) {Evidence contracts\\and claim taxonomy};
-\node[box, fill=yellow!20, right=of contracts] (gate) {Non-compensatory\\decision gate};
-\node[box, fill=red!10, right=of gate] (decision) {Decision artifact\\supported, blocked,\\or uncertain};
-\node[box, fill=purple!10, below=1.15cm of contracts] (controls) {External controls\\SciFact and Tuebingen};
-\node[box, fill=orange!15, below=1.15cm of gate] (threats) {Ablation and\\reviewer threat model};
-\draw[arrow] (input) -- (extract);
-\draw[arrow] (extract) -- (contracts);
-\draw[arrow] (contracts) -- (gate);
-\draw[arrow] (gate) -- (decision);
-\draw[arrow] (contracts) -- (controls);
-\draw[arrow] (controls) -- (threats);
-\draw[arrow] (threats) -- (gate);
-\node[align=center, font=\small, text width=12.2cm, below=0.7cm of controls] {
-The LLM layer is limited to candidate extraction. Claim authorization remains executable, non-compensatory, and tied to stored artifacts.
-};
-\end{tikzpicture}%
-}
-\caption{ClaimBench decision-support workflow. The framework separates candidate claim detection from claim authorization and produces explicit decision artifacts for manuscript review.}
+\fbox{%
+\begin{minipage}{0.92\textwidth}
+\small
+\centering
+\begin{tabularx}{0.90\textwidth}{>{\centering\arraybackslash}X c >{\centering\arraybackslash}X c >{\centering\arraybackslash}X}
+\textbf{Manuscript and artifacts} & $\rightarrow$ &
+\textbf{Candidate claims} & $\rightarrow$ &
+\textbf{Evidence contracts} \\
+\multicolumn{5}{c}{$\downarrow$} \\
+\textbf{External controls} & $\rightarrow$ &
+\textbf{Non-compensatory gate} & $\rightarrow$ &
+\textbf{Decision artifact} \\
+\end{tabularx}
+\vspace{0.8em}
+
+\begin{tabularx}{0.90\textwidth}{p{0.25\textwidth}X}
+\textbf{Gate input} & Prediction, reproducibility, evidence retrieval, topology specificity, direction, causality, uncertainty, manuscript wording, cost, and release status. \\
+\textbf{Gate output} & Supported, blocked, or uncertain claim status with a pointer to the artifact that justifies the decision. \\
+\textbf{LLM boundary} & LLMs can suggest candidate claims, but they cannot authorize scientific interpretations. \\
+\end{tabularx}
+\end{minipage}}
+\caption{ClaimBench decision-support workflow. The framework separates claim detection from claim authorization and turns manuscript-level interpretations into executable decision artifacts.}
 \label{fig:claimbench-workflow}
 \end{figure}
-

@@ -7,9 +7,7 @@
 \usepackage{hyperref}
 \usepackage{natbib}
 \usepackage{tabularx}
-\usepackage{tikz}
 \usepackage{xcolor}
-\usetikzlibrary{arrows.meta,positioning,shapes.geometric}
 
 \hypersetup{
   colorlinks=true,
@@ -21,7 +19,10 @@
 \title{ClaimBench: Decision Support for Scientific AI Claim Governance}
 
 \author[1]{Alberto Fern\'andez-Isabel}
-\affil[1]{Department of Computer Science, Universidad Rey Juan Carlos, Madrid, Spain}
+\author[1]{Isaac Mart\'in de Diego}
+\author[2]{Rub\'en Fuentes-Fern\'andez}
+\affil[1]{Data Science Laboratory, Research Centre for Intelligent Information Technologies (CETINIA), Rey Juan Carlos University, C/ Tulip\'an, s/n, M\'ostoles, 28933, Madrid, Spain}
+\affil[2]{Institute of Knowledge Technology, Department of Software Engineering and Artificial Intelligence, Complutense University of Madrid, C/ Profesor Jos\'e Garc\'ia Santesmases, 9, Madrid, 28040, Madrid, Spain}
 
 \date{}
 
@@ -36,12 +37,22 @@
 \noindent\textbf{Keywords:} Decision Support Systems, Scientific Artificial Intelligence, Claim Auditing, Verification and Validation, Large Language Models, Reproducibility
 
 \input{sections/introduction}
+\input{sections/contributions}
 \input{sections/related_work}
 \input{sections/method}
 \input{sections/experiments}
 \input{sections/results}
+\input{sections/decision_support_use}
 \input{sections/discussion}
 \input{sections/conclusions}
+
+\section*{Declaration of Competing Interest}
+\label{sec:competing-interest}
+The authors declare no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper.
+
+\section*{CRediT Authorship Contribution Statement}
+\label{sec:credit}
+Alberto Fern\'andez-Isabel: Conceptualisation, Methodology, Software, Investigation, Data curation, Writing--original draft, Writing--review and editing. Isaac Mart\'in de Diego: Validation, Formal analysis, Investigation, Writing--original draft, Writing--review and editing, Project administration. Rub\'en Fuentes-Fern\'andez: Methodology, Validation, Writing--original draft, Writing--review and editing.
 
 \section*{Acknowledgements}
 \label{sec:acknowledgements}
