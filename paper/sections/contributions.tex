@@ -1,18 +1,18 @@
 \section{Research Contributions}
 \label{sec:contributions}
 
-ClaimBench transforms scientific AI validation into a decision-support problem. The decision concerns the admissible interpretation of a result, rather than the ranking of models under interchangeable criteria. Given a manuscript and its computational artifacts, the framework determines which statements can be retained, which must be weakened, which remain uncertain, and which require evidence outside the current study. The paper makes the following contributions:
+ClaimBench transforms the validation of mouse-brain modelling claims into a decision-support problem. The decision concerns the admissible interpretation of a result, rather than the ranking of models under interchangeable criteria. Given a manuscript and its computational artifacts, the framework determines which statements can be retained, which must be weakened, which remain uncertain, and which require evidence outside the current study. The contract design remains applicable to other scientific \ac{ai} domains, but the present scope and examples are neurocomputational. The paper makes the following contributions:
 
 \begin{itemize}
     \item \textbf{An executable claim-contract model.} Predictive, reproducibility, topology-specific, directional, structure--function, mechanistic, causal, digital-twin, and state-of-the-art statements are represented through explicit requirements, scope, permitted wording, blocked wording, and artifact provenance.
 
     \item \textbf{A non-compensatory authorization rule.} Mandatory evidence blocks act as veto conditions. A strong score in one block cannot replace missing evidence in another. The proposal also introduces a separate uncertain state for decisions that are unstable under declared local perturbations.
 
-    \item \textbf{A bounded LLM-assisted workflow.} Deterministic rules or an optional external LLM can detect candidate claims, but candidate generation is separated from authorization. This preserves human oversight and prevents linguistic plausibility from becoming scientific evidence.
+    \item \textbf{A bounded \ac{llm}-assisted workflow.} Deterministic rules or an optional external \ac{llm} can detect candidate claims, but candidate generation is separated from authorization. This preserves human oversight and prevents linguistic plausibility from becoming scientific evidence.
 
     \item \textbf{A multi-layer experimental evaluation.} Gate semantics are tested on 144 known-truth adversarial cases and 243 threshold configurations. SciFact and Tuebingen provide external controls. Component ablations quantify the failure modes produced by correlation-only, leaderboard-only, reliability-only, and compensatory alternatives.
 
     \item \textbf{A reproducible review artifact.} Numerical results, claim boundaries, manuscript wording, threat-model checks, and release metadata are connected in one inspectable package. The artifact records why a statement is supported, blocked, uncertain, or outside the automated scope.
 \end{itemize}
 
-These contributions define a bounded methodological claim. ClaimBench does not establish biological truth, causal discovery performance, universal threshold calibration, or automated peer review. It provides a DSS layer that keeps these interpretations separate and makes the evidence boundary reproducible.
+These contributions define a bounded methodological claim. ClaimBench does not establish biological truth, causal discovery performance, universal threshold calibration, or automated peer review. It provides a \ac{dss} layer that keeps these interpretations separate and makes the evidence boundary reproducible.

@@ -2,6 +2,7 @@
 
 \usepackage[margin=2.5cm]{geometry}
 \usepackage{authblk}
+\usepackage{acronym}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{array}
@@ -20,12 +21,36 @@
   urlcolor=blue
 }
 
-\title{ClaimBench: Evidence-Aware Decision Support for Scientific AI Claims}
+\acrodef{ai}[AI]{Artificial Intelligence}
+\acrodef{api}[API]{Application Programming Interface}
+\acrodef{bmtk}[BMTK]{Brain Modeling ToolKit}
+\acrodef{bm}[BM25]{Best Matching 25}
+\acrodef{bold}[BOLD]{blood oxygen level-dependent}
+\acrodef{cetinia}[CETINIA]{Research Centre for Intelligent Information Technologies}
+\acrodef{cni}[CNI]{Conservativeness Index}
+\acrodef{dss}[DSS]{Decision Support System}
+\acrodef{electre}[ELECTRE]{ELimination Et Choix Traduisant la REalitE}
+\acrodef{fair}[FAIR]{Findable, Accessible, Interoperable, and Reusable}
+\acrodef{fn}[FN]{false negative}
+\acrodef{fp}[FP]{false positive}
+\acrodef{json}[JSON]{JavaScript Object Notation}
+\acrodef{llm}[LLM]{Large Language Model}
+\acrodef{mever}[MEVER]{Multi-Modal and Explainable Claim Verification with Graph-based Evidence Retrieval}
+\acrodef{microns}[MICrONS]{Machine Intelligence from Cortical Networks}
+\acrodef{ori}[ORI]{Overclaiming Risk Index}
+\acrodef{tn}[TN]{true negative}
+\acrodef{tp}[TP]{true positive}
+\acrodef{uq}[UQ]{Uncertainty Quantification}
+\acrodef{vone}[V1]{primary visual cortex}
+\acrodef{vv}[V\&V]{Verification and Validation}
+\acrodef{yaml}[YAML]{YAML Ain't Markup Language}
+
+\title{ClaimBench: Evidence-Aware Decision Support for Claims in Mouse-Brain Modelling}
 
 \author[1]{Alberto Fern\'andez-Isabel}
 \author[1]{Isaac Mart\'in de Diego}
 \author[2]{Rub\'en Fuentes-Fern\'andez}
-\affil[1]{Data Science Laboratory, Research Centre for Intelligent Information Technologies (CETINIA), Rey Juan Carlos University, C/ Tulip\'an, s/n, M\'ostoles, 28933, Madrid, Spain}
+\affil[1]{Data Science Laboratory, \ac{cetinia}, Rey Juan Carlos University, C/ Tulip\'an, s/n, M\'ostoles, 28933, Madrid, Spain}
 \affil[2]{Institute of Knowledge Technology, Department of Software Engineering and Artificial Intelligence, Complutense University of Madrid, C/ Profesor Jos\'e Garc\'ia Santesmases, 9, Madrid, 28040, Madrid, Spain}
 
 \date{}
@@ -41,7 +66,9 @@
 \input{sections/abstract}
 \end{abstract}
 
-\noindent\textbf{Keywords:} Decision Support Systems, Scientific Claim Verification, AI Assurance, Evidence Traceability, Non-compensatory Decision-Making, Reproducible Research
+\noindent\textbf{Keywords:} Decision Support Systems, Mouse-Brain Modelling, Scientific Claim Verification, Artificial Intelligence Assurance, Evidence Traceability, Non-compensatory Decision-Making
+
+\acresetall
 
 \input{sections/introduction}
 \input{sections/contributions}

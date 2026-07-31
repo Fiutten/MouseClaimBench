@@ -1,12 +1,12 @@
 \begin{table}[t!]
 \centering
-\caption{Known-truth comparison over 1,152 claim opportunities. ORI is the fraction of unsupported opportunities authorized, while CNI is the fraction of supportable opportunities blocked. Lower values are better for both indices.}
+\caption{Known-truth comparison over 1,152 claim opportunities. \ac{ori} is the fraction of unsupported opportunities authorized, while \ac{cni} is the fraction of supportable opportunities blocked. Lower values are better for both indices.}
 \label{tab:synthetic-evaluator-comparison}
 \small
 \renewcommand{\arraystretch}{1.14}
 \begin{tabularx}{\textwidth}{@{}p{0.27\textwidth}rrrrY@{}}
 \toprule
-Evaluator & FP & FN & ORI & CNI & Main failure mode \\
+Evaluator & \ac{fp} & \ac{fn} & \ac{ori} & \ac{cni} & Main failure mode \\
 \midrule
 ClaimBench gate & 0 & 0 & 0.000 & 0.000 & No error under declared known-truth semantics \\
 Correlation only & 325 & 61 & 0.521 & 0.116 & Prediction promoted to broad scientific support \\

@@ -8,7 +8,7 @@ ClaimBench is designed as a decision-support process for authors, reviewers, and
 \subsection{Claim contracts and evidence representation}
 \label{subsec:claim-contracts}
 
-Let $c$ denote a candidate statement and let $k(c)$ denote its claim family. The current taxonomy contains predictive, reproducibility, evidence-retrieval, topology-specific, directional, structure--function, mechanistic, causal, digital-twin, and state-of-the-art claims. The taxonomy is operational. It captures recurring interpretation errors in scientific AI papers and does not attempt to define a general philosophy of scientific explanation.
+Let $c$ denote a candidate statement and let $k(c)$ denote its claim family. The current taxonomy contains predictive, reproducibility, evidence-retrieval, topology-specific, directional, structure--function, mechanistic, causal, digital-twin, and state-of-the-art claims. The taxonomy is operational. It captures recurring interpretation errors in scientific \ac{ai} papers and does not attempt to define a general philosophy of scientific explanation.
 
 A claim contract is represented as
 \begin{equation}
@@ -47,23 +47,23 @@ s_k(c)=\frac{1}{M}\sum_{m=1}^{M}G_k\bigl(c,\mathbf{e}^{(m)}\bigr).
 \end{equation}
 The decision is supported when $s_k(c)\geq0.95$, blocked when $s_k(c)\leq0.05$, and uncertain otherwise. This score is a deterministic local stability proportion. It must not be interpreted as a posterior probability, a confidence level, or a distribution-free guarantee. Its purpose is to prevent a locally unstable authorization from being reported as established support.
 
-Known-truth experiments permit two explicit error measures. For each evaluator, a false positive is an unsupported claim that is authorized and a false negative is a supportable claim that is blocked. The Overclaiming Risk Index (ORI) and Conservativeness Index (CNI) are
+Known-truth experiments permit two explicit error measures. For each evaluator, a \ac{fp} is an unsupported claim that is authorized and a \ac{fn} is a supportable claim that is blocked. The complementary outcomes are a \ac{tn}, when an unsupported claim is blocked, and a \ac{tp}, when a supportable claim is authorized. The \ac{ori} and \ac{cni} are
 \begin{align}
 \mathrm{ORI} &= \frac{FP}{FP+TN},
 \label{eq:ori}\\
 \mathrm{CNI} &= \frac{FN}{FN+TP}.
 \label{eq:cni}
 \end{align}
-ORI measures the fraction of unsupported claim opportunities that are admitted. CNI measures the fraction of supportable opportunities that are withheld. Both are required because a gate can avoid overclaiming by blocking everything. In the present benchmark, lower values are better and the two indices are interpreted together.
+\ac{ori} measures the fraction of unsupported claim opportunities that are admitted. \ac{cni} measures the fraction of supportable opportunities that are withheld. Both are required because a gate can avoid overclaiming by blocking everything. In the present benchmark, lower values are better and the two indices are interpreted together.
 
 \subsection{Artifact binding, claim discovery, and human authority}
 \label{subsec:artifact-binding}
 
-Claim contracts are stored in a small YAML schema. Each specification records the claim identifier, family, scope, evidence family, severity, permitted and blocked wording, blocked textual patterns, non-compensatory requirements, uncertainty policy, and required artifacts. The audit resolves each artifact path, reads structured outputs, evaluates the declared expectations, and records missing or failing evidence. This creates a reproducible link from manuscript wording to the exact code and data product used to justify it.
+Claim contracts are stored in a small \ac{yaml} schema. Each specification records the claim identifier, family, scope, evidence family, severity, permitted and blocked wording, blocked textual patterns, non-compensatory requirements, uncertainty policy, and required artifacts. The audit resolves each artifact path, reads structured outputs, evaluates the declared expectations, and records missing or failing evidence. This creates a reproducible link from manuscript wording to the exact code and data product used to justify it.
 
-Claim discovery occurs before authorization. The reproducible mode uses a deterministic extractor that identifies candidate sentences associated with prediction, mechanism, causality, structure--function relations, reproducibility, generalization, digital twins, and state-of-the-art language. An optional local JSON file can contain candidates produced by an external LLM. The source of each candidate is recorded, but the candidate is treated as untrusted input. It cannot change thresholds, create evidence, or authorize a claim.
+Claim discovery occurs before authorization. The reproducible mode uses a deterministic extractor that identifies candidate sentences associated with prediction, mechanism, causality, structure--function relations, reproducibility, generalization, digital twins, and state-of-the-art language. An optional local \ac{json} file can contain candidates produced by an external \ac{llm}. The source of each candidate is recorded, but the candidate is treated as untrusted input. It cannot change thresholds, create evidence, or authorize a claim.
 
-This separation addresses authority drift in LLM-assisted scientific workflows. Modern verification systems can improve retrieval, decomposition, and attribution, but their outputs remain sensitive to context and evidence quality \citep{fadeeva2024factchecking,tan2026scitrue}. ClaimBench uses language models only to increase inspection coverage. The final decision remains deterministic for a fixed evidence package and can be traced to the contract and artifacts.
+This separation addresses authority drift in \ac{llm}-assisted scientific workflows. Modern verification systems can improve retrieval, decomposition, and attribution, but their outputs remain sensitive to context and evidence quality \citep{fadeeva2024factchecking,tan2026scitrue}. ClaimBench uses language models only to increase inspection coverage. The final decision remains deterministic for a fixed evidence package and can be traced to the contract and artifacts.
 
 The human retains authority at two points. First, domain experts define the contract scope and mandatory evidence. ClaimBench cannot determine that a domain-specific criterion is scientifically sufficient without that specification. Second, experts resolve claims marked as needing external review. The system supports editorial decisions but does not judge novelty, importance, ethical acceptability, or paper acceptance.
 
