@@ -1,0 +1,8 @@
+\section{Conclusions}
+\label{sec:conclusions}
+
+This paper introduced ClaimBench, an executable framework for governing scientific AI claims. The framework separates evidence dimensions that are often conflated in applied AI papers, including prediction, reproducibility, topology, direction, causality, uncertainty, manuscript wording, cost, and release status. The non-compensatory design prevents strong evidence in one dimension from authorizing unsupported claims in another.
+
+The current v2 package passes 15 of 15 reproduction stages, 10 of 10 unified report criteria, and 7 of 7 threat-model checks. External controls based on SciFact and the Tuebingen cause-effect benchmark show that the framework can audit claim-evidence behaviour beyond synthetic cases. The LLM-ready layer adds candidate extraction while preserving a strict boundary. LLMs can assist inspection, but executable artifacts authorize claims.
+
+The defensible contribution is therefore not better prediction or causal discovery. It is a reproducible engineering layer that makes scientific claim boundaries explicit before publication. This is a narrower claim, but it is also a stronger one.

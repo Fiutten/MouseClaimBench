@@ -26,13 +26,14 @@ executable artifacts.
 
 ## Manuscript
 
-The current manuscript draft is located in:
+The Overleaf-ready manuscript draft is located in the repository root:
 
 ```text
-paper/main.tex
+main.tex
 ```
 
-For Overleaf, use `paper/main.tex` as the main document.
+For Overleaf, use `main.tex` as the main document. The same manuscript is also
+kept under `paper/` as a structured project copy.
 
 ## Repository status
 
@@ -76,4 +77,3 @@ It does not support claims of:
 - complete mouse-brain simulation,
 - complete biological digital twin,
 - LLM-based scientific validation.
-

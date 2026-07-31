@@ -1,0 +1,18 @@
+\begin{table}[t]
+\centering
+\caption{Evaluation matrix for ClaimBench v2. Each component has a bounded interpretation to avoid converting a positive audit into an unsupported performance claim.}
+\label{tab:evaluation-matrix}
+\small
+\begin{tabularx}{\textwidth}{p{0.22\textwidth}p{0.24\textwidth}X}
+\toprule
+Component & Main evidence & Bounded interpretation \\
+\midrule
+Synthetic known truth & 144 controlled cases, zero false supported overclaims & Gate semantics are operational under known truth \\
+Threshold sensitivity & Safe and dangerous regions reported & Thresholds have reportable limits, not universal calibration \\
+SciFact control & 300 claims, BM25 recall@5 of 0.899 & Scientific claim auditing is operational, not SOTA verification \\
+Tuebingen control & 108 pairs, 79 correlation-only direction overclaims & Causal wording control is operational, not causal discovery performance \\
+LLM extraction & 120 candidates, no API call, non-authoritative & LLMs assist inspection but do not authorize claims \\
+Release check & No missing, dirty, or failing required artifacts & Current v2 package is reproducible at artifact level \\
+\bottomrule
+\end{tabularx}
+\end{table}
