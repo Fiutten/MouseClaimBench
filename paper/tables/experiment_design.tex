@@ -1,18 +1,25 @@
-\begin{table}[t]
+\begin{table}[t!]
 \centering
-\caption{Experimental design used to evaluate ClaimBench v2. Each experiment is framed as a decision-support question with a stress test and an explicit acceptance criterion.}
+\caption{Experimental design. Each experiment connects a decision-support question to a declared evidence source and a bounded acceptance criterion.}
 \label{tab:experiment-design}
 \small
-\begin{tabularx}{\textwidth}{p{0.13\textwidth}p{0.24\textwidth}p{0.24\textwidth}X}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\textwidth}{@{}p{0.07\textwidth}p{0.28\textwidth}p{0.27\textwidth}Y@{}}
 \toprule
 Experiment & Decision question & Stress test & Acceptance criterion \\
 \midrule
 E1 & Does the gate implement the intended claim semantics? & Synthetic known-truth evidence configurations & No unsupported claim is authorized as supported \\
+\addlinespace[2pt]
 E2 & Are thresholds informative rather than arbitrary? & Threshold sweep over safe and dangerous regions & Safe regions and dangerous regions are both reported \\
+\addlinespace[2pt]
 E3 & Can external scientific claims be audited without lexical shortcuts? & SciFact retrieval and rationale control & Retrieval, support, abstention, and overclaiming risk are separated \\
+\addlinespace[2pt]
 E4 & Does the framework block causal wording when direction is not identified? & Tuebingen cause-effect control & Correlation-only direction claims remain blocked \\
+\addlinespace[2pt]
 E5 & Does LLM assistance remain non-authoritative? & Deterministic and optional-file candidate extraction & Candidate extraction cannot authorize a claim \\
-E6 & Are the components non-redundant? & Component ablation and reviewer threat model & Removing a component reintroduces a reportable risk \\
+\addlinespace[2pt]
+E6 & Are the components non-redundant? & Component ablation and reviewer threat model & Component effects and negative ablations are reported without selection \\
+\addlinespace[2pt]
 E7 & Is the release package auditable? & Reproduction manifest and release check & Required artifacts are present, non-dirty, and aligned with expected decisions \\
 \bottomrule
 \end{tabularx}

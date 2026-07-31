@@ -1,0 +1,21 @@
+\begin{table}[t!]
+\centering
+\caption{Known-truth comparison over 1,152 claim opportunities. ORI is the fraction of unsupported opportunities authorized, while CNI is the fraction of supportable opportunities blocked. Lower values are better for both indices.}
+\label{tab:synthetic-evaluator-comparison}
+\small
+\renewcommand{\arraystretch}{1.14}
+\begin{tabularx}{\textwidth}{@{}p{0.27\textwidth}rrrrY@{}}
+\toprule
+Evaluator & FP & FN & ORI & CNI & Main failure mode \\
+\midrule
+ClaimBench gate & 0 & 0 & 0.000 & 0.000 & No error under declared known-truth semantics \\
+Correlation only & 325 & 61 & 0.521 & 0.116 & Prediction promoted to broad scientific support \\
+Leaderboard only & 319 & 67 & 0.511 & 0.127 & Rank performance promoted beyond prediction \\
+Reliability only & 178 & 202 & 0.285 & 0.383 & Reproducibility treated as structure and mechanism \\
+Compensatory score & 84 & 75 & 0.135 & 0.142 & Passing blocks offset missing mandatory evidence \\
+Topology only & 24 & 336 & 0.038 & 0.636 & Topology promoted to direction and mechanism \\
+No topology block & 12 & 0 & 0.019 & 0.000 & Mechanism admitted without topology specificity \\
+No direction block & 12 & 0 & 0.019 & 0.000 & Mechanism admitted without directed evidence \\
+\bottomrule
+\end{tabularx}
+\end{table}

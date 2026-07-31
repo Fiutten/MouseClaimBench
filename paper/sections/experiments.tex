@@ -1,24 +1,64 @@
-\section{Experimental Protocol}
+\section{Experimental Evaluation}
 \label{sec:experiments}
 
-The experimental protocol evaluates ClaimBench as a decision-support mechanism. Therefore, the experiments are not organised as a leaderboard or as a comparison against specialised predictive systems. They are organised around decision questions: whether the gate implements the intended semantics, whether external controls expose overclaiming risks, whether LLM assistance remains bounded, whether each component has non-redundant value, and whether the release package can be inspected by a reviewer.
+The evaluation tests ClaimBench as a decision-support mechanism. It does not compare predictive architectures or claim state-of-the-art performance on the external datasets. The object of evaluation is the decision boundary between available evidence and admissible scientific wording. Protocol and results are presented together so that each numerical outcome remains attached to the question it answers.
 
-This separation is important because the object of evaluation is not a model output alone. The object is the relation between evidence and scientific wording. For this reason, each experiment defines an audit question, an artifact family, and an acceptance criterion before reporting numerical results. The design is summarized in Table~\ref{tab:experiment-design}. The table should be read as the experimental backbone of the paper. Results are reported later in Section~\ref{sec:results}.
+\subsection{Evaluation design and evidence sources}
+\label{subsec:evaluation-design}
+
+The experimental design contains seven questions, summarized in Table~\ref{tab:experiment-design}. The first two concern internal validity of the decision rule. The next two use public external datasets to test evidence-retrieval and causal-direction failure modes. The fifth evaluates claim discovery and LLM authority. The final two examine component necessity and reproducible release integrity. Every experiment has a stored JSON artifact, an expected decision, and a bounded interpretation.
 
 \input{tables/experiment_design}
 
-The same design is interpreted through the bounded evidence matrix in Table~\ref{tab:evaluation-matrix}. This matrix is important because it prevents a positive control from being read as a stronger claim than the experiment supports. It also clarifies what the reviewer can infer from each artifact family before seeing the numerical values.
+The synthetic benchmark contains 144 cases from 12 scenario families. Each case is evaluated against eight claim opportunities, producing 1,152 binary claim decisions per evaluator. The families include prediction under common drive, leaderboard overstatement, reliability without structure, topology without direction, direction without topology, confounded and matched structure--function effects, mechanistic positive controls, causal local controls, and incomplete digital-twin decoys. Deterministic variants perturb the numerical evidence while retaining the scenario semantics. The labels encode the operational contract and are therefore suitable for software verification, not for establishing independent scientific truth.
 
-\input{tables/evaluation_matrix}
+Threshold sensitivity evaluates $3^5=243$ combinations around the five nominal numerical thresholds. A cell is classified as safe when it produces no false authorizations and CNI does not exceed $0.25$ over the synthetic suite. A cell is dangerous when at least one unsupported claim is authorized. The uncertainty experiment separately evaluates the nominal case plus positive and negative perturbations of $0.03$ for each numerical evidence field, following Equation~\ref{eq:claim-stability}.
 
-The first block of experiments evaluates internal semantics. Synthetic known-truth configurations define the evidence dimensions that are present or absent for each claim family. The purpose is not to simulate a real scientific domain. The purpose is to verify that the gate behaves as declared. A mechanistic claim must fail if topology or direction is missing. A causal claim must fail if causal evidence is absent. A predictive claim can pass without being promoted to mechanism. The primary acceptance criterion is therefore strict: unsupported claims must not be authorized as supported.
+SciFact contributes 300 claims from its development split, including 124 support, 64 contradiction, and 112 not-enough-information labels \citep{wadden2020scifact}. A local BM25 retriever returns five candidate abstracts and a transparent token-overlap rule estimates rationale support. This is intentionally not a competitive verification model. Tuebingen contributes 108 cause-effect pairs and compares transparent additive-noise, information-geometric, and linear non-Gaussian proxies \citep{mooij2016cause}. The causal experiment records direction accuracy, coverage, consensus, and how often correlation alone would have authorized a directional statement.
 
-The second block evaluates robustness of decision thresholds and uncertainty handling. A decision-support tool cannot hide its sensitivity behind a single chosen threshold. The threshold sweep therefore records safe regions, dangerous regions, and borderline cases. The uncertainty gate then checks whether unstable cases remain uncertain instead of being forced into binary support. This block is not designed to prove universal calibration. It is designed to make calibration limits visible to authors and reviewers.
+All numerical values reported below come from the frozen benchmark artifacts generated at revision \texttt{4fecaaf}. The manuscript does not manually edit those artifacts. This distinction matters for the text audit. The reported 120 candidates refer to the revision-specific project corpus that was audited, not to a claim that the final submitted manuscript has already been independently reviewed.
 
-The third block uses external controls. SciFact tests whether scientific claim-evidence handling can be audited outside the original neurocomputational setting. The experiment separates document retrieval, rationale agreement, support classification, abstention, and overclaiming risk. Tuebingen tests a different failure mode: the promotion of association or correlation into causal direction. The aim is diagnostic. ClaimBench is not optimized as a SciFact system or as a causal-discovery method. It uses both resources to verify that claim authorization is stricter than ordinary evidence proximity or correlation.
+\subsection{Known-truth gate, ablation, and sensitivity results}
+\label{subsec:known-truth-results}
 
-The fourth block evaluates manuscript and LLM boundaries. The manuscript audit checks whether active project texts contain wording that violates executable claim contracts. The LLM audit checks whether candidate claim extraction can be included without changing the authority structure of the framework. The reproducible configuration uses deterministic extraction and records whether an external LLM file was loaded. In every case, candidate generation remains separate from claim authorization.
+The full non-compensatory gate produces 528 true positive decisions and 624 true negative decisions across the 1,152 claim opportunities. No false positive or false negative is observed. This result verifies that the implementation reproduces the declared contract semantics on the constructed cases. It is not an independent validation of the thresholds because the known-truth labels use the same operational claim definitions.
 
-The fifth block evaluates component necessity and release integrity. Component ablation removes or weakens one safeguard at a time. The tested removals include correlation-only evaluation, weighted-score compensation, removal of topology and direction blocks, removal of uncertainty, lexical shortcutting, causal authorization from correlation, and removal of manuscript auditing. Release integrity is then checked through the reproduction manifest and the release gate. These two experiments answer different reviewer concerns. Ablation answers whether the rules have operational value. Release integrity answers whether the described artifact can actually be inspected.
+The value of the gate becomes clearer when it is compared with the ablated evaluators in Table~\ref{tab:synthetic-evaluator-comparison}. Correlation-only and leaderboard-only evaluation authorize more than half of the unsupported claim opportunities, with ORI values of $0.521$ and $0.511$. Reliability-only evaluation reduces ORI to $0.285$ but blocks $38.3\%$ of supportable opportunities. A compensatory weighted score produces ORI $=0.135$ and CNI $=0.142$. Topology-only evaluation is conservative, but its CNI of $0.636$ shows why ORI cannot be interpreted alone.
 
-The protocol deliberately separates design from outcome. This prevents the experimental section from becoming a results narrative and avoids circular justification. The numerical results in the next section are interpreted only under the boundaries declared here. A positive SciFact control does not imply state-of-the-art scientific fact verification. A positive Tuebingen control does not imply causal discovery. A clean manuscript audit does not imply scientific novelty. It means that the current wording respects the executable claim boundary.
+\input{tables/synthetic_evaluator_comparison}
+
+Fig.~\ref{fig:ablation} shows the ORI profile for the comparable known-truth evaluators. The topology and direction ablations each introduce 12 false authorizations, corresponding to ORI $=0.019$. The reproducibility ablation produces no error in this particular suite because the other blocks and scenario construction already prevent additional authorizations. It is therefore not classified as independent positive evidence for that component. This negative ablation result is retained rather than hidden.
+
+\input{figures/claimbench_ablation}
+
+The threshold grid identifies 108 safe cells and 135 dangerous cells. Thus, $44.4\%$ of the tested configurations satisfy the declared safe-cell criterion, while $55.6\%$ authorize at least one unsupported claim. The smallest non-zero ORI in the dangerous region is $0.0016$. This shows that the nominal behaviour is not a consequence of every nearby threshold choice. The decision rule has a non-trivial safe region, but the region must be reported and the thresholds cannot be described as universally robust.
+
+The uncertainty experiment produces 503 supported, 622 blocked, and 27 uncertain decisions. No unsupported claim is marked as supported. Twenty-five supportable claims become uncertain under local perturbations. The remaining two uncertain cases are unsupported rather than falsely promoted. These results confirm that the third state preserves instability, although they do not provide statistical calibration. Fig.~\ref{fig:sensitivity} summarizes the safe and dangerous threshold regions together with the uncertainty outcome.
+
+\input{figures/claimbench_sensitivity}
+
+\subsection{External claim and causal controls}
+\label{subsec:external-controls}
+
+The SciFact retriever obtains recall@5 of $0.899$ over the 188 claims with annotated evidence. Nineteen claims with gold evidence are not retrieved in the first five positions. The lexical shortcut creates 35 false support decisions and 60 false negatives, yielding ORI $=0.199$ and CNI $=0.484$. The BM25-plus-rationale rule creates 44 false supports and 61 false negatives, with ORI $=0.250$ and CNI $=0.492$. A high retrieval recall therefore coexists with weak support authorization. This is the intended diagnostic result. Document retrieval, rationale overlap, and scientific support cannot be collapsed into one successful score.
+
+The Tuebingen adapter attempts direction on 103 of 108 pairs. Aggregate accuracy is $0.485$ and weighted accuracy is $0.544$. Increasing the direction-margin threshold reduces coverage without producing a reliable monotonic gain in accuracy. Requiring all three proxies to agree leaves only $3.7\%$ coverage, although accuracy on that small subset reaches $0.75$. These values do not support a causal-discovery contribution. They support abstention and claim blocking because 79 pairs have absolute correlation above the operational threshold and would be overclaimed if association alone authorized direction.
+
+\input{tables/external_controls}
+
+The two controls answer different questions. SciFact shows that evidence retrieval can succeed while support classification remains unsafe. Tuebingen shows that strong dependence can coexist with weak directional identification. Neither dataset validates the complete ClaimBench taxonomy. Their role is to demonstrate that the principal failure modes also occur outside the handcrafted claim scenarios.
+
+\subsection{Claim discovery, artifact audit, and release integrity}
+\label{subsec:release-results}
+
+The deterministic claim-discovery audit identifies 120 candidates in the frozen source corpus. The distribution contains 43 mechanistic, 41 predictive, 10 causal, 8 digital-twin, 7 structure--function, 6 reproducibility, 3 generalization, and 2 state-of-the-art candidates. No external LLM API is called, no optional LLM candidate file is loaded, and no candidate is authoritative. These counts measure extraction coverage on one project corpus. They do not measure precision, recall, or agreement with expert annotations.
+
+The artifact-level manuscript audit evaluates seven declared contracts against the same frozen corpus and reports no active blocked-wording hits. Risk patterns related to digital twins, causality, and state-of-the-art language are present only in negated or boundary-setting contexts. This is a useful internal test of wording control, but it is not independent evidence. A blinded multi-author corpus is required before claiming general manuscript-auditing performance.
+
+\input{figures/claimbench_evidence_dashboard}
+
+The reproduction manifest executes 15 stages and all 15 match their expected decisions. The unified report passes 10 of 10 criteria. The threat model passes 7 of 7 checks with no failed critical threat. The release gate finds no missing, dirty, or failing required artifacts at the frozen revision. Table~\ref{tab:release-summary} separates these engineering checks from the scientific interpretation they permit.
+
+\input{tables/release_summary}
+
+The release evidence establishes traceability and repeatable execution for the frozen package. It does not establish external replication, reviewer benefit, or general validity of the claim taxonomy. The combined experimental result is consequently narrower: ClaimBench implements a reproducible non-compensatory decision rule, exposes specific overclaiming failures in known-truth and external controls, and preserves explicit claim boundaries under the evaluated release.

@@ -1,40 +1,70 @@
 \section{Method}
 \label{sec:method}
 
-The method is designed as a decision-support process rather than as a predictive model. The user of the system is assumed to be an author, reviewer, or research team that has a manuscript draft, a set of computational artifacts, and a set of claims that may be too strong for the available evidence. ClaimBench receives those elements and returns an explicit audit decision for each claim class. The workflow is summarized in Fig.~\ref{fig:claimbench-workflow}.
+ClaimBench is designed as a decision-support process for authors, reviewers, and research teams. Its inputs are a manuscript, a set of declared scientific claims, and the computational artifacts that may support those claims. Its output is not a paper-level acceptance score. It is a claim-level decision with an evidential rationale, provenance, permitted wording, and blocked wording. Fig.~\ref{fig:claimbench-workflow} presents the complete workflow.
 
 \input{figures/claimbench_workflow}
 
-ClaimBench represents a scientific statement as a claim contract. A contract defines the type of claim, the evidence dimensions required to support it, and the conditions under which the claim must be blocked or marked uncertain. The current framework distinguishes predictive, reproducibility, topology-specific, directed, causal, mechanistic, structure-function, digital-twin, and state-of-the-art claims. This taxonomy is intentionally practical. It is designed to capture common overclaiming patterns in AI and neurocomputational papers rather than to provide a philosophical theory of scientific explanation.
+\subsection{Claim contracts and evidence representation}
+\label{subsec:claim-contracts}
 
-Each claim type has a non-compensatory evidence gate. This means that missing evidence in a required dimension cannot be offset by strong evidence in another dimension. For example, high predictive correlation does not authorize a causal claim. A reproducible analysis does not authorize a mechanistic claim if topology and direction are absent. A local observational association does not authorize a whole-brain digital-twin statement. The decision can be supported, blocked, or uncertain. The uncertain state is important because borderline cases should not be forced into support or rejection when stability is insufficient.
+Let $c$ denote a candidate statement and let $k(c)$ denote its claim family. The current taxonomy contains predictive, reproducibility, evidence-retrieval, topology-specific, directional, structure--function, mechanistic, causal, digital-twin, and state-of-the-art claims. The taxonomy is operational. It captures recurring interpretation errors in scientific AI papers and does not attempt to define a general philosophy of scientific explanation.
 
-The non-compensatory design is stricter than a weighted score. This is deliberate. Weighted scoring is useful for ranking models, but it can hide the exact missing assumption that makes a scientific statement invalid. ClaimBench keeps this information visible by separating criteria and by producing decision artifacts that can be inspected by authors and reviewers.
+A claim contract is represented as
+\begin{equation}
+\mathcal{C}(c)=\langle k, s, R_k, \boldsymbol{\tau}_k, u, w^{+}, w^{-}, \mathcal{A}\rangle,
+\label{eq:claim-contract}
+\end{equation}
+where $s$ is the declared scope, $R_k$ is the set of mandatory evidence blocks, $\boldsymbol{\tau}_k$ contains their operational thresholds, $u$ is the uncertainty policy, $w^{+}$ and $w^{-}$ are the permitted and blocked formulations, and $\mathcal{A}$ is the set of bound artifacts. Each artifact declaration contains a path and one or more expectations over stored fields. A contract therefore fails when a required file is missing, an expected decision is not reproduced, or a mandatory evidence block does not pass.
 
-The framework separates evidence into operational dimensions. Prediction measures whether a model improves output agreement with observations. Reproducibility checks whether artifacts can be regenerated from a clean repository state. Topology specificity checks whether the claim depends on the correct structural relation rather than on a generic control. Direction checks whether the ordered relation is supported. Causality checks whether the evidence is sufficient for causal wording. Structure-function association checks whether anatomical and functional descriptors are linked under appropriate controls. Cost and fidelity summarize whether stronger claims require disproportionate computational burden.
+For a claim $c$, the evidence vector is $\mathbf{e}(c)=(e_1,\ldots,e_J)$. Its elements may be numerical, such as predictive agreement or a matched effect size, or logical, such as the availability of intervention evidence, independent validation, or a clean release. Every mandatory block is converted into a Boolean decision
+\begin{equation}
+b_j(c)=\mathbb{I}\bigl[e_j(c)\ \text{satisfies}\ \tau_{j,k}\bigr]\,\mathbb{I}\bigl[\mathcal{A}_j\ \text{passes}\bigr],
+\label{eq:evidence-block}
+\end{equation}
+where the first indicator evaluates the declared criterion and the second evaluates artifact availability and expectations. This representation keeps numerical evidence and release provenance in the same contract without claiming that they measure the same construct.
 
-These dimensions are not assumed to be independent in the biological sense. They are separated for auditability. The goal is to prevent a manuscript from using one evidence dimension as a substitute for another. This separation is also useful for review response because it makes the claim boundary explicit. A reviewer can disagree with a threshold, but the repository shows which claim depends on that threshold and which artifact implements it.
-
-The decision-support interpretation is important. ClaimBench does not decide whether a research direction is valuable, and it does not replace expert judgement. It provides a structured answer to a narrower question: given the artifacts currently present in the repository, what classes of claims can be defended without overclaiming? This makes the output closer to an executable methodological checklist than to a conventional score. The checklist is executable because each decision points to an artifact, and it is methodological because the artifact is interpreted under a predefined claim boundary.
-
-Operationally, each claim contract contains four elements. The first element is the claim family, for example prediction, mechanism, causality, reproducibility, or digital-twin scope. The second element is the required evidence vector. The third element is the blocking rule that defines which missing evidence dimensions prevent authorization. The fourth element is the decision record, which includes the artifact path, the observed evidence, the allowed wording, and the forbidden wording. This structure makes the framework useful for manuscript revision because a blocked claim is not only rejected. It is accompanied by the reason for rejection and by the weaker claim that remains admissible.
+Table~\ref{tab:claim-semantics} gives the principal claim classes and their mandatory evidence. Stronger claim families contain additional veto conditions. For example, a mechanistic claim requires predictive, reproducibility, topology, and direction blocks. A causal claim requires explicit causal evidence. Digital-twin wording additionally requires entity and scope conditions that are not satisfied by a local association or a generic population model.
 
 \input{tables/claim_semantics}
 
-The LLM layer is designed as a candidate extractor, not as a judge. In the current release, the default mode is deterministic. It scans manuscript text and extracts sentences that match conservative claim patterns related to mechanism, prediction, causality, digital twins, reproducibility, generalization, and state-of-the-art language. An optional environment variable can point to a local JSON file containing candidate claims generated by an external LLM. The framework then records that candidates came from an external file, but the final authorization remains controlled by the same executable gates.
+\subsection{Non-compensatory authorization and uncertainty}
+\label{subsec:claim-authorization}
 
-This design avoids a common failure mode in LLM-assisted science. If an LLM is allowed to decide that a claim is supported, the audit becomes dependent on an opaque and potentially changing model. ClaimBench instead treats LLM output as untrusted input. It can increase coverage by pointing the auditor to statements that deserve checking, but it cannot turn unsupported evidence into a supported claim. The current artifact explicitly records that no LLM API was called and that the LLM layer was non-authoritative.
+ClaimBench authorizes claim family $k$ through a conjunctive rule
+\begin{equation}
+G_k(c)=\prod_{j\in R_k} b_j(c).
+\label{eq:claim-gate}
+\end{equation}
+The claim is authorized only when every mandatory block equals one. Equation~\ref{eq:claim-gate} is the formal source of non-compensation. It differs from a weighted score $S(c)=\sum_j w_j e_j(c)$ because no increase in a passing block can offset a failed block. The rule resembles a multicriteria veto, although ClaimBench applies it to claim authorization rather than alternative ranking \citep{figueira2013electre}.
 
-The current implementation deliberately uses a deterministic fallback as the reproducible baseline. This does not claim that the fallback is linguistically superior to modern LLMs. It fixes the audit boundary. Future LLM outputs can be loaded into the same interface, but they will still be evaluated as candidate-generating inputs. This design is important for DSS-oriented reproducibility because the decision policy remains stable even if the claim-discovery interface evolves.
+The operational thresholds are declared in the repository and exposed to sensitivity analysis. They are not universal scientific constants. The nominal implementation uses thresholds of $0.30$ for prediction, $0.70$ for reproducibility, $0.05$ for topology effect, $0.50$ for directed fraction, and $0.01$ for matched structure--function effect. Boolean requirements, including causal evidence and independent validation, are evaluated directly. The threshold grid reported in Section~\ref{subsec:known-truth-results} is part of the method because a gate that hides its dangerous configurations would provide false assurance.
 
-ClaimBench includes external controls to avoid validating only on synthetic cases. SciFact is used to evaluate claim-evidence handling in a scientific text setting. The framework reports label counts, retrieval performance, overclaiming risk, confidence indicators, and abstention. The result is interpreted as evidence that the audit can operate on a real scientific claim benchmark, not as evidence of state-of-the-art SciFact performance.
+ClaimBench adds an uncertain state through deterministic local perturbations. Let $\mathbf{e}^{(1)},\ldots,\mathbf{e}^{(M)}$ be the nominal evidence vector and the declared perturbations around its numerical components. The authorization stability is
+\begin{equation}
+s_k(c)=\frac{1}{M}\sum_{m=1}^{M}G_k\bigl(c,\mathbf{e}^{(m)}\bigr).
+\label{eq:claim-stability}
+\end{equation}
+The decision is supported when $s_k(c)\geq0.95$, blocked when $s_k(c)\leq0.05$, and uncertain otherwise. This score is a deterministic local stability proportion. It must not be interpreted as a posterior probability, a confidence level, or a distribution-free guarantee. Its purpose is to prevent a locally unstable authorization from being reported as established support.
 
-The Tuebingen cause-effect benchmark is used to test causal wording control. Transparent directional methods are evaluated, but the primary question is whether correlation-only evidence would incorrectly authorize causal direction. This framing is important. A weak causal-direction baseline can still be valuable if it exposes why causal claims must be blocked under insufficient evidence.
+Known-truth experiments permit two explicit error measures. For each evaluator, a false positive is an unsupported claim that is authorized and a false negative is a supportable claim that is blocked. The Overclaiming Risk Index (ORI) and Conservativeness Index (CNI) are
+\begin{align}
+\mathrm{ORI} &= \frac{FP}{FP+TN},
+\label{eq:ori}\\
+\mathrm{CNI} &= \frac{FN}{FN+TP}.
+\label{eq:cni}
+\end{align}
+ORI measures the fraction of unsupported claim opportunities that are admitted. CNI measures the fraction of supportable opportunities that are withheld. Both are required because a gate can avoid overclaiming by blocking everything. In the present benchmark, lower values are better and the two indices are interpreted together.
 
-The framework includes component ablations to test whether each part has non-redundant value. Removing the non-compensatory gate, topology block, direction block, uncertainty state, evidence retrieval separation, causal abstention, or manuscript audit reintroduces a specific risk. The threat model then maps those risks to reviewer-facing concerns. It covers rules without value, arbitrary thresholds, synthetic overfitting, causal overclaiming, wording drift, LLM authority drift, and hidden uncertainty.
+\subsection{Artifact binding, claim discovery, and human authority}
+\label{subsec:artifact-binding}
 
-This part of the method is designed for adversarial review. A reviewer may ask whether ClaimBench is only a collection of rules. The ablation answers that question by showing which unsupported claims become possible when each rule is removed. A reviewer may ask whether the LLM layer creates a new unsupported authority. The threat model answers that question by requiring the LLM layer to remain non-authoritative.
+Claim contracts are stored in a small YAML schema. Each specification records the claim identifier, family, scope, evidence family, severity, permitted and blocked wording, blocked textual patterns, non-compensatory requirements, uncertainty policy, and required artifacts. The audit resolves each artifact path, reads structured outputs, evaluates the declared expectations, and records missing or failing evidence. This creates a reproducible link from manuscript wording to the exact code and data product used to justify it.
 
-\input{tables/threat_model_summary}
+Claim discovery occurs before authorization. The reproducible mode uses a deterministic extractor that identifies candidate sentences associated with prediction, mechanism, causality, structure--function relations, reproducibility, generalization, digital twins, and state-of-the-art language. An optional local JSON file can contain candidates produced by an external LLM. The source of each candidate is recorded, but the candidate is treated as untrusted input. It cannot change thresholds, create evidence, or authorize a claim.
 
-The method therefore combines three layers. The first layer is formal, because claims are mapped to evidence contracts. The second layer is empirical, because synthetic and external controls test whether the contracts block known failure modes. The third layer is editorial, because manuscript wording is audited against the same contracts. The combination is what makes the system a decision-support framework rather than a collection of diagnostic scripts.
+This separation addresses authority drift in LLM-assisted scientific workflows. Modern verification systems can improve retrieval, decomposition, and attribution, but their outputs remain sensitive to context and evidence quality \citep{fadeeva2024factchecking,tan2026scitrue}. ClaimBench uses language models only to increase inspection coverage. The final decision remains deterministic for a fixed evidence package and can be traced to the contract and artifacts.
+
+The human retains authority at two points. First, domain experts define the contract scope and mandatory evidence. ClaimBench cannot determine that a domain-specific criterion is scientifically sufficient without that specification. Second, experts resolve claims marked as needing external review. The system supports editorial decisions but does not judge novelty, importance, ethical acceptability, or paper acceptance.
+
+The complete process has five stages. Candidate statements are discovered and classified. Contracts bind each statement to mandatory evidence. Artifact checks evaluate metrics, controls, provenance, and release integrity. The non-compensatory gate returns supported, blocked, or uncertain status. Finally, the decision artifact links the result to bounded wording and the release state. This design makes wording drift detectable. A numerical result may remain unchanged while an unsupported interpretation is reintroduced during manuscript revision, and the manuscript audit is intended to catch that case.

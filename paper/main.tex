@@ -2,7 +2,11 @@
 
 \usepackage[margin=2.5cm]{geometry}
 \usepackage{authblk}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{array}
 \usepackage{booktabs}
+\usepackage{enumitem}
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{natbib}
@@ -16,7 +20,7 @@
   urlcolor=blue
 }
 
-\title{ClaimBench: Decision Support for Scientific AI Claim Governance}
+\title{ClaimBench: Evidence-Aware Decision Support for Scientific AI Claims}
 
 \author[1]{Alberto Fern\'andez-Isabel}
 \author[1]{Isaac Mart\'in de Diego}
@@ -26,6 +30,9 @@
 
 \date{}
 
+\setlist[itemize]{leftmargin=*,itemsep=0.45em,topsep=0.45em}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+
 \begin{document}
 
 \maketitle
@@ -34,15 +41,13 @@
 \input{sections/abstract}
 \end{abstract}
 
-\noindent\textbf{Keywords:} Decision Support Systems, Scientific Artificial Intelligence, Claim Auditing, Verification and Validation, Large Language Models, Reproducibility
+\noindent\textbf{Keywords:} Decision Support Systems, Scientific Claim Verification, AI Assurance, Evidence Traceability, Non-compensatory Decision-Making, Reproducible Research
 
 \input{sections/introduction}
 \input{sections/contributions}
 \input{sections/related_work}
 \input{sections/method}
 \input{sections/experiments}
-\input{sections/results}
-\input{sections/decision_support_use}
 \input{sections/discussion}
 \input{sections/conclusions}
 

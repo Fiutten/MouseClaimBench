@@ -1,0 +1,20 @@
+\begin{table}[t!]
+\centering
+\caption{Frozen release checks at revision \texttt{4fecaaf}. Passing an engineering check establishes artifact integrity for that revision and does not replace external scientific validation.}
+\label{tab:release-summary}
+\small
+\renewcommand{\arraystretch}{1.16}
+\begin{tabularx}{\textwidth}{@{}p{0.25\textwidth}p{0.20\textwidth}Y@{}}
+\toprule
+Check & Observed result & Interpretation \\
+\midrule
+Reproduction manifest & 15 of 15 stages pass & Every declared stage matches its expected decision \\
+\addlinespace[3pt]
+Unified report & 10 of 10 criteria pass & Required methodological evidence is jointly present \\
+\addlinespace[3pt]
+Threat model & 7 of 7 checks pass & Tracked reviewer risks are linked to explicit controls \\
+\addlinespace[3pt]
+Release gate & 0 missing, 0 dirty, 0 failing & The frozen artifact package is internally consistent \\
+\bottomrule
+\end{tabularx}
+\end{table}

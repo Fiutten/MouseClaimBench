@@ -1,6 +1,6 @@
 \begin{figure}[t!]
 \centering
-\includegraphics[width=0.96\textwidth]{figures/claimbench_ablation.png}
-\caption{Component ablation summary. The ablation does not claim better prediction. It shows which unsupported scientific statements become possible when decision-support safeguards are removed.}
+\includegraphics[width=0.94\textwidth]{figures/claimbench_ablation.png}
+\caption{Known-truth comparison of the full gate, shortcut evaluators, and component ablations using the Overclaiming Risk Index (ORI). Lower ORI indicates fewer unsupported authorizations. ORI must be interpreted with the Conservativeness Index in Table~\ref{tab:synthetic-evaluator-comparison}, since a restrictive evaluator can obtain low ORI by blocking supportable claims. Removing either topology or direction creates 12 false authorizations. Removing reproducibility creates no additional error in this suite and is retained as a negative ablation result.}
 \label{fig:ablation}
 \end{figure}

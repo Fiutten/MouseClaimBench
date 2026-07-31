@@ -1,0 +1,18 @@
+\begin{table}[t!]
+\centering
+\caption{External control results and their admissible interpretation. The controls diagnose overclaiming failure modes and are not presented as competitive task performance.}
+\label{tab:external-controls}
+\small
+\renewcommand{\arraystretch}{1.16}
+\begin{tabularx}{\textwidth}{@{}p{0.16\textwidth}p{0.19\textwidth}p{0.27\textwidth}Y@{}}
+\toprule
+Control & Sample & Principal result & Admissible conclusion \\
+\midrule
+SciFact & 300 claims & Recall@5 $=0.899$, lexical ORI $=0.199$, BM25-rationale ORI $=0.250$ & Retrieval quality does not authorize support by itself \\
+\addlinespace[3pt]
+Tuebingen & 108 pairs & 103 attempts, accuracy $=0.485$, 79 correlation-only overclaims & Correlation does not authorize causal direction \\
+\addlinespace[3pt]
+Known causal graphs & 5 scenarios & Positive and negative controls pass the declared gate & Gate logic handles the tested graph semantics, not causal discovery in general \\
+\bottomrule
+\end{tabularx}
+\end{table}

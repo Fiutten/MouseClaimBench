@@ -1,17 +1,23 @@
-\begin{table}[t]
+\begin{table}[t!]
 \centering
-\caption{Claim classes implemented in ClaimBench v2. The table states which evidence is required before a manuscript can use each type of wording and which stronger interpretation remains blocked when that evidence is absent.}
+\caption{Operational claim semantics implemented in ClaimBench. Mandatory evidence is conjunctive, and the final column states the interpretation that remains blocked when any required block is absent.}
 \label{tab:claim-semantics}
 \small
-\begin{tabularx}{\textwidth}{p{0.18\textwidth}p{0.31\textwidth}X}
+\renewcommand{\arraystretch}{1.16}
+\begin{tabularx}{\textwidth}{@{}p{0.17\textwidth}p{0.34\textwidth}Y@{}}
 \toprule
 Claim class & Evidence required for authorization & Interpretation blocked by the gate \\
 \midrule
 Predictive & Held-out improvement over declared baselines and reported uncertainty & Mechanism, causality, and topology recovery cannot be inferred from prediction alone \\
+\addlinespace[2pt]
 Reproducibility & Clean artifacts, repeated execution, stable result status, and non-dirty release metadata & Reproducibility cannot compensate for missing biological or causal evidence \\
+\addlinespace[2pt]
 Evidence retrieval & Retrieved evidence, rationale separation, abstention status, and overclaiming-risk estimate & Lexical overlap cannot be treated as support classification \\
+\addlinespace[2pt]
 Directional or causal & Direction-specific evidence and abstention when assumptions are not met & Correlation cannot authorize causal direction \\
+\addlinespace[2pt]
 Mechanistic & Prediction, topology specificity, direction, and rejection of plausible alternatives & A strong score cannot become a mechanism when one block is missing \\
+\addlinespace[2pt]
 Digital-twin scope & Entity-specific calibration, broad state coverage, update process, and intervention-level validation & Local or partial evidence cannot authorize complete digital-twin wording \\
 \bottomrule
 \end{tabularx}
