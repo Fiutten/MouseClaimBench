@@ -1,26 +1,6 @@
 \begin{figure}[t!]
 \centering
-\fbox{%
-\begin{minipage}{0.92\textwidth}
-\small
-\centering
-\begin{tabularx}{0.90\textwidth}{>{\centering\arraybackslash}X c >{\centering\arraybackslash}X c >{\centering\arraybackslash}X}
-\textbf{Manuscript and artifacts} & $\rightarrow$ &
-\textbf{Candidate claims} & $\rightarrow$ &
-\textbf{Evidence contracts} \\
-\multicolumn{5}{c}{$\downarrow$} \\
-\textbf{External controls} & $\rightarrow$ &
-\textbf{Non-compensatory gate} & $\rightarrow$ &
-\textbf{Decision artifact} \\
-\end{tabularx}
-\vspace{0.8em}
-
-\begin{tabularx}{0.90\textwidth}{p{0.25\textwidth}X}
-\textbf{Gate input} & Prediction, reproducibility, evidence retrieval, topology specificity, direction, causality, uncertainty, manuscript wording, cost, and release status. \\
-\textbf{Gate output} & Supported, blocked, or uncertain claim status with a pointer to the artifact that justifies the decision. \\
-\textbf{LLM boundary} & LLMs can suggest candidate claims, but they cannot authorize scientific interpretations. \\
-\end{tabularx}
-\end{minipage}}
+\includegraphics[width=0.96\textwidth]{figures/claimbench_workflow.png}
 \caption{ClaimBench decision-support workflow. The framework separates claim detection from claim authorization and turns manuscript-level interpretations into executable decision artifacts.}
 \label{fig:claimbench-workflow}
 \end{figure}

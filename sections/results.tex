@@ -11,6 +11,10 @@ For E2, threshold sensitivity reports both safe and dangerous regions. The unifi
 
 \input{tables/results_summary}
 
+Fig.~\ref{fig:sensitivity} complements the numerical table by separating three roles that should not be merged. Allen VBN acts as a stable negative case for mechanistic identifiability. Static Sensorium acts as a partial positive case for reliability and topographic organization. Dynamic Sensorium acts as a predictive case with small gains that remain insufficient for mechanistic or causal wording.
+
+\input{figures/claimbench_sensitivity}
+
 For E3, the SciFact adapter evaluates 300 claims with 124 support labels, 64 contradiction labels, and 112 not-enough-information labels. The transparent BM25 evidence retrieval baseline obtains recall@5 of 0.899. The lexical shortcut produces an overclaiming risk of 0.199, while the BM25-rationale configuration reports an overclaiming risk of 0.250 and a confidence indicator of 0.492. These values are not presented as competitive SciFact performance. They show that retrieval, rationale support, abstention, and overclaiming risk are different decision variables.
 
 For E4, the Tuebingen cause-effect adapter loads 108 pairs and attempts direction on 103 of them. The aggregate direction accuracy is 0.485 and the weighted accuracy is 0.544. This is not sufficient for a causal-discovery performance claim. The useful result is the causal-overclaiming control: 79 correlation-only direction overclaims are identified. The artifact therefore supports the claim that causal wording must remain blocked when direction is not identified.
@@ -24,4 +28,3 @@ For E6, component ablation identifies eight components and classifies seven as h
 For E7, the v2 reproduction package passes all required stages. The manifest reports 15 passed stages out of 15. The unified report passes 10 of 10 criteria. The reviewer threat model passes 7 of 7 tracked threats with no failed critical threat. The release check reports no missing artifacts, no dirty artifacts, and no failing artifacts. Together, these results show that the package is not only conceptually specified, but also inspectable as a release artifact.
 
 The combined result is deliberately bounded. ClaimBench v2 supports a methodological claim about decision support for scientific AI claim governance. It does not support a state-of-the-art SciFact claim, a causal-discovery claim, a new predictive benchmark claim, or a complete digital-twin claim. This negative boundary is part of the result because it demonstrates that the framework blocks the same type of overclaiming that it is designed to audit.
-

@@ -1,21 +1,6 @@
 \begin{figure}[t!]
 \centering
-\fbox{%
-\begin{minipage}{0.92\textwidth}
-\small
-\begin{tabularx}{0.90\textwidth}{p{0.25\textwidth}p{0.16\textwidth}X}
-\toprule
-\textbf{Removed component} & \textbf{Risk signal} & \textbf{Interpretation} \\
-\midrule
-Non-compensatory gate replaced by correlation-only evaluation & ORI = 0.521 & Ordinary correlation authorizes unsupported topology, direction, structure-function, and mechanism wording. \\
-Non-compensatory gate replaced by weighted score & ORI = 0.135 & Weighted compensation still permits unsupported claims when one evidence block is missing. \\
-Topology or direction block removed & ORI = 0.019 & Mechanistic wording can pass even though the required structural evidence is absent. \\
-Evidence retrieval reduced to lexical shortcut & ORI = 0.199 to 0.250 & Retrieval, rationale support, and overclaiming risk must be reported separately. \\
-Causal abstention removed & 79 / 108 overclaims & Correlation-only evidence is incorrectly promoted to causal direction. \\
-Manuscript audit removed & qualitative risk & Unsupported wording can re-enter the article even when numerical artifacts are correct. \\
-\bottomrule
-\end{tabularx}
-\end{minipage}}
+\includegraphics[width=0.96\textwidth]{figures/claimbench_ablation.png}
 \caption{Component ablation summary. The ablation does not claim better prediction. It shows which unsupported scientific statements become possible when decision-support safeguards are removed.}
 \label{fig:ablation}
 \end{figure}

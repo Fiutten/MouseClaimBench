@@ -1,33 +1,6 @@
 \begin{figure}[t!]
 \centering
-\fbox{%
-\begin{minipage}{0.92\textwidth}
-\small
-\begin{tabularx}{0.90\textwidth}{p{0.31\textwidth}p{0.18\textwidth}X}
-\toprule
-\textbf{Audit component} & \textbf{Observed result} & \textbf{Decision-support interpretation} \\
-\midrule
-Reproduction manifest & 15 / 15 stages & End-to-end package is executable from the frozen artifacts. \\
-Unified report & 10 / 10 criteria & The claim-governance criteria are jointly satisfied. \\
-Threat model & 7 / 7 threats & Reviewer-facing risks are mapped to explicit boundaries. \\
-Release check & clean & No required artifact is missing, dirty, or failing. \\
-LLM claim extraction & 120 candidates & Candidate extraction is active, but non-authoritative. \\
-\bottomrule
-\end{tabularx}
-\vspace{0.7em}
-
-\begin{tabularx}{0.90\textwidth}{p{0.20\textwidth}X p{0.11\textwidth}}
-\toprule
-\textbf{Claim type} & \textbf{Role in audit} & \textbf{Count} \\
-\midrule
-Mechanistic & Requires topology and direction before stronger wording. & 43 \\
-Prediction & Can be supported without becoming mechanism. & 41 \\
-Causal & Blocked unless causal evidence is available. & 10 \\
-Digital twin & Requires scope control and cannot be inferred from local evidence. & 8 \\
-Other bounded claims & Structure-function, reproducibility, generalization, and SOTA wording. & 18 \\
-\bottomrule
-\end{tabularx}
-\end{minipage}}
+\includegraphics[width=0.96\textwidth]{figures/claimbench_evidence_dashboard.png}
 \caption{Evidence dashboard for the current ClaimBench v2 package. The figure reports both the executable release checks and the candidate-claim distribution that motivates the audit.}
 \label{fig:evidence-dashboard}
 \end{figure}
