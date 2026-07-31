@@ -1,0 +1,169 @@
+{
+  "version": "0.6.0",
+  "git_revision": "7f5293613dc84000719f05c0dc340dc7c9d69c2b",
+  "allen_vbn": {
+    "artifact": "results/allen_vbn_mechanistic_identifiability_score.json",
+    "nominal_decision": "reproducible_target_without_mechanistic_identifiability",
+    "rows": [
+      {
+        "threshold_multiplier": 0.75,
+        "passed_blocks": [
+          "reproducibility"
+        ],
+        "mis_passed": false
+      },
+      {
+        "threshold_multiplier": 1.0,
+        "passed_blocks": [
+          "reproducibility"
+        ],
+        "mis_passed": false
+      },
+      {
+        "threshold_multiplier": 1.25,
+        "passed_blocks": [
+          "reproducibility"
+        ],
+        "mis_passed": false
+      }
+    ],
+    "stable_negative": true
+  },
+  "sensorium_static": {
+    "artifact": "results/sensorium_static_model_comparator/summary.json",
+    "median_reliability": 0.642032375657199,
+    "median_topographic_effect": 0.1779421462041856,
+    "rows": [
+      {
+        "reliability_threshold": 0.5,
+        "topographic_threshold": 0.05,
+        "reliability_passed": true,
+        "topographic_passed": true,
+        "partial_positive": true
+      },
+      {
+        "reliability_threshold": 0.5,
+        "topographic_threshold": 0.1,
+        "reliability_passed": true,
+        "topographic_passed": true,
+        "partial_positive": true
+      },
+      {
+        "reliability_threshold": 0.5,
+        "topographic_threshold": 0.15,
+        "reliability_passed": true,
+        "topographic_passed": true,
+        "partial_positive": true
+      },
+      {
+        "reliability_threshold": 0.6,
+        "topographic_threshold": 0.05,
+        "reliability_passed": true,
+        "topographic_passed": true,
+        "partial_positive": true
+      },
+      {
+        "reliability_threshold": 0.6,
+        "topographic_threshold": 0.1,
+        "reliability_passed": true,
+        "topographic_passed": true,
+        "partial_positive": true
+      },
+      {
+        "reliability_threshold": 0.6,
+        "topographic_threshold": 0.15,
+        "reliability_passed": true,
+        "topographic_passed": true,
+        "partial_positive": true
+      },
+      {
+        "reliability_threshold": 0.7,
+        "topographic_threshold": 0.05,
+        "reliability_passed": false,
+        "topographic_passed": true,
+        "partial_positive": false
+      },
+      {
+        "reliability_threshold": 0.7,
+        "topographic_threshold": 0.1,
+        "reliability_passed": false,
+        "topographic_passed": true,
+        "partial_positive": false
+      },
+      {
+        "reliability_threshold": 0.7,
+        "topographic_threshold": 0.15,
+        "reliability_passed": false,
+        "topographic_passed": true,
+        "partial_positive": false
+      }
+    ],
+    "stable_partial_positive": 6,
+    "n_checks": 9
+  },
+  "dynamic_sensorium": {
+    "artifact": "results/dynamic_sensorium_model_comparator/summary.json",
+    "cohorts": [
+      {
+        "cohort": "dynamic_sensorium2023_oracle",
+        "n_mice": 5,
+        "median_mlp_minus_svd": 0.003855802673753017,
+        "median_mlp_minus_mean": 0.04286115734693491,
+        "threshold_rows": [
+          {
+            "effect_threshold": 0.0,
+            "mlp_beats_svd": 3,
+            "mlp_beats_mean": 5
+          },
+          {
+            "effect_threshold": 0.002,
+            "mlp_beats_svd": 3,
+            "mlp_beats_mean": 5
+          },
+          {
+            "effect_threshold": 0.005,
+            "mlp_beats_svd": 2,
+            "mlp_beats_mean": 4
+          },
+          {
+            "effect_threshold": 0.01,
+            "mlp_beats_svd": 1,
+            "mlp_beats_mean": 4
+          }
+        ],
+        "interpretation": "NN predictive gains are present but small; robustness should be reported as predictive evidence, not as mechanistic superiority."
+      },
+      {
+        "cohort": "dynamic_sensorium_legacy_ood",
+        "n_mice": 5,
+        "median_mlp_minus_svd": 0.0021947918572901015,
+        "median_mlp_minus_mean": 0.03607327704478808,
+        "threshold_rows": [
+          {
+            "effect_threshold": 0.0,
+            "mlp_beats_svd": 3,
+            "mlp_beats_mean": 4
+          },
+          {
+            "effect_threshold": 0.002,
+            "mlp_beats_svd": 3,
+            "mlp_beats_mean": 4
+          },
+          {
+            "effect_threshold": 0.005,
+            "mlp_beats_svd": 2,
+            "mlp_beats_mean": 4
+          },
+          {
+            "effect_threshold": 0.01,
+            "mlp_beats_svd": 1,
+            "mlp_beats_mean": 4
+          }
+        ],
+        "interpretation": "NN predictive gains are present but small; robustness should be reported as predictive evidence, not as mechanistic superiority."
+      }
+    ]
+  },
+  "decision": "sensitivity_supports_methodological_claim_not_q1_mechanistic_claim",
+  "interpretation": "Allen remains negative under threshold perturbation; Sensorium static has robust partial reliability/topography evidence; Dynamic Sensorium has small but useful NN predictive gains. Together this supports a methodological benchmark claim, while still requiring an official baseline or causal/structural extension for a strong Q1 claim."
+}

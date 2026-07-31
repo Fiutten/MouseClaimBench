@@ -1,0 +1,12 @@
+data:
+  root: data/allen/visual-behavior-neuropixels-0.5.0
+  regions: [VISp, VISl, VISal, VISrl, VISpm, VISam]
+  min_units_per_region: 20
+  bin_size_seconds: 1.0
+analysis:
+  minimum_sessions: 15
+  permutations: 1000
+  seed: 20260613
+output:
+  root: outputs
+  name: allen-vbn-phase2

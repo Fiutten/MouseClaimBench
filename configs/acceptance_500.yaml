@@ -1,0 +1,32 @@
+run:
+  name: phase1-linear-500
+  output_dir: outputs
+connectivity:
+  source: synthetic
+  n_regions: 500
+  density: 0.02
+  seed: 17
+  normalization: spectral_radius
+model:
+  name: linear_rate
+  coupling: 0.35
+simulation:
+  dt: 0.2
+  t_max: 10.0
+  seed: 23
+  integrator: rk4
+  noise_std: 0.001
+  clip: [-2.0, 2.0]
+stimuli:
+  - targets: [VISp]
+    onset: 2.0
+    duration: 2.0
+    amplitude: 0.1
+perturbations:
+  - kind: inhibition
+    targets: [TH]
+    onset: 5.0
+    duration: 2.0
+    magnitude: 0.1
+analysis:
+  affected_region_threshold: 0.0001

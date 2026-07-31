@@ -1,0 +1,20 @@
+data:
+  root: data/allen/visual-behavior-neuropixels-0.5.0
+  regions: [VISp, VISl, VISal, VISrl, VISpm, VISam]
+  min_units_per_region: 20
+analysis:
+  base_bin_seconds: 1.0
+  sensitivity_bin_seconds: [0.5, 1.0, 2.0, 5.0]
+  sensitivity_window_seconds: [60, 120, 240]
+  evoked_window_seconds: 0.25
+  minimum_sessions: 15
+  permutations: 1000
+  bootstrap_samples: 5000
+  seed: 20260614
+  candidate_thresholds:
+    median_cross_mouse_correlation_gt: 0.5
+    median_split_half_correlation_gt: 0.5
+    fraction_above_null_95_gte: 0.5
+output:
+  root: outputs
+  name: allen-vbn-phase2b

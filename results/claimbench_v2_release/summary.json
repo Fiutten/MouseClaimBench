@@ -1,0 +1,124 @@
+{
+  "version": "0.6.0",
+  "git_revision": "4fecaaf07773d1b6353cdba8334eb04e2a497f24",
+  "analysis": "claimbench_v2_release",
+  "baseline_commit": "ff0aca9",
+  "missing_artifacts": [],
+  "dirty_artifacts": [],
+  "failing_artifacts": [],
+  "required_artifacts": [
+    {
+      "artifact": "docs/SUBMISSION_BASELINE_AND_V2_SEPARATION.md",
+      "exists": true,
+      "git_revision": null,
+      "decision": null,
+      "expected_decision": null
+    },
+    {
+      "artifact": "docs/CLAIMBENCH_SOTA_AND_VIABILITY.md",
+      "exists": true,
+      "git_revision": null,
+      "decision": null,
+      "expected_decision": null
+    },
+    {
+      "artifact": "results/claim_adversarial_v2/summary.json",
+      "exists": true,
+      "git_revision": "4fecaaf07773d1b6353cdba8334eb04e2a497f24",
+      "decision": "claimbench_v2_blocks_overclaiming_under_broad_attacks",
+      "expected_decision": "claimbench_v2_blocks_overclaiming_under_broad_attacks"
+    },
+    {
+      "artifact": "results/claim_threshold_sensitivity_v2/summary.json",
+      "exists": true,
+      "git_revision": "4fecaaf07773d1b6353cdba8334eb04e2a497f24",
+      "decision": "claim_thresholds_have_nontrivial_safe_region_with_reportable_limits",
+      "expected_decision": "claim_thresholds_have_nontrivial_safe_region_with_reportable_limits"
+    },
+    {
+      "artifact": "results/external_causal_claim_validation/summary.json",
+      "exists": true,
+      "git_revision": "4fecaaf07773d1b6353cdba8334eb04e2a497f24",
+      "decision": "external_causal_validation_passed",
+      "expected_decision": "external_causal_validation_passed"
+    },
+    {
+      "artifact": "results/reviewer_attack_suite_v2/summary.json",
+      "exists": true,
+      "git_revision": "4fecaaf07773d1b6353cdba8334eb04e2a497f24",
+      "decision": "reviewer_attack_suite_v2_passed_with_reportable_limits",
+      "expected_decision": "reviewer_attack_suite_v2_passed_with_reportable_limits"
+    },
+    {
+      "artifact": "results/manuscript_claim_audit/summary.json",
+      "exists": true,
+      "git_revision": "4fecaaf07773d1b6353cdba8334eb04e2a497f24",
+      "decision": "manuscript_claim_audit_passed",
+      "expected_decision": "manuscript_claim_audit_passed"
+    },
+    {
+      "artifact": "results/llm_claim_extraction_audit/summary.json",
+      "exists": true,
+      "git_revision": "4fecaaf07773d1b6353cdba8334eb04e2a497f24",
+      "decision": "llm_claim_extraction_layer_ready_non_authoritative",
+      "expected_decision": "llm_claim_extraction_layer_ready_non_authoritative"
+    },
+    {
+      "artifact": "results/uncertainty_claim_gate_v2/summary.json",
+      "exists": true,
+      "git_revision": "4fecaaf07773d1b6353cdba8334eb04e2a497f24",
+      "decision": "uncertainty_gate_blocks_unsupported_support",
+      "expected_decision": "uncertainty_gate_blocks_unsupported_support"
+    },
+    {
+      "artifact": "results/cost_fidelity_claim_frontier/summary.json",
+      "exists": true,
+      "git_revision": "4fecaaf07773d1b6353cdba8334eb04e2a497f24",
+      "decision": "cost_fidelity_claim_frontier_built",
+      "expected_decision": "cost_fidelity_claim_frontier_built"
+    },
+    {
+      "artifact": "results/external_benchmark_registry/summary.json",
+      "exists": true,
+      "git_revision": "4fecaaf07773d1b6353cdba8334eb04e2a497f24",
+      "decision": "external_benchmarks_registered_with_pending_data",
+      "expected_decision": "external_benchmarks_registered_with_pending_data"
+    },
+    {
+      "artifact": "results/scifact_claim_verification/summary.json",
+      "exists": true,
+      "git_revision": "4fecaaf07773d1b6353cdba8334eb04e2a497f24",
+      "decision": "scifact_external_claim_audit_ready",
+      "expected_decision": "scifact_external_claim_audit_ready"
+    },
+    {
+      "artifact": "results/tuebingen_causal_direction/summary.json",
+      "exists": true,
+      "git_revision": "4fecaaf07773d1b6353cdba8334eb04e2a497f24",
+      "decision": "tuebingen_external_direction_benchmark_ready",
+      "expected_decision": "tuebingen_external_direction_benchmark_ready"
+    },
+    {
+      "artifact": "results/claimbench_component_ablation/summary.json",
+      "exists": true,
+      "git_revision": "4fecaaf07773d1b6353cdba8334eb04e2a497f24",
+      "decision": "claimbench_components_have_nonredundant_value",
+      "expected_decision": "claimbench_components_have_nonredundant_value"
+    },
+    {
+      "artifact": "results/claimbench_threat_model/summary.json",
+      "exists": true,
+      "git_revision": "4fecaaf07773d1b6353cdba8334eb04e2a497f24",
+      "decision": "claimbench_threat_model_passed_with_boundaries",
+      "expected_decision": "claimbench_threat_model_passed_with_boundaries"
+    },
+    {
+      "artifact": "results/claimbench_unified_report/summary.json",
+      "exists": true,
+      "git_revision": "4fecaaf07773d1b6353cdba8334eb04e2a497f24",
+      "decision": "claimbench_v2_methodological_package_ready",
+      "expected_decision": "claimbench_v2_methodological_package_ready"
+    }
+  ],
+  "decision": "claimbench_v2_release_ready"
+}

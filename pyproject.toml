@@ -1,0 +1,86 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mouseclaimbench"
+version = "0.6.0"
+description = "Executable decision support for scientific AI claim governance"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "h5py>=3.12,<4",
+  "matplotlib>=3.8,<4",
+  "networkx>=3.2,<4",
+  "numpy>=1.26,<3",
+  "pandas>=2.2,<3",
+  "pyyaml>=6,<7",
+  "scipy>=1.12,<2",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8,<10",
+  "ruff>=0.9,<1",
+]
+legacy-cognitive = [
+  "gymnasium>=1.0,<2",
+  "sb3-contrib>=2.5,<3",
+  "stable-baselines3>=2.5,<3",
+  "torch>=2.5,<3",
+]
+microns = [
+  "caveclient>=8,<9",
+]
+
+[project.scripts]
+mousebrainbench-allen-benchmark = "mousebrainbench.benchmarks.allen_vbn:main"
+mousebrainbench-allen-phase2b = "mousebrainbench.benchmarks.allen_vbn_phase2b:main"
+mousebrainbench-allen-phase2c = "mousebrainbench.benchmarks.allen_vbn_phase2c:main"
+mousebrainbench-allen-phase3 = "mousebrainbench.benchmarks.allen_visual_phase3:main"
+mousebrainbench-allen-phase4 = "mousebrainbench.benchmarks.allen_vbn_phase4:main"
+mousebrainbench-allen-mis = "mousebrainbench.benchmarks.allen_vbn_mis:main"
+mousebrainbench-sensorium-mis = "mousebrainbench.benchmarks.sensorium_predictive_mis:main"
+mousebrainbench-sensorium-compare = "mousebrainbench.benchmarks.sensorium_model_comparator:main"
+mousebrainbench-sensorium-smoke = "mousebrainbench.benchmarks.sensorium_synthetic_smoke:main"
+mousebrainbench-sensorium-official-audit = "mousebrainbench.benchmarks.sensorium_official_baseline_audit:main"
+mousebrainbench-q1-sensitivity = "mousebrainbench.benchmarks.q1_sensitivity:main"
+mousebrainbench-microns-gate = "mousebrainbench.benchmarks.microns_pilot_gate:main"
+mousebrainbench-publication-freeze = "mousebrainbench.benchmarks.publication_freeze:main"
+mousebrainbench-synthetic-mis = "mousebrainbench.benchmarks.synthetic_identifiability:main"
+mousebrainbench-mis2-synthetic = "mousebrainbench.benchmarks.mis2_synthetic_calibration:main"
+mousebrainbench-mis2-sensitivity = "mousebrainbench.benchmarks.mis2_threshold_sensitivity:main"
+mousebrainbench-claim-adversarial = "mousebrainbench.benchmarks.claim_adversarial:main"
+mousebrainbench-claim-attack-suite = "mousebrainbench.benchmarks.claim_attack_suite:main"
+mousebrainbench-microns-primary-robustness = "mousebrainbench.benchmarks.microns_primary_robustness:main"
+mousebrainbench-real-case-claims = "mousebrainbench.benchmarks.real_case_claim_matrix:main"
+mousebrainbench-claim-ledger = "mousebrainbench.benchmarks.claim_ledger:main"
+mousebrainbench-claimbench-release = "mousebrainbench.benchmarks.claimbench_release:main"
+mousebrainbench-claim-adversarial-v2 = "mousebrainbench.benchmarks.claim_adversarial_v2:main"
+mousebrainbench-claim-threshold-sensitivity-v2 = "mousebrainbench.benchmarks.claim_threshold_sensitivity_v2:main"
+mousebrainbench-external-causal-claims = "mousebrainbench.benchmarks.external_causal_claim_validation:main"
+mousebrainbench-reviewer-attack-v2 = "mousebrainbench.benchmarks.reviewer_attack_suite_v2:main"
+mousebrainbench-claimbench-v2-release = "mousebrainbench.benchmarks.claimbench_v2_release:main"
+mousebrainbench-manuscript-claim-audit = "mousebrainbench.benchmarks.manuscript_claim_auditor:main"
+mousebrainbench-uncertainty-claim-gate-v2 = "mousebrainbench.benchmarks.uncertainty_claim_gate_v2:main"
+mousebrainbench-cost-fidelity-claim-frontier = "mousebrainbench.benchmarks.cost_fidelity_claim_frontier:main"
+mousebrainbench-external-benchmark-registry = "mousebrainbench.benchmarks.external_benchmark_registry:main"
+mousebrainbench-scifact-claim-verification = "mousebrainbench.benchmarks.scifact_claim_verification:main"
+mousebrainbench-tuebingen-causal-direction = "mousebrainbench.benchmarks.tuebingen_causal_direction:main"
+mousebrainbench-claimbench-component-ablation = "mousebrainbench.benchmarks.claimbench_component_ablation:main"
+mousebrainbench-claimbench-threat-model = "mousebrainbench.benchmarks.claimbench_threat_model:main"
+mousebrainbench-claimbench-unified-report = "mousebrainbench.benchmarks.claimbench_unified_report:main"
+mousebrainbench-claimbench-reproduce-package = "mousebrainbench.benchmarks.claimbench_reproduce_package:main"
+mousebrainbench-llm-claim-extraction-audit = "mousebrainbench.benchmarks.llm_claim_extraction_audit:main"
+mousebrainbench-run = "mousebrainbench.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["mousebrainbench*"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"

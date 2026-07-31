@@ -1,0 +1,34 @@
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{What is novel}
+\label{subsec:novelty}
+
+The novelty of ClaimBench is not a new predictor, simulator, or language model. The novelty is the executable connection between scientific claims and the minimum evidence dimensions needed to authorize them. This is different from standard benchmark reporting because the score is not allowed to compensate for missing evidence. It is also different from conventional reproducibility because a reproducible artifact can still be blocked if it does not support the wording used in the manuscript.
+
+This contribution is relevant for AI venues because many applied AI papers now combine predictive models, domain-specific interpretation, and scientific language. The evaluation problem is no longer only whether an algorithm obtains a good score. It is also whether the paper attaches the correct scope to that score. ClaimBench provides a practical mechanism for this second problem. The framework can be run before submission, during internal review, or when preparing responses to reviewers.
+
+The LLM layer strengthens this contribution if it is presented carefully. It shows how LLMs can be integrated into scientific writing workflows without giving them epistemic authority. The LLM can help find candidate claims. It cannot authorize them. That design is more defensible than using an LLM as a reviewer surrogate or as a textual judge of scientific support.
+
+\subsection{What should not be claimed}
+\label{subsec:forbidden-claims}
+
+Several claims must remain explicitly blocked. ClaimBench is not a complete digital mouse brain. It does not establish causal mechanisms in the brain. It does not claim state-of-the-art performance on SciFact, Tuebingen, Sensorium, or any external benchmark. It does not prove that LLMs can validate scientific claims. It does not replace expert review.
+
+These restrictions are not weaknesses to hide. They are part of the methodological contribution. The framework is useful because it forces the manuscript to say less when the evidence supports less. This is especially important for Q1 submission because reviewers are likely to attack overclaiming before they attack implementation details.
+
+\subsection{Limitations}
+\label{subsec:limitations}
+
+The current implementation has several limitations. First, the deterministic claim extractor is a conservative baseline rather than a full LLM evaluation. It demonstrates the interface and the non-authoritative boundary, but a future paper should evaluate multiple real LLMs under fixed prompts, fixed versions, and blinded claim-boundary checks. Second, the threshold sensitivity analysis reports safe and dangerous regions, but it does not provide a universal calibration theory. Thresholds should be treated as context-dependent parameters that require reporting.
+
+Third, the external controls are deliberately modest. SciFact is used for claim-auditing behaviour rather than state-of-the-art scientific verification. Tuebingen is used to expose causal overclaiming rather than to compete in causal discovery. This makes the claims defensible, but it also means the paper must be framed as methodology for governance and validation, not as an algorithmic performance paper.
+
+Fourth, the current framework evaluates claim authorization at the artifact level. It does not yet provide a full human-in-the-loop reviewer study. Such a study would be valuable because the practical benefit of ClaimBench depends on whether authors and reviewers can use the artifacts to reduce ambiguity in real manuscripts. Fifth, the neurocomputational origin of the project remains visible. This is useful for grounding, but the next version should include more domain-diverse scientific AI cases if the target is a broader AI or information systems journal.
+
+\subsection{Journal positioning}
+\label{subsec:journal-positioning}
+
+Decision Support Systems is the strongest target if the paper is framed as a decision-support framework for scientific claim governance. The manuscript should emphasize the decision process: extracting candidate claims, mapping them to evidence contracts, applying non-compensatory gates, exposing uncertainty, and producing reviewer-facing artifacts. Under this framing, ClaimBench supports authors, reviewers, and research teams when deciding which claims can be defended before submission.
+
+Engineering Applications of Artificial Intelligence remains plausible, but it overlaps more with the first MouseBrainBench submission and should be spaced carefully. Expert Systems with Applications is plausible if the work is positioned as an expert system for claim validation. Information Fusion is weaker unless the next iteration adds a stronger theory for combining textual, predictive, causal, and structural evidence.

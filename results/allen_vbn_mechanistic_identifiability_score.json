@@ -1,0 +1,143 @@
+{
+  "version": "0.6.0",
+  "git_revision": "ac5ac3a",
+  "interpretation": "allen_vbn_negative_mechanistic_identifiability_case",
+  "inputs": {
+    "phase2c": "results/phase2c_confirmation_metrics.json",
+    "phase3": "results/phase3_confirmation_metrics.json",
+    "phase4": "results/phase4_identifiability_metrics.json"
+  },
+  "mis": {
+    "score": 0.3575884452057259,
+    "passed": false,
+    "blocks": [
+      {
+        "name": "reproducibility",
+        "passed": true,
+        "score": 1.0,
+        "criteria": [
+          {
+            "name": "median_cross_mouse_correlation",
+            "value": 0.8907712835025543,
+            "threshold": 0.5,
+            "direction": "gt",
+            "passed": true,
+            "normalized_score": 1.0
+          },
+          {
+            "name": "median_split_half_correlation",
+            "value": 0.989581126345437,
+            "threshold": 0.7,
+            "direction": "gt",
+            "passed": true,
+            "normalized_score": 1.0
+          },
+          {
+            "name": "fraction_above_own_null_95th",
+            "value": 0.75,
+            "threshold": 0.5,
+            "direction": "gte",
+            "passed": true,
+            "normalized_score": 1.0
+          }
+        ]
+      },
+      {
+        "name": "topology_specificity",
+        "passed": false,
+        "score": 0.07276533561717785,
+        "criteria": [
+          {
+            "name": "allen_minus_median_permutation",
+            "value": -0.0053784679059247775,
+            "threshold": 0.05,
+            "direction": "gt",
+            "passed": false,
+            "normalized_score": 0.0
+          },
+          {
+            "name": "fraction_permutations_outperformed",
+            "value": 0.21,
+            "threshold": 0.95,
+            "direction": "gte",
+            "passed": false,
+            "normalized_score": 0.22105263157894736
+          },
+          {
+            "name": "paired_advantage_bootstrap_95_lower",
+            "value": -0.007462997435285529,
+            "threshold": 0.0,
+            "direction": "gt",
+            "passed": false,
+            "normalized_score": 0.0
+          },
+          {
+            "name": "allen_minus_disconnected",
+            "value": 0.0035004355444882007,
+            "threshold": 0.05,
+            "direction": "gt",
+            "passed": false,
+            "normalized_score": 0.07000871088976401
+          }
+        ]
+      },
+      {
+        "name": "directed_identifiability",
+        "passed": false,
+        "score": 0.0,
+        "criteria": [
+          {
+            "name": "latency_median_cross_mouse_tau",
+            "value": 0.0,
+            "threshold": 0.3,
+            "direction": "gt",
+            "passed": false,
+            "normalized_score": 0.0
+          },
+          {
+            "name": "latency_median_split_half_tau",
+            "value": 0.0,
+            "threshold": 0.5,
+            "direction": "gt",
+            "passed": false,
+            "normalized_score": 0.0
+          },
+          {
+            "name": "latency_fraction_above_own_null_95th",
+            "value": 0.0,
+            "threshold": 0.5,
+            "direction": "gte",
+            "passed": false,
+            "normalized_score": 0.0
+          },
+          {
+            "name": "latency_median_resolvable_pair_fraction",
+            "value": 0.0,
+            "threshold": 0.5,
+            "direction": "gte",
+            "passed": false,
+            "normalized_score": 0.0
+          },
+          {
+            "name": "lead_lag_fraction_above_own_null_95th",
+            "value": 0.0,
+            "threshold": 0.5,
+            "direction": "gte",
+            "passed": false,
+            "normalized_score": 0.0
+          },
+          {
+            "name": "lead_lag_median_nonzero_pair_fraction",
+            "value": 0.0,
+            "threshold": 0.25,
+            "direction": "gte",
+            "passed": false,
+            "normalized_score": 0.0
+          }
+        ]
+      }
+    ],
+    "interpretation": "not_mechanistically_identifiable"
+  },
+  "decision": "reproducible_target_without_mechanistic_identifiability"
+}

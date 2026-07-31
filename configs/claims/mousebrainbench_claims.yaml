@@ -1,0 +1,193 @@
+claims:
+  - claim_id: claimbench_v2_blocks_overclaiming
+    claim_type: benchmark_claim
+    scope: synthetic_known_truth
+    evidence_family: claim_gate
+    severity: high
+    permitted_wording: >-
+      ClaimBench v2 blocks unsupported scientific overclaims in a broad
+      deterministic adversarial suite.
+    blocked_wording:
+      - ClaimBench v2 proves biological truth.
+      - ClaimBench v2 is universally optimal for scientific review.
+    blocked_patterns:
+      - (?i)\bproves?\s+(biological|scientific|causal)\s+truth\b
+      - (?i)\buniversally\s+optimal\b
+    non_compensatory_requirements:
+      - zero false positives in the claim-gate evaluator
+      - broad deterministic adversarial cases
+    required_artifacts:
+      - path: results/claim_adversarial_v2/summary.json
+        expectations:
+          - key: decision
+            equals: claimbench_v2_blocks_overclaiming_under_broad_attacks
+          - key: num_cases
+            min: 100
+    uncertainty_policy: deterministic
+
+  - claim_id: thresholds_safe_region_with_limits
+    claim_type: uncertainty_claim
+    scope: threshold_sensitivity
+    evidence_family: uncertainty
+    severity: medium
+    permitted_wording: >-
+      The nominal claim gate lies inside a non-trivial safe threshold region,
+      but dangerous threshold regions exist and must be reported.
+    blocked_wording:
+      - The thresholds are universally robust.
+      - No threshold choices can authorize unsupported claims.
+    blocked_patterns:
+      - (?i)\bthresholds?\s+are\s+universally\s+robust\b
+      - (?i)\bno\s+threshold\s+choices?\s+can\s+authorize\s+unsupported\s+claims\b
+    non_compensatory_requirements:
+      - explicit safe region
+      - explicit dangerous region
+    required_artifacts:
+      - path: results/claim_threshold_sensitivity_v2/summary.json
+        expectations:
+          - key: decision
+            equals: claim_thresholds_have_nontrivial_safe_region_with_reportable_limits
+          - key: safe_cells
+            min: 20
+          - key: dangerous_cells
+            min: 1
+    uncertainty_policy: reportable_limits
+
+  - claim_id: external_causal_validation
+    claim_type: external_validity_claim
+    scope: synthetic_external_causal_graphs
+    evidence_family: causal_control
+    severity: high
+    permitted_wording: >-
+      The claim gate passes a non-neuroscience causal positive and negative
+      control suite with known graph truth.
+    blocked_wording:
+      - This establishes general validity across all causal benchmarks.
+      - This replaces validation on public causal datasets.
+    blocked_patterns:
+      - (?i)\bgeneral\s+validity\s+across\s+all\s+causal\s+benchmarks\b
+      - (?i)\breplaces\s+validation\s+on\s+public\s+causal\s+datasets\b
+    non_compensatory_requirements:
+      - positive causal controls
+      - negative causal controls
+      - known graph truth
+    required_artifacts:
+      - path: results/external_causal_claim_validation/summary.json
+        expectations:
+          - key: decision
+            equals: external_causal_validation_passed
+    uncertainty_policy: deterministic
+
+  - claim_id: reviewer_attack_v2
+    claim_type: reviewer_defense_claim
+    scope: post_submission_revision_support
+    evidence_family: reviewer_attack
+    severity: high
+    permitted_wording: >-
+      Reviewer-style attacks identify no high-risk blocker for using ClaimBench
+      v2 as additional revision evidence, while preserving reportable limits.
+    blocked_wording:
+      - The submitted manuscript has no limitations.
+      - Reviewer criticism is impossible.
+    blocked_patterns:
+      - (?i)\bmanuscript\s+has\s+no\s+limitations\b
+      - (?i)\breviewer\s+criticism\s+is\s+impossible\b
+    non_compensatory_requirements:
+      - no high-risk reviewer attack
+      - reportable limits preserved
+    required_artifacts:
+      - path: results/reviewer_attack_suite_v2/summary.json
+        expectations:
+          - key: decision
+            equals: reviewer_attack_suite_v2_passed_with_reportable_limits
+    uncertainty_policy: reviewer_attack
+
+  - claim_id: scifact_external_claim_audit
+    claim_type: external_claim_verification
+    scope: public_scientific_claims
+    evidence_family: scientific_claim_verification
+    severity: medium
+    permitted_wording: >-
+      SciFact is used as an external claim-verification stress test showing
+      that lexical support and citation overlap can over-authorize scientific
+      support claims.
+    blocked_wording:
+      - ClaimBench is a SciFact state-of-the-art verifier.
+      - SciFact proves that ClaimBench verifies all scientific claims.
+    blocked_patterns:
+      - (?i)\bSciFact\s+state[- ]of[- ]the[- ]art\b
+      - (?i)\bverifies\s+all\s+scientific\s+claims\b
+    non_compensatory_requirements:
+      - public SciFact dev split
+      - explicit overclaiming-risk metric
+      - no SOTA claim
+    required_artifacts:
+      - path: results/scifact_claim_verification/summary.json
+        expectations:
+          - key: decision
+            equals: scifact_external_claim_audit_ready
+          - key: num_claims
+            min: 100
+          - key: shortcut_false_positives
+            min: 1
+    uncertainty_policy: external_observational
+
+  - claim_id: tuebingen_direction_overclaim_control
+    claim_type: causal_direction_control
+    scope: public_cause_effect_pairs
+    evidence_family: causal_direction
+    severity: high
+    permitted_wording: >-
+      Tuebingen Cause-Effect Pairs are used as an external control showing that
+      correlation is not sufficient to authorize directional causal wording.
+    blocked_wording:
+      - ClaimBench achieves causal-discovery state-of-the-art performance.
+      - Correlation is sufficient to infer causal direction.
+    blocked_patterns:
+      - (?i)\bcausal[- ]discovery\s+state[- ]of[- ]the[- ]art\b
+      - (?i)\bcorrelation\s+is\s+sufficient\s+to\s+infer\s+causal\s+direction\b
+    non_compensatory_requirements:
+      - public cause-effect pairs
+      - direction-overclaiming count
+      - no causal-discovery SOTA claim
+    required_artifacts:
+      - path: results/tuebingen_causal_direction/summary.json
+        expectations:
+          - key: decision
+            equals: tuebingen_external_direction_benchmark_ready
+          - key: num_pairs_loaded
+            min: 100
+          - key: correlation_only_direction_overclaims
+            min: 1
+    uncertainty_policy: external_control
+
+  - claim_id: claimbench_v2_release_clean
+    claim_type: reproducibility_claim
+    scope: post_submission_extension
+    evidence_family: reproducibility
+    severity: high
+    permitted_wording: >-
+      ClaimBench v2 artifacts are release-ready only when required artifacts
+      exist, expected decisions match, and no tracked artifact is dirty.
+    blocked_wording:
+      - Dirty artifacts are acceptable for submission.
+      - Missing benchmark artifacts do not affect the release claim.
+    blocked_patterns:
+      - (?i)\bdirty\s+artifacts\s+are\s+acceptable\s+for\s+submission\b
+      - (?i)\bmissing\s+benchmark\s+artifacts\s+do\s+not\s+affect\b
+    non_compensatory_requirements:
+      - no missing artifacts
+      - no dirty artifacts
+      - no failing expected decisions
+    required_artifacts:
+      - path: results/claimbench_v2_release/summary.json
+        expectations:
+          - key: decision
+            equals: claimbench_v2_release_ready
+          - key: missing_artifacts
+            equals: []
+          - key: dirty_artifacts
+            equals: []
+          - key: failing_artifacts
+            equals: []
+    uncertainty_policy: deterministic_release

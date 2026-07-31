@@ -1,0 +1,40 @@
+{
+  "version": "0.6.0",
+  "git_revision": "4fecaaf07773d1b6353cdba8334eb04e2a497f24",
+  "analysis": "external_benchmark_registry",
+  "registered_benchmarks": 3,
+  "locally_available_benchmarks": 2,
+  "benchmarks": [
+    {
+      "name": "SciFact",
+      "domain": "scientific_claim_verification",
+      "source_url": "https://github.com/allenai/scifact",
+      "local_required_path": "data/external/scifact/data/claims_dev.jsonl",
+      "local_available": true,
+      "integration_status": "locally_available",
+      "novelty_role": "tests cross-domain claim-evidence auditing against expert scientific claims",
+      "limitation": "license and retrieval pipeline must be handled explicitly before redistribution"
+    },
+    {
+      "name": "Tuebingen Cause-Effect Pairs",
+      "domain": "causal_direction_benchmark",
+      "source_url": "https://webdav.tuebingen.mpg.de/cause-effect/",
+      "local_required_path": "data/external/tuebingen_cause_effect/pairmeta.txt",
+      "local_available": true,
+      "integration_status": "locally_available",
+      "novelty_role": "tests directional claim authorization on known cause-effect pairs",
+      "limitation": "ground-truth caveats are explicitly stated by dataset authors"
+    },
+    {
+      "name": "Sachs Protein Signaling",
+      "domain": "biological_causal_network",
+      "source_url": "https://www.science.org/doi/10.1126/science.1105809",
+      "local_required_path": "data/external/sachs/README.md",
+      "local_available": false,
+      "integration_status": "metadata_target_not_bundled",
+      "novelty_role": "bridges biological causal discovery and mechanistic claim gates",
+      "limitation": "raw data licensing and preprocessing choices must be documented"
+    }
+  ],
+  "decision": "external_benchmarks_registered_with_pending_data"
+}

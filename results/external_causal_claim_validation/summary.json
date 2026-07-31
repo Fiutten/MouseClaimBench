@@ -1,0 +1,642 @@
+{
+  "version": "0.6.0",
+  "git_revision": "4fecaaf07773d1b6353cdba8334eb04e2a497f24",
+  "analysis": "external_causal_claim_validation",
+  "num_scenarios": 5,
+  "scenarios": [
+    {
+      "scenario": "chain_identified",
+      "graph": [
+        [
+          "x1",
+          "x2"
+        ],
+        [
+          "x2",
+          "x3"
+        ]
+      ],
+      "true_claims": [
+        "predictive",
+        "reproducible",
+        "topology_specific",
+        "directed",
+        "mechanistic",
+        "causal"
+      ],
+      "interpretation": "Correctly identified directed causal chain."
+    },
+    {
+      "scenario": "fork_common_cause_prediction_only",
+      "graph": [
+        [
+          "z",
+          "x1"
+        ],
+        [
+          "z",
+          "x2"
+        ]
+      ],
+      "true_claims": [
+        "predictive",
+        "reproducible"
+      ],
+      "interpretation": "Shared cause creates prediction without directed mechanism between observed targets."
+    },
+    {
+      "scenario": "collider_direction_ambiguous",
+      "graph": [
+        [
+          "x1",
+          "z"
+        ],
+        [
+          "x2",
+          "z"
+        ]
+      ],
+      "true_claims": [
+        "predictive",
+        "reproducible",
+        "topology_specific"
+      ],
+      "interpretation": "Topology is present but direction is not recoverable under the observed evidence."
+    },
+    {
+      "scenario": "intervention_without_whole_system_twin",
+      "graph": [
+        [
+          "u",
+          "v"
+        ]
+      ],
+      "true_claims": [
+        "predictive",
+        "reproducible",
+        "topology_specific",
+        "directed",
+        "mechanistic",
+        "causal"
+      ],
+      "interpretation": "Intervention supports causal wording but not complete digital-twin wording."
+    },
+    {
+      "scenario": "complete_twin_positive_control",
+      "graph": [
+        [
+          "x1",
+          "x2"
+        ],
+        [
+          "x2",
+          "x3"
+        ],
+        [
+          "x1",
+          "x3"
+        ]
+      ],
+      "true_claims": [
+        "predictive",
+        "reproducible",
+        "topology_specific",
+        "directed",
+        "mechanistic",
+        "causal",
+        "digital_twin"
+      ],
+      "interpretation": "Upper-bound complete-system positive control."
+    }
+  ],
+  "case_evaluator_rows": [
+    {
+      "scenario": "chain_identified",
+      "evaluator": "correlation_only",
+      "allowed_claims": [
+        "predictive",
+        "reproducible",
+        "topology_specific",
+        "directed",
+        "structure_function",
+        "mechanistic"
+      ],
+      "true_claims": [
+        "predictive",
+        "reproducible",
+        "topology_specific",
+        "directed",
+        "mechanistic",
+        "causal"
+      ],
+      "false_positive_claims": [
+        "structure_function"
+      ],
+      "false_negative_claims": [
+        "causal"
+      ],
+      "interpretation": "Correctly identified directed causal chain."
+    },
+    {
+      "scenario": "fork_common_cause_prediction_only",
+      "evaluator": "correlation_only",
+      "allowed_claims": [
+        "predictive",
+        "reproducible",
+        "topology_specific",
+        "directed",
+        "structure_function",
+        "mechanistic"
+      ],
+      "true_claims": [
+        "predictive",
+        "reproducible"
+      ],
+      "false_positive_claims": [
+        "directed",
+        "mechanistic",
+        "structure_function",
+        "topology_specific"
+      ],
+      "false_negative_claims": [],
+      "interpretation": "Shared cause creates prediction without directed mechanism between observed targets."
+    },
+    {
+      "scenario": "collider_direction_ambiguous",
+      "evaluator": "correlation_only",
+      "allowed_claims": [
+        "predictive",
+        "reproducible",
+        "topology_specific",
+        "directed",
+        "structure_function",
+        "mechanistic"
+      ],
+      "true_claims": [
+        "predictive",
+        "reproducible",
+        "topology_specific"
+      ],
+      "false_positive_claims": [
+        "directed",
+        "mechanistic",
+        "structure_function"
+      ],
+      "false_negative_claims": [],
+      "interpretation": "Topology is present but direction is not recoverable under the observed evidence."
+    },
+    {
+      "scenario": "intervention_without_whole_system_twin",
+      "evaluator": "correlation_only",
+      "allowed_claims": [
+        "predictive",
+        "reproducible",
+        "topology_specific",
+        "directed",
+        "structure_function",
+        "mechanistic"
+      ],
+      "true_claims": [
+        "predictive",
+        "reproducible",
+        "topology_specific",
+        "directed",
+        "mechanistic",
+        "causal"
+      ],
+      "false_positive_claims": [
+        "structure_function"
+      ],
+      "false_negative_claims": [
+        "causal"
+      ],
+      "interpretation": "Intervention supports causal wording but not complete digital-twin wording."
+    },
+    {
+      "scenario": "complete_twin_positive_control",
+      "evaluator": "correlation_only",
+      "allowed_claims": [
+        "predictive",
+        "reproducible",
+        "topology_specific",
+        "directed",
+        "structure_function",
+        "mechanistic"
+      ],
+      "true_claims": [
+        "predictive",
+        "reproducible",
+        "topology_specific",
+        "directed",
+        "mechanistic",
+        "causal",
+        "digital_twin"
+      ],
+      "false_positive_claims": [
+        "structure_function"
+      ],
+      "false_negative_claims": [
+        "causal",
+        "digital_twin"
+      ],
+      "interpretation": "Upper-bound complete-system positive control."
+    },
+    {
+      "scenario": "chain_identified",
+      "evaluator": "leaderboard_only",
+      "allowed_claims": [
+        "predictive",
+        "reproducible",
+        "topology_specific",
+        "directed",
+        "structure_function",
+        "mechanistic"
+      ],
+      "true_claims": [
+        "predictive",
+        "reproducible",
+        "topology_specific",
+        "directed",
+        "mechanistic",
+        "causal"
+      ],
+      "false_positive_claims": [
+        "structure_function"
+      ],
+      "false_negative_claims": [
+        "causal"
+      ],
+      "interpretation": "Correctly identified directed causal chain."
+    },
+    {
+      "scenario": "fork_common_cause_prediction_only",
+      "evaluator": "leaderboard_only",
+      "allowed_claims": [
+        "predictive",
+        "reproducible",
+        "topology_specific",
+        "directed",
+        "structure_function",
+        "mechanistic"
+      ],
+      "true_claims": [
+        "predictive",
+        "reproducible"
+      ],
+      "false_positive_claims": [
+        "directed",
+        "mechanistic",
+        "structure_function",
+        "topology_specific"
+      ],
+      "false_negative_claims": [],
+      "interpretation": "Shared cause creates prediction without directed mechanism between observed targets."
+    },
+    {
+      "scenario": "collider_direction_ambiguous",
+      "evaluator": "leaderboard_only",
+      "allowed_claims": [
+        "predictive",
+        "reproducible",
+        "topology_specific",
+        "directed",
+        "structure_function",
+        "mechanistic"
+      ],
+      "true_claims": [
+        "predictive",
+        "reproducible",
+        "topology_specific"
+      ],
+      "false_positive_claims": [
+        "directed",
+        "mechanistic",
+        "structure_function"
+      ],
+      "false_negative_claims": [],
+      "interpretation": "Topology is present but direction is not recoverable under the observed evidence."
+    },
+    {
+      "scenario": "intervention_without_whole_system_twin",
+      "evaluator": "leaderboard_only",
+      "allowed_claims": [
+        "predictive",
+        "reproducible",
+        "topology_specific",
+        "directed",
+        "structure_function",
+        "mechanistic"
+      ],
+      "true_claims": [
+        "predictive",
+        "reproducible",
+        "topology_specific",
+        "directed",
+        "mechanistic",
+        "causal"
+      ],
+      "false_positive_claims": [
+        "structure_function"
+      ],
+      "false_negative_claims": [
+        "causal"
+      ],
+      "interpretation": "Intervention supports causal wording but not complete digital-twin wording."
+    },
+    {
+      "scenario": "complete_twin_positive_control",
+      "evaluator": "leaderboard_only",
+      "allowed_claims": [
+        "predictive",
+        "reproducible",
+        "topology_specific",
+        "directed",
+        "structure_function",
+        "mechanistic"
+      ],
+      "true_claims": [
+        "predictive",
+        "reproducible",
+        "topology_specific",
+        "directed",
+        "mechanistic",
+        "causal",
+        "digital_twin"
+      ],
+      "false_positive_claims": [
+        "structure_function"
+      ],
+      "false_negative_claims": [
+        "causal",
+        "digital_twin"
+      ],
+      "interpretation": "Upper-bound complete-system positive control."
+    },
+    {
+      "scenario": "chain_identified",
+      "evaluator": "compensatory_score",
+      "allowed_claims": [
+        "predictive",
+        "reproducible",
+        "topology_specific",
+        "directed",
+        "structure_function",
+        "mechanistic"
+      ],
+      "true_claims": [
+        "predictive",
+        "reproducible",
+        "topology_specific",
+        "directed",
+        "mechanistic",
+        "causal"
+      ],
+      "false_positive_claims": [
+        "structure_function"
+      ],
+      "false_negative_claims": [
+        "causal"
+      ],
+      "interpretation": "Correctly identified directed causal chain."
+    },
+    {
+      "scenario": "fork_common_cause_prediction_only",
+      "evaluator": "compensatory_score",
+      "allowed_claims": [
+        "predictive",
+        "reproducible"
+      ],
+      "true_claims": [
+        "predictive",
+        "reproducible"
+      ],
+      "false_positive_claims": [],
+      "false_negative_claims": [],
+      "interpretation": "Shared cause creates prediction without directed mechanism between observed targets."
+    },
+    {
+      "scenario": "collider_direction_ambiguous",
+      "evaluator": "compensatory_score",
+      "allowed_claims": [
+        "predictive",
+        "reproducible"
+      ],
+      "true_claims": [
+        "predictive",
+        "reproducible",
+        "topology_specific"
+      ],
+      "false_positive_claims": [],
+      "false_negative_claims": [
+        "topology_specific"
+      ],
+      "interpretation": "Topology is present but direction is not recoverable under the observed evidence."
+    },
+    {
+      "scenario": "intervention_without_whole_system_twin",
+      "evaluator": "compensatory_score",
+      "allowed_claims": [
+        "predictive",
+        "reproducible",
+        "topology_specific",
+        "directed",
+        "structure_function",
+        "mechanistic"
+      ],
+      "true_claims": [
+        "predictive",
+        "reproducible",
+        "topology_specific",
+        "directed",
+        "mechanistic",
+        "causal"
+      ],
+      "false_positive_claims": [
+        "structure_function"
+      ],
+      "false_negative_claims": [
+        "causal"
+      ],
+      "interpretation": "Intervention supports causal wording but not complete digital-twin wording."
+    },
+    {
+      "scenario": "complete_twin_positive_control",
+      "evaluator": "compensatory_score",
+      "allowed_claims": [
+        "predictive",
+        "reproducible",
+        "topology_specific",
+        "directed",
+        "structure_function",
+        "mechanistic"
+      ],
+      "true_claims": [
+        "predictive",
+        "reproducible",
+        "topology_specific",
+        "directed",
+        "mechanistic",
+        "causal",
+        "digital_twin"
+      ],
+      "false_positive_claims": [
+        "structure_function"
+      ],
+      "false_negative_claims": [
+        "causal",
+        "digital_twin"
+      ],
+      "interpretation": "Upper-bound complete-system positive control."
+    },
+    {
+      "scenario": "chain_identified",
+      "evaluator": "claim_gate",
+      "allowed_claims": [
+        "predictive",
+        "reproducible",
+        "topology_specific",
+        "directed",
+        "mechanistic",
+        "causal"
+      ],
+      "true_claims": [
+        "predictive",
+        "reproducible",
+        "topology_specific",
+        "directed",
+        "mechanistic",
+        "causal"
+      ],
+      "false_positive_claims": [],
+      "false_negative_claims": [],
+      "interpretation": "Correctly identified directed causal chain."
+    },
+    {
+      "scenario": "fork_common_cause_prediction_only",
+      "evaluator": "claim_gate",
+      "allowed_claims": [
+        "predictive",
+        "reproducible"
+      ],
+      "true_claims": [
+        "predictive",
+        "reproducible"
+      ],
+      "false_positive_claims": [],
+      "false_negative_claims": [],
+      "interpretation": "Shared cause creates prediction without directed mechanism between observed targets."
+    },
+    {
+      "scenario": "collider_direction_ambiguous",
+      "evaluator": "claim_gate",
+      "allowed_claims": [
+        "predictive",
+        "reproducible",
+        "topology_specific"
+      ],
+      "true_claims": [
+        "predictive",
+        "reproducible",
+        "topology_specific"
+      ],
+      "false_positive_claims": [],
+      "false_negative_claims": [],
+      "interpretation": "Topology is present but direction is not recoverable under the observed evidence."
+    },
+    {
+      "scenario": "intervention_without_whole_system_twin",
+      "evaluator": "claim_gate",
+      "allowed_claims": [
+        "predictive",
+        "reproducible",
+        "topology_specific",
+        "directed",
+        "mechanistic",
+        "causal"
+      ],
+      "true_claims": [
+        "predictive",
+        "reproducible",
+        "topology_specific",
+        "directed",
+        "mechanistic",
+        "causal"
+      ],
+      "false_positive_claims": [],
+      "false_negative_claims": [],
+      "interpretation": "Intervention supports causal wording but not complete digital-twin wording."
+    },
+    {
+      "scenario": "complete_twin_positive_control",
+      "evaluator": "claim_gate",
+      "allowed_claims": [
+        "predictive",
+        "reproducible",
+        "topology_specific",
+        "directed",
+        "mechanistic",
+        "causal",
+        "digital_twin"
+      ],
+      "true_claims": [
+        "predictive",
+        "reproducible",
+        "topology_specific",
+        "directed",
+        "mechanistic",
+        "causal",
+        "digital_twin"
+      ],
+      "false_positive_claims": [],
+      "false_negative_claims": [],
+      "interpretation": "Upper-bound complete-system positive control."
+    }
+  ],
+  "aggregate_by_evaluator": [
+    {
+      "evaluator": "claim_gate",
+      "tp": 24,
+      "fp": 0,
+      "tn": 16,
+      "fn": 0,
+      "false_positive_rate": 0.0,
+      "false_negative_rate": 0.0,
+      "overclaiming_risk_index": 0.0,
+      "conservativeness_index": 0.0
+    },
+    {
+      "evaluator": "compensatory_score",
+      "tp": 19,
+      "fp": 3,
+      "tn": 13,
+      "fn": 5,
+      "false_positive_rate": 0.1875,
+      "false_negative_rate": 0.20833333333333334,
+      "overclaiming_risk_index": 0.1875,
+      "conservativeness_index": 0.20833333333333334
+    },
+    {
+      "evaluator": "correlation_only",
+      "tp": 20,
+      "fp": 10,
+      "tn": 6,
+      "fn": 4,
+      "false_positive_rate": 0.625,
+      "false_negative_rate": 0.16666666666666666,
+      "overclaiming_risk_index": 0.625,
+      "conservativeness_index": 0.16666666666666666
+    },
+    {
+      "evaluator": "leaderboard_only",
+      "tp": 20,
+      "fp": 10,
+      "tn": 6,
+      "fn": 4,
+      "false_positive_rate": 0.625,
+      "false_negative_rate": 0.16666666666666666,
+      "overclaiming_risk_index": 0.625,
+      "conservativeness_index": 0.16666666666666666
+    }
+  ],
+  "decision": "external_causal_validation_passed"
+}

@@ -1,0 +1,33 @@
+data:
+  root: data/allen/visual-behavior-neuropixels-0.5.0
+  regions: [VISp, VISl, VISal, VISrl, VISpm, VISam]
+  min_units_per_region: 20
+  development_session_ids:
+    [1048196054, 1055221968, 1064644573, 1065437523, 1065908084, 1067588044,
+     1081431006, 1087992708, 1090800639, 1090803859, 1091039902, 1092466205,
+     1093642839, 1096620314, 1111013640, 1115368723, 1118508667, 1119946360,
+     1120251466, 1122903357, 1125713722]
+target:
+  start_seconds: -0.25
+  stop_seconds: 0.75
+  bin_size_seconds: 0.05
+  response_stop_seconds: 0.525
+  shifted_event_offset_seconds: 10.0
+  maximum_lead_lag_bins: 3
+analysis:
+  permutations: 1000
+  bootstrap_samples: 5000
+  seed: 20260616
+  thresholds:
+    median_latency_split_half_tau_gt: 0.50
+    median_latency_cross_mouse_tau_gt: 0.30
+    latency_fraction_above_null_95_gte: 0.50
+    median_lead_lag_split_half_agreement_gt: 0.70
+    median_lead_lag_cross_mouse_agreement_gt: 0.65
+    lead_lag_fraction_above_null_95_gte: 0.50
+    actual_minus_shifted_lead_lag_agreement_gt: 0.10
+    median_resolvable_pair_fraction_gte: 0.50
+    median_nonzero_lead_lag_pair_fraction_gte: 0.25
+output:
+  root: outputs
+  name: allen-vbn-phase4-identifiability

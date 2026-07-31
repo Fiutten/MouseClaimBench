@@ -1,0 +1,30 @@
+{
+  "version": "0.6.0",
+  "git_revision": "4fecaaf07773d1b6353cdba8334eb04e2a497f24",
+  "analysis": "reviewer_attack_suite_v2",
+  "inputs": {
+    "adversarial_v2": "results/claim_adversarial_v2/summary.json",
+    "threshold_sensitivity_v2": "results/claim_threshold_sensitivity_v2/summary.json",
+    "external_causal": "results/external_causal_claim_validation/summary.json",
+    "claim_ledger": "results/claim_ledger/summary.json",
+    "release": "results/claimbench_release/summary.json",
+    "manuscript_claim_audit": "results/manuscript_claim_audit/summary.json",
+    "scifact": "results/scifact_claim_verification/summary.json",
+    "tuebingen": "results/tuebingen_causal_direction/summary.json"
+  },
+  "external_controls": {
+    "scifact_decision": "scifact_external_claim_audit_ready",
+    "scifact_shortcut_overclaiming_risk": 0.19886363636363635,
+    "tuebingen_decision": "tuebingen_external_direction_benchmark_ready",
+    "tuebingen_correlation_only_direction_overclaims": 79
+  },
+  "risks": [
+    {
+      "level": "medium",
+      "attack": "Some threshold cells authorize unsupported claims.",
+      "evidence": "dangerous_cells=135",
+      "response": "Report the dangerous region and keep nominal thresholds fixed."
+    }
+  ],
+  "decision": "reviewer_attack_suite_v2_passed_with_reportable_limits"
+}

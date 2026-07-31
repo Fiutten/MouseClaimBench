@@ -1,0 +1,163 @@
+{
+  "sealed_before_download": true,
+  "selected_target": "temporal_derivative",
+  "thresholds": {
+    "median_cross_mouse_correlation_gt": 0.5,
+    "median_split_half_correlation_gt": 0.7,
+    "fraction_above_null_95_gte": 0.5,
+    "bootstrap_lower_bound_gt": 0.0
+  },
+  "target": {
+    "start_seconds": -0.25,
+    "stop_seconds": 0.75,
+    "bin_size_seconds": 0.05,
+    "candidates": [
+      "baseline_subtracted",
+      "region_peak_normalized",
+      "temporal_derivative"
+    ]
+  },
+  "development_output": "/Users/fiutten/Documents/Codex/mouse-mind/outputs/allen-vbn-phase2c-development-52867687d890",
+  "sessions": [
+    {
+      "session_id": 1043752325,
+      "mouse_id": 506940,
+      "experience_level": "Familiar",
+      "url": "https://visual-behavior-neuropixels-data.s3.us-west-2.amazonaws.com/visual-behavior-neuropixels/behavior_ecephys_sessions/1043752325/ecephys_session_1043752325.nwb",
+      "file_hash_blake2b": "018dfb5317c8c25aa25b869f171cdb0a6551daf45adc95add34b0acf1470e28025f0c1defcf4ccb64a538fc70352504b4d32e9ddb3d683a6f818f02de343968f"
+    },
+    {
+      "session_id": 1046166369,
+      "mouse_id": 527294,
+      "experience_level": "Familiar",
+      "url": "https://visual-behavior-neuropixels-data.s3.us-west-2.amazonaws.com/visual-behavior-neuropixels/behavior_ecephys_sessions/1046166369/ecephys_session_1046166369.nwb",
+      "file_hash_blake2b": "74aaaeb302e43287f183e21abd4a81c1668413c5eec0849ef4d8b93ad73f13653de98571d371e49dcc3b3a62cfd5fb9ca593082301e9eb6e8861a80e8a98c2d4"
+    },
+    {
+      "session_id": 1047969464,
+      "mouse_id": 509808,
+      "experience_level": "Familiar",
+      "url": "https://visual-behavior-neuropixels-data.s3.us-west-2.amazonaws.com/visual-behavior-neuropixels/behavior_ecephys_sessions/1047969464/ecephys_session_1047969464.nwb",
+      "file_hash_blake2b": "d0bdb67cbae042f469552e710a5ce8409a3902296c56b9917eaf2a6b37b8113f92fe9e320346b2a1c5886433821d80e7b94b8234b72f5f6f7a106178a1f7b48b"
+    },
+    {
+      "session_id": 1052331749,
+      "mouse_id": 524926,
+      "experience_level": "Familiar",
+      "url": "https://visual-behavior-neuropixels-data.s3.us-west-2.amazonaws.com/visual-behavior-neuropixels/behavior_ecephys_sessions/1052331749/ecephys_session_1052331749.nwb",
+      "file_hash_blake2b": "f3ece3422fc77a5208070dc3e4351368c7ae40f96d4bcaf657d5525cd4753c04beceef72bd3c6330c4bb0863af0df94dc2a5a448b85ab6345452e883bb7d52c8"
+    },
+    {
+      "session_id": 1059678195,
+      "mouse_id": 536211,
+      "experience_level": "Familiar",
+      "url": "https://visual-behavior-neuropixels-data.s3.us-west-2.amazonaws.com/visual-behavior-neuropixels/behavior_ecephys_sessions/1059678195/ecephys_session_1059678195.nwb",
+      "file_hash_blake2b": "d0564aae01e1b16192d894ad583f52ca6f07ebf91bc919edfec50276602f6ac3b94bff47e491ef0edb260c6e7661b37ae7032b9e5ad39fd5d74573581efa4f6d"
+    },
+    {
+      "session_id": 1061238668,
+      "mouse_id": 536213,
+      "experience_level": "Familiar",
+      "url": "https://visual-behavior-neuropixels-data.s3.us-west-2.amazonaws.com/visual-behavior-neuropixels/behavior_ecephys_sessions/1061238668/ecephys_session_1061238668.nwb",
+      "file_hash_blake2b": "f15c716a7efeab7786cba1b94a499807c623687dab57f54780870bda74629e900f37c8e73337f62042cc88f43e93283cb03da7bf851caa373bb28b4154295a98"
+    },
+    {
+      "session_id": 1062755416,
+      "mouse_id": 542072,
+      "experience_level": "Familiar",
+      "url": "https://visual-behavior-neuropixels-data.s3.us-west-2.amazonaws.com/visual-behavior-neuropixels/behavior_ecephys_sessions/1062755416/ecephys_session_1062755416.nwb",
+      "file_hash_blake2b": "d126bbb2028f7109a0643b69fd3255b2624534deb4de148e1765b03173558ce82a3cf5b16c1fa1a7ee835004a88d7fca237f15781f85cd2d4250b385aa861a20"
+    },
+    {
+      "session_id": 1064415305,
+      "mouse_id": 536480,
+      "experience_level": "Familiar",
+      "url": "https://visual-behavior-neuropixels-data.s3.us-west-2.amazonaws.com/visual-behavior-neuropixels/behavior_ecephys_sessions/1064415305/ecephys_session_1064415305.nwb",
+      "file_hash_blake2b": "c142bc175d80ad5ce0e397978ab807fea882cfd37459fc674eb460d4389488c70b1b9186ed1e776608e802b6a32513195fed47f9570175c6c9a85817d5d9bc2e"
+    },
+    {
+      "session_id": 1070961372,
+      "mouse_id": 544835,
+      "experience_level": "Familiar",
+      "url": "https://visual-behavior-neuropixels-data.s3.us-west-2.amazonaws.com/visual-behavior-neuropixels/behavior_ecephys_sessions/1070961372/ecephys_session_1070961372.nwb",
+      "file_hash_blake2b": "cd4a4942aec94ce21ac070f8b6c57f65b614a0c881aff9649ceb9f21469cb5508b757b858b27aaad7641fbb937eba98289dae520cf0c9449a3c2fe476303b305"
+    },
+    {
+      "session_id": 1072341440,
+      "mouse_id": 546507,
+      "experience_level": "Familiar",
+      "url": "https://visual-behavior-neuropixels-data.s3.us-west-2.amazonaws.com/visual-behavior-neuropixels/behavior_ecephys_sessions/1072341440/ecephys_session_1072341440.nwb",
+      "file_hash_blake2b": "e37a63d0fce06ddf47cc042862b410e56568048e9bc71a5fd1eb9159661c3a2eb742194e188bf2e4fda41eacdb26849c1af080ec8c65b502a79191b095270296"
+    },
+    {
+      "session_id": 1051155866,
+      "mouse_id": 524760,
+      "experience_level": "Novel",
+      "url": "https://visual-behavior-neuropixels-data.s3.us-west-2.amazonaws.com/visual-behavior-neuropixels/behavior_ecephys_sessions/1051155866/ecephys_session_1051155866.nwb",
+      "file_hash_blake2b": "efe2192b07a36c0b9f67665829e30dad31c57e21129e4d478bbd3249675e676dd1303c9e199aac331d674241a5f30ad54afb0a71bb635950c0f53ac716bd193d"
+    },
+    {
+      "session_id": 1052533639,
+      "mouse_id": 530862,
+      "experience_level": "Novel",
+      "url": "https://visual-behavior-neuropixels-data.s3.us-west-2.amazonaws.com/visual-behavior-neuropixels/behavior_ecephys_sessions/1052533639/ecephys_session_1052533639.nwb",
+      "file_hash_blake2b": "c121f07fb84ebc5c4748bad161cb6d1d5c372fd095cb7ec7a83fe804114d6ef45de921915504a44568841a437fac1e306f326700b83c23312aed949093e99dec"
+    },
+    {
+      "session_id": 1055415082,
+      "mouse_id": 533539,
+      "experience_level": "Novel",
+      "url": "https://visual-behavior-neuropixels-data.s3.us-west-2.amazonaws.com/visual-behavior-neuropixels/behavior_ecephys_sessions/1055415082/ecephys_session_1055415082.nwb",
+      "file_hash_blake2b": "f49c35223c58821f39fe05c2f2fc8ee668f549dee4257174ad5e8b475d485b882acadf050c37004b2281d07e7958104cedb9704b460c6c10851fc290010f854b"
+    },
+    {
+      "session_id": 1056720277,
+      "mouse_id": 531237,
+      "experience_level": "Novel",
+      "url": "https://visual-behavior-neuropixels-data.s3.us-west-2.amazonaws.com/visual-behavior-neuropixels/behavior_ecephys_sessions/1056720277/ecephys_session_1056720277.nwb",
+      "file_hash_blake2b": "e9e723acaaa96113dbc436465be3d774ec0ee2c13cdaf8f587b66e4095e7bd2299f28df15661e667b036367bc24492c6a9133e2890dd86bebbeed9d8c3c5d821"
+    },
+    {
+      "session_id": 1067790400,
+      "mouse_id": 546512,
+      "experience_level": "Novel",
+      "url": "https://visual-behavior-neuropixels-data.s3.us-west-2.amazonaws.com/visual-behavior-neuropixels/behavior_ecephys_sessions/1067790400/ecephys_session_1067790400.nwb",
+      "file_hash_blake2b": "a2427c86017e9a248d87400151df0ac386658aad76276107d31c7830b9211c47b8e3143f6e41254e133a2c7815cfb42eba02f2a0bd26f73cc338cba18df3f496"
+    },
+    {
+      "session_id": 1069458330,
+      "mouse_id": 544837,
+      "experience_level": "Novel",
+      "url": "https://visual-behavior-neuropixels-data.s3.us-west-2.amazonaws.com/visual-behavior-neuropixels/behavior_ecephys_sessions/1069458330/ecephys_session_1069458330.nwb",
+      "file_hash_blake2b": "c245f3917af42c38d7e5206a693e9153c21f9eb48cdaa8432805fa152148565bb4ec8c187fa9a594b7a40d288847ea1684721e51688aef7d43c2ee7970fbfe75"
+    },
+    {
+      "session_id": 1069461581,
+      "mouse_id": 545994,
+      "experience_level": "Novel",
+      "url": "https://visual-behavior-neuropixels-data.s3.us-west-2.amazonaws.com/visual-behavior-neuropixels/behavior_ecephys_sessions/1069461581/ecephys_session_1069461581.nwb",
+      "file_hash_blake2b": "26066af6487e8bc108c52a2d11000e7346ccc7869a7611f6a8ff02060d8e7809e5c92f9e979f6b8112a0f4e2a716f5fa3c863db0334e2f4b7ea77b2ce57eedff"
+    },
+    {
+      "session_id": 1071300149,
+      "mouse_id": 548465,
+      "experience_level": "Novel",
+      "url": "https://visual-behavior-neuropixels-data.s3.us-west-2.amazonaws.com/visual-behavior-neuropixels/behavior_ecephys_sessions/1071300149/ecephys_session_1071300149.nwb",
+      "file_hash_blake2b": "e8ff4a883f91bef9454daedec1be73d58efaf3395f5fd776fe97c57bf53c8b0576abfd56c9c2d7e3ecfa079267312fc8e2bfd17c9487dc0ebfe3c710cb5631ee"
+    },
+    {
+      "session_id": 1072572100,
+      "mouse_id": 540536,
+      "experience_level": "Novel",
+      "url": "https://visual-behavior-neuropixels-data.s3.us-west-2.amazonaws.com/visual-behavior-neuropixels/behavior_ecephys_sessions/1072572100/ecephys_session_1072572100.nwb",
+      "file_hash_blake2b": "98c391022f555058297da35950ec8503b009c49f807a13fea4aedf22dd30900578e84be8712a2bff59cca4ea627cbe85e4f8282bd9bcd7233e77a8b151b82ef0"
+    },
+    {
+      "session_id": 1076487758,
+      "mouse_id": 546503,
+      "experience_level": "Novel",
+      "url": "https://visual-behavior-neuropixels-data.s3.us-west-2.amazonaws.com/visual-behavior-neuropixels/behavior_ecephys_sessions/1076487758/ecephys_session_1076487758.nwb",
+      "file_hash_blake2b": "6631a130cb7c016c4dda1b17bb30104e6b5974044e0695b871bf2627052302bca149c39b6894ba0cef3d4dbfbaafa6c38616e646054a1c5263262300457e9fea"
+    }
+  ]
+}

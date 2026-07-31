@@ -1,0 +1,16 @@
+\section{Experimental Protocol}
+\label{sec:experiments}
+
+The evaluation protocol is organized around the claim types that ClaimBench is intended to control. It does not attempt to outperform specialized systems on their own leaderboards. Instead, it tests whether the framework blocks unsupported claims, reports uncertainty, separates evidence dimensions, and produces reproducible artifacts.
+
+The first group of experiments uses synthetic known-truth cases. These cases define explicit combinations of evidence dimensions and expected claim outcomes. They are used to verify the semantics of the non-compensatory gate. The purpose is not to approximate a real scientific domain, but to check that supported, unsupported, and uncertain cases are handled consistently under controlled conditions.
+
+The second group uses external benchmarks. SciFact provides a real scientific claim-verification setting with support, contradiction, and not-enough-information labels. ClaimBench evaluates a transparent local retrieval and rationale baseline, then reports the extent to which shortcut evidence would create overclaiming risk. The Tuebingen cause-effect benchmark provides pairwise cause-effect data. ClaimBench evaluates transparent direction controls and quantifies how many causal direction claims would be unsupported if correlation were treated as sufficient evidence.
+
+The third group evaluates the writing and release workflow. The manuscript claim audit checks whether active project texts contain wording that violates executable claim boundaries. The LLM claim extraction audit checks whether candidate extraction can be included without making the LLM authoritative. The reproduction manifest executes the full v2 pipeline and records stage-level outcomes. The release check verifies that required artifacts are present, non-dirty, and aligned with expected decisions.
+
+Table~\ref{tab:evaluation-matrix} summarizes the evaluation matrix. The main design choice is that each experiment has a bounded interpretation. A positive SciFact result means that external scientific claim auditing is operational. It does not mean that ClaimBench is a SciFact leader. A positive Tuebingen result means that causal-overclaiming controls are operational. It does not mean that ClaimBench is a causal discovery method.
+
+\input{tables/evaluation_matrix}
+
+All reported numerical artifacts were generated before this manuscript draft. This draft does not manually edit JSON result files and does not regenerate numerical outcomes. The reported release artifact indicates a clean v2 package with no missing, dirty, or failing required artifacts.

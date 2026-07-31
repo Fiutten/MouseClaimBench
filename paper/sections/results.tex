@@ -1,0 +1,32 @@
+\section{Results}
+\label{sec:results}
+
+\subsection{Unified package status}
+\label{subsec:unified-status}
+
+The v2 reproduction package passes all required stages. The manifest reports 15 passed stages out of 15, including adversarial tests, threshold sensitivity, external causal validation, uncertainty gating, external benchmark registration, SciFact, Tuebingen, manuscript auditing, LLM claim extraction, cost-fidelity analysis, component ablation, reviewer attacks, threat modelling, unified reporting, and release checking. The release check reports no missing artifacts, no dirty artifacts, and no failing artifacts.
+
+The unified report passes 10 of 10 criteria. These criteria cover synthetic known-truth behaviour, threshold limits, uncertainty, SciFact, Tuebingen, manuscript wording, LLM boundary control, component non-redundancy, reviewer attacks, and threat modelling. The resulting claim boundary is narrow and explicit. ClaimBench v2 is ready as a methodological package for claim-aware auditing. It is not a state-of-the-art verification system and not a causal-discovery performance method.
+
+\input{tables/results_summary}
+
+\subsection{External claim and causal controls}
+\label{subsec:external-results}
+
+On SciFact, the adapter evaluates 300 claims with 124 support labels, 64 contradiction labels, and 112 not-enough-information labels. The transparent BM25 evidence retrieval baseline obtains recall@5 of 0.899. The shortcut overclaiming risk is 0.199, while the BM25-rationale configuration reports an overclaiming risk of 0.250 and a confidence indicator of 0.492. These numbers should not be read as a competitive SciFact result. They show that retrieval quality, rationale agreement, abstention, and overclaiming risk expose different aspects of claim handling.
+
+On the Tuebingen benchmark, 108 pairs are loaded and 103 direction attempts are made. The aggregate direction accuracy is 0.485 and the weighted accuracy is 0.544. These values are not sufficient to claim causal-discovery performance. They are useful because the audit identifies 79 correlation-only direction overclaims. The correct interpretation is therefore conservative. ClaimBench can demonstrate why causal direction claims should be blocked when the evidence is only correlational or insufficiently stable.
+
+\subsection{LLM layer}
+\label{subsec:llm-results}
+
+The LLM claim extraction audit runs in deterministic fallback mode with an optional local LLM-output file. It identifies 120 candidate claims. The largest groups are mechanistic claims with 43 candidates and prediction claims with 41 candidates. It also identifies 10 causal candidates, 8 digital-twin candidates, 7 structure-function candidates, 6 reproducibility candidates, 3 generalization candidates, and 2 state-of-the-art candidates.
+
+The critical result is not the number of extracted candidates. The critical result is the boundary. The artifact records that no LLM API was called and that the LLM layer is not authoritative. Candidate extraction can improve coverage of manuscript inspection, but claim authorization remains tied to executable artifacts. This is the central safeguard that makes the LLM addition defensible.
+
+\subsection{Ablation and threats}
+\label{subsec:ablation-results}
+
+The component ablation identifies eight components and classifies seven as high or critical. Replacing the non-compensatory gate with correlation-only evaluation produces an overclaiming risk of 0.521. Replacing it with a compensatory weighted score produces an overclaiming risk of 0.135. Removing topology or direction blocks allows mechanistic claims to pass when required evidence is missing. Removing causal abstention allows correlation to authorize causal direction. Removing manuscript audit eliminates the direct check between written claims and executable contracts.
+
+The threat model passes all seven tracked threats with no failed critical threat. The threats cover rules without value, threshold arbitrariness, synthetic overfitting, causal overclaiming, wording drift, LLM authority drift, and hidden uncertainty. This supports the intended reviewer-facing role of the framework. The system is not only a set of metrics. It is an executable map from known failure modes to artifacts and claim boundaries.

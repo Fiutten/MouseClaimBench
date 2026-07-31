@@ -1,0 +1,997 @@
+{
+  "version": "0.6.0",
+  "git_revision": "4fecaaf07773d1b6353cdba8334eb04e2a497f24",
+  "analysis": "llm_claim_extraction_audit",
+  "mode": "deterministic_fallback_with_optional_llm_file",
+  "llm_api_called": false,
+  "llm_authoritative": false,
+  "optional_llm_candidates_loaded": 0,
+  "manuscript_inputs": [
+    "paper/main.tex",
+    "paper/README.md",
+    "README.md"
+  ],
+  "existing_manuscript_inputs": [
+    "paper/main.tex",
+    "paper/README.md",
+    "README.md"
+  ],
+  "num_candidates": 120,
+  "num_deterministic_candidates": 120,
+  "candidate_counts_by_type": {
+    "mechanistic": 43,
+    "structure_function": 7,
+    "digital_twin": 8,
+    "causal": 10,
+    "prediction": 41,
+    "sota": 2,
+    "reproducibility": 6,
+    "generalization": 3
+  },
+  "authoritative_llm_candidates": 0,
+  "unsupported_positive_suggestions": 0,
+  "candidates": [
+    {
+      "source": "deterministic_extractor",
+      "text": "The AI contribution is an executable, non-compensatory audit process that separates prediction, reproducibility, topology specificity, directed identifiability, local structure--function agreement, and computational cost through a Mechanistic Identifiability Score and a conjunctive claim gate.",
+      "claim_type": "mechanistic",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Require prediction, reproducibility, topology specificity, and direction before mechanistic wording."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "MouseBrainBench is evaluated with controlled simulations, Allen Visual Behavior Neuropixels, Static and Dynamic Sensorium, and Machine Intelligence from Cortical Networks (MICrONS).",
+      "claim_type": "structure_function",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Keep as local observational structure-function association unless causal evidence exists."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "Synthetic cases recover the intended decision semantics, while Allen and Sensorium act as negative or bounded predictive cases that are not promoted to mechanism.",
+      "claim_type": "mechanistic",
+      "negated_or_boundary_context": true,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Keep as limitation/boundary wording; do not convert into a positive claim."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "The main positive empirical case is a local MICrONS structure--function analysis: across one discovery cohort and two non-overlapping hold-out windows from the same resource, connected directed pairs show greater readout-location similarity than distance- and degree-matched controls.",
+      "claim_type": "structure_function",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Keep as local observational structure-function association unless causal evidence exists."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "These results support an internally reproduced local association, not a causal, behavioural, or whole-brain digital twin.",
+      "claim_type": "digital_twin",
+      "negated_or_boundary_context": true,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Keep as limitation/boundary wording; do not convert into a positive claim."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "Artificial Intelligence Validation Scientific Machine Learning Digital Twins Computational Neuroscience Benchmarking Mechanistic Identifiability Computational representations of biological systems have become a key point in the interaction between and neuroscience.",
+      "claim_type": "mechanistic",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Require prediction, reproducibility, topology specificity, and direction before mechanistic wording."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "Notice that predictive performance, empirical reliability, anatomical plausibility, and causal explanation answer different scientific questions.",
+      "claim_type": "causal",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Use causal wording only with intervention or causal-identification evidence."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "Thus, a single correlation coefficient is not sufficient to decide whether a model supports a mechanistic claim.",
+      "claim_type": "mechanistic",
+      "negated_or_boundary_context": true,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Keep as limitation/boundary wording; do not convert into a positive claim."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "A digital twin normally implies correspondence with a specific physical entity, repeated calibration, and the ability to reproduce relevant states under meaningful interventions.",
+      "claim_type": "digital_twin",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Downgrade to partial digital-model or claim-audit wording unless whole-brain causal evidence exists."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "Sensorium provides common predictive tasks for mouse visual cortex .",
+      "claim_type": "prediction",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Report predictive performance without promoting it to mechanism or causality."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "For this reason, the main gap is not the absence of another simulator or another visual-response leaderboard.",
+      "claim_type": "sota",
+      "negated_or_boundary_context": true,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Keep as limitation/boundary wording; do not convert into a positive claim."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "The unresolved point is the audit between a metric and the biological claim attached to it: what evidence is required before a reproducible prediction can be interpreted as support for a specific mechanism?",
+      "claim_type": "mechanistic",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Require prediction, reproducibility, topology specificity, and direction before mechanistic wording."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "It is not proposed as a complete brain simulator and it does not claim to instantiate a full digital twin.",
+      "claim_type": "digital_twin",
+      "negated_or_boundary_context": true,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Keep as limitation/boundary wording; do not convert into a positive claim."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "The framework assigns public datasets to explicit evidential roles, evaluates them using matched null models and hold-out checks, and records which interpretations are admitted or blocked.",
+      "claim_type": "reproducibility",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Report reproducibility as stability evidence, not as mechanism by itself."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "Its Mechanistic Identifiability Score (MIS) is not a conventional weighted ranking.",
+      "claim_type": "mechanistic",
+      "negated_or_boundary_context": true,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Keep as limitation/boundary wording; do not convert into a positive claim."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "This formulation also provides a measurable advantage over conventional predictive evaluation, because it identifies cases in which a high predictive or reproducibility score would incorrectly promote an unsupported mechanistic claim.",
+      "claim_type": "mechanistic",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Require prediction, reproducibility, topology specificity, and direction before mechanistic wording."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "Allen Visual Behavior Neuropixels is used to verify that the framework can keep a highly reproducible empirical target while rejecting unsupported topology and direction claims.",
+      "claim_type": "mechanistic",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Require prediction, reproducibility, topology specificity, and direction before mechanistic wording."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "Static and Dynamic Sensorium are used to preserve predictive evidence without promoting it to causality.",
+      "claim_type": "causal",
+      "negated_or_boundary_context": true,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Keep as limitation/boundary wording; do not convert into a positive claim."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "Finally, MICRONS is used to test a discovery-fixed local structure--function endpoint against distance- and degree-matched nulls in a discovery cohort and two non-overlapping hold-outs.",
+      "claim_type": "structure_function",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Keep as local observational structure-function association unless causal evidence exists."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "Section~ reviews the most relevant predictive, simulation, and connectomic approaches.",
+      "claim_type": "prediction",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Report predictive performance without promoting it to mechanism or causality."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "The framework does not try to replace existing simulators or predictive benchmarks.",
+      "claim_type": "prediction",
+      "negated_or_boundary_context": true,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Keep as limitation/boundary wording; do not convert into a positive claim."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "Instead, it provides a reproducible mechanism to decide whether a partial digital model supports a predictive, reproducibility, structure--function, or mechanistic-identifiability claim.",
+      "claim_type": "mechanistic",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Require prediction, reproducibility, topology specificity, and direction before mechanistic wording."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "The contributions of the proposal are summarised in the following points: The proposal introduces a claim-aware validation formulation that separates prediction, reproducibility, topology specificity, directed identifiability, local structure--function association, and computational cost.",
+      "claim_type": "mechanistic",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Require prediction, reproducibility, topology specificity, and direction before mechanistic wording."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "The rule is evaluated with four known-truth systems that isolate common drive, topology without direction, and direction without topology specificity.",
+      "claim_type": "mechanistic",
+      "negated_or_boundary_context": true,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Keep as limitation/boundary wording; do not convert into a positive claim."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "A cross-resource protocol is established by assigning Allen, Sensorium, Dynamic Sensorium, and different roles in the validation process.",
+      "claim_type": "prediction",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Report predictive performance without promoting it to mechanism or causality."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "Allen acts as a real negative mechanistic control, Sensorium as a predictive control, and as a local anatomical-functional case.",
+      "claim_type": "mechanistic",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Require prediction, reproducibility, topology specificity, and direction before mechanistic wording."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "A MICRONS validation case is provided using a discovery-fixed primary endpoint, distance- and degree-matched null models, false-discovery-rate correction, unit-cluster bootstrap stability intervals, and two non-overlapping hold-out windows.",
+      "claim_type": "structure_function",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Keep as local observational structure-function association unless causal evidence exists."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "In the current study, the framework admits an internally reproduced local observational structure--function association, while rejecting causal, behavioural, whole-brain, and state-of-the-art predictor claims.",
+      "claim_type": "digital_twin",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Downgrade to partial digital-model or claim-audit wording unless whole-brain causal evidence exists."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "This produces a direct advantage over a conventional predictive evaluation, because strong reproducibility or prediction in Allen and Sensorium is not allowed to compensate for missing topology, direction, or causal evidence.",
+      "claim_type": "causal",
+      "negated_or_boundary_context": true,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Keep as limitation/boundary wording; do not convert into a positive claim."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "It does not establish that a single score is universally sufficient for mechanistic neuroscience.",
+      "claim_type": "mechanistic",
+      "negated_or_boundary_context": true,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Keep as limitation/boundary wording; do not convert into a positive claim."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "The proposal is related to neural-response prediction, multiscale brain simulation, connectomics, and model-credibility research.",
+      "claim_type": "prediction",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Report predictive performance without promoting it to mechanism or causality."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "Second, standardised recordings and predictive benchmarks are reviewed, with special attention to the limits of response prediction.",
+      "claim_type": "prediction",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Report predictive performance without promoting it to mechanism or causality."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "Finally, connectomic and structure--function studies are addressed, as they are the basis for the MICRONS validation case.",
+      "claim_type": "structure_function",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Keep as local observational structure-function association unless causal evidence exists."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "A model can therefore be credible for prediction and not credible for a causal or mechanistic claim.",
+      "claim_type": "causal",
+      "negated_or_boundary_context": true,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Keep as limitation/boundary wording; do not convert into a positive claim."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "This supports the restricted terminology used here: MouseBrainBench audits partial digital representations, while complete mouse-brain twin claims remain blocked unless entity-specific calibration, broad state coverage, and intervention-level validation are available.",
+      "claim_type": "causal",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Use causal wording only with intervention or causal-identification evidence."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "Whole-brain axonal tracing supplies a complementary mesoscale view.",
+      "claim_type": "digital_twin",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Downgrade to partial digital-model or claim-audit wording unless whole-brain causal evidence exists."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "Sensorium introduced a complementary evaluation regime: predicting large-scale neural responses to static natural images in mouse primary visual cortex .",
+      "claim_type": "prediction",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Report predictive performance without promoting it to mechanism or causality."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "Dynamic Sensorium extended the task to videos, behavioural covariates, and out-of-distribution evaluation .",
+      "claim_type": "prediction",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Report predictive performance without promoting it to mechanism or causality."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "Correlation with held-out neural responses is a meaningful measure of functional approximation and can identify models that generalize better than simple baselines.",
+      "claim_type": "prediction",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Report predictive performance without promoting it to mechanism or causality."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "Recent foundation models extend prediction to new visual stimulus types and provide functional descriptors for the MICRONS animal .",
+      "claim_type": "structure_function",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Keep as local observational structure-function association unless causal evidence exists."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "These advances strengthen predictive models as experimental tools, while making it more important to state whether a reported value measures raw prediction, reliability-normalized performance, or evidence about circuit organization.",
+      "claim_type": "prediction",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Report predictive performance without promoting it to mechanism or causality."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "It supports the need to match the evaluation target to the intended use and to avoid treating one predictive score as evidence for every level of neural organization.",
+      "claim_type": "prediction",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Report predictive performance without promoting it to mechanism or causality."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "Nevertheless, predictive equivalence does not imply mechanistic equivalence.",
+      "claim_type": "mechanistic",
+      "negated_or_boundary_context": true,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Keep as limitation/boundary wording; do not convert into a positive claim."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "High response correlation therefore supports a predictive-surrogate claim, conditional on reliability and test design, but not by itself an anatomical or causal claim.",
+      "claim_type": "causal",
+      "negated_or_boundary_context": true,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Keep as limitation/boundary wording; do not convert into a positive claim."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "MouseBrainBench retains the established predictive metrics and adds an explicit boundary: predictive results enter the audit as one evidence type and cannot satisfy absent topology or directionality requirements.",
+      "claim_type": "mechanistic",
+      "negated_or_boundary_context": true,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Keep as limitation/boundary wording; do not convert into a positive claim."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "Digital Twin Brain proposals broaden this objective towards multiscale models that connect biological and .",
+      "claim_type": "digital_twin",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Downgrade to partial digital-model or claim-audit wording unless whole-brain causal evidence exists."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "These proposals are relevant to the present work because they move beyond isolated response prediction and consider how anatomical, functional, and computational evidence can be combined.",
+      "claim_type": "prediction",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Report predictive performance without promoting it to mechanism or causality."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "Likewise, high correlation does not establish that the inferred wiring is uniquely identified.",
+      "claim_type": "prediction",
+      "negated_or_boundary_context": true,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Keep as limitation/boundary wording; do not convert into a positive claim."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "An external simulator may produce candidate dynamics.",
+      "claim_type": "generalization",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Restrict generalization wording to the evaluated dataset, animal, session, or domain."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "The present framework reserves stronger twin claims for systems that can demonstrate entity-specific calibration, state-dependent prediction, and suitable interventional validation.",
+      "claim_type": "prediction",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Report predictive performance without promoting it to mechanism or causality."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "This is why the manuscript reports an internally reproduced local association, cites the stronger prior result, and explicitly withholds biological-priority, causal, behavioural, and whole-brain conclusions.",
+      "claim_type": "digital_twin",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Downgrade to partial digital-model or claim-audit wording unless whole-brain causal evidence exists."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "The reviewed infrastructures provide data, simulators, or predictive benchmarks, but they do not share a common decision layer for controlling the scope of claims across these evidential regimes.",
+      "claim_type": "prediction",
+      "negated_or_boundary_context": true,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Keep as limitation/boundary wording; do not convert into a positive claim."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "Leaderboards prioritize predictive performance.",
+      "claim_type": "prediction",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Report predictive performance without promoting it to mechanism or causality."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "Its novelty must therefore be judged as methodological: whether the conjunctive audit distinguishes known failure modes and produces a replicable, more tightly bounded conclusion than correlation-only evaluation.",
+      "claim_type": "prediction",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Report predictive performance without promoting it to mechanism or causality."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "It does not implement another neural simulator, replace the data models used by or SONATA, or reproduce the predictive infrastructure of Sensorium.",
+      "claim_type": "prediction",
+      "negated_or_boundary_context": true,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Keep as limitation/boundary wording; do not convert into a positive claim."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "The validation module computes metrics, null-model comparisons, and bootstrap summaries.",
+      "claim_type": "reproducibility",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Report reproducibility as stability evidence, not as mechanism by itself."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "Strong predictive accuracy cannot repair the absence of subject-specific anatomy, and reproducibility cannot establish temporal direction.",
+      "claim_type": "mechanistic",
+      "negated_or_boundary_context": true,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Keep as limitation/boundary wording; do not convert into a positive claim."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "Conventional benchmarking estimates a predictive utility $U( , )$ and ranks models using that scalar.",
+      "claim_type": "prediction",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Report predictive performance without promoting it to mechanism or causality."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "This operation is appropriate when $C$ is restricted to held-out prediction under a fixed protocol.",
+      "claim_type": "prediction",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Report predictive performance without promoting it to mechanism or causality."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "It is insufficient when the interpretation states that $ $ reproduces anatomical organization, identifies directed dynamics, or represents a biological mechanism.",
+      "claim_type": "mechanistic",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Require prediction, reproducibility, topology specificity, and direction before mechanistic wording."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "The framework does not infer missing anatomical or interventional evidence from predictive performance.",
+      "claim_type": "prediction",
+      "negated_or_boundary_context": true,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Keep as limitation/boundary wording; do not convert into a positive claim."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "A states that a model improves held-out neural-response prediction over declared baselines.",
+      "claim_type": "prediction",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Report predictive performance without promoting it to mechanism or causality."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "A additionally requires the proposed topology and direction to be distinguishable from plausible alternatives.",
+      "claim_type": "mechanistic",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Require prediction, reproducibility, topology specificity, and direction before mechanistic wording."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "A useful predictor need not recover a circuit, while a reproducible local structure--function association can remain weaker than intervention-supported causality.",
+      "claim_type": "causal",
+      "negated_or_boundary_context": true,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Keep as limitation/boundary wording; do not convert into a positive claim."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "An individual whole-brain twin would require entity-specific calibration, sufficiently broad structure and dynamics, repeated state estimation, and validation under perturbations.",
+      "claim_type": "digital_twin",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Downgrade to partial digital-model or claim-audit wording unless whole-brain causal evidence exists."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "The canonical mechanistic configuration contains reproducibility, topology specificity, and directed identifiability.",
+      "claim_type": "mechanistic",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Require prediction, reproducibility, topology specificity, and direction before mechanistic wording."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "Predictive evaluations add held-out performance, empirical reliability, and out-of-distribution behaviour.",
+      "claim_type": "prediction",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Report predictive performance without promoting it to mechanism or causality."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "Local structure--function evaluations use matched anatomical controls, multiplicity correction, and non-overlapping internal hold-out reproduction.",
+      "claim_type": "reproducibility",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Report reproducibility as stability evidence, not as mechanism by itself."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "For criterion $j$ in block $i$, let $x_{ij}$ be the observed value, $t_{ij}$ its fixed threshold, and $d_{ij}$ the comparison direction.",
+      "claim_type": "mechanistic",
+      "negated_or_boundary_context": true,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Keep as limitation/boundary wording; do not convert into a positive claim."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "A high reproducibility score cannot compensate for a topology that performs like a permuted graph.",
+      "claim_type": "mechanistic",
+      "negated_or_boundary_context": true,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Keep as limitation/boundary wording; do not convert into a positive claim."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "This prevents the numerical average from becoming an unsupported ranking of mechanistic truth.",
+      "claim_type": "mechanistic",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Require prediction, reproducibility, topology specificity, and direction before mechanistic wording."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "Transposed graphs test direction when the observable temporal resolution makes that comparison meaningful.",
+      "claim_type": "mechanistic",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Require prediction, reproducibility, topology specificity, and direction before mechanistic wording."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "Mean-response, scrambled-stimulus, and transparent temporal baselines test predictive value.",
+      "claim_type": "prediction",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Report predictive performance without promoting it to mechanism or causality."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "Dataset adapters convert Allen, Sensorium, Dynamic Sensorium, and artifacts into those schemas without erasing source-specific metadata.",
+      "claim_type": "prediction",
+      "negated_or_boundary_context": true,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Keep as limitation/boundary wording; do not convert into a positive claim."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "Model adapters expose outputs from transparent baselines or external software through the same evaluation interface.",
+      "claim_type": "generalization",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Restrict generalization wording to the evaluated dataset, animal, session, or domain."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "The first implementation established common schemas, deterministic simulation runners, and basic anatomical and predictive metrics.",
+      "claim_type": "prediction",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Report predictive performance without promoting it to mechanism or causality."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "Allen and Sensorium adapters introduced repeated observations, subject-level partitions, and predictive baselines.",
+      "claim_type": "prediction",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Report predictive performance without promoting it to mechanism or causality."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "The adapter added versioned queries, pair construction, anatomical matching, false-discovery-rate correction, and unit-cluster bootstrap inference.",
+      "claim_type": "reproducibility",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Report reproducibility as stability evidence, not as mechanism by itself."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "External tools therefore remain responsible for simulation or prediction, while MouseBrainBench controls evaluation semantics.",
+      "claim_type": "prediction",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Report predictive performance without promoting it to mechanism or causality."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "Allen provides a reproducible real-data negative mechanistic control.",
+      "claim_type": "mechanistic",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Require prediction, reproducibility, topology specificity, and direction before mechanistic wording."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "Static and Dynamic Sensorium test whether modern predictive gains remain separated from anatomical and causal claims.",
+      "claim_type": "causal",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Use causal wording only with intervention or causal-identification evidence."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "asks whether the non-compensatory decision rule recovers a known mechanism and rejects reproducible but incomplete alternatives.",
+      "claim_type": "mechanistic",
+      "negated_or_boundary_context": true,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Keep as limitation/boundary wording; do not convert into a positive claim."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "asks whether the framework preserves useful predictive evidence while preventing its promotion to anatomical or causal interpretation.",
+      "claim_type": "causal",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Use causal wording only with intervention or causal-identification evidence."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "asks whether the same audit can admit a positive structure--function result when the endpoint survives matched controls and two non-overlapping internal hold-out windows.",
+      "claim_type": "reproducibility",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Report reproducibility as stability evidence, not as mechanism by itself."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "The synthetic systems, Allen negative control, and Sensorium analyses are framework-validation experiments: they test whether the audit preserves prediction, reproducibility, topology, or direction only when the corresponding evidence is observable.",
+      "claim_type": "mechanistic",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Require prediction, reproducibility, topology specificity, and direction before mechanistic wording."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "It diagnoses the failure of a broad aggregate structure--function endpoint after distance matching and fixes the more specific `all-pairs/readout-location' endpoint.",
+      "claim_type": "structure_function",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Keep as local observational structure-function association unless causal evidence exists."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "Therefore, discovery values are reported for continuity and effect-size description, while the hold-out support for the biological endpoint comes from the two non-overlapping hold-out windows and the unit-cluster stability analysis.",
+      "claim_type": "reproducibility",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Report reproducibility as stability evidence, not as mechanism by itself."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "Fixed seeds 11, 23, 31, and 43 identify the directed-truth, common-drive, topology-without-direction, and direction-without-topology systems.",
+      "claim_type": "mechanistic",
+      "negated_or_boundary_context": true,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Keep as limitation/boundary wording; do not convert into a positive claim."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "Reproducibility is quantified by the median correlation between each session and its system template, the median odd--even correlation, and the fraction of sessions exceeding the 95th percentile of 200 within-session region permutations.",
+      "claim_type": "prediction",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Report predictive performance without promoting it to mechanism or causality."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "Topology specificity compares the candidate model with 100 region-permuted predictions and a disconnected template.",
+      "claim_type": "mechanistic",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Require prediction, reproducibility, topology specificity, and direction before mechanistic wording."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "Direction is evaluated using resolvable peak latencies and nonzero lead--lag fractions.",
+      "claim_type": "mechanistic",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Require prediction, reproducibility, topology specificity, and direction before mechanistic wording."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "Topology without direction contains structured regional amplitudes with simultaneous peaks.",
+      "claim_type": "mechanistic",
+      "negated_or_boundary_context": true,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Keep as limitation/boundary wording; do not convert into a positive claim."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "Direction without topology contains staggered peaks while the candidate does not outperform the disconnected alternative.",
+      "claim_type": "mechanistic",
+      "negated_or_boundary_context": true,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Keep as limitation/boundary wording; do not convert into a positive claim."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "The directed system passed reproducibility, topology, and direction, obtaining $M=1.000$.",
+      "claim_type": "mechanistic",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Require prediction, reproducibility, topology specificity, and direction before mechanistic wording."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "The common-drive system was highly reproducible but failed topology and direction ($M=0.333$).",
+      "claim_type": "mechanistic",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Require prediction, reproducibility, topology specificity, and direction before mechanistic wording."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "The topology-only system passed reproducibility and topology but failed direction ($M=0.667$).",
+      "claim_type": "mechanistic",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Require prediction, reproducibility, topology specificity, and direction before mechanistic wording."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "The direction-only system contained temporal information but failed topology specificity ($M=0.719$).",
+      "claim_type": "mechanistic",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Require prediction, reproducibility, topology specificity, and direction before mechanistic wording."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "Candidate prediction exceeded the median permuted prediction by 0.783 and the disconnected prediction by 0.916.",
+      "claim_type": "prediction",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Report predictive performance without promoting it to mechanism or causality."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "By contrast, the common-drive system reached cross-session correlation 0.962 while its candidate prediction was 0.0009 worse than the permutation median and 0.0032 worse than the disconnected control.",
+      "claim_type": "prediction",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Report predictive performance without promoting it to mechanism or causality."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "These cases demonstrate why the continuous cannot replace the conjunctive decision: partial scores locate a failure but do not constitute a ranking of mechanistic truth.",
+      "claim_type": "mechanistic",
+      "negated_or_boundary_context": true,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Keep as limitation/boundary wording; do not convert into a positive claim."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "The topology analysis used 20 sessions from 20 unique mice, and the direction analysis used 21 sessions from 19 mice.",
+      "claim_type": "mechanistic",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Require prediction, reproducibility, topology specificity, and direction before mechanistic wording."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "The reproducibility block required median cross-mouse correlation above 0.50, median split-half correlation above 0.70, and at least half of sessions above their own 95th-percentile null.",
+      "claim_type": "prediction",
+      "negated_or_boundary_context": true,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Keep as limitation/boundary wording; do not convert into a positive claim."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "The topology block required the Allen-informed candidate to improve by more than 0.05 over both the median permutation and a disconnected model, outperform at least 95\\ bootstrap lower bound.",
+      "claim_type": "mechanistic",
+      "negated_or_boundary_context": true,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Keep as limitation/boundary wording; do not convert into a positive claim."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "Direction required stable latency ordering, a sufficient fraction of resolvable regional pairs, and lead--lag statistics above matched nulls.",
+      "claim_type": "mechanistic",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Require prediction, reproducibility, topology specificity, and direction before mechanistic wording."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "Median cross-mouse correlation was 0.891, median split-half correlation was 0.990, and 75\\ sessions exceeded their own null.",
+      "claim_type": "prediction",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Report predictive performance without promoting it to mechanism or causality."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "None of the topology criteria passed and the block score was 0.073.",
+      "claim_type": "mechanistic",
+      "negated_or_boundary_context": true,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Keep as limitation/boundary wording; do not convert into a positive claim."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "Reproducibility passed and both mechanistic blocks failed in every condition.",
+      "claim_type": "mechanistic",
+      "negated_or_boundary_context": true,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Keep as limitation/boundary wording; do not convert into a positive claim."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "RQ1 is therefore answered positively: the audit recovers complete synthetic truth, diagnoses incomplete synthetic systems, and resists promoting highly reproducible real observations to a mechanism.",
+      "claim_type": "mechanistic",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Require prediction, reproducibility, topology specificity, and direction before mechanistic wording."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "Static Sensorium was evaluated on seven validation mice and five mice with repeated test stimuli.",
+      "claim_type": "prediction",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Report predictive performance without promoting it to mechanism or causality."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "Pearson correlation was computed on held-out observations and summarized at mouse level.",
+      "claim_type": "prediction",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Report predictive performance without promoting it to mechanism or causality."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "Across the seven validation mice, median best correlation was 0.328, median improvement over mean response was 0.102, and median improvement over the scrambled-stimulus control was 0.077.",
+      "claim_type": "prediction",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Report predictive performance without promoting it to mechanism or causality."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "In the five repeated-test mice, median reliability was 0.642 and median best predictive correlation was 0.341.",
+      "claim_type": "prediction",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Report predictive performance without promoting it to mechanism or causality."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "This result is informative but bounded: stimulus-aware models predict held-out responses and partial topographic evidence is stable, while synaptic topology and causal direction remain unobserved.",
+      "claim_type": "causal",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Use causal wording only with intervention or causal-identification evidence."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "Dynamic Sensorium tested whether that distinction survives a more demanding temporal task.",
+      "claim_type": "prediction",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Report predictive performance without promoting it to mechanism or causality."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "Five current public mice and five legacy out-of-distribution mice were evaluated with seven model families: mean response, summary features, temporal filterbank, temporal , random features, a compact PyTorch , and a bounded model instantiated through the official Sensorium loader and model factory.",
+      "claim_type": "prediction",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Report predictive performance without promoting it to mechanism or causality."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "In the legacy out-of-distribution cohort, the corresponding gains were 0.036 and 0.0022.",
+      "claim_type": "generalization",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Restrict generalization wording to the evaluated dataset, animal, session, or domain."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "The bounded official-architecture run completed through the official Sensorium loader and model factory for five mice, with correlations from 0.011 to 0.035 under a deliberately restricted training budget.",
+      "claim_type": "prediction",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Report predictive performance without promoting it to mechanism or causality."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "The audit marks this artifact as an interoperability control and blocks state-of-the-art or leaderboard-equivalent interpretations because the published training budget and protocol were not reproduced.",
+      "claim_type": "sota",
+      "negated_or_boundary_context": true,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Keep as limitation/boundary wording; do not convert into a positive claim."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "MouseBrainBench preserves prediction, repeat reliability, out-of-distribution behaviour, and topographic association as separate outcomes.",
+      "claim_type": "prediction",
+      "negated_or_boundary_context": false,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Report predictive performance without promoting it to mechanism or causality."
+    },
+    {
+      "source": "deterministic_extractor",
+      "text": "For Allen, multiplying every criterion threshold by 0.75, 1.00, or 1.25 leaves the block pattern unchanged: reproducibility passes while topology and direction fail.",
+      "claim_type": "mechanistic",
+      "negated_or_boundary_context": true,
+      "llm_authoritative": false,
+      "suggested_conservative_wording": "Keep as limitation/boundary wording; do not convert into a positive claim."
+    }
+  ],
+  "decision": "llm_claim_extraction_layer_ready_non_authoritative",
+  "interpretation": "The LLM layer is limited to candidate extraction and conservative wording support. Claim authorization remains controlled by executable ClaimBench artifacts."
+}

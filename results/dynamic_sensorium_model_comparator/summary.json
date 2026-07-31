@@ -1,0 +1,1056 @@
+{
+  "comparison": "dynamic_sensorium_predictive_model_comparator",
+  "cohorts": [
+    {
+      "cohort": "dynamic_sensorium2023_oracle",
+      "n_mice": 5,
+      "temporal_summary": "results/dynamic_sensorium_adapter/summary_dynamic_sensorium2023_temporal_filterbank_mis.json",
+      "svd_summary": "results/dynamic_sensorium_temporal_svd/summary_dynamic_sensorium2023_temporal_svd.json",
+      "random_feature_summary": "results/dynamic_sensorium_random_feature/summary_dynamic_sensorium2023_random_feature.json",
+      "torch_mlp_summary": "results/dynamic_sensorium_torch_mlp/summary_dynamic_sensorium2023_torch_mlp.json",
+      "official_sensorium_summary": "results/sensorium_official_baseline_audit/official_trained_baseline_summary.json",
+      "models": [
+        "mean_response",
+        "summary_adapter",
+        "temporal_filterbank",
+        "temporal_svd",
+        "random_feature",
+        "torch_mlp",
+        "official_sensorium_bounded"
+      ],
+      "model_rows": [
+        {
+          "mouse": "dynamic29515",
+          "mean_response": 0.42376986766324315,
+          "summary_adapter": 0.42244437965535253,
+          "temporal_filterbank": 0.4309167731569498,
+          "temporal_svd": 0.41452834204433525,
+          "random_feature": 0.4171319145917034,
+          "torch_mlp": 0.42690156550278685,
+          "official_sensorium_bounded": 0.027006154792659293
+        },
+        {
+          "mouse": "dynamic29623",
+          "mean_response": 0.3679818551875286,
+          "summary_adapter": 0.39021845943639666,
+          "temporal_filterbank": 0.4030518685697743,
+          "temporal_svd": 0.4271261955135371,
+          "random_feature": 0.3545328150076228,
+          "torch_mlp": 0.41799367650239105,
+          "official_sensorium_bounded": 0.03499293789864238
+        },
+        {
+          "mouse": "dynamic29647",
+          "mean_response": 0.4471551567489409,
+          "summary_adapter": 0.4801460889881136,
+          "temporal_filterbank": 0.47416792764925486,
+          "temporal_svd": 0.4861605114221228,
+          "random_feature": 0.45168821251034363,
+          "torch_mlp": 0.4900163140958758,
+          "official_sensorium_bounded": 0.014152610094590515
+        },
+        {
+          "mouse": "dynamic29712",
+          "mean_response": 0.45298415307462914,
+          "summary_adapter": 0.47594909133200297,
+          "temporal_filterbank": 0.4841195675051003,
+          "temporal_svd": 0.49187043002797176,
+          "random_feature": 0.45211232078642394,
+          "torch_mlp": 0.4903576512095004,
+          "official_sensorium_bounded": 0.010642550300572096
+        },
+        {
+          "mouse": "dynamic29755",
+          "mean_response": 0.4805649600408238,
+          "summary_adapter": 0.5009085699541823,
+          "temporal_filterbank": 0.5228131701240796,
+          "temporal_svd": 0.5169175866877092,
+          "random_feature": 0.49958408149901756,
+          "torch_mlp": 0.5263933370463001,
+          "official_sensorium_bounded": 0.027590366184038817
+        }
+      ],
+      "best_models": [
+        {
+          "mouse": "dynamic29515",
+          "best_model": "temporal_filterbank",
+          "best_correlation": 0.4309167731569498,
+          "available_models": [
+            "mean_response",
+            "summary_adapter",
+            "temporal_filterbank",
+            "temporal_svd",
+            "random_feature",
+            "torch_mlp",
+            "official_sensorium_bounded"
+          ]
+        },
+        {
+          "mouse": "dynamic29623",
+          "best_model": "temporal_svd",
+          "best_correlation": 0.4271261955135371,
+          "available_models": [
+            "mean_response",
+            "summary_adapter",
+            "temporal_filterbank",
+            "temporal_svd",
+            "random_feature",
+            "torch_mlp",
+            "official_sensorium_bounded"
+          ]
+        },
+        {
+          "mouse": "dynamic29647",
+          "best_model": "torch_mlp",
+          "best_correlation": 0.4900163140958758,
+          "available_models": [
+            "mean_response",
+            "summary_adapter",
+            "temporal_filterbank",
+            "temporal_svd",
+            "random_feature",
+            "torch_mlp",
+            "official_sensorium_bounded"
+          ]
+        },
+        {
+          "mouse": "dynamic29712",
+          "best_model": "temporal_svd",
+          "best_correlation": 0.49187043002797176,
+          "available_models": [
+            "mean_response",
+            "summary_adapter",
+            "temporal_filterbank",
+            "temporal_svd",
+            "random_feature",
+            "torch_mlp",
+            "official_sensorium_bounded"
+          ]
+        },
+        {
+          "mouse": "dynamic29755",
+          "best_model": "torch_mlp",
+          "best_correlation": 0.5263933370463001,
+          "available_models": [
+            "mean_response",
+            "summary_adapter",
+            "temporal_filterbank",
+            "temporal_svd",
+            "random_feature",
+            "torch_mlp",
+            "official_sensorium_bounded"
+          ]
+        }
+      ],
+      "model_win_counts": {
+        "temporal_filterbank": 1,
+        "temporal_svd": 2,
+        "torch_mlp": 2
+      },
+      "pairwise": {
+        "summary_adapter_vs_temporal_filterbank": {
+          "left": "summary_adapter",
+          "right": "temporal_filterbank",
+          "n_paired": 5,
+          "right_wins": 4,
+          "left_wins": 1,
+          "ties": 0,
+          "median_delta": 0.008472393501597286,
+          "mean_delta": 0.009080543527822161,
+          "rows": [
+            {
+              "mouse": "dynamic29515",
+              "left": "summary_adapter",
+              "right": "temporal_filterbank",
+              "left_correlation": 0.42244437965535253,
+              "right_correlation": 0.4309167731569498,
+              "delta": 0.008472393501597286
+            },
+            {
+              "mouse": "dynamic29623",
+              "left": "summary_adapter",
+              "right": "temporal_filterbank",
+              "left_correlation": 0.39021845943639666,
+              "right_correlation": 0.4030518685697743,
+              "delta": 0.01283340913337766
+            },
+            {
+              "mouse": "dynamic29647",
+              "left": "summary_adapter",
+              "right": "temporal_filterbank",
+              "left_correlation": 0.4801460889881136,
+              "right_correlation": 0.47416792764925486,
+              "delta": -0.005978161338858756
+            },
+            {
+              "mouse": "dynamic29712",
+              "left": "summary_adapter",
+              "right": "temporal_filterbank",
+              "left_correlation": 0.47594909133200297,
+              "right_correlation": 0.4841195675051003,
+              "delta": 0.008170476173097352
+            },
+            {
+              "mouse": "dynamic29755",
+              "left": "summary_adapter",
+              "right": "temporal_filterbank",
+              "left_correlation": 0.5009085699541823,
+              "right_correlation": 0.5228131701240796,
+              "delta": 0.02190460016989726
+            }
+          ]
+        },
+        "mean_response_vs_temporal_filterbank": {
+          "left": "mean_response",
+          "right": "temporal_filterbank",
+          "n_paired": 5,
+          "right_wins": 5,
+          "left_wins": 0,
+          "ties": 0,
+          "median_delta": 0.031135414430471187,
+          "mean_delta": 0.02852266285799867,
+          "rows": [
+            {
+              "mouse": "dynamic29515",
+              "left": "mean_response",
+              "right": "temporal_filterbank",
+              "left_correlation": 0.42376986766324315,
+              "right_correlation": 0.4309167731569498,
+              "delta": 0.007146905493706668
+            },
+            {
+              "mouse": "dynamic29623",
+              "left": "mean_response",
+              "right": "temporal_filterbank",
+              "left_correlation": 0.3679818551875286,
+              "right_correlation": 0.4030518685697743,
+              "delta": 0.035070013382245746
+            },
+            {
+              "mouse": "dynamic29647",
+              "left": "mean_response",
+              "right": "temporal_filterbank",
+              "left_correlation": 0.4471551567489409,
+              "right_correlation": 0.47416792764925486,
+              "delta": 0.027012770900313954
+            },
+            {
+              "mouse": "dynamic29712",
+              "left": "mean_response",
+              "right": "temporal_filterbank",
+              "left_correlation": 0.45298415307462914,
+              "right_correlation": 0.4841195675051003,
+              "delta": 0.031135414430471187
+            },
+            {
+              "mouse": "dynamic29755",
+              "left": "mean_response",
+              "right": "temporal_filterbank",
+              "left_correlation": 0.4805649600408238,
+              "right_correlation": 0.5228131701240796,
+              "delta": 0.0422482100832558
+            }
+          ]
+        },
+        "mean_response_vs_temporal_svd": {
+          "left": "mean_response",
+          "right": "temporal_svd",
+          "n_paired": 5,
+          "right_wins": 4,
+          "left_wins": 1,
+          "ties": 0,
+          "median_delta": 0.038886276953342624,
+          "mean_delta": 0.0328294145961021,
+          "rows": [
+            {
+              "mouse": "dynamic29515",
+              "left": "mean_response",
+              "right": "temporal_svd",
+              "left_correlation": 0.42376986766324315,
+              "right_correlation": 0.41452834204433525,
+              "delta": -0.009241525618907898
+            },
+            {
+              "mouse": "dynamic29623",
+              "left": "mean_response",
+              "right": "temporal_svd",
+              "left_correlation": 0.3679818551875286,
+              "right_correlation": 0.4271261955135371,
+              "delta": 0.059144340326008515
+            },
+            {
+              "mouse": "dynamic29647",
+              "left": "mean_response",
+              "right": "temporal_svd",
+              "left_correlation": 0.4471551567489409,
+              "right_correlation": 0.4861605114221228,
+              "delta": 0.03900535467318189
+            },
+            {
+              "mouse": "dynamic29712",
+              "left": "mean_response",
+              "right": "temporal_svd",
+              "left_correlation": 0.45298415307462914,
+              "right_correlation": 0.49187043002797176,
+              "delta": 0.038886276953342624
+            },
+            {
+              "mouse": "dynamic29755",
+              "left": "mean_response",
+              "right": "temporal_svd",
+              "left_correlation": 0.4805649600408238,
+              "right_correlation": 0.5169175866877092,
+              "delta": 0.03635262664688538
+            }
+          ]
+        },
+        "temporal_filterbank_vs_temporal_svd": {
+          "left": "temporal_filterbank",
+          "right": "temporal_svd",
+          "n_paired": 5,
+          "right_wins": 3,
+          "left_wins": 2,
+          "ties": 0,
+          "median_delta": 0.007750862522871438,
+          "mean_delta": 0.004306751738103432,
+          "rows": [
+            {
+              "mouse": "dynamic29515",
+              "left": "temporal_filterbank",
+              "right": "temporal_svd",
+              "left_correlation": 0.4309167731569498,
+              "right_correlation": 0.41452834204433525,
+              "delta": -0.016388431112614565
+            },
+            {
+              "mouse": "dynamic29623",
+              "left": "temporal_filterbank",
+              "right": "temporal_svd",
+              "left_correlation": 0.4030518685697743,
+              "right_correlation": 0.4271261955135371,
+              "delta": 0.02407432694376277
+            },
+            {
+              "mouse": "dynamic29647",
+              "left": "temporal_filterbank",
+              "right": "temporal_svd",
+              "left_correlation": 0.47416792764925486,
+              "right_correlation": 0.4861605114221228,
+              "delta": 0.011992583772867937
+            },
+            {
+              "mouse": "dynamic29712",
+              "left": "temporal_filterbank",
+              "right": "temporal_svd",
+              "left_correlation": 0.4841195675051003,
+              "right_correlation": 0.49187043002797176,
+              "delta": 0.007750862522871438
+            },
+            {
+              "mouse": "dynamic29755",
+              "left": "temporal_filterbank",
+              "right": "temporal_svd",
+              "left_correlation": 0.5228131701240796,
+              "right_correlation": 0.5169175866877092,
+              "delta": -0.005895583436370422
+            }
+          ]
+        },
+        "temporal_svd_vs_random_feature": {
+          "left": "temporal_svd",
+          "right": "random_feature",
+          "n_paired": 5,
+          "right_wins": 1,
+          "left_wins": 4,
+          "ties": 0,
+          "median_delta": -0.034472298911779164,
+          "mean_delta": -0.03231074426011295,
+          "rows": [
+            {
+              "mouse": "dynamic29515",
+              "left": "temporal_svd",
+              "right": "random_feature",
+              "left_correlation": 0.41452834204433525,
+              "right_correlation": 0.4171319145917034,
+              "delta": 0.0026035725473681492
+            },
+            {
+              "mouse": "dynamic29623",
+              "left": "temporal_svd",
+              "right": "random_feature",
+              "left_correlation": 0.4271261955135371,
+              "right_correlation": 0.3545328150076228,
+              "delta": -0.0725933805059143
+            },
+            {
+              "mouse": "dynamic29647",
+              "left": "temporal_svd",
+              "right": "random_feature",
+              "left_correlation": 0.4861605114221228,
+              "right_correlation": 0.45168821251034363,
+              "delta": -0.034472298911779164
+            },
+            {
+              "mouse": "dynamic29712",
+              "left": "temporal_svd",
+              "right": "random_feature",
+              "left_correlation": 0.49187043002797176,
+              "right_correlation": 0.45211232078642394,
+              "delta": -0.03975810924154782
+            },
+            {
+              "mouse": "dynamic29755",
+              "left": "temporal_svd",
+              "right": "random_feature",
+              "left_correlation": 0.5169175866877092,
+              "right_correlation": 0.49958408149901756,
+              "delta": -0.01733350518869159
+            }
+          ]
+        },
+        "temporal_svd_vs_torch_mlp": {
+          "left": "temporal_svd",
+          "right": "torch_mlp",
+          "n_paired": 5,
+          "right_wins": 3,
+          "left_wins": 2,
+          "ties": 0,
+          "median_delta": 0.003855802673753017,
+          "mean_delta": 0.0030118957322356364,
+          "rows": [
+            {
+              "mouse": "dynamic29515",
+              "left": "temporal_svd",
+              "right": "torch_mlp",
+              "left_correlation": 0.41452834204433525,
+              "right_correlation": 0.42690156550278685,
+              "delta": 0.012373223458451599
+            },
+            {
+              "mouse": "dynamic29623",
+              "left": "temporal_svd",
+              "right": "torch_mlp",
+              "left_correlation": 0.4271261955135371,
+              "right_correlation": 0.41799367650239105,
+              "delta": -0.009132519011146034
+            },
+            {
+              "mouse": "dynamic29647",
+              "left": "temporal_svd",
+              "right": "torch_mlp",
+              "left_correlation": 0.4861605114221228,
+              "right_correlation": 0.4900163140958758,
+              "delta": 0.003855802673753017
+            },
+            {
+              "mouse": "dynamic29712",
+              "left": "temporal_svd",
+              "right": "torch_mlp",
+              "left_correlation": 0.49187043002797176,
+              "right_correlation": 0.4903576512095004,
+              "delta": -0.0015127788184713387
+            },
+            {
+              "mouse": "dynamic29755",
+              "left": "temporal_svd",
+              "right": "torch_mlp",
+              "left_correlation": 0.5169175866877092,
+              "right_correlation": 0.5263933370463001,
+              "delta": 0.00947575035859094
+            }
+          ]
+        },
+        "torch_mlp_vs_official_sensorium_bounded": {
+          "left": "torch_mlp",
+          "right": "official_sensorium_bounded",
+          "n_paired": 5,
+          "right_wins": 0,
+          "left_wins": 5,
+          "ties": 0,
+          "median_delta": -0.4758637040012853,
+          "mean_delta": -0.44745558501727023,
+          "rows": [
+            {
+              "mouse": "dynamic29515",
+              "left": "torch_mlp",
+              "right": "official_sensorium_bounded",
+              "left_correlation": 0.42690156550278685,
+              "right_correlation": 0.027006154792659293,
+              "delta": -0.3998954107101276
+            },
+            {
+              "mouse": "dynamic29623",
+              "left": "torch_mlp",
+              "right": "official_sensorium_bounded",
+              "left_correlation": 0.41799367650239105,
+              "right_correlation": 0.03499293789864238,
+              "delta": -0.38300073860374867
+            },
+            {
+              "mouse": "dynamic29647",
+              "left": "torch_mlp",
+              "right": "official_sensorium_bounded",
+              "left_correlation": 0.4900163140958758,
+              "right_correlation": 0.014152610094590515,
+              "delta": -0.4758637040012853
+            },
+            {
+              "mouse": "dynamic29712",
+              "left": "torch_mlp",
+              "right": "official_sensorium_bounded",
+              "left_correlation": 0.4903576512095004,
+              "right_correlation": 0.010642550300572096,
+              "delta": -0.4797151009089283
+            },
+            {
+              "mouse": "dynamic29755",
+              "left": "torch_mlp",
+              "right": "official_sensorium_bounded",
+              "left_correlation": 0.5263933370463001,
+              "right_correlation": 0.027590366184038817,
+              "delta": -0.4988029708622613
+            }
+          ]
+        },
+        "temporal_svd_vs_official_sensorium_bounded": {
+          "left": "temporal_svd",
+          "right": "official_sensorium_bounded",
+          "n_paired": 5,
+          "right_wins": 0,
+          "left_wins": 5,
+          "ties": 0,
+          "median_delta": -0.4720079013275323,
+          "mean_delta": -0.44444368928503464,
+          "rows": [
+            {
+              "mouse": "dynamic29515",
+              "left": "temporal_svd",
+              "right": "official_sensorium_bounded",
+              "left_correlation": 0.41452834204433525,
+              "right_correlation": 0.027006154792659293,
+              "delta": -0.387522187251676
+            },
+            {
+              "mouse": "dynamic29623",
+              "left": "temporal_svd",
+              "right": "official_sensorium_bounded",
+              "left_correlation": 0.4271261955135371,
+              "right_correlation": 0.03499293789864238,
+              "delta": -0.3921332576148947
+            },
+            {
+              "mouse": "dynamic29647",
+              "left": "temporal_svd",
+              "right": "official_sensorium_bounded",
+              "left_correlation": 0.4861605114221228,
+              "right_correlation": 0.014152610094590515,
+              "delta": -0.4720079013275323
+            },
+            {
+              "mouse": "dynamic29712",
+              "left": "temporal_svd",
+              "right": "official_sensorium_bounded",
+              "left_correlation": 0.49187043002797176,
+              "right_correlation": 0.010642550300572096,
+              "delta": -0.48122787972739967
+            },
+            {
+              "mouse": "dynamic29755",
+              "left": "temporal_svd",
+              "right": "official_sensorium_bounded",
+              "left_correlation": 0.5169175866877092,
+              "right_correlation": 0.027590366184038817,
+              "delta": -0.48932722050367033
+            }
+          ]
+        }
+      },
+      "mis_passed_count": 0,
+      "reliability_estimable_count": 0,
+      "evidence_label": "predictive_benchmark_requires_reliability_or_causal_constraints",
+      "interpretation": "Predictive deltas are paired by mouse. A positive SVD result is treated as predictive/OOD evidence only; MIS and reliability fields control whether the result can support a mechanistic claim."
+    },
+    {
+      "cohort": "dynamic_sensorium_legacy_ood",
+      "n_mice": 5,
+      "temporal_summary": "results/dynamic_sensorium_ood/summary_dynamic_sensorium_legacy_ood_temporal_comparison.json",
+      "svd_summary": "results/dynamic_sensorium_temporal_svd/summary_dynamic_sensorium_legacy_ood_temporal_svd.json",
+      "random_feature_summary": "results/dynamic_sensorium_random_feature/summary_dynamic_sensorium_legacy_ood_random_feature.json",
+      "torch_mlp_summary": "results/dynamic_sensorium_torch_mlp/summary_dynamic_sensorium_legacy_ood_torch_mlp.json",
+      "official_sensorium_summary": null,
+      "models": [
+        "mean_response",
+        "summary_adapter",
+        "temporal_filterbank",
+        "temporal_svd",
+        "random_feature",
+        "torch_mlp",
+        "official_sensorium_bounded"
+      ],
+      "model_rows": [
+        {
+          "mouse": "dynamic29156",
+          "mean_response": 0.36495873496165293,
+          "summary_adapter": 0.36292557669545394,
+          "temporal_filterbank": 0.39149076829139556,
+          "temporal_svd": 0.3988372201491509,
+          "random_feature": 0.3863637243358102,
+          "torch_mlp": 0.401032012006441,
+          "official_sensorium_bounded": null
+        },
+        {
+          "mouse": "dynamic29228",
+          "mean_response": 0.4125726957327547,
+          "summary_adapter": 0.4177947569881028,
+          "temporal_filterbank": 0.42885706071431245,
+          "temporal_svd": 0.434712342706658,
+          "random_feature": 0.43718459294365525,
+          "torch_mlp": 0.4486740193073883,
+          "official_sensorium_bounded": null
+        },
+        {
+          "mouse": "dynamic29234",
+          "mean_response": 0.3293878525880467,
+          "summary_adapter": 0.3228829080148688,
+          "temporal_filterbank": 0.3230042509452526,
+          "temporal_svd": 0.3602982743004778,
+          "random_feature": 0.3561994057514263,
+          "torch_mlp": 0.3433384432919462,
+          "official_sensorium_bounded": null
+        },
+        {
+          "mouse": "dynamic29513",
+          "mean_response": 0.3885619161099073,
+          "summary_adapter": 0.4111338320559275,
+          "temporal_filterbank": 0.4217810590697307,
+          "temporal_svd": 0.42657398177945427,
+          "random_feature": 0.3692382147473705,
+          "torch_mlp": 0.3619902204355194,
+          "official_sensorium_bounded": null
+        },
+        {
+          "mouse": "dynamic29514",
+          "mean_response": 0.4038027596907151,
+          "summary_adapter": 0.41616906735192394,
+          "temporal_filterbank": 0.4288110915950094,
+          "temporal_svd": 0.43318704379711154,
+          "random_feature": 0.4029242894553018,
+          "torch_mlp": 0.44034558910294047,
+          "official_sensorium_bounded": null
+        }
+      ],
+      "best_models": [
+        {
+          "mouse": "dynamic29156",
+          "best_model": "torch_mlp",
+          "best_correlation": 0.401032012006441,
+          "available_models": [
+            "mean_response",
+            "summary_adapter",
+            "temporal_filterbank",
+            "temporal_svd",
+            "random_feature",
+            "torch_mlp"
+          ]
+        },
+        {
+          "mouse": "dynamic29228",
+          "best_model": "torch_mlp",
+          "best_correlation": 0.4486740193073883,
+          "available_models": [
+            "mean_response",
+            "summary_adapter",
+            "temporal_filterbank",
+            "temporal_svd",
+            "random_feature",
+            "torch_mlp"
+          ]
+        },
+        {
+          "mouse": "dynamic29234",
+          "best_model": "temporal_svd",
+          "best_correlation": 0.3602982743004778,
+          "available_models": [
+            "mean_response",
+            "summary_adapter",
+            "temporal_filterbank",
+            "temporal_svd",
+            "random_feature",
+            "torch_mlp"
+          ]
+        },
+        {
+          "mouse": "dynamic29513",
+          "best_model": "temporal_svd",
+          "best_correlation": 0.42657398177945427,
+          "available_models": [
+            "mean_response",
+            "summary_adapter",
+            "temporal_filterbank",
+            "temporal_svd",
+            "random_feature",
+            "torch_mlp"
+          ]
+        },
+        {
+          "mouse": "dynamic29514",
+          "best_model": "torch_mlp",
+          "best_correlation": 0.44034558910294047,
+          "available_models": [
+            "mean_response",
+            "summary_adapter",
+            "temporal_filterbank",
+            "temporal_svd",
+            "random_feature",
+            "torch_mlp"
+          ]
+        }
+      ],
+      "model_win_counts": {
+        "torch_mlp": 3,
+        "temporal_svd": 2
+      },
+      "pairwise": {
+        "summary_adapter_vs_temporal_filterbank": {
+          "left": "summary_adapter",
+          "right": "temporal_filterbank",
+          "n_paired": 5,
+          "right_wins": 5,
+          "left_wins": 0,
+          "ties": 0,
+          "median_delta": 0.011062303726209644,
+          "mean_delta": 0.012607617901884739,
+          "rows": [
+            {
+              "mouse": "dynamic29156",
+              "left": "summary_adapter",
+              "right": "temporal_filterbank",
+              "left_correlation": 0.36292557669545394,
+              "right_correlation": 0.39149076829139556,
+              "delta": 0.02856519159594162
+            },
+            {
+              "mouse": "dynamic29228",
+              "left": "summary_adapter",
+              "right": "temporal_filterbank",
+              "left_correlation": 0.4177947569881028,
+              "right_correlation": 0.42885706071431245,
+              "delta": 0.011062303726209644
+            },
+            {
+              "mouse": "dynamic29234",
+              "left": "summary_adapter",
+              "right": "temporal_filterbank",
+              "left_correlation": 0.3228829080148688,
+              "right_correlation": 0.3230042509452526,
+              "delta": 0.00012134293038379429
+            },
+            {
+              "mouse": "dynamic29513",
+              "left": "summary_adapter",
+              "right": "temporal_filterbank",
+              "left_correlation": 0.4111338320559275,
+              "right_correlation": 0.4217810590697307,
+              "delta": 0.010647227013803162
+            },
+            {
+              "mouse": "dynamic29514",
+              "left": "summary_adapter",
+              "right": "temporal_filterbank",
+              "left_correlation": 0.41616906735192394,
+              "right_correlation": 0.4288110915950094,
+              "delta": 0.01264202424308547
+            }
+          ]
+        },
+        "mean_response_vs_temporal_filterbank": {
+          "left": "mean_response",
+          "right": "temporal_filterbank",
+          "n_paired": 5,
+          "right_wins": 4,
+          "left_wins": 1,
+          "ties": 0,
+          "median_delta": 0.0250083319042943,
+          "mean_delta": 0.018932054306524792,
+          "rows": [
+            {
+              "mouse": "dynamic29156",
+              "left": "mean_response",
+              "right": "temporal_filterbank",
+              "left_correlation": 0.36495873496165293,
+              "right_correlation": 0.39149076829139556,
+              "delta": 0.026532033329742633
+            },
+            {
+              "mouse": "dynamic29228",
+              "left": "mean_response",
+              "right": "temporal_filterbank",
+              "left_correlation": 0.4125726957327547,
+              "right_correlation": 0.42885706071431245,
+              "delta": 0.016284364981557775
+            },
+            {
+              "mouse": "dynamic29234",
+              "left": "mean_response",
+              "right": "temporal_filterbank",
+              "left_correlation": 0.3293878525880467,
+              "right_correlation": 0.3230042509452526,
+              "delta": -0.006383601642794112
+            },
+            {
+              "mouse": "dynamic29513",
+              "left": "mean_response",
+              "right": "temporal_filterbank",
+              "left_correlation": 0.3885619161099073,
+              "right_correlation": 0.4217810590697307,
+              "delta": 0.03321914295982337
+            },
+            {
+              "mouse": "dynamic29514",
+              "left": "mean_response",
+              "right": "temporal_filterbank",
+              "left_correlation": 0.4038027596907151,
+              "right_correlation": 0.4288110915950094,
+              "delta": 0.0250083319042943
+            }
+          ]
+        },
+        "mean_response_vs_temporal_svd": {
+          "left": "mean_response",
+          "right": "temporal_svd",
+          "n_paired": 5,
+          "right_wins": 5,
+          "left_wins": 0,
+          "ties": 0,
+          "median_delta": 0.03091042171243108,
+          "mean_delta": 0.03086498072995515,
+          "rows": [
+            {
+              "mouse": "dynamic29156",
+              "left": "mean_response",
+              "right": "temporal_svd",
+              "left_correlation": 0.36495873496165293,
+              "right_correlation": 0.3988372201491509,
+              "delta": 0.033878485187497975
+            },
+            {
+              "mouse": "dynamic29228",
+              "left": "mean_response",
+              "right": "temporal_svd",
+              "left_correlation": 0.4125726957327547,
+              "right_correlation": 0.434712342706658,
+              "delta": 0.022139646973903304
+            },
+            {
+              "mouse": "dynamic29234",
+              "left": "mean_response",
+              "right": "temporal_svd",
+              "left_correlation": 0.3293878525880467,
+              "right_correlation": 0.3602982743004778,
+              "delta": 0.03091042171243108
+            },
+            {
+              "mouse": "dynamic29513",
+              "left": "mean_response",
+              "right": "temporal_svd",
+              "left_correlation": 0.3885619161099073,
+              "right_correlation": 0.42657398177945427,
+              "delta": 0.03801206566954696
+            },
+            {
+              "mouse": "dynamic29514",
+              "left": "mean_response",
+              "right": "temporal_svd",
+              "left_correlation": 0.4038027596907151,
+              "right_correlation": 0.43318704379711154,
+              "delta": 0.02938428410639643
+            }
+          ]
+        },
+        "temporal_filterbank_vs_temporal_svd": {
+          "left": "temporal_filterbank",
+          "right": "temporal_svd",
+          "n_paired": 5,
+          "right_wins": 5,
+          "left_wins": 0,
+          "ties": 0,
+          "median_delta": 0.005855281992345529,
+          "mean_delta": 0.011932926423430357,
+          "rows": [
+            {
+              "mouse": "dynamic29156",
+              "left": "temporal_filterbank",
+              "right": "temporal_svd",
+              "left_correlation": 0.39149076829139556,
+              "right_correlation": 0.3988372201491509,
+              "delta": 0.007346451857755343
+            },
+            {
+              "mouse": "dynamic29228",
+              "left": "temporal_filterbank",
+              "right": "temporal_svd",
+              "left_correlation": 0.42885706071431245,
+              "right_correlation": 0.434712342706658,
+              "delta": 0.005855281992345529
+            },
+            {
+              "mouse": "dynamic29234",
+              "left": "temporal_filterbank",
+              "right": "temporal_svd",
+              "left_correlation": 0.3230042509452526,
+              "right_correlation": 0.3602982743004778,
+              "delta": 0.03729402335522519
+            },
+            {
+              "mouse": "dynamic29513",
+              "left": "temporal_filterbank",
+              "right": "temporal_svd",
+              "left_correlation": 0.4217810590697307,
+              "right_correlation": 0.42657398177945427,
+              "delta": 0.0047929227097235905
+            },
+            {
+              "mouse": "dynamic29514",
+              "left": "temporal_filterbank",
+              "right": "temporal_svd",
+              "left_correlation": 0.4288110915950094,
+              "right_correlation": 0.43318704379711154,
+              "delta": 0.004375952202102129
+            }
+          ]
+        },
+        "temporal_svd_vs_random_feature": {
+          "left": "temporal_svd",
+          "right": "random_feature",
+          "n_paired": 5,
+          "right_wins": 1,
+          "left_wins": 4,
+          "ties": 0,
+          "median_delta": -0.01247349581334073,
+          "mean_delta": -0.020339727099857697,
+          "rows": [
+            {
+              "mouse": "dynamic29156",
+              "left": "temporal_svd",
+              "right": "random_feature",
+              "left_correlation": 0.3988372201491509,
+              "right_correlation": 0.3863637243358102,
+              "delta": -0.01247349581334073
+            },
+            {
+              "mouse": "dynamic29228",
+              "left": "temporal_svd",
+              "right": "random_feature",
+              "left_correlation": 0.434712342706658,
+              "right_correlation": 0.43718459294365525,
+              "delta": 0.0024722502369972643
+            },
+            {
+              "mouse": "dynamic29234",
+              "left": "temporal_svd",
+              "right": "random_feature",
+              "left_correlation": 0.3602982743004778,
+              "right_correlation": 0.3561994057514263,
+              "delta": -0.004098868549051504
+            },
+            {
+              "mouse": "dynamic29513",
+              "left": "temporal_svd",
+              "right": "random_feature",
+              "left_correlation": 0.42657398177945427,
+              "right_correlation": 0.3692382147473705,
+              "delta": -0.05733576703208376
+            },
+            {
+              "mouse": "dynamic29514",
+              "left": "temporal_svd",
+              "right": "random_feature",
+              "left_correlation": 0.43318704379711154,
+              "right_correlation": 0.4029242894553018,
+              "delta": -0.03026275434180975
+            }
+          ]
+        },
+        "temporal_svd_vs_torch_mlp": {
+          "left": "temporal_svd",
+          "right": "torch_mlp",
+          "n_paired": 5,
+          "right_wins": 3,
+          "left_wins": 2,
+          "ties": 0,
+          "median_delta": 0.0021947918572901015,
+          "mean_delta": -0.011645715717723415,
+          "rows": [
+            {
+              "mouse": "dynamic29156",
+              "left": "temporal_svd",
+              "right": "torch_mlp",
+              "left_correlation": 0.3988372201491509,
+              "right_correlation": 0.401032012006441,
+              "delta": 0.0021947918572901015
+            },
+            {
+              "mouse": "dynamic29228",
+              "left": "temporal_svd",
+              "right": "torch_mlp",
+              "left_correlation": 0.434712342706658,
+              "right_correlation": 0.4486740193073883,
+              "delta": 0.013961676600730333
+            },
+            {
+              "mouse": "dynamic29234",
+              "left": "temporal_svd",
+              "right": "torch_mlp",
+              "left_correlation": 0.3602982743004778,
+              "right_correlation": 0.3433384432919462,
+              "delta": -0.0169598310085316
+            },
+            {
+              "mouse": "dynamic29513",
+              "left": "temporal_svd",
+              "right": "torch_mlp",
+              "left_correlation": 0.42657398177945427,
+              "right_correlation": 0.3619902204355194,
+              "delta": -0.06458376134393484
+            },
+            {
+              "mouse": "dynamic29514",
+              "left": "temporal_svd",
+              "right": "torch_mlp",
+              "left_correlation": 0.43318704379711154,
+              "right_correlation": 0.44034558910294047,
+              "delta": 0.007158545305828934
+            }
+          ]
+        },
+        "torch_mlp_vs_official_sensorium_bounded": {
+          "left": "torch_mlp",
+          "right": "official_sensorium_bounded",
+          "n_paired": 0,
+          "right_wins": 0,
+          "left_wins": 0,
+          "ties": 0,
+          "median_delta": null,
+          "mean_delta": null,
+          "rows": []
+        },
+        "temporal_svd_vs_official_sensorium_bounded": {
+          "left": "temporal_svd",
+          "right": "official_sensorium_bounded",
+          "n_paired": 0,
+          "right_wins": 0,
+          "left_wins": 0,
+          "ties": 0,
+          "median_delta": null,
+          "mean_delta": null,
+          "rows": []
+        }
+      },
+      "mis_passed_count": 0,
+      "reliability_estimable_count": 0,
+      "evidence_label": "positive_ood_prediction_without_mechanistic_identifiability",
+      "interpretation": "Predictive deltas are paired by mouse. A positive SVD result is treated as predictive/OOD evidence only; MIS and reliability fields control whether the result can support a mechanistic claim."
+    }
+  ],
+  "interpretation": "This comparator asks whether progressively stronger transparent models improve held-out prediction and whether that improvement is allowed to count as mechanistic evidence. Current Dynamic Sensorium artifacts remain predictive evidence only because MIS does not pass."
+}

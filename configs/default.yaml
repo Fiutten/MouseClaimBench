@@ -1,0 +1,31 @@
+run:
+  name: phase1-wilson-cowan-50
+  output_dir: outputs
+connectivity:
+  source: synthetic
+  n_regions: 50
+  density: 0.1
+  seed: 17
+  normalization: spectral_radius
+model:
+  name: wilson_cowan
+  coupling: 0.35
+simulation:
+  dt: 0.2
+  t_max: 40.0
+  seed: 23
+  integrator: rk4
+  noise_std: 0.002
+  clip: [0.0, 1.0]
+stimuli:
+  - targets: [VISp]
+    onset: 10.0
+    duration: 5.0
+    amplitude: 0.2
+perturbations:
+  - kind: lesion
+    targets: [TH]
+    onset: 20.0
+    duration: 10.0
+analysis:
+  affected_region_threshold: 0.001

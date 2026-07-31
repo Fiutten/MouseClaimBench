@@ -1,0 +1,82 @@
+{
+  "version": "0.6.0",
+  "git_revision": "4fecaaf07773d1b6353cdba8334eb04e2a497f24",
+  "analysis": "claimbench_threat_model",
+  "num_threats": 7,
+  "passed_threats": 7,
+  "failed_threats": [],
+  "critical_failed_threats": [],
+  "rows": [
+    {
+      "threat_id": "rules_without_value",
+      "severity": "critical",
+      "reviewer_attack": "The framework is only a hand-written rule table.",
+      "required_artifact": "results/claimbench_component_ablation/summary.json",
+      "expected_decision": "claimbench_components_have_nonredundant_value",
+      "observed_decision": "claimbench_components_have_nonredundant_value",
+      "passed": true,
+      "claim_boundary": "Claim non-redundant audit value, not superior prediction."
+    },
+    {
+      "threat_id": "threshold_arbitrariness",
+      "severity": "high",
+      "reviewer_attack": "The result depends on arbitrary thresholds.",
+      "required_artifact": "results/claim_threshold_sensitivity_v2/summary.json",
+      "expected_decision": "claim_thresholds_have_nontrivial_safe_region_with_reportable_limits",
+      "observed_decision": "claim_thresholds_have_nontrivial_safe_region_with_reportable_limits",
+      "passed": true,
+      "claim_boundary": "Report safe and dangerous regions; do not claim universal threshold robustness."
+    },
+    {
+      "threat_id": "synthetic_overfit",
+      "severity": "high",
+      "reviewer_attack": "The gate only works on hand-crafted synthetic cases.",
+      "required_artifact": "results/scifact_claim_verification/summary.json",
+      "expected_decision": "scifact_external_claim_audit_ready",
+      "observed_decision": "scifact_external_claim_audit_ready",
+      "passed": true,
+      "claim_boundary": "Use SciFact as external claim-auditing evidence, not SOTA verification."
+    },
+    {
+      "threat_id": "causal_overclaim",
+      "severity": "critical",
+      "reviewer_attack": "The method mistakes correlation for causal direction.",
+      "required_artifact": "results/tuebingen_causal_direction/summary.json",
+      "expected_decision": "tuebingen_external_direction_benchmark_ready",
+      "observed_decision": "tuebingen_external_direction_benchmark_ready",
+      "passed": true,
+      "claim_boundary": "Use Tuebingen to block causal overclaims, not to claim causal-discovery performance."
+    },
+    {
+      "threat_id": "wording_drift",
+      "severity": "critical",
+      "reviewer_attack": "The manuscript says more than the artifacts support.",
+      "required_artifact": "results/manuscript_claim_audit/summary.json",
+      "expected_decision": "manuscript_claim_audit_passed",
+      "observed_decision": "manuscript_claim_audit_passed",
+      "passed": true,
+      "claim_boundary": "Keep manuscript wording tied to executable claim contracts."
+    },
+    {
+      "threat_id": "llm_authority_drift",
+      "severity": "critical",
+      "reviewer_attack": "The LLM becomes an unverified judge of scientific claims.",
+      "required_artifact": "results/llm_claim_extraction_audit/summary.json",
+      "expected_decision": "llm_claim_extraction_layer_ready_non_authoritative",
+      "observed_decision": "llm_claim_extraction_layer_ready_non_authoritative",
+      "passed": true,
+      "claim_boundary": "Use LLMs only for candidate extraction and conservative wording support."
+    },
+    {
+      "threat_id": "uncertainty_hidden",
+      "severity": "high",
+      "reviewer_attack": "Borderline evidence is forced into binary support.",
+      "required_artifact": "results/uncertainty_claim_gate_v2/summary.json",
+      "expected_decision": "uncertainty_gate_blocks_unsupported_support",
+      "observed_decision": "uncertainty_gate_blocks_unsupported_support",
+      "passed": true,
+      "claim_boundary": "Uncertain claims remain uncertain; uncertainty cannot become support."
+    }
+  ],
+  "decision": "claimbench_threat_model_passed_with_boundaries"
+}

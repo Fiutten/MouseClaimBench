@@ -1,0 +1,77 @@
+{
+  "version": "0.6.0",
+  "git_revision": "4fecaaf07773d1b6353cdba8334eb04e2a497f24",
+  "analysis": "cost_fidelity_claim_frontier",
+  "frontier": [
+    "external_causal_positive_controls",
+    "claimbench_v2_claim_audit"
+  ],
+  "points": [
+    {
+      "name": "sensorium_static_predictive",
+      "cost_units": 2.0,
+      "fidelity_score": 0.7,
+      "authorized_claims": [
+        "predictive",
+        "reproducible"
+      ],
+      "artifact": "results/sensorium_static_model_comparator/summary.json",
+      "interpretation": "predictive visual-cortex case without causal promotion",
+      "on_frontier": false
+    },
+    {
+      "name": "dynamic_sensorium_temporal",
+      "cost_units": 3.0,
+      "fidelity_score": 0.66,
+      "authorized_claims": [
+        "predictive",
+        "reproducible"
+      ],
+      "artifact": "results/dynamic_sensorium_model_comparator/summary.json",
+      "interpretation": "temporal predictive case without topology/direction promotion",
+      "on_frontier": false
+    },
+    {
+      "name": "microns_local_structure_function",
+      "cost_units": 5.0,
+      "fidelity_score": 0.8,
+      "authorized_claims": [
+        "predictive",
+        "reproducible",
+        "structure_function"
+      ],
+      "artifact": "results/microns_primary_robustness/summary.json",
+      "interpretation": "local observational structure-function evidence",
+      "on_frontier": false
+    },
+    {
+      "name": "external_causal_positive_controls",
+      "cost_units": 1.0,
+      "fidelity_score": 0.9,
+      "authorized_claims": [
+        "predictive",
+        "reproducible",
+        "topology_specific",
+        "directed",
+        "mechanistic",
+        "causal"
+      ],
+      "artifact": "results/external_causal_claim_validation/summary.json",
+      "interpretation": "known-truth external causal controls, not neurobiological evidence",
+      "on_frontier": true
+    },
+    {
+      "name": "claimbench_v2_claim_audit",
+      "cost_units": 1.5,
+      "fidelity_score": 0.95,
+      "authorized_claims": [
+        "benchmark_claim",
+        "reviewer_defense_claim"
+      ],
+      "artifact": "results/claim_adversarial_v2/summary.json",
+      "interpretation": "methodological evidence about claim authorization",
+      "on_frontier": true
+    }
+  ],
+  "decision": "cost_fidelity_claim_frontier_built"
+}

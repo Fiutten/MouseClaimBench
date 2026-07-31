@@ -1,0 +1,67 @@
+{
+  "version": "0.6.0",
+  "git_revision": "4fecaaf07773d1b6353cdba8334eb04e2a497f24",
+  "analysis": "claimbench_component_ablation",
+  "num_components": 8,
+  "high_or_critical_components": 7,
+  "rows": [
+    {
+      "component": "non_compensatory_gate",
+      "removed_condition": "replace with correlation-only evaluation",
+      "evidence": "claim_gate_ORI=0.0; correlation_ORI=0.5208333333333334",
+      "effect": "Correlation-only evaluation authorizes many unsupported topology, direction, structure-function, and mechanistic claims.",
+      "severity": "critical"
+    },
+    {
+      "component": "non_compensatory_gate",
+      "removed_condition": "replace with compensatory weighted score",
+      "evidence": "claim_gate_ORI=0.0; compensatory_ORI=0.1346153846153846",
+      "effect": "Weighted compensation reintroduces unsupported claim authorization.",
+      "severity": "high"
+    },
+    {
+      "component": "topology_block",
+      "removed_condition": "allow mechanism without topology specificity",
+      "evidence": "no_topology_ORI=0.019230769230769232",
+      "effect": "Mechanistic claims can pass when topology evidence is missing.",
+      "severity": "high"
+    },
+    {
+      "component": "direction_block",
+      "removed_condition": "allow mechanism without directed evidence",
+      "evidence": "no_direction_ORI=0.019230769230769232",
+      "effect": "Mechanistic claims can pass when direction is not identified.",
+      "severity": "high"
+    },
+    {
+      "component": "uncertainty_status",
+      "removed_condition": "force every borderline claim into supported/blocked",
+      "evidence": "unsupported_supported=0; supported_uncertain=25",
+      "effect": "Uncertainty is needed to report supported claims that become unstable under local evidence perturbations.",
+      "severity": "medium"
+    },
+    {
+      "component": "scientific_evidence_retrieval",
+      "removed_condition": "use lexical citation overlap without retrieval/rationale separation",
+      "evidence": "shortcut_ORI=0.19886363636363635; bm25_recall_at_5=0.898936170212766; bm25_rationale_ORI=0.25",
+      "effect": "SciFact shows that evidence retrieval and support classification must be reported separately from lexical overlap.",
+      "severity": "high"
+    },
+    {
+      "component": "causal_abstention",
+      "removed_condition": "allow correlation to authorize causal direction",
+      "evidence": "correlation_only_direction_overclaims=79; causal_performance_claim_allowed=False",
+      "effect": "Tuebingen supports causal-overclaiming control, but not a causal-discovery performance claim.",
+      "severity": "critical"
+    },
+    {
+      "component": "manuscript_audit",
+      "removed_condition": "do not audit text against executable claim contracts",
+      "evidence": "decision=manuscript_claim_audit_passed; active_risk_hits=0; inputs=3",
+      "effect": "The current manuscript can be checked directly for unsupported wording.",
+      "severity": "high"
+    }
+  ],
+  "decision": "claimbench_components_have_nonredundant_value",
+  "interpretation": "The ablation does not claim that ClaimBench is a better predictor or causal discovery method. It shows that removing claim-gate components reintroduces unsupported scientific wording or removes the ability to audit it."
+}

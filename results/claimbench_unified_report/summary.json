@@ -1,0 +1,82 @@
+{
+  "version": "0.6.0",
+  "git_revision": "4fecaaf07773d1b6353cdba8334eb04e2a497f24",
+  "analysis": "claimbench_unified_report",
+  "num_criteria": 10,
+  "passed_criteria": 10,
+  "failed_criteria": [],
+  "criteria": [
+    {
+      "name": "synthetic_known_truth_gate",
+      "passed": true,
+      "artifact": "results/claim_adversarial_v2/summary.json",
+      "evidence": "cases=144; claim_gate_fp=0",
+      "interpretation": "The internal gate blocks unsupported known-truth overclaims."
+    },
+    {
+      "name": "threshold_limits_reported",
+      "passed": true,
+      "artifact": "results/claim_threshold_sensitivity_v2/summary.json",
+      "evidence": "safe=108; dangerous=135",
+      "interpretation": "Thresholds have safe regions, but dangerous regions must be reported."
+    },
+    {
+      "name": "uncertainty_blocks_unsupported_support",
+      "passed": true,
+      "artifact": "results/uncertainty_claim_gate_v2/summary.json",
+      "evidence": "unsupported_supported=0; supported_uncertain=25",
+      "interpretation": "Uncertainty is conservative and does not turn unsupported claims into support."
+    },
+    {
+      "name": "scifact_external_claim_control",
+      "passed": true,
+      "artifact": "results/scifact_claim_verification/summary.json",
+      "evidence": "claims=300; bm25_recall_at_5=0.898936170212766; shortcut_ORI=0.19886363636363635",
+      "interpretation": "SciFact supports an external claim-auditing case, not SOTA verification."
+    },
+    {
+      "name": "tuebingen_causal_overclaim_control",
+      "passed": true,
+      "artifact": "results/tuebingen_causal_direction/summary.json",
+      "evidence": "pairs=108; direction_accuracy=0.4854368932038835; corr_overclaims=79",
+      "interpretation": "Tuebingen supports causal overclaim auditing, not causal-discovery performance."
+    },
+    {
+      "name": "manuscript_claim_audit",
+      "passed": true,
+      "artifact": "results/manuscript_claim_audit/summary.json",
+      "evidence": "inputs=3; active_hits=0",
+      "interpretation": "The current manuscript wording passes executable claim-boundary checks."
+    },
+    {
+      "name": "llm_claim_extraction_boundary",
+      "passed": true,
+      "artifact": "results/llm_claim_extraction_audit/summary.json",
+      "evidence": "candidates=120; authoritative=False; api_called=False",
+      "interpretation": "LLM assistance is limited to candidate extraction, not claim authorization."
+    },
+    {
+      "name": "component_ablation_nonredundancy",
+      "passed": true,
+      "artifact": "results/claimbench_component_ablation/summary.json",
+      "evidence": "components=8; high_or_critical=7",
+      "interpretation": "Core components are non-redundant because ablations reintroduce risks."
+    },
+    {
+      "name": "reviewer_attack_suite",
+      "passed": true,
+      "artifact": "results/reviewer_attack_suite_v2/summary.json",
+      "evidence": "risks=1",
+      "interpretation": "Reviewer attacks pass with explicit reportable limits."
+    },
+    {
+      "name": "reviewer_threat_model",
+      "passed": true,
+      "artifact": "results/claimbench_threat_model/summary.json",
+      "evidence": "passed=7; critical_failed=0",
+      "interpretation": "Known reviewer threats are mapped to artifacts and claim boundaries."
+    }
+  ],
+  "publishable_claim": "ClaimBench v2 is a claim-aware auditing framework that separates prediction, evidence retrieval, causal direction, uncertainty, manuscript wording, and release reproducibility. It is not a SciFact SOTA system and not a causal-discovery performance method.",
+  "decision": "claimbench_v2_methodological_package_ready"
+}

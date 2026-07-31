@@ -1,0 +1,43 @@
+data:
+  vbn_root: data/allen/visual-behavior-neuropixels-0.5.0
+  connectivity_path: mousebrainbench/data/reference/allen_visual_connectivity.json
+  regions: [VISp, VISl, VISal, VISrl, VISpm, VISam]
+  min_units_per_region: 20
+  development_session_ids:
+    [1048196054, 1055221968, 1064644573, 1065437523, 1065908084, 1067588044,
+     1081431006, 1087992708, 1090800639, 1090803859, 1091039902, 1092466205,
+     1093642839, 1096620314, 1111013640, 1115368723, 1118508667, 1119946360,
+     1120251466, 1122903357, 1125713722]
+  confirmation_plan: configs/allen_vbn_phase2c_confirmation_sealed.json
+target:
+  start_seconds: -0.25
+  stop_seconds: 0.75
+  bin_size_seconds: 0.05
+  transformation: temporal_derivative
+  evaluation_start_seconds: 0.075
+models:
+  linear_rate:
+    tau: [0.05, 0.1, 0.2, 0.4]
+    coupling: [0.0, 0.25, 0.5, 1.0, 2.0]
+    drive_scale: [0.5, 1.0, 2.0]
+  wilson_cowan:
+    tau_e: [0.05, 0.1, 0.2]
+    tau_i: [0.1, 0.2, 0.4]
+    coupling: [0.0, 0.5, 1.0, 2.0]
+    drive_scale: [0.5, 1.0, 2.0]
+analysis:
+  seed: 20260615
+  permutation_graphs: 100
+  bootstrap_samples: 5000
+  thresholds:
+    median_confirmation_correlation_gt: 0.30
+    allen_minus_median_permutation_gt: 0.05
+    fraction_permutations_outperformed_gte: 0.95
+    paired_bootstrap_lower_bound_gt: 0.0
+    allen_minus_disconnected_gt: 0.05
+confirmation:
+  sealed_plan: configs/allen_visual_phase3_confirmation_sealed.json
+output:
+  root: outputs
+  development_name: allen-visual-phase3-development
+  confirmation_name: allen-visual-phase3-confirmation
