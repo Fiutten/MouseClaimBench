@@ -1,0 +1,20 @@
+\begin{table}[t]
+\centering
+\caption{Experimental design used to evaluate ClaimBench v2. The table separates the decision question, the stress test, the artifact family, and the acceptance criterion.}
+\label{tab:experiment-design}
+\small
+\begin{tabularx}{\textwidth}{p{0.13\textwidth}p{0.24\textwidth}p{0.24\textwidth}X}
+\toprule
+Experiment & Decision question & Stress test & Acceptance criterion \\
+\midrule
+E1 & Does the gate implement the intended claim semantics? & Synthetic known-truth evidence configurations & No unsupported claim is authorized as supported \\
+E2 & Are thresholds informative rather than arbitrary? & Threshold sweep over safe and dangerous regions & Safe regions and dangerous regions are both reported \\
+E3 & Can external scientific claims be audited without lexical shortcuts? & SciFact retrieval and rationale control & Retrieval, support, abstention, and overclaiming risk are separated \\
+E4 & Does the framework block causal wording when direction is not identified? & Tuebingen cause-effect control & Correlation-only direction claims remain blocked \\
+E5 & Does LLM assistance remain non-authoritative? & Deterministic and optional-file candidate extraction & Candidate extraction cannot authorize a claim \\
+E6 & Are the components non-redundant? & Component ablation and reviewer threat model & Removing a component reintroduces a reportable risk \\
+E7 & Is the release package auditable? & Reproduction manifest and release check & Required artifacts are present, non-dirty, and aligned with expected decisions \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
