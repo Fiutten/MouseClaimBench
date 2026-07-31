@@ -1,11 +1,11 @@
 \begin{table}[t]
 \centering
-\caption{Claim classes supported by the current ClaimBench formulation. The table separates the decision being supported from the evidence needed to authorize it.}
+\caption{Claim classes implemented in ClaimBench v2. The table states which evidence is required before a manuscript can use each type of wording and which stronger interpretation remains blocked when that evidence is absent.}
 \label{tab:claim-semantics}
 \small
 \begin{tabularx}{\textwidth}{p{0.18\textwidth}p{0.31\textwidth}X}
 \toprule
-Claim class & Required evidence & Blocked interpretation \\
+Claim class & Evidence required for authorization & Interpretation blocked by the gate \\
 \midrule
 Predictive & Held-out improvement over declared baselines and reported uncertainty & Mechanism, causality, and topology recovery cannot be inferred from prediction alone \\
 Reproducibility & Clean artifacts, repeated execution, stable result status, and non-dirty release metadata & Reproducibility cannot compensate for missing biological or causal evidence \\
@@ -16,4 +16,3 @@ Digital-twin scope & Entity-specific calibration, broad state coverage, update p
 \bottomrule
 \end{tabularx}
 \end{table}
-

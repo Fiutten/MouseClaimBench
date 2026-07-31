@@ -7,6 +7,8 @@ This framing is important for scientific AI. Applied AI manuscripts often combin
 
 For a decision-support journal, the relevant object is the decision process. ClaimBench defines the alternatives, the evidence requirements, the blocking rules, and the resulting action. The system does not recommend accepting or rejecting a paper. It supports a more specific decision: whether a manuscript statement should remain, be weakened, be marked uncertain, or be removed. This makes the framework closer to a scientific evidence-governance tool than to a conventional model-evaluation library.
 
+The empirical evidence should be read under this decision-support lens. The SciFact and Tuebingen controls are deliberately modest because their role is diagnostic. They show that retrieval proximity and correlation can produce plausible but unsafe interpretations when the claim boundary is weak. The synthetic cases show that the gate implements its intended semantics. The ablations show that the components are not decorative. The release checks show that the audit is connected to inspectable artifacts. None of these elements alone would be sufficient for a strong methodological paper. Together, they support the narrower claim that claim authorization can be made executable, bounded, and reviewable.
+
 \subsection{Lessons learned}
 \label{subsec:lessons-learned}
 
@@ -20,6 +22,8 @@ The fourth lesson is that ablation is essential for methodological credibility. 
 
 The fifth lesson is that negative results can be useful in decision support. ClaimBench does not produce a new state-of-the-art result on SciFact, Tuebingen, or neural prediction. This is not a failure of the paper. It is evidence that the framework is not trying to win the wrong competition. The contribution is the ability to prevent unsupported scientific interpretations from being admitted.
 
+The sixth lesson is that self-auditing is useful but limited. Applying ClaimBench to its own manuscript forces the paper to expose its claim boundaries, but it does not replace independent external validation. The current results therefore support an executable methodology and a reproducible release, not a universal theory of claim governance. This distinction should be preserved in future extensions.
+
 Several limitations remain. The deterministic claim extractor is a conservative baseline rather than a full LLM benchmark. Future work should compare multiple fixed LLMs, prompts, and extraction settings while preserving the non-authoritative boundary. The threshold analysis reports safe and dangerous regions, but it does not establish a universal calibration theory. Larger Monte Carlo studies and blinded manuscript audits are needed to estimate false-positive and false-negative behaviour across domains.
 
 The current claim taxonomy was designed around scientific AI papers with executable artifacts. It should generalize to other empirical AI domains, but additional claim families may be required for clinical deployment, industrial decision support, policy-facing AI, or human-subject applications. In those settings, the decision artifact would need to include safety, fairness, regulatory, or human-impact evidence dimensions. The contract-based design makes this extension possible, but it remains future work.
@@ -27,4 +31,3 @@ The current claim taxonomy was designed around scientific AI papers with executa
 Finally, ClaimBench should not be interpreted as automated peer review. It can support authors and reviewers by making claim boundaries explicit, but it cannot judge scientific novelty, biological relevance, or social value. Those decisions remain human and domain-specific. The framework is strongest when used as a pre-review and review-support layer that reduces ambiguity in the relationship between computational evidence and manuscript wording.
 
 This is why Decision Support Systems is a plausible target journal. The paper is not primarily about a new neurocomputational benchmark. It is about a decision process for governing scientific claims in AI-based research. The methodological value lies in making the evidence-to-claim decision explicit, reproducible, and inspectable.
-
