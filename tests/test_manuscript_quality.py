@@ -45,9 +45,13 @@ def test_all_bibliography_entries_are_cited_and_all_citations_exist() -> None:
 
 def test_manuscript_style_and_scope_guards() -> None:
     manuscript = "\n".join(path.read_text(encoding="utf-8") for path in MANUSCRIPT_PATHS)
+    main = (ROOT / "main.tex").read_text(encoding="utf-8")
     assert ";" not in manuscript
-    assert "Mouse-Brain" in (ROOT / "main.tex").read_text(encoding="utf-8")
-    assert "Human decision benefit remains untested" in manuscript
+    assert "Mouse-Brain" in main
+    assert "\\journal{Knowledge-Based Systems}" in main
+    assert "Decision Support Systems" not in manuscript
+    assert "This paper does not claim reduced review time" in manuscript
+    assert "Only the computational mouse-brain profile is evaluated" in manuscript
 
 
 def test_numbered_sections_and_subsections_have_descriptive_labels() -> None:

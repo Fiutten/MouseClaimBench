@@ -1,22 +1,22 @@
 \begin{table}[t!]
 \centering
-\caption{Claim-level decision states and their editorial consequences. The final action remains with the author or reviewer, while MouseClaimBench exposes the missing evidence and admissible wording.}
+\caption{Inference states and their knowledge implications. A state describes the declared profile and fact package, not universal scientific truth.}
 \label{tab:decision-actions}
 \footnotesize
-\renewcommand{\arraystretch}{1.16}
-\begin{tabularx}{\textwidth}{@{}p{0.16\textwidth}p{0.30\textwidth}Y@{}}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\textwidth}{@{}p{0.17\textwidth}p{0.32\textwidth}Y@{}}
 \toprule
-Decision state & Evidence status & Recommended manuscript action \\
+Inference state & Decisive evidence condition & Knowledge implication \\
 \midrule
-Supported & All required evidence blocks are present and stable under the declared controls & Keep the claim, but preserve the bounded wording and cite the decision artifact \\
+Supported & Every required evidence fact passes its declared source predicate & The claim is admitted within the profile, protocol, and provenance boundary \\
 \addlinespace[3pt]
-Blocked & At least one required evidence test was executed and failed & Remove the claim or replace it with a weaker statement supported by the available evidence \\
+Blocked & At least one required test was executed and failed & Passed facts cannot compensate for the decisive failed requirement \\
 \addlinespace[3pt]
-Uncertain & At least one required observation is missing, without an already failed block & Collect the missing evidence or report that authorization remains unresolved \\
+Uncertain & At least one required fact is missing and no higher-priority rule fires & The knowledge base cannot conclude support or failure from observed evidence \\
 \addlinespace[3pt]
-Out of scope & The claim family requires evidence not collected by the study & State the limitation explicitly and avoid implying that the framework has evaluated it \\
+Out of scope & The evaluated protocol did not target at least one requirement & The claim lies outside the evidence operation represented by this case \\
 \addlinespace[3pt]
-Needs external review & The decision depends on domain judgement outside the executable artifact & Use the artifact as review support, but keep the final judgement with human experts \\
+Needs external review & A required fact cannot be decided automatically and no failure exists & The engine records the unresolved judgement without converting it to support \\
 \bottomrule
 \end{tabularx}
 \end{table}

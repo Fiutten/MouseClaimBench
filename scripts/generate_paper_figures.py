@@ -3,7 +3,7 @@
 The paper is compiled in Overleaf and the generated assets are versioned in the
 repository.  For that reason this script avoids Matplotlib font-cache side
 effects and writes plain PNG files with Pillow.  The figures are intentionally
-schematic: they summarize the decision-support workflow and the frozen
+schematic: they summarize the knowledge-system architecture and the frozen
 experimental evidence without introducing new numerical results.
 """
 
@@ -97,39 +97,48 @@ def _arrow(draw: ImageDraw.ImageDraw, start: tuple[int, int], end: tuple[int, in
 
 
 def build_workflow() -> Image.Image:
-    """Create the ClaimBench workflow figure."""
+    """Create the ClaimBench knowledge-system architecture figure."""
     img = Image.new("RGB", (1800, 760), WHITE)
     draw = ImageDraw.Draw(img)
 
     boxes = [
-        (45, 25, 325, 275, "Source package", "Manuscript\nresults\nprovenance", BLUE),
-        (395, 25, 675, 275, "Claim discovery", "Rules or language models\npropose candidates\nwithout authority", GREY),
-        (745, 25, 1025, 275, "Domain contract", "Required blocks\ndomain rules\nadmissible wording", GREEN),
-        (1095, 25, 1375, 275, "Artifact predicates", "Original-scale values\ncontrols\nsource revision", BLUE),
-        (1445, 25, 1725, 275, "Veto gate", "Non-compensatory:\nno block can offset\na failed requirement", AMBER),
+        (45, 45, 325, 285, "Source artifacts", "Original observations\nanalysis outputs\nGit revisions", BLUE),
+        (405, 45, 685, 285, "Evidence facts", "Status and predicate\nrationale\nsource provenance", GREY),
+        (805, 45, 1085, 285, "Inference engine", "Prioritized rules\nnon-compensatory\nconflict resolution", AMBER),
+        (1205, 45, 1485, 285, "Proof trace", "Decision and fired rule\nwitness facts\nprofile hash", GREEN),
+        (405, 365, 685, 605, "Knowledge profile", "Claims and requirements\nevidence states\nversioned YAML", GREEN),
+        (1205, 365, 1485, 605, "Typed graph", "Claims and facts\nrules and decisions\nprovenance links", BLUE),
     ]
     for x0, y0, x1, y1, title, body, fill in boxes:
         _box(draw, (x0, y0, x1, y1), title, body, fill=fill)
     for start, end in [
-        ((325, 150), (395, 150)),
-        ((675, 150), (745, 150)),
-        ((1025, 150), (1095, 150)),
-        ((1375, 150), (1445, 150)),
+        ((325, 165), (405, 165)),
+        ((685, 165), (805, 165)),
+        ((1085, 165), (1205, 165)),
+        ((685, 485), (805, 235)),
+        ((1085, 235), (1205, 485)),
     ]:
         _arrow(draw, start, end)
 
-    draw.line((1585, 275, 1585, 330), fill=LINE, width=5)
-    draw.line((175, 330, 1585, 330), fill=LINE, width=5)
+    draw.text((1630, 70), "Inference states", font=HEAD, fill=INK, anchor="mm")
     outcomes = [
-        (45, 365, 325, 700, "Supported", "All required blocks pass.", GREEN, "#26734d"),
-        (395, 365, 675, 700, "Blocked", "At least one executed block fails.", RED, "#a33a32"),
-        (745, 365, 1025, 700, "Uncertain", "A required observation is missing.", AMBER, "#a06b18"),
-        (1095, 365, 1375, 700, "Out of scope", "The protocol did not target the block.", GREY, LINE),
-        (1445, 365, 1725, 700, "External review", "A non-automatable judgement remains.", BLUE, "#356d95"),
+        (1525, 115, 1735, 195, "Supported", GREEN, "#26734d"),
+        (1525, 220, 1735, 300, "Blocked", RED, "#a33a32"),
+        (1525, 325, 1735, 405, "Uncertain", AMBER, "#a06b18"),
+        (1525, 430, 1735, 510, "Out of scope", GREY, LINE),
+        (1525, 535, 1735, 615, "External review", BLUE, "#356d95"),
     ]
-    for x0, y0, x1, y1, title, body, fill, outline in outcomes:
-        draw.line(((x0 + x1) // 2, 330, (x0 + x1) // 2, 365), fill=LINE, width=4)
-        _box(draw, (x0, y0, x1, y1), title, body, fill=fill, outline=outline)
+    for x0, y0, x1, y1, title, fill, outline in outcomes:
+        draw.rounded_rectangle((x0, y0, x1, y1), radius=15, fill=fill, outline=outline, width=3)
+        draw.text(((x0 + x1) // 2, (y0 + y1) // 2), title, font=SMALL_BOLD, fill=INK, anchor="mm")
+    _arrow(draw, (1485, 165), (1525, 165))
+    draw.text(
+        (765, 690),
+        "Profile knowledge and case evidence remain separate until rule execution.",
+        font=BODY,
+        fill=MUTED,
+        anchor="mm",
+    )
     return img
 
 
@@ -270,7 +279,7 @@ def build_oracle_benchmark() -> Image.Image:
         draw.line((x, 115, x, 610), fill="#d1d5db", width=2)
         draw.text((x, 635), f"{value:.2f}", font=SMALL, fill=MUTED, anchor="ma")
     policies = [
-        ("Evidence contract v3", "evidence_contract_v3", "#447ba6"),
+        ("Knowledge policy", "evidence_contract_v3", "#447ba6"),
         ("Prediction shortcut", "prediction_shortcut", "#b96a5e"),
     ]
     metrics = [
@@ -302,7 +311,7 @@ def build_oracle_benchmark() -> Image.Image:
     paired = payload["paired_decision_counts"]
     paired_rows = [
         ("Both correct", paired["both_correct"], "#6b9f7c"),
-        ("Contract only correct", paired["contract_only_correct"], "#447ba6"),
+        ("Knowledge policy only", paired["contract_only_correct"], "#447ba6"),
         ("Shortcut only correct", paired["shortcut_only_correct"], "#d59b45"),
         ("Both wrong", paired["both_wrong"], "#b96a5e"),
     ]
@@ -319,7 +328,7 @@ def build_oracle_benchmark() -> Image.Image:
         draw,
         (1350, 650),
         "Case-level comparison: "
-        f"contract better in {case_level['contract_fewer_errors']}, "
+        f"knowledge policy better in {case_level['contract_fewer_errors']}, "
         f"shortcut better in {case_level['shortcut_fewer_errors']}, "
         f"ties in {case_level['tied_errors']}. "
         f"Exact sign-test p = {case_level['exact_two_sided_sign_test_p_value']:.2e}.",

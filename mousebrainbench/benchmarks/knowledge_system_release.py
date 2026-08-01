@@ -47,6 +47,10 @@ REQUIREMENTS = {
         "decision",
         "claimbench_threat_model_passed_with_boundaries",
     ),
+    "results/manuscript_claim_audit/summary.json": (
+        "decision",
+        "manuscript_claim_audit_passed",
+    ),
 }
 
 

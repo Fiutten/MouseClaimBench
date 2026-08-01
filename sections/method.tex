@@ -1,73 +1,89 @@
-\section{Method}
+\section{Knowledge-Based Method}
 \label{sec:method}
 
-MouseClaimBench is a claim-level \ac{dss}. Its inputs are a candidate statement, a domain profile, and the artifacts that may support the statement. Its output is an auditable disposition with the contributing observations, rules, sources, and an editorial rationale. It does not calculate a paper-level acceptance score. Fig.~\ref{fig:claimbench-workflow} presents the workflow.
+MouseClaimBench is a claim-level \ac{kbs}. Its inputs are a versioned domain profile and the evidence artifacts associated with one computational study. Its outputs are a claim disposition, a machine-readable proof trace, and a typed knowledge graph. The system does not calculate a paper-level score or infer publication acceptance. Fig.~\ref{fig:claimbench-workflow} shows the separation among source artifacts, evidence facts, domain knowledge, inference, and explanation.
 
 \input{figures/claimbench_workflow}
 
-\subsection{Domain-aware evidence contracts}
-\label{subsec:claim-contracts}
+\subsection{Knowledge profile and evidence representation}
+\label{subsec:knowledge-representation}
 
-Let $c$ denote a candidate statement, $k(c)$ its claim family, and $d(c)$ the domain protocol under which its evidence was generated. A contract is defined as
+The domain knowledge base is defined as
 \begin{equation}
-\mathcal{C}(c)=\langle k,d,R_k,\Phi_d,w^{+},w^{-},\mathcal{A}\rangle,
-\label{eq:claim-contract}
+\mathcal{K}=\langle C,E,Q,R,\Pi\rangle,
+\label{eq:knowledge-base}
 \end{equation}
-where $R_k$ is the set of evidence blocks required by claim family $k$, $\Phi_d$ is the set of domain-specific predicates, $w^{+}$ and $w^{-}$ are admissible and blocked wording, and $\mathcal{A}$ contains the source artifacts and revisions. The contract is executable because every required block names both a source and a decision rule.
+where $C$ is the set of claim types, $E$ is the vocabulary of evidence-block types, $Q:C\rightarrow 2^{E}$ maps each claim to its mandatory evidence, $R$ is an ordered rule set, and $\Pi$ identifies the profile version and content hash. The current profile contains ten claim types and twenty claim-to-evidence relations. It is stored outside the Python engine as \ac{yaml}. A SHA-256 digest identifies the exact knowledge used in every inference.
 
-The observed value for block $j$ is denoted by $x_{j,d}$. It remains in the scale reported by its source analysis. The contract does not assume that predictive correlation, a cross-mouse coefficient, a matched structure--function delta, and a bootstrap interval are commensurable. Instead, the domain predicate produces one evidence state
+The profile is a lightweight operational ontology rather than a general ontology of neuroscience. It distinguishes claim types, evidence types, evidence states, decision states, and the relations \emph{requires}, \emph{tests status}, and \emph{concludes}. Validation rejects duplicate claim identifiers, empty or repeated requirements, duplicate rule identifiers, ambiguous priorities, incomplete decision coverage, and the absence of one all-passed terminal rule. Consequently, malformed domain knowledge is rejected before case evidence is evaluated.
+
+An evidence fact for block $e_j$ is represented as
 \begin{equation}
-B_{j,d}(c)=\phi_{j,d}\bigl(x_{j,d},\mathcal{A}_{j}\bigr)
-\in \mathcal{S}_{E},
-\qquad
+f_j=\langle e_j,s_j,x_j,\phi_j,\rho_j,a_j\rangle,
+\label{eq:evidence-fact}
+\end{equation}
+where $s_j$ is the source artifact, $x_j$ contains named original-scale observations, $\phi_j$ is the executed source predicate, $\rho_j$ is its rationale, and $a_j$ is the resulting evidence state. The allowed states are
+\begin{equation}
 \mathcal{S}_{E}=\{P,F,U,N,R\},
 \label{eq:evidence-state}
 \end{equation}
-where $P$ means passed, $F$ failed, $U$ unknown, $N$ not applicable, and $R$ requires external review. A failed state means that the stated test was executed and did not pass. An unknown state means that a required observation is absent. A not-applicable state means that the protocol did not target the block. These states are not interchangeable.
+where $P$ means passed, $F$ failed, $U$ unknown, $N$ not applicable, and $R$ requires external review. A failed fact records an executed test that did not pass. An unknown fact records an absent required observation. A not-applicable fact records that the source protocol did not target the block. These states have different meanings and are never numerically interpolated.
 
-The v3 taxonomy contains ten authorization targets. Prediction, topology specificity, direction, local structure--function association, mechanism, causality, and digital-twin scope describe scientific interpretation. Computational reproducibility, internal reproduction, and external replication describe distinct forms of repeatability and confirmation. Table~\ref{tab:claim-semantics} gives their required blocks. A mechanistic claim requires prediction, internal reproduction, topology specificity, and directed identifiability. A digital-twin claim also requires intervention, whole-brain coverage, independent validation, and reproducible computation.
+The observations remain in the scale of the source analysis. Predictive correlation, cross-mouse agreement, a matched structure--function difference, a bootstrap interval, and a Git revision are not commensurable measurements. The predicate $\phi_j$ converts each observation package to an evidence state under its declared protocol. The knowledge engine reasons over those states and does not invent a normalization across domains.
+
+Table~\ref{tab:claim-semantics} presents the ten claim types. Prediction, topology specificity, direction, local structure--function association, mechanism, causality, and digital-twin scope describe scientific interpretations. Computational reproducibility, internal reproduction, and external replication describe different forms of repeatability and confirmation. A mechanistic claim requires four blocks. A digital-twin claim requires eight. A clean revision can support computational reproducibility without providing evidence for either claim.
 
 \input{tables/claim_semantics}
 
-The separation among reproducibility concepts is deliberate. A clean revision supports computational reproducibility. Consistency across non-overlapping mice or windows in one public resource supports internal reproduction. Replication requires a different resource, laboratory, or study. A result may pass the first two blocks while the third remains unknown. This is the situation for the available \ac{microns} hold-outs.
+\subsection{Prioritized non-compensatory inference}
+\label{subsec:knowledge-inference}
 
-\subsection{Non-compensatory disposition policy}
-\label{subsec:claim-authorization}
-
-For claim family $k$, let $\mathbf{B}_{k}(c)=\{B_{j,d}(c):j\in R_k\}$ contain the states of all required blocks. The policy is
+Each inference rule is a tuple
 \begin{equation}
-D_k(c)=
+r_i=\langle id_i,p_i,q_i,a_i,d_i,\rho_i\rangle,
+\label{eq:inference-rule}
+\end{equation}
+where $p_i$ is a unique priority, $q_i$ is an \emph{any} or \emph{all} quantifier, $a_i$ is the tested evidence state, $d_i$ is the conclusion, and $\rho_i$ is the explanation attached to the rule. Rules are sorted by decreasing priority. The engine evaluates them until the first satisfied rule is found. This explicit conflict-resolution policy makes the conclusion deterministic for a fixed profile and fact base.
+
+For claim $c$, let $\mathbf{A}_{c}=\{a_j:e_j\in Q(c)\}$ contain the states of its required facts. The current rule base implements
+\begin{equation}
+D_{\mathcal{K}}(c)=
 \begin{cases}
-\text{blocked}, & F\in\mathbf{B}_{k},\\
-\text{external review}, & F\notin\mathbf{B}_{k}\text{ and }R\in\mathbf{B}_{k},\\
-\text{uncertain}, & F,R\notin\mathbf{B}_{k}\text{ and }U\in\mathbf{B}_{k},\\
-\text{out of scope}, & F,R,U\notin\mathbf{B}_{k}\text{ and }N\in\mathbf{B}_{k},\\
-\text{supported}, & \mathbf{B}_{k}=\{P\}.
+\text{blocked}, & F\in\mathbf{A}_{c},\\
+\text{external review}, & F\notin\mathbf{A}_{c}\text{ and }R\in\mathbf{A}_{c},\\
+\text{uncertain}, & F,R\notin\mathbf{A}_{c}\text{ and }U\in\mathbf{A}_{c},\\
+\text{out of scope}, & F,R,U\notin\mathbf{A}_{c}\text{ and }N\in\mathbf{A}_{c},\\
+\text{supported}, & \mathbf{A}_{c}=\{P\}.
 \end{cases}
 \label{eq:five-state-gate}
 \end{equation}
-The first line makes the policy non-compensatory. Once a required executed test fails, a larger value in another block cannot recover the claim. The ordering also preserves a useful distinction. A failed topology test blocks a mechanistic statement even when direction was not measured, because the statement is already unsupported. In the absence of failure, missing evidence remains uncertain rather than being converted into a negative measurement.
+The first satisfied rule is decisive. A failed mandatory test therefore cannot be offset by passed prediction or reproducibility. Review has precedence over missing and untargeted evidence when no failure is present. Support requires every mandatory fact to pass. An undeclared claim is placed outside the knowledge boundary rather than mapped to the nearest known category.
 
-The policy is related to a multicriteria veto but differs from an outranking score \citep{figueira2013electre}. It does not compare alternatives and it contains no trade-off weights. A stronger claim simply has a larger set of mandatory blocks. The recommended manuscript action follows from the disposition. Supported wording remains bounded to the declared scope. Blocked wording is removed or weakened. Uncertain wording requires new evidence or explicit qualification. Out-of-scope wording is excluded from the evaluated contribution. External-review wording remains with a qualified human decision maker.
+This rule order encodes policy rather than empirical probability. It is inspectable, versioned, and contestable. Changing the precedence, claim vocabulary, or requirement relation creates a different knowledge profile. The engine does not learn those choices from the cases used to evaluate it. This separation prevents a good benchmark result from silently rewriting the scientific meaning of a claim.
 
-This workflow model is distinct from the legacy v2 numerical-stability analysis. The legacy analysis creates 11 samples from each constructed case. It evaluates the nominal vector and positive and negative perturbations of 0.03 for each of five numerical fields, changed one at a time. A claim is numerically stable-supported when at least 95\% of those samples pass, stable-blocked when at most 5\% pass, and locally uncertain otherwise. This three-state output is a deterministic neighbourhood diagnostic. It is not a posterior probability, confidence interval, conformal guarantee, or substitute for the five dispositions in Equation~\ref{eq:five-state-gate}.
-
-Evaluation uses ordinary classification measures. For a reference set of supportable claims, a \ac{fp} is an unsupported claim authorized by a policy and a \ac{fn} is a supportable claim not authorized. The corresponding rates are
+Evaluation uses standard classification measures against independently specified oracle labels. A \ac{fp} is an unsupported claim authorized by a policy and a \ac{fn} is a supportable claim not authorized. The corresponding rates are
 \begin{align}
 \mathrm{FPR} &= \frac{FP}{FP+TN},
 \label{eq:fpr}\\
 \mathrm{FNR} &= \frac{FN}{FN+TP}.
 \label{eq:fnr}
 \end{align}
-These are standard error rates. Earlier artifacts also called them the Overclaiming Risk Index and Conservativeness Index. Version 3 retains those keys only for backward compatibility and does not present them as new metrics.
+Earlier software artifacts used renamed versions of these ratios. The present work uses the standard terms because no new metric is introduced.
 
-\subsection{Artifact binding and authority boundaries}
-\label{subsec:artifact-binding}
+\subsection{Explanation, knowledge graph, and release control}
+\label{subsec:explanation-provenance}
 
-Evidence blocks are immutable records containing a name, state, source path, rule, rationale, and named observations. Duplicate block names are rejected. Missing required blocks are represented as unknown. The real-case builder requires a complete inventory and raises an error when an expected source artifact is absent. This design prevents silent defaults from becoming evidence.
+Every inference returns
+\begin{equation}
+T(c)=\langle \Pi,c,D_{\mathcal{K}}(c),r^{*},F_c,L_c\rangle,
+\label{eq:proof-trace}
+\end{equation}
+where $r^{*}$ is the fired rule, $F_c$ is the ordered set of required evidence facts, and $L_c$ is the sequence of rule evaluations up to the decisive rule. Each step records its priority, conclusion, rationale, activation state, and witness blocks. The trace therefore explains both the claim disposition and the evidence fact that made a higher-priority rule decisive.
 
-Claim discovery precedes authorization. The reproducible mode uses deterministic patterns to identify candidate sentences associated with prediction, mechanism, causality, structure--function relations, replication, digital twins, and state-of-the-art language. An optional local \ac{json} file may contain candidates generated by an external \ac{llm}. Candidate source is recorded, but every candidate is untrusted. It cannot modify predicates, create observations, change provenance, or authorize a claim.
+The graph export represents the profile, claims, evidence blocks, evidence states, rules, and decision states as typed nodes. Directed edges encode \emph{declares}, \emph{requires}, \emph{tests status}, and \emph{concludes}. Case-specific evidence nodes carry their current status and source. The graph is deterministic for a fixed profile and fact package. It is intended for inspection and interchange, not as a learned graph embedding or a biological connectome.
 
-Human authority remains necessary at three points. Domain experts define whether a rule is scientifically appropriate. Adjudicators establish reference labels for a future human evaluation. Authors and reviewers retain responsibility for the final wording and significance of a study. The automated system can expose a missing intervention or failed topology control. It cannot decide novelty, ethical acceptability, practical importance, or manuscript acceptance.
+Evidence records are immutable. Duplicate names are rejected, and an index key must match the name stored inside its fact. A missing mandatory fact is materialized as unknown with source \emph{missing}, an explicit no-rule predicate, and a rationale. Real-case builders require a complete source inventory and raise an error when an artifact is absent. These constraints prevent silent defaults from becoming positive evidence.
 
-The release gate enforces the same boundary. It verifies required artifacts, expected decisions, recorded revisions, and the absence of `-dirty' suffixes. It also retains active scientific blockers in the release output. A package can therefore be technically ready while human decision benefit and external biological replication remain unvalidated. This result is intentional. Technical readiness and scientific sufficiency are different decisions.
+Claim discovery remains outside authorization. Deterministic patterns or an optional external \ac{llm} can propose candidate statements. The candidate source is recorded, but the candidate cannot modify the profile, create evidence, change provenance, or fire a support rule. This boundary preserves deterministic reasoning when extraction models or prompts change.
+
+The KBS release gate verifies the knowledge-profile identity, required benchmark decisions, explanation completeness, source-artifact revisions, and the absence of a `-dirty' suffix. It also emits unresolved scientific boundaries. The release can pass as a knowledge-system method while continuing to block cross-domain generality, external biological replication, improved human outcomes, and a complete causal digital twin. Technical package integrity and scientific claim support remain separate conclusions.

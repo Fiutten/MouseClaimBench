@@ -1,18 +1,18 @@
 \section{Research Contributions}
 \label{sec:contributions}
 
-MouseClaimBench transforms the interpretation of computational mouse-brain results into a claim-level decision problem. The system does not assign a global quality score to a paper. It determines which evidence requirements pass, which fail, which were not observed, and which were not targeted by the protocol. The resulting artifact recommends an editorial disposition while preserving human authority. The paper makes five contributions:
+MouseClaimBench transforms heterogeneous computational results into explicit knowledge about the claims they can and cannot support. It does not assign a global score to a model or manuscript. It evaluates each claim against a versioned domain profile and preserves the complete path from source observation to conclusion. The paper makes five contributions:
 
 \begin{itemize}
-    \item \textbf{A domain-aware evidence contract.} The contract records original-scale observations, executable predicates, source revisions, required blocks, and admissible wording. It separates computational reproducibility, internal reproduction, and external replication rather than treating them as one property.
+    \item \textbf{A versioned mouse-brain claim knowledge profile.} The externalized \ac{yaml} profile defines ten claim types, twenty claim-to-evidence requirements, five evidence states, five inference conclusions, and five prioritized rules. Validation rejects duplicate claims, repeated requirements, incomplete conclusion coverage, and ambiguous rule priorities.
 
-    \item \textbf{A five-disposition non-compensatory policy.} A failed required block vetoes the dependent claim. Missing evidence produces uncertainty, an untargeted block produces an out-of-scope decision, and non-automatable criteria are directed to external review. These workflow dispositions are distinct from local numerical stability.
+    \item \textbf{A provenance-preserving evidence fact model.} Every fact retains original-scale observations, the predicate that produced its status, a rationale, and its source artifact. Missing evidence is represented explicitly rather than converted into a failed or zero-valued measurement.
 
-    \item \textbf{An independently labelled structural-equation benchmark.} Five declared data-generating regimes produce 500 finite-sample cases. Their graph and intervention labels are independent of the thresholds used to evaluate the observations. The benchmark reports standard \ac{fpr}, \ac{fnr}, confidence intervals, and a paired policy comparison.
+    \item \textbf{An explainable non-compensatory inference engine.} A failed mandatory block vetoes dependent wording. Review, uncertainty, and protocol scope remain distinct conclusions. Each inference records the fired rule, witness blocks, evaluated rule sequence, source facts, and SHA-256 profile identity.
 
-    \item \textbf{An artifact-grounded mouse-brain case matrix.} Allen \ac{vbn}, Static Sensorium, Dynamic Sensorium, and \ac{microns} are evaluated from stored observed fields without invented cross-domain normalization. The matrix exposes the strongest bounded claim supported by each resource and the evidence that blocks stronger wording.
+    \item \textbf{A multi-level validation strategy.} An independently labelled structural-equation oracle measures false authorization and false rejection. Exhaustive tests evaluate all 625 evidence-state assignments for the mechanistic claim. A conformance audit reproduces 40 frozen decisions from four heterogeneous mouse-brain cases and verifies 40 complete traces.
 
-    \item \textbf{A reproducible decision-support package with explicit unresolved validation.} SciFact and Tuebingen test external failure modes. The release gate checks clean artifact revisions and retains active blockers. A 50-item expert-study package is provided for ethics review and preregistration, but no human result is claimed because the study has not been executed.
+    \item \textbf{A reproducible KBS release with external failure controls.} SciFact distinguishes retrieval from support inference, while Tuebingen distinguishes association from causal direction. The release gate checks required artifacts, expected outcomes, clean revisions, profile identity, and unresolved scientific claim boundaries without requiring an unclaimed human-effect study.
 \end{itemize}
 
-These contributions support a bounded claim. MouseClaimBench implements and evaluates a traceable scientific-claim decision policy for the studied conditions. It does not establish universal claim validity, improved human review, causal-discovery performance, external biological replication, or a complete mouse-brain digital twin.
+These contributions support a bounded result. MouseClaimBench implements and evaluates a knowledge-based validation method for computational mouse-brain claims under the declared profile. It does not establish cross-domain empirical generality, biological truth, external biological replication, causal-discovery performance, improved human review, or a complete mouse-brain digital twin.
