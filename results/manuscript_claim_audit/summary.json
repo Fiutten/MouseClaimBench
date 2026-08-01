@@ -1,6 +1,6 @@
 {
   "version": "0.8.0",
-  "git_revision": "6975649",
+  "git_revision": "5edb5ea",
   "analysis": "manuscript_claim_audit",
   "claims_file": "configs/claims/mousebrainbench_claims.yaml",
   "manuscript_inputs": [
@@ -59,7 +59,7 @@
     "figures/claimbench_workflow.tex",
     "README.md"
   ],
-  "manuscript_character_count": 63637,
+  "manuscript_character_count": 63582,
   "rows": [
     {
       "claim_id": "claimbench_v2_blocks_overclaiming",

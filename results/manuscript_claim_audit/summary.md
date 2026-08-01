@@ -3,7 +3,7 @@
 - Decision: `manuscript_claim_audit_passed`
 - Claims audited: `7`
 - Manuscript inputs found: `26`
-- Manuscript characters: `63637`
+- Manuscript characters: `63582`
 - Blocked wording hits: `0`
 - Active risk-pattern hits: `0`
 
