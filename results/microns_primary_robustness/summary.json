@@ -1,0 +1,75 @@
+{
+  "version": "0.6.0",
+  "git_revision": "b3c970d677d005edf35d2bf7ba85cf7fe7ab6600",
+  "analysis": "microns_primary_endpoint_robustness",
+  "primary_endpoint": "all_pairs/readout_location",
+  "n_permutations": 500,
+  "cohorts": [
+    {
+      "cohort": "discovery",
+      "units": "data/microns/expanded/dt_coreg_units_v1507_sample1000.csv",
+      "edges": "data/microns/expanded/dt_coreg_edges_v1507_sample1000.csv",
+      "n_units": 1000,
+      "n_synapses_loaded": 2267,
+      "n_connected_pairs": 2095,
+      "n_candidate_pairs": 999000,
+      "observed_connected_mean": -0.08161322116171439,
+      "combined_distance_degree_control": {
+        "null_mean": -0.09653493679886202,
+        "delta": 0.014921715637147628,
+        "p_one_sided": 0.001996007984031936
+      },
+      "within_distance_readout_shuffle": {
+        "null_mean": -0.10292485645453384,
+        "delta": 0.021311635292819445,
+        "p_one_sided": 0.001996007984031936
+      },
+      "robust_primary_endpoint": true
+    },
+    {
+      "cohort": "holdout_offset1000",
+      "units": "data/microns/expanded/dt_coreg_units_v1507_holdout_offset1000.csv",
+      "edges": "data/microns/expanded/dt_coreg_edges_v1507_holdout_offset1000.csv",
+      "n_units": 992,
+      "n_synapses_loaded": 2161,
+      "n_connected_pairs": 1926,
+      "n_candidate_pairs": 983072,
+      "observed_connected_mean": -0.09322435726719153,
+      "combined_distance_degree_control": {
+        "null_mean": -0.11070240231623862,
+        "delta": 0.017478045049047097,
+        "p_one_sided": 0.001996007984031936
+      },
+      "within_distance_readout_shuffle": {
+        "null_mean": -0.11406409972421802,
+        "delta": 0.020839742457026494,
+        "p_one_sided": 0.001996007984031936
+      },
+      "robust_primary_endpoint": true
+    },
+    {
+      "cohort": "holdout_offset2000",
+      "units": "data/microns/expanded/dt_coreg_units_v1507_holdout_offset2000.csv",
+      "edges": "data/microns/expanded/dt_coreg_edges_v1507_holdout_offset2000.csv",
+      "n_units": 999,
+      "n_synapses_loaded": 2147,
+      "n_connected_pairs": 1922,
+      "n_candidate_pairs": 997002,
+      "observed_connected_mean": -0.0960007497031017,
+      "combined_distance_degree_control": {
+        "null_mean": -0.11068540441986346,
+        "delta": 0.014684654716761766,
+        "p_one_sided": 0.001996007984031936
+      },
+      "within_distance_readout_shuffle": {
+        "null_mean": -0.11385105453362195,
+        "delta": 0.017850304830520247,
+        "p_one_sided": 0.001996007984031936
+      },
+      "robust_primary_endpoint": true
+    }
+  ],
+  "all_cohorts_robust": true,
+  "decision": "microns_primary_endpoint_survives_harder_controls",
+  "interpretation": "Positive results remain local and observational. Combined matching and within-distance shuffling reduce obvious degree and spatial confounds, but they do not establish causality or independent biological replication."
+}

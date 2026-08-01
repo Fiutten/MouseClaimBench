@@ -392,7 +392,13 @@ def claim_confusion_matrix(
 
 
 def aggregate_claim_confusion(confusion: list[dict[str, int | str]]) -> list[dict[str, float | int | str]]:
-    """Aggregate claim-level confusion rows into evaluator-level risk summaries."""
+    """Aggregate claim-level confusion rows using standard error-rate names.
+
+    ``overclaiming_risk_index`` and ``conservativeness_index`` remain in the
+    serialized row only for compatibility with frozen v2 artifacts. They are
+    exact aliases of the false-positive and false-negative rates and must not be
+    presented as newly developed metrics.
+    """
 
     rows: list[dict[str, float | int | str]] = []
     for evaluator in sorted({str(row["evaluator"]) for row in confusion}):
@@ -418,13 +424,13 @@ def aggregate_claim_confusion(confusion: list[dict[str, int | str]]) -> list[dic
 
 
 def overclaiming_risk_index(*, fp: int, tn: int) -> float:
-    """Return the fraction of unsupported claim opportunities that were authorized."""
+    """Compatibility alias for the standard false-positive rate."""
 
     return fp / (fp + tn) if (fp + tn) else 0.0
 
 
 def conservativeness_index(*, fn: int, tp: int) -> float:
-    """Return the fraction of supported claim opportunities that were blocked."""
+    """Compatibility alias for the standard false-negative rate."""
 
     return fn / (fn + tp) if (fn + tp) else 0.0
 

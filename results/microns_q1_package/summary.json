@@ -1,0 +1,139 @@
+{
+  "version": "0.6.0",
+  "git_revision": "7f5293613dc84000719f05c0dc340dc7c9d69c2b",
+  "analysis": "microns_q1_internally_reproduced_structure_function_package",
+  "primary_endpoint": "all_pairs/readout_location",
+  "bootstrap": {
+    "cluster": "unit",
+    "samples": 300,
+    "seed": 71
+  },
+  "q1_package_ready": true,
+  "cohorts": [
+    {
+      "cohort": "discovery",
+      "units": "data/microns/expanded/dt_coreg_units_v1507_sample1000.csv",
+      "edges": "data/microns/expanded/dt_coreg_edges_v1507_sample1000.csv",
+      "stratified_result": "results/microns_structure_function_pilot/stratified_summary.json",
+      "n_units": 1000,
+      "n_synapses_loaded": 2267,
+      "n_connected_edge_pairs": 2095,
+      "n_candidate_pairs": 999000,
+      "n_statistical_tests": 174,
+      "n_confirmed_positive_after_fdr": 28,
+      "primary_test": {
+        "stratum": "all_pairs",
+        "metric": "readout_location",
+        "n_connected_pairs": 2095,
+        "distance_matched_delta": 0.021514585321604482,
+        "distance_matched_q_one_sided": 0.007557659731572775,
+        "degree_matched_delta": 0.04026397102281075,
+        "degree_matched_q_one_sided": 0.005267459812914359,
+        "confirmed_positive_after_fdr": true
+      },
+      "unit_bootstrap": {
+        "samples_requested": 300,
+        "samples_usable": 300,
+        "distance_matched_delta": {
+          "n": 300,
+          "median": 0.021811440377764522,
+          "ci95_low": 0.01664541931264082,
+          "ci95_high": 0.026283913768938752
+        },
+        "degree_matched_delta": {
+          "n": 300,
+          "median": 0.04051065648360996,
+          "ci95_low": 0.03486467417490266,
+          "ci95_high": 0.045416980099525855
+        }
+      }
+    },
+    {
+      "cohort": "holdout_offset1000",
+      "units": "data/microns/expanded/dt_coreg_units_v1507_holdout_offset1000.csv",
+      "edges": "data/microns/expanded/dt_coreg_edges_v1507_holdout_offset1000.csv",
+      "stratified_result": "results/microns_structure_function_pilot/stratified_holdout_offset1000_summary.json",
+      "n_units": 992,
+      "n_synapses_loaded": 2161,
+      "n_connected_edge_pairs": 1926,
+      "n_candidate_pairs": 983072,
+      "n_statistical_tests": 162,
+      "n_confirmed_positive_after_fdr": 30,
+      "primary_test": {
+        "stratum": "all_pairs",
+        "metric": "readout_location",
+        "n_connected_pairs": 1926,
+        "distance_matched_delta": 0.021033661779349608,
+        "distance_matched_q_one_sided": 0.007036441819050514,
+        "degree_matched_delta": 0.03800163332630774,
+        "degree_matched_q_one_sided": 0.006224544686083147,
+        "confirmed_positive_after_fdr": true
+      },
+      "unit_bootstrap": {
+        "samples_requested": 300,
+        "samples_usable": 300,
+        "distance_matched_delta": {
+          "n": 300,
+          "median": 0.020944034875242303,
+          "ci95_low": 0.01421789459759002,
+          "ci95_high": 0.026277254959318857
+        },
+        "degree_matched_delta": {
+          "n": 300,
+          "median": 0.03774194741508296,
+          "ci95_low": 0.03214217645795173,
+          "ci95_high": 0.04309364267864572
+        }
+      }
+    },
+    {
+      "cohort": "holdout_offset2000",
+      "units": "data/microns/expanded/dt_coreg_units_v1507_holdout_offset2000.csv",
+      "edges": "data/microns/expanded/dt_coreg_edges_v1507_holdout_offset2000.csv",
+      "stratified_result": "results/microns_structure_function_pilot/stratified_holdout_offset2000_summary.json",
+      "n_units": 999,
+      "n_synapses_loaded": 2147,
+      "n_connected_edge_pairs": 1922,
+      "n_candidate_pairs": 997002,
+      "n_statistical_tests": 174,
+      "n_confirmed_positive_after_fdr": 25,
+      "primary_test": {
+        "stratum": "all_pairs",
+        "metric": "readout_location",
+        "n_connected_pairs": 1922,
+        "distance_matched_delta": 0.017884535143457933,
+        "distance_matched_q_one_sided": 0.008691308691308691,
+        "degree_matched_delta": 0.028641871321893483,
+        "degree_matched_q_one_sided": 0.00827743684886542,
+        "confirmed_positive_after_fdr": true
+      },
+      "unit_bootstrap": {
+        "samples_requested": 300,
+        "samples_usable": 300,
+        "distance_matched_delta": {
+          "n": 300,
+          "median": 0.018130617014715467,
+          "ci95_low": 0.011504298671558841,
+          "ci95_high": 0.023796608417984554
+        },
+        "degree_matched_delta": {
+          "n": 300,
+          "median": 0.028700317801537104,
+          "ci95_low": 0.022873768722809218,
+          "ci95_high": 0.03536698554630101
+        }
+      }
+    }
+  ],
+  "claims_allowed": [
+    "Internally reproduced local MICRONS structure-function association across two non-overlapping hold-out windows from the same resource.",
+    "Connected pairs show closer readout-location similarity than distance- and degree-matched controls.",
+    "MouseBrainBench provides a reproducible claim-audit benchmark for partial mouse-brain digital models."
+  ],
+  "claims_blocked": [
+    "Causal mechanism.",
+    "Whole-brain mouse digital twin.",
+    "Behavioral digital twin.",
+    "Sensorium SOTA predictor."
+  ]
+}

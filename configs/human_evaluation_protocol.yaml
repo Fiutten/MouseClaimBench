@@ -1,0 +1,92 @@
+study_id: mouseclaimbench_expert_dss_pilot_v1
+status: not_executed
+version: 1
+purpose: >-
+  Compare unsupported scientific-claim authorization with and without the
+  MouseClaimBench decision-support report.
+
+governance:
+  ethics_approval_required_before_recruitment: true
+  informed_consent_required: true
+  preregistration_required: true
+  no_results_available: true
+
+design:
+  type: randomized_within_participant_crossover
+  blinding:
+    participants_to_reference_labels: true
+    adjudicators_to_condition: true
+  conditions:
+    - unassisted_evidence_packet
+    - mouseclaimbench_report
+  counterbalancing: latin_square_by_item_block
+  washout: distinct_non_repeated_items_between_conditions
+
+participants:
+  pilot_target: 24
+  minimum_domain_experience_years: 2
+  eligible_profiles:
+    - computational_neuroscience
+    - scientific_machine_learning
+    - artificial_intelligence_assurance
+  confirmatory_sample_size_rule: preregister_after_blinded_pilot_variance_estimation
+
+items:
+  target_count: 50
+  source_artifact: results/llm_claim_extraction_audit/summary.json
+  stratify_by_claim_type: true
+  maximum_per_claim_type: 8
+  random_seed: 20260801
+  repeated_items_across_conditions: false
+
+reference_standard:
+  independent_annotators_per_item: 2
+  blinded_third_adjudicator_on_disagreement: true
+  permitted_reference_labels:
+    - supportable
+    - unsupported
+    - insufficient_evidence
+    - out_of_scope
+  agreement_report:
+    - raw_agreement
+    - krippendorff_alpha_nominal
+
+outcomes:
+  primary:
+    name: unsupported_authorization
+    type: binary
+    analysis: mixed_effects_logistic_regression
+    random_effects:
+      - participant
+      - item
+    fixed_effects:
+      - condition
+      - claim_type
+      - period
+  secondary:
+    - name: supportable_claim_rejection
+      type: binary
+    - name: decision_time_seconds
+      type: continuous
+    - name: calibrated_confidence
+      type: ordinal
+    - name: abstention
+      type: binary
+    - name: actionability_rating
+      type: ordinal
+
+exclusions:
+  participant_level:
+    - withdrawal_of_consent
+    - failure_to_complete_both_periods
+  item_level:
+    - adjudication_not_completed
+    - source_evidence_corrupted
+  post_outcome_exclusion_forbidden: true
+
+reporting:
+  distinguish_pilot_from_confirmatory: true
+  report_all_exclusions: true
+  report_effect_sizes_with_confidence_intervals: true
+  prohibit_unregistered_outcome_substitution: true
+  prohibit_claim_of_human_benefit_before_execution: true

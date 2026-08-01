@@ -1,4 +1,9 @@
-"""Threshold sensitivity analysis for the ClaimBench v2 gate."""
+"""Contract-conformance threshold sensitivity for the legacy v2 gate.
+
+The case labels and gate share the same operational thresholds. Therefore this
+analysis maps implementation stability around the declared contract. It does
+not calibrate universal scientific thresholds or provide independent validity.
+"""
 
 from __future__ import annotations
 
@@ -88,22 +93,23 @@ def run(output: Path = DEFAULT_OUTPUT, markdown: Path = DEFAULT_MARKDOWN) -> Pat
     safe_rows = [
         row
         for row in rows
-        if int(row["fp"]) == 0 and float(row["conservativeness_index"]) <= 0.25
+        if int(row["fp"]) == 0 and float(row["false_negative_rate"]) <= 0.25
     ]
     dangerous_rows = [row for row in rows if int(row["fp"]) > 0]
     payload = {
         "version": __version__,
         "git_revision": code_revision(),
-        "analysis": "claim_threshold_sensitivity_v2",
+        "analysis": "claim_contract_conformance_threshold_sensitivity_v2",
+        "validation_role": "software_contract_conformance_not_threshold_calibration",
         "num_threshold_cells": len(rows),
         "safe_cells": len(safe_rows),
         "dangerous_cells": len(dangerous_rows),
-        "max_safe_conservativeness_index": max(
-            (float(row["conservativeness_index"]) for row in safe_rows),
+        "max_safe_false_negative_rate": max(
+            (float(row["false_negative_rate"]) for row in safe_rows),
             default=None,
         ),
-        "min_dangerous_overclaiming_risk_index": min(
-            (float(row["overclaiming_risk_index"]) for row in dangerous_rows),
+        "min_dangerous_false_positive_rate": min(
+            (float(row["false_positive_rate"]) for row in dangerous_rows),
             default=None,
         ),
         "rows": rows,
@@ -123,14 +129,15 @@ def write_markdown(payload: dict[str, Any], markdown: Path) -> None:
     """Write threshold sensitivity report."""
 
     lines = [
-        "# Claim Threshold Sensitivity v2",
+        "# Claim Contract-Conformance Threshold Sensitivity v2",
         "",
         f"- Decision: `{payload['decision']}`",
         f"- Threshold cells: `{payload['num_threshold_cells']}`",
         f"- Safe cells: `{payload['safe_cells']}`",
         f"- Dangerous cells: `{payload['dangerous_cells']}`",
         "",
-        "Safe means FP=0 and CI<=0.25 over the ClaimBench v2 adversarial suite.",
+        "Safe means FP=0 and FNR<=0.25 over the constructed v2 conformance suite.",
+        "This is not an empirical calibration of universal scientific thresholds.",
         "",
     ]
     markdown.parent.mkdir(parents=True, exist_ok=True)

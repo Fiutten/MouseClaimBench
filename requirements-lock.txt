@@ -1,0 +1,12 @@
+# Reproducibility snapshot used for the scientific-hardening validation.
+# Python 3.12.13. Install the package itself with: python -m pip install -e .
+h5py==3.16.0
+matplotlib==3.11.0
+networkx==3.6.1
+numpy==2.4.6
+pandas==2.3.3
+Pillow==12.2.0
+PyYAML==6.0.3
+pytest==9.0.3
+ruff==0.15.17
+scipy==1.17.1

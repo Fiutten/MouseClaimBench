@@ -16,6 +16,10 @@ from collections import Counter
 from pathlib import Path
 from typing import Any
 
+import numpy as np
+from scipy import optimize
+from scipy.special import expit
+
 from mousebrainbench import __version__
 from mousebrainbench.artifacts import code_revision
 
@@ -169,6 +173,100 @@ def _label_from_retrieval(
     return "NOT_ENOUGH_INFO"
 
 
+def _retrieval_features(
+    claim: dict[str, Any],
+    corpus: dict[int, dict[str, Any]],
+    bm25: BM25Index,
+    *,
+    top_k: int,
+) -> tuple[np.ndarray, list[tuple[int, float]], float]:
+    """Return transparent support features without using a gold label."""
+
+    claim_text = str(claim["claim"])
+    retrieved = bm25.search(claim_text, top_k=top_k)
+    top_doc_id = retrieved[0][0] if retrieved else None
+    top_score = float(retrieved[0][1]) if retrieved else 0.0
+    second_score = float(retrieved[1][1]) if len(retrieved) > 1 else 0.0
+    top_doc = corpus.get(int(top_doc_id), {}) if top_doc_id is not None else {}
+    rationale_score = _best_rationale_score(claim_text, top_doc)
+    cited_overlap = _lexical_score(claim_text, claim.get("cited_doc_ids", []), corpus)
+    features = np.asarray(
+        [
+            math.log1p(max(0.0, top_score)),
+            rationale_score,
+            cited_overlap,
+            math.log1p(len(_tokens(claim_text))),
+            math.log1p(max(0.0, top_score - second_score)),
+        ],
+        dtype=float,
+    )
+    return features, retrieved, rationale_score
+
+
+def _fit_support_logistic(
+    features: np.ndarray,
+    labels: np.ndarray,
+) -> dict[str, Any] | None:
+    """Fit an L2-regularized logistic baseline on the training split only."""
+
+    if len(features) < 2 or len(np.unique(labels)) < 2:
+        return None
+    means = np.mean(features, axis=0)
+    scales = np.std(features, axis=0)
+    scales[scales < 1e-8] = 1.0
+    standardized = (features - means) / scales
+    design = np.column_stack((np.ones(len(standardized)), standardized))
+
+    def objective(weights: np.ndarray) -> tuple[float, np.ndarray]:
+        logits = design @ weights
+        probabilities = expit(logits)
+        epsilon = 1e-12
+        loss = -np.mean(
+            labels * np.log(probabilities + epsilon)
+            + (1.0 - labels) * np.log(1.0 - probabilities + epsilon)
+        )
+        regularization = 0.05 * float(np.sum(np.square(weights[1:])))
+        gradient = design.T @ (probabilities - labels) / len(labels)
+        gradient[1:] += 0.10 * weights[1:]
+        return float(loss + regularization), gradient
+
+    fitted = optimize.minimize(
+        lambda weights: objective(weights),
+        np.zeros(design.shape[1]),
+        jac=True,
+        method="L-BFGS-B",
+    )
+    if not fitted.success:
+        return None
+    train_probabilities = expit(design @ fitted.x)
+    negative_count = int(np.sum(labels == 0))
+    candidates = sorted(set(float(value) for value in train_probabilities), reverse=True)
+    operating_points = []
+    for threshold in candidates:
+        predictions = train_probabilities >= threshold
+        fp = int(np.sum(predictions & (labels == 0)))
+        tp = int(np.sum(predictions & (labels == 1)))
+        fpr = fp / negative_count if negative_count else 0.0
+        tpr = tp / int(np.sum(labels == 1))
+        if fpr <= 0.10:
+            operating_points.append((tpr, -threshold, threshold, fpr))
+    threshold = max(operating_points)[2] if operating_points else 1.0
+    return {
+        "means": means,
+        "scales": scales,
+        "weights": fitted.x,
+        "threshold": float(threshold),
+        "train_fpr_constraint": 0.10,
+        "optimizer_success": True,
+    }
+
+
+def _support_probability(features: np.ndarray, model: dict[str, Any]) -> float:
+    standardized = (features - model["means"]) / model["scales"]
+    design = np.concatenate(([1.0], standardized))
+    return float(expit(design @ model["weights"]))
+
+
 def run(
     root: Path = DEFAULT_ROOT,
     output: Path = DEFAULT_OUTPUT,
@@ -179,6 +277,7 @@ def run(
 
     started = time.perf_counter()
     claims_path = root / "claims_dev.jsonl"
+    train_path = root / "claims_train.jsonl"
     corpus_path = root / "corpus.jsonl"
     if not claims_path.exists() or not corpus_path.exists():
         payload = {
@@ -205,15 +304,37 @@ def run(
     bm25_support_threshold = 4.0
     rationale_support_threshold = 0.18
     top_k = 5
+    calibrated_model = None
+    train_claims: list[dict[str, Any]] = []
+    if train_path.exists():
+        train_claims = _load_jsonl(train_path)
+        train_features = []
+        train_labels = []
+        for train_claim in train_claims:
+            features, _retrieved, _rationale = _retrieval_features(
+                train_claim,
+                corpus,
+                bm25,
+                top_k=top_k,
+            )
+            train_features.append(features)
+            train_labels.append(_gold_label(train_claim) == "SUPPORT")
+        calibrated_model = _fit_support_logistic(
+            np.asarray(train_features, dtype=float),
+            np.asarray(train_labels, dtype=float),
+        )
     for claim in claims:
         label = _gold_label(claim)
         claim_text = str(claim["claim"])
         gold_docs = _gold_doc_ids(claim)
-        retrieved = bm25.search(claim_text, top_k=top_k)
+        features, retrieved, rationale_score = _retrieval_features(
+            claim,
+            corpus,
+            bm25,
+            top_k=top_k,
+        )
         top_doc_id = retrieved[0][0] if retrieved else None
         top_bm25 = retrieved[0][1] if retrieved else 0.0
-        top_doc = corpus.get(int(top_doc_id), {}) if top_doc_id is not None else {}
-        rationale_score = _best_rationale_score(claim_text, top_doc)
         retrieval_label = _label_from_retrieval(
             bm25_score=top_bm25,
             rationale_score=rationale_score,
@@ -228,6 +349,16 @@ def run(
         abstained = score < abstain_threshold
         gold_supported = label == "SUPPORT"
         retrieval_supported = retrieval_label == "SUPPORT"
+        calibrated_probability = (
+            _support_probability(features, calibrated_model)
+            if calibrated_model is not None
+            else None
+        )
+        calibrated_supported = (
+            calibrated_probability >= calibrated_model["threshold"]
+            if calibrated_model is not None and calibrated_probability is not None
+            else False
+        )
         rows.append(
             {
                 "claim_id": claim["id"],
@@ -244,6 +375,8 @@ def run(
                 "abstained": abstained,
                 "abstaining_supported": False if abstained else abstaining_supported,
                 "retrieval_supported": retrieval_supported,
+                "calibrated_support_probability": calibrated_probability,
+                "calibrated_supported": calibrated_supported,
                 "gold_supported": gold_supported,
                 "shortcut_false_positive": shortcut_supported and not gold_supported,
                 "shortcut_false_negative": (not shortcut_supported) and gold_supported,
@@ -251,6 +384,8 @@ def run(
                 "abstaining_false_negative": (not abstained) and (not abstaining_supported) and gold_supported,
                 "retrieval_false_positive": retrieval_supported and not gold_supported,
                 "retrieval_false_negative": (not retrieval_supported) and gold_supported,
+                "calibrated_false_positive": calibrated_supported and not gold_supported,
+                "calibrated_false_negative": (not calibrated_supported) and gold_supported,
                 "retrieval_failed_despite_gold_evidence": bool(gold_docs) and not evidence_retrieved,
             }
         )
@@ -282,11 +417,15 @@ def run(
         else 0.0
     )
     retrieval_label_counts = Counter(row["retrieval_label"] for row in rows)
+    calibrated_fp = sum(row["calibrated_false_positive"] for row in rows)
+    calibrated_fn = sum(row["calibrated_false_negative"] for row in rows)
     payload = {
         "version": __version__,
         "git_revision": code_revision(),
         "analysis": "scifact_claim_verification",
         "dataset": "SciFact dev",
+        "train_split": "SciFact train" if calibrated_model is not None else None,
+        "num_training_claims": len(train_claims),
         "num_claims": len(rows),
         "label_counts": dict(label_counts),
         "bm25_top_k": top_k,
@@ -311,6 +450,28 @@ def run(
         "retrieval_false_negatives": retrieval_fn,
         "retrieval_overclaiming_risk": retrieval_fp / gold_negative if gold_negative else 0.0,
         "retrieval_conservativeness": retrieval_fn / gold_positive if gold_positive else 0.0,
+        "calibrated_baseline_available": calibrated_model is not None,
+        "calibrated_feature_names": [
+            "log_bm25_top_score",
+            "top_rationale_overlap",
+            "cited_document_overlap",
+            "log_claim_token_count",
+            "log_bm25_top_margin",
+        ],
+        "calibrated_threshold": (
+            calibrated_model["threshold"] if calibrated_model is not None else None
+        ),
+        "calibrated_train_fpr_constraint": (
+            calibrated_model["train_fpr_constraint"] if calibrated_model is not None else None
+        ),
+        "calibrated_false_positives": calibrated_fp,
+        "calibrated_false_negatives": calibrated_fn,
+        "calibrated_false_positive_rate": (
+            calibrated_fp / gold_negative if gold_negative else 0.0
+        ),
+        "calibrated_false_negative_rate": (
+            calibrated_fn / gold_positive if gold_positive else 0.0
+        ),
         "claims_with_gold_evidence": len(evidence_claims),
         "retrieval_failed_gold_evidence": sum(
             row["retrieval_failed_despite_gold_evidence"] for row in rows
@@ -339,13 +500,16 @@ def write_markdown(payload: dict[str, Any], markdown: Path) -> None:
         f"- Decision: `{payload['decision']}`",
         f"- Claims: `{payload.get('num_claims', 0)}`",
         f"- Label counts: `{payload.get('label_counts', {})}`",
-        f"- Shortcut ORI: `{payload.get('shortcut_overclaiming_risk', 0.0):.3f}`",
-        f"- Shortcut CI: `{payload.get('shortcut_conservativeness', 0.0):.3f}`",
+        f"- Shortcut FPR: `{payload.get('shortcut_overclaiming_risk', 0.0):.3f}`",
+        f"- Shortcut FNR: `{payload.get('shortcut_conservativeness', 0.0):.3f}`",
         f"- BM25 evidence recall@5: `{payload.get('retrieval_recall_at_5', 0.0):.3f}`",
-        f"- BM25/rationale ORI: `{payload.get('retrieval_overclaiming_risk', 0.0):.3f}`",
-        f"- BM25/rationale CI: `{payload.get('retrieval_conservativeness', 0.0):.3f}`",
+        f"- BM25/rationale FPR: `{payload.get('retrieval_overclaiming_risk', 0.0):.3f}`",
+        f"- BM25/rationale FNR: `{payload.get('retrieval_conservativeness', 0.0):.3f}`",
+        f"- Train-calibrated baseline available: `{payload.get('calibrated_baseline_available')}`",
+        f"- Train-calibrated baseline FPR: `{payload.get('calibrated_false_positive_rate', 0.0):.3f}`",
+        f"- Train-calibrated baseline FNR: `{payload.get('calibrated_false_negative_rate', 0.0):.3f}`",
         f"- Abstention rate: `{payload.get('abstention_rate', 0.0):.3f}`",
-        f"- Abstaining ORI: `{payload.get('abstaining_overclaiming_risk', 0.0):.3f}`",
+        f"- Abstaining FPR: `{payload.get('abstaining_overclaiming_risk', 0.0):.3f}`",
         f"- Runtime seconds: `{payload.get('runtime_seconds', 0.0):.3f}`",
         "",
         "Interpretation: BM25/rationale is a transparent local evidence-retrieval "

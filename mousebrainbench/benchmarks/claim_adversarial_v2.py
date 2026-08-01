@@ -1,8 +1,12 @@
-"""ClaimBench v2 adversarial benchmark.
+"""ClaimBench v2 contract-conformance stress test.
 
 This module is a post-submission hardening benchmark. It deliberately expands
 the synthetic known-truth cases beyond the submitted artifact to stress-test
-claim authorization under broader reviewer-style attacks.
+claim authorization under broader reviewer-style attacks. Labels are generated
+from the same operational contract used by the evaluator, so this module tests
+software conformance and attack coverage. It is not independent scientific
+validation. Use ``oracle_sem_claim_benchmark`` for independently generated
+structural-equation reference labels.
 """
 
 from __future__ import annotations
@@ -37,7 +41,7 @@ DEFAULT_MARKDOWN = Path("results/claim_adversarial_v2/summary.md")
 
 @dataclass(frozen=True)
 class AdversarialCaseV2:
-    """Known-truth stress case for claim authorization."""
+    """Constructed contract-conformance case for claim authorization."""
 
     name: str
     family: str
@@ -361,6 +365,8 @@ def run(output: Path = DEFAULT_OUTPUT, markdown: Path = DEFAULT_MARKDOWN) -> Pat
         "version": __version__,
         "git_revision": code_revision(),
         "analysis": "claim_adversarial_v2",
+        "validation_role": "software_contract_conformance_not_independent_validation",
+        "label_source": "the same operational claim contract used by the evaluated gate",
         "claim_types": list(CLAIM_TYPES),
         "num_cases": len(cases),
         "families": sorted({case.family for case in cases}),
@@ -383,20 +389,20 @@ def write_markdown(payload: dict[str, Any], markdown: Path) -> None:
     """Write a compact ClaimBench v2 report."""
 
     lines = [
-        "# ClaimBench v2 Adversarial Benchmark",
+        "# ClaimBench v2 Contract-Conformance Stress Test",
         "",
         f"- Decision: `{payload['decision']}`",
         f"- Cases: `{payload['num_cases']}`",
         f"- Families: `{len(payload['families'])}`",
         "",
-        "| Evaluator | TP | FP | TN | FN | ORI | CI |",
+        "| Evaluator | TP | FP | TN | FN | FPR | FNR |",
         "|---|---:|---:|---:|---:|---:|---:|",
     ]
     for row in payload["aggregate_by_evaluator"]:
         lines.append(
             f"| `{row['evaluator']}` | `{row['tp']}` | `{row['fp']}` | `{row['tn']}` | "
-            f"`{row['fn']}` | `{row['overclaiming_risk_index']:.3f}` | "
-            f"`{row['conservativeness_index']:.3f}` |"
+            f"`{row['fn']}` | `{row['false_positive_rate']:.3f}` | "
+            f"`{row['false_negative_rate']:.3f}` |"
         )
     lines.extend(["", "## Families", ""])
     lines.extend(f"- `{family}`" for family in payload["families"])

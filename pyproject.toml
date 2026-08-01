@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mouseclaimbench"
-version = "0.6.0"
+version = "0.7.0"
 description = "Executable decision support for scientific AI claim governance"
 readme = "README.md"
 requires-python = ">=3.11"
@@ -14,6 +14,7 @@ dependencies = [
   "networkx>=3.2,<4",
   "numpy>=1.26,<3",
   "pandas>=2.2,<3",
+  "pillow>=11,<13",
   "pyyaml>=6,<7",
   "scipy>=1.12,<2",
 ]
@@ -54,6 +55,9 @@ mousebrainbench-claim-adversarial = "mousebrainbench.benchmarks.claim_adversaria
 mousebrainbench-claim-attack-suite = "mousebrainbench.benchmarks.claim_attack_suite:main"
 mousebrainbench-microns-primary-robustness = "mousebrainbench.benchmarks.microns_primary_robustness:main"
 mousebrainbench-real-case-claims = "mousebrainbench.benchmarks.real_case_claim_matrix:main"
+mousebrainbench-oracle-sem-claims = "mousebrainbench.benchmarks.oracle_sem_claim_benchmark:main"
+mousebrainbench-human-study-protocol = "mousebrainbench.benchmarks.human_evaluation_protocol:main"
+mousebrainbench-v3-release = "mousebrainbench.benchmarks.claimbench_v3_release:main"
 mousebrainbench-claim-ledger = "mousebrainbench.benchmarks.claim_ledger:main"
 mousebrainbench-claimbench-release = "mousebrainbench.benchmarks.claimbench_release:main"
 mousebrainbench-claim-adversarial-v2 = "mousebrainbench.benchmarks.claim_adversarial_v2:main"

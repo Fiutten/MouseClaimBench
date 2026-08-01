@@ -1,4 +1,9 @@
-"""Uncertainty-aware claim gate over ClaimBench v2 cases."""
+"""Local numerical-stability audit over constructed ClaimBench v2 cases.
+
+The three states emitted here describe local perturbation stability only. They
+are distinct from the five workflow dispositions defined by the domain-aware
+v3 evidence contract.
+"""
 
 from __future__ import annotations
 
@@ -86,6 +91,15 @@ def run(output: Path = DEFAULT_OUTPUT, markdown: Path = DEFAULT_MARKDOWN) -> Pat
         "version": __version__,
         "git_revision": code_revision(),
         "analysis": "uncertainty_claim_gate_v2",
+        "status_semantics": "local_numerical_stability_not_workflow_disposition",
+        "sampling_rule": {
+            "nominal_samples": 1,
+            "numeric_fields": 5,
+            "signed_perturbations_per_field": 2,
+            "total_samples_per_case": 11,
+            "sigma": 0.03,
+            "joint_perturbations": False,
+        },
         "num_rows": len(rows),
         "status_counts": status_counts,
         "unsupported_supported": unsupported_supported,

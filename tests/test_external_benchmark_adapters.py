@@ -49,6 +49,25 @@ def test_scifact_adapter_detects_lexical_shortcut_overclaiming(tmp_path) -> None
             ]
         )
     )
+    (root / "claims_train.jsonl").write_text(
+        "\n".join(
+            [
+                json.dumps(
+                    {
+                        "id": index,
+                        "claim": (
+                            "Alpha beta therapy improves marker response."
+                            if index % 2
+                            else "Gamma delta marker is supported."
+                        ),
+                        "evidence": {"1": [{"label": "SUPPORT"}]} if index % 2 else {},
+                        "cited_doc_ids": [1] if index % 2 else [2],
+                    }
+                )
+                for index in range(10, 30)
+            ]
+        )
+    )
 
     output = run_scifact(
         root=root,
@@ -63,6 +82,8 @@ def test_scifact_adapter_detects_lexical_shortcut_overclaiming(tmp_path) -> None
     assert "retrieval_overclaiming_risk" in payload
     assert payload["rows"][0]["bm25_topk_doc_ids"]
     assert payload["rows"][0]["retrieval_label"] in {"SUPPORT", "NOT_ENOUGH_INFO"}
+    assert payload["calibrated_baseline_available"] is True
+    assert payload["num_training_claims"] == 20
 
 
 def test_tuebingen_adapter_runs_on_local_pair_subset(tmp_path) -> None:
@@ -84,3 +105,5 @@ def test_tuebingen_adapter_runs_on_local_pair_subset(tmp_path) -> None:
     assert set(payload["method_summary"]) == {"anm", "igci", "lingam_proxy"}
     assert payload["consensus_curve"]
     assert payload["causal_performance_claim_allowed"] is False
+    assert len(payload["direction_accuracy_wilson_95"]) == 2
+    assert payload["weighted_direction_accuracy_bootstrap"]["samples"] == 2000

@@ -15,23 +15,114 @@ def _write_json(path: Path, payload: dict) -> None:
 def _minimal_artifacts(root: Path) -> None:
     _write_json(
         root / "results/allen_vbn_mechanistic_identifiability_score.json",
-        {"decision": "reproducible_target_without_mechanistic_identifiability", "git_revision": "abc"},
+        {
+            "decision": "reproducible_target_without_mechanistic_identifiability",
+            "git_revision": "abc",
+            "mis": {
+                "blocks": [
+                    {"name": "reproducibility", "passed": True, "score": 1.0, "criteria": []},
+                    {
+                        "name": "topology_specificity",
+                        "passed": False,
+                        "score": 0.0,
+                        "criteria": [],
+                    },
+                    {
+                        "name": "directed_identifiability",
+                        "passed": False,
+                        "score": 0.0,
+                        "criteria": [],
+                    },
+                ]
+            },
+        },
     )
     _write_json(
         root / "results/sensorium_static_model_comparator/summary.json",
         {
             "comparison": "sensorium2022_static_cross_dataset_comparator",
-            "topographic_constraint": "results/sensorium_topographic_constraint/summary_static_test.json",
+            "pretraining_test_repeated": {
+                "median_best_predictive_correlation": 0.34,
+                "median_best_minus_mean": 0.09,
+                "median_best_minus_scrambled": 0.07,
+            },
+            "topographic_constraint": {
+                "decision": "structural_constraint_supported",
+                "passed_count": 5,
+                "n_datasets": 5,
+                "median_observed_spearman": 0.18,
+                "median_effect_over_null": 0.18,
+            },
             "git_revision": "abc",
         },
     )
     _write_json(
         root / "results/dynamic_sensorium_model_comparator/summary.json",
-        {"comparison": "dynamic_sensorium_predictive_model_comparator", "git_revision": "abc"},
+        {
+            "comparison": "dynamic_sensorium_predictive_model_comparator",
+            "git_revision": "abc",
+            "cohorts": [
+                {
+                    "cohort": "cohort_a",
+                    "n_mice": 5,
+                    "reliability_estimable_count": 0,
+                    "pairwise": {
+                        "mean_response_vs_temporal_svd": {
+                            "n_paired": 5,
+                            "right_wins": 4,
+                            "median_delta": 0.03,
+                        }
+                    },
+                },
+                {
+                    "cohort": "cohort_b",
+                    "n_mice": 5,
+                    "reliability_estimable_count": 0,
+                    "pairwise": {
+                        "mean_response_vs_temporal_svd": {
+                            "n_paired": 5,
+                            "right_wins": 5,
+                            "median_delta": 0.04,
+                        }
+                    },
+                },
+            ],
+        },
     )
     _write_json(
         root / "results/microns_primary_robustness/summary.json",
-        {"decision": "microns_primary_endpoint_survives_harder_controls", "git_revision": "abc"},
+        {
+            "decision": "microns_primary_endpoint_survives_harder_controls",
+            "all_cohorts_robust": True,
+            "git_revision": "abc",
+        },
+    )
+    _write_json(
+        root / "results/microns_q1_package/summary.json",
+        {
+            "git_revision": "abc",
+            "primary_endpoint": "all_pairs/readout_location",
+            "q1_package_ready": True,
+            "cohorts": [
+                {
+                    "cohort": name,
+                    "n_units": 1000,
+                    "n_connected_edge_pairs": 2000,
+                    "primary_test": {
+                        "distance_matched_delta": 0.02,
+                        "distance_matched_q_one_sided": 0.01,
+                        "degree_matched_delta": 0.03,
+                        "degree_matched_q_one_sided": 0.01,
+                        "confirmed_positive_after_fdr": True,
+                    },
+                    "unit_bootstrap": {
+                        "distance_matched_delta": {"ci95_low": 0.01, "ci95_high": 0.03},
+                        "degree_matched_delta": {"ci95_low": 0.02, "ci95_high": 0.04},
+                    },
+                }
+                for name in ("discovery", "holdout_a", "holdout_b")
+            ],
+        },
     )
     _write_json(
         root / "results/sensorium_official_baseline_audit/summary.json",
@@ -69,11 +160,17 @@ def test_real_case_claim_matrix_is_conservative(tmp_path) -> None:
         root=tmp_path,
     )
     payload = json.loads(output.read_text())
-    aggregate = {row["evaluator"]: row for row in payload["aggregate_by_evaluator"]}
+    cases = {row["case"]: row for row in payload["cases"]}
 
-    assert payload["decision"] == "real_case_claim_gate_consistent"
-    assert aggregate["claim_gate"]["fp"] == 0
-    assert aggregate["correlation_only"]["fp"] > 0
+    assert payload["decision"] == "artifact_grounded_case_matrix_complete_with_explicit_limits"
+    assert payload["forbidden_supported_claims"] == []
+    assert cases["allen_vbn_identifiability_negative"]["supported_claims"] == [
+        "computationally_reproducible",
+        "internally_reproduced",
+    ]
+    assert "structure_function" in cases["microns_local_structure_function"][
+        "supported_claims"
+    ]
 
 
 def test_claim_ledger_tracks_supported_and_blocked_wording(tmp_path) -> None:

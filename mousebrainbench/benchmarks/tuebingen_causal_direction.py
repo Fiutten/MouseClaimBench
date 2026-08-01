@@ -23,6 +23,8 @@ from mousebrainbench.artifacts import code_revision
 DEFAULT_ROOT = Path("data/external/tuebingen_cause_effect")
 DEFAULT_OUTPUT = Path("results/tuebingen_causal_direction/summary.json")
 DEFAULT_MARKDOWN = Path("results/tuebingen_causal_direction/summary.md")
+BOOTSTRAP_SEED = 20260801
+BOOTSTRAP_SAMPLES = 2000
 
 
 def _load_meta(path: Path) -> dict[int, dict[str, Any]]:
@@ -199,6 +201,43 @@ def _ensemble_direction(
     )
 
 
+def _wilson_interval(successes: int, total: int) -> list[float]:
+    """Return a 95% Wilson interval for unweighted direction accuracy."""
+
+    if total <= 0:
+        return [0.0, 0.0]
+    z = 1.959963984540054
+    proportion = successes / total
+    denominator = 1.0 + z**2 / total
+    centre = (proportion + z**2 / (2.0 * total)) / denominator
+    radius = (
+        z
+        * np.sqrt(proportion * (1.0 - proportion) / total + z**2 / (4.0 * total**2))
+        / denominator
+    )
+    return [float(max(0.0, centre - radius)), float(min(1.0, centre + radius))]
+
+
+def _weighted_accuracy_bootstrap(rows: list[dict[str, Any]]) -> dict[str, Any]:
+    """Bootstrap weighted accuracy over attempted benchmark pairs."""
+
+    if not rows:
+        return {"samples": 0, "seed": BOOTSTRAP_SEED, "ci95": [0.0, 0.0]}
+    rng = np.random.default_rng(BOOTSTRAP_SEED)
+    values = []
+    for _ in range(BOOTSTRAP_SAMPLES):
+        sampled = [rows[index] for index in rng.integers(0, len(rows), size=len(rows))]
+        denominator = sum(float(row["weight"]) for row in sampled)
+        numerator = sum(float(row["weight"]) for row in sampled if row["correct_direction"])
+        values.append(numerator / denominator if denominator else 0.0)
+    return {
+        "samples": BOOTSTRAP_SAMPLES,
+        "seed": BOOTSTRAP_SEED,
+        "unit": "attempted cause-effect pair",
+        "ci95": [float(value) for value in np.quantile(values, (0.025, 0.975))],
+    }
+
+
 def run(
     root: Path = DEFAULT_ROOT,
     output: Path = DEFAULT_OUTPUT,
@@ -263,6 +302,8 @@ def run(
     correct = sum(row["correct_direction"] for row in attempted)
     weighted_total = sum(row["weight"] for row in attempted)
     weighted_correct = sum(row["weight"] for row in attempted if row["correct_direction"])
+    weighted_accuracy = weighted_correct / weighted_total if weighted_total else 0.0
+    weighted_bootstrap = _weighted_accuracy_bootstrap(attempted)
     corr_overclaims = sum(row["correlation_only_would_overclaim_direction"] for row in rows)
     method_summary = {}
     for method_key in ("anm_direction", "igci_direction", "lingam_proxy_direction"):
@@ -312,8 +353,14 @@ def run(
         "dataset": "Tuebingen cause-effect pairs",
         "num_pairs_loaded": len(rows),
         "num_direction_attempts": len(attempted),
+        "direction_attempt_rate": len(attempted) / len(rows) if rows else 0.0,
         "direction_accuracy": correct / len(attempted) if attempted else 0.0,
-        "weighted_direction_accuracy": weighted_correct / weighted_total if weighted_total else 0.0,
+        "direction_accuracy_wilson_95": _wilson_interval(correct, len(attempted)),
+        "weighted_direction_accuracy": weighted_accuracy,
+        "weighted_direction_accuracy_bootstrap": weighted_bootstrap,
+        "weight_source": "official pair weights stored in Tuebingen pairmeta.txt",
+        "weight_formula": "sum(pair_weight * correct) / sum(pair_weight) over attempted pairs",
+        "correlation_overclaim_threshold": 0.30,
         "correlation_only_direction_overclaims": corr_overclaims,
         "method_summary": method_summary,
         "confidence_curve": confidence_curve,
@@ -342,8 +389,12 @@ def write_markdown(payload: dict[str, Any], markdown: Path) -> None:
         f"- Decision: `{payload['decision']}`",
         f"- Pairs loaded: `{payload.get('num_pairs_loaded', 0)}`",
         f"- Direction attempts: `{payload.get('num_direction_attempts', 0)}`",
+        f"- Direction attempt rate: `{payload.get('direction_attempt_rate', 0.0):.3f}`",
         f"- Direction accuracy: `{payload.get('direction_accuracy', 0.0):.3f}`",
+        f"- Direction accuracy Wilson 95% CI: `{payload.get('direction_accuracy_wilson_95')}`",
         f"- Weighted accuracy: `{payload.get('weighted_direction_accuracy', 0.0):.3f}`",
+        f"- Weighted accuracy bootstrap 95% CI: "
+        f"`{payload.get('weighted_direction_accuracy_bootstrap', {}).get('ci95')}`",
         f"- Correlation-only direction overclaims: `{payload.get('correlation_only_direction_overclaims', 0)}`",
         f"- Causal performance claim allowed: `{payload.get('causal_performance_claim_allowed')}`",
         f"- Causal control claim allowed: `{payload.get('causal_control_claim_allowed')}`",

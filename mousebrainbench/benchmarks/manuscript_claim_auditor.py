@@ -17,14 +17,18 @@ DEFAULT_CLAIMS = Path("configs/claims/mousebrainbench_claims.yaml")
 DEFAULT_OUTPUT = Path("results/manuscript_claim_audit/summary.json")
 DEFAULT_MARKDOWN = Path("results/manuscript_claim_audit/summary.md")
 DEFAULT_MANUSCRIPT_GLOBS = (
-    "paper/main.tex",
-    "paper/README.md",
+    "main.tex",
+    "sections/*.tex",
+    "tables/*.tex",
+    "figures/*.tex",
     "README.md",
 )
 FALLBACK_MANUSCRIPT_GLOBS = (
-    "paper/main_anonymous.tex",
+    "paper/main.tex",
+    "paper/README.md",
     "paper/sections/*.tex",
     "paper/tables/*.tex",
+    "paper/figures/*.tex",
 )
 NEGATING_CLAIM_CONTEXT = (
     r"\b(not|no|without|does\s+not|do\s+not|cannot|not\s+a|must\s+not|"
@@ -96,7 +100,11 @@ def _resolve_manuscripts(root: Path, paths: tuple[Path, ...] | None) -> tuple[Pa
         matches = sorted(root.glob(pattern))
         resolved.extend(path for path in matches if path.is_file())
     if not any(path.name == "main.tex" for path in resolved):
-        for pattern in FALLBACK_MANUSCRIPT_GLOBS:
+        for pattern in FALLBACK_MANUSCRIPT_GLOBS[:2]:
+            matches = sorted(root.glob(pattern))
+            resolved.extend(path for path in matches if path.is_file())
+    if not any(path.name == "main.tex" for path in resolved):
+        for pattern in FALLBACK_MANUSCRIPT_GLOBS[2:]:
             matches = sorted(root.glob(pattern))
             resolved.extend(path for path in matches if path.is_file())
     return tuple(dict.fromkeys(resolved))
