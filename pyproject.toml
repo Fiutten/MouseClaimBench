@@ -33,6 +33,10 @@ legacy-cognitive = [
 microns = [
   "caveclient>=8,<9",
 ]
+hybrid-validation = [
+  "causal-learn==0.1.4.8",
+  "scikit-learn>=1.9,<2",
+]
 
 [project.scripts]
 mousebrainbench-allen-benchmark = "mousebrainbench.benchmarks.allen_vbn:main"
@@ -78,6 +82,7 @@ mousebrainbench-claimbench-reproduce-package = "mousebrainbench.benchmarks.claim
 mousebrainbench-llm-claim-extraction-audit = "mousebrainbench.benchmarks.llm_claim_extraction_audit:main"
 mousebrainbench-knowledge-system-audit = "mousebrainbench.benchmarks.knowledge_system_audit:main"
 mousebrainbench-knowledge-system-release = "mousebrainbench.benchmarks.knowledge_system_release:main"
+mousebrainbench-anm-direction = "mousebrainbench.benchmarks.causal_direction_anm:main"
 mousebrainbench-run = "mousebrainbench.cli:main"
 
 [tool.setuptools.packages.find]
