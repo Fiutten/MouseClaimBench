@@ -1,13 +1,13 @@
 {
   "version": "0.8.0",
-  "git_revision": "d48dbea",
+  "git_revision": "605acf6",
   "analysis": "knowledge_system_conformance_audit_v1",
   "knowledge_profile": {
     "profile_id": "mouse_brain_claims",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "domain": "computational_mouse_brain",
     "description": "Evidence requirements and non-compensatory inference rules for claims made from computational mouse-brain models and multimodal neuroscience artifacts.",
-    "source_hash": "sha256:e93fc0b925a5be19d17d3f489e387c94caa918ee6e5d45718d21dd8dc2ecbfd3",
+    "source_hash": "sha256:12770573922ea4bf00fabf519f565480df7475d313726cc3281a5c200d696137",
     "claims": [
       {
         "id": "predictive",
@@ -85,9 +85,11 @@
           "causal_intervention",
           "whole_brain_coverage",
           "independent_validation",
-          "reproducible_compute"
+          "reproducible_compute",
+          "entity_specificity",
+          "operational_compute"
         ],
-        "meaning": "all predictive, mechanistic, causal, coverage, validation, and compute blocks pass"
+        "meaning": "all predictive, mechanistic, causal, coverage, entity-specific, independent-validation, reproducibility, and operational-compute blocks pass"
       }
     ],
     "inference_rules": [
@@ -151,12 +153,12 @@
     "protocol_scope_boundary": 16
   },
   "knowledge_graph": {
-    "node_count": 36,
-    "edge_count": 45,
+    "node_count": 38,
+    "edge_count": 47,
     "node_type_counts": {
       "claim": 10,
       "decision_status": 5,
-      "evidence_block": 10,
+      "evidence_block": 12,
       "evidence_status": 5,
       "inference_rule": 5,
       "knowledge_profile": 1
@@ -164,13 +166,14 @@
     "relation_counts": {
       "concludes": 5,
       "declares": 15,
-      "requires": 20,
+      "requires": 22,
       "tests_status": 5
     }
   },
   "conformance_failures": [],
   "limits": [
-    "Conformance to a frozen policy is not evidence that the policy is biologically true.",
+    "Conformance to author-generated migration decisions is not evidence that the policy is biologically true.",
+    "The migration decisions were not produced blindly or by independent experts.",
     "The audit evaluates only the computational mouse-brain knowledge profile.",
     "Architectural profile extensibility is not empirical validation in another domain.",
     "The real cases do not establish causal, whole-brain, or digital-twin claims."
