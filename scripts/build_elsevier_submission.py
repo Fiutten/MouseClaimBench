@@ -33,14 +33,19 @@ def run(output: Path = DEFAULT_OUTPUT) -> Path:
         shutil.rmtree(output)
     output.mkdir(parents=True)
 
-    tex_sources = [ROOT / "main.tex"]
+    tex_sources = [ROOT / "main.tex", ROOT / "supplementary_material.tex"]
     tex_sources.extend(sorted((ROOT / "sections").glob("*.tex")))
     tex_sources.extend(sorted((ROOT / "tables").glob("*.tex")))
     tex_sources.extend(sorted((ROOT / "figures").glob("*.tex")))
     for source in tex_sources:
         (output / source.name).write_text(_flatten_tex(source.read_text()))
 
-    for support_file in ("references.bib", "elsarticle.cls", "elsarticle-harv.bst"):
+    for support_file in (
+        "references.bib",
+        "elsarticle.cls",
+        "elsarticle-num.bst",
+        "elsarticle-harv.bst",
+    ):
         shutil.copy2(ROOT / support_file, output / support_file)
     for source in sorted((ROOT / "figures").glob("*.png")):
         shutil.copy2(source, output / source.name)

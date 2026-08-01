@@ -1,4 +1,4 @@
-\documentclass[review,12pt,authoryear]{elsarticle}
+\documentclass[review,12pt]{elsarticle}
 
 \usepackage{acronym}
 \usepackage{amsmath}
@@ -14,7 +14,7 @@
 \usepackage{xcolor}
 
 \journal{Knowledge-Based Systems}
-\biboptions{round,authoryear}
+\biboptions{numbers,sort&compress}
 
 \hypersetup{
   colorlinks=true,
@@ -95,7 +95,6 @@ Knowledge-Based Systems \sep Scientific Claim Verification \sep Evidence Reasoni
 \acresetall
 
 \input{sections/introduction}
-\input{sections/contributions}
 \input{sections/related_work}
 \input{sections/method}
 \input{sections/experiments}
@@ -120,7 +119,8 @@ The source code, knowledge profiles, tests, lightweight result artifacts, and ma
 \label{sec:acknowledgements}
 This work has been funded by the Spanish MICIU under the PDI program in the XMIDAS project (PID2021-122640OB-I00).
 
-\bibliographystyle{elsarticle-harv}
+\setlength{\bibsep}{0pt}
+\bibliographystyle{elsarticle-num}
 \bibliography{references}
 
 \end{document}

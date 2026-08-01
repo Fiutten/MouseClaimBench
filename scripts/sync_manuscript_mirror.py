@@ -13,13 +13,24 @@ MIRROR = ROOT / "paper"
 def run() -> None:
     """Copy canonical manuscript files without changing their contents."""
 
-    for filename in ("main.tex", "references.bib", "elsarticle.cls", "elsarticle-harv.bst"):
+    for filename in (
+        "main.tex",
+        "supplementary_material.tex",
+        "references.bib",
+        "elsarticle.cls",
+        "elsarticle-num.bst",
+        "elsarticle-harv.bst",
+    ):
         (MIRROR / filename).parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(ROOT / filename, MIRROR / filename)
     for directory in ("sections", "tables", "figures"):
         destination = MIRROR / directory
         destination.mkdir(parents=True, exist_ok=True)
-        for source in (ROOT / directory).iterdir():
+        sources = {source.name: source for source in (ROOT / directory).iterdir() if source.is_file()}
+        for stale in destination.iterdir():
+            if stale.is_file() and stale.name not in sources:
+                stale.unlink()
+        for source in sources.values():
             if source.is_file():
                 shutil.copy2(source, destination / source.name)
 

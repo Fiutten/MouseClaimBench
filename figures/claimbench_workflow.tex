@@ -1,6 +1,6 @@
 \begin{figure}[t!]
 \centering
 \includegraphics[width=0.94\textwidth]{figures/claimbench_workflow.png}
-\caption{MouseClaimBench knowledge-system architecture. Source artifacts are converted into provenance-bearing facts. A separately versioned domain profile declares claims, requirements, states, and prioritized rules. The inference engine emits one of five states together with the decisive rule and witness facts. The proof trace and typed graph preserve the profile hash and provenance. Optional candidate discovery is upstream and cannot modify this reasoning path.}
+\caption{MouseClaimBench architecture. Source artifacts become provenance-bearing facts. A versioned profile declares claims, requirements, states, and rules. Inference returns one of five decisions with the decisive rule, witnesses, profile hash, and typed explanation graph. Optional candidate discovery cannot modify this path.}
 \label{fig:claimbench-workflow}
 \end{figure}
