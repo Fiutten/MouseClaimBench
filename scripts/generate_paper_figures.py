@@ -315,13 +315,19 @@ def build_oracle_benchmark() -> Image.Image:
             draw.text((label_x, y), f"{value:.3f}", font=SMALL_BOLD, fill=INK, anchor="lm")
 
     draw.line((900, 35, 900, 720), fill="#94a3b8", width=3)
-    draw.text((1350, 55), "B. Policy comparisons by generated case", font=HEAD, fill=INK, anchor="mm")
+    draw.text(
+        (1350, 55),
+        "B. Paired decisions and case-level tests",
+        font=HEAD,
+        fill=INK,
+        anchor="mm",
+    )
     paired = payload["paired_decision_counts"]
     paired_rows = [
-        ("Both correct", paired["both_correct"], "#6b9f7c"),
-        ("Knowledge policy only", paired["contract_only_correct"], "#447ba6"),
+        ("Both policies correct", paired["both_correct"], "#6b9f7c"),
+        ("Knowledge policy only correct", paired["contract_only_correct"], "#447ba6"),
         ("Shortcut only correct", paired["shortcut_only_correct"], "#d59b45"),
-        ("Both wrong", paired["both_wrong"], "#b96a5e"),
+        ("Both policies wrong", paired["both_wrong"], "#b96a5e"),
     ]
     max_count = max(value for _label, value, _color in paired_rows)
     for index, (label, value, color) in enumerate(paired_rows):
