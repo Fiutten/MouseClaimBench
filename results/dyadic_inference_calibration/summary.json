@@ -1,0 +1,45 @@
+{
+  "version": "0.8.0",
+  "git_revision": "92791c3f8c69ea36ef926d69041a7ab0db6efe22",
+  "analysis": "directed_dyadic_covariance_simulation_calibration",
+  "n_units": 70,
+  "directed_pairs_per_trial": 4830,
+  "trials_per_regime": 500,
+  "seed": 2026080301,
+  "null": {
+    "true_coefficient": 0.0,
+    "trials": 500,
+    "mean_estimate": -0.001247939829112592,
+    "empirical_estimate_standard_deviation": 0.10809623391849565,
+    "mean_naive_hc1_standard_error": 0.0679826460747783,
+    "mean_dyadic_cluster_standard_error": 0.10220195497678475,
+    "naive_rejection_rate_005": 0.208,
+    "dyadic_rejection_rate_005": 0.066,
+    "naive_coverage_95": 0.792,
+    "dyadic_coverage_95": 0.934
+  },
+  "alternative": {
+    "true_coefficient": 0.35,
+    "trials": 500,
+    "mean_estimate": 0.3564051510498838,
+    "empirical_estimate_standard_deviation": 0.11038937868544245,
+    "mean_naive_hc1_standard_error": 0.06843004371025249,
+    "mean_dyadic_cluster_standard_error": 0.10246582031049518,
+    "naive_rejection_rate_005": 0.982,
+    "dyadic_rejection_rate_005": 0.892,
+    "naive_coverage_95": 0.768,
+    "dyadic_coverage_95": 0.944
+  },
+  "calibration_sanity_criteria": {
+    "maximum_dyadic_null_rejection_rate": 0.08,
+    "minimum_dyadic_null_coverage": 0.92,
+    "minimum_dyadic_alternative_power": 0.8
+  },
+  "calibration_sane": true,
+  "decision": "dyadic_inference_implementation_passes_simulation_sanity_check",
+  "limits": [
+    "The calibration DGP covers additive sender and receiver dependence only.",
+    "Five hundred trials estimate but do not prove universal Type-I error control.",
+    "Network spillovers beyond shared units are outside the dyadic covariance model."
+  ]
+}
