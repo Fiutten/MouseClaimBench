@@ -1,0 +1,146 @@
+{
+  "version": "0.8.0",
+  "git_revision": "ada300a9f19e8d3191542e6f40133a81d7a53be7",
+  "analysis": "microns_fixed_endpoint_network_dependent_inference",
+  "primary_endpoint": "all_pairs/readout_location",
+  "controls": [
+    "log1p_distance",
+    "squared_log1p_distance",
+    "log1p_pre_degree",
+    "log1p_post_degree",
+    "same_coarse_cell_type"
+  ],
+  "primary_inference": "directed dyadic cluster-robust linear model",
+  "corroborating_inference": "Freedman-Lane simultaneous node-label permutation",
+  "cohorts": [
+    {
+      "cohort": "discovery",
+      "units_file": "/Users/fiutten/Documents/Codex/mouse-mind/data/microns/expanded/dt_coreg_units_v1507_sample1000.csv",
+      "units_sha256": "sha256:fd09bc39035ed1319dcb57ddaaedbf06858486860e99c51ffeea709f52a6b4e3",
+      "edges_file": "/Users/fiutten/Documents/Codex/mouse-mind/data/microns/expanded/dt_coreg_edges_v1507_sample1000.csv",
+      "edges_sha256": "sha256:10a2005dbe0c25c70cbc5bd14115f3ab05181a7a48295780ce9cb997db4df335",
+      "n_units": 1000,
+      "n_candidate_directed_pairs": 999000,
+      "n_connected_directed_pairs": 2095,
+      "coefficient_names": [
+        "intercept",
+        "connected",
+        "log1p_distance",
+        "squared_log1p_distance",
+        "log1p_pre_degree",
+        "log1p_post_degree",
+        "same_coarse_cell_type"
+      ],
+      "connected_coefficient": 0.010595405354177084,
+      "naive_hc1_standard_error": 0.0011191446076679057,
+      "naive_hc1_two_sided_p_value": 2.8685715891981166e-21,
+      "dyadic_cluster_standard_error": 0.0019973329182053834,
+      "dyadic_cluster_t_statistic": 5.3047768139209985,
+      "dyadic_cluster_degrees_of_freedom": 999,
+      "dyadic_cluster_two_sided_p_value": 1.3892528931684694e-07,
+      "dyadic_to_naive_se_ratio": 1.784696012043933,
+      "freedman_lane_node_permutation": {
+        "statistic": "partial connected-pair regression coefficient",
+        "observed_coefficient": 0.010595405354180826,
+        "null_mean": 1.2537468015943444e-05,
+        "null_standard_deviation": 0.0015030259476176105,
+        "one_sided_p_value": 0.000999000999000999,
+        "n_permutations": 1000,
+        "permutation_action": "same random node permutation applied to row and column labels",
+        "exchangeability_assumption": "reduced-model residual arrays are invariant under simultaneous node relabeling"
+      },
+      "network_inference_passed": true
+    },
+    {
+      "cohort": "holdout_offset1000",
+      "units_file": "/Users/fiutten/Documents/Codex/mouse-mind/data/microns/expanded/dt_coreg_units_v1507_holdout_offset1000.csv",
+      "units_sha256": "sha256:591bb82c06930d8209f6d82cd69e51ea313b5ac3206f5a6022e45498e9b32b41",
+      "edges_file": "/Users/fiutten/Documents/Codex/mouse-mind/data/microns/expanded/dt_coreg_edges_v1507_holdout_offset1000.csv",
+      "edges_sha256": "sha256:de39308f8b37309b6d0dfa8a62c9d9b2aab0aa3b2fb445296846544589f0fbd8",
+      "n_units": 992,
+      "n_candidate_directed_pairs": 983072,
+      "n_connected_directed_pairs": 1926,
+      "coefficient_names": [
+        "intercept",
+        "connected",
+        "log1p_distance",
+        "squared_log1p_distance",
+        "log1p_pre_degree",
+        "log1p_post_degree",
+        "same_coarse_cell_type"
+      ],
+      "connected_coefficient": 0.017818057813918046,
+      "naive_hc1_standard_error": 0.0012555313058563204,
+      "naive_hc1_two_sided_p_value": 1.032051711094307e-45,
+      "dyadic_cluster_standard_error": 0.0020908239291260672,
+      "dyadic_cluster_t_statistic": 8.522026922355783,
+      "dyadic_cluster_degrees_of_freedom": 991,
+      "dyadic_cluster_two_sided_p_value": 5.77638956597364e-17,
+      "dyadic_to_naive_se_ratio": 1.6652901599295808,
+      "freedman_lane_node_permutation": {
+        "statistic": "partial connected-pair regression coefficient",
+        "observed_coefficient": 0.01781805781391933,
+        "null_mean": 7.337479390937579e-06,
+        "null_standard_deviation": 0.001728656578195717,
+        "one_sided_p_value": 0.000999000999000999,
+        "n_permutations": 1000,
+        "permutation_action": "same random node permutation applied to row and column labels",
+        "exchangeability_assumption": "reduced-model residual arrays are invariant under simultaneous node relabeling"
+      },
+      "network_inference_passed": true
+    },
+    {
+      "cohort": "holdout_offset2000",
+      "units_file": "/Users/fiutten/Documents/Codex/mouse-mind/data/microns/expanded/dt_coreg_units_v1507_holdout_offset2000.csv",
+      "units_sha256": "sha256:032bbff90794c91e969807fefe8a286794d9885c907ed6defd6ac66b8b159e65",
+      "edges_file": "/Users/fiutten/Documents/Codex/mouse-mind/data/microns/expanded/dt_coreg_edges_v1507_holdout_offset2000.csv",
+      "edges_sha256": "sha256:8dd634a8947d156363ddbe94ec55bcc7229116bbee4ecc6cedc5e4f92a436a44",
+      "n_units": 999,
+      "n_candidate_directed_pairs": 997002,
+      "n_connected_directed_pairs": 1922,
+      "coefficient_names": [
+        "intercept",
+        "connected",
+        "log1p_distance",
+        "squared_log1p_distance",
+        "log1p_pre_degree",
+        "log1p_post_degree",
+        "same_coarse_cell_type"
+      ],
+      "connected_coefficient": 0.011659837953462815,
+      "naive_hc1_standard_error": 0.0013099453681472946,
+      "naive_hc1_two_sided_p_value": 5.534034109411067e-19,
+      "dyadic_cluster_standard_error": 0.0020526638650679493,
+      "dyadic_cluster_t_statistic": 5.680344527854218,
+      "dyadic_cluster_degrees_of_freedom": 998,
+      "dyadic_cluster_two_sided_p_value": 1.7627017885002266e-08,
+      "dyadic_to_naive_se_ratio": 1.5669843300191286,
+      "freedman_lane_node_permutation": {
+        "statistic": "partial connected-pair regression coefficient",
+        "observed_coefficient": 0.01165983795344705,
+        "null_mean": 6.169883227885023e-06,
+        "null_standard_deviation": 0.0014958335548632244,
+        "one_sided_p_value": 0.000999000999000999,
+        "n_permutations": 1000,
+        "permutation_action": "same random node permutation applied to row and column labels",
+        "exchangeability_assumption": "reduced-model residual arrays are invariant under simultaneous node relabeling"
+      },
+      "network_inference_passed": true
+    }
+  ],
+  "all_cohorts_passed": true,
+  "decision": "microns_fixed_endpoint_survives_network_dependent_inference",
+  "interpretation": "A positive decision supports only a local observational association after the fixed controls. Dyadic covariance assumes pairs without a shared unit are independent. The permutation test additionally assumes exchangeability of reduced-model residual arrays under node relabeling. Neither assumption establishes causality or independent biological replication.",
+  "method_references": [
+    {
+      "citation": "Aronow, Samii, and Assenova (2015)",
+      "doi": "10.1093/pan/mpv018",
+      "role": "directed dyadic cluster-robust covariance"
+    },
+    {
+      "citation": "Dekker, Krackhardt, and Snijders (2007)",
+      "doi": "10.1007/s11336-007-9016-1",
+      "role": "Freedman-Lane MRQAP residual permutation"
+    }
+  ]
+}
