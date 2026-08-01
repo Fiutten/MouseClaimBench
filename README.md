@@ -1,79 +1,99 @@
 # MouseClaimBench
 
-MouseClaimBench is an executable decision-support framework for auditing the
-scientific wording attached to computational mouse-brain studies. It is the
-standalone repository for the second manuscript in the MouseBrainBench
-workstream. It is not a simulator and it is not a complete digital mouse brain.
+MouseClaimBench is an evidence-constrained knowledge-based system for auditing
+scientific claims made from computational mouse-brain studies. It converts
+domain evidence into explicit facts, applies a versioned non-compensatory rule
+base, and returns both a claim disposition and a machine-readable explanation.
+It is not a simulator, a biological truth engine, or a complete digital mouse
+brain.
 
-## Scientific contribution
+## Knowledge architecture
 
-The framework represents a candidate statement as a claim-specific evidence
-contract. Evidence blocks are non-compensatory. Prediction cannot replace
-topology, direction, intervention, independent validation, or whole-brain
-coverage. Version 3 also separates three concepts that were previously grouped
-under reproducibility:
+The executable system separates five elements that must not be collapsed into
+a single score:
 
-- computational reproducibility of code and artifacts;
-- internal reproduction across non-overlapping units or cohorts in one resource;
-- external replication in an independent study, resource, or laboratory.
+1. A versioned domain profile declares the claim vocabulary and the evidence
+   required by every claim.
+2. Evidence facts retain their original values, source, predicate, rationale,
+   and status.
+3. Prioritized rules implement vetoes, review escalation, uncertainty, scope
+   boundaries, and support without compensation across evidence types.
+4. Every conclusion includes the fired rule, its witnesses, the evaluated rule
+   sequence, the source facts, and the SHA-256 identity of the knowledge profile.
+5. A release gate checks clean revisions, required artifacts, inference
+   conformance, and explicit scientific claim boundaries.
 
-Every observed value remains in its source scale. The v3 contract does not map
-correlations, bootstrap intervals, and reliability coefficients to invented
-common scores. Its five workflow dispositions are `supported`, `blocked`,
+The evaluated profile is
+`mousebrainbench/knowledge/profiles/mouse_brain_claims_v1.yaml`. It defines ten
+claims and five inference rules for computational mouse-brain evidence. The
+engine can load another validated profile, but no other scientific domain is
+empirically evaluated in this repository. Profile extensibility is therefore an
+architectural property, not evidence of cross-domain generality.
+
+## Scientific semantics
+
+Evidence blocks are non-compensatory. Prediction cannot replace topology,
+direction, intervention, independent validation, or whole-brain coverage. The
+knowledge profile also separates three concepts that are often grouped under
+reproducibility:
+
+- computational reproducibility of code and artifacts
+- internal reproduction across non-overlapping units or cohorts in one resource
+- external replication in an independent study, resource, or laboratory
+
+Observed values remain in their source scale. Correlations, bootstrap
+intervals, and reliability coefficients are not converted into an invented
+common score. The five claim dispositions are `supported`, `blocked`,
 `uncertain`, `out_of_scope`, and `needs_external_review`.
 
 ## Evidence status
 
-The repository currently contains four bounded mouse-brain cases:
+Four bounded mouse-brain cases exercise the knowledge profile:
 
-- **Allen VBN:** internally reproduced target structure, but failed topology
-  specificity and directed identifiability. This is a negative mechanistic case.
+- **Allen VBN:** internally reproduced target structure with failed topology
+  specificity and directed identifiability. This is a real negative mechanistic
+  case.
 - **Static Sensorium:** predictive and topographic evidence reproduced within
-  the resource. It is not causal evidence or external replication.
-- **Dynamic Sensorium:** a temporal model beats a mean-response baseline in both
-  stored five-mouse cohorts. Reliability is not estimable in the stored
-  comparator, and temporal prediction is not biological direction.
+  the resource. It is neither causal evidence nor external replication.
+- **Dynamic Sensorium:** a temporal model beats a mean-response baseline in two
+  stored five-mouse cohorts. Temporal prediction is not treated as biological
+  direction.
 - **MICRONS:** a fixed local `all_pairs/readout_location` association passes in
   discovery and two non-overlapping hold-outs under distance, degree, FDR, and
-  unit-cluster bootstrap controls. The three windows come from one resource and
-  therefore do not constitute external replication.
+  unit-cluster bootstrap controls. All windows come from one resource.
 
-The legacy 144-case suite is retained as a **software contract-conformance
-test**. Its labels share the operational semantics of the legacy gate and must
-not be presented as independent scientific validation. The oracle structural-
-equation benchmark provides a separate data-generating reference and reports
-ordinary false-positive and false-negative rates with finite-sample errors.
+The knowledge-system audit reproduces all 40 frozen real-case decisions and
+adds a complete inference trace to all 40. These are conformance results. They
+do not independently establish biological truth. A separate structural-
+equation oracle benchmark reports false-positive and false-negative behavior
+against known data-generating structures. SciFact tests the separation between
+evidence retrieval and support inference. Tuebingen tests abstention from
+unsupported causal-direction claims.
 
-The SciFact adapter separates retrieval from support classification. Its
-train-calibrated support baseline uses the official training split and is
-evaluated on the development split. The Tuebingen adapter is an abstention and
-directional-overclaim control, not a competitive causal-discovery system.
+The legacy 144-case suite remains a software contract-conformance test because
+its labels share the operational semantics of the legacy gate. It is not
+presented as independent scientific validation.
 
-## Human evaluation
+## Scope boundaries
 
-No human study has been executed. The repository includes a preregistrable
-expert crossover protocol and an unlabeled item builder under
-`configs/human_evaluation_protocol.yaml` and
-`docs/HUMAN_EXPERT_EVALUATION_PROTOCOL.md`. These artifacts do not demonstrate
-improved author or reviewer decisions. Ethics approval, preregistration,
-recruitment, double annotation, adjudication, and analysis are still required.
+The current artifacts do not support claims of:
 
-## Prohibited claims
+- a complete, causal, entity-specific, or whole-brain mouse digital twin
+- cross-domain empirical generality
+- external biological replication of the real-data effects
+- improved human decision quality or automated peer review
+- state-of-the-art Sensorium, SciFact, or causal-discovery performance
+- universal scientific truth verification
+- language-model authority over claim authorization
 
-The present artifacts do not support claims of:
-
-- a complete, causal, entity-specific, or whole-brain mouse digital twin;
-- improved human decision quality or automated peer review;
-- external biological replication of the reported real-data effects;
-- state-of-the-art Sensorium, SciFact, or causal-discovery performance;
-- universal scientific truth verification;
-- language-model authority over scientific claim authorization.
+A previously prepared expert protocol is retained as optional future work. No
+human study has been executed, and a human-effect claim is not part of the
+knowledge-system scope or release gate.
 
 ## Installation and checks
 
-Use an isolated environment. The exact validated package snapshot is recorded
-in `requirements-lock.txt`, while supported dependency ranges remain in
-`pyproject.toml`.
+Use an isolated environment. Exact validated versions are recorded in
+`requirements-lock.txt`, while supported ranges remain in `pyproject.toml`.
 
 ```bash
 python3.12 -m venv .venv
@@ -85,8 +105,8 @@ python3.12 -m venv .venv
 .venv/bin/python -m ruff check .
 ```
 
-Raw public datasets are excluded from Git. Dataset locations can be passed to
-the corresponding adapters. Lightweight MICRONS summaries copied from
+Raw public datasets are excluded from Git. Dataset locations can be supplied to
+their adapters. Lightweight MICRONS summaries copied from
 `Fiutten/Mouse-brain` are byte-preserved and documented in
 `results/EXTERNAL_ARTIFACT_PROVENANCE.md`.
 
@@ -95,26 +115,26 @@ the corresponding adapters. Lightweight MICRONS summaries copied from
 ```bash
 .venv/bin/python -m mousebrainbench.benchmarks.oracle_sem_claim_benchmark
 .venv/bin/python -m mousebrainbench.benchmarks.real_case_claim_matrix
-.venv/bin/python -m mousebrainbench.benchmarks.human_evaluation_protocol
-.venv/bin/python -m mousebrainbench.benchmarks.claimbench_v3_release
+.venv/bin/python -m mousebrainbench.benchmarks.knowledge_system_audit
+.venv/bin/python -m mousebrainbench.benchmarks.knowledge_system_release
 ```
 
 Artifacts whose `git_revision` ends in `-dirty` are provisional. Submission
-artifacts must be regenerated after the relevant code commit from a clean tree.
+artifacts must be regenerated from a clean tree after the relevant code commit.
 Numerical JSON files must never be edited manually.
 
 ## Manuscript
 
-The canonical Overleaf source is `main.tex` at the repository root. Sections,
-tables, and figures are also at root level. The `paper/` tree is a byte-identical
-mirror retained for structured local tooling. Synchronize and verify it with:
+The canonical source is `main.tex` at the repository root. The `paper/` tree is
+a byte-identical mirror for structured local tooling. Synchronize and verify it
+with:
 
 ```bash
 .venv/bin/python scripts/sync_manuscript_mirror.py
 .venv/bin/python -m pytest -q tests/test_manuscript_mirror.py
 ```
 
-Elsevier Editorial Manager requires a flat LaTeX upload. Build it with:
+Build the flat Elsevier Editorial Manager package with:
 
 ```bash
 .venv/bin/python scripts/build_elsevier_submission.py

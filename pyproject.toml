@@ -77,6 +77,7 @@ mousebrainbench-claimbench-unified-report = "mousebrainbench.benchmarks.claimben
 mousebrainbench-claimbench-reproduce-package = "mousebrainbench.benchmarks.claimbench_reproduce_package:main"
 mousebrainbench-llm-claim-extraction-audit = "mousebrainbench.benchmarks.llm_claim_extraction_audit:main"
 mousebrainbench-knowledge-system-audit = "mousebrainbench.benchmarks.knowledge_system_audit:main"
+mousebrainbench-knowledge-system-release = "mousebrainbench.benchmarks.knowledge_system_release:main"
 mousebrainbench-run = "mousebrainbench.cli:main"
 
 [tool.setuptools.packages.find]
