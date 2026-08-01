@@ -25,10 +25,14 @@ a single score:
 
 The evaluated profile is
 `mousebrainbench/knowledge/profiles/mouse_brain_claims_v1.yaml`. It defines ten
-claims and five inference rules for computational mouse-brain evidence. The
-engine can load another validated profile, but no other scientific domain is
-empirically evaluated in this repository. Profile extensibility is therefore an
-architectural property, not evidence of cross-domain generality.
+claims, 22 claim-to-evidence relations, and five inference rules for
+computational mouse-brain evidence. It is an author-proposed,
+literature-grounded policy, not an externally validated consensus taxonomy. Its
+machine-readable curation basis is stored beside the profile and documented in
+`docs/KNOWLEDGE_PROFILE_CURATION.md`. The engine can load another structurally
+valid profile, but no other scientific domain is empirically evaluated here.
+Profile extensibility is therefore an architectural property, not evidence of
+cross-domain generality.
 
 ## Scientific semantics
 
@@ -38,13 +42,15 @@ knowledge profile also separates three concepts that are often grouped under
 reproducibility:
 
 - computational reproducibility of code and artifacts
-- internal reproduction across non-overlapping units or cohorts in one resource
+- within-resource reproduction across non-overlapping units or cohorts
 - external replication in an independent study, resource, or laboratory
 
 Observed values remain in their source scale. Correlations, bootstrap
 intervals, and reliability coefficients are not converted into an invented
-common score. The five claim dispositions are `supported`, `blocked`,
-`uncertain`, `out_of_scope`, and `needs_external_review`.
+common score. The five internal disposition identifiers are `supported`,
+`blocked`, `uncertain`, `out_of_scope`, and `needs_external_review`. In reports,
+the last state is displayed as *referred for review*. Evidence marked
+`not_applicable` means *not targeted by the evaluated protocol*.
 
 ## Evidence status
 
@@ -62,11 +68,13 @@ Four bounded mouse-brain cases exercise the knowledge profile:
   discovery and two non-overlapping hold-outs under distance, degree, FDR, and
   unit-cluster bootstrap controls. All windows come from one resource.
 
-The knowledge-system audit reproduces all 40 frozen real-case decisions and
+The knowledge-system audit reproduces all 40 author-generated migration decisions and
 adds a complete inference trace to all 40. These are conformance results. They
 do not independently establish biological truth. A separate structural-
-equation oracle benchmark reports false-positive and false-negative behavior
-against known data-generating structures. SciFact tests the separation between
+equation oracle benchmark compares the non-compensatory policy with an
+equal-weight compensatory policy and a prediction shortcut. It reports
+case-cluster uncertainty and per-claim behavior against known data-generating
+structures. SciFact tests the separation between
 evidence retrieval and support inference. Tuebingen tests abstention from
 unsupported causal-direction claims.
 

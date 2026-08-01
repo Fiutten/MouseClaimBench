@@ -1,7 +1,7 @@
 \section{Knowledge-Based Method}
 \label{sec:method}
 
-MouseClaimBench receives a versioned domain profile and the evidence artifacts associated with one study. It returns a claim disposition, a machine-readable proof trace, and a typed knowledge graph. It does not calculate a paper-level score or infer publication acceptance. Fig.~\ref{fig:claimbench-workflow} shows the separation between source artifacts, evidence facts, domain knowledge, inference, and explanation.
+MouseClaimBench receives a versioned domain profile and the evidence artifacts associated with one study. It returns a claim disposition, a machine-readable proof trace, and a typed explanation and provenance graph. It does not calculate a paper-level score or infer publication acceptance. Fig.~\ref{fig:claimbench-workflow} shows the separation between source artifacts, evidence facts, domain knowledge, inference, and explanation.
 
 \input{figures/claimbench_workflow}
 
@@ -13,14 +13,16 @@ The knowledge base is
 \mathcal{K}=\langle C,E,Q,R,\Pi\rangle,
 \label{eq:knowledge-base}
 \end{equation}
-where $C$ contains claim types, $E$ contains evidence-block types, $Q:C\rightarrow 2^{E}$ maps a claim to its mandatory evidence, $R$ is an ordered rule set, and $\Pi$ identifies the profile version and SHA-256 content hash. The current external \ac{yaml} profile contains ten claims and twenty claim-to-evidence relations. Validation rejects duplicated or empty declarations, ambiguous rule priorities, incomplete decision coverage, and the absence of an all-passed terminal rule.
+where $C$ contains claim types, $E$ contains evidence-block types, $Q:C\rightarrow 2^{E}$ maps a claim to its mandatory evidence, $R$ is an ordered rule set, and $\Pi$ identifies the profile version and SHA-256 content hash. Profile v1.1 contains ten claims and twenty-two claim-to-evidence relations. Structural checks reject duplicated or empty declarations, ambiguous rule priorities, incomplete execution over the declared states and configurations, and the absence of an all-passed terminal rule.
+
+The profile is an author-proposed operational policy grounded in a targeted literature synthesis. It was not produced by a Delphi study, independent expert panel, or community consensus process. A separate machine-readable curation record specifies the rationale, scope, exceptions, alternatives rejected, and supporting sources for every relation. This record makes the design contestable and versionable. It does not establish external content validity.
 
 An evidence fact is represented as
 \begin{equation}
 f_j=\langle e_j,s_j,x_j,\phi_j,\rho_j,a_j\rangle,
 \label{eq:evidence-fact}
 \end{equation}
-where $e_j$ is the evidence block, $s_j$ its source artifact, $x_j$ the original-scale observations, $\phi_j$ the executed predicate, $\rho_j$ its rationale, and $a_j$ the resulting state. The state space is $\mathcal{S}_{E}=\{P,F,U,N,R\}$ for passed, failed, unknown, not applicable, and requiring external review. Failed means that a required test was executed and did not pass. Unknown denotes an absent observation. Not applicable denotes a protocol that did not target the requirement. These states are not numerically interpolated.
+where $e_j$ is the evidence block, $s_j$ its source artifact, $x_j$ the original-scale observations, $\phi_j$ the executed predicate, $\rho_j$ its rationale, and $a_j$ the resulting state. The state space is $\mathcal{S}_{E}=\{P,F,U,N,J\}$ for passed, failed, unknown, not targeted by the protocol, and expert judgement required. Failed means that a required test was executed and did not pass. Unknown denotes an absent observation. The $N$ state records that the evaluated protocol did not target a requirement. The $J$ state records that the supplied evidence cannot be decided automatically. These states are not numerically interpolated.
 
 The engine never normalizes predictive correlation, cross-mouse agreement, matched structure--function differences, interventions, and software revisions into one score. Each source predicate converts its own observation package into an evidence state under a declared protocol. Table~\ref{tab:claim-semantics} lists the claim families and their decisive requirements.
 
@@ -34,14 +36,14 @@ For claim $c$, let $\mathbf{A}_{c}=\{a_j:e_j\in Q(c)\}$ contain the states of it
 D_{\mathcal{K}}(c)=
 \begin{cases}
 \text{blocked}, & F\in\mathbf{A}_{c},\\
-\text{external review}, & F\notin\mathbf{A}_{c}\ \land\ R\in\mathbf{A}_{c},\\
-\text{uncertain}, & F,R\notin\mathbf{A}_{c}\ \land\ U\in\mathbf{A}_{c},\\
-\text{out of scope}, & F,R,U\notin\mathbf{A}_{c}\ \land\ N\in\mathbf{A}_{c},\\
+\text{referred for review}, & F\notin\mathbf{A}_{c}\ \land\ J\in\mathbf{A}_{c},\\
+\text{uncertain}, & F,J\notin\mathbf{A}_{c}\ \land\ U\in\mathbf{A}_{c},\\
+\text{out of scope}, & F,J,U\notin\mathbf{A}_{c}\ \land\ N\in\mathbf{A}_{c},\\
 \text{supported}, & \mathbf{A}_{c}=\{P\}.
 \end{cases}
 \label{eq:five-state-gate}
 \end{equation}
-Failure therefore cannot be offset by prediction or reproducibility. Review takes precedence over missing or untargeted evidence when no failure exists. Support requires every mandatory fact to pass. An undeclared claim remains outside the knowledge boundary.
+Failure therefore cannot be offset by prediction or reproducibility. Review takes precedence over missing or untargeted evidence when no failure exists because an observed fact that requires expert interpretation is more actionable than an absent or inapplicable test. If applicability itself is disputed, the source predicate emits $J$ rather than $F$. Support requires every mandatory fact to pass. An undeclared claim remains outside the knowledge boundary.
 
 This order is an inspectable policy, not an empirical probability. Changing claim vocabulary, requirements, or priority produces a different profile and hash. Evaluation measures false authorization with the standard \ac{fpr} and false rejection with the standard \ac{fnr}. No new scalar metric is introduced.
 
@@ -53,6 +55,8 @@ Every inference returns the trace
 T(c)=\langle \Pi,c,D_{\mathcal{K}}(c),r^{*},F_c,L_c\rangle,
 \label{eq:proof-trace}
 \end{equation}
-where $r^{*}$ is the decisive rule, $F_c$ is the ordered fact set, and $L_c$ records rule evaluations up to the decision. Each step includes priority, conclusion, rationale, activation state, and witness blocks. The typed graph represents profiles, claims, evidence blocks, states, rules, and decisions through \emph{declares}, \emph{requires}, \emph{tests status}, and \emph{concludes} edges. It is an operational explanation graph, not a biological connectome or learned embedding.
+where $r^{*}$ is the decisive rule, $F_c$ is the ordered fact set, and $L_c$ records rule evaluations up to the decision. Each step includes priority, conclusion, rationale, activation state, and witness blocks. The typed graph represents profiles, claims, evidence blocks, states, rules, and decisions through \emph{declares}, \emph{requires}, \emph{tests status}, and \emph{concludes} edges. It is an operational explanation and provenance graph, not a general-purpose knowledge graph, biological connectome, or learned embedding.
 
-Evidence records are immutable, duplicate names are rejected, and missing mandatory facts are materialized as unknown with explicit provenance. Real-case builders fail when an expected source artifact is absent. Optional deterministic or \ac{llm}-based claim discovery can propose candidates but cannot change the profile, facts, or inference. The release gate separately checks profile identity, expected benchmark decisions, trace completeness, source revisions, and absence of a `-dirty' suffix. Passing this engineering gate does not establish biological truth or remove scientific claim boundaries.
+For example, the Allen mechanistic claim requires prediction, within-resource reproduction, topology, and direction. Its adapter yields the ordered states $\langle U,P,F,F\rangle$. The failed topology and direction facts activate the highest-priority veto, so the claim is blocked. The trace retains both failed observations, their predicates and sources, the non-decisive passed reproduction fact, and every rule evaluated before the decision. The graph links this decision to the exact profile revision and witnesses. This example illustrates claim authorization under an explicit evidence policy without converting heterogeneous measurements into a score.
+
+Evidence records are immutable, duplicate names are rejected, and missing mandatory facts are materialized as unknown with explicit provenance. Real-case builders fail when an expected source artifact is absent. The release gate separately checks profile identity, expected benchmark decisions, trace completeness, source revisions, and absence of a `-dirty' suffix. Passing this engineering gate establishes package consistency only. It does not establish biological truth, scientific sufficiency of the profile, or human interpretability of the trace.

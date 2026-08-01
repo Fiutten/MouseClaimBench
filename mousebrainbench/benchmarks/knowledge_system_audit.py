@@ -1,9 +1,10 @@
-"""Audit the knowledge system against the frozen mouse-brain case matrix.
+"""Audit the knowledge system against author-generated migration decisions.
 
 The audit is a conformance test, not new biological evidence. It verifies that
-the versioned knowledge profile reproduces the previously frozen contract
-decisions while adding an explicit fired rule, evidence provenance, and a
-machine-readable inference trace to every decision.
+the versioned knowledge profile reproduces decisions created by the authors
+during system migration while adding an explicit fired rule, evidence
+provenance, and a machine-readable inference trace to every decision. These
+reference decisions are not independent scientific labels.
 """
 
 from __future__ import annotations
@@ -132,7 +133,8 @@ def run(
         },
         "conformance_failures": [row for row in conformance_rows if not row["exact_match"]],
         "limits": [
-            "Conformance to a frozen policy is not evidence that the policy is biologically true.",
+            "Conformance to author-generated migration decisions is not evidence that the policy is biologically true.",
+            "The migration decisions were not produced blindly or by independent experts.",
             "The audit evaluates only the computational mouse-brain knowledge profile.",
             "Architectural profile extensibility is not empirical validation in another domain.",
             "The real cases do not establish causal, whole-brain, or digital-twin claims.",
@@ -159,7 +161,7 @@ def write_markdown(payload: dict[str, Any], markdown: Path) -> None:
         f"- Knowledge profile: `{payload['knowledge_profile']['profile_id']}` "
         f"v`{payload['knowledge_profile']['version']}`",
         f"- Profile hash: `{payload['knowledge_profile']['source_hash']}`",
-        f"- Exact frozen-decision matches: `{payload['exact_decision_matches']}/"
+        f"- Exact migration-decision matches: `{payload['exact_decision_matches']}/"
         f"{payload['decision_count']}`",
         f"- Complete inference traces: `{payload['explanation_complete_count']}/"
         f"{payload['decision_count']}`",

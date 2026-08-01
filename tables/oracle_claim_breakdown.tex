@@ -1,0 +1,28 @@
+\begin{table}[t!]
+\centering
+\caption{Oracle results by claim. Positive cases are defined by the generating
+graph and intervention. Rates equal zero when a claim has no positive or
+negative reference instances, so those rows are coverage checks rather than
+performance estimates.}
+\label{tab:oracle-claim-breakdown}
+\footnotesize
+\renewcommand{\arraystretch}{1.04}
+\begin{tabularx}{\textwidth}{@{}Y r rr rr rr@{}}
+\toprule
+& & \multicolumn{2}{c}{Knowledge policy} & \multicolumn{2}{c}{Additive 0.75} & \multicolumn{2}{c}{Prediction shortcut} \\
+\cmidrule(lr){3-4}\cmidrule(lr){5-6}\cmidrule(l){7-8}
+Claim & Pos. & \acs{fpr} & \acs{fnr} & \acs{fpr} & \acs{fnr} & \acs{fpr} & \acs{fnr} \\
+\midrule
+Predictive & 400 & 0.000 & 0.013 & 0.000 & 0.013 & 0.000 & 0.013 \\
+Computationally reproducible & 500 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 \\
+Internally reproduced & 400 & 0.000 & 0.043 & 0.000 & 0.043 & 0.000 & 0.013 \\
+Externally replicated & 0 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 \\
+Topology specific & 300 & 0.000 & 0.020 & 0.000 & 0.020 & 0.500 & 0.017 \\
+Directed & 200 & 0.153 & 0.295 & 0.153 & 0.295 & 0.650 & 0.000 \\
+Local structure--function & 0 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 \\
+Mechanistic & 200 & 0.033 & 0.295 & 0.333 & 0.000 & 0.650 & 0.000 \\
+Causal & 100 & 0.000 & 0.000 & 0.000 & 0.000 & 0.738 & 0.000 \\
+Complete entity-specific twin & 0 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 \\
+\bottomrule
+\end{tabularx}
+\end{table}

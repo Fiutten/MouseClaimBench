@@ -2,7 +2,12 @@ from itertools import product
 
 import pytest
 
-from mousebrainbench.knowledge import ClaimKnowledgeSystem, KnowledgeProfile, load_default_profile
+from mousebrainbench.knowledge import (
+    ClaimKnowledgeSystem,
+    KnowledgeProfile,
+    load_default_profile,
+    load_default_profile_basis,
+)
 from mousebrainbench.validation.evidence_contract import (
     CLAIM_REQUIREMENTS_V3,
     DecisionStatus,
@@ -27,11 +32,43 @@ def test_packaged_profile_is_versioned_complete_and_hash_addressed() -> None:
     profile = load_default_profile()
 
     assert profile.profile_id == "mouse_brain_claims"
-    assert profile.version == "1.0.0"
+    assert profile.version == "1.1.0"
     assert profile.requirements == CLAIM_REQUIREMENTS_V3
     assert profile.source_hash.startswith("sha256:")
     assert len(profile.source_hash) == len("sha256:") + 64
     assert {rule.conclusion for rule in profile.rules} == set(DecisionStatus)
+
+
+def test_profile_basis_covers_every_claim_evidence_relation() -> None:
+    profile = load_default_profile()
+    basis = load_default_profile_basis()
+    expected = {
+        (requirement.claim, block)
+        for requirement in profile.requirements
+        for block in requirement.required_blocks
+    }
+    observed = {
+        (row["claim"], row["evidence_block"])
+        for row in basis["relations"]
+    }
+
+    assert basis["status"] == "author_proposed_literature_grounded_not_externally_validated"
+    assert basis["independent_expert_validation"] == "not_performed"
+    assert observed == expected
+    assert all(row["source_ids"] for row in basis["relations"])
+
+
+def test_complete_digital_twin_requires_entity_and_operational_specificity() -> None:
+    requirement = load_default_profile().requirement("digital_twin")
+
+    assert requirement is not None
+    assert {
+        "entity_specificity",
+        "operational_compute",
+        "whole_brain_coverage",
+        "causal_intervention",
+        "independent_validation",
+    } <= set(requirement.required_blocks)
 
 
 def test_profile_rejects_duplicate_claims() -> None:

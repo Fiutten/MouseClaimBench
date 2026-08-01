@@ -34,6 +34,9 @@ from mousebrainbench.validation.evidence_contract import (
 
 DEFAULT_OUTPUT = Path("results/oracle_sem_claim_benchmark/summary.json")
 DEFAULT_MARKDOWN = Path("results/oracle_sem_claim_benchmark/summary.md")
+DEFAULT_BOOTSTRAP_REPLICATES = 5_000
+DEFAULT_BOOTSTRAP_SEED = 20_260_801
+COMPENSATORY_THRESHOLD = 0.75
 
 REGIMES = (
     "independent",
@@ -271,6 +274,18 @@ def _build_blocks(regime: str, seed: int, n: int) -> tuple[EvidenceBlock, ...]:
             "generated cohorts are not an independent empirical validation study",
             {},
         ),
+        _evidence_block(
+            "entity_specificity",
+            EvidenceStatus.FAILED,
+            "a generic generated regime is not calibrated and validated for one identified entity",
+            {},
+        ),
+        _evidence_block(
+            "operational_compute",
+            EvidenceStatus.NOT_APPLICABLE,
+            "the benchmark declares no context-of-use latency, resource, or update budget",
+            {},
+        ),
     )
 
 
@@ -304,12 +319,55 @@ def _prediction_shortcut(blocks: dict[str, EvidenceBlock]) -> set[str]:
     }
 
 
+def _equal_weight_compensatory(
+    blocks: dict[str, EvidenceBlock],
+    *,
+    threshold: float = COMPENSATORY_THRESHOLD,
+) -> set[str]:
+    """Authorize claims whose equally weighted passed-block fraction reaches a threshold.
+
+    The baseline is deliberately transparent. Every required block receives one
+    unit of weight, while failed, missing, untargeted, and review-requiring
+    blocks receive zero. Unlike the knowledge policy, a failed block can
+    therefore be offset when enough other blocks pass.
+    """
+
+    predictions: set[str] = set()
+    for requirement in CLAIM_REQUIREMENTS_V3:
+        passed = sum(
+            blocks.get(name) is not None
+            and blocks[name].status is EvidenceStatus.PASSED
+            for name in requirement.required_blocks
+        )
+        if passed / len(requirement.required_blocks) >= threshold:
+            predictions.add(requirement.claim)
+    return predictions
+
+
 def _confusion(reference: set[str], predicted: set[str], universe: tuple[str, ...]) -> dict[str, int]:
     return {
         "tp": len(reference & predicted),
         "fp": len(predicted - reference),
         "tn": len(set(universe) - reference - predicted),
         "fn": len(reference - predicted),
+    }
+
+
+def _rate(numerator: int, denominator: int) -> float:
+    return numerator / denominator if denominator else 0.0
+
+
+def _classification_metrics(row: dict[str, int]) -> dict[str, float]:
+    """Return standard claim-authorization metrics for one confusion matrix."""
+
+    total = row["tp"] + row["fp"] + row["tn"] + row["fn"]
+    return {
+        "prevalence": _rate(row["tp"] + row["fn"], total),
+        "precision": _rate(row["tp"], row["tp"] + row["fp"]),
+        "recall": _rate(row["tp"], row["tp"] + row["fn"]),
+        "specificity": _rate(row["tn"], row["tn"] + row["fp"]),
+        "false_positive_rate": _rate(row["fp"], row["fp"] + row["tn"]),
+        "false_negative_rate": _rate(row["fn"], row["fn"] + row["tp"]),
     }
 
 
@@ -333,20 +391,104 @@ def _wilson_interval(successes: int, total: int, confidence: float = 0.95) -> li
     return [float(max(0.0, centre - radius)), float(min(1.0, centre + radius))]
 
 
+def _case_cluster_bootstrap(
+    case_rows: list[dict[str, Any]],
+    policies: tuple[str, ...],
+    *,
+    replicates: int,
+    seed: int,
+) -> dict[str, dict[str, list[float]]]:
+    """Bootstrap policy error rates by resampling whole cases within each regime."""
+
+    rng = np.random.default_rng(seed)
+    totals = {
+        policy: np.zeros((replicates, 4), dtype=np.int64)
+        for policy in policies
+    }
+    metric_order = ("tp", "fp", "tn", "fn")
+    for regime in REGIMES:
+        group = [row for row in case_rows if row["regime"] == regime]
+        if not group:
+            continue
+        indices = rng.integers(0, len(group), size=(replicates, len(group)))
+        for policy in policies:
+            values = np.asarray(
+                [
+                    [row["confusions"][policy][metric] for metric in metric_order]
+                    for row in group
+                ],
+                dtype=np.int64,
+            )
+            totals[policy] += values[indices].sum(axis=1)
+
+    intervals: dict[str, dict[str, list[float]]] = {}
+    for policy, values in totals.items():
+        tp, fp, tn, fn = values.T
+        fpr = np.divide(
+            fp,
+            fp + tn,
+            out=np.zeros(replicates, dtype=float),
+            where=(fp + tn) > 0,
+        )
+        fnr = np.divide(
+            fn,
+            fn + tp,
+            out=np.zeros(replicates, dtype=float),
+            where=(fn + tp) > 0,
+        )
+        intervals[policy] = {
+            "false_positive_rate_case_bootstrap_95": [
+                float(value) for value in np.quantile(fpr, (0.025, 0.975))
+            ],
+            "false_negative_rate_case_bootstrap_95": [
+                float(value) for value in np.quantile(fnr, (0.025, 0.975))
+            ],
+        }
+    return intervals
+
+
+def _case_comparison_summary(row: dict[str, int]) -> dict[str, Any]:
+    non_tied = row["contract_fewer_errors"] + row["comparator_fewer_errors"]
+    p_value = (
+        float(
+            stats.binomtest(
+                row["contract_fewer_errors"],
+                non_tied,
+                p=0.5,
+                alternative="two-sided",
+            ).pvalue
+        )
+        if non_tied
+        else 1.0
+    )
+    return {
+        **row,
+        "non_tied_cases": non_tied,
+        "exact_two_sided_sign_test_p_value": p_value,
+        "unit": "independently generated structural-equation case",
+    }
+
+
 def run(
     output: Path = DEFAULT_OUTPUT,
     markdown: Path = DEFAULT_MARKDOWN,
     *,
     seeds: int = 100,
     n_per_cohort: int = 600,
+    bootstrap_replicates: int = DEFAULT_BOOTSTRAP_REPLICATES,
 ) -> Path:
-    """Run finite-sample oracle cases and compare two decision policies."""
+    """Run finite-sample oracle cases and compare three decision policies."""
 
     evaluator = EvidenceContractEvaluator()
     claim_universe = tuple(requirement.claim for requirement in CLAIM_REQUIREMENTS_V3)
+    policy_names = (
+        "evidence_contract_v3",
+        "equal_weight_compensatory_75",
+        "prediction_shortcut",
+    )
     aggregate = {
-        "evidence_contract_v3": {"tp": 0, "fp": 0, "tn": 0, "fn": 0},
-        "prediction_shortcut": {"tp": 0, "fp": 0, "tn": 0, "fn": 0},
+        name: {"tp": 0, "fp": 0, "tn": 0, "fn": 0}
+        for name in policy_names
     }
     per_claim = {
         policy: {
@@ -361,11 +503,16 @@ def run(
         "shortcut_only_correct": 0,
         "both_wrong": 0,
     }
-    case_level_comparison = {
-        "contract_fewer_errors": 0,
-        "shortcut_fewer_errors": 0,
-        "tied_errors": 0,
+    case_level_comparisons = {
+        name: {
+            "contract_fewer_errors": 0,
+            "comparator_fewer_errors": 0,
+            "tied_errors": 0,
+        }
+        for name in policy_names
+        if name != "evidence_contract_v3"
     }
+    case_rows: list[dict[str, Any]] = []
     regime_rows: list[dict[str, Any]] = []
     for regime_index, regime in enumerate(REGIMES):
         regime_aggregate = {name: {"tp": 0, "fp": 0, "tn": 0, "fn": 0} for name in aggregate}
@@ -380,10 +527,13 @@ def run(
             }
             predictions = {
                 "evidence_contract_v3": contract_claims,
+                "equal_weight_compensatory_75": _equal_weight_compensatory(indexed),
                 "prediction_shortcut": _prediction_shortcut(indexed),
             }
+            confusions: dict[str, dict[str, int]] = {}
             for name, predicted in predictions.items():
                 row = _confusion(reference, predicted, claim_universe)
+                confusions[name] = row
                 for metric, value in row.items():
                     aggregate[name][metric] += value
                     regime_aggregate[name][metric] += value
@@ -415,38 +565,53 @@ def run(
                 )
                 paired_correctness[paired_key] += 1
             contract_errors = len(reference.symmetric_difference(contract_claims))
-            shortcut_errors = len(
-                reference.symmetric_difference(predictions["prediction_shortcut"])
+            for comparator, comparison in case_level_comparisons.items():
+                comparator_errors = len(
+                    reference.symmetric_difference(predictions[comparator])
+                )
+                case_key = (
+                    "contract_fewer_errors"
+                    if contract_errors < comparator_errors
+                    else "comparator_fewer_errors"
+                    if comparator_errors < contract_errors
+                    else "tied_errors"
+                )
+                comparison[case_key] += 1
+            case_rows.append(
+                {
+                    "regime": regime,
+                    "case_seed": case_seed,
+                    "confusions": confusions,
+                }
             )
-            case_key = (
-                "contract_fewer_errors"
-                if contract_errors < shortcut_errors
-                else "shortcut_fewer_errors"
-                if shortcut_errors < contract_errors
-                else "tied_errors"
-            )
-            case_level_comparison[case_key] += 1
         regime_rows.append(
             {
                 "regime": regime,
                 "oracle_claims": sorted(_oracle_claims(regime)),
-                "policies": regime_aggregate,
+                "policies": {
+                    name: {**row, **_classification_metrics(row)}
+                    for name, row in regime_aggregate.items()
+                },
             }
         )
 
+    bootstrap = _case_cluster_bootstrap(
+        case_rows,
+        policy_names,
+        replicates=bootstrap_replicates,
+        seed=DEFAULT_BOOTSTRAP_SEED,
+    )
     aggregate_rows = []
     for policy, row in aggregate.items():
-        fpr = row["fp"] / (row["fp"] + row["tn"]) if row["fp"] + row["tn"] else 0.0
-        fnr = row["fn"] / (row["fn"] + row["tp"]) if row["fn"] + row["tp"] else 0.0
         aggregate_rows.append(
             {
                 "policy": policy,
                 **row,
-                "false_positive_rate": fpr,
+                **_classification_metrics(row),
+                **bootstrap[policy],
                 "false_positive_rate_wilson_95": _wilson_interval(
                     row["fp"], row["fp"] + row["tn"]
                 ),
-                "false_negative_rate": fnr,
                 "false_negative_rate_wilson_95": _wilson_interval(
                     row["fn"], row["fn"] + row["tp"]
                 ),
@@ -461,34 +626,15 @@ def run(
                     "policy": policy,
                     "claim": claim,
                     **row,
-                    "false_positive_rate": (
-                        row["fp"] / (row["fp"] + row["tn"])
-                        if row["fp"] + row["tn"]
-                        else 0.0
-                    ),
-                    "false_negative_rate": (
-                        row["fn"] / (row["fn"] + row["tp"])
-                        if row["fn"] + row["tp"]
-                        else 0.0
-                    ),
+                    **_classification_metrics(row),
                 }
             )
 
-    non_tied_cases = case_level_comparison["contract_fewer_errors"] + case_level_comparison[
-        "shortcut_fewer_errors"
-    ]
-    case_sign_p = (
-        float(
-            stats.binomtest(
-                case_level_comparison["contract_fewer_errors"],
-                non_tied_cases,
-                p=0.5,
-                alternative="two-sided",
-            ).pvalue
-        )
-        if non_tied_cases
-        else 1.0
-    )
+    case_comparison_rows = {
+        comparator: _case_comparison_summary(row)
+        for comparator, row in case_level_comparisons.items()
+    }
+    shortcut_comparison = case_comparison_rows["prediction_shortcut"]
 
     contract = next(row for row in aggregate_rows if row["policy"] == "evidence_contract_v3")
     shortcut = next(row for row in aggregate_rows if row["policy"] == "prediction_shortcut")
@@ -503,6 +649,20 @@ def run(
         "n_per_cohort": n_per_cohort,
         "num_cases": seeds * len(REGIMES),
         "num_claim_decisions_per_policy": seeds * len(REGIMES) * len(claim_universe),
+        "compensatory_baseline": {
+            "policy": "equal_weight_compensatory_75",
+            "threshold": COMPENSATORY_THRESHOLD,
+            "block_weights": "equal",
+            "passed_block_value": 1.0,
+            "all_other_state_values": 0.0,
+            "interpretation": "transparent additive baseline in which passed blocks can offset failed or absent blocks",
+        },
+        "case_cluster_bootstrap": {
+            "replicates": bootstrap_replicates,
+            "seed": DEFAULT_BOOTSTRAP_SEED,
+            "unit": "generated structural-equation case containing ten dependent claim decisions",
+            "stratified_by": "data-generating regime",
+        },
         "aggregate_by_policy": aggregate_rows,
         "aggregate_by_policy_and_claim": per_claim_rows,
         "paired_decision_counts": {
@@ -510,16 +670,22 @@ def run(
             "interpretation": "descriptive only because claims within a generated case are dependent",
         },
         "case_level_policy_comparison": {
-            **case_level_comparison,
-            "non_tied_cases": non_tied_cases,
-            "exact_two_sided_sign_test_p_value": case_sign_p,
-            "unit": "independently generated structural-equation case",
+            "contract_fewer_errors": shortcut_comparison["contract_fewer_errors"],
+            "shortcut_fewer_errors": shortcut_comparison["comparator_fewer_errors"],
+            "tied_errors": shortcut_comparison["tied_errors"],
+            "non_tied_cases": shortcut_comparison["non_tied_cases"],
+            "exact_two_sided_sign_test_p_value": shortcut_comparison[
+                "exact_two_sided_sign_test_p_value"
+            ],
+            "unit": shortcut_comparison["unit"],
         },
+        "case_level_policy_comparisons": case_comparison_rows,
         "by_regime": regime_rows,
         "limits": [
             "The benchmark uses low-dimensional structural equations, not biological neural dynamics.",
             "Thresholds are prespecified operational diagnostics and are not universal scientific constants.",
             "The benchmark evaluates claim authorization under finite samples; it does not validate mouse-brain mechanisms.",
+            "Case-cluster intervals address dependence among the ten decisions from one case but not uncertainty over the five chosen data-generating regimes.",
         ],
         "decision": (
             "oracle_benchmark_supports_non_compensatory_contract_with_finite_sample_errors"
@@ -562,6 +728,11 @@ def main() -> None:
     parser.add_argument("--markdown", type=Path, default=DEFAULT_MARKDOWN)
     parser.add_argument("--seeds", type=int, default=100)
     parser.add_argument("--n-per-cohort", type=int, default=600)
+    parser.add_argument(
+        "--bootstrap-replicates",
+        type=int,
+        default=DEFAULT_BOOTSTRAP_REPLICATES,
+    )
     args = parser.parse_args()
     print(
         json.dumps(
@@ -572,6 +743,7 @@ def main() -> None:
                         args.markdown,
                         seeds=args.seeds,
                         n_per_cohort=args.n_per_cohort,
+                        bootstrap_replicates=args.bootstrap_replicates,
                     ).resolve()
                 )
             }

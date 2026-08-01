@@ -15,12 +15,24 @@ def test_oracle_benchmark_uses_dgp_labels_and_reports_standard_error_rates(tmp_p
     assert payload["reference_label_source"].startswith("declared structural equations")
     assert payload["evidence_rule_source"].startswith("finite-sample diagnostics")
     assert payload["num_cases"] == 15
+    assert {row["policy"] for row in payload["aggregate_by_policy"]} == {
+        "evidence_contract_v3",
+        "equal_weight_compensatory_75",
+        "prediction_shortcut",
+    }
     for row in payload["aggregate_by_policy"]:
         assert "false_positive_rate" in row
         assert len(row["false_positive_rate_wilson_95"]) == 2
+        assert len(row["false_positive_rate_case_bootstrap_95"]) == 2
         assert "false_negative_rate" in row
         assert len(row["false_negative_rate_wilson_95"]) == 2
+        assert len(row["false_negative_rate_case_bootstrap_95"]) == 2
+        assert {"prevalence", "precision", "recall", "specificity"} <= row.keys()
         assert "overclaiming_risk_index" not in row
+    assert payload["case_cluster_bootstrap"]["unit"].startswith(
+        "generated structural-equation case"
+    )
+    assert len(payload["aggregate_by_policy_and_claim"]) == 30
     assert payload["case_level_policy_comparison"]["non_tied_cases"] > 0
     assert payload["case_level_policy_comparison"]["unit"].startswith("independently generated")
 

@@ -9,6 +9,7 @@ from mousebrainbench.knowledge.profile import (
     InferenceRule,
     KnowledgeProfile,
     load_default_profile,
+    load_default_profile_basis,
 )
 
 __all__ = [
@@ -18,4 +19,5 @@ __all__ = [
     "KnowledgeInference",
     "KnowledgeProfile",
     "load_default_profile",
+    "load_default_profile_basis",
 ]

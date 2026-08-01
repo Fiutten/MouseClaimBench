@@ -19,7 +19,7 @@ def _write_valid_package(root: Path, revision: str = "clean-revision") -> None:
                     "explanation_complete_count": 40,
                     "knowledge_profile": {
                         "profile_id": "mouse_brain_claims",
-                        "version": "1.0.0",
+                        "version": "1.1.0",
                         "source_hash": "sha256:" + "0" * 64,
                     },
                 }
@@ -41,8 +41,10 @@ def test_kbs_release_does_not_require_an_unclaimed_human_effect(tmp_path: Path) 
         "knowledge_system_method_package_ready_with_declared_boundaries"
     )
     assert payload["human_study_required_for_stated_scope"] is False
-    assert payload["knowledge_profile"]["valid"] is True
-    assert len(payload["scientific_claim_boundaries"]) == 4
+    assert payload["knowledge_profile"]["structurally_valid"] is True
+    assert payload["knowledge_profile"]["relation_records"] == 22
+    assert payload["knowledge_profile"]["independent_expert_validation"] == "not_performed"
+    assert len(payload["scientific_claim_boundaries"]) == 5
 
 
 def test_kbs_release_rejects_dirty_or_unversioned_artifacts(tmp_path: Path) -> None:

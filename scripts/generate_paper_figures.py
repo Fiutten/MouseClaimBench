@@ -107,7 +107,7 @@ def build_workflow() -> Image.Image:
         (805, 45, 1085, 285, "Inference engine", "Prioritized rules\nnon-compensatory\nconflict resolution", AMBER),
         (1205, 45, 1485, 285, "Proof trace", "Decision and fired rule\nwitness facts\nprofile hash", GREEN),
         (405, 365, 685, 605, "Knowledge profile", "Claims and requirements\nevidence states\nversioned YAML", GREEN),
-        (1205, 365, 1485, 605, "Typed graph", "Claims and facts\nrules and decisions\nprovenance links", BLUE),
+        (1205, 365, 1485, 605, "Explanation graph", "Claims and facts\nrules and decisions\nprovenance links", BLUE),
     ]
     for x0, y0, x1, y1, title, body, fill in boxes:
         _box(draw, (x0, y0, x1, y1), title, body, fill=fill)
@@ -126,7 +126,7 @@ def build_workflow() -> Image.Image:
         (1525, 220, 1735, 300, "Blocked", RED, "#a33a32"),
         (1525, 325, 1735, 405, "Uncertain", AMBER, "#a06b18"),
         (1525, 430, 1735, 510, "Out of scope", GREY, LINE),
-        (1525, 535, 1735, 615, "External review", BLUE, "#356d95"),
+        (1525, 535, 1735, 615, "Referred for review", BLUE, "#356d95"),
     ]
     for x0, y0, x1, y1, title, fill, outline in outcomes:
         draw.rounded_rectangle((x0, y0, x1, y1), radius=15, fill=fill, outline=outline, width=3)
@@ -158,7 +158,7 @@ def build_real_case_matrix() -> Image.Image:
     claims = [
         ("predictive", "Predictive"),
         ("computationally_reproducible", "Compute\nreproducible"),
-        ("internally_reproduced", "Internal\nreproduction"),
+        ("internally_reproduced", "Within-resource\nreproduction"),
         ("externally_replicated", "External\nreplication"),
         ("topology_specific", "Topology\nspecific"),
         ("directed", "Directed"),
@@ -217,8 +217,8 @@ def build_real_case_matrix() -> Image.Image:
                 "supported": "PASS",
                 "blocked": "BLOCK",
                 "uncertain": "UNKNOWN",
-                "out_of_scope": "N/A",
-                "needs_external_review": "REVIEW",
+                "out_of_scope": "N/T",
+                "needs_external_review": "REFER",
             }[status]
             draw.text(
                 (x + cell_w // 2, y + cell_h // 2),
@@ -231,8 +231,8 @@ def build_real_case_matrix() -> Image.Image:
         ("supported", "Supported"),
         ("blocked", "Blocked"),
         ("uncertain", "Unknown evidence"),
-        ("out_of_scope", "Not applicable"),
-        ("needs_external_review", "External review"),
+        ("out_of_scope", "Protocol not targeted"),
+        ("needs_external_review", "Referred for review"),
     ]
     legend_x = 380
     legend_y = 760
@@ -247,7 +247,7 @@ def build_real_case_matrix() -> Image.Image:
     _wrapped(
         draw,
         (1100, 845),
-        "Internal reproduction is within a resource. It is not external replication.",
+        "Within-resource reproduction preserves its subtype. It is not external replication.",
         font=SMALL,
         fill=MUTED,
         width=85,
@@ -270,7 +270,7 @@ def build_oracle_benchmark() -> Image.Image:
     rows = {row["policy"]: row for row in payload["aggregate_by_policy"]}
     img = Image.new("RGB", (1800, 780), WHITE)
     draw = ImageDraw.Draw(img)
-    draw.text((450, 55), "A. Error rates over 5,000 claim decisions", font=HEAD, fill=INK, anchor="mm")
+    draw.text((450, 55), "A. Error rates with case-cluster intervals", font=HEAD, fill=INK, anchor="mm")
     x0, x1 = 210, 800
     maximum = 0.30
     for tick in range(4):
@@ -280,34 +280,42 @@ def build_oracle_benchmark() -> Image.Image:
         draw.text((x, 635), f"{value:.2f}", font=SMALL, fill=MUTED, anchor="ma")
     policies = [
         ("Knowledge policy", "evidence_contract_v3", "#447ba6"),
+        ("Additive score (0.75)", "equal_weight_compensatory_75", "#d59b45"),
         ("Prediction shortcut", "prediction_shortcut", "#b96a5e"),
     ]
     metrics = [
-        ("False-positive rate", "false_positive_rate", "false_positive_rate_wilson_95"),
-        ("False-negative rate", "false_negative_rate", "false_negative_rate_wilson_95"),
+        (
+            "False-positive rate",
+            "false_positive_rate",
+            "false_positive_rate_case_bootstrap_95",
+        ),
+        (
+            "False-negative rate",
+            "false_negative_rate",
+            "false_negative_rate_case_bootstrap_95",
+        ),
     ]
-    y = 150
-    for policy_label, policy_key, color in policies:
-        draw.text((80, y + 50), policy_label, font=BODY, fill=INK, anchor="lm")
-        for metric_label, metric_key, interval_key in metrics:
+    for policy_index, (policy_label, policy_key, color) in enumerate(policies):
+        base_y = 115 + policy_index * 170
+        draw.text((80, base_y + 25), policy_label, font=BODY, fill=INK, anchor="lm")
+        for metric_index, (metric_label, metric_key, interval_key) in enumerate(metrics):
+            y = base_y + 65 + metric_index * 60
             row = rows[policy_key]
             value = row[metric_key]
             low, high = row[interval_key]
-            draw.text((190, y + 102), metric_label, font=SMALL, fill=MUTED, anchor="rm")
+            draw.text((190, y), metric_label, font=SMALL, fill=MUTED, anchor="rm")
             bar_end = _rate_x(value, x0, x1, maximum)
-            draw.rounded_rectangle((x0, y + 82, bar_end, y + 118), radius=8, fill=color)
+            draw.rounded_rectangle((x0, y - 17, bar_end, y + 17), radius=8, fill=color)
             low_x = _rate_x(low, x0, x1, maximum)
             high_x = _rate_x(high, x0, x1, maximum)
-            draw.line((low_x, y + 100, high_x, y + 100), fill=INK, width=4)
-            draw.line((low_x, y + 91, low_x, y + 109), fill=INK, width=3)
-            draw.line((high_x, y + 91, high_x, y + 109), fill=INK, width=3)
+            draw.line((low_x, y, high_x, y), fill=INK, width=4)
+            draw.line((low_x, y - 9, low_x, y + 9), fill=INK, width=3)
+            draw.line((high_x, y - 9, high_x, y + 9), fill=INK, width=3)
             label_x = max(bar_end, high_x) + 22
-            draw.text((label_x, y + 100), f"{value:.3f}", font=SMALL_BOLD, fill=INK, anchor="lm")
-            y += 70
-        y += 40
+            draw.text((label_x, y), f"{value:.3f}", font=SMALL_BOLD, fill=INK, anchor="lm")
 
     draw.line((900, 35, 900, 720), fill="#94a3b8", width=3)
-    draw.text((1350, 55), "B. Descriptive decision pairing", font=HEAD, fill=INK, anchor="mm")
+    draw.text((1350, 55), "B. Policy comparisons by generated case", font=HEAD, fill=INK, anchor="mm")
     paired = payload["paired_decision_counts"]
     paired_rows = [
         ("Both correct", paired["both_correct"], "#6b9f7c"),
@@ -331,7 +339,12 @@ def build_oracle_benchmark() -> Image.Image:
         f"knowledge policy better in {case_level['contract_fewer_errors']}, "
         f"shortcut better in {case_level['shortcut_fewer_errors']}, "
         f"ties in {case_level['tied_errors']}. "
-        f"Exact sign-test p = {case_level['exact_two_sided_sign_test_p_value']:.2e}.",
+        f"Exact sign-test p = {case_level['exact_two_sided_sign_test_p_value']:.2e}. "
+        "Against the additive score: "
+        f"{payload['case_level_policy_comparisons']['equal_weight_compensatory_75']['contract_fewer_errors']}/"
+        f"{payload['case_level_policy_comparisons']['equal_weight_compensatory_75']['comparator_fewer_errors']}/"
+        f"{payload['case_level_policy_comparisons']['equal_weight_compensatory_75']['tied_errors']} "
+        "(policy/additive/tied).",
         font=SMALL,
         fill=MUTED,
         width=70,

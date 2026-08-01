@@ -1,0 +1,20 @@
+\begin{table}[t!]
+\centering
+\caption{Oracle error rates by generating regime. Each row aggregates 100 cases while preserving the regime-specific prevalence of the ten claims.}
+\label{tab:oracle-regime-breakdown}
+\footnotesize
+\renewcommand{\arraystretch}{1.08}
+\begin{tabularx}{\textwidth}{@{}Y rr rr rr@{}}
+\toprule
+& \multicolumn{2}{c}{Knowledge policy} & \multicolumn{2}{c}{Additive 0.75} & \multicolumn{2}{c}{Prediction shortcut} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(l){6-7}
+Regime & \acs{fpr} & \acs{fnr} & \acs{fpr} & \acs{fnr} & \acs{fpr} & \acs{fnr} \\
+\midrule
+Independent & 0.019 & 0.000 & 0.019 & 0.000 & 0.000 & 0.000 \\
+Common cause & 0.023 & 0.000 & 0.046 & 0.000 & 0.571 & 0.000 \\
+$X\rightarrow Y$ & 0.000 & 0.103 & 0.000 & 0.052 & 0.250 & 0.000 \\
+$Y\rightarrow X$ & 0.038 & 0.070 & 0.162 & 0.070 & 0.475 & 0.038 \\
+$X\rightarrow Y$ with intervention & 0.000 & 0.080 & 0.000 & 0.040 & 0.000 & 0.000 \\
+\bottomrule
+\end{tabularx}
+\end{table}

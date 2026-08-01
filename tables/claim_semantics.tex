@@ -1,6 +1,6 @@
 \begin{table}[t!]
 \centering
-\caption{Mouse-brain claim requirements. Every listed block must pass.}
+\caption{Author-proposed operational requirements in profile v1.1. Every listed block must pass for authorization under this profile. The table does not assert community consensus or universal scientific sufficiency.}
 \label{tab:claim-semantics}
 \footnotesize
 \renewcommand{\arraystretch}{1.02}
@@ -10,14 +10,14 @@ Claim & Required evidence block & Boundary preserved by the contract \\
 \midrule
 Predictive & Held-out improvement & No topology, direction, or cause \\
 Computationally reproducible & Clean revision and repeatable workflow & Execution is not identification \\
-Internally reproduced & Non-overlapping within-resource units or cohorts & Not external replication \\
+Within-resource reproduction & Non-overlapping units or cohorts in one resource & Subtypes and sampling units remain explicit. This is not external replication \\
 Externally replicated & Independent resource, laboratory, or study & Hold-outs within one resource are insufficient \\
 Topology specific & Prespecified topology controls & Association alone is insufficient \\
 Directed & Direction-identification test & Temporal order alone is insufficient \\
-Structure--function & Matched controls and dependence-aware stability & Local association remains non-causal \\
-Mechanistic & Prediction, internal reproduction, topology, direction & Any missing block vetoes support \\
+Local observational structure--function & Matched controls and dependence-aware stability & Local association remains non-causal \\
+Mechanistic & Prediction, within-resource reproduction, topology, direction & Any missing block vetoes support \\
 Causal & Intervention or causal-identification design & Correlation cannot authorize causality \\
-Digital twin & Prediction, mechanism, cause, coverage, independent validation, compute & Partial cortex cannot represent a complete twin \\
+Complete entity-specific digital twin & Prediction, mechanism, intervention, whole-brain coverage, entity specificity, independent validation, reproducible compute, and operational compute & A partial cortex model or generic archetype is not a complete twin \\
 \bottomrule
 \end{tabularx}
 \end{table}

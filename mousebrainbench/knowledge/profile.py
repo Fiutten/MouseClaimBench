@@ -100,7 +100,7 @@ class KnowledgeProfile:
         profile_id: str = "runtime_contract",
         domain: str = "runtime",
     ) -> "KnowledgeProfile":
-        """Create a validated runtime profile for backwards-compatible custom contracts."""
+        """Create a structurally checked runtime profile for custom contracts."""
 
         payload = {
             "profile_id": profile_id,
@@ -257,3 +257,62 @@ def load_default_profile() -> KnowledgeProfile:
         raise ValueError("default knowledge profile must contain a mapping")
     digest = hashlib.sha256(source.encode("utf-8")).hexdigest()
     return KnowledgeProfile.from_mapping(payload, source_hash=f"sha256:{digest}")
+
+
+def load_default_profile_basis() -> dict[str, Any]:
+    """Load and validate the curation record for every default claim relation."""
+
+    resource = files("mousebrainbench.knowledge.profiles").joinpath(
+        "mouse_brain_claims_v1_basis.yaml"
+    )
+    payload = yaml.safe_load(resource.read_text(encoding="utf-8"))
+    if not isinstance(payload, Mapping):
+        raise ValueError("default profile basis must contain a mapping")
+
+    profile = load_default_profile()
+    if payload.get("profile_id") != profile.profile_id:
+        raise ValueError("profile basis identifier does not match the default profile")
+    if str(payload.get("version")) != profile.version:
+        raise ValueError("profile basis version does not match the default profile")
+    if payload.get("independent_expert_validation") != "not_performed":
+        raise ValueError("profile basis must report the actual expert-validation status")
+
+    rows = payload.get("relations")
+    if not isinstance(rows, list):
+        raise ValueError("profile basis must contain a relation list")
+    required_fields = {
+        "claim",
+        "evidence_block",
+        "role",
+        "rationale",
+        "scope",
+        "exceptions",
+        "alternatives_rejected",
+        "source_ids",
+    }
+    observed: set[tuple[str, str]] = set()
+    for row in rows:
+        if not isinstance(row, Mapping) or not required_fields <= row.keys():
+            raise ValueError("every profile relation requires a complete curation record")
+        key = (str(row["claim"]), str(row["evidence_block"]))
+        if key in observed:
+            raise ValueError(f"duplicate profile-basis relation: {key}")
+        if not row["source_ids"] or not all(
+            isinstance(source_id, str) and source_id for source_id in row["source_ids"]
+        ):
+            raise ValueError(f"profile-basis relation has no sources: {key}")
+        observed.add(key)
+
+    expected = {
+        (requirement.claim, block)
+        for requirement in profile.requirements
+        for block in requirement.required_blocks
+    }
+    if observed != expected:
+        missing = sorted(expected - observed)
+        extra = sorted(observed - expected)
+        raise ValueError(
+            f"profile basis does not cover the executable relation set: missing={missing}, "
+            f"extra={extra}"
+        )
+    return dict(payload)

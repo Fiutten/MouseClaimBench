@@ -1,0 +1,208 @@
+profile_id: mouse_brain_claims
+version: 1.1.0
+status: author_proposed_literature_grounded_not_externally_validated
+acquisition_method: >-
+  Targeted methodological synthesis by the authors across knowledge-system
+  validation, reproducibility, model assurance, causal identification, and
+  computational mouse-brain resources.
+independent_expert_validation: not_performed
+default_relation_role: necessary_under_this_profile_not_scientifically_sufficient
+
+relations:
+  - claim: predictive
+    evidence_block: prediction
+    role: necessary_and_sufficient_only_for_profile_authorization
+    rationale: Held-out performance is the direct operational evidence for a bounded predictive claim.
+    scope: Declared target, metric, split, and comparator.
+    exceptions: Distribution shift and target leakage require separate predicates.
+    alternatives_rejected: Training fit or in-sample correlation alone.
+    source_ids: [sargent2013verification, riedmaier2021vvuq]
+
+  - claim: computationally_reproducible
+    evidence_block: reproducible_compute
+    role: necessary_and_sufficient_only_for_profile_authorization
+    rationale: Computational reproducibility requires the same data, code, methods, and recorded environment.
+    scope: Re-execution of the declared computational workflow.
+    exceptions: Restricted source data may require provider-governed access.
+    alternatives_rejected: Public code without an executable clean revision.
+    source_ids: [nasem2019reproducibility, pineau2021reproducibility, barker2022fair4rs]
+
+  - claim: internally_reproduced
+    evidence_block: internal_reproduction
+    role: necessary_and_sufficient_only_for_profile_authorization
+    rationale: A within-resource repeat must use declared non-overlapping units and preserve its sampling unit.
+    scope: Split, cohort, mouse, or window within one resource, recorded as a subtype.
+    exceptions: Reused biological units cannot be treated as independent replication.
+    alternatives_rejected: Repeated evaluation on overlapping observations.
+    source_ids: [nasem2019reproducibility, pineau2021reproducibility]
+
+  - claim: externally_replicated
+    evidence_block: external_replication
+    role: necessary_and_sufficient_only_for_profile_authorization
+    rationale: Replication requires new data from an independent study or resource addressing the same question.
+    scope: Cross-study, cross-resource, or cross-laboratory evidence.
+    exceptions: Multiple windows from one volume remain internal reproduction.
+    alternatives_rejected: Within-resource hold-outs or code reruns.
+    source_ids: [nasem2019reproducibility]
+
+  - claim: topology_specific
+    evidence_block: topology_specificity
+    role: necessary_and_sufficient_only_for_profile_authorization
+    rationale: A topology claim requires superiority over prespecified alternative or null topologies.
+    scope: The tested topology family and declared controls.
+    exceptions: Unmeasured alternatives remain outside the conclusion.
+    alternatives_rejected: Predictive fit without topology controls.
+    source_ids: [knox2019connectome, billeh2020v1]
+
+  - claim: directed
+    evidence_block: directed_identifiability
+    role: necessary_and_sufficient_only_for_profile_authorization
+    rationale: Direction must be identified by a test whose null and alternatives encode direction.
+    scope: The declared directional model class.
+    exceptions: Temporal order alone does not identify biological direction.
+    alternatives_rejected: Correlation, association, or chronology alone.
+    source_ids: [mooij2016cause]
+
+  - claim: structure_function
+    evidence_block: structure_function_association
+    role: necessary_and_sufficient_only_for_profile_authorization
+    rationale: Local observational structure-function evidence requires matched controls and dependence-aware stability.
+    scope: The sampled tissue, functional descriptor, and matching protocol.
+    exceptions: The result does not imply causality or whole-brain coverage.
+    alternatives_rejected: Unmatched connected-versus-unconnected differences.
+    source_ids: [bae2025microns, ding2025wiring]
+
+  - claim: mechanistic
+    evidence_block: prediction
+    role: necessary_under_this_profile_not_scientifically_sufficient
+    rationale: A proposed mechanism must reproduce a declared observable consequence.
+    scope: The evaluated outputs and context of use.
+    exceptions: Predictive agreement does not identify a mechanism.
+    alternatives_rejected: Mechanistic wording without empirical adequacy.
+    source_ids: [oberkampf2010verification, riedmaier2021vvuq]
+
+  - claim: mechanistic
+    evidence_block: internal_reproduction
+    role: necessary_under_this_profile_not_scientifically_sufficient
+    rationale: A mechanism claim should not depend on one within-resource sample.
+    scope: The declared internal-reproduction subtype.
+    exceptions: This remains weaker than external replication.
+    alternatives_rejected: One-sample mechanistic authorization.
+    source_ids: [nasem2019reproducibility, sargent2013verification]
+
+  - claim: mechanistic
+    evidence_block: topology_specificity
+    role: necessary_under_this_profile_not_scientifically_sufficient
+    rationale: Mechanistic structure must outperform prespecified alternative structures.
+    scope: The tested topology family.
+    exceptions: Passing controls does not exclude every alternative mechanism.
+    alternatives_rejected: Arbitrary topology accepted through predictive compensation.
+    source_ids: [knox2019connectome, billeh2020v1]
+
+  - claim: mechanistic
+    evidence_block: directed_identifiability
+    role: necessary_under_this_profile_not_scientifically_sufficient
+    rationale: The proposed mechanistic relation must have identified direction within its model class.
+    scope: The declared directional test and assumptions.
+    exceptions: Direction does not by itself establish intervention-level causality.
+    alternatives_rejected: Undirected association reported as mechanism.
+    source_ids: [mooij2016cause]
+
+  - claim: causal
+    evidence_block: causal_intervention
+    role: necessary_and_sufficient_only_for_profile_authorization
+    rationale: Causal authorization requires intervention evidence or a prespecified identification design.
+    scope: The intervention, estimand, assumptions, and measured outcome.
+    exceptions: Unverifiable assumptions remain explicit limitations.
+    alternatives_rejected: Correlation, prediction, or temporal precedence alone.
+    source_ids: [mooij2016cause, asme2018vv40]
+
+  - claim: digital_twin
+    evidence_block: prediction
+    role: necessary_under_this_profile_not_scientifically_sufficient
+    rationale: A complete entity-specific twin must predict declared observables.
+    scope: Context-of-use targets and held-out conditions.
+    exceptions: Prediction alone is compatible with non-twin models.
+    alternatives_rejected: Signal agreement as the sole twin criterion.
+    source_ids: [xiong2023dtb, chen2026mousedtb]
+
+  - claim: digital_twin
+    evidence_block: internal_reproduction
+    role: necessary_under_this_profile_not_scientifically_sufficient
+    rationale: The entity-specific result must remain stable in non-overlapping internal evaluations.
+    scope: Declared within-entity or within-resource units.
+    exceptions: Internal stability is not external validation.
+    alternatives_rejected: One evaluation window.
+    source_ids: [nasem2019reproducibility, xiong2023dtb]
+
+  - claim: digital_twin
+    evidence_block: topology_specificity
+    role: necessary_under_this_profile_not_scientifically_sufficient
+    rationale: Structural organization must be distinguishable from prespecified alternatives.
+    scope: The represented anatomical scale and controls.
+    exceptions: Inferred connectivity remains conditional on its data model.
+    alternatives_rejected: Any fitted topology with similar output.
+    source_ids: [knox2019connectome, chen2026mousedtb]
+
+  - claim: digital_twin
+    evidence_block: directed_identifiability
+    role: necessary_under_this_profile_not_scientifically_sufficient
+    rationale: Directional organization must be identified rather than assumed from chronology.
+    scope: The declared directional assumptions.
+    exceptions: Direction alone does not establish causality.
+    alternatives_rejected: Undirected functional agreement.
+    source_ids: [mooij2016cause, xiong2023dtb]
+
+  - claim: digital_twin
+    evidence_block: causal_intervention
+    role: necessary_under_this_profile_not_scientifically_sufficient
+    rationale: A complete causal twin must support a declared interventional claim.
+    scope: The tested intervention and outcome.
+    exceptions: The current paper evaluates no such complete twin.
+    alternatives_rejected: Observational fit promoted to causal twin status.
+    source_ids: [asme2018vv40, xiong2023dtb]
+
+  - claim: digital_twin
+    evidence_block: whole_brain_coverage
+    role: necessary_under_this_profile_not_scientifically_sufficient
+    rationale: Complete mouse-brain wording requires declared whole-brain anatomical coverage.
+    scope: Included regions, resolutions, cell populations, and missing structures.
+    exceptions: Local cortical volumes can support only partial-model claims.
+    alternatives_rejected: Partial cortex described as a complete brain.
+    source_ids: [oh2014mesoscale, bae2025microns, chen2026mousedtb]
+
+  - claim: digital_twin
+    evidence_block: independent_validation
+    role: necessary_under_this_profile_not_scientifically_sufficient
+    rationale: Twin claims require evaluation not used to fit or construct the entity model.
+    scope: Independent data and prespecified acceptance criteria.
+    exceptions: Internal hold-outs remain weaker evidence.
+    alternatives_rejected: Training or discovery data reused as validation.
+    source_ids: [oberkampf2010verification, riedmaier2021vvuq]
+
+  - claim: digital_twin
+    evidence_block: reproducible_compute
+    role: necessary_under_this_profile_not_scientifically_sufficient
+    rationale: The computational twin workflow must be reproducible from a clean recorded revision.
+    scope: Code, configuration, dependencies, and permitted source data.
+    exceptions: Reproducibility does not imply biological fidelity.
+    alternatives_rejected: Unversioned execution.
+    source_ids: [nasem2019reproducibility, barker2022fair4rs]
+
+  - claim: digital_twin
+    evidence_block: entity_specificity
+    role: necessary_under_this_profile_not_scientifically_sufficient
+    rationale: A twin must be calibrated and evaluated for an identified entity rather than only a species-level archetype.
+    scope: Entity identity, calibration data, update policy, and validation records.
+    exceptions: Population or canonical models remain digital models, not entity-specific twins.
+    alternatives_rejected: Generic mouse models described as individual twins.
+    source_ids: [xiong2023dtb, riedmaier2021vvuq]
+
+  - claim: digital_twin
+    evidence_block: operational_compute
+    role: necessary_under_this_profile_not_scientifically_sufficient
+    rationale: Compute adequacy must be evaluated against the declared context-of-use latency, resource, and update budget.
+    scope: Hardware, runtime, memory, energy, and update frequency.
+    exceptions: Offline exploratory simulation may have a different budget from operational use.
+    alternatives_rejected: Reproducible execution treated as operational adequacy.
+    source_ids: [asme2018vv40, riedmaier2021vvuq]

@@ -187,8 +187,11 @@ CLAIM_REQUIREMENTS_V3 = (
             "whole_brain_coverage",
             "independent_validation",
             "reproducible_compute",
+            "entity_specificity",
+            "operational_compute",
         ),
-        "all predictive, mechanistic, causal, coverage, validation, and compute blocks pass",
+        "all predictive, mechanistic, causal, coverage, entity-specific, "
+        "independent-validation, reproducibility, and operational-compute blocks pass",
     ),
 )
 

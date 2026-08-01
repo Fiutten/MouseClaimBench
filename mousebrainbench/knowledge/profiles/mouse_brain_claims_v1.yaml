@@ -1,5 +1,5 @@
 profile_id: mouse_brain_claims
-version: 1.0.0
+version: 1.1.0
 domain: computational_mouse_brain
 description: >-
   Evidence requirements and non-compensatory inference rules for claims made
@@ -47,7 +47,9 @@ claims:
       - whole_brain_coverage
       - independent_validation
       - reproducible_compute
-    meaning: all predictive, mechanistic, causal, coverage, validation, and compute blocks pass
+      - entity_specificity
+      - operational_compute
+    meaning: all predictive, mechanistic, causal, coverage, entity-specific, independent-validation, reproducibility, and operational-compute blocks pass
 
 inference_rules:
   - id: failed_block_veto

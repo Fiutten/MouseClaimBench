@@ -1,6 +1,8 @@
 import re
 from pathlib import Path
 
+from mousebrainbench.knowledge import load_default_profile_basis
+
 
 ROOT = Path(__file__).parents[1]
 MANUSCRIPT_PATHS = [
@@ -43,6 +45,18 @@ def test_all_bibliography_entries_are_cited_and_all_citations_exist() -> None:
     assert cited == available
 
 
+def test_profile_curation_sources_exist_in_the_manuscript_bibliography() -> None:
+    bibliography = (ROOT / "references.bib").read_text(encoding="utf-8")
+    available = set(re.findall(r"@\w+\s*\{\s*([^,\s]+)", bibliography))
+    basis_sources = {
+        source_id
+        for relation in load_default_profile_basis()["relations"]
+        for source_id in relation["source_ids"]
+    }
+
+    assert basis_sources <= available
+
+
 def test_manuscript_style_and_scope_guards() -> None:
     manuscript = "\n".join(path.read_text(encoding="utf-8") for path in MANUSCRIPT_PATHS)
     main = (ROOT / "main.tex").read_text(encoding="utf-8")
@@ -50,7 +64,7 @@ def test_manuscript_style_and_scope_guards() -> None:
     assert "Mouse-Brain" in main
     assert "\\journal{Knowledge-Based Systems}" in main
     assert "Decision Support Systems" not in manuscript
-    assert "This paper does not claim reduced review time" in manuscript
+    assert "does not claim reduced review time" in manuscript
     assert "Only the computational mouse-brain profile is evaluated" in manuscript
 
 

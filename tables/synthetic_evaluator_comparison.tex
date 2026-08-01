@@ -1,8 +1,8 @@
 \begin{table}[t!]
 \centering
 \caption{Oracle structural-equation benchmark over 500 generated cases and
-5,000 claim decisions per policy. Intervals are 95\% Wilson intervals. \acs{fpr} and
-\acs{fnr} retain their standard meanings and are not proposed as new metrics.}
+5,000 claim decisions per policy. Intervals are 95\% stratified case-cluster
+bootstrap intervals. \acs{fpr} and \acs{fnr} retain their standard meanings.}
 \label{tab:oracle-policy-comparison}
 \small
 \renewcommand{\arraystretch}{1.13}
@@ -10,8 +10,9 @@
 \toprule
 Policy & \acs{tp} & \acs{fp} & \acs{tn} & \acs{fn} & \acs{fpr} (95\% \acs{ci}) & \acs{fnr} (95\% \acs{ci}) \\
 \midrule
-MouseClaimBench knowledge policy & 1,954 & 56 & 2,844 & 146 & 0.019 (0.015--0.025) & 0.070 (0.059--0.081) \\
-Prediction shortcut & 2,085 & 785 & 2,115 & 15 & 0.271 (0.255--0.287) & 0.007 (0.004--0.012) \\
+MouseClaimBench knowledge policy & 1,954 & 56 & 2,844 & 146 & 0.019 (0.014--0.025) & 0.070 (0.056--0.084) \\
+Equal-weight compensatory score (0.75) & 2,013 & 146 & 2,754 & 87 & 0.050 (0.044--0.057) & 0.041 (0.033--0.051) \\
+Prediction shortcut & 2,085 & 785 & 2,115 & 15 & 0.271 (0.266--0.275) & 0.007 (0.001--0.014) \\
 \bottomrule
 \end{tabularx}
 \end{table}

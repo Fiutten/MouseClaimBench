@@ -4,7 +4,7 @@ from pathlib import Path
 from mousebrainbench.benchmarks.knowledge_system_audit import run
 
 
-def test_knowledge_system_audit_matches_all_frozen_real_case_decisions(
+def test_knowledge_system_audit_matches_all_migration_decisions(
     tmp_path: Path,
 ) -> None:
     output = tmp_path / "summary.json"
@@ -39,10 +39,10 @@ def test_knowledge_system_audit_exports_a_typed_knowledge_graph(tmp_path: Path) 
     assert graph["node_type_counts"] == {
         "claim": 10,
         "decision_status": 5,
-        "evidence_block": 10,
+        "evidence_block": 12,
         "evidence_status": 5,
         "inference_rule": 5,
         "knowledge_profile": 1,
     }
-    assert graph["relation_counts"]["requires"] == 20
+    assert graph["relation_counts"]["requires"] == 22
     assert graph["relation_counts"]["concludes"] == 5

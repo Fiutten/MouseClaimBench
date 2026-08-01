@@ -9,6 +9,7 @@ from typing import Any
 
 from mousebrainbench import __version__
 from mousebrainbench.artifacts import code_revision
+from mousebrainbench.knowledge import load_default_profile_basis
 
 
 DEFAULT_OUTPUT = Path("results/knowledge_system_release/summary.json")
@@ -105,14 +106,24 @@ def run(
     audit_path = root / "results/knowledge_system_audit/summary.json"
     audit = _load(audit_path) if audit_path.exists() else {}
     profile = audit.get("knowledge_profile", {})
-    profile_valid = (
+    basis = load_default_profile_basis()
+    basis_complete = (
+        basis.get("profile_id") == "mouse_brain_claims"
+        and basis.get("version") == "1.1.0"
+        and basis.get("status")
+        == "author_proposed_literature_grounded_not_externally_validated"
+        and basis.get("independent_expert_validation") == "not_performed"
+        and len(basis.get("relations", ())) == 22
+    )
+    profile_structurally_valid = (
         profile.get("profile_id") == "mouse_brain_claims"
-        and profile.get("version") == "1.0.0"
+        and profile.get("version") == "1.1.0"
         and str(profile.get("source_hash", "")).startswith("sha256:")
         and audit.get("exact_decision_matches") == 40
         and audit.get("explanation_complete_count") == 40
+        and basis_complete
     )
-    if audit and not profile_valid:
+    if audit and not profile_structurally_valid:
         failing.append(str(audit_path.relative_to(root)))
 
     boundaries = [
@@ -132,8 +143,12 @@ def run(
             "claim": "improved human decision quality",
             "reason": "the KBS evaluation tests inference behavior, not human outcomes",
         },
+        {
+            "claim": "expert consensus or external content validity",
+            "reason": "the profile is author-proposed and has not been assessed by an independent panel",
+        },
     ]
-    ready = not missing and not failing and not dirty and profile_valid
+    ready = not missing and not failing and not dirty and profile_structurally_valid
     payload = {
         "version": __version__,
         "git_revision": code_revision(),
@@ -143,7 +158,10 @@ def run(
             "profile_id": profile.get("profile_id"),
             "version": profile.get("version"),
             "source_hash": profile.get("source_hash"),
-            "valid": profile_valid,
+            "structurally_valid": profile_structurally_valid,
+            "relation_records": len(basis.get("relations", ())),
+            "curation_status": basis.get("status"),
+            "independent_expert_validation": basis.get("independent_expert_validation"),
         },
         "missing_artifacts": sorted(set(missing)),
         "failing_artifacts": sorted(set(failing)),
@@ -169,7 +187,11 @@ def write_markdown(payload: dict[str, Any], markdown: Path) -> None:
         "# Knowledge-System Release Gate",
         "",
         f"- Decision: `{payload['decision']}`",
-        f"- Knowledge profile valid: `{payload['knowledge_profile']['valid']}`",
+        f"- Knowledge profile structurally valid: "
+        f"`{payload['knowledge_profile']['structurally_valid']}`",
+        f"- Profile curation status: `{payload['knowledge_profile']['curation_status']}`",
+        f"- Independent expert validation: "
+        f"`{payload['knowledge_profile']['independent_expert_validation']}`",
         f"- Missing artifacts: `{len(payload['missing_artifacts'])}`",
         f"- Failing artifacts: `{len(payload['failing_artifacts'])}`",
         f"- Dirty artifacts: `{len(payload['dirty_artifacts'])}`",
