@@ -1,0 +1,190 @@
+protocol_id: mouseclaimbench_hybrid_selective_validation
+version: 2.0.0
+status: frozen_before_implementation
+parent_protocol:
+  id: mouseclaimbench_prospective_claim_validation
+  version: 1.0.0
+  anchor_commit: 23bd4c7
+  outcome: prospective_computational_primary_endpoint_not_passed
+
+scientific_claim: >-
+  A constrained selective policy can preserve non-negotiable semantic evidence
+  boundaries while attaining calibrated, non-trivial risk-coverage performance
+  on previously unseen claim-assessment regimes.
+
+knowledge_profile:
+  profile_id: mouse_brain_claims
+  version: 1.1.0
+  source_hash: sha256:12770573922ea4bf00fabf519f565480df7475d313726cc3281a5c200d696137
+  profile_changes_permitted: false
+
+consumed_development_data:
+  oracle_v0:
+    regimes:
+      - independent
+      - common_cause
+      - direct_x_to_y
+      - reverse_y_to_x
+      - direct_x_to_y_interventional
+    cases: 500
+  prospective_v1:
+    regimes:
+      - independent_student
+      - confounded_nonlinear
+      - reverse_nonlinear
+      - direct_saturating
+      - direct_heteroscedastic
+      - weak_direct
+      - shifted_direct
+      - collider_selection
+      - direct_interventional_saturating
+    cases: 3240
+  deterministic_split:
+    model_fit_case_seed_modulo_5: [0, 1, 2]
+    threshold_calibration_case_seed_modulo_5: [3]
+    locked_development_audit_case_seed_modulo_5: [4]
+
+directional_evidence:
+  implementation: causal-learn
+  package_version: 0.1.4.8
+  method: additive_noise_model
+  reference: Hoyer_et_al_2009
+  deterministic_max_samples: 200
+  subsample_seed_namespace: 2026081100
+  forward_status_rule: p_forward_minus_p_backward_at_least_0.10
+  reverse_status_rule: p_backward_minus_p_forward_at_least_0.10
+  ambiguous_status: requires_review
+  threshold_development_role: >-
+    The 0.10 margin was selected after inspection of the already-consumed
+    Tuebingen cause-effect benchmark and is not externally confirmatory.
+  assumptions:
+    - continuous_variables
+    - additive_noise
+    - no_hidden_common_cause
+  prohibited_interpretation: observational_direction_output_is_not_causal_proof
+
+feature_model:
+  estimator: sklearn_logistic_regression
+  penalty: l2
+  regularization_C: 1.0
+  max_iterations: 2000
+  class_weight: balanced
+  calibration: isotonic_regression
+  model_scope: one_binary_model_per_nonconstant_claim
+  features:
+    - all_evidence_status_one_hot
+    - evidence_missing_indicators
+    - prediction_correlation
+    - prediction_r_squared
+    - internal_reproduction_correlations
+    - topology_best_control_margin
+    - legacy_direction_margin
+    - anm_forward_p_value
+    - anm_backward_p_value
+    - anm_signed_margin
+    - causal_intervention_effect
+    - causal_intervention_negative_log10_p
+    - log10_sample_size
+    - noise_scale_when_known
+
+semantic_support_vetoes:
+  computationally_reproducible: [reproducible_compute]
+  externally_replicated: [external_replication]
+  structure_function: [structure_function_association]
+  causal: [causal_intervention]
+  digital_twin:
+    - prediction
+    - internal_reproduction
+    - topology_specificity
+    - directed_identifiability
+    - causal_intervention
+    - whole_brain_coverage
+    - independent_validation
+    - reproducible_compute
+    - entity_specificity
+    - operational_compute
+  directed: [directed_identifiability]
+  mechanistic: [directed_identifiability]
+  support_veto_rule: every_listed_block_must_be_passed
+  veto_override_permitted: false
+
+selective_policy:
+  decisions: [supported, blocked, abstained]
+  threshold_grid_start: 0.50
+  threshold_grid_stop: 0.99
+  threshold_grid_step: 0.01
+  symmetric_block_threshold: one_minus_support_threshold
+  calibration_target:
+    metric: selective_error
+    one_sided_confidence: 0.95
+    clopper_pearson_upper_bound_at_most: 0.10
+  selection_rule: maximum_coverage_then_lowest_risk_then_highest_threshold
+  confirmatory_refitting: forbidden
+
+confirmatory_partition_v2:
+  role: locked_evaluation_only
+  regimes:
+    - independent_mixture
+    - confounded_threshold
+    - reverse_piecewise
+    - direct_exponential
+    - direct_piecewise
+    - direct_post_nonlinear
+    - direct_linear_nongaussian
+    - measurement_error_direct
+    - collider_truncation
+    - direct_interventional_piecewise
+  sample_sizes: [200, 800, 2000]
+  noise_scales: [0.5, 1.0, 1.75]
+  seeds_per_cell: 40
+  seed_namespace: 2026081200
+  expected_cases: 3600
+  expected_claim_decisions_per_policy: 36000
+
+comparators:
+  - evidence_contract_v3
+  - equal_weight_compensatory_75
+  - prediction_shortcut
+  - unconstrained_selective_logistic
+  - constrained_selective_hybrid
+
+primary_endpoint:
+  all_conditions_required: true
+  conditions:
+    - semantic_support_veto_violations_equal_0
+    - constrained_hybrid_coverage_at_least_0.30
+    - constrained_hybrid_selective_error_cp95_upper_at_most_0.12
+    - constrained_hybrid_false_authorization_fraction_at_most_0.08
+    - constrained_hybrid_selective_error_no_more_than_0.02_above_unconstrained
+    - anm_direction_attempted_accuracy_at_least_0.75
+    - anm_direction_coverage_at_least_0.20
+
+secondary_endpoints:
+  - risk_coverage_curve
+  - area_under_risk_coverage_curve
+  - per_claim_risk_and_coverage
+  - per_regime_risk_and_coverage
+  - per_sample_size_risk_and_coverage
+  - per_noise_scale_risk_and_coverage
+  - semantic_veto_ablation
+  - anm_feature_ablation
+  - calibration_ablation
+  - paired_case_error_comparison
+
+uncertainty:
+  unit: complete_generated_case
+  method: stratified_case_cluster_bootstrap
+  strata: [regime, sample_size, noise_scale]
+  replicates: 5000
+  seed: 2026081299
+
+prohibited_inferences:
+  - general_superiority_of_hard_noncompensatory_contracts
+  - causal_identification_from_observational_direction_tests
+  - independent_expert_content_validity
+  - improved_human_decision_quality
+  - external_biological_replication
+  - whole_brain_validity
+  - complete_mouse_brain_digital_twin
+  - cross_domain_generality
+
