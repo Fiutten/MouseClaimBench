@@ -1,6 +1,6 @@
 {
   "version": "0.8.0",
-  "git_revision": "fa29580",
+  "git_revision": "fa57c02",
   "analysis": "knowledge_system_release_gate_v1",
   "required_artifacts": [
     {
@@ -66,6 +66,14 @@
       "expected": "claimbench_threat_model_passed_with_boundaries",
       "observed": "claimbench_threat_model_passed_with_boundaries",
       "git_revision": "4fecaaf07773d1b6353cdba8334eb04e2a497f24"
+    },
+    {
+      "artifact": "results/manuscript_claim_audit/summary.json",
+      "exists": true,
+      "field": "decision",
+      "expected": "manuscript_claim_audit_passed",
+      "observed": "manuscript_claim_audit_passed",
+      "git_revision": "094bf4a"
     }
   ],
   "knowledge_profile": {
