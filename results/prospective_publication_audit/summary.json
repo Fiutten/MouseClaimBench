@@ -1,0 +1,99 @@
+{
+  "version": "0.8.0",
+  "git_revision": "c6f30b05fd5752641baf8e425267e045bb2cb876",
+  "analysis": "prospective_publication_readiness_audit",
+  "protocol_integrity": true,
+  "artifact_revisions": {
+    "probabilistic_model": "8afa7781efb095377e5c34a7e52d64a1b6187ebf",
+    "prospective_validation": "7a0447243e471330df5dd746f422dd224a9c2f31",
+    "microns_network_inference": "ada300a9f19e8d3191542e6f40133a81d7a53be7",
+    "dyadic_calibration": "92791c3f8c69ea36ef926d69041a7ab0db6efe22"
+  },
+  "artifacts_clean": true,
+  "synthetic_primary_endpoint_passed": false,
+  "microns_network_endpoint_passed": true,
+  "dyadic_calibration_passed": true,
+  "independent_expert_validation_performed": false,
+  "supported_findings": [
+    {
+      "finding": "prospective protocol integrity",
+      "supported": true,
+      "scope": "temporal and partition separation for the computational experiment"
+    },
+    {
+      "finding": "network-aware MICRONS association",
+      "supported": true,
+      "scope": "fixed local observational endpoint in three non-overlapping windows"
+    },
+    {
+      "finding": "dyadic covariance implementation sanity",
+      "supported": true,
+      "scope": "additive sender/receiver dependence used in the calibration DGP"
+    }
+  ],
+  "rejected_findings": [
+    {
+      "claim": "general superiority of the non-compensatory contract",
+      "rejected": true,
+      "evidence": {
+        "metric": "false_positive_rate",
+        "lower_fpr_than_every_comparator": false,
+        "false_negative_rate_within_0.10_of_best_comparator": false,
+        "all_case_level_comparisons_favor_contract": false,
+        "passed": false
+      }
+    },
+    {
+      "claim": "independent expert validation of the knowledge profile",
+      "rejected": true,
+      "evidence": "not_performed"
+    }
+  ],
+  "reviewer_risks": [
+    {
+      "severity": "critical",
+      "risk": "The frozen prospective superiority endpoint failed.",
+      "consequence": "A manuscript cannot claim that the hard contract is generally more accurate or safer than learned and compensatory alternatives.",
+      "resolved": false
+    },
+    {
+      "severity": "critical",
+      "risk": "The author-proposed knowledge profile lacks independent expert content validation.",
+      "consequence": "Formal correctness and computational error rates do not establish domain consensus.",
+      "resolved": false
+    },
+    {
+      "severity": "major",
+      "risk": "The directional diagnostic has substantial prospective error.",
+      "consequence": "Direction and mechanistic authorizations are the dominant false-positive and false-negative source.",
+      "resolved": false
+    },
+    {
+      "severity": "major",
+      "risk": "MICRONS cohorts are internal windows from one observational resource.",
+      "consequence": "Network-robust significance cannot be described as causal or independent biological replication.",
+      "resolved": false
+    },
+    {
+      "severity": "major",
+      "risk": "The node-permutation test assumes residual-array exchangeability.",
+      "consequence": "Unmodeled spatial or cell-class heterogeneity may affect its calibration.",
+      "resolved": false
+    },
+    {
+      "severity": "moderate",
+      "risk": "Known-truth validation remains low-dimensional and profile-specific.",
+      "consequence": "Cross-domain and realistic neural-system generality remain untested.",
+      "resolved": false
+    },
+    {
+      "severity": "moderate",
+      "risk": "No human decision-support outcome has been measured.",
+      "consequence": "Usability or improved reviewer decisions cannot be claimed.",
+      "resolved": false
+    }
+  ],
+  "strong_q1_superiority_ready": false,
+  "decision": "strong_q1_superiority_claim_blocked_by_prospective_evidence",
+  "recommended_disposition": "Retain this package as a transparent negative validation and MICRONS robustness extension. Do not center a new Q1 manuscript on superiority of the current hard contract. A new version requires a better directional evidence model and a separately frozen evaluation partition."
+}
