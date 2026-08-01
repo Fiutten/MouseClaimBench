@@ -1,6 +1,6 @@
 {
   "version": "0.8.0",
-  "git_revision": "76e456f",
+  "git_revision": "fd596d0",
   "analysis": "knowledge_system_release_gate_v1",
   "required_artifacts": [
     {
@@ -73,7 +73,7 @@
       "field": "decision",
       "expected": "manuscript_claim_audit_passed",
       "observed": "manuscript_claim_audit_passed",
-      "git_revision": "6975649"
+      "git_revision": "5edb5ea"
     }
   ],
   "knowledge_profile": {
