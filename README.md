@@ -54,7 +54,7 @@ Four bounded mouse-brain cases exercise the knowledge profile:
   specificity and directed identifiability. This is a real negative mechanistic
   case.
 - **Static Sensorium:** predictive and topographic evidence reproduced within
-  the resource. It is neither causal evidence nor external replication.
+  the resource. It does not provide causal evidence or external replication.
 - **Dynamic Sensorium:** a temporal model beats a mean-response baseline in two
   stored five-mouse cohorts. Temporal prediction is not treated as biological
   direction.
@@ -78,11 +78,12 @@ presented as independent scientific validation.
 
 The current artifacts do not support claims of:
 
-- a complete, causal, entity-specific, or whole-brain mouse digital twin
+- MouseClaimBench does not support a complete, causal, entity-specific, or
+  whole-brain mouse digital twin
 - cross-domain empirical generality
 - external biological replication of the real-data effects
 - improved human decision quality or automated peer review
-- state-of-the-art Sensorium, SciFact, or causal-discovery performance
+- benchmark-leading Sensorium, SciFact, or causal-discovery performance
 - universal scientific truth verification
 - language-model authority over claim authorization
 
