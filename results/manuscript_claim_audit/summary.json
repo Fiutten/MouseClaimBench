@@ -1,19 +1,63 @@
 {
-  "version": "0.6.0",
-  "git_revision": "4fecaaf07773d1b6353cdba8334eb04e2a497f24",
+  "version": "0.8.0",
+  "git_revision": "094bf4a",
   "analysis": "manuscript_claim_audit",
   "claims_file": "configs/claims/mousebrainbench_claims.yaml",
   "manuscript_inputs": [
-    "paper/main.tex",
-    "paper/README.md",
+    "main.tex",
+    "sections/abstract.tex",
+    "sections/conclusions.tex",
+    "sections/contributions.tex",
+    "sections/discussion.tex",
+    "sections/experiments.tex",
+    "sections/introduction.tex",
+    "sections/method.tex",
+    "sections/related_work.tex",
+    "tables/claim_semantics.tex",
+    "tables/decision_actions.tex",
+    "tables/experiment_design.tex",
+    "tables/external_controls.tex",
+    "tables/real_case_summary.tex",
+    "tables/related_work_comparison.tex",
+    "tables/release_summary.tex",
+    "tables/synthetic_evaluator_comparison.tex",
+    "figures/claimbench_ablation.tex",
+    "figures/claimbench_evidence_dashboard.tex",
+    "figures/claimbench_external_controls.tex",
+    "figures/claimbench_oracle_benchmark.tex",
+    "figures/claimbench_real_case_matrix.tex",
+    "figures/claimbench_sensitivity.tex",
+    "figures/claimbench_workflow.tex",
     "README.md"
   ],
   "existing_manuscript_inputs": [
-    "paper/main.tex",
-    "paper/README.md",
+    "main.tex",
+    "sections/abstract.tex",
+    "sections/conclusions.tex",
+    "sections/contributions.tex",
+    "sections/discussion.tex",
+    "sections/experiments.tex",
+    "sections/introduction.tex",
+    "sections/method.tex",
+    "sections/related_work.tex",
+    "tables/claim_semantics.tex",
+    "tables/decision_actions.tex",
+    "tables/experiment_design.tex",
+    "tables/external_controls.tex",
+    "tables/real_case_summary.tex",
+    "tables/related_work_comparison.tex",
+    "tables/release_summary.tex",
+    "tables/synthetic_evaluator_comparison.tex",
+    "figures/claimbench_ablation.tex",
+    "figures/claimbench_evidence_dashboard.tex",
+    "figures/claimbench_external_controls.tex",
+    "figures/claimbench_oracle_benchmark.tex",
+    "figures/claimbench_real_case_matrix.tex",
+    "figures/claimbench_sensitivity.tex",
+    "figures/claimbench_workflow.tex",
     "README.md"
   ],
-  "manuscript_character_count": 95318,
+  "manuscript_character_count": 81124,
   "rows": [
     {
       "claim_id": "claimbench_v2_blocks_overclaiming",
@@ -145,15 +189,7 @@
       "risk_id": "complete_mouse_brain_twin",
       "severity": "high",
       "claim_family": "digital_twin",
-      "matched_text": "whole-brain digital twin",
-      "negated": true,
-      "reason": "Complete or whole-brain digital-twin wording requires evidence not present here."
-    },
-    {
-      "risk_id": "complete_mouse_brain_twin",
-      "severity": "high",
-      "claim_family": "digital_twin",
-      "matched_text": "full digital twin",
+      "matched_text": "complete digital twin",
       "negated": true,
       "reason": "Complete or whole-brain digital-twin wording requires evidence not present here."
     },
@@ -169,7 +205,7 @@
       "risk_id": "complete_mouse_brain_twin",
       "severity": "high",
       "claim_family": "digital_twin",
-      "matched_text": "complete mouse-brain digital twin",
+      "matched_text": "complete digital twin",
       "negated": true,
       "reason": "Complete or whole-brain digital-twin wording requires evidence not present here."
     },
@@ -185,7 +221,15 @@
       "risk_id": "causal_mechanism_from_observation",
       "severity": "high",
       "claim_family": "causal",
-      "matched_text": "causal\n  evidence",
+      "matched_text": "support causality",
+      "negated": true,
+      "reason": "Causal wording requires interventional or causal-identification evidence."
+    },
+    {
+      "risk_id": "causal_mechanism_from_observation",
+      "severity": "high",
+      "claim_family": "causal",
+      "matched_text": "causal mechanism",
       "negated": true,
       "reason": "Causal wording requires interventional or causal-identification evidence."
     },
@@ -198,38 +242,6 @@
       "reason": "Causal wording requires interventional or causal-identification evidence."
     },
     {
-      "risk_id": "causal_mechanism_from_observation",
-      "severity": "high",
-      "claim_family": "causal",
-      "matched_text": "causal mechanism",
-      "negated": true,
-      "reason": "Causal wording requires interventional or causal-identification evidence."
-    },
-    {
-      "risk_id": "causal_mechanism_from_observation",
-      "severity": "high",
-      "claim_family": "causal",
-      "matched_text": "causal effect",
-      "negated": true,
-      "reason": "Causal wording requires interventional or causal-identification evidence."
-    },
-    {
-      "risk_id": "causal_mechanism_from_observation",
-      "severity": "high",
-      "claim_family": "causal",
-      "matched_text": "causal mechanism",
-      "negated": true,
-      "reason": "Causal wording requires interventional or causal-identification evidence."
-    },
-    {
-      "risk_id": "causal_mechanism_from_observation",
-      "severity": "high",
-      "claim_family": "causal",
-      "matched_text": "causal\nmechanism",
-      "negated": true,
-      "reason": "Causal wording requires interventional or causal-identification evidence."
-    },
-    {
       "risk_id": "sota_without_comparable_baseline",
       "severity": "high",
       "claim_family": "benchmark_performance",
@@ -249,31 +261,7 @@
       "risk_id": "sota_without_comparable_baseline",
       "severity": "high",
       "claim_family": "benchmark_performance",
-      "matched_text": "state-of-the-art",
-      "negated": true,
-      "reason": "SOTA wording requires comparable official baselines and matched protocols."
-    },
-    {
-      "risk_id": "sota_without_comparable_baseline",
-      "severity": "high",
-      "claim_family": "benchmark_performance",
-      "matched_text": "state-of-the-art",
-      "negated": true,
-      "reason": "SOTA wording requires comparable official baselines and matched protocols."
-    },
-    {
-      "risk_id": "sota_without_comparable_baseline",
-      "severity": "high",
-      "claim_family": "benchmark_performance",
-      "matched_text": "state-of-the-art",
-      "negated": true,
-      "reason": "SOTA wording requires comparable official baselines and matched protocols."
-    },
-    {
-      "risk_id": "sota_without_comparable_baseline",
-      "severity": "high",
-      "claim_family": "benchmark_performance",
-      "matched_text": "SOTA",
+      "matched_text": "state of the art",
       "negated": true,
       "reason": "SOTA wording requires comparable official baselines and matched protocols."
     }
