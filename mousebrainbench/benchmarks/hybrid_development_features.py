@@ -260,7 +260,8 @@ def development_records(
     """Generate all consumed rows or a small structurally identical test subset."""
 
     records: list[dict[str, Any]] = []
-    oracle_seeds = 2 if test_mode else 100
+    # Five seeds exercise every modulo-5 role without changing full-run rows.
+    oracle_seeds = 5 if test_mode else 100
     for regime_index, regime in enumerate(ORACLE_REGIMES):
         for seed in range(oracle_seeds):
             case_seed = 100_000 * regime_index + seed
@@ -280,7 +281,7 @@ def development_records(
 
     sample_sizes = (150,) if test_mode else V1_SAMPLE_SIZES
     noise_scales = (1.2,) if test_mode else V1_NOISE_SCALES
-    seeds_per_cell = 2 if test_mode else V1_SEEDS_PER_CELL
+    seeds_per_cell = 5 if test_mode else V1_SEEDS_PER_CELL
     cells = [
         ProspectiveCell(regime, sample_size, noise_scale)
         for regime in REGIME_TRUTHS
@@ -396,4 +397,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

@@ -83,6 +83,7 @@ mousebrainbench-llm-claim-extraction-audit = "mousebrainbench.benchmarks.llm_cla
 mousebrainbench-knowledge-system-audit = "mousebrainbench.benchmarks.knowledge_system_audit:main"
 mousebrainbench-knowledge-system-release = "mousebrainbench.benchmarks.knowledge_system_release:main"
 mousebrainbench-anm-direction = "mousebrainbench.benchmarks.causal_direction_anm:main"
+mousebrainbench-hybrid-policy = "mousebrainbench.benchmarks.hybrid_selective_policy:main"
 mousebrainbench-run = "mousebrainbench.cli:main"
 
 [tool.setuptools.packages.find]

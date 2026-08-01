@@ -25,8 +25,8 @@ def _fake_direction(x, y, *, seed):
 def test_development_rows_have_disjoint_deterministic_roles() -> None:
     rows = development_records(test_mode=True, direction_function=_fake_direction)
 
-    assert len(rows) == 28
-    assert {row["split_role"] for row in rows} <= {
+    assert len(rows) == 70
+    assert {row["split_role"] for row in rows} == {
         "model_fit",
         "threshold_calibration",
         "locked_development_audit",
@@ -47,6 +47,5 @@ def test_feature_artifact_records_no_confirmatory_leakage(tmp_path) -> None:
 
     assert payload["confirmatory_v2_cases_used"] == 0
     assert payload["data_role"] == "consumed_development_only_not_confirmatory"
-    assert matrix["features"].shape == (28, len(hybrid_feature_names()))
-    assert matrix["labels"].shape == (28, 10)
-
+    assert matrix["features"].shape == (70, len(hybrid_feature_names()))
+    assert matrix["labels"].shape == (70, 10)
