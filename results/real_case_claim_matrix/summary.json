@@ -1,6 +1,6 @@
 {
-  "version": "0.7.0",
-  "git_revision": "d22d525888bdec76fb89b0f6648dcc747b2715e6",
+  "version": "0.8.0",
+  "git_revision": "3f23895",
   "analysis": "artifact_grounded_real_case_claim_matrix_v3",
   "contract": "domain-specific evidence blocks without cross-domain normalization",
   "cases": [
@@ -777,7 +777,9 @@
         "causal_intervention",
         "whole_brain_coverage",
         "independent_validation",
-        "reproducible_compute"
+        "reproducible_compute",
+        "entity_specificity",
+        "operational_compute"
       ],
       "block_statuses": {
         "prediction": "unknown",
@@ -787,7 +789,9 @@
         "causal_intervention": "not_applicable",
         "whole_brain_coverage": "failed",
         "independent_validation": "failed",
-        "reproducible_compute": "passed"
+        "reproducible_compute": "passed",
+        "entity_specificity": "unknown",
+        "operational_compute": "unknown"
       },
       "rationale": "at least one required evidence block failed"
     },
@@ -917,7 +921,9 @@
         "causal_intervention",
         "whole_brain_coverage",
         "independent_validation",
-        "reproducible_compute"
+        "reproducible_compute",
+        "entity_specificity",
+        "operational_compute"
       ],
       "block_statuses": {
         "prediction": "passed",
@@ -927,7 +933,9 @@
         "causal_intervention": "not_applicable",
         "whole_brain_coverage": "failed",
         "independent_validation": "failed",
-        "reproducible_compute": "unknown"
+        "reproducible_compute": "unknown",
+        "entity_specificity": "unknown",
+        "operational_compute": "unknown"
       },
       "rationale": "at least one required evidence block failed"
     },
@@ -1057,7 +1065,9 @@
         "causal_intervention",
         "whole_brain_coverage",
         "independent_validation",
-        "reproducible_compute"
+        "reproducible_compute",
+        "entity_specificity",
+        "operational_compute"
       ],
       "block_statuses": {
         "prediction": "passed",
@@ -1067,7 +1077,9 @@
         "causal_intervention": "not_applicable",
         "whole_brain_coverage": "failed",
         "independent_validation": "failed",
-        "reproducible_compute": "unknown"
+        "reproducible_compute": "unknown",
+        "entity_specificity": "unknown",
+        "operational_compute": "unknown"
       },
       "rationale": "at least one required evidence block failed"
     },
@@ -1197,7 +1209,9 @@
         "causal_intervention",
         "whole_brain_coverage",
         "independent_validation",
-        "reproducible_compute"
+        "reproducible_compute",
+        "entity_specificity",
+        "operational_compute"
       ],
       "block_statuses": {
         "prediction": "not_applicable",
@@ -1207,7 +1221,9 @@
         "causal_intervention": "not_applicable",
         "whole_brain_coverage": "failed",
         "independent_validation": "failed",
-        "reproducible_compute": "passed"
+        "reproducible_compute": "passed",
+        "entity_specificity": "unknown",
+        "operational_compute": "unknown"
       },
       "rationale": "at least one required evidence block failed"
     }
