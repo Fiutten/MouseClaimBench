@@ -7,7 +7,9 @@
 \usepackage{booktabs}
 \usepackage{enumitem}
 \usepackage{graphicx}
+\usepackage{hyperref}
 \usepackage{lineno}
+\usepackage[section]{placeins}
 \usepackage{tabularx}
 \usepackage{xcolor}
 
@@ -19,7 +21,7 @@
   linkcolor=blue,
   citecolor=blue,
   urlcolor=blue,
-  pdftitle={MouseClaimBench: Non-compensatory Decision Support for Scientific Claims in Mouse-Brain Modelling},
+  pdftitle={MouseClaimBench: Non-compensatory Decision Support for Mouse-Brain Claims},
   pdfauthor={Alberto Fernandez-Isabel, Isaac Martin de Diego, Ruben Fuentes-Fernandez},
   pdfsubject={Evidence-aware decision support for computational mouse-brain claims},
   pdfkeywords={Decision Support Systems, Scientific Claim Governance, Mouse-Brain Modelling, Artificial Intelligence Assurance, Evidence Contracts, Reproducibility}
@@ -33,6 +35,7 @@
 \acrodef{bold}[BOLD]{blood oxygen level-dependent}
 \acrodef{ccf}[CCF]{Common Coordinate Framework}
 \acrodef{cetinia}[CETINIA]{Research Centre for Intelligent Information Technologies}
+\acrodef{ci}[CI]{confidence interval}
 \acrodef{dss}[DSS]{Decision Support System}
 \acrodef{electre}[ELECTRE]{ELimination Et Choix Traduisant la REalitE}
 \acrodef{fair}[FAIR]{Findable, Accessible, Interoperable, and Reusable}
@@ -46,6 +49,7 @@
 \acrodef{mever}[MEVER]{Multi-Modal and Explainable Claim Verification with Graph-based Evidence Retrieval}
 \acrodef{microns}[MICRONS]{Machine Intelligence from Cortical Networks}
 \acrodef{sem}[SEM]{Structural Equation Model}
+\acrodef{svd}[SVD]{singular value decomposition}
 \acrodef{tn}[TN]{true negative}
 \acrodef{tp}[TP]{true positive}
 \acrodef{uq}[UQ]{Uncertainty Quantification}
@@ -57,12 +61,13 @@
 \setlist[itemize]{leftmargin=*,itemsep=0.45em,topsep=0.45em}
 \newcolumntype{Y}{>{\raggedright\arraybackslash}X}
 \modulolinenumbers[5]
+\setlength{\emergencystretch}{2em}
 
 \begin{document}
 
 \begin{frontmatter}
 
-\title{MouseClaimBench: Non-compensatory Decision Support for Scientific Claims in Mouse-Brain Modelling}
+\title{MouseClaimBench: Non-compensatory Decision Support for Mouse-Brain Claims}
 
 \author[urjc]{Alberto Fern\'andez-Isabel\corref{cor1}}
 \ead{alberto.fernandez.isabel@urjc.es}
@@ -110,11 +115,13 @@ The authors declare no known competing financial interests or personal relations
 
 \section*{CRediT Authorship Contribution Statement}
 \label{sec:credit}
-Alberto Fern\'andez-Isabel: Conceptualisation, Methodology, Software, Investigation, Data curation, Writing--original draft, Writing--review and editing. Isaac Mart\'in de Diego: Validation, Formal analysis, Investigation, Writing--original draft, Writing--review and editing, Project administration. Rub\'en Fuentes-Fern\'andez: Methodology, Validation, Writing--original draft, Writing--review and editing.
+\noindent Alberto Fern\'andez-Isabel: Conceptualisation, Methodology, Software, Investigation, Data curation, Writing--original draft, Writing--review and editing.\par
+\noindent Isaac Mart\'in de Diego: Validation, Formal analysis, Investigation, Writing--original draft, Writing--review and editing, Project administration.\par
+\noindent Rub\'en Fuentes-Fern\'andez: Methodology, Validation, Writing--original draft, Writing--review and editing.
 
 \section*{Data and Code Availability}
 \label{sec:data-code-availability}
-The source code, contracts, tests, lightweight result artifacts, and manuscript are maintained in the public MouseClaimBench repository at \url{https://github.com/Fiutten/MouseClaimBench}. Raw Allen, Sensorium, Tuebingen, SciFact, and MICRONS data are governed by their original providers and are not redistributed. Every reported result is linked to a recorded Git revision. Artifact files marked as dirty are excluded from the release gate.
+The source code, contracts, tests, lightweight result artifacts, and manuscript are maintained in the \href{https://github.com/Fiutten/MouseClaimBench}{public MouseClaimBench repository}. Raw Allen, Sensorium, Tuebingen, SciFact, and MICRONS data are governed by their original providers and are not redistributed. Every reported result is linked to a recorded Git revision. Artifact files marked as dirty are excluded from the release gate.
 
 \section*{Acknowledgements}
 \label{sec:acknowledgements}

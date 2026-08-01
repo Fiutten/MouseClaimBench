@@ -25,3 +25,5 @@ runs/
 *.out
 *.synctex.gz
 *.toc
+/main.pdf
+/main.spl
