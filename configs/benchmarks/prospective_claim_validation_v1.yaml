@@ -1,0 +1,119 @@
+protocol_id: mouseclaimbench_prospective_claim_validation
+version: 1.0.0
+status: frozen_before_execution
+frozen_profile:
+  profile_id: mouse_brain_claims
+  version: 1.1.0
+  source_hash: sha256:12770573922ea4bf00fabf519f565480df7475d313726cc3281a5c200d696137
+
+development_partition:
+  source: results/oracle_sem_claim_benchmark/summary.json
+  regimes:
+    - independent
+    - common_cause
+    - direct_x_to_y
+    - reverse_y_to_x
+    - direct_x_to_y_interventional
+  role: comparator_training_only
+
+prospective_partition:
+  regimes:
+    - independent_student
+    - confounded_nonlinear
+    - reverse_nonlinear
+    - direct_saturating
+    - direct_heteroscedastic
+    - weak_direct
+    - shifted_direct
+    - collider_selection
+    - direct_interventional_saturating
+  sample_sizes: [150, 600, 2400]
+  noise_scales: [0.6, 1.2, 1.8]
+  seeds_per_cell: 40
+  seed_namespace: 2026080100
+  role: locked_evaluation_only
+
+policies:
+  - evidence_contract_v3
+  - equal_weight_compensatory_75
+  - prediction_shortcut
+  - development_trained_probabilistic
+
+probabilistic_comparator:
+  model: per_claim_l2_logistic_regression
+  training_partition: development_partition
+  features:
+    - evidence_status_one_hot
+    - missing_block_indicator
+    - claim_identity
+  regularization_strength: 1.0
+  authorization_threshold: 0.5
+  constant_label_policy: empirical_constant
+  prospective_refitting: forbidden
+
+primary_endpoint:
+  metric: false_positive_rate
+  unit: claim_authorization
+  comparison: evidence_contract_v3_vs_each_comparator
+  success_rule: >-
+    The evidence contract must have a lower aggregate false-positive rate than
+    every comparator, without a false-negative rate more than 0.10 above the
+    best comparator, and the case-level paired comparison must favor the
+    contract with a two-sided exact sign-test p-value below 0.05.
+
+secondary_endpoints:
+  - false_negative_rate
+  - precision
+  - recall
+  - specificity
+  - per_claim_false_positive_rate
+  - per_regime_false_positive_rate
+  - per_sample_size_false_positive_rate
+  - per_noise_scale_false_positive_rate
+
+uncertainty:
+  method: stratified_case_cluster_bootstrap
+  cluster_unit: one_generated_case_with_dependent_claim_decisions
+  strata: [regime, sample_size, noise_scale]
+  replicates: 5000
+  seed: 2026080199
+
+microns_network_inference:
+  endpoint: all_pairs/readout_location
+  cohorts:
+    - discovery
+    - holdout_offset1000
+    - holdout_offset2000
+  primary_method: directed_dyadic_cluster_robust_linear_model
+  corroborating_method: freedman_lane_node_label_permutation
+  permutations: 1000
+  seed: 2026080201
+  fixed_controls:
+    - log1p_distance
+    - squared_log1p_distance
+    - log1p_pre_degree
+    - log1p_post_degree
+    - same_coarse_cell_type
+  success_rule: >-
+    The connected-pair coefficient must be positive in all three cohorts. Its
+    dyadic-cluster robust two-sided p-value and its node-label permutation
+    one-sided p-value must both be at most 0.05 in each cohort.
+
+decision_rules:
+  q1_computational_core_supported: >-
+    Both the prospective primary endpoint and the MICRONS network-inference
+    success rule pass without changing this protocol or the frozen knowledge
+    profile.
+  q1_computational_core_not_supported: >-
+    Either success rule fails, implementation invalidates a prespecified test,
+    or any comparator is tuned using the prospective partition.
+
+prohibited_inferences:
+  - independent expert content validity
+  - improved human decision quality
+  - biological causal mechanism
+  - independent biological replication
+  - whole-brain validity
+  - complete mouse-brain digital twin
+  - cross-domain generality
+
