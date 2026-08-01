@@ -1,0 +1,100 @@
+{
+  "version": "0.8.0",
+  "git_revision": "fa29580",
+  "analysis": "knowledge_system_release_gate_v1",
+  "required_artifacts": [
+    {
+      "artifact": "results/knowledge_system_audit/summary.json",
+      "exists": true,
+      "field": "decision",
+      "expected": "knowledge_system_reproduces_frozen_policy_with_complete_traces",
+      "observed": "knowledge_system_reproduces_frozen_policy_with_complete_traces",
+      "git_revision": "d48dbea"
+    },
+    {
+      "artifact": "results/oracle_sem_claim_benchmark/summary.json",
+      "exists": true,
+      "field": "decision",
+      "expected": "oracle_benchmark_supports_non_compensatory_contract_with_finite_sample_errors",
+      "observed": "oracle_benchmark_supports_non_compensatory_contract_with_finite_sample_errors",
+      "git_revision": "2115f8c"
+    },
+    {
+      "artifact": "results/real_case_claim_matrix/summary.json",
+      "exists": true,
+      "field": "decision",
+      "expected": "artifact_grounded_case_matrix_complete_with_explicit_limits",
+      "observed": "artifact_grounded_case_matrix_complete_with_explicit_limits",
+      "git_revision": "d22d525888bdec76fb89b0f6648dcc747b2715e6"
+    },
+    {
+      "artifact": "results/scifact_claim_verification/summary.json",
+      "exists": true,
+      "field": "decision",
+      "expected": "scifact_external_claim_audit_ready",
+      "observed": "scifact_external_claim_audit_ready",
+      "git_revision": "d22d525888bdec76fb89b0f6648dcc747b2715e6"
+    },
+    {
+      "artifact": "results/tuebingen_causal_direction/summary.json",
+      "exists": true,
+      "field": "decision",
+      "expected": "tuebingen_external_direction_benchmark_ready",
+      "observed": "tuebingen_external_direction_benchmark_ready",
+      "git_revision": "d22d525888bdec76fb89b0f6648dcc747b2715e6"
+    },
+    {
+      "artifact": "results/claim_adversarial_v2/summary.json",
+      "exists": true,
+      "field": "validation_role",
+      "expected": "software_contract_conformance_not_independent_validation",
+      "observed": "software_contract_conformance_not_independent_validation",
+      "git_revision": "d22d525888bdec76fb89b0f6648dcc747b2715e6"
+    },
+    {
+      "artifact": "results/claimbench_component_ablation/summary.json",
+      "exists": true,
+      "field": "decision",
+      "expected": "claimbench_components_have_nonredundant_value",
+      "observed": "claimbench_components_have_nonredundant_value",
+      "git_revision": "4fecaaf07773d1b6353cdba8334eb04e2a497f24"
+    },
+    {
+      "artifact": "results/claimbench_threat_model/summary.json",
+      "exists": true,
+      "field": "decision",
+      "expected": "claimbench_threat_model_passed_with_boundaries",
+      "observed": "claimbench_threat_model_passed_with_boundaries",
+      "git_revision": "4fecaaf07773d1b6353cdba8334eb04e2a497f24"
+    }
+  ],
+  "knowledge_profile": {
+    "profile_id": "mouse_brain_claims",
+    "version": "1.0.0",
+    "source_hash": "sha256:e93fc0b925a5be19d17d3f489e387c94caa918ee6e5d45718d21dd8dc2ecbfd3",
+    "valid": true
+  },
+  "missing_artifacts": [],
+  "failing_artifacts": [],
+  "dirty_artifacts": [],
+  "human_study_required_for_stated_scope": false,
+  "scientific_claim_boundaries": [
+    {
+      "claim": "cross-domain empirical generality",
+      "reason": "only the computational mouse-brain profile is evaluated"
+    },
+    {
+      "claim": "external biological replication",
+      "reason": "the real cases do not include an independent cross-resource replication"
+    },
+    {
+      "claim": "complete or causal mouse-brain digital twin",
+      "reason": "no case supplies both intervention evidence and whole-brain coverage"
+    },
+    {
+      "claim": "improved human decision quality",
+      "reason": "the KBS evaluation tests inference behavior, not human outcomes"
+    }
+  ],
+  "decision": "knowledge_system_method_package_ready_with_declared_boundaries"
+}
