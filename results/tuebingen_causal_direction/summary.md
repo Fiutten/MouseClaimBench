@@ -3,8 +3,11 @@
 - Decision: `tuebingen_external_direction_benchmark_ready`
 - Pairs loaded: `108`
 - Direction attempts: `103`
+- Direction attempt rate: `0.954`
 - Direction accuracy: `0.485`
+- Direction accuracy Wilson 95% CI: `[0.391190583237978, 0.5807304291376137]`
 - Weighted accuracy: `0.544`
+- Weighted accuracy bootstrap 95% CI: `[0.4146474342125831, 0.6649792084401364]`
 - Correlation-only direction overclaims: `79`
 - Causal performance claim allowed: `False`
 - Causal control claim allowed: `True`

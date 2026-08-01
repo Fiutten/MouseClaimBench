@@ -1,12 +1,29 @@
 {
-  "version": "0.6.0",
-  "git_revision": "4fecaaf07773d1b6353cdba8334eb04e2a497f24",
+  "version": "0.7.0",
+  "git_revision": "d22d525888bdec76fb89b0f6648dcc747b2715e6",
   "analysis": "tuebingen_causal_direction",
   "dataset": "Tuebingen cause-effect pairs",
   "num_pairs_loaded": 108,
   "num_direction_attempts": 103,
+  "direction_attempt_rate": 0.9537037037037037,
   "direction_accuracy": 0.4854368932038835,
+  "direction_accuracy_wilson_95": [
+    0.391190583237978,
+    0.5807304291376137
+  ],
   "weighted_direction_accuracy": 0.5439548094282716,
+  "weighted_direction_accuracy_bootstrap": {
+    "samples": 2000,
+    "seed": 20260801,
+    "unit": "attempted cause-effect pair",
+    "ci95": [
+      0.4146474342125831,
+      0.6649792084401364
+    ]
+  },
+  "weight_source": "official pair weights stored in Tuebingen pairmeta.txt",
+  "weight_formula": "sum(pair_weight * correct) / sum(pair_weight) over attempted pairs",
+  "correlation_overclaim_threshold": 0.3,
   "correlation_only_direction_overclaims": 79,
   "method_summary": {
     "anm": {

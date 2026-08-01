@@ -1,0 +1,1230 @@
+{
+  "version": "0.7.0",
+  "git_revision": "d22d525888bdec76fb89b0f6648dcc747b2715e6",
+  "analysis": "artifact_grounded_real_case_claim_matrix_v3",
+  "contract": "domain-specific evidence blocks without cross-domain normalization",
+  "cases": [
+    {
+      "case": "allen_vbn_identifiability_negative",
+      "domain": "Allen Visual Behavior Neuropixels",
+      "sources": [
+        "results/allen_vbn_mechanistic_identifiability_score.json"
+      ],
+      "interpretation": "The target is internally reproduced, while topology specificity and directed identifiability fail. This is a real negative mechanistic-identifiability case.",
+      "evidence_blocks": [
+        {
+          "name": "prediction",
+          "status": "unknown",
+          "source": "results/allen_vbn_mechanistic_identifiability_score.json",
+          "rule": "no decision rule can be executed from the stored observations",
+          "rationale": "the Allen MIS artifact evaluates target stability, not a held-out predictive endpoint",
+          "observations": {}
+        },
+        {
+          "name": "reproducible_compute",
+          "status": "passed",
+          "source": "results/allen_vbn_mechanistic_identifiability_score.json",
+          "rule": "a recorded Git revision must exist and must not end in '-dirty'",
+          "rationale": "the artifact records a clean revision",
+          "observations": {
+            "git_revision": "ac5ac3a"
+          }
+        },
+        {
+          "name": "internal_reproduction",
+          "status": "passed",
+          "source": "results/allen_vbn_mechanistic_identifiability_score.json",
+          "rule": "the stored Allen reproducibility block must pass all declared criteria",
+          "rationale": "cross-mouse and split-half target stability passed",
+          "observations": {
+            "block_score": 1.0,
+            "criteria": [
+              {
+                "name": "median_cross_mouse_correlation",
+                "value": 0.8907712835025543,
+                "threshold": 0.5,
+                "direction": "gt",
+                "passed": true,
+                "normalized_score": 1.0
+              },
+              {
+                "name": "median_split_half_correlation",
+                "value": 0.989581126345437,
+                "threshold": 0.7,
+                "direction": "gt",
+                "passed": true,
+                "normalized_score": 1.0
+              },
+              {
+                "name": "fraction_above_own_null_95th",
+                "value": 0.75,
+                "threshold": 0.5,
+                "direction": "gte",
+                "passed": true,
+                "normalized_score": 1.0
+              }
+            ]
+          }
+        },
+        {
+          "name": "external_replication",
+          "status": "unknown",
+          "source": "results/allen_vbn_mechanistic_identifiability_score.json",
+          "rule": "no decision rule can be executed from the stored observations",
+          "rationale": "no independent laboratory or resource is represented in this artifact",
+          "observations": {}
+        },
+        {
+          "name": "topology_specificity",
+          "status": "failed",
+          "source": "results/allen_vbn_mechanistic_identifiability_score.json",
+          "rule": "the stored topology-specificity block must pass all declared controls",
+          "rationale": "Allen topology did not outperform the declared controls",
+          "observations": {
+            "block_score": 0.07276533561717785,
+            "criteria": [
+              {
+                "name": "allen_minus_median_permutation",
+                "value": -0.0053784679059247775,
+                "threshold": 0.05,
+                "direction": "gt",
+                "passed": false,
+                "normalized_score": 0.0
+              },
+              {
+                "name": "fraction_permutations_outperformed",
+                "value": 0.21,
+                "threshold": 0.95,
+                "direction": "gte",
+                "passed": false,
+                "normalized_score": 0.22105263157894736
+              },
+              {
+                "name": "paired_advantage_bootstrap_95_lower",
+                "value": -0.007462997435285529,
+                "threshold": 0.0,
+                "direction": "gt",
+                "passed": false,
+                "normalized_score": 0.0
+              },
+              {
+                "name": "allen_minus_disconnected",
+                "value": 0.0035004355444882007,
+                "threshold": 0.05,
+                "direction": "gt",
+                "passed": false,
+                "normalized_score": 0.07000871088976401
+              }
+            ]
+          }
+        },
+        {
+          "name": "directed_identifiability",
+          "status": "failed",
+          "source": "results/allen_vbn_mechanistic_identifiability_score.json",
+          "rule": "the stored directed-identifiability block must pass all declared criteria",
+          "rationale": "latency and lead-lag criteria did not identify direction",
+          "observations": {
+            "block_score": 0.0,
+            "criteria": [
+              {
+                "name": "latency_median_cross_mouse_tau",
+                "value": 0.0,
+                "threshold": 0.3,
+                "direction": "gt",
+                "passed": false,
+                "normalized_score": 0.0
+              },
+              {
+                "name": "latency_median_split_half_tau",
+                "value": 0.0,
+                "threshold": 0.5,
+                "direction": "gt",
+                "passed": false,
+                "normalized_score": 0.0
+              },
+              {
+                "name": "latency_fraction_above_own_null_95th",
+                "value": 0.0,
+                "threshold": 0.5,
+                "direction": "gte",
+                "passed": false,
+                "normalized_score": 0.0
+              },
+              {
+                "name": "latency_median_resolvable_pair_fraction",
+                "value": 0.0,
+                "threshold": 0.5,
+                "direction": "gte",
+                "passed": false,
+                "normalized_score": 0.0
+              },
+              {
+                "name": "lead_lag_fraction_above_own_null_95th",
+                "value": 0.0,
+                "threshold": 0.5,
+                "direction": "gte",
+                "passed": false,
+                "normalized_score": 0.0
+              },
+              {
+                "name": "lead_lag_median_nonzero_pair_fraction",
+                "value": 0.0,
+                "threshold": 0.25,
+                "direction": "gte",
+                "passed": false,
+                "normalized_score": 0.0
+              }
+            ]
+          }
+        },
+        {
+          "name": "structure_function_association",
+          "status": "not_applicable",
+          "source": "results/allen_vbn_mechanistic_identifiability_score.json",
+          "rule": "the source protocol did not target this evidence block",
+          "rationale": "the Allen analysis is not the local MICRONS structure-function protocol",
+          "observations": {}
+        },
+        {
+          "name": "causal_intervention",
+          "status": "not_applicable",
+          "source": "results/allen_vbn_mechanistic_identifiability_score.json",
+          "rule": "the source protocol did not target this evidence block",
+          "rationale": "the source contains no intervention that identifies a causal model mechanism",
+          "observations": {}
+        },
+        {
+          "name": "whole_brain_coverage",
+          "status": "failed",
+          "source": "results/allen_vbn_mechanistic_identifiability_score.json",
+          "rule": "whole-brain coverage requires a whole-brain model and validation target",
+          "rationale": "the evaluated Allen case covers a bounded visual-system target",
+          "observations": {}
+        },
+        {
+          "name": "independent_validation",
+          "status": "failed",
+          "source": "results/allen_vbn_mechanistic_identifiability_score.json",
+          "rule": "independent validation requires a separate validating resource or study",
+          "rationale": "the stored artifact is an internal analysis of one resource",
+          "observations": {}
+        }
+      ],
+      "supported_claims": [
+        "computationally_reproducible",
+        "internally_reproduced"
+      ]
+    },
+    {
+      "case": "sensorium_static_predictive_topographic",
+      "domain": "Sensorium static visual cortex",
+      "sources": [
+        "results/sensorium_static_model_comparator/summary.json"
+      ],
+      "interpretation": "Prediction and a topographic constraint pass within Sensorium. The case does not supply direction, intervention, whole-brain coverage, or external replication.",
+      "evidence_blocks": [
+        {
+          "name": "prediction",
+          "status": "passed",
+          "source": "results/sensorium_static_model_comparator/summary.json",
+          "rule": "median best-minus-mean and best-minus-scrambled correlations must both be positive",
+          "rationale": "the repeated-test cohort beats both transparent baselines",
+          "observations": {
+            "median_best_predictive_correlation": 0.34095210501363094,
+            "median_best_minus_mean": 0.09477618467843874,
+            "median_best_minus_scrambled": 0.06835385516268283
+          }
+        },
+        {
+          "name": "reproducible_compute",
+          "status": "unknown",
+          "source": "results/sensorium_static_model_comparator/summary.json",
+          "rule": "no decision rule can be executed from the stored observations",
+          "rationale": "the source summary does not record a Git revision",
+          "observations": {}
+        },
+        {
+          "name": "internal_reproduction",
+          "status": "passed",
+          "source": "results/sensorium_static_model_comparator/summary.json",
+          "rule": "the topographic constraint must pass in every stored dataset and in at least two datasets",
+          "rationale": "the constraint passes in all five datasets",
+          "observations": {
+            "passed_count": 5,
+            "n_datasets": 5
+          }
+        },
+        {
+          "name": "external_replication",
+          "status": "unknown",
+          "source": "results/sensorium_static_model_comparator/summary.json",
+          "rule": "no decision rule can be executed from the stored observations",
+          "rationale": "the mice are internal datasets from the Sensorium resource rather than an external study",
+          "observations": {}
+        },
+        {
+          "name": "topology_specificity",
+          "status": "passed",
+          "source": "results/sensorium_static_model_comparator/summary.json",
+          "rule": "the stored topographic control must report structural_constraint_supported in all datasets",
+          "rationale": "the topographic effect exceeds its null in all five datasets",
+          "observations": {
+            "median_observed_spearman": 0.17748149035790178,
+            "median_effect_over_null": 0.1779421462041856,
+            "passed_count": 5,
+            "n_datasets": 5
+          }
+        },
+        {
+          "name": "directed_identifiability",
+          "status": "not_applicable",
+          "source": "results/sensorium_static_model_comparator/summary.json",
+          "rule": "the source protocol did not target this evidence block",
+          "rationale": "the static predictive benchmark contains no directional-identification test",
+          "observations": {}
+        },
+        {
+          "name": "structure_function_association",
+          "status": "not_applicable",
+          "source": "results/sensorium_static_model_comparator/summary.json",
+          "rule": "the source protocol did not target this evidence block",
+          "rationale": "topographic readout regularity is not treated as synaptic structure-function evidence",
+          "observations": {}
+        },
+        {
+          "name": "causal_intervention",
+          "status": "not_applicable",
+          "source": "results/sensorium_static_model_comparator/summary.json",
+          "rule": "the source protocol did not target this evidence block",
+          "rationale": "the benchmark contains no causal intervention",
+          "observations": {}
+        },
+        {
+          "name": "whole_brain_coverage",
+          "status": "failed",
+          "source": "results/sensorium_static_model_comparator/summary.json",
+          "rule": "whole-brain coverage requires data and model validation beyond visual cortex",
+          "rationale": "Sensorium is a visual-cortex predictive benchmark",
+          "observations": {}
+        },
+        {
+          "name": "independent_validation",
+          "status": "failed",
+          "source": "results/sensorium_static_model_comparator/summary.json",
+          "rule": "independent validation requires a separate resource or study",
+          "rationale": "the stored analysis remains within Sensorium",
+          "observations": {}
+        }
+      ],
+      "supported_claims": [
+        "predictive",
+        "internally_reproduced",
+        "topology_specific"
+      ]
+    },
+    {
+      "case": "dynamic_sensorium_temporal_prediction",
+      "domain": "Dynamic Sensorium visual cortex",
+      "sources": [
+        "results/dynamic_sensorium_model_comparator/summary.json"
+      ],
+      "interpretation": "The temporal comparison is positive in both stored cohorts. Neural-response reliability is not estimable, and no topology, direction, or causal test is run.",
+      "evidence_blocks": [
+        {
+          "name": "prediction",
+          "status": "passed",
+          "source": "results/dynamic_sensorium_model_comparator/summary.json",
+          "rule": "temporal SVD must beat mean response in at least four of five mice with positive median delta in both cohorts",
+          "rationale": "the paired predictive comparison passes in both non-overlapping cohorts",
+          "observations": {
+            "cohorts": {
+              "dynamic_sensorium2023_oracle": {
+                "n_mice": 5,
+                "right_wins": 4,
+                "median_delta": 0.038886276953342624,
+                "reliability_estimable_count": 0
+              },
+              "dynamic_sensorium_legacy_ood": {
+                "n_mice": 5,
+                "right_wins": 5,
+                "median_delta": 0.03091042171243108,
+                "reliability_estimable_count": 0
+              }
+            }
+          }
+        },
+        {
+          "name": "reproducible_compute",
+          "status": "unknown",
+          "source": "results/dynamic_sensorium_model_comparator/summary.json",
+          "rule": "no decision rule can be executed from the stored observations",
+          "rationale": "the source summary does not record a Git revision",
+          "observations": {}
+        },
+        {
+          "name": "internal_reproduction",
+          "status": "passed",
+          "source": "results/dynamic_sensorium_model_comparator/summary.json",
+          "rule": "the same signed predictive comparison must pass in both stored mouse cohorts",
+          "rationale": "the positive temporal-model comparison is reproduced across both cohorts",
+          "observations": {
+            "cohorts": {
+              "dynamic_sensorium2023_oracle": {
+                "n_mice": 5,
+                "right_wins": 4,
+                "median_delta": 0.038886276953342624,
+                "reliability_estimable_count": 0
+              },
+              "dynamic_sensorium_legacy_ood": {
+                "n_mice": 5,
+                "right_wins": 5,
+                "median_delta": 0.03091042171243108,
+                "reliability_estimable_count": 0
+              }
+            }
+          }
+        },
+        {
+          "name": "external_replication",
+          "status": "unknown",
+          "source": "results/dynamic_sensorium_model_comparator/summary.json",
+          "rule": "no decision rule can be executed from the stored observations",
+          "rationale": "the two cohorts remain internal to the Dynamic Sensorium resources used here",
+          "observations": {}
+        },
+        {
+          "name": "topology_specificity",
+          "status": "not_applicable",
+          "source": "results/dynamic_sensorium_model_comparator/summary.json",
+          "rule": "the source protocol did not target this evidence block",
+          "rationale": "the dynamic comparator does not execute a topology-control experiment",
+          "observations": {}
+        },
+        {
+          "name": "directed_identifiability",
+          "status": "not_applicable",
+          "source": "results/dynamic_sensorium_model_comparator/summary.json",
+          "rule": "the source protocol did not target this evidence block",
+          "rationale": "temporal prediction is not treated as identification of biological direction",
+          "observations": {}
+        },
+        {
+          "name": "structure_function_association",
+          "status": "not_applicable",
+          "source": "results/dynamic_sensorium_model_comparator/summary.json",
+          "rule": "the source protocol did not target this evidence block",
+          "rationale": "the dynamic benchmark has no synaptic structure-function endpoint",
+          "observations": {}
+        },
+        {
+          "name": "causal_intervention",
+          "status": "not_applicable",
+          "source": "results/dynamic_sensorium_model_comparator/summary.json",
+          "rule": "the source protocol did not target this evidence block",
+          "rationale": "the dynamic benchmark contains no intervention",
+          "observations": {}
+        },
+        {
+          "name": "whole_brain_coverage",
+          "status": "failed",
+          "source": "results/dynamic_sensorium_model_comparator/summary.json",
+          "rule": "whole-brain coverage requires data and validation outside visual cortex",
+          "rationale": "Dynamic Sensorium is a visual-cortex prediction resource",
+          "observations": {}
+        },
+        {
+          "name": "independent_validation",
+          "status": "failed",
+          "source": "results/dynamic_sensorium_model_comparator/summary.json",
+          "rule": "independent validation requires a separate external study",
+          "rationale": "both cohorts belong to the Sensorium ecosystem",
+          "observations": {}
+        }
+      ],
+      "supported_claims": [
+        "predictive",
+        "internally_reproduced"
+      ]
+    },
+    {
+      "case": "microns_local_structure_function",
+      "domain": "MICRONS local visual cortex",
+      "sources": [
+        "results/microns_primary_robustness/summary.json",
+        "results/microns_q1_package/summary.json"
+      ],
+      "interpretation": "A fixed local structure-function endpoint is internally reproduced in two non-overlapping hold-outs. The result is observational and within one MICRONS volume.",
+      "evidence_blocks": [
+        {
+          "name": "prediction",
+          "status": "not_applicable",
+          "source": "results/microns_q1_package/summary.json",
+          "rule": "the source protocol did not target this evidence block",
+          "rationale": "the primary endpoint is an observational association rather than response prediction",
+          "observations": {}
+        },
+        {
+          "name": "reproducible_compute",
+          "status": "passed",
+          "source": "results/microns_q1_package/summary.json",
+          "rule": "a recorded Git revision must exist and must not end in '-dirty'",
+          "rationale": "the artifact records a clean revision",
+          "observations": {
+            "git_revision": "7f5293613dc84000719f05c0dc340dc7c9d69c2b"
+          }
+        },
+        {
+          "name": "internal_reproduction",
+          "status": "passed",
+          "source": "results/microns_q1_package/summary.json",
+          "rule": "the fixed endpoint must pass in discovery and two non-overlapping hold-outs",
+          "rationale": "the endpoint passes in all three within-resource windows",
+          "observations": {
+            "cohorts": {
+              "discovery": {
+                "n_units": 1000,
+                "n_connected_pairs": 2095,
+                "distance_matched_delta": 0.021514585321604482,
+                "distance_matched_q_one_sided": 0.007557659731572775,
+                "distance_bootstrap_ci95": [
+                  0.01664541931264082,
+                  0.026283913768938752
+                ],
+                "degree_matched_delta": 0.04026397102281075,
+                "degree_matched_q_one_sided": 0.005267459812914359,
+                "degree_bootstrap_ci95": [
+                  0.03486467417490266,
+                  0.045416980099525855
+                ]
+              },
+              "holdout_offset1000": {
+                "n_units": 992,
+                "n_connected_pairs": 1926,
+                "distance_matched_delta": 0.021033661779349608,
+                "distance_matched_q_one_sided": 0.007036441819050514,
+                "distance_bootstrap_ci95": [
+                  0.01421789459759002,
+                  0.026277254959318857
+                ],
+                "degree_matched_delta": 0.03800163332630774,
+                "degree_matched_q_one_sided": 0.006224544686083147,
+                "degree_bootstrap_ci95": [
+                  0.03214217645795173,
+                  0.04309364267864572
+                ]
+              },
+              "holdout_offset2000": {
+                "n_units": 999,
+                "n_connected_pairs": 1922,
+                "distance_matched_delta": 0.017884535143457933,
+                "distance_matched_q_one_sided": 0.008691308691308691,
+                "distance_bootstrap_ci95": [
+                  0.011504298671558841,
+                  0.023796608417984554
+                ],
+                "degree_matched_delta": 0.028641871321893483,
+                "degree_matched_q_one_sided": 0.00827743684886542,
+                "degree_bootstrap_ci95": [
+                  0.022873768722809218,
+                  0.03536698554630101
+                ]
+              }
+            }
+          }
+        },
+        {
+          "name": "external_replication",
+          "status": "unknown",
+          "source": "results/microns_q1_package/summary.json",
+          "rule": "no decision rule can be executed from the stored observations",
+          "rationale": "the three windows come from one MICRONS volume and are not different animals or laboratories",
+          "observations": {}
+        },
+        {
+          "name": "topology_specificity",
+          "status": "not_applicable",
+          "source": "results/microns_q1_package/summary.json",
+          "rule": "the source protocol did not target this evidence block",
+          "rationale": "distance- and degree-matched pair controls do not constitute a whole-network topology test",
+          "observations": {}
+        },
+        {
+          "name": "directed_identifiability",
+          "status": "not_applicable",
+          "source": "results/microns_q1_package/summary.json",
+          "rule": "the source protocol did not target this evidence block",
+          "rationale": "directed synaptic edges are observed but functional direction is not identified",
+          "observations": {}
+        },
+        {
+          "name": "structure_function_association",
+          "status": "passed",
+          "source": "results/microns_q1_package/summary.json",
+          "rule": "the fixed all_pairs/readout_location endpoint must pass FDR and have positive unit-cluster bootstrap lower bounds under distance and degree matching in all windows",
+          "rationale": "a bounded local observational association survives the declared controls",
+          "observations": {
+            "primary_endpoint": "all_pairs/readout_location",
+            "cohorts": {
+              "discovery": {
+                "n_units": 1000,
+                "n_connected_pairs": 2095,
+                "distance_matched_delta": 0.021514585321604482,
+                "distance_matched_q_one_sided": 0.007557659731572775,
+                "distance_bootstrap_ci95": [
+                  0.01664541931264082,
+                  0.026283913768938752
+                ],
+                "degree_matched_delta": 0.04026397102281075,
+                "degree_matched_q_one_sided": 0.005267459812914359,
+                "degree_bootstrap_ci95": [
+                  0.03486467417490266,
+                  0.045416980099525855
+                ]
+              },
+              "holdout_offset1000": {
+                "n_units": 992,
+                "n_connected_pairs": 1926,
+                "distance_matched_delta": 0.021033661779349608,
+                "distance_matched_q_one_sided": 0.007036441819050514,
+                "distance_bootstrap_ci95": [
+                  0.01421789459759002,
+                  0.026277254959318857
+                ],
+                "degree_matched_delta": 0.03800163332630774,
+                "degree_matched_q_one_sided": 0.006224544686083147,
+                "degree_bootstrap_ci95": [
+                  0.03214217645795173,
+                  0.04309364267864572
+                ]
+              },
+              "holdout_offset2000": {
+                "n_units": 999,
+                "n_connected_pairs": 1922,
+                "distance_matched_delta": 0.017884535143457933,
+                "distance_matched_q_one_sided": 0.008691308691308691,
+                "distance_bootstrap_ci95": [
+                  0.011504298671558841,
+                  0.023796608417984554
+                ],
+                "degree_matched_delta": 0.028641871321893483,
+                "degree_matched_q_one_sided": 0.00827743684886542,
+                "degree_bootstrap_ci95": [
+                  0.022873768722809218,
+                  0.03536698554630101
+                ]
+              }
+            },
+            "robustness_decision": "microns_primary_endpoint_survives_harder_controls"
+          }
+        },
+        {
+          "name": "causal_intervention",
+          "status": "not_applicable",
+          "source": "results/microns_q1_package/summary.json",
+          "rule": "the source protocol did not target this evidence block",
+          "rationale": "MICRONS supplies observational structure and function, not an intervention in this analysis",
+          "observations": {}
+        },
+        {
+          "name": "whole_brain_coverage",
+          "status": "failed",
+          "source": "results/microns_q1_package/summary.json",
+          "rule": "whole-brain coverage requires brain-wide structural and functional evidence",
+          "rationale": "the sampled MICRONS volume is local visual cortex",
+          "observations": {}
+        },
+        {
+          "name": "independent_validation",
+          "status": "failed",
+          "source": "results/microns_q1_package/summary.json",
+          "rule": "independent validation requires a different animal, resource, or laboratory",
+          "rationale": "the hold-outs are non-overlapping windows from the same resource",
+          "observations": {}
+        }
+      ],
+      "supported_claims": [
+        "computationally_reproducible",
+        "internally_reproduced",
+        "structure_function"
+      ]
+    }
+  ],
+  "claim_decisions": [
+    {
+      "case": "allen_vbn_identifiability_negative",
+      "claim": "predictive",
+      "status": "uncertain",
+      "required_blocks": [
+        "prediction"
+      ],
+      "block_statuses": {
+        "prediction": "unknown"
+      },
+      "rationale": "at least one required evidence block was not observed"
+    },
+    {
+      "case": "allen_vbn_identifiability_negative",
+      "claim": "computationally_reproducible",
+      "status": "supported",
+      "required_blocks": [
+        "reproducible_compute"
+      ],
+      "block_statuses": {
+        "reproducible_compute": "passed"
+      },
+      "rationale": "all required evidence blocks passed their declared domain-specific rules"
+    },
+    {
+      "case": "allen_vbn_identifiability_negative",
+      "claim": "internally_reproduced",
+      "status": "supported",
+      "required_blocks": [
+        "internal_reproduction"
+      ],
+      "block_statuses": {
+        "internal_reproduction": "passed"
+      },
+      "rationale": "all required evidence blocks passed their declared domain-specific rules"
+    },
+    {
+      "case": "allen_vbn_identifiability_negative",
+      "claim": "externally_replicated",
+      "status": "uncertain",
+      "required_blocks": [
+        "external_replication"
+      ],
+      "block_statuses": {
+        "external_replication": "unknown"
+      },
+      "rationale": "at least one required evidence block was not observed"
+    },
+    {
+      "case": "allen_vbn_identifiability_negative",
+      "claim": "topology_specific",
+      "status": "blocked",
+      "required_blocks": [
+        "topology_specificity"
+      ],
+      "block_statuses": {
+        "topology_specificity": "failed"
+      },
+      "rationale": "at least one required evidence block failed"
+    },
+    {
+      "case": "allen_vbn_identifiability_negative",
+      "claim": "directed",
+      "status": "blocked",
+      "required_blocks": [
+        "directed_identifiability"
+      ],
+      "block_statuses": {
+        "directed_identifiability": "failed"
+      },
+      "rationale": "at least one required evidence block failed"
+    },
+    {
+      "case": "allen_vbn_identifiability_negative",
+      "claim": "structure_function",
+      "status": "out_of_scope",
+      "required_blocks": [
+        "structure_function_association"
+      ],
+      "block_statuses": {
+        "structure_function_association": "not_applicable"
+      },
+      "rationale": "the evaluated protocol did not target at least one required block"
+    },
+    {
+      "case": "allen_vbn_identifiability_negative",
+      "claim": "mechanistic",
+      "status": "blocked",
+      "required_blocks": [
+        "prediction",
+        "internal_reproduction",
+        "topology_specificity",
+        "directed_identifiability"
+      ],
+      "block_statuses": {
+        "prediction": "unknown",
+        "internal_reproduction": "passed",
+        "topology_specificity": "failed",
+        "directed_identifiability": "failed"
+      },
+      "rationale": "at least one required evidence block failed"
+    },
+    {
+      "case": "allen_vbn_identifiability_negative",
+      "claim": "causal",
+      "status": "out_of_scope",
+      "required_blocks": [
+        "causal_intervention"
+      ],
+      "block_statuses": {
+        "causal_intervention": "not_applicable"
+      },
+      "rationale": "the evaluated protocol did not target at least one required block"
+    },
+    {
+      "case": "allen_vbn_identifiability_negative",
+      "claim": "digital_twin",
+      "status": "blocked",
+      "required_blocks": [
+        "prediction",
+        "internal_reproduction",
+        "topology_specificity",
+        "directed_identifiability",
+        "causal_intervention",
+        "whole_brain_coverage",
+        "independent_validation",
+        "reproducible_compute"
+      ],
+      "block_statuses": {
+        "prediction": "unknown",
+        "internal_reproduction": "passed",
+        "topology_specificity": "failed",
+        "directed_identifiability": "failed",
+        "causal_intervention": "not_applicable",
+        "whole_brain_coverage": "failed",
+        "independent_validation": "failed",
+        "reproducible_compute": "passed"
+      },
+      "rationale": "at least one required evidence block failed"
+    },
+    {
+      "case": "sensorium_static_predictive_topographic",
+      "claim": "predictive",
+      "status": "supported",
+      "required_blocks": [
+        "prediction"
+      ],
+      "block_statuses": {
+        "prediction": "passed"
+      },
+      "rationale": "all required evidence blocks passed their declared domain-specific rules"
+    },
+    {
+      "case": "sensorium_static_predictive_topographic",
+      "claim": "computationally_reproducible",
+      "status": "uncertain",
+      "required_blocks": [
+        "reproducible_compute"
+      ],
+      "block_statuses": {
+        "reproducible_compute": "unknown"
+      },
+      "rationale": "at least one required evidence block was not observed"
+    },
+    {
+      "case": "sensorium_static_predictive_topographic",
+      "claim": "internally_reproduced",
+      "status": "supported",
+      "required_blocks": [
+        "internal_reproduction"
+      ],
+      "block_statuses": {
+        "internal_reproduction": "passed"
+      },
+      "rationale": "all required evidence blocks passed their declared domain-specific rules"
+    },
+    {
+      "case": "sensorium_static_predictive_topographic",
+      "claim": "externally_replicated",
+      "status": "uncertain",
+      "required_blocks": [
+        "external_replication"
+      ],
+      "block_statuses": {
+        "external_replication": "unknown"
+      },
+      "rationale": "at least one required evidence block was not observed"
+    },
+    {
+      "case": "sensorium_static_predictive_topographic",
+      "claim": "topology_specific",
+      "status": "supported",
+      "required_blocks": [
+        "topology_specificity"
+      ],
+      "block_statuses": {
+        "topology_specificity": "passed"
+      },
+      "rationale": "all required evidence blocks passed their declared domain-specific rules"
+    },
+    {
+      "case": "sensorium_static_predictive_topographic",
+      "claim": "directed",
+      "status": "out_of_scope",
+      "required_blocks": [
+        "directed_identifiability"
+      ],
+      "block_statuses": {
+        "directed_identifiability": "not_applicable"
+      },
+      "rationale": "the evaluated protocol did not target at least one required block"
+    },
+    {
+      "case": "sensorium_static_predictive_topographic",
+      "claim": "structure_function",
+      "status": "out_of_scope",
+      "required_blocks": [
+        "structure_function_association"
+      ],
+      "block_statuses": {
+        "structure_function_association": "not_applicable"
+      },
+      "rationale": "the evaluated protocol did not target at least one required block"
+    },
+    {
+      "case": "sensorium_static_predictive_topographic",
+      "claim": "mechanistic",
+      "status": "out_of_scope",
+      "required_blocks": [
+        "prediction",
+        "internal_reproduction",
+        "topology_specificity",
+        "directed_identifiability"
+      ],
+      "block_statuses": {
+        "prediction": "passed",
+        "internal_reproduction": "passed",
+        "topology_specificity": "passed",
+        "directed_identifiability": "not_applicable"
+      },
+      "rationale": "the evaluated protocol did not target at least one required block"
+    },
+    {
+      "case": "sensorium_static_predictive_topographic",
+      "claim": "causal",
+      "status": "out_of_scope",
+      "required_blocks": [
+        "causal_intervention"
+      ],
+      "block_statuses": {
+        "causal_intervention": "not_applicable"
+      },
+      "rationale": "the evaluated protocol did not target at least one required block"
+    },
+    {
+      "case": "sensorium_static_predictive_topographic",
+      "claim": "digital_twin",
+      "status": "blocked",
+      "required_blocks": [
+        "prediction",
+        "internal_reproduction",
+        "topology_specificity",
+        "directed_identifiability",
+        "causal_intervention",
+        "whole_brain_coverage",
+        "independent_validation",
+        "reproducible_compute"
+      ],
+      "block_statuses": {
+        "prediction": "passed",
+        "internal_reproduction": "passed",
+        "topology_specificity": "passed",
+        "directed_identifiability": "not_applicable",
+        "causal_intervention": "not_applicable",
+        "whole_brain_coverage": "failed",
+        "independent_validation": "failed",
+        "reproducible_compute": "unknown"
+      },
+      "rationale": "at least one required evidence block failed"
+    },
+    {
+      "case": "dynamic_sensorium_temporal_prediction",
+      "claim": "predictive",
+      "status": "supported",
+      "required_blocks": [
+        "prediction"
+      ],
+      "block_statuses": {
+        "prediction": "passed"
+      },
+      "rationale": "all required evidence blocks passed their declared domain-specific rules"
+    },
+    {
+      "case": "dynamic_sensorium_temporal_prediction",
+      "claim": "computationally_reproducible",
+      "status": "uncertain",
+      "required_blocks": [
+        "reproducible_compute"
+      ],
+      "block_statuses": {
+        "reproducible_compute": "unknown"
+      },
+      "rationale": "at least one required evidence block was not observed"
+    },
+    {
+      "case": "dynamic_sensorium_temporal_prediction",
+      "claim": "internally_reproduced",
+      "status": "supported",
+      "required_blocks": [
+        "internal_reproduction"
+      ],
+      "block_statuses": {
+        "internal_reproduction": "passed"
+      },
+      "rationale": "all required evidence blocks passed their declared domain-specific rules"
+    },
+    {
+      "case": "dynamic_sensorium_temporal_prediction",
+      "claim": "externally_replicated",
+      "status": "uncertain",
+      "required_blocks": [
+        "external_replication"
+      ],
+      "block_statuses": {
+        "external_replication": "unknown"
+      },
+      "rationale": "at least one required evidence block was not observed"
+    },
+    {
+      "case": "dynamic_sensorium_temporal_prediction",
+      "claim": "topology_specific",
+      "status": "out_of_scope",
+      "required_blocks": [
+        "topology_specificity"
+      ],
+      "block_statuses": {
+        "topology_specificity": "not_applicable"
+      },
+      "rationale": "the evaluated protocol did not target at least one required block"
+    },
+    {
+      "case": "dynamic_sensorium_temporal_prediction",
+      "claim": "directed",
+      "status": "out_of_scope",
+      "required_blocks": [
+        "directed_identifiability"
+      ],
+      "block_statuses": {
+        "directed_identifiability": "not_applicable"
+      },
+      "rationale": "the evaluated protocol did not target at least one required block"
+    },
+    {
+      "case": "dynamic_sensorium_temporal_prediction",
+      "claim": "structure_function",
+      "status": "out_of_scope",
+      "required_blocks": [
+        "structure_function_association"
+      ],
+      "block_statuses": {
+        "structure_function_association": "not_applicable"
+      },
+      "rationale": "the evaluated protocol did not target at least one required block"
+    },
+    {
+      "case": "dynamic_sensorium_temporal_prediction",
+      "claim": "mechanistic",
+      "status": "out_of_scope",
+      "required_blocks": [
+        "prediction",
+        "internal_reproduction",
+        "topology_specificity",
+        "directed_identifiability"
+      ],
+      "block_statuses": {
+        "prediction": "passed",
+        "internal_reproduction": "passed",
+        "topology_specificity": "not_applicable",
+        "directed_identifiability": "not_applicable"
+      },
+      "rationale": "the evaluated protocol did not target at least one required block"
+    },
+    {
+      "case": "dynamic_sensorium_temporal_prediction",
+      "claim": "causal",
+      "status": "out_of_scope",
+      "required_blocks": [
+        "causal_intervention"
+      ],
+      "block_statuses": {
+        "causal_intervention": "not_applicable"
+      },
+      "rationale": "the evaluated protocol did not target at least one required block"
+    },
+    {
+      "case": "dynamic_sensorium_temporal_prediction",
+      "claim": "digital_twin",
+      "status": "blocked",
+      "required_blocks": [
+        "prediction",
+        "internal_reproduction",
+        "topology_specificity",
+        "directed_identifiability",
+        "causal_intervention",
+        "whole_brain_coverage",
+        "independent_validation",
+        "reproducible_compute"
+      ],
+      "block_statuses": {
+        "prediction": "passed",
+        "internal_reproduction": "passed",
+        "topology_specificity": "not_applicable",
+        "directed_identifiability": "not_applicable",
+        "causal_intervention": "not_applicable",
+        "whole_brain_coverage": "failed",
+        "independent_validation": "failed",
+        "reproducible_compute": "unknown"
+      },
+      "rationale": "at least one required evidence block failed"
+    },
+    {
+      "case": "microns_local_structure_function",
+      "claim": "predictive",
+      "status": "out_of_scope",
+      "required_blocks": [
+        "prediction"
+      ],
+      "block_statuses": {
+        "prediction": "not_applicable"
+      },
+      "rationale": "the evaluated protocol did not target at least one required block"
+    },
+    {
+      "case": "microns_local_structure_function",
+      "claim": "computationally_reproducible",
+      "status": "supported",
+      "required_blocks": [
+        "reproducible_compute"
+      ],
+      "block_statuses": {
+        "reproducible_compute": "passed"
+      },
+      "rationale": "all required evidence blocks passed their declared domain-specific rules"
+    },
+    {
+      "case": "microns_local_structure_function",
+      "claim": "internally_reproduced",
+      "status": "supported",
+      "required_blocks": [
+        "internal_reproduction"
+      ],
+      "block_statuses": {
+        "internal_reproduction": "passed"
+      },
+      "rationale": "all required evidence blocks passed their declared domain-specific rules"
+    },
+    {
+      "case": "microns_local_structure_function",
+      "claim": "externally_replicated",
+      "status": "uncertain",
+      "required_blocks": [
+        "external_replication"
+      ],
+      "block_statuses": {
+        "external_replication": "unknown"
+      },
+      "rationale": "at least one required evidence block was not observed"
+    },
+    {
+      "case": "microns_local_structure_function",
+      "claim": "topology_specific",
+      "status": "out_of_scope",
+      "required_blocks": [
+        "topology_specificity"
+      ],
+      "block_statuses": {
+        "topology_specificity": "not_applicable"
+      },
+      "rationale": "the evaluated protocol did not target at least one required block"
+    },
+    {
+      "case": "microns_local_structure_function",
+      "claim": "directed",
+      "status": "out_of_scope",
+      "required_blocks": [
+        "directed_identifiability"
+      ],
+      "block_statuses": {
+        "directed_identifiability": "not_applicable"
+      },
+      "rationale": "the evaluated protocol did not target at least one required block"
+    },
+    {
+      "case": "microns_local_structure_function",
+      "claim": "structure_function",
+      "status": "supported",
+      "required_blocks": [
+        "structure_function_association"
+      ],
+      "block_statuses": {
+        "structure_function_association": "passed"
+      },
+      "rationale": "all required evidence blocks passed their declared domain-specific rules"
+    },
+    {
+      "case": "microns_local_structure_function",
+      "claim": "mechanistic",
+      "status": "out_of_scope",
+      "required_blocks": [
+        "prediction",
+        "internal_reproduction",
+        "topology_specificity",
+        "directed_identifiability"
+      ],
+      "block_statuses": {
+        "prediction": "not_applicable",
+        "internal_reproduction": "passed",
+        "topology_specificity": "not_applicable",
+        "directed_identifiability": "not_applicable"
+      },
+      "rationale": "the evaluated protocol did not target at least one required block"
+    },
+    {
+      "case": "microns_local_structure_function",
+      "claim": "causal",
+      "status": "out_of_scope",
+      "required_blocks": [
+        "causal_intervention"
+      ],
+      "block_statuses": {
+        "causal_intervention": "not_applicable"
+      },
+      "rationale": "the evaluated protocol did not target at least one required block"
+    },
+    {
+      "case": "microns_local_structure_function",
+      "claim": "digital_twin",
+      "status": "blocked",
+      "required_blocks": [
+        "prediction",
+        "internal_reproduction",
+        "topology_specificity",
+        "directed_identifiability",
+        "causal_intervention",
+        "whole_brain_coverage",
+        "independent_validation",
+        "reproducible_compute"
+      ],
+      "block_statuses": {
+        "prediction": "not_applicable",
+        "internal_reproduction": "passed",
+        "topology_specificity": "not_applicable",
+        "directed_identifiability": "not_applicable",
+        "causal_intervention": "not_applicable",
+        "whole_brain_coverage": "failed",
+        "independent_validation": "failed",
+        "reproducible_compute": "passed"
+      },
+      "rationale": "at least one required evidence block failed"
+    }
+  ],
+  "status_counts": {
+    "supported": 10,
+    "blocked": 7,
+    "uncertain": 7,
+    "out_of_scope": 16,
+    "needs_external_review": 0
+  },
+  "forbidden_supported_claims": [],
+  "limits": [
+    "The case matrix is an artifact-grounded application of a declared policy, not independent ground truth.",
+    "Internal reproduction does not mean replication across animals, laboratories, or resources.",
+    "Unknown and not-applicable evidence are never converted into failed measurements.",
+    "No real case supports a causal, externally replicated, whole-brain digital-twin claim."
+  ],
+  "decision": "artifact_grounded_case_matrix_complete_with_explicit_limits"
+}

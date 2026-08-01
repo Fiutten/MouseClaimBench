@@ -1,0 +1,74 @@
+{
+  "version": "0.7.0",
+  "git_revision": "d22d525888bdec76fb89b0f6648dcc747b2715e6",
+  "analysis": "claimbench_v3_scientific_hardening_release",
+  "required_artifacts": [
+    {
+      "artifact": "results/oracle_sem_claim_benchmark/summary.json",
+      "exists": true,
+      "field": "decision",
+      "expected": "oracle_benchmark_supports_non_compensatory_contract_with_finite_sample_errors",
+      "observed": "oracle_benchmark_supports_non_compensatory_contract_with_finite_sample_errors",
+      "git_revision": "d22d525888bdec76fb89b0f6648dcc747b2715e6"
+    },
+    {
+      "artifact": "results/real_case_claim_matrix/summary.json",
+      "exists": true,
+      "field": "decision",
+      "expected": "artifact_grounded_case_matrix_complete_with_explicit_limits",
+      "observed": "artifact_grounded_case_matrix_complete_with_explicit_limits",
+      "git_revision": "d22d525888bdec76fb89b0f6648dcc747b2715e6"
+    },
+    {
+      "artifact": "results/human_evaluation_protocol/study_package.json",
+      "exists": true,
+      "field": "decision",
+      "expected": "human_study_protocol_ready_for_ethics_and_preregistration",
+      "observed": "human_study_protocol_ready_for_ethics_and_preregistration",
+      "git_revision": "d22d525888bdec76fb89b0f6648dcc747b2715e6"
+    },
+    {
+      "artifact": "results/scifact_claim_verification/summary.json",
+      "exists": true,
+      "field": "decision",
+      "expected": "scifact_external_claim_audit_ready",
+      "observed": "scifact_external_claim_audit_ready",
+      "git_revision": "d22d525888bdec76fb89b0f6648dcc747b2715e6"
+    },
+    {
+      "artifact": "results/tuebingen_causal_direction/summary.json",
+      "exists": true,
+      "field": "decision",
+      "expected": "tuebingen_external_direction_benchmark_ready",
+      "observed": "tuebingen_external_direction_benchmark_ready",
+      "git_revision": "d22d525888bdec76fb89b0f6648dcc747b2715e6"
+    },
+    {
+      "artifact": "results/claim_adversarial_v2/summary.json",
+      "exists": true,
+      "field": "validation_role",
+      "expected": "software_contract_conformance_not_independent_validation",
+      "observed": "software_contract_conformance_not_independent_validation",
+      "git_revision": "d22d525888bdec76fb89b0f6648dcc747b2715e6"
+    }
+  ],
+  "missing_artifacts": [],
+  "failing_artifacts": [],
+  "dirty_artifacts": [],
+  "human_study_executed": false,
+  "scientific_claim_blockers": [
+    {
+      "claim": "improved human decision quality",
+      "reason": "the expert study is prepared but has not been executed"
+    },
+    {
+      "claim": "external biological replication",
+      "reason": "the real cases do not include an independent cross-resource replication"
+    },
+    {
+      "claim": "complete or causal mouse-brain digital twin",
+      "reason": "no real case supplies the required whole-brain and intervention blocks"
+    }
+  ],
+  "decision": "methodological_package_ready_human_effect_unvalidated"
+}

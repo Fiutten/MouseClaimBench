@@ -1,0 +1,388 @@
+{
+  "version": "0.7.0",
+  "git_revision": "d22d525888bdec76fb89b0f6648dcc747b2715e6",
+  "analysis": "oracle_structural_equation_claim_benchmark",
+  "reference_label_source": "declared structural equations and intervention availability",
+  "evidence_rule_source": "finite-sample diagnostics independent of oracle label generation",
+  "regimes": [
+    "independent",
+    "common_cause",
+    "direct_x_to_y",
+    "reverse_y_to_x",
+    "direct_x_to_y_interventional"
+  ],
+  "seeds_per_regime": 100,
+  "n_per_cohort": 600,
+  "num_cases": 500,
+  "num_claim_decisions_per_policy": 5000,
+  "aggregate_by_policy": [
+    {
+      "policy": "evidence_contract_v3",
+      "tp": 1954,
+      "fp": 56,
+      "tn": 2844,
+      "fn": 146,
+      "false_positive_rate": 0.019310344827586208,
+      "false_positive_rate_wilson_95": [
+        0.014900799060179076,
+        0.02499168834432943
+      ],
+      "false_negative_rate": 0.06952380952380953,
+      "false_negative_rate_wilson_95": [
+        0.059413156499345865,
+        0.0812064978858889
+      ]
+    },
+    {
+      "policy": "prediction_shortcut",
+      "tp": 2085,
+      "fp": 785,
+      "tn": 2115,
+      "fn": 15,
+      "false_positive_rate": 0.2706896551724138,
+      "false_positive_rate_wilson_95": [
+        0.2548297026266693,
+        0.28715631180948437
+      ],
+      "false_negative_rate": 0.007142857142857143,
+      "false_negative_rate_wilson_95": [
+        0.0043334616645256,
+        0.011752093964587209
+      ]
+    }
+  ],
+  "aggregate_by_policy_and_claim": [
+    {
+      "policy": "evidence_contract_v3",
+      "claim": "predictive",
+      "tp": 395,
+      "fp": 0,
+      "tn": 100,
+      "fn": 5,
+      "false_positive_rate": 0.0,
+      "false_negative_rate": 0.0125
+    },
+    {
+      "policy": "evidence_contract_v3",
+      "claim": "computationally_reproducible",
+      "tp": 500,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "false_positive_rate": 0.0,
+      "false_negative_rate": 0.0
+    },
+    {
+      "policy": "evidence_contract_v3",
+      "claim": "internally_reproduced",
+      "tp": 383,
+      "fp": 0,
+      "tn": 100,
+      "fn": 17,
+      "false_positive_rate": 0.0,
+      "false_negative_rate": 0.0425
+    },
+    {
+      "policy": "evidence_contract_v3",
+      "claim": "externally_replicated",
+      "tp": 0,
+      "fp": 0,
+      "tn": 500,
+      "fn": 0,
+      "false_positive_rate": 0.0,
+      "false_negative_rate": 0.0
+    },
+    {
+      "policy": "evidence_contract_v3",
+      "claim": "topology_specific",
+      "tp": 294,
+      "fp": 0,
+      "tn": 200,
+      "fn": 6,
+      "false_positive_rate": 0.0,
+      "false_negative_rate": 0.02
+    },
+    {
+      "policy": "evidence_contract_v3",
+      "claim": "directed",
+      "tp": 141,
+      "fp": 46,
+      "tn": 254,
+      "fn": 59,
+      "false_positive_rate": 0.15333333333333332,
+      "false_negative_rate": 0.295
+    },
+    {
+      "policy": "evidence_contract_v3",
+      "claim": "structure_function",
+      "tp": 0,
+      "fp": 0,
+      "tn": 500,
+      "fn": 0,
+      "false_positive_rate": 0.0,
+      "false_negative_rate": 0.0
+    },
+    {
+      "policy": "evidence_contract_v3",
+      "claim": "mechanistic",
+      "tp": 141,
+      "fp": 10,
+      "tn": 290,
+      "fn": 59,
+      "false_positive_rate": 0.03333333333333333,
+      "false_negative_rate": 0.295
+    },
+    {
+      "policy": "evidence_contract_v3",
+      "claim": "causal",
+      "tp": 100,
+      "fp": 0,
+      "tn": 400,
+      "fn": 0,
+      "false_positive_rate": 0.0,
+      "false_negative_rate": 0.0
+    },
+    {
+      "policy": "evidence_contract_v3",
+      "claim": "digital_twin",
+      "tp": 0,
+      "fp": 0,
+      "tn": 500,
+      "fn": 0,
+      "false_positive_rate": 0.0,
+      "false_negative_rate": 0.0
+    },
+    {
+      "policy": "prediction_shortcut",
+      "claim": "predictive",
+      "tp": 395,
+      "fp": 0,
+      "tn": 100,
+      "fn": 5,
+      "false_positive_rate": 0.0,
+      "false_negative_rate": 0.0125
+    },
+    {
+      "policy": "prediction_shortcut",
+      "claim": "computationally_reproducible",
+      "tp": 500,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "false_positive_rate": 0.0,
+      "false_negative_rate": 0.0
+    },
+    {
+      "policy": "prediction_shortcut",
+      "claim": "internally_reproduced",
+      "tp": 395,
+      "fp": 0,
+      "tn": 100,
+      "fn": 5,
+      "false_positive_rate": 0.0,
+      "false_negative_rate": 0.0125
+    },
+    {
+      "policy": "prediction_shortcut",
+      "claim": "externally_replicated",
+      "tp": 0,
+      "fp": 0,
+      "tn": 500,
+      "fn": 0,
+      "false_positive_rate": 0.0,
+      "false_negative_rate": 0.0
+    },
+    {
+      "policy": "prediction_shortcut",
+      "claim": "topology_specific",
+      "tp": 295,
+      "fp": 100,
+      "tn": 100,
+      "fn": 5,
+      "false_positive_rate": 0.5,
+      "false_negative_rate": 0.016666666666666666
+    },
+    {
+      "policy": "prediction_shortcut",
+      "claim": "directed",
+      "tp": 200,
+      "fp": 195,
+      "tn": 105,
+      "fn": 0,
+      "false_positive_rate": 0.65,
+      "false_negative_rate": 0.0
+    },
+    {
+      "policy": "prediction_shortcut",
+      "claim": "structure_function",
+      "tp": 0,
+      "fp": 0,
+      "tn": 500,
+      "fn": 0,
+      "false_positive_rate": 0.0,
+      "false_negative_rate": 0.0
+    },
+    {
+      "policy": "prediction_shortcut",
+      "claim": "mechanistic",
+      "tp": 200,
+      "fp": 195,
+      "tn": 105,
+      "fn": 0,
+      "false_positive_rate": 0.65,
+      "false_negative_rate": 0.0
+    },
+    {
+      "policy": "prediction_shortcut",
+      "claim": "causal",
+      "tp": 100,
+      "fp": 295,
+      "tn": 105,
+      "fn": 0,
+      "false_positive_rate": 0.7375,
+      "false_negative_rate": 0.0
+    },
+    {
+      "policy": "prediction_shortcut",
+      "claim": "digital_twin",
+      "tp": 0,
+      "fp": 0,
+      "tn": 500,
+      "fn": 0,
+      "false_positive_rate": 0.0,
+      "false_negative_rate": 0.0
+    }
+  ],
+  "paired_policy_comparison": {
+    "both_correct": 4051,
+    "contract_only_correct": 747,
+    "shortcut_only_correct": 149,
+    "both_wrong": 53,
+    "discordant_decisions": 896,
+    "exact_mcnemar_p_value": 2.0926987917976644e-96
+  },
+  "by_regime": [
+    {
+      "regime": "independent",
+      "oracle_claims": [
+        "computationally_reproducible"
+      ],
+      "policies": {
+        "evidence_contract_v3": {
+          "tp": 100,
+          "fp": 17,
+          "tn": 883,
+          "fn": 0
+        },
+        "prediction_shortcut": {
+          "tp": 100,
+          "fp": 0,
+          "tn": 900,
+          "fn": 0
+        }
+      }
+    },
+    {
+      "regime": "common_cause",
+      "oracle_claims": [
+        "computationally_reproducible",
+        "internally_reproduced",
+        "predictive"
+      ],
+      "policies": {
+        "evidence_contract_v3": {
+          "tp": 300,
+          "fp": 16,
+          "tn": 684,
+          "fn": 0
+        },
+        "prediction_shortcut": {
+          "tp": 300,
+          "fp": 400,
+          "tn": 300,
+          "fn": 0
+        }
+      }
+    },
+    {
+      "regime": "direct_x_to_y",
+      "oracle_claims": [
+        "computationally_reproducible",
+        "directed",
+        "internally_reproduced",
+        "mechanistic",
+        "predictive",
+        "topology_specific"
+      ],
+      "policies": {
+        "evidence_contract_v3": {
+          "tp": 538,
+          "fp": 0,
+          "tn": 400,
+          "fn": 62
+        },
+        "prediction_shortcut": {
+          "tp": 600,
+          "fp": 100,
+          "tn": 300,
+          "fn": 0
+        }
+      }
+    },
+    {
+      "regime": "reverse_y_to_x",
+      "oracle_claims": [
+        "computationally_reproducible",
+        "internally_reproduced",
+        "predictive",
+        "topology_specific"
+      ],
+      "policies": {
+        "evidence_contract_v3": {
+          "tp": 372,
+          "fp": 23,
+          "tn": 577,
+          "fn": 28
+        },
+        "prediction_shortcut": {
+          "tp": 385,
+          "fp": 285,
+          "tn": 315,
+          "fn": 15
+        }
+      }
+    },
+    {
+      "regime": "direct_x_to_y_interventional",
+      "oracle_claims": [
+        "causal",
+        "computationally_reproducible",
+        "directed",
+        "internally_reproduced",
+        "mechanistic",
+        "predictive",
+        "topology_specific"
+      ],
+      "policies": {
+        "evidence_contract_v3": {
+          "tp": 644,
+          "fp": 0,
+          "tn": 300,
+          "fn": 56
+        },
+        "prediction_shortcut": {
+          "tp": 700,
+          "fp": 0,
+          "tn": 300,
+          "fn": 0
+        }
+      }
+    }
+  ],
+  "limits": [
+    "The benchmark uses low-dimensional structural equations, not biological neural dynamics.",
+    "Thresholds are prespecified operational diagnostics and are not universal scientific constants.",
+    "The benchmark evaluates claim authorization under finite samples; it does not validate mouse-brain mechanisms."
+  ],
+  "decision": "oracle_benchmark_supports_non_compensatory_contract_with_finite_sample_errors"
+}

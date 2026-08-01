@@ -1,12 +1,13 @@
 {
-  "version": "0.6.0",
-  "git_revision": "4fecaaf07773d1b6353cdba8334eb04e2a497f24",
-  "analysis": "claim_threshold_sensitivity_v2",
+  "version": "0.7.0",
+  "git_revision": "d22d525888bdec76fb89b0f6648dcc747b2715e6",
+  "analysis": "claim_contract_conformance_threshold_sensitivity_v2",
+  "validation_role": "software_contract_conformance_not_threshold_calibration",
   "num_threshold_cells": 243,
   "safe_cells": 108,
   "dangerous_cells": 135,
-  "max_safe_conservativeness_index": 0.007575757575757576,
-  "min_dangerous_overclaiming_risk_index": 0.0016025641025641025,
+  "max_safe_false_negative_rate": 0.007575757575757576,
+  "min_dangerous_false_positive_rate": 0.0016025641025641025,
   "rows": [
     {
       "thresholds": {

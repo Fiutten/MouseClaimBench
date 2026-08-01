@@ -1,8 +1,10 @@
 {
-  "version": "0.6.0",
-  "git_revision": "4fecaaf07773d1b6353cdba8334eb04e2a497f24",
+  "version": "0.7.0",
+  "git_revision": "d22d525888bdec76fb89b0f6648dcc747b2715e6",
   "analysis": "scifact_claim_verification",
   "dataset": "SciFact dev",
+  "train_split": "SciFact train",
+  "num_training_claims": 809,
   "num_claims": 300,
   "label_counts": {
     "NOT_ENOUGH_INFO": 112,
@@ -30,6 +32,20 @@
   "retrieval_false_negatives": 61,
   "retrieval_overclaiming_risk": 0.25,
   "retrieval_conservativeness": 0.49193548387096775,
+  "calibrated_baseline_available": true,
+  "calibrated_feature_names": [
+    "log_bm25_top_score",
+    "top_rationale_overlap",
+    "cited_document_overlap",
+    "log_claim_token_count",
+    "log_bm25_top_margin"
+  ],
+  "calibrated_threshold": 0.5663995328100612,
+  "calibrated_train_fpr_constraint": 0.1,
+  "calibrated_false_positives": 12,
+  "calibrated_false_negatives": 89,
+  "calibrated_false_positive_rate": 0.06818181818181818,
+  "calibrated_false_negative_rate": 0.717741935483871,
   "claims_with_gold_evidence": 188,
   "retrieval_failed_gold_evidence": 19,
   "per_label": {
@@ -49,7 +65,7 @@
       "shortcut_supported_rate": 0.5161290322580645
     }
   },
-  "runtime_seconds": 4.2188097500184085,
+  "runtime_seconds": 15.128264667000622,
   "rows": [
     {
       "claim_id": 1,
@@ -72,6 +88,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.18383197346832686,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -79,6 +97,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -104,6 +124,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.21428292238974858,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -111,6 +133,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -136,6 +160,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.36753991286366644,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -143,6 +169,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -166,6 +194,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.27307743510044313,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -173,6 +203,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -196,6 +228,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.430319191253315,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -203,6 +237,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": true,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -228,6 +264,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.30529320789887376,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -235,6 +273,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -260,6 +300,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.2508871004046944,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -267,6 +309,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -292,6 +336,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.507952043226753,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -299,6 +345,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -324,6 +372,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.5450265497104428,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -331,6 +381,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -356,6 +408,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.4379576276951813,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -363,6 +417,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": true,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -388,6 +444,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.58037936885874,
+      "calibrated_supported": true,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -395,6 +453,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -420,6 +480,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.3292596209444466,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -427,6 +489,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": true,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": true
     },
     {
@@ -452,6 +516,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.5843519656859691,
+      "calibrated_supported": true,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -459,6 +525,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -484,6 +552,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.5843519656859691,
+      "calibrated_supported": true,
       "gold_supported": false,
       "shortcut_false_positive": true,
       "shortcut_false_negative": false,
@@ -491,6 +561,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": true,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": true,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -517,6 +589,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.48612600061550565,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -524,6 +598,8 @@
       "abstaining_false_negative": true,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -547,6 +623,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.23236590985728475,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -554,6 +632,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -577,6 +657,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.3410088306577573,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -584,6 +666,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -607,6 +691,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.3310732675297287,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -614,6 +700,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -637,6 +725,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.3333583093046264,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -644,6 +734,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -669,6 +761,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.6411965430881696,
+      "calibrated_supported": true,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -676,6 +770,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -701,6 +797,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.5013170279927845,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -708,6 +806,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -733,6 +833,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.25365448397100854,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -740,6 +842,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -765,6 +869,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.6004978322529955,
+      "calibrated_supported": true,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -772,6 +878,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -797,6 +905,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.5037448319092402,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -804,6 +914,8 @@
       "abstaining_false_negative": true,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -827,6 +939,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.3380770244604438,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -834,6 +948,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -857,6 +973,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.3322264667488979,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -864,6 +982,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -889,6 +1009,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.44993789344321966,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -896,6 +1018,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": true,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -921,6 +1045,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.4777096296459379,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -928,6 +1054,8 @@
       "abstaining_false_negative": true,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -951,6 +1079,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.2943254933113548,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -958,6 +1088,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -983,6 +1115,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.22154349936196224,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -990,6 +1124,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -1015,6 +1151,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.4689532748829026,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -1022,6 +1160,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -1047,6 +1187,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.4247484358365192,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -1054,6 +1196,8 @@
       "abstaining_false_negative": true,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -1079,6 +1223,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.42889801870463323,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": true,
       "shortcut_false_negative": false,
@@ -1086,6 +1232,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -1111,6 +1259,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.4178321607424006,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -1118,6 +1268,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -1143,6 +1295,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.47349827036595743,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -1150,6 +1304,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -1175,6 +1331,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.5808645087581311,
+      "calibrated_supported": true,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -1182,6 +1340,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -1207,6 +1367,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.48377824264676605,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -1214,6 +1376,8 @@
       "abstaining_false_negative": true,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -1239,6 +1403,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.6014158820011372,
+      "calibrated_supported": true,
       "gold_supported": false,
       "shortcut_false_positive": true,
       "shortcut_false_negative": false,
@@ -1246,6 +1412,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": true,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": true,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -1274,6 +1442,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.4714781901383959,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -1281,6 +1451,8 @@
       "abstaining_false_negative": true,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -1306,6 +1478,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.4998825847662831,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": true,
       "shortcut_false_negative": false,
@@ -1313,6 +1487,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -1338,6 +1514,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.4106065260015279,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -1345,6 +1523,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": true
     },
     {
@@ -1370,6 +1550,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.3314620789207812,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -1377,6 +1559,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -1400,6 +1584,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.32348005021481957,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -1407,6 +1593,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -1432,6 +1620,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.47001875568503737,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -1439,6 +1629,8 @@
       "abstaining_false_negative": true,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -1464,6 +1656,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.47174864125031396,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -1471,6 +1665,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -1494,6 +1690,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.3953900129201125,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -1501,6 +1699,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": true,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -1526,6 +1726,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.5354849836434254,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": true,
       "shortcut_false_negative": false,
@@ -1533,6 +1735,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": true,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -1558,6 +1762,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.5298342309757486,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -1565,6 +1771,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -1590,6 +1798,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.5540272461085536,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -1597,6 +1807,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -1622,6 +1834,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.5540272461085536,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": true,
       "shortcut_false_negative": false,
@@ -1629,6 +1843,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": true,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -1654,6 +1870,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.3739375467477332,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -1661,6 +1879,8 @@
       "abstaining_false_negative": true,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -1684,6 +1904,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.6950565951538096,
+      "calibrated_supported": true,
       "gold_supported": false,
       "shortcut_false_positive": true,
       "shortcut_false_negative": false,
@@ -1691,6 +1913,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": true,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": true,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -1716,6 +1940,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.49007097025179547,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": true,
       "shortcut_false_negative": false,
@@ -1723,6 +1949,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": true,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -1748,6 +1976,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.5710924386256513,
+      "calibrated_supported": true,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -1755,6 +1985,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -1778,6 +2010,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.2814875732819986,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -1785,6 +2019,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -1808,6 +2044,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.34161421926344687,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -1815,6 +2053,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -1840,6 +2080,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.2600207555096476,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -1847,6 +2089,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": true
     },
     {
@@ -1872,6 +2116,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.6841610429201169,
+      "calibrated_supported": true,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -1879,6 +2125,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -1904,6 +2152,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.5115432859308316,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": true,
       "shortcut_false_negative": false,
@@ -1911,6 +2161,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -1937,6 +2189,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.2987179916851997,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -1944,6 +2198,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": true
     },
     {
@@ -1967,6 +2223,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.41667770706274326,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -1974,6 +2232,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -1997,6 +2257,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.46400469890552176,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -2004,6 +2266,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -2029,6 +2293,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.4365463704530689,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": true,
       "shortcut_false_negative": false,
@@ -2036,6 +2302,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": true,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -2062,6 +2330,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.36525244796142026,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -2069,6 +2339,8 @@
       "abstaining_false_negative": true,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -2094,6 +2366,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.4881350686351269,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -2101,6 +2375,8 @@
       "abstaining_false_negative": true,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -2124,6 +2400,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.3517593811291821,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -2131,6 +2409,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -2156,6 +2436,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.6055939055049205,
+      "calibrated_supported": true,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -2163,6 +2445,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -2188,6 +2472,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.5375353858893538,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -2195,6 +2481,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -2218,6 +2506,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.23228218608607148,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -2225,6 +2515,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": true,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -2248,6 +2540,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.3828557711544477,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -2255,6 +2549,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -2278,6 +2574,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.3341215125906147,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -2285,6 +2583,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -2310,6 +2610,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.2851549561339078,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -2317,6 +2619,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -2340,6 +2644,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.2453961466906794,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -2347,6 +2653,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -2372,6 +2680,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.6309617537644286,
+      "calibrated_supported": true,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -2379,6 +2689,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -2404,6 +2716,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.5971105799021602,
+      "calibrated_supported": true,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -2411,6 +2725,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": true,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": true,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -2436,6 +2752,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.4106393215775552,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -2443,6 +2761,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -2466,6 +2786,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.38243197324460154,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -2473,6 +2795,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -2496,6 +2820,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.651546904329668,
+      "calibrated_supported": true,
       "gold_supported": false,
       "shortcut_false_positive": true,
       "shortcut_false_negative": false,
@@ -2503,6 +2829,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": true,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": true,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -2526,6 +2854,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.33862197230307156,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": true,
       "shortcut_false_negative": false,
@@ -2533,6 +2863,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -2558,6 +2890,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.5918483821435049,
+      "calibrated_supported": true,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -2565,6 +2899,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -2588,6 +2924,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.3422144622592007,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -2595,6 +2933,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -2620,6 +2960,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.3472554265128476,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -2627,6 +2969,8 @@
       "abstaining_false_negative": true,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": true
     },
     {
@@ -2652,6 +2996,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.46126824529086874,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -2659,6 +3005,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -2682,6 +3030,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.232949452811207,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -2689,6 +3039,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -2714,6 +3066,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.6139233663666048,
+      "calibrated_supported": true,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -2721,6 +3075,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -2744,6 +3100,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.6308670551917561,
+      "calibrated_supported": true,
       "gold_supported": false,
       "shortcut_false_positive": true,
       "shortcut_false_negative": false,
@@ -2751,6 +3109,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": true,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": true,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -2774,6 +3134,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.5584817917909735,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": true,
       "shortcut_false_negative": false,
@@ -2781,6 +3143,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": true,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -2806,6 +3170,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.33211126212644776,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -2813,6 +3179,8 @@
       "abstaining_false_negative": true,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -2836,6 +3204,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.1796701905461837,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -2843,6 +3213,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -2868,6 +3240,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.27289047216493334,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -2875,6 +3249,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": true
     },
     {
@@ -2900,6 +3276,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.5151762167405642,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -2907,6 +3285,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -2930,6 +3310,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.14841875021727374,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -2937,6 +3319,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -2960,6 +3344,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.3629730277533244,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -2967,6 +3353,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -2990,6 +3378,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.3629730277533244,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -2997,6 +3387,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -3022,6 +3414,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.603859134317691,
+      "calibrated_supported": true,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -3029,6 +3423,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -3055,6 +3451,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.2503993695299562,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -3062,6 +3460,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -3087,6 +3487,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.24210204250116077,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -3094,6 +3496,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": true
     },
     {
@@ -3117,6 +3521,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.2384734583761001,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -3124,6 +3530,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -3147,6 +3555,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.34726126912227545,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -3154,6 +3564,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -3179,6 +3591,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.31920173092101406,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -3186,6 +3600,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -3209,6 +3625,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.16342843935601126,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -3216,6 +3634,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -3239,6 +3659,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.3672535947430678,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -3246,6 +3668,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -3269,6 +3693,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.3711869149455876,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -3276,6 +3702,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -3301,6 +3729,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.36627917223672174,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -3308,6 +3738,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -3331,6 +3763,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.2651631164983193,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -3338,6 +3772,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -3363,6 +3799,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.5635832159153469,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": true,
       "shortcut_false_negative": false,
@@ -3370,6 +3808,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": true,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -3393,6 +3833,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.41229888340726784,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -3400,6 +3842,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -3425,6 +3869,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.3433605833166574,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -3432,6 +3878,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -3457,6 +3905,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.5237932631883423,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -3464,6 +3914,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -3487,6 +3939,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.3403975834811938,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -3494,6 +3948,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -3519,6 +3975,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.7032356208613029,
+      "calibrated_supported": true,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -3526,6 +3984,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -3551,6 +4011,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.3420348455253993,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -3558,6 +4020,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -3583,6 +4047,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.3420348455253993,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -3590,6 +4056,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -3613,6 +4081,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.22949077695620654,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -3620,6 +4090,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -3645,6 +4117,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.32753769123890975,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -3652,6 +4126,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -3677,6 +4153,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.5228783076394452,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -3684,6 +4162,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -3709,6 +4189,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.3157781735365861,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -3716,6 +4198,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": true
     },
     {
@@ -3739,6 +4223,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.2181608666434652,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -3746,6 +4232,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -3771,6 +4259,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.6809606643022753,
+      "calibrated_supported": true,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -3778,6 +4268,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -3801,6 +4293,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.3612770582258134,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -3808,6 +4302,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -3831,6 +4327,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.5442894639896858,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": true,
       "shortcut_false_negative": false,
@@ -3838,6 +4336,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": true,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -3861,6 +4361,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.3092295422336129,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -3868,6 +4370,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -3891,6 +4395,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.2440742298878287,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -3898,6 +4404,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -3923,6 +4431,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.46693424506233616,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -3930,6 +4440,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -3953,6 +4465,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.2598861635587063,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -3960,6 +4474,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -3983,6 +4499,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.15413438747284414,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -3990,6 +4508,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -4015,6 +4535,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.45982685807939006,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -4022,6 +4544,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": true,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -4045,6 +4569,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.29985234390154875,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -4052,6 +4578,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": true,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -4077,6 +4605,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.740806462761718,
+      "calibrated_supported": true,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -4084,6 +4614,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -4109,6 +4641,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.5281921165176724,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -4116,6 +4650,8 @@
       "abstaining_false_negative": true,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -4143,6 +4679,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.48217949262807075,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -4150,6 +4688,8 @@
       "abstaining_false_negative": true,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -4175,6 +4715,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.2543836503006963,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -4182,6 +4724,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": true
     },
     {
@@ -4207,6 +4751,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.6029188097963154,
+      "calibrated_supported": true,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -4214,6 +4760,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -4239,6 +4787,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.2236853847157648,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -4246,6 +4796,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -4269,6 +4821,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.3569728010667974,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -4276,6 +4830,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": true,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -4299,6 +4855,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.3943682314663318,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": true,
       "shortcut_false_negative": false,
@@ -4306,6 +4864,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -4331,6 +4891,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.3779306809525318,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -4338,6 +4900,8 @@
       "abstaining_false_negative": true,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -4361,6 +4925,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.39297297432995004,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -4368,6 +4934,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -4393,6 +4961,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.3597851308942464,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -4400,6 +4970,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -4423,6 +4995,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.5281994635783912,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -4430,6 +5004,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": true,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -4453,6 +5029,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.19588936446947736,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -4460,6 +5038,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -4483,6 +5063,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.3310732675297287,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -4490,6 +5072,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -4513,6 +5097,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.25192877160762644,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -4520,6 +5106,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -4545,6 +5133,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.6410823870316819,
+      "calibrated_supported": true,
       "gold_supported": false,
       "shortcut_false_positive": true,
       "shortcut_false_negative": false,
@@ -4552,6 +5142,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": true,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": true,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -4575,6 +5167,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.28063648898450233,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -4582,6 +5176,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -4605,6 +5201,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.2156938593759646,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -4612,6 +5210,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -4635,6 +5235,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.5203799285786331,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": true,
       "shortcut_false_negative": false,
@@ -4642,6 +5244,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -4667,6 +5271,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.29309769376320094,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -4674,6 +5280,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -4699,6 +5307,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.36364038480128347,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -4706,6 +5316,8 @@
       "abstaining_false_negative": true,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -4729,6 +5341,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.29425395967569906,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -4736,6 +5350,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -4759,6 +5375,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.3242664716276674,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -4766,6 +5384,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -4789,6 +5409,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.23178831458103222,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -4796,6 +5418,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -4819,6 +5443,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.22542677508190795,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -4826,6 +5452,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -4851,6 +5479,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.2615243765888719,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -4858,6 +5488,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -4883,6 +5515,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.6803927122866649,
+      "calibrated_supported": true,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -4890,6 +5524,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -4915,6 +5551,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.7293819519896728,
+      "calibrated_supported": true,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -4922,6 +5560,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -4945,6 +5585,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.3198944550569289,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -4952,6 +5594,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -4977,6 +5621,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.36723664425702696,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -4984,6 +5630,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -5009,6 +5657,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.35738828368777,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -5016,6 +5666,8 @@
       "abstaining_false_negative": true,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -5041,6 +5693,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.5097614846868044,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -5048,6 +5702,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -5073,6 +5729,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.5073602074177698,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -5080,6 +5738,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -5105,6 +5765,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.44001423023825514,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -5112,6 +5774,8 @@
       "abstaining_false_negative": true,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -5137,6 +5801,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.2641646291350499,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -5144,6 +5810,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": true
     },
     {
@@ -5169,6 +5837,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.3851684686804383,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": true,
       "shortcut_false_negative": false,
@@ -5176,6 +5846,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -5199,6 +5871,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.2759427019633912,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -5206,6 +5880,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -5231,6 +5907,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.49266686642717633,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -5238,6 +5916,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -5261,6 +5941,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.22661997473408096,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -5268,6 +5950,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -5293,6 +5977,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.45401272190185615,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": true,
       "shortcut_false_negative": false,
@@ -5300,6 +5986,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -5323,6 +6011,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.35024576551627773,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -5330,6 +6020,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -5355,6 +6047,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.39061480519399117,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -5362,6 +6056,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -5385,6 +6081,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.34291164311005357,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -5392,6 +6090,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -5417,6 +6117,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.5192999039548077,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": true,
       "shortcut_false_negative": false,
@@ -5424,6 +6126,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": true,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -5447,6 +6151,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.20464836070472747,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -5454,6 +6160,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -5479,6 +6187,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.6557022647799282,
+      "calibrated_supported": true,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -5486,6 +6196,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -5511,6 +6223,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.409404208751397,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -5518,6 +6232,8 @@
       "abstaining_false_negative": true,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -5543,6 +6259,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.45438928575662674,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -5550,6 +6268,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": true,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -5573,6 +6293,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.2889896723395984,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -5580,6 +6302,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -5603,6 +6327,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.20041600239926116,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -5610,6 +6336,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -5633,6 +6361,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.20041600239926116,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -5640,6 +6370,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -5665,6 +6397,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.46559756464079943,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -5672,6 +6406,8 @@
       "abstaining_false_negative": true,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -5695,6 +6431,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.2559893506359435,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -5702,6 +6440,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -5725,6 +6465,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.2043908548254862,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -5732,6 +6474,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -5757,6 +6501,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.5641321014788483,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -5764,6 +6510,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -5787,6 +6535,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.20048845062943638,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -5794,6 +6544,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -5819,6 +6571,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.43282396196144507,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -5826,6 +6580,8 @@
       "abstaining_false_negative": true,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -5851,6 +6607,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.32045043178092136,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -5858,6 +6616,8 @@
       "abstaining_false_negative": true,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -5883,6 +6643,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.8541852404967689,
+      "calibrated_supported": true,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -5890,6 +6652,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -5915,6 +6679,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.44803703333417594,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": true,
       "shortcut_false_negative": false,
@@ -5922,6 +6688,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -5947,6 +6715,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.34349324973943335,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -5954,6 +6724,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": true,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -5979,6 +6751,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.29980089151203737,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -5986,6 +6760,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -6009,6 +6785,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.25293791479898875,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -6016,6 +6794,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -6045,6 +6825,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.27338915737081126,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -6052,6 +6834,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": true
     },
     {
@@ -6077,6 +6861,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.4385741418375306,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -6084,6 +6870,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -6109,6 +6897,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.4889092429045098,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -6116,6 +6906,8 @@
       "abstaining_false_negative": true,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -6141,6 +6933,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.49528357581246263,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -6148,6 +6942,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -6171,6 +6967,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.19240876846654562,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -6178,6 +6976,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -6203,6 +7003,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.5491415119559753,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -6210,6 +7012,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": true,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -6235,6 +7039,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.8086817457839374,
+      "calibrated_supported": true,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -6242,6 +7048,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -6265,6 +7073,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.7495311964598406,
+      "calibrated_supported": true,
       "gold_supported": false,
       "shortcut_false_positive": true,
       "shortcut_false_negative": false,
@@ -6272,6 +7082,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": true,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": true,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -6297,6 +7109,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.5927832740941558,
+      "calibrated_supported": true,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -6304,6 +7118,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -6327,6 +7143,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.30494609437281517,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -6334,6 +7152,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -6357,6 +7177,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.21501714503092093,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -6364,6 +7186,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -6389,6 +7213,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.3036504275432837,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -6396,6 +7222,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -6421,6 +7249,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.5629981144985221,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -6428,6 +7258,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": true,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -6453,6 +7285,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.5783727017956948,
+      "calibrated_supported": true,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -6460,6 +7294,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -6483,6 +7319,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.34255247264600747,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -6490,6 +7328,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -6515,6 +7355,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.3473825428459795,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -6522,6 +7364,8 @@
       "abstaining_false_negative": true,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -6547,6 +7391,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.41597916366499066,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -6554,6 +7400,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -6579,6 +7427,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.2484264987433361,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -6586,6 +7436,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -6614,6 +7466,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.3450800690487387,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -6621,6 +7475,8 @@
       "abstaining_false_negative": true,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -6644,6 +7500,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.26027592739620126,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -6651,6 +7509,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": true,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -6676,6 +7536,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.4562225395782492,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -6683,6 +7545,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -6708,6 +7572,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.49893544475970314,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -6715,6 +7581,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -6740,6 +7608,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.4095979546787277,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -6747,6 +7617,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -6772,6 +7644,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.6224865677112766,
+      "calibrated_supported": true,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -6779,6 +7653,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -6802,6 +7678,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.4043029321040947,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -6809,6 +7687,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -6834,6 +7714,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.4470885000715307,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -6841,6 +7723,8 @@
       "abstaining_false_negative": true,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -6866,6 +7750,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.29502017520424284,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -6873,6 +7759,8 @@
       "abstaining_false_negative": true,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -6898,6 +7786,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.29502017520424284,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -6905,6 +7795,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -6930,6 +7822,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.3834350230661441,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -6937,6 +7831,8 @@
       "abstaining_false_negative": true,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -6964,6 +7860,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.4444883382900974,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": true,
       "shortcut_false_negative": false,
@@ -6971,6 +7869,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -6996,6 +7896,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.3963376476158018,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -7003,6 +7905,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": true,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -7028,6 +7932,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.255394256531995,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -7035,6 +7941,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": true
     },
     {
@@ -7060,6 +7968,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.6173158941356368,
+      "calibrated_supported": true,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -7067,6 +7977,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -7092,6 +8004,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.587761062259988,
+      "calibrated_supported": true,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -7099,6 +8013,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -7124,6 +8040,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.28732611652386963,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -7131,6 +8049,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": true
     },
     {
@@ -7156,6 +8076,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.5726194038806184,
+      "calibrated_supported": true,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -7163,6 +8085,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -7186,6 +8110,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.5662098742626835,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": true,
       "shortcut_false_negative": false,
@@ -7193,6 +8119,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": true,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -7216,6 +8144,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.5756914860425393,
+      "calibrated_supported": true,
       "gold_supported": false,
       "shortcut_false_positive": true,
       "shortcut_false_negative": false,
@@ -7223,6 +8153,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": true,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": true,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -7248,6 +8180,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.7112461202987962,
+      "calibrated_supported": true,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -7255,6 +8189,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -7280,6 +8216,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.6927729272477811,
+      "calibrated_supported": true,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -7287,6 +8225,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -7312,6 +8252,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.2175449853836666,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -7319,6 +8261,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": true
     },
     {
@@ -7344,6 +8288,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.5384507273915338,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -7351,6 +8297,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -7376,6 +8324,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.7028814465022253,
+      "calibrated_supported": true,
       "gold_supported": false,
       "shortcut_false_positive": true,
       "shortcut_false_negative": false,
@@ -7383,6 +8333,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": true,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": true,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -7408,6 +8360,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.2876223777681737,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -7415,6 +8369,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -7440,6 +8396,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.48550084489588424,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -7447,6 +8405,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -7472,6 +8432,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.2177800115839834,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -7479,6 +8441,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -7504,6 +8468,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.5700067649963801,
+      "calibrated_supported": true,
       "gold_supported": false,
       "shortcut_false_positive": true,
       "shortcut_false_negative": false,
@@ -7511,6 +8477,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": true,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": true,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -7536,6 +8504,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.46879994275432596,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -7543,6 +8513,8 @@
       "abstaining_false_negative": true,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -7568,6 +8540,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.5607207794518206,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -7575,6 +8549,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -7600,6 +8576,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.5563193834006351,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -7607,6 +8585,8 @@
       "abstaining_false_negative": true,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -7630,6 +8610,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.2400789015452023,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -7637,6 +8619,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -7660,6 +8644,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.3613427474975073,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -7667,6 +8653,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -7692,6 +8680,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.47931435396153044,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -7699,6 +8689,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -7724,6 +8716,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.6551813591625644,
+      "calibrated_supported": true,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -7731,6 +8725,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -7756,6 +8752,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.35169089643354945,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -7763,6 +8761,8 @@
       "abstaining_false_negative": true,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -7786,6 +8786,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.265452581574303,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -7793,6 +8795,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -7816,6 +8820,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.24726915218321519,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -7823,6 +8829,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -7846,6 +8854,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.25437432383711006,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -7853,6 +8863,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -7876,6 +8888,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.25687740417476157,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -7883,6 +8897,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -7906,6 +8922,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.24325748757440865,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -7913,6 +8931,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": true,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -7936,6 +8956,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.24526438716761165,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -7943,6 +8965,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -7968,6 +8992,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.35180141345613775,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -7975,6 +9001,8 @@
       "abstaining_false_negative": true,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -7998,6 +9026,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.42366865687788696,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -8005,6 +9035,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -8028,6 +9060,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.3597384862882778,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": true,
       "shortcut_false_negative": false,
@@ -8035,6 +9069,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -8058,6 +9094,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.2026791640434611,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -8065,6 +9103,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -8090,6 +9130,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.7427744006620122,
+      "calibrated_supported": true,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -8097,6 +9139,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -8122,6 +9166,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.2734434795576063,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -8129,6 +9175,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": true
     },
     {
@@ -8154,6 +9202,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.35941006986942087,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -8161,6 +9211,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -8184,6 +9236,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.22876381649049093,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -8191,6 +9245,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -8216,6 +9272,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.5398935771173844,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": true,
       "shortcut_false_negative": false,
@@ -8223,6 +9281,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": true,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -8248,6 +9308,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.24246387977696934,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -8255,6 +9317,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": true
     },
     {
@@ -8278,6 +9342,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.27622597644250513,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -8285,6 +9351,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -8310,6 +9378,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.29779304793196615,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -8317,6 +9387,8 @@
       "abstaining_false_negative": true,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -8342,6 +9414,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.7098062601207007,
+      "calibrated_supported": true,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -8349,6 +9423,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -8374,6 +9450,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.3868842689874435,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -8381,6 +9459,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -8406,6 +9486,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.5344623230304318,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -8413,6 +9495,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": true,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -8438,6 +9522,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.4191579682535297,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -8445,6 +9531,8 @@
       "abstaining_false_negative": true,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -8468,6 +9556,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.3595671666930853,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -8475,6 +9565,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -8500,6 +9592,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.7931117979474184,
+      "calibrated_supported": true,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -8507,6 +9601,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -8532,6 +9628,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.3112014579322423,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -8539,6 +9637,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -8562,6 +9662,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.19842111023609652,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -8569,6 +9671,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -8592,6 +9696,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.2670922027730866,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -8599,6 +9705,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -8622,6 +9730,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.221614524123584,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -8629,6 +9739,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": true,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -8652,6 +9764,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.20748603228559126,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -8659,6 +9773,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -8682,6 +9798,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.2133091578901359,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -8689,6 +9807,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -8714,6 +9834,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.5362835734204162,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -8721,6 +9843,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -8744,6 +9868,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.42235069718006185,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -8751,6 +9877,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -8776,6 +9904,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.7222597216945982,
+      "calibrated_supported": true,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -8783,6 +9913,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -8808,6 +9940,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.3614161407246443,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -8815,6 +9949,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -8838,6 +9974,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.2275684429061525,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -8845,6 +9983,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -8870,6 +10010,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.33325878318184377,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -8877,6 +10019,8 @@
       "abstaining_false_negative": true,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -8902,6 +10046,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.3935990736133384,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": true,
       "shortcut_false_negative": false,
@@ -8909,6 +10055,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -8932,6 +10080,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.3487733793350811,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -8939,6 +10089,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": true,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -8964,6 +10116,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.46492509733894544,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -8971,6 +10125,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -8996,6 +10152,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.43163888925284566,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -9003,6 +10161,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": true,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -9028,6 +10188,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.4536968986226642,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -9035,6 +10197,8 @@
       "abstaining_false_negative": true,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -9060,6 +10224,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.6493109850840398,
+      "calibrated_supported": true,
       "gold_supported": false,
       "shortcut_false_positive": true,
       "shortcut_false_negative": false,
@@ -9067,6 +10233,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": true,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": true,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -9090,6 +10258,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.33475014469208497,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": true,
       "shortcut_false_negative": false,
@@ -9097,6 +10267,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -9122,6 +10294,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.5759214014443099,
+      "calibrated_supported": true,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -9129,6 +10303,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -9154,6 +10330,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.4810164844318552,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": true,
       "shortcut_false_negative": false,
@@ -9161,6 +10339,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": true,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -9184,6 +10364,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.3322264667488979,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -9191,6 +10373,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -9214,6 +10398,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.2854924591598964,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -9221,6 +10407,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -9246,6 +10434,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.3685922823739466,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -9253,6 +10443,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": true
     },
     {
@@ -9278,6 +10470,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.41821791417236276,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -9285,6 +10479,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": true
     },
     {
@@ -9313,6 +10509,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.3011410222659078,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -9320,6 +10518,8 @@
       "abstaining_false_negative": true,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -9345,6 +10545,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.29772960605396187,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -9352,6 +10554,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": true
     },
     {
@@ -9377,6 +10581,8 @@
       "abstained": false,
       "abstaining_supported": true,
       "retrieval_supported": true,
+      "calibrated_support_probability": 0.5619401498266526,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -9384,6 +10590,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -9409,6 +10617,8 @@
       "abstained": false,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.4867473311197177,
+      "calibrated_supported": false,
       "gold_supported": true,
       "shortcut_false_positive": false,
       "shortcut_false_negative": true,
@@ -9416,6 +10626,8 @@
       "abstaining_false_negative": true,
       "retrieval_false_positive": false,
       "retrieval_false_negative": true,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": true,
       "retrieval_failed_despite_gold_evidence": false
     },
     {
@@ -9439,6 +10651,8 @@
       "abstained": true,
       "abstaining_supported": false,
       "retrieval_supported": false,
+      "calibrated_support_probability": 0.16745323602116058,
+      "calibrated_supported": false,
       "gold_supported": false,
       "shortcut_false_positive": false,
       "shortcut_false_negative": false,
@@ -9446,6 +10660,8 @@
       "abstaining_false_negative": false,
       "retrieval_false_positive": false,
       "retrieval_false_negative": false,
+      "calibrated_false_positive": false,
+      "calibrated_false_negative": false,
       "retrieval_failed_despite_gold_evidence": false
     }
   ],

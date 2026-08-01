@@ -1,7 +1,9 @@
 {
-  "version": "0.6.0",
-  "git_revision": "4fecaaf07773d1b6353cdba8334eb04e2a497f24",
+  "version": "0.7.0",
+  "git_revision": "d22d525888bdec76fb89b0f6648dcc747b2715e6",
   "analysis": "claim_adversarial_v2",
+  "validation_role": "software_contract_conformance_not_independent_validation",
+  "label_source": "the same operational claim contract used by the evaluated gate",
   "claim_types": [
     "predictive",
     "reproducible",

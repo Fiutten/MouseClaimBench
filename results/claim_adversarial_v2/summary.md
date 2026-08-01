@@ -1,10 +1,10 @@
-# ClaimBench v2 Adversarial Benchmark
+# ClaimBench v2 Contract-Conformance Stress Test
 
 - Decision: `claimbench_v2_blocks_overclaiming_under_broad_attacks`
 - Cases: `144`
 - Families: `12`
 
-| Evaluator | TP | FP | TN | FN | ORI | CI |
+| Evaluator | TP | FP | TN | FN | FPR | FNR |
 |---|---:|---:|---:|---:|---:|---:|
 | `ablated_claim_gate_no_directed` | `528` | `12` | `612` | `0` | `0.019` | `0.000` |
 | `ablated_claim_gate_no_reproducible` | `528` | `0` | `624` | `0` | `0.000` | `0.000` |

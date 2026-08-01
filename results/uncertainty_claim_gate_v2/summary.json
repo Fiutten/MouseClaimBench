@@ -1,7 +1,16 @@
 {
-  "version": "0.6.0",
-  "git_revision": "4fecaaf07773d1b6353cdba8334eb04e2a497f24",
+  "version": "0.7.0",
+  "git_revision": "d22d525888bdec76fb89b0f6648dcc747b2715e6",
   "analysis": "uncertainty_claim_gate_v2",
+  "status_semantics": "local_numerical_stability_not_workflow_disposition",
+  "sampling_rule": {
+    "nominal_samples": 1,
+    "numeric_fields": 5,
+    "signed_perturbations_per_field": 2,
+    "total_samples_per_case": 11,
+    "sigma": 0.03,
+    "joint_perturbations": false
+  },
   "num_rows": 1152,
   "status_counts": {
     "supported": 503,

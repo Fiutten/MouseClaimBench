@@ -1,0 +1,417 @@
+{
+  "version": "0.7.0",
+  "git_revision": "d22d525888bdec76fb89b0f6648dcc747b2715e6",
+  "analysis": "human_expert_evaluation_protocol_preparation",
+  "study_id": "mouseclaimbench_expert_dss_pilot_v1",
+  "study_status": "not_executed",
+  "protocol_valid": true,
+  "protocol_errors": [],
+  "source_candidates": 120,
+  "selected_unlabeled_items": 50,
+  "items": [
+    {
+      "item_id": "MCB-001",
+      "claim_type": "causal",
+      "claim_text": "A model can therefore be credible for prediction and not credible for a causal or mechanistic claim.",
+      "source": "deterministic_extractor",
+      "reference_label": null,
+      "human_annotations": []
+    },
+    {
+      "item_id": "MCB-002",
+      "claim_type": "causal",
+      "claim_text": "This result is informative but bounded: stimulus-aware models predict held-out responses and partial topographic evidence is stable, while synaptic topology and causal direction remain unobserved.",
+      "source": "deterministic_extractor",
+      "reference_label": null,
+      "human_annotations": []
+    },
+    {
+      "item_id": "MCB-003",
+      "claim_type": "causal",
+      "claim_text": "A useful predictor need not recover a circuit, while a reproducible local structure--function association can remain weaker than intervention-supported causality.",
+      "source": "deterministic_extractor",
+      "reference_label": null,
+      "human_annotations": []
+    },
+    {
+      "item_id": "MCB-004",
+      "claim_type": "causal",
+      "claim_text": "Static and Dynamic Sensorium test whether modern predictive gains remain separated from anatomical and causal claims.",
+      "source": "deterministic_extractor",
+      "reference_label": null,
+      "human_annotations": []
+    },
+    {
+      "item_id": "MCB-005",
+      "claim_type": "causal",
+      "claim_text": "Static and Dynamic Sensorium are used to preserve predictive evidence without promoting it to causality.",
+      "source": "deterministic_extractor",
+      "reference_label": null,
+      "human_annotations": []
+    },
+    {
+      "item_id": "MCB-006",
+      "claim_type": "causal",
+      "claim_text": "High response correlation therefore supports a predictive-surrogate claim, conditional on reliability and test design, but not by itself an anatomical or causal claim.",
+      "source": "deterministic_extractor",
+      "reference_label": null,
+      "human_annotations": []
+    },
+    {
+      "item_id": "MCB-007",
+      "claim_type": "causal",
+      "claim_text": "Notice that predictive performance, empirical reliability, anatomical plausibility, and causal explanation answer different scientific questions.",
+      "source": "deterministic_extractor",
+      "reference_label": null,
+      "human_annotations": []
+    },
+    {
+      "item_id": "MCB-008",
+      "claim_type": "causal",
+      "claim_text": "This produces a direct advantage over a conventional predictive evaluation, because strong reproducibility or prediction in Allen and Sensorium is not allowed to compensate for missing topology, direction, or causal evidence.",
+      "source": "deterministic_extractor",
+      "reference_label": null,
+      "human_annotations": []
+    },
+    {
+      "item_id": "MCB-009",
+      "claim_type": "digital_twin",
+      "claim_text": "This is why the manuscript reports an internally reproduced local association, cites the stronger prior result, and explicitly withholds biological-priority, causal, behavioural, and whole-brain conclusions.",
+      "source": "deterministic_extractor",
+      "reference_label": null,
+      "human_annotations": []
+    },
+    {
+      "item_id": "MCB-010",
+      "claim_type": "digital_twin",
+      "claim_text": "In the current study, the framework admits an internally reproduced local observational structure--function association, while rejecting causal, behavioural, whole-brain, and state-of-the-art predictor claims.",
+      "source": "deterministic_extractor",
+      "reference_label": null,
+      "human_annotations": []
+    },
+    {
+      "item_id": "MCB-011",
+      "claim_type": "digital_twin",
+      "claim_text": "It is not proposed as a complete brain simulator and it does not claim to instantiate a full digital twin.",
+      "source": "deterministic_extractor",
+      "reference_label": null,
+      "human_annotations": []
+    },
+    {
+      "item_id": "MCB-012",
+      "claim_type": "digital_twin",
+      "claim_text": "A digital twin normally implies correspondence with a specific physical entity, repeated calibration, and the ability to reproduce relevant states under meaningful interventions.",
+      "source": "deterministic_extractor",
+      "reference_label": null,
+      "human_annotations": []
+    },
+    {
+      "item_id": "MCB-013",
+      "claim_type": "digital_twin",
+      "claim_text": "An individual whole-brain twin would require entity-specific calibration, sufficiently broad structure and dynamics, repeated state estimation, and validation under perturbations.",
+      "source": "deterministic_extractor",
+      "reference_label": null,
+      "human_annotations": []
+    },
+    {
+      "item_id": "MCB-014",
+      "claim_type": "digital_twin",
+      "claim_text": "Digital Twin Brain proposals broaden this objective towards multiscale models that connect biological and .",
+      "source": "deterministic_extractor",
+      "reference_label": null,
+      "human_annotations": []
+    },
+    {
+      "item_id": "MCB-015",
+      "claim_type": "digital_twin",
+      "claim_text": "Whole-brain axonal tracing supplies a complementary mesoscale view.",
+      "source": "deterministic_extractor",
+      "reference_label": null,
+      "human_annotations": []
+    },
+    {
+      "item_id": "MCB-016",
+      "claim_type": "digital_twin",
+      "claim_text": "These results support an internally reproduced local association, not a causal, behavioural, or whole-brain digital twin.",
+      "source": "deterministic_extractor",
+      "reference_label": null,
+      "human_annotations": []
+    },
+    {
+      "item_id": "MCB-017",
+      "claim_type": "generalization",
+      "claim_text": "In the legacy out-of-distribution cohort, the corresponding gains were 0.036 and 0.0022.",
+      "source": "deterministic_extractor",
+      "reference_label": null,
+      "human_annotations": []
+    },
+    {
+      "item_id": "MCB-018",
+      "claim_type": "generalization",
+      "claim_text": "Model adapters expose outputs from transparent baselines or external software through the same evaluation interface.",
+      "source": "deterministic_extractor",
+      "reference_label": null,
+      "human_annotations": []
+    },
+    {
+      "item_id": "MCB-019",
+      "claim_type": "generalization",
+      "claim_text": "An external simulator may produce candidate dynamics.",
+      "source": "deterministic_extractor",
+      "reference_label": null,
+      "human_annotations": []
+    },
+    {
+      "item_id": "MCB-020",
+      "claim_type": "mechanistic",
+      "claim_text": "Direction without topology contains staggered peaks while the candidate does not outperform the disconnected alternative.",
+      "source": "deterministic_extractor",
+      "reference_label": null,
+      "human_annotations": []
+    },
+    {
+      "item_id": "MCB-021",
+      "claim_type": "mechanistic",
+      "claim_text": "Allen provides a reproducible real-data negative mechanistic control.",
+      "source": "deterministic_extractor",
+      "reference_label": null,
+      "human_annotations": []
+    },
+    {
+      "item_id": "MCB-022",
+      "claim_type": "mechanistic",
+      "claim_text": "This formulation also provides a measurable advantage over conventional predictive evaluation, because it identifies cases in which a high predictive or reproducibility score would incorrectly promote an unsupported mechanistic claim.",
+      "source": "deterministic_extractor",
+      "reference_label": null,
+      "human_annotations": []
+    },
+    {
+      "item_id": "MCB-023",
+      "claim_type": "mechanistic",
+      "claim_text": "The rule is evaluated with four known-truth systems that isolate common drive, topology without direction, and direction without topology specificity.",
+      "source": "deterministic_extractor",
+      "reference_label": null,
+      "human_annotations": []
+    },
+    {
+      "item_id": "MCB-024",
+      "claim_type": "mechanistic",
+      "claim_text": "The topology-only system passed reproducibility and topology but failed direction ($M=0.667$).",
+      "source": "deterministic_extractor",
+      "reference_label": null,
+      "human_annotations": []
+    },
+    {
+      "item_id": "MCB-025",
+      "claim_type": "mechanistic",
+      "claim_text": "The topology analysis used 20 sessions from 20 unique mice, and the direction analysis used 21 sessions from 19 mice.",
+      "source": "deterministic_extractor",
+      "reference_label": null,
+      "human_annotations": []
+    },
+    {
+      "item_id": "MCB-026",
+      "claim_type": "mechanistic",
+      "claim_text": "The topology block required the Allen-informed candidate to improve by more than 0.05 over both the median permutation and a disconnected model, outperform at least 95\\ bootstrap lower bound.",
+      "source": "deterministic_extractor",
+      "reference_label": null,
+      "human_annotations": []
+    },
+    {
+      "item_id": "MCB-027",
+      "claim_type": "mechanistic",
+      "claim_text": "Topology specificity compares the candidate model with 100 region-permuted predictions and a disconnected template.",
+      "source": "deterministic_extractor",
+      "reference_label": null,
+      "human_annotations": []
+    },
+    {
+      "item_id": "MCB-028",
+      "claim_type": "prediction",
+      "claim_text": "Correlation with held-out neural responses is a meaningful measure of functional approximation and can identify models that generalize better than simple baselines.",
+      "source": "deterministic_extractor",
+      "reference_label": null,
+      "human_annotations": []
+    },
+    {
+      "item_id": "MCB-029",
+      "claim_type": "prediction",
+      "claim_text": "Reproducibility is quantified by the median correlation between each session and its system template, the median odd--even correlation, and the fraction of sessions exceeding the 95th percentile of 200 within-session region permutations.",
+      "source": "deterministic_extractor",
+      "reference_label": null,
+      "human_annotations": []
+    },
+    {
+      "item_id": "MCB-030",
+      "claim_type": "prediction",
+      "claim_text": "These advances strengthen predictive models as experimental tools, while making it more important to state whether a reported value measures raw prediction, reliability-normalized performance, or evidence about circuit organization.",
+      "source": "deterministic_extractor",
+      "reference_label": null,
+      "human_annotations": []
+    },
+    {
+      "item_id": "MCB-031",
+      "claim_type": "prediction",
+      "claim_text": "Static Sensorium was evaluated on seven validation mice and five mice with repeated test stimuli.",
+      "source": "deterministic_extractor",
+      "reference_label": null,
+      "human_annotations": []
+    },
+    {
+      "item_id": "MCB-032",
+      "claim_type": "prediction",
+      "claim_text": "It does not implement another neural simulator, replace the data models used by or SONATA, or reproduce the predictive infrastructure of Sensorium.",
+      "source": "deterministic_extractor",
+      "reference_label": null,
+      "human_annotations": []
+    },
+    {
+      "item_id": "MCB-033",
+      "claim_type": "prediction",
+      "claim_text": "Five current public mice and five legacy out-of-distribution mice were evaluated with seven model families: mean response, summary features, temporal filterbank, temporal , random features, a compact PyTorch , and a bounded model instantiated through the official Sensorium loader and model factory.",
+      "source": "deterministic_extractor",
+      "reference_label": null,
+      "human_annotations": []
+    },
+    {
+      "item_id": "MCB-034",
+      "claim_type": "prediction",
+      "claim_text": "The present framework reserves stronger twin claims for systems that can demonstrate entity-specific calibration, state-dependent prediction, and suitable interventional validation.",
+      "source": "deterministic_extractor",
+      "reference_label": null,
+      "human_annotations": []
+    },
+    {
+      "item_id": "MCB-035",
+      "claim_type": "prediction",
+      "claim_text": "Sensorium provides common predictive tasks for mouse visual cortex .",
+      "source": "deterministic_extractor",
+      "reference_label": null,
+      "human_annotations": []
+    },
+    {
+      "item_id": "MCB-036",
+      "claim_type": "reproducibility",
+      "claim_text": "The framework assigns public datasets to explicit evidential roles, evaluates them using matched null models and hold-out checks, and records which interpretations are admitted or blocked.",
+      "source": "deterministic_extractor",
+      "reference_label": null,
+      "human_annotations": []
+    },
+    {
+      "item_id": "MCB-037",
+      "claim_type": "reproducibility",
+      "claim_text": "Local structure--function evaluations use matched anatomical controls, multiplicity correction, and non-overlapping internal hold-out reproduction.",
+      "source": "deterministic_extractor",
+      "reference_label": null,
+      "human_annotations": []
+    },
+    {
+      "item_id": "MCB-038",
+      "claim_type": "reproducibility",
+      "claim_text": "The adapter added versioned queries, pair construction, anatomical matching, false-discovery-rate correction, and unit-cluster bootstrap inference.",
+      "source": "deterministic_extractor",
+      "reference_label": null,
+      "human_annotations": []
+    },
+    {
+      "item_id": "MCB-039",
+      "claim_type": "reproducibility",
+      "claim_text": "Therefore, discovery values are reported for continuity and effect-size description, while the hold-out support for the biological endpoint comes from the two non-overlapping hold-out windows and the unit-cluster stability analysis.",
+      "source": "deterministic_extractor",
+      "reference_label": null,
+      "human_annotations": []
+    },
+    {
+      "item_id": "MCB-040",
+      "claim_type": "reproducibility",
+      "claim_text": "The validation module computes metrics, null-model comparisons, and bootstrap summaries.",
+      "source": "deterministic_extractor",
+      "reference_label": null,
+      "human_annotations": []
+    },
+    {
+      "item_id": "MCB-041",
+      "claim_type": "reproducibility",
+      "claim_text": "asks whether the same audit can admit a positive structure--function result when the endpoint survives matched controls and two non-overlapping internal hold-out windows.",
+      "source": "deterministic_extractor",
+      "reference_label": null,
+      "human_annotations": []
+    },
+    {
+      "item_id": "MCB-042",
+      "claim_type": "sota",
+      "claim_text": "The audit marks this artifact as an interoperability control and blocks state-of-the-art or leaderboard-equivalent interpretations because the published training budget and protocol were not reproduced.",
+      "source": "deterministic_extractor",
+      "reference_label": null,
+      "human_annotations": []
+    },
+    {
+      "item_id": "MCB-043",
+      "claim_type": "sota",
+      "claim_text": "For this reason, the main gap is not the absence of another simulator or another visual-response leaderboard.",
+      "source": "deterministic_extractor",
+      "reference_label": null,
+      "human_annotations": []
+    },
+    {
+      "item_id": "MCB-044",
+      "claim_type": "structure_function",
+      "claim_text": "MouseBrainBench is evaluated with controlled simulations, Allen Visual Behavior Neuropixels, Static and Dynamic Sensorium, and Machine Intelligence from Cortical Networks (MICrONS).",
+      "source": "deterministic_extractor",
+      "reference_label": null,
+      "human_annotations": []
+    },
+    {
+      "item_id": "MCB-045",
+      "claim_type": "structure_function",
+      "claim_text": "Finally, connectomic and structure--function studies are addressed, as they are the basis for the MICRONS validation case.",
+      "source": "deterministic_extractor",
+      "reference_label": null,
+      "human_annotations": []
+    },
+    {
+      "item_id": "MCB-046",
+      "claim_type": "structure_function",
+      "claim_text": "A MICRONS validation case is provided using a discovery-fixed primary endpoint, distance- and degree-matched null models, false-discovery-rate correction, unit-cluster bootstrap stability intervals, and two non-overlapping hold-out windows.",
+      "source": "deterministic_extractor",
+      "reference_label": null,
+      "human_annotations": []
+    },
+    {
+      "item_id": "MCB-047",
+      "claim_type": "structure_function",
+      "claim_text": "The main positive empirical case is a local MICrONS structure--function analysis: across one discovery cohort and two non-overlapping hold-out windows from the same resource, connected directed pairs show greater readout-location similarity than distance- and degree-matched controls.",
+      "source": "deterministic_extractor",
+      "reference_label": null,
+      "human_annotations": []
+    },
+    {
+      "item_id": "MCB-048",
+      "claim_type": "structure_function",
+      "claim_text": "Finally, MICRONS is used to test a discovery-fixed local structure--function endpoint against distance- and degree-matched nulls in a discovery cohort and two non-overlapping hold-outs.",
+      "source": "deterministic_extractor",
+      "reference_label": null,
+      "human_annotations": []
+    },
+    {
+      "item_id": "MCB-049",
+      "claim_type": "structure_function",
+      "claim_text": "Recent foundation models extend prediction to new visual stimulus types and provide functional descriptors for the MICRONS animal .",
+      "source": "deterministic_extractor",
+      "reference_label": null,
+      "human_annotations": []
+    },
+    {
+      "item_id": "MCB-050",
+      "claim_type": "structure_function",
+      "claim_text": "It diagnoses the failure of a broad aggregate structure--function endpoint after distance matching and fixes the more specific `all-pairs/readout-location' endpoint.",
+      "source": "deterministic_extractor",
+      "reference_label": null,
+      "human_annotations": []
+    }
+  ],
+  "annotation_template": "results/human_evaluation_protocol/annotation_template.csv",
+  "results_available": false,
+  "decision": "human_study_protocol_ready_for_ethics_and_preregistration",
+  "prohibited_interpretation": "This preparation artifact is not evidence that MouseClaimBench improves human decisions."
+}
