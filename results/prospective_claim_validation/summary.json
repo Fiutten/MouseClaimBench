@@ -1,0 +1,1627 @@
+{
+  "version": "0.8.0",
+  "git_revision": "7a0447243e471330df5dd746f422dd224a9c2f31",
+  "analysis": "prospective_known_truth_claim_validation_v1",
+  "protocol_id": "mouseclaimbench_prospective_claim_validation",
+  "protocol_version": "1.0.0",
+  "protocol_anchor_commit": "23bd4c7",
+  "profile_hash": "sha256:12770573922ea4bf00fabf519f565480df7475d313726cc3281a5c200d696137",
+  "probabilistic_model_git_revision": "8afa7781efb095377e5c34a7e52d64a1b6187ebf",
+  "probabilistic_model_training_partition": "development_partition_only",
+  "prospective_model_refitting_performed": false,
+  "reference_label_source": "prespecified structural equations and intervention availability",
+  "evidence_rule_source": "finite-sample diagnostics not used to define reference labels",
+  "regimes": [
+    "independent_student",
+    "confounded_nonlinear",
+    "reverse_nonlinear",
+    "direct_saturating",
+    "direct_heteroscedastic",
+    "weak_direct",
+    "shifted_direct",
+    "collider_selection",
+    "direct_interventional_saturating"
+  ],
+  "sample_sizes": [
+    150,
+    600,
+    2400
+  ],
+  "noise_scales": [
+    0.6,
+    1.2,
+    1.8
+  ],
+  "seeds_per_cell": 40,
+  "num_protocol_cells": 81,
+  "num_cases": 3240,
+  "num_claim_decisions_per_policy": 32400,
+  "scale_matches_frozen_protocol": true,
+  "aggregate_by_policy": [
+    {
+      "policy": "evidence_contract_v3",
+      "tp": 11915,
+      "fp": 318,
+      "tn": 16962,
+      "fn": 3205,
+      "prevalence": 0.4666666666666667,
+      "precision": 0.9740047412736041,
+      "recall": 0.7880291005291006,
+      "specificity": 0.9815972222222222,
+      "false_positive_rate": 0.01840277777777778,
+      "false_negative_rate": 0.21197089947089948,
+      "false_positive_rate_case_bootstrap_95": [
+        0.016550925925925927,
+        0.0203125
+      ],
+      "false_negative_rate_case_bootstrap_95": [
+        0.20595238095238094,
+        0.21798941798941798
+      ],
+      "false_positive_rate_wilson_95": [
+        0.01650324264402929,
+        0.0205163898459549
+      ],
+      "false_negative_rate_wilson_95": [
+        0.20552997013648264,
+        0.21855814770608725
+      ]
+    },
+    {
+      "policy": "equal_weight_compensatory_75",
+      "tp": 12853,
+      "fp": 743,
+      "tn": 16537,
+      "fn": 2267,
+      "prevalence": 0.4666666666666667,
+      "precision": 0.9453515739923507,
+      "recall": 0.8500661375661376,
+      "specificity": 0.9570023148148148,
+      "false_positive_rate": 0.04299768518518519,
+      "false_negative_rate": 0.14993386243386245,
+      "false_positive_rate_case_bootstrap_95": [
+        0.04068287037037037,
+        0.04542824074074074
+      ],
+      "false_negative_rate_case_bootstrap_95": [
+        0.1443121693121693,
+        0.15568783068783068
+      ],
+      "false_positive_rate_wilson_95": [
+        0.040073376534567426,
+        0.04612513797797825
+      ],
+      "false_negative_rate_wilson_95": [
+        0.14433233363801287,
+        0.15571322497064896
+      ]
+    },
+    {
+      "policy": "prediction_shortcut",
+      "tp": 13985,
+      "fp": 4675,
+      "tn": 12605,
+      "fn": 1135,
+      "prevalence": 0.4666666666666667,
+      "precision": 0.7494640943193998,
+      "recall": 0.9249338624338624,
+      "specificity": 0.7294560185185185,
+      "false_positive_rate": 0.27054398148148145,
+      "false_negative_rate": 0.07506613756613757,
+      "false_positive_rate_case_bootstrap_95": [
+        0.2670138888888889,
+        0.2740740740740741
+      ],
+      "false_negative_rate_case_bootstrap_95": [
+        0.06845238095238096,
+        0.08194444444444444
+      ],
+      "false_positive_rate_wilson_95": [
+        0.26397191006690274,
+        0.2772180494167295
+      ],
+      "false_negative_rate_wilson_95": [
+        0.07097321477810638,
+        0.07937492692993296
+      ]
+    },
+    {
+      "policy": "development_trained_probabilistic",
+      "tp": 12250,
+      "fp": 96,
+      "tn": 17184,
+      "fn": 2870,
+      "prevalence": 0.4666666666666667,
+      "precision": 0.9922242021707436,
+      "recall": 0.8101851851851852,
+      "specificity": 0.9944444444444445,
+      "false_positive_rate": 0.005555555555555556,
+      "false_negative_rate": 0.18981481481481483,
+      "false_positive_rate_case_bootstrap_95": [
+        0.004166666666666667,
+        0.0070023148148148145
+      ],
+      "false_negative_rate_case_bootstrap_95": [
+        0.183994708994709,
+        0.1958994708994709
+      ],
+      "false_positive_rate_wilson_95": [
+        0.0045519058385619406,
+        0.006778992983166591
+      ],
+      "false_negative_rate_wilson_95": [
+        0.1836431885564543,
+        0.19614401527400557
+      ]
+    }
+  ],
+  "aggregate_by_policy_and_claim": [
+    {
+      "policy": "evidence_contract_v3",
+      "claim": "predictive",
+      "tp": 2567,
+      "fp": 3,
+      "tn": 357,
+      "fn": 313,
+      "prevalence": 0.8888888888888888,
+      "precision": 0.9988326848249027,
+      "recall": 0.8913194444444444,
+      "specificity": 0.9916666666666667,
+      "false_positive_rate": 0.008333333333333333,
+      "false_negative_rate": 0.10868055555555556
+    },
+    {
+      "policy": "evidence_contract_v3",
+      "claim": "computationally_reproducible",
+      "tp": 3240,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "prevalence": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "specificity": 0.0,
+      "false_positive_rate": 0.0,
+      "false_negative_rate": 0.0
+    },
+    {
+      "policy": "evidence_contract_v3",
+      "claim": "internally_reproduced",
+      "tp": 2438,
+      "fp": 0,
+      "tn": 360,
+      "fn": 442,
+      "prevalence": 0.8888888888888888,
+      "precision": 1.0,
+      "recall": 0.8465277777777778,
+      "specificity": 1.0,
+      "false_positive_rate": 0.0,
+      "false_negative_rate": 0.15347222222222223
+    },
+    {
+      "policy": "evidence_contract_v3",
+      "claim": "externally_replicated",
+      "tp": 0,
+      "fp": 0,
+      "tn": 3240,
+      "fn": 0,
+      "prevalence": 0.0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "specificity": 1.0,
+      "false_positive_rate": 0.0,
+      "false_negative_rate": 0.0
+    },
+    {
+      "policy": "evidence_contract_v3",
+      "claim": "topology_specific",
+      "tp": 1952,
+      "fp": 22,
+      "tn": 1058,
+      "fn": 208,
+      "prevalence": 0.6666666666666666,
+      "precision": 0.9888551165146909,
+      "recall": 0.9037037037037037,
+      "specificity": 0.9796296296296296,
+      "false_positive_rate": 0.020370370370370372,
+      "false_negative_rate": 0.0962962962962963
+    },
+    {
+      "policy": "evidence_contract_v3",
+      "claim": "directed",
+      "tp": 742,
+      "fp": 259,
+      "tn": 1181,
+      "fn": 1058,
+      "prevalence": 0.5555555555555556,
+      "precision": 0.7412587412587412,
+      "recall": 0.4122222222222222,
+      "specificity": 0.8201388888888889,
+      "false_positive_rate": 0.1798611111111111,
+      "false_negative_rate": 0.5877777777777777
+    },
+    {
+      "policy": "evidence_contract_v3",
+      "claim": "structure_function",
+      "tp": 0,
+      "fp": 0,
+      "tn": 3240,
+      "fn": 0,
+      "prevalence": 0.0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "specificity": 1.0,
+      "false_positive_rate": 0.0,
+      "false_negative_rate": 0.0
+    },
+    {
+      "policy": "evidence_contract_v3",
+      "claim": "mechanistic",
+      "tp": 616,
+      "fp": 34,
+      "tn": 1406,
+      "fn": 1184,
+      "prevalence": 0.5555555555555556,
+      "precision": 0.9476923076923077,
+      "recall": 0.3422222222222222,
+      "specificity": 0.9763888888888889,
+      "false_positive_rate": 0.02361111111111111,
+      "false_negative_rate": 0.6577777777777778
+    },
+    {
+      "policy": "evidence_contract_v3",
+      "claim": "causal",
+      "tp": 360,
+      "fp": 0,
+      "tn": 2880,
+      "fn": 0,
+      "prevalence": 0.1111111111111111,
+      "precision": 1.0,
+      "recall": 1.0,
+      "specificity": 1.0,
+      "false_positive_rate": 0.0,
+      "false_negative_rate": 0.0
+    },
+    {
+      "policy": "evidence_contract_v3",
+      "claim": "digital_twin",
+      "tp": 0,
+      "fp": 0,
+      "tn": 3240,
+      "fn": 0,
+      "prevalence": 0.0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "specificity": 1.0,
+      "false_positive_rate": 0.0,
+      "false_negative_rate": 0.0
+    },
+    {
+      "policy": "equal_weight_compensatory_75",
+      "claim": "predictive",
+      "tp": 2567,
+      "fp": 3,
+      "tn": 357,
+      "fn": 313,
+      "prevalence": 0.8888888888888888,
+      "precision": 0.9988326848249027,
+      "recall": 0.8913194444444444,
+      "specificity": 0.9916666666666667,
+      "false_positive_rate": 0.008333333333333333,
+      "false_negative_rate": 0.10868055555555556
+    },
+    {
+      "policy": "equal_weight_compensatory_75",
+      "claim": "computationally_reproducible",
+      "tp": 3240,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "prevalence": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "specificity": 0.0,
+      "false_positive_rate": 0.0,
+      "false_negative_rate": 0.0
+    },
+    {
+      "policy": "equal_weight_compensatory_75",
+      "claim": "internally_reproduced",
+      "tp": 2438,
+      "fp": 0,
+      "tn": 360,
+      "fn": 442,
+      "prevalence": 0.8888888888888888,
+      "precision": 1.0,
+      "recall": 0.8465277777777778,
+      "specificity": 1.0,
+      "false_positive_rate": 0.0,
+      "false_negative_rate": 0.15347222222222223
+    },
+    {
+      "policy": "equal_weight_compensatory_75",
+      "claim": "externally_replicated",
+      "tp": 0,
+      "fp": 0,
+      "tn": 3240,
+      "fn": 0,
+      "prevalence": 0.0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "specificity": 1.0,
+      "false_positive_rate": 0.0,
+      "false_negative_rate": 0.0
+    },
+    {
+      "policy": "equal_weight_compensatory_75",
+      "claim": "topology_specific",
+      "tp": 1952,
+      "fp": 22,
+      "tn": 1058,
+      "fn": 208,
+      "prevalence": 0.6666666666666666,
+      "precision": 0.9888551165146909,
+      "recall": 0.9037037037037037,
+      "specificity": 0.9796296296296296,
+      "false_positive_rate": 0.020370370370370372,
+      "false_negative_rate": 0.0962962962962963
+    },
+    {
+      "policy": "equal_weight_compensatory_75",
+      "claim": "directed",
+      "tp": 742,
+      "fp": 259,
+      "tn": 1181,
+      "fn": 1058,
+      "prevalence": 0.5555555555555556,
+      "precision": 0.7412587412587412,
+      "recall": 0.4122222222222222,
+      "specificity": 0.8201388888888889,
+      "false_positive_rate": 0.1798611111111111,
+      "false_negative_rate": 0.5877777777777777
+    },
+    {
+      "policy": "equal_weight_compensatory_75",
+      "claim": "structure_function",
+      "tp": 0,
+      "fp": 0,
+      "tn": 3240,
+      "fn": 0,
+      "prevalence": 0.0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "specificity": 1.0,
+      "false_positive_rate": 0.0,
+      "false_negative_rate": 0.0
+    },
+    {
+      "policy": "equal_weight_compensatory_75",
+      "claim": "mechanistic",
+      "tp": 1554,
+      "fp": 459,
+      "tn": 981,
+      "fn": 246,
+      "prevalence": 0.5555555555555556,
+      "precision": 0.7719821162444114,
+      "recall": 0.8633333333333333,
+      "specificity": 0.68125,
+      "false_positive_rate": 0.31875,
+      "false_negative_rate": 0.13666666666666666
+    },
+    {
+      "policy": "equal_weight_compensatory_75",
+      "claim": "causal",
+      "tp": 360,
+      "fp": 0,
+      "tn": 2880,
+      "fn": 0,
+      "prevalence": 0.1111111111111111,
+      "precision": 1.0,
+      "recall": 1.0,
+      "specificity": 1.0,
+      "false_positive_rate": 0.0,
+      "false_negative_rate": 0.0
+    },
+    {
+      "policy": "equal_weight_compensatory_75",
+      "claim": "digital_twin",
+      "tp": 0,
+      "fp": 0,
+      "tn": 3240,
+      "fn": 0,
+      "prevalence": 0.0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "specificity": 1.0,
+      "false_positive_rate": 0.0,
+      "false_negative_rate": 0.0
+    },
+    {
+      "policy": "prediction_shortcut",
+      "claim": "predictive",
+      "tp": 2567,
+      "fp": 3,
+      "tn": 357,
+      "fn": 313,
+      "prevalence": 0.8888888888888888,
+      "precision": 0.9988326848249027,
+      "recall": 0.8913194444444444,
+      "specificity": 0.9916666666666667,
+      "false_positive_rate": 0.008333333333333333,
+      "false_negative_rate": 0.10868055555555556
+    },
+    {
+      "policy": "prediction_shortcut",
+      "claim": "computationally_reproducible",
+      "tp": 3240,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "prevalence": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "specificity": 0.0,
+      "false_positive_rate": 0.0,
+      "false_negative_rate": 0.0
+    },
+    {
+      "policy": "prediction_shortcut",
+      "claim": "internally_reproduced",
+      "tp": 2567,
+      "fp": 3,
+      "tn": 357,
+      "fn": 313,
+      "prevalence": 0.8888888888888888,
+      "precision": 0.9988326848249027,
+      "recall": 0.8913194444444444,
+      "specificity": 0.9916666666666667,
+      "false_positive_rate": 0.008333333333333333,
+      "false_negative_rate": 0.10868055555555556
+    },
+    {
+      "policy": "prediction_shortcut",
+      "claim": "externally_replicated",
+      "tp": 0,
+      "fp": 0,
+      "tn": 3240,
+      "fn": 0,
+      "prevalence": 0.0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "specificity": 1.0,
+      "false_positive_rate": 0.0,
+      "false_negative_rate": 0.0
+    },
+    {
+      "policy": "prediction_shortcut",
+      "claim": "topology_specific",
+      "tp": 1989,
+      "fp": 581,
+      "tn": 499,
+      "fn": 171,
+      "prevalence": 0.6666666666666666,
+      "precision": 0.7739299610894942,
+      "recall": 0.9208333333333333,
+      "specificity": 0.462037037037037,
+      "false_positive_rate": 0.537962962962963,
+      "false_negative_rate": 0.07916666666666666
+    },
+    {
+      "policy": "prediction_shortcut",
+      "claim": "directed",
+      "tp": 1632,
+      "fp": 938,
+      "tn": 502,
+      "fn": 168,
+      "prevalence": 0.5555555555555556,
+      "precision": 0.6350194552529183,
+      "recall": 0.9066666666666666,
+      "specificity": 0.3486111111111111,
+      "false_positive_rate": 0.6513888888888889,
+      "false_negative_rate": 0.09333333333333334
+    },
+    {
+      "policy": "prediction_shortcut",
+      "claim": "structure_function",
+      "tp": 0,
+      "fp": 0,
+      "tn": 3240,
+      "fn": 0,
+      "prevalence": 0.0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "specificity": 1.0,
+      "false_positive_rate": 0.0,
+      "false_negative_rate": 0.0
+    },
+    {
+      "policy": "prediction_shortcut",
+      "claim": "mechanistic",
+      "tp": 1632,
+      "fp": 938,
+      "tn": 502,
+      "fn": 168,
+      "prevalence": 0.5555555555555556,
+      "precision": 0.6350194552529183,
+      "recall": 0.9066666666666666,
+      "specificity": 0.3486111111111111,
+      "false_positive_rate": 0.6513888888888889,
+      "false_negative_rate": 0.09333333333333334
+    },
+    {
+      "policy": "prediction_shortcut",
+      "claim": "causal",
+      "tp": 358,
+      "fp": 2212,
+      "tn": 668,
+      "fn": 2,
+      "prevalence": 0.1111111111111111,
+      "precision": 0.13929961089494164,
+      "recall": 0.9944444444444445,
+      "specificity": 0.23194444444444445,
+      "false_positive_rate": 0.7680555555555556,
+      "false_negative_rate": 0.005555555555555556
+    },
+    {
+      "policy": "prediction_shortcut",
+      "claim": "digital_twin",
+      "tp": 0,
+      "fp": 0,
+      "tn": 3240,
+      "fn": 0,
+      "prevalence": 0.0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "specificity": 1.0,
+      "false_positive_rate": 0.0,
+      "false_negative_rate": 0.0
+    },
+    {
+      "policy": "development_trained_probabilistic",
+      "claim": "predictive",
+      "tp": 2567,
+      "fp": 3,
+      "tn": 357,
+      "fn": 313,
+      "prevalence": 0.8888888888888888,
+      "precision": 0.9988326848249027,
+      "recall": 0.8913194444444444,
+      "specificity": 0.9916666666666667,
+      "false_positive_rate": 0.008333333333333333,
+      "false_negative_rate": 0.10868055555555556
+    },
+    {
+      "policy": "development_trained_probabilistic",
+      "claim": "computationally_reproducible",
+      "tp": 3240,
+      "fp": 0,
+      "tn": 0,
+      "fn": 0,
+      "prevalence": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "specificity": 0.0,
+      "false_positive_rate": 0.0,
+      "false_negative_rate": 0.0
+    },
+    {
+      "policy": "development_trained_probabilistic",
+      "claim": "internally_reproduced",
+      "tp": 2567,
+      "fp": 3,
+      "tn": 357,
+      "fn": 313,
+      "prevalence": 0.8888888888888888,
+      "precision": 0.9988326848249027,
+      "recall": 0.8913194444444444,
+      "specificity": 0.9916666666666667,
+      "false_positive_rate": 0.008333333333333333,
+      "false_negative_rate": 0.10868055555555556
+    },
+    {
+      "policy": "development_trained_probabilistic",
+      "claim": "externally_replicated",
+      "tp": 0,
+      "fp": 0,
+      "tn": 3240,
+      "fn": 0,
+      "prevalence": 0.0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "specificity": 1.0,
+      "false_positive_rate": 0.0,
+      "false_negative_rate": 0.0
+    },
+    {
+      "policy": "development_trained_probabilistic",
+      "claim": "topology_specific",
+      "tp": 1952,
+      "fp": 22,
+      "tn": 1058,
+      "fn": 208,
+      "prevalence": 0.6666666666666666,
+      "precision": 0.9888551165146909,
+      "recall": 0.9037037037037037,
+      "specificity": 0.9796296296296296,
+      "false_positive_rate": 0.020370370370370372,
+      "false_negative_rate": 0.0962962962962963
+    },
+    {
+      "policy": "development_trained_probabilistic",
+      "claim": "directed",
+      "tp": 782,
+      "fp": 34,
+      "tn": 1406,
+      "fn": 1018,
+      "prevalence": 0.5555555555555556,
+      "precision": 0.9583333333333334,
+      "recall": 0.43444444444444447,
+      "specificity": 0.9763888888888889,
+      "false_positive_rate": 0.02361111111111111,
+      "false_negative_rate": 0.5655555555555556
+    },
+    {
+      "policy": "development_trained_probabilistic",
+      "claim": "structure_function",
+      "tp": 0,
+      "fp": 0,
+      "tn": 3240,
+      "fn": 0,
+      "prevalence": 0.0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "specificity": 1.0,
+      "false_positive_rate": 0.0,
+      "false_negative_rate": 0.0
+    },
+    {
+      "policy": "development_trained_probabilistic",
+      "claim": "mechanistic",
+      "tp": 782,
+      "fp": 34,
+      "tn": 1406,
+      "fn": 1018,
+      "prevalence": 0.5555555555555556,
+      "precision": 0.9583333333333334,
+      "recall": 0.43444444444444447,
+      "specificity": 0.9763888888888889,
+      "false_positive_rate": 0.02361111111111111,
+      "false_negative_rate": 0.5655555555555556
+    },
+    {
+      "policy": "development_trained_probabilistic",
+      "claim": "causal",
+      "tp": 360,
+      "fp": 0,
+      "tn": 2880,
+      "fn": 0,
+      "prevalence": 0.1111111111111111,
+      "precision": 1.0,
+      "recall": 1.0,
+      "specificity": 1.0,
+      "false_positive_rate": 0.0,
+      "false_negative_rate": 0.0
+    },
+    {
+      "policy": "development_trained_probabilistic",
+      "claim": "digital_twin",
+      "tp": 0,
+      "fp": 0,
+      "tn": 3240,
+      "fn": 0,
+      "prevalence": 0.0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "specificity": 1.0,
+      "false_positive_rate": 0.0,
+      "false_negative_rate": 0.0
+    }
+  ],
+  "by_regime": [
+    {
+      "regime": "collider_selection",
+      "policies": [
+        {
+          "policy": "evidence_contract_v3",
+          "tp": 904,
+          "fp": 126,
+          "tn": 2394,
+          "fn": 176,
+          "prevalence": 0.3,
+          "precision": 0.8776699029126214,
+          "recall": 0.837037037037037,
+          "specificity": 0.95,
+          "false_positive_rate": 0.05,
+          "false_negative_rate": 0.16296296296296298
+        },
+        {
+          "policy": "equal_weight_compensatory_75",
+          "tp": 904,
+          "fp": 204,
+          "tn": 2316,
+          "fn": 176,
+          "prevalence": 0.3,
+          "precision": 0.8158844765342961,
+          "recall": 0.837037037037037,
+          "specificity": 0.919047619047619,
+          "false_positive_rate": 0.08095238095238096,
+          "false_negative_rate": 0.16296296296296298
+        },
+        {
+          "policy": "prediction_shortcut",
+          "tp": 924,
+          "fp": 1128,
+          "tn": 1392,
+          "fn": 156,
+          "prevalence": 0.3,
+          "precision": 0.4502923976608187,
+          "recall": 0.8555555555555555,
+          "specificity": 0.5523809523809524,
+          "false_positive_rate": 0.44761904761904764,
+          "false_negative_rate": 0.14444444444444443
+        },
+        {
+          "policy": "development_trained_probabilistic",
+          "tp": 924,
+          "fp": 28,
+          "tn": 2492,
+          "fn": 156,
+          "prevalence": 0.3,
+          "precision": 0.9705882352941176,
+          "recall": 0.8555555555555555,
+          "specificity": 0.9888888888888889,
+          "false_positive_rate": 0.011111111111111112,
+          "false_negative_rate": 0.14444444444444443
+        }
+      ]
+    },
+    {
+      "regime": "confounded_nonlinear",
+      "policies": [
+        {
+          "policy": "evidence_contract_v3",
+          "tp": 931,
+          "fp": 49,
+          "tn": 2471,
+          "fn": 149,
+          "prevalence": 0.3,
+          "precision": 0.95,
+          "recall": 0.862037037037037,
+          "specificity": 0.9805555555555555,
+          "false_positive_rate": 0.019444444444444445,
+          "false_negative_rate": 0.13796296296296295
+        },
+        {
+          "policy": "equal_weight_compensatory_75",
+          "tp": 931,
+          "fp": 72,
+          "tn": 2448,
+          "fn": 149,
+          "prevalence": 0.3,
+          "precision": 0.9282153539381854,
+          "recall": 0.862037037037037,
+          "specificity": 0.9714285714285714,
+          "false_positive_rate": 0.02857142857142857,
+          "false_negative_rate": 0.13796296296296295
+        },
+        {
+          "policy": "prediction_shortcut",
+          "tp": 952,
+          "fp": 1184,
+          "tn": 1336,
+          "fn": 128,
+          "prevalence": 0.3,
+          "precision": 0.44569288389513106,
+          "recall": 0.8814814814814815,
+          "specificity": 0.5301587301587302,
+          "false_positive_rate": 0.46984126984126984,
+          "false_negative_rate": 0.11851851851851852
+        },
+        {
+          "policy": "development_trained_probabilistic",
+          "tp": 952,
+          "fp": 0,
+          "tn": 2520,
+          "fn": 128,
+          "prevalence": 0.3,
+          "precision": 1.0,
+          "recall": 0.8814814814814815,
+          "specificity": 1.0,
+          "false_positive_rate": 0.0,
+          "false_negative_rate": 0.11851851851851852
+        }
+      ]
+    },
+    {
+      "regime": "direct_heteroscedastic",
+      "policies": [
+        {
+          "policy": "evidence_contract_v3",
+          "tp": 1424,
+          "fp": 0,
+          "tn": 1440,
+          "fn": 736,
+          "prevalence": 0.6,
+          "precision": 1.0,
+          "recall": 0.6592592592592592,
+          "specificity": 1.0,
+          "false_positive_rate": 0.0,
+          "false_negative_rate": 0.34074074074074073
+        },
+        {
+          "policy": "equal_weight_compensatory_75",
+          "tp": 1777,
+          "fp": 0,
+          "tn": 1440,
+          "fn": 383,
+          "prevalence": 0.6,
+          "precision": 1.0,
+          "recall": 0.8226851851851852,
+          "specificity": 1.0,
+          "false_positive_rate": 0.0,
+          "false_negative_rate": 0.17731481481481481
+        },
+        {
+          "policy": "prediction_shortcut",
+          "tp": 2130,
+          "fp": 354,
+          "tn": 1086,
+          "fn": 30,
+          "prevalence": 0.6,
+          "precision": 0.857487922705314,
+          "recall": 0.9861111111111112,
+          "specificity": 0.7541666666666667,
+          "false_positive_rate": 0.24583333333333332,
+          "false_negative_rate": 0.013888888888888888
+        },
+        {
+          "policy": "development_trained_probabilistic",
+          "tp": 1424,
+          "fp": 0,
+          "tn": 1440,
+          "fn": 736,
+          "prevalence": 0.6,
+          "precision": 1.0,
+          "recall": 0.6592592592592592,
+          "specificity": 1.0,
+          "false_positive_rate": 0.0,
+          "false_negative_rate": 0.34074074074074073
+        }
+      ]
+    },
+    {
+      "regime": "direct_interventional_saturating",
+      "policies": [
+        {
+          "policy": "evidence_contract_v3",
+          "tp": 2176,
+          "fp": 0,
+          "tn": 1080,
+          "fn": 344,
+          "prevalence": 0.7,
+          "precision": 1.0,
+          "recall": 0.8634920634920635,
+          "specificity": 1.0,
+          "false_positive_rate": 0.0,
+          "false_negative_rate": 0.1365079365079365
+        },
+        {
+          "policy": "equal_weight_compensatory_75",
+          "tp": 2340,
+          "fp": 0,
+          "tn": 1080,
+          "fn": 180,
+          "prevalence": 0.7,
+          "precision": 1.0,
+          "recall": 0.9285714285714286,
+          "specificity": 1.0,
+          "false_positive_rate": 0.0,
+          "false_negative_rate": 0.07142857142857142
+        },
+        {
+          "policy": "prediction_shortcut",
+          "tp": 2508,
+          "fp": 0,
+          "tn": 1080,
+          "fn": 12,
+          "prevalence": 0.7,
+          "precision": 1.0,
+          "recall": 0.9952380952380953,
+          "specificity": 1.0,
+          "false_positive_rate": 0.0,
+          "false_negative_rate": 0.004761904761904762
+        },
+        {
+          "policy": "development_trained_probabilistic",
+          "tp": 2509,
+          "fp": 0,
+          "tn": 1080,
+          "fn": 11,
+          "prevalence": 0.7,
+          "precision": 1.0,
+          "recall": 0.9956349206349207,
+          "specificity": 1.0,
+          "false_positive_rate": 0.0,
+          "false_negative_rate": 0.004365079365079365
+        }
+      ]
+    },
+    {
+      "regime": "direct_saturating",
+      "policies": [
+        {
+          "policy": "evidence_contract_v3",
+          "tp": 1555,
+          "fp": 0,
+          "tn": 1440,
+          "fn": 605,
+          "prevalence": 0.6,
+          "precision": 1.0,
+          "recall": 0.7199074074074074,
+          "specificity": 1.0,
+          "false_positive_rate": 0.0,
+          "false_negative_rate": 0.2800925925925926
+        },
+        {
+          "policy": "equal_weight_compensatory_75",
+          "tp": 1706,
+          "fp": 0,
+          "tn": 1440,
+          "fn": 454,
+          "prevalence": 0.6,
+          "precision": 1.0,
+          "recall": 0.7898148148148149,
+          "specificity": 1.0,
+          "false_positive_rate": 0.0,
+          "false_negative_rate": 0.2101851851851852
+        },
+        {
+          "policy": "prediction_shortcut",
+          "tp": 1900,
+          "fp": 308,
+          "tn": 1132,
+          "fn": 260,
+          "prevalence": 0.6,
+          "precision": 0.8605072463768116,
+          "recall": 0.8796296296296297,
+          "specificity": 0.7861111111111111,
+          "false_positive_rate": 0.21388888888888888,
+          "false_negative_rate": 0.12037037037037036
+        },
+        {
+          "policy": "development_trained_probabilistic",
+          "tp": 1551,
+          "fp": 0,
+          "tn": 1440,
+          "fn": 609,
+          "prevalence": 0.6,
+          "precision": 1.0,
+          "recall": 0.7180555555555556,
+          "specificity": 1.0,
+          "false_positive_rate": 0.0,
+          "false_negative_rate": 0.28194444444444444
+        }
+      ]
+    },
+    {
+      "regime": "independent_student",
+      "policies": [
+        {
+          "policy": "evidence_contract_v3",
+          "tp": 360,
+          "fp": 81,
+          "tn": 3159,
+          "fn": 0,
+          "prevalence": 0.1,
+          "precision": 0.8163265306122449,
+          "recall": 1.0,
+          "specificity": 0.975,
+          "false_positive_rate": 0.025,
+          "false_negative_rate": 0.0
+        },
+        {
+          "policy": "equal_weight_compensatory_75",
+          "tp": 360,
+          "fp": 82,
+          "tn": 3158,
+          "fn": 0,
+          "prevalence": 0.1,
+          "precision": 0.8144796380090498,
+          "recall": 1.0,
+          "specificity": 0.9746913580246913,
+          "false_positive_rate": 0.025308641975308643,
+          "false_negative_rate": 0.0
+        },
+        {
+          "policy": "prediction_shortcut",
+          "tp": 360,
+          "fp": 18,
+          "tn": 3222,
+          "fn": 0,
+          "prevalence": 0.1,
+          "precision": 0.9523809523809523,
+          "recall": 1.0,
+          "specificity": 0.9944444444444445,
+          "false_positive_rate": 0.005555555555555556,
+          "false_negative_rate": 0.0
+        },
+        {
+          "policy": "development_trained_probabilistic",
+          "tp": 360,
+          "fp": 8,
+          "tn": 3232,
+          "fn": 0,
+          "prevalence": 0.1,
+          "precision": 0.9782608695652174,
+          "recall": 1.0,
+          "specificity": 0.9975308641975309,
+          "false_positive_rate": 0.0024691358024691358,
+          "false_negative_rate": 0.0
+        }
+      ]
+    },
+    {
+      "regime": "reverse_nonlinear",
+      "policies": [
+        {
+          "policy": "evidence_contract_v3",
+          "tp": 1426,
+          "fp": 62,
+          "tn": 2098,
+          "fn": 14,
+          "prevalence": 0.4,
+          "precision": 0.9583333333333334,
+          "recall": 0.9902777777777778,
+          "specificity": 0.9712962962962963,
+          "false_positive_rate": 0.028703703703703703,
+          "false_negative_rate": 0.009722222222222222
+        },
+        {
+          "policy": "equal_weight_compensatory_75",
+          "tp": 1426,
+          "fp": 385,
+          "tn": 1775,
+          "fn": 14,
+          "prevalence": 0.4,
+          "precision": 0.7874102705687466,
+          "recall": 0.9902777777777778,
+          "specificity": 0.8217592592592593,
+          "false_positive_rate": 0.17824074074074073,
+          "false_negative_rate": 0.009722222222222222
+        },
+        {
+          "policy": "prediction_shortcut",
+          "tp": 1431,
+          "fp": 1071,
+          "tn": 1089,
+          "fn": 9,
+          "prevalence": 0.4,
+          "precision": 0.5719424460431655,
+          "recall": 0.99375,
+          "specificity": 0.5041666666666667,
+          "false_positive_rate": 0.49583333333333335,
+          "false_negative_rate": 0.00625
+        },
+        {
+          "policy": "development_trained_probabilistic",
+          "tp": 1430,
+          "fp": 60,
+          "tn": 2100,
+          "fn": 10,
+          "prevalence": 0.4,
+          "precision": 0.959731543624161,
+          "recall": 0.9930555555555556,
+          "specificity": 0.9722222222222222,
+          "false_positive_rate": 0.027777777777777776,
+          "false_negative_rate": 0.006944444444444444
+        }
+      ]
+    },
+    {
+      "regime": "shifted_direct",
+      "policies": [
+        {
+          "policy": "evidence_contract_v3",
+          "tp": 1867,
+          "fp": 0,
+          "tn": 1440,
+          "fn": 293,
+          "prevalence": 0.6,
+          "precision": 1.0,
+          "recall": 0.8643518518518518,
+          "specificity": 1.0,
+          "false_positive_rate": 0.0,
+          "false_negative_rate": 0.13564814814814816
+        },
+        {
+          "policy": "equal_weight_compensatory_75",
+          "tp": 1956,
+          "fp": 0,
+          "tn": 1440,
+          "fn": 204,
+          "prevalence": 0.6,
+          "precision": 1.0,
+          "recall": 0.9055555555555556,
+          "specificity": 1.0,
+          "false_positive_rate": 0.0,
+          "false_negative_rate": 0.09444444444444444
+        },
+        {
+          "policy": "prediction_shortcut",
+          "tp": 2035,
+          "fp": 335,
+          "tn": 1105,
+          "fn": 125,
+          "prevalence": 0.6,
+          "precision": 0.8586497890295358,
+          "recall": 0.9421296296296297,
+          "specificity": 0.7673611111111112,
+          "false_positive_rate": 0.2326388888888889,
+          "false_negative_rate": 0.05787037037037037
+        },
+        {
+          "policy": "development_trained_probabilistic",
+          "tp": 1853,
+          "fp": 0,
+          "tn": 1440,
+          "fn": 307,
+          "prevalence": 0.6,
+          "precision": 1.0,
+          "recall": 0.8578703703703704,
+          "specificity": 1.0,
+          "false_positive_rate": 0.0,
+          "false_negative_rate": 0.14212962962962963
+        }
+      ]
+    },
+    {
+      "regime": "weak_direct",
+      "policies": [
+        {
+          "policy": "evidence_contract_v3",
+          "tp": 1272,
+          "fp": 0,
+          "tn": 1440,
+          "fn": 888,
+          "prevalence": 0.6,
+          "precision": 1.0,
+          "recall": 0.5888888888888889,
+          "specificity": 1.0,
+          "false_positive_rate": 0.0,
+          "false_negative_rate": 0.4111111111111111
+        },
+        {
+          "policy": "equal_weight_compensatory_75",
+          "tp": 1453,
+          "fp": 0,
+          "tn": 1440,
+          "fn": 707,
+          "prevalence": 0.6,
+          "precision": 1.0,
+          "recall": 0.6726851851851852,
+          "specificity": 1.0,
+          "false_positive_rate": 0.0,
+          "false_negative_rate": 0.32731481481481484
+        },
+        {
+          "policy": "prediction_shortcut",
+          "tp": 1745,
+          "fp": 277,
+          "tn": 1163,
+          "fn": 415,
+          "prevalence": 0.6,
+          "precision": 0.8630069238377843,
+          "recall": 0.8078703703703703,
+          "specificity": 0.8076388888888889,
+          "false_positive_rate": 0.19236111111111112,
+          "false_negative_rate": 0.19212962962962962
+        },
+        {
+          "policy": "development_trained_probabilistic",
+          "tp": 1247,
+          "fp": 0,
+          "tn": 1440,
+          "fn": 913,
+          "prevalence": 0.6,
+          "precision": 1.0,
+          "recall": 0.5773148148148148,
+          "specificity": 1.0,
+          "false_positive_rate": 0.0,
+          "false_negative_rate": 0.42268518518518516
+        }
+      ]
+    }
+  ],
+  "by_sample_size": [
+    {
+      "sample_size": 150,
+      "policies": [
+        {
+          "policy": "evidence_contract_v3",
+          "tp": 3611,
+          "fp": 212,
+          "tn": 5548,
+          "fn": 1429,
+          "prevalence": 0.4666666666666667,
+          "precision": 0.9445461679309443,
+          "recall": 0.716468253968254,
+          "specificity": 0.9631944444444445,
+          "false_positive_rate": 0.03680555555555556,
+          "false_negative_rate": 0.283531746031746
+        },
+        {
+          "policy": "equal_weight_compensatory_75",
+          "tp": 3887,
+          "fp": 336,
+          "tn": 5424,
+          "fn": 1153,
+          "prevalence": 0.4666666666666667,
+          "precision": 0.920435709211461,
+          "recall": 0.7712301587301588,
+          "specificity": 0.9416666666666667,
+          "false_positive_rate": 0.058333333333333334,
+          "false_negative_rate": 0.22876984126984126
+        },
+        {
+          "policy": "prediction_shortcut",
+          "tp": 4174,
+          "fp": 1214,
+          "tn": 4546,
+          "fn": 866,
+          "prevalence": 0.4666666666666667,
+          "precision": 0.7746844840386043,
+          "recall": 0.8281746031746032,
+          "specificity": 0.7892361111111111,
+          "false_positive_rate": 0.2107638888888889,
+          "false_negative_rate": 0.17182539682539683
+        },
+        {
+          "policy": "development_trained_probabilistic",
+          "tp": 3714,
+          "fp": 85,
+          "tn": 5675,
+          "fn": 1326,
+          "prevalence": 0.4666666666666667,
+          "precision": 0.9776256909713082,
+          "recall": 0.736904761904762,
+          "specificity": 0.9852430555555556,
+          "false_positive_rate": 0.014756944444444444,
+          "false_negative_rate": 0.2630952380952381
+        }
+      ]
+    },
+    {
+      "sample_size": 600,
+      "policies": [
+        {
+          "policy": "evidence_contract_v3",
+          "tp": 4056,
+          "fp": 73,
+          "tn": 5687,
+          "fn": 984,
+          "prevalence": 0.4666666666666667,
+          "precision": 0.9823201743763623,
+          "recall": 0.8047619047619048,
+          "specificity": 0.9873263888888889,
+          "false_positive_rate": 0.012673611111111111,
+          "false_negative_rate": 0.19523809523809524
+        },
+        {
+          "policy": "equal_weight_compensatory_75",
+          "tp": 4395,
+          "fp": 227,
+          "tn": 5533,
+          "fn": 645,
+          "prevalence": 0.4666666666666667,
+          "precision": 0.9508870618779749,
+          "recall": 0.8720238095238095,
+          "specificity": 0.9605902777777777,
+          "false_positive_rate": 0.03940972222222222,
+          "false_negative_rate": 0.12797619047619047
+        },
+        {
+          "policy": "prediction_shortcut",
+          "tp": 4823,
+          "fp": 1675,
+          "tn": 4085,
+          "fn": 217,
+          "prevalence": 0.4666666666666667,
+          "precision": 0.74222837796245,
+          "recall": 0.9569444444444445,
+          "specificity": 0.7092013888888888,
+          "false_positive_rate": 0.2907986111111111,
+          "false_negative_rate": 0.043055555555555555
+        },
+        {
+          "policy": "development_trained_probabilistic",
+          "tp": 4203,
+          "fp": 11,
+          "tn": 5749,
+          "fn": 837,
+          "prevalence": 0.4666666666666667,
+          "precision": 0.997389653535833,
+          "recall": 0.8339285714285715,
+          "specificity": 0.9980902777777778,
+          "false_positive_rate": 0.0019097222222222222,
+          "false_negative_rate": 0.16607142857142856
+        }
+      ]
+    },
+    {
+      "sample_size": 2400,
+      "policies": [
+        {
+          "policy": "evidence_contract_v3",
+          "tp": 4248,
+          "fp": 33,
+          "tn": 5727,
+          "fn": 792,
+          "prevalence": 0.4666666666666667,
+          "precision": 0.9922915206727401,
+          "recall": 0.8428571428571429,
+          "specificity": 0.9942708333333333,
+          "false_positive_rate": 0.005729166666666666,
+          "false_negative_rate": 0.15714285714285714
+        },
+        {
+          "policy": "equal_weight_compensatory_75",
+          "tp": 4571,
+          "fp": 180,
+          "tn": 5580,
+          "fn": 469,
+          "prevalence": 0.4666666666666667,
+          "precision": 0.9621132393180383,
+          "recall": 0.9069444444444444,
+          "specificity": 0.96875,
+          "false_positive_rate": 0.03125,
+          "false_negative_rate": 0.09305555555555556
+        },
+        {
+          "policy": "prediction_shortcut",
+          "tp": 4988,
+          "fp": 1786,
+          "tn": 3974,
+          "fn": 52,
+          "prevalence": 0.4666666666666667,
+          "precision": 0.7363448479480366,
+          "recall": 0.9896825396825397,
+          "specificity": 0.6899305555555556,
+          "false_positive_rate": 0.31006944444444445,
+          "false_negative_rate": 0.010317460317460317
+        },
+        {
+          "policy": "development_trained_probabilistic",
+          "tp": 4333,
+          "fp": 0,
+          "tn": 5760,
+          "fn": 707,
+          "prevalence": 0.4666666666666667,
+          "precision": 1.0,
+          "recall": 0.8597222222222223,
+          "specificity": 1.0,
+          "false_positive_rate": 0.0,
+          "false_negative_rate": 0.14027777777777778
+        }
+      ]
+    }
+  ],
+  "by_noise_scale": [
+    {
+      "noise_scale": 0.6,
+      "policies": [
+        {
+          "policy": "evidence_contract_v3",
+          "tp": 4317,
+          "fp": 98,
+          "tn": 5662,
+          "fn": 723,
+          "prevalence": 0.4666666666666667,
+          "precision": 0.9778029445073613,
+          "recall": 0.856547619047619,
+          "specificity": 0.9829861111111111,
+          "false_positive_rate": 0.017013888888888887,
+          "false_negative_rate": 0.14345238095238094
+        },
+        {
+          "policy": "equal_weight_compensatory_75",
+          "tp": 4628,
+          "fp": 253,
+          "tn": 5507,
+          "fn": 412,
+          "prevalence": 0.4666666666666667,
+          "precision": 0.9481663593525916,
+          "recall": 0.9182539682539682,
+          "specificity": 0.9560763888888889,
+          "false_positive_rate": 0.04392361111111111,
+          "false_negative_rate": 0.08174603174603175
+        },
+        {
+          "policy": "prediction_shortcut",
+          "tp": 4931,
+          "fp": 1777,
+          "tn": 3983,
+          "fn": 109,
+          "prevalence": 0.4666666666666667,
+          "precision": 0.7350924269528921,
+          "recall": 0.9783730158730158,
+          "specificity": 0.6914930555555555,
+          "false_positive_rate": 0.30850694444444443,
+          "false_negative_rate": 0.021626984126984126
+        },
+        {
+          "policy": "development_trained_probabilistic",
+          "tp": 4461,
+          "fp": 36,
+          "tn": 5724,
+          "fn": 579,
+          "prevalence": 0.4666666666666667,
+          "precision": 0.9919946631087392,
+          "recall": 0.8851190476190476,
+          "specificity": 0.99375,
+          "false_positive_rate": 0.00625,
+          "false_negative_rate": 0.11488095238095238
+        }
+      ]
+    },
+    {
+      "noise_scale": 1.2,
+      "policies": [
+        {
+          "policy": "evidence_contract_v3",
+          "tp": 3964,
+          "fp": 108,
+          "tn": 5652,
+          "fn": 1076,
+          "prevalence": 0.4666666666666667,
+          "precision": 0.9734774066797642,
+          "recall": 0.7865079365079365,
+          "specificity": 0.98125,
+          "false_positive_rate": 0.01875,
+          "false_negative_rate": 0.21349206349206348
+        },
+        {
+          "policy": "equal_weight_compensatory_75",
+          "tp": 4305,
+          "fp": 264,
+          "tn": 5496,
+          "fn": 735,
+          "prevalence": 0.4666666666666667,
+          "precision": 0.9422193040052528,
+          "recall": 0.8541666666666666,
+          "specificity": 0.9541666666666667,
+          "false_positive_rate": 0.04583333333333333,
+          "false_negative_rate": 0.14583333333333334
+        },
+        {
+          "policy": "prediction_shortcut",
+          "tp": 4685,
+          "fp": 1585,
+          "tn": 4175,
+          "fn": 355,
+          "prevalence": 0.4666666666666667,
+          "precision": 0.7472089314194578,
+          "recall": 0.9295634920634921,
+          "specificity": 0.7248263888888888,
+          "false_positive_rate": 0.2751736111111111,
+          "false_negative_rate": 0.07043650793650794
+        },
+        {
+          "policy": "development_trained_probabilistic",
+          "tp": 4050,
+          "fp": 28,
+          "tn": 5732,
+          "fn": 990,
+          "prevalence": 0.4666666666666667,
+          "precision": 0.9931338891613536,
+          "recall": 0.8035714285714286,
+          "specificity": 0.9951388888888889,
+          "false_positive_rate": 0.004861111111111111,
+          "false_negative_rate": 0.19642857142857142
+        }
+      ]
+    },
+    {
+      "noise_scale": 1.8,
+      "policies": [
+        {
+          "policy": "evidence_contract_v3",
+          "tp": 3634,
+          "fp": 112,
+          "tn": 5648,
+          "fn": 1406,
+          "prevalence": 0.4666666666666667,
+          "precision": 0.9701014415376401,
+          "recall": 0.721031746031746,
+          "specificity": 0.9805555555555555,
+          "false_positive_rate": 0.019444444444444445,
+          "false_negative_rate": 0.278968253968254
+        },
+        {
+          "policy": "equal_weight_compensatory_75",
+          "tp": 3920,
+          "fp": 226,
+          "tn": 5534,
+          "fn": 1120,
+          "prevalence": 0.4666666666666667,
+          "precision": 0.945489628557646,
+          "recall": 0.7777777777777778,
+          "specificity": 0.9607638888888889,
+          "false_positive_rate": 0.03923611111111111,
+          "false_negative_rate": 0.2222222222222222
+        },
+        {
+          "policy": "prediction_shortcut",
+          "tp": 4369,
+          "fp": 1313,
+          "tn": 4447,
+          "fn": 671,
+          "prevalence": 0.4666666666666667,
+          "precision": 0.7689193945793734,
+          "recall": 0.8668650793650794,
+          "specificity": 0.7720486111111111,
+          "false_positive_rate": 0.22795138888888888,
+          "false_negative_rate": 0.13313492063492063
+        },
+        {
+          "policy": "development_trained_probabilistic",
+          "tp": 3739,
+          "fp": 32,
+          "tn": 5728,
+          "fn": 1301,
+          "prevalence": 0.4666666666666667,
+          "precision": 0.9915141872182445,
+          "recall": 0.7418650793650794,
+          "specificity": 0.9944444444444445,
+          "false_positive_rate": 0.005555555555555556,
+          "false_negative_rate": 0.25813492063492066
+        }
+      ]
+    }
+  ],
+  "case_level_policy_comparisons": {
+    "equal_weight_compensatory_75": {
+      "contract_fewer_errors": 425,
+      "comparator_fewer_errors": 938,
+      "tied_errors": 1877,
+      "non_tied_cases": 1363,
+      "exact_two_sided_sign_test_p_value": 8.95171979630073e-45,
+      "favors_contract": false
+    },
+    "prediction_shortcut": {
+      "contract_fewer_errors": 1448,
+      "comparator_fewer_errors": 1135,
+      "tied_errors": 657,
+      "non_tied_cases": 2583,
+      "exact_two_sided_sign_test_p_value": 7.934602266498326e-10,
+      "favors_contract": true
+    },
+    "development_trained_probabilistic": {
+      "contract_fewer_errors": 80,
+      "comparator_fewer_errors": 454,
+      "tied_errors": 2706,
+      "non_tied_cases": 534,
+      "exact_two_sided_sign_test_p_value": 1.8850533184244925e-64,
+      "favors_contract": false
+    }
+  },
+  "primary_endpoint": {
+    "metric": "false_positive_rate",
+    "lower_fpr_than_every_comparator": false,
+    "false_negative_rate_within_0.10_of_best_comparator": false,
+    "all_case_level_comparisons_favor_contract": false,
+    "passed": false
+  },
+  "limits": [
+    "independent expert content validity",
+    "improved human decision quality",
+    "biological causal mechanism",
+    "independent biological replication",
+    "whole-brain validity",
+    "complete mouse-brain digital twin",
+    "cross-domain generality",
+    "The known-truth systems remain low-dimensional abstractions rather than neural models.",
+    "The selected regimes expand stress coverage but do not define a universal DGP distribution.",
+    "Error rates validate the frozen operational policy, not the truth of a biological claim."
+  ],
+  "decision": "prospective_computational_primary_endpoint_not_passed"
+}
