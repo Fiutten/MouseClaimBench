@@ -1,0 +1,179 @@
+{
+  "version": "0.8.0",
+  "git_revision": "d48dbea",
+  "analysis": "knowledge_system_conformance_audit_v1",
+  "knowledge_profile": {
+    "profile_id": "mouse_brain_claims",
+    "version": "1.0.0",
+    "domain": "computational_mouse_brain",
+    "description": "Evidence requirements and non-compensatory inference rules for claims made from computational mouse-brain models and multimodal neuroscience artifacts.",
+    "source_hash": "sha256:e93fc0b925a5be19d17d3f489e387c94caa918ee6e5d45718d21dd8dc2ecbfd3",
+    "claims": [
+      {
+        "id": "predictive",
+        "required_blocks": [
+          "prediction"
+        ],
+        "meaning": "held-out prediction passes a protocol declared for the evaluated domain"
+      },
+      {
+        "id": "computationally_reproducible",
+        "required_blocks": [
+          "reproducible_compute"
+        ],
+        "meaning": "the declared software and artifact workflow can be reproduced from a clean revision"
+      },
+      {
+        "id": "internally_reproduced",
+        "required_blocks": [
+          "internal_reproduction"
+        ],
+        "meaning": "the result is reproduced in non-overlapping units or cohorts within the same resource"
+      },
+      {
+        "id": "externally_replicated",
+        "required_blocks": [
+          "external_replication"
+        ],
+        "meaning": "the result is replicated in an independent resource, laboratory, or study"
+      },
+      {
+        "id": "topology_specific",
+        "required_blocks": [
+          "topology_specificity"
+        ],
+        "meaning": "the tested topology outperforms prespecified topology controls"
+      },
+      {
+        "id": "directed",
+        "required_blocks": [
+          "directed_identifiability"
+        ],
+        "meaning": "direction is identified by a declared directional test"
+      },
+      {
+        "id": "structure_function",
+        "required_blocks": [
+          "structure_function_association"
+        ],
+        "meaning": "a local association survives its declared matched controls and multiplicity rule"
+      },
+      {
+        "id": "mechanistic",
+        "required_blocks": [
+          "prediction",
+          "internal_reproduction",
+          "topology_specificity",
+          "directed_identifiability"
+        ],
+        "meaning": "prediction, internal reproduction, topology specificity, and direction all pass"
+      },
+      {
+        "id": "causal",
+        "required_blocks": [
+          "causal_intervention"
+        ],
+        "meaning": "an intervention or another prespecified causal-identification design passes"
+      },
+      {
+        "id": "digital_twin",
+        "required_blocks": [
+          "prediction",
+          "internal_reproduction",
+          "topology_specificity",
+          "directed_identifiability",
+          "causal_intervention",
+          "whole_brain_coverage",
+          "independent_validation",
+          "reproducible_compute"
+        ],
+        "meaning": "all predictive, mechanistic, causal, coverage, validation, and compute blocks pass"
+      }
+    ],
+    "inference_rules": [
+      {
+        "id": "failed_block_veto",
+        "priority": 100,
+        "quantifier": "any",
+        "evidence_status": "failed",
+        "conclusion": "blocked",
+        "rationale": "at least one required evidence block failed"
+      },
+      {
+        "id": "external_review_escalation",
+        "priority": 90,
+        "quantifier": "any",
+        "evidence_status": "requires_review",
+        "conclusion": "needs_external_review",
+        "rationale": "at least one required block cannot be decided automatically"
+      },
+      {
+        "id": "missing_evidence_uncertainty",
+        "priority": 80,
+        "quantifier": "any",
+        "evidence_status": "unknown",
+        "conclusion": "uncertain",
+        "rationale": "at least one required evidence block was not observed"
+      },
+      {
+        "id": "protocol_scope_boundary",
+        "priority": 70,
+        "quantifier": "any",
+        "evidence_status": "not_applicable",
+        "conclusion": "out_of_scope",
+        "rationale": "the evaluated protocol did not target at least one required block"
+      },
+      {
+        "id": "all_requirements_satisfied",
+        "priority": 0,
+        "quantifier": "all",
+        "evidence_status": "passed",
+        "conclusion": "supported",
+        "rationale": "all required evidence blocks passed their declared domain-specific rules"
+      }
+    ]
+  },
+  "frozen_reference": "results/real_case_claim_matrix/summary.json",
+  "case_count": 4,
+  "decision_count": 40,
+  "exact_decision_matches": 40,
+  "explanation_complete_count": 40,
+  "status_counts": {
+    "blocked": 7,
+    "out_of_scope": 16,
+    "supported": 10,
+    "uncertain": 7
+  },
+  "fired_rule_counts": {
+    "all_requirements_satisfied": 10,
+    "failed_block_veto": 7,
+    "missing_evidence_uncertainty": 7,
+    "protocol_scope_boundary": 16
+  },
+  "knowledge_graph": {
+    "node_count": 36,
+    "edge_count": 45,
+    "node_type_counts": {
+      "claim": 10,
+      "decision_status": 5,
+      "evidence_block": 10,
+      "evidence_status": 5,
+      "inference_rule": 5,
+      "knowledge_profile": 1
+    },
+    "relation_counts": {
+      "concludes": 5,
+      "declares": 15,
+      "requires": 20,
+      "tests_status": 5
+    }
+  },
+  "conformance_failures": [],
+  "limits": [
+    "Conformance to a frozen policy is not evidence that the policy is biologically true.",
+    "The audit evaluates only the computational mouse-brain knowledge profile.",
+    "Architectural profile extensibility is not empirical validation in another domain.",
+    "The real cases do not establish causal, whole-brain, or digital-twin claims."
+  ],
+  "decision": "knowledge_system_reproduces_frozen_policy_with_complete_traces"
+}
