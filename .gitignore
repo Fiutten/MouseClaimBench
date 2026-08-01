@@ -11,7 +11,9 @@ build/
 dist/
 data/
 !mousebrainbench/data/
-!mousebrainbench/data/**
+!mousebrainbench/data/**/*.py
+!mousebrainbench/data/**/*.json
+mousebrainbench/data/**/__pycache__/
 outputs/
 runs/
 *.aux
