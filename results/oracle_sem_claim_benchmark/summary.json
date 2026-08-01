@@ -1,6 +1,6 @@
 {
   "version": "0.7.0",
-  "git_revision": "d22d525888bdec76fb89b0f6648dcc747b2715e6",
+  "git_revision": "2115f8c",
   "analysis": "oracle_structural_equation_claim_benchmark",
   "reference_label_source": "declared structural equations and intervention availability",
   "evidence_rule_source": "finite-sample diagnostics independent of oracle label generation",
@@ -253,13 +253,20 @@
       "false_negative_rate": 0.0
     }
   ],
-  "paired_policy_comparison": {
+  "paired_decision_counts": {
     "both_correct": 4051,
     "contract_only_correct": 747,
     "shortcut_only_correct": 149,
     "both_wrong": 53,
-    "discordant_decisions": 896,
-    "exact_mcnemar_p_value": 2.0926987917976644e-96
+    "interpretation": "descriptive only because claims within a generated case are dependent"
+  },
+  "case_level_policy_comparison": {
+    "contract_fewer_errors": 263,
+    "shortcut_fewer_errors": 77,
+    "tied_errors": 160,
+    "non_tied_cases": 340,
+    "exact_two_sided_sign_test_p_value": 6.412105695894147e-25,
+    "unit": "independently generated structural-equation case"
   },
   "by_regime": [
     {
