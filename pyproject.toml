@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mouseclaimbench"
-version = "0.7.0"
-description = "Executable decision support for scientific AI claim governance"
+version = "0.8.0"
+description = "Evidence-constrained knowledge system for computational mouse-brain claims"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
@@ -76,6 +76,7 @@ mousebrainbench-claimbench-threat-model = "mousebrainbench.benchmarks.claimbench
 mousebrainbench-claimbench-unified-report = "mousebrainbench.benchmarks.claimbench_unified_report:main"
 mousebrainbench-claimbench-reproduce-package = "mousebrainbench.benchmarks.claimbench_reproduce_package:main"
 mousebrainbench-llm-claim-extraction-audit = "mousebrainbench.benchmarks.llm_claim_extraction_audit:main"
+mousebrainbench-knowledge-system-audit = "mousebrainbench.benchmarks.knowledge_system_audit:main"
 mousebrainbench-run = "mousebrainbench.cli:main"
 
 [tool.setuptools.packages.find]
@@ -83,6 +84,7 @@ include = ["mousebrainbench*"]
 
 [tool.setuptools.package-data]
 "mousebrainbench.data" = ["reference/*.json"]
+"mousebrainbench.knowledge.profiles" = ["*.yaml"]
 
 [tool.pytest.ini_options]
 addopts = "-q"

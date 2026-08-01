@@ -194,12 +194,24 @@ CLAIM_REQUIREMENTS_V3 = (
 
 
 class EvidenceContractEvaluator:
-    """Evaluate claims without compensating one evidence block with another."""
+    """Compatibility facade over the versioned claim knowledge system."""
 
     name = "evidence_contract_v3"
 
     def __init__(self, requirements: Iterable[ClaimRequirement] = CLAIM_REQUIREMENTS_V3) -> None:
-        self.requirements = {requirement.claim: requirement for requirement in requirements}
+        from mousebrainbench.knowledge.profile import KnowledgeProfile, load_default_profile
+
+        declared = tuple(requirements)
+        if declared == CLAIM_REQUIREMENTS_V3:
+            profile = load_default_profile()
+            if profile.requirements != CLAIM_REQUIREMENTS_V3:
+                raise RuntimeError("packaged knowledge profile and v3 contract disagree")
+        else:
+            profile = KnowledgeProfile.from_requirements(declared)
+        self.profile = profile
+        self.requirements = {
+            requirement.claim: requirement for requirement in profile.requirements
+        }
 
     def evaluate_claim(
         self,
@@ -208,64 +220,30 @@ class EvidenceContractEvaluator:
     ) -> ContractDecision:
         """Evaluate one claim and retain every contributing block status."""
 
-        requirement = self.requirements.get(claim)
-        if requirement is None:
-            return ContractDecision(
-                claim=claim,
-                status=DecisionStatus.OUT_OF_SCOPE,
-                required_blocks=(),
-                block_statuses=(),
-                rationale="no executable contract is declared for this claim",
-            )
+        from mousebrainbench.knowledge.engine import ClaimKnowledgeSystem
 
-        statuses = tuple(
-            (
-                block_name,
-                blocks.get(
-                    block_name,
-                    EvidenceBlock.from_mapping(
-                        name=block_name,
-                        status=EvidenceStatus.UNKNOWN,
-                        source="missing",
-                        rule="no rule was executed",
-                        rationale="required evidence block is absent",
-                    ),
-                ).status,
-            )
-            for block_name in requirement.required_blocks
-        )
-        status_values = {status for _, status in statuses}
-
-        # A performed test that failed is decisive even when another required
-        # block was not measured.  The claim is already unsupported.
-        if EvidenceStatus.FAILED in status_values:
-            decision = DecisionStatus.BLOCKED
-            rationale = "at least one required evidence block failed"
-        elif EvidenceStatus.REQUIRES_REVIEW in status_values:
-            decision = DecisionStatus.NEEDS_EXTERNAL_REVIEW
-            rationale = "at least one required block cannot be decided automatically"
-        elif EvidenceStatus.UNKNOWN in status_values:
-            decision = DecisionStatus.UNCERTAIN
-            rationale = "at least one required evidence block was not observed"
-        elif EvidenceStatus.NOT_APPLICABLE in status_values:
-            decision = DecisionStatus.OUT_OF_SCOPE
-            rationale = "the evaluated protocol did not target at least one required block"
-        else:
-            decision = DecisionStatus.SUPPORTED
-            rationale = "all required evidence blocks passed their declared domain-specific rules"
-
-        return ContractDecision(
-            claim=claim,
-            status=decision,
-            required_blocks=requirement.required_blocks,
-            block_statuses=statuses,
-            rationale=rationale,
-        )
+        return ClaimKnowledgeSystem(self.profile, blocks).infer(claim).decision
 
     def evaluate_all(self, blocks: Mapping[str, EvidenceBlock]) -> tuple[ContractDecision, ...]:
         """Evaluate all declared claims in stable contract order."""
 
-        return tuple(self.evaluate_claim(claim, blocks) for claim in self.requirements)
+        from mousebrainbench.knowledge.engine import ClaimKnowledgeSystem
+
+        return tuple(
+            inference.decision
+            for inference in ClaimKnowledgeSystem(self.profile, blocks).infer_all()
+        )
+
+    def explain_claim(
+        self,
+        claim: str,
+        blocks: Mapping[str, EvidenceBlock],
+    ) -> dict[str, Any]:
+        """Return the proof trace used to authorize or block one claim."""
+
+        from mousebrainbench.knowledge.engine import ClaimKnowledgeSystem
+
+        return ClaimKnowledgeSystem(self.profile, blocks).infer(claim).as_dict()
 
 
 def blocks_by_name(blocks: Iterable[EvidenceBlock]) -> dict[str, EvidenceBlock]:
