@@ -1,24 +1,24 @@
 \begin{table}[t!]
 \centering
-\caption{Operational claim semantics implemented in ClaimBench. Mandatory evidence is conjunctive, and the final column states the interpretation that remains blocked when any required block is absent.}
+\caption{Claim semantics in the domain-aware v3 contract. Each claim is
+authorized only when every listed block passes its own documented rule.}
 \label{tab:claim-semantics}
-\small
-\renewcommand{\arraystretch}{1.16}
-\begin{tabularx}{\textwidth}{@{}p{0.17\textwidth}p{0.34\textwidth}Y@{}}
+\footnotesize
+\renewcommand{\arraystretch}{1.08}
+\begin{tabularx}{\textwidth}{@{}p{0.22\textwidth}p{0.34\textwidth}Y@{}}
 \toprule
-Claim class & Evidence required for authorization & Interpretation blocked by the gate \\
+Claim & Required evidence block & Boundary preserved by the contract \\
 \midrule
-Predictive & Held-out improvement over declared baselines and reported uncertainty & Mechanism, causality, and topology recovery cannot be inferred from prediction alone \\
-\addlinespace[2pt]
-Reproducibility & Clean artifacts, repeated execution, stable result status, and non-dirty release metadata & Reproducibility cannot compensate for missing biological or causal evidence \\
-\addlinespace[2pt]
-Evidence retrieval & Retrieved evidence, rationale separation, abstention status, and overclaiming-risk estimate & Lexical overlap cannot be treated as support classification \\
-\addlinespace[2pt]
-Directional or causal & Direction-specific evidence and abstention when assumptions are not met & Correlation cannot authorize causal direction \\
-\addlinespace[2pt]
-Mechanistic & Prediction, topology specificity, direction, and rejection of plausible alternatives & A strong score cannot become a mechanism when one block is missing \\
-\addlinespace[2pt]
-Digital-twin scope & Entity-specific calibration, broad state coverage, update process, and intervention-level validation & Local or partial evidence cannot authorize complete digital-twin wording \\
+Predictive & Held-out improvement under a domain protocol & Prediction does not imply topology, direction, or cause \\
+Computationally reproducible & Clean revision and repeatable artifact workflow & Executability does not establish scientific identification \\
+Internally reproduced & Non-overlapping units or cohorts within one resource & Internal reproduction is not external replication \\
+Externally replicated & Independent resource, laboratory, or study & Within-resource hold-outs cannot satisfy this block \\
+Topology specific & Prespecified topology controls & Association or prediction alone cannot recover topology \\
+Directed & Direction-specific identification test & Temporal order or a directed edge file is insufficient by itself \\
+Structure--function & Matched controls, multiplicity rule, and dependence-aware stability & Local observational association remains non-causal \\
+Mechanistic & Prediction, internal reproduction, topology, and direction & A missing block vetoes mechanistic wording \\
+Causal & Intervention or a prespecified causal-identification design & Correlation cannot authorize causality \\
+Digital twin & Predictive, mechanistic, causal, coverage, independent validation, and compute blocks & Partial visual-cortex evidence cannot authorize a complete mouse-brain twin \\
 \bottomrule
 \end{tabularx}
 \end{table}

@@ -98,44 +98,312 @@ def _arrow(draw: ImageDraw.ImageDraw, start: tuple[int, int], end: tuple[int, in
 
 def build_workflow() -> Image.Image:
     """Create the ClaimBench workflow figure."""
-    img = Image.new("RGB", (1800, 560), WHITE)
+    img = Image.new("RGB", (1800, 760), WHITE)
     draw = ImageDraw.Draw(img)
 
     boxes = [
-        (55, 25, 345, 275, "Source package", "Manuscript\nfrozen results\nrelease metadata", BLUE),
-        (405, 25, 695, 275, "Claim discovery", "Rules or language models\npropose candidates\nwithout authority", GREY),
-        (755, 25, 1045, 275, "Claim contract", "Required blocks\nscope and thresholds\nadmissible wording", GREEN),
-        (1105, 25, 1395, 275, "Artifact checks", "Metrics and controls\nprovenance\nrelease integrity", BLUE),
-        (1455, 25, 1745, 275, "Gate decision", "Supported\nblocked\nuncertain", AMBER),
+        (45, 25, 325, 275, "Source package", "Manuscript\nresults\nprovenance", BLUE),
+        (395, 25, 675, 275, "Claim discovery", "Rules or language models\npropose candidates\nwithout authority", GREY),
+        (745, 25, 1025, 275, "Domain contract", "Required blocks\ndomain rules\nadmissible wording", GREEN),
+        (1095, 25, 1375, 275, "Artifact predicates", "Original-scale values\ncontrols\nsource revision", BLUE),
+        (1445, 25, 1725, 275, "Veto gate", "Non-compensatory:\nno block can offset\na failed requirement", AMBER),
     ]
     for x0, y0, x1, y1, title, body, fill in boxes:
         _box(draw, (x0, y0, x1, y1), title, body, fill=fill)
     for start, end in [
-        ((345, 150), (405, 150)),
-        ((695, 150), (755, 150)),
-        ((1045, 150), (1105, 150)),
-        ((1395, 150), (1455, 150)),
+        ((325, 150), (395, 150)),
+        ((675, 150), (745, 150)),
+        ((1025, 150), (1095, 150)),
+        ((1375, 150), (1445, 150)),
     ]:
         _arrow(draw, start, end)
 
-    _box(
-        draw,
-        (870, 325, 1290, 520),
-        "Retain claim",
-        "Every mandatory block passes for the declared claim scope.",
-        fill=GREEN,
-        outline="#26734d",
+    draw.line((1585, 275, 1585, 330), fill=LINE, width=5)
+    draw.line((175, 330, 1585, 330), fill=LINE, width=5)
+    outcomes = [
+        (45, 365, 325, 700, "Supported", "All required blocks pass.", GREEN, "#26734d"),
+        (395, 365, 675, 700, "Blocked", "At least one executed block fails.", RED, "#a33a32"),
+        (745, 365, 1025, 700, "Uncertain", "A required observation is missing.", AMBER, "#a06b18"),
+        (1095, 365, 1375, 700, "Out of scope", "The protocol did not target the block.", GREY, LINE),
+        (1445, 365, 1725, 700, "External review", "A non-automatable judgement remains.", BLUE, "#356d95"),
+    ]
+    for x0, y0, x1, y1, title, body, fill, outline in outcomes:
+        draw.line(((x0 + x1) // 2, 330, (x0 + x1) // 2, 365), fill=LINE, width=4)
+        _box(draw, (x0, y0, x1, y1), title, body, fill=fill, outline=outline)
+    return img
+
+
+def build_real_case_matrix() -> Image.Image:
+    """Create a status matrix for the four artifact-grounded mouse cases."""
+
+    payload = json.loads(
+        (ROOT / "results" / "real_case_claim_matrix" / "summary.json").read_text(
+            encoding="utf-8"
+        )
     )
-    _box(
+    cases = payload["cases"]
+    decisions = {
+        (row["case"], row["claim"]): row["status"]
+        for row in payload["claim_decisions"]
+    }
+    claims = [
+        ("predictive", "Predictive"),
+        ("computationally_reproducible", "Compute\nreproducible"),
+        ("internally_reproduced", "Internal\nreproduction"),
+        ("externally_replicated", "External\nreplication"),
+        ("topology_specific", "Topology\nspecific"),
+        ("directed", "Directed"),
+        ("structure_function", "Structure-\nfunction"),
+        ("mechanistic", "Mechanistic"),
+        ("causal", "Causal"),
+        ("digital_twin", "Digital\ntwin"),
+    ]
+    labels = {
+        "allen_vbn_identifiability_negative": "Allen VBN",
+        "sensorium_static_predictive_topographic": "Static Sensorium",
+        "dynamic_sensorium_temporal_prediction": "Dynamic Sensorium",
+        "microns_local_structure_function": "MICRONS local",
+    }
+    colors = {
+        "supported": "#4f9a70",
+        "blocked": "#c85b58",
+        "uncertain": "#d5a340",
+        "out_of_scope": "#b7bec7",
+        "needs_external_review": "#5790b5",
+    }
+    img = Image.new("RGB", (2200, 920), WHITE)
+    draw = ImageDraw.Draw(img)
+    left = 360
+    top = 180
+    cell_w = 170
+    cell_h = 125
+    for index, (_claim, label) in enumerate(claims):
+        _wrapped(
+            draw,
+            (left + index * cell_w + cell_w // 2, 55),
+            label,
+            font=SMALL_BOLD,
+            width=14,
+        )
+    for row_index, case in enumerate(cases):
+        y = top + row_index * cell_h
+        draw.text(
+            (left - 25, y + cell_h // 2),
+            labels[case["case"]],
+            font=BODY,
+            fill=INK,
+            anchor="rm",
+        )
+        for column_index, (claim, _label) in enumerate(claims):
+            status = decisions[(case["case"], claim)]
+            x = left + column_index * cell_w
+            draw.rounded_rectangle(
+                (x + 8, y + 8, x + cell_w - 8, y + cell_h - 8),
+                radius=12,
+                fill=colors[status],
+                outline=WHITE,
+                width=3,
+            )
+            short_status = {
+                "supported": "PASS",
+                "blocked": "BLOCK",
+                "uncertain": "UNKNOWN",
+                "out_of_scope": "N/A",
+                "needs_external_review": "REVIEW",
+            }[status]
+            draw.text(
+                (x + cell_w // 2, y + cell_h // 2),
+                short_status,
+                font=SMALL_BOLD,
+                fill=WHITE if status != "out_of_scope" else INK,
+                anchor="mm",
+            )
+    legend = [
+        ("supported", "Supported"),
+        ("blocked", "Blocked"),
+        ("uncertain", "Unknown evidence"),
+        ("out_of_scope", "Not applicable"),
+        ("needs_external_review", "External review"),
+    ]
+    legend_x = 380
+    legend_y = 760
+    for status, label in legend:
+        draw.rounded_rectangle(
+            (legend_x, legend_y, legend_x + 42, legend_y + 42),
+            radius=7,
+            fill=colors[status],
+        )
+        draw.text((legend_x + 55, legend_y + 21), label, font=SMALL, fill=INK, anchor="lm")
+        legend_x += 340
+    _wrapped(
         draw,
-        (1330, 325, 1750, 520),
-        "Revise or withhold",
-        "A failed or unstable block remains visible and cannot be compensated.",
-        fill=RED,
-        outline="#a33a32",
+        (1100, 845),
+        "Internal reproduction is within a resource. It is not external replication.",
+        font=SMALL,
+        fill=MUTED,
+        width=85,
     )
-    _arrow(draw, (1600, 275), (1080, 325))
-    _arrow(draw, (1600, 275), (1540, 325))
+    return img
+
+
+def _rate_x(value: float, x0: int, x1: int, maximum: float) -> int:
+    return x0 + int((x1 - x0) * value / maximum)
+
+
+def build_oracle_benchmark() -> Image.Image:
+    """Plot oracle error rates and paired policy correctness."""
+
+    payload = json.loads(
+        (ROOT / "results" / "oracle_sem_claim_benchmark" / "summary.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    rows = {row["policy"]: row for row in payload["aggregate_by_policy"]}
+    img = Image.new("RGB", (1800, 780), WHITE)
+    draw = ImageDraw.Draw(img)
+    draw.text((450, 55), "A. Error rates over 5,000 claim decisions", font=HEAD, fill=INK, anchor="mm")
+    x0, x1 = 210, 800
+    maximum = 0.30
+    for tick in range(4):
+        value = tick * 0.10
+        x = _rate_x(value, x0, x1, maximum)
+        draw.line((x, 115, x, 610), fill="#d1d5db", width=2)
+        draw.text((x, 635), f"{value:.2f}", font=SMALL, fill=MUTED, anchor="ma")
+    policies = [
+        ("Evidence contract v3", "evidence_contract_v3", "#447ba6"),
+        ("Prediction shortcut", "prediction_shortcut", "#b96a5e"),
+    ]
+    metrics = [
+        ("False-positive rate", "false_positive_rate", "false_positive_rate_wilson_95"),
+        ("False-negative rate", "false_negative_rate", "false_negative_rate_wilson_95"),
+    ]
+    y = 150
+    for policy_label, policy_key, color in policies:
+        draw.text((80, y + 50), policy_label, font=BODY, fill=INK, anchor="lm")
+        for metric_label, metric_key, interval_key in metrics:
+            row = rows[policy_key]
+            value = row[metric_key]
+            low, high = row[interval_key]
+            draw.text((190, y + 102), metric_label, font=SMALL, fill=MUTED, anchor="rm")
+            bar_end = _rate_x(value, x0, x1, maximum)
+            draw.rounded_rectangle((x0, y + 82, bar_end, y + 118), radius=8, fill=color)
+            low_x = _rate_x(low, x0, x1, maximum)
+            high_x = _rate_x(high, x0, x1, maximum)
+            draw.line((low_x, y + 100, high_x, y + 100), fill=INK, width=4)
+            draw.line((low_x, y + 91, low_x, y + 109), fill=INK, width=3)
+            draw.line((high_x, y + 91, high_x, y + 109), fill=INK, width=3)
+            label_x = max(bar_end, high_x) + 22
+            draw.text((label_x, y + 100), f"{value:.3f}", font=SMALL_BOLD, fill=INK, anchor="lm")
+            y += 70
+        y += 40
+
+    draw.line((900, 35, 900, 720), fill="#94a3b8", width=3)
+    draw.text((1350, 55), "B. Paired decision correctness", font=HEAD, fill=INK, anchor="mm")
+    paired = payload["paired_decision_counts"]
+    paired_rows = [
+        ("Both correct", paired["both_correct"], "#6b9f7c"),
+        ("Contract only correct", paired["contract_only_correct"], "#447ba6"),
+        ("Shortcut only correct", paired["shortcut_only_correct"], "#d59b45"),
+        ("Both wrong", paired["both_wrong"], "#b96a5e"),
+    ]
+    max_count = max(value for _label, value, _color in paired_rows)
+    for index, (label, value, color) in enumerate(paired_rows):
+        y = 145 + index * 115
+        draw.text((1000, y + 25), label, font=BODY, fill=INK, anchor="lm")
+        draw.rounded_rectangle((1000, y + 55, 1690, y + 95), radius=9, fill="#e5e7eb")
+        end = 1000 + int(690 * value / max_count)
+        draw.rounded_rectangle((1000, y + 55, end, y + 95), radius=9, fill=color)
+        draw.text((end + 14, y + 75), str(value), font=SMALL_BOLD, fill=INK, anchor="lm")
+    case_level = payload["case_level_policy_comparison"]
+    _wrapped(
+        draw,
+        (1350, 650),
+        "Case-level comparison: "
+        f"contract better in {case_level['contract_fewer_errors']}, "
+        f"shortcut better in {case_level['shortcut_fewer_errors']}, "
+        f"ties in {case_level['tied_errors']}. "
+        f"Exact sign-test p = {case_level['exact_two_sided_sign_test_p_value']:.2e}.",
+        font=SMALL,
+        fill=MUTED,
+        width=70,
+    )
+    return img
+
+
+def build_external_controls() -> Image.Image:
+    """Plot SciFact decision trade-offs and Tuebingen directional uncertainty."""
+
+    scifact = json.loads(
+        (ROOT / "results" / "scifact_claim_verification" / "summary.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    tuebingen = json.loads(
+        (ROOT / "results" / "tuebingen_causal_direction" / "summary.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    img = Image.new("RGB", (1800, 830), WHITE)
+    draw = ImageDraw.Draw(img)
+    draw.text((450, 55), "A. SciFact support decisions", font=HEAD, fill=INK, anchor="mm")
+    policies = [
+        (
+            "Cited-text shortcut",
+            scifact["shortcut_overclaiming_risk"],
+            scifact["shortcut_conservativeness"],
+        ),
+        (
+            "BM25 + rationale",
+            scifact["retrieval_overclaiming_risk"],
+            scifact["retrieval_conservativeness"],
+        ),
+        (
+            "Train-calibrated",
+            scifact["calibrated_false_positive_rate"],
+            scifact["calibrated_false_negative_rate"],
+        ),
+    ]
+    x0, x1 = 270, 810
+    for tick in range(5):
+        value = tick * 0.20
+        x = _rate_x(value, x0, x1, 0.80)
+        draw.line((x, 115, x, 635), fill="#d1d5db", width=2)
+        draw.text((x, 660), f"{value:.1f}", font=SMALL, fill=MUTED, anchor="ma")
+    for index, (label, fpr, fnr) in enumerate(policies):
+        y = 145 + index * 165
+        draw.text((80, y + 55), label, font=BODY, fill=INK, anchor="lm")
+        for offset, metric, value, color in (
+            (75, "FPR", fpr, "#447ba6"),
+            (125, "FNR", fnr, "#b96a5e"),
+        ):
+            draw.text((250, y + offset), metric, font=SMALL_BOLD, fill=MUTED, anchor="rm")
+            end = _rate_x(value, x0, x1, 0.80)
+            draw.rounded_rectangle((x0, y + offset - 17, end, y + offset + 17), radius=7, fill=color)
+            draw.text((end + 12, y + offset), f"{value:.3f}", font=SMALL_BOLD, fill=INK, anchor="lm")
+
+    draw.line((900, 35, 900, 755), fill="#94a3b8", width=3)
+    draw.text((1350, 55), "B. Tuebingen direction control", font=HEAD, fill=INK, anchor="mm")
+    draw.text((1010, 150), "Unweighted accuracy", font=BODY, fill=INK)
+    accuracy = tuebingen["direction_accuracy"]
+    low, high = tuebingen["direction_accuracy_wilson_95"]
+    tx0, tx1 = 1040, 1660
+    bar_y = 230
+    draw.rounded_rectangle((tx0, bar_y, tx1, bar_y + 58), radius=10, fill="#e5e7eb")
+    draw.rounded_rectangle((tx0, bar_y, _rate_x(accuracy, tx0, tx1, 1.0), bar_y + 58), radius=10, fill="#447ba6")
+    draw.line((_rate_x(low, tx0, tx1, 1.0), bar_y + 29, _rate_x(high, tx0, tx1, 1.0), bar_y + 29), fill=INK, width=5)
+    draw.text((1350, 330), f"{accuracy:.3f}  (95% CI {low:.3f}--{high:.3f})", font=HEAD, fill=INK, anchor="mm")
+    draw.text((1010, 430), "Attempted direction", font=BODY, fill=INK)
+    draw.text((1650, 430), f"103 / 108 pairs ({tuebingen['direction_attempt_rate']:.1%})", font=BODY, fill=INK, anchor="ra")
+    draw.text((1010, 510), "Correlation-only overclaims", font=BODY, fill=INK)
+    draw.text((1650, 510), f"{tuebingen['correlation_only_direction_overclaims']} / 108 pairs", font=BODY, fill=INK, anchor="ra")
+    _wrapped(
+        draw,
+        (1350, 630),
+        "The directional baseline is not competitive. Its role is to expose why association must not authorize causal direction.",
+        font=BODY,
+        fill=MUTED,
+        width=58,
+    )
     return img
 
 
@@ -196,7 +464,7 @@ def build_dashboard() -> Image.Image:
 
 
 def build_ablation() -> Image.Image:
-    """Create the ablation figure with the frozen overclaiming-risk signals."""
+    """Create the legacy conformance-ablation figure using standard FPR."""
     payload = json.loads((ROOT / "results" / "claim_adversarial_v2" / "summary.json").read_text(encoding="utf-8"))
     by_name = {row["evaluator"]: row for row in payload["aggregate_by_evaluator"]}
     evaluators = [
@@ -224,7 +492,7 @@ def build_ablation() -> Image.Image:
 
     for index, (label, key) in enumerate(evaluators):
         row = by_name[key]
-        value = row["overclaiming_risk_index"]
+        value = row["false_positive_rate"]
         y = chart_y0 + index * 76
         draw.text((470, y + 24), label, font=BODY, fill=INK, anchor="rm")
         bar_end = chart_x0 + int((chart_x1 - chart_x0) * value / max_x)
@@ -301,7 +569,9 @@ def write_all() -> None:
     """Write all versioned PNG assets to both manuscript roots."""
     figures = {
         "claimbench_workflow.png": build_workflow(),
-        "claimbench_evidence_dashboard.png": build_dashboard(),
+        "claimbench_real_case_matrix.png": build_real_case_matrix(),
+        "claimbench_oracle_benchmark.png": build_oracle_benchmark(),
+        "claimbench_external_controls.png": build_external_controls(),
         "claimbench_ablation.png": build_ablation(),
         "claimbench_sensitivity.png": build_sensitivity(),
     }

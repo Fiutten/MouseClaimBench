@@ -21,7 +21,8 @@ def test_oracle_benchmark_uses_dgp_labels_and_reports_standard_error_rates(tmp_p
         assert "false_negative_rate" in row
         assert len(row["false_negative_rate_wilson_95"]) == 2
         assert "overclaiming_risk_index" not in row
-    assert payload["paired_policy_comparison"]["discordant_decisions"] > 0
+    assert payload["case_level_policy_comparison"]["non_tied_cases"] > 0
+    assert payload["case_level_policy_comparison"]["unit"].startswith("independently generated")
 
 
 def test_oracle_benchmark_is_deterministic_for_fixed_seed_range(tmp_path) -> None:
@@ -42,3 +43,6 @@ def test_oracle_benchmark_is_deterministic_for_fixed_seed_range(tmp_path) -> Non
 
     assert first_payload["aggregate_by_policy"] == second_payload["aggregate_by_policy"]
     assert first_payload["by_regime"] == second_payload["by_regime"]
+    assert first_payload["case_level_policy_comparison"] == second_payload[
+        "case_level_policy_comparison"
+    ]

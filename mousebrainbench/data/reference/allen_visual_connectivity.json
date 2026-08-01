@@ -1,0 +1,1300 @@
+{
+  "source": "Allen Mouse Brain Connectivity Atlas API",
+  "downloaded_at_utc": "2026-06-15T20:49:44.454744+00:00",
+  "product_id": 5,
+  "hemisphere_id": 3,
+  "aggregation": "median normalized_projection_volume across experiments by source",
+  "diagonal": "set to zero to exclude injection-site contamination",
+  "regions": [
+    {
+      "id": 385,
+      "acronym": "VISp",
+      "name": "Primary visual area"
+    },
+    {
+      "id": 409,
+      "acronym": "VISl",
+      "name": "Lateral visual area"
+    },
+    {
+      "id": 402,
+      "acronym": "VISal",
+      "name": "Anterolateral visual area"
+    },
+    {
+      "id": 417,
+      "acronym": "VISrl",
+      "name": "Rostrolateral visual area"
+    },
+    {
+      "id": 533,
+      "acronym": "VISpm",
+      "name": "posteromedial visual area"
+    },
+    {
+      "id": 394,
+      "acronym": "VISam",
+      "name": "Anteromedial visual area"
+    }
+  ],
+  "experiment_counts_by_source": {
+    "VISp": 137,
+    "VISl": 24,
+    "VISal": 4,
+    "VISrl": 10,
+    "VISpm": 9,
+    "VISam": 16
+  },
+  "experiments": [
+    {
+      "data_set_id": 307297141,
+      "source_structure_id": 385,
+      "injection_volume": 0.6636360864,
+      "transgenic_line_id": null
+    },
+    {
+      "data_set_id": 272821309,
+      "source_structure_id": 385,
+      "injection_volume": 0.1254239476,
+      "transgenic_line_id": 177839022
+    },
+    {
+      "data_set_id": 294481346,
+      "source_structure_id": 533,
+      "injection_volume": 0.129882193,
+      "transgenic_line_id": 177838435
+    },
+    {
+      "data_set_id": 299733445,
+      "source_structure_id": 533,
+      "injection_volume": 0.0543355022,
+      "transgenic_line_id": 177839216
+    },
+    {
+      "data_set_id": 167375352,
+      "source_structure_id": 385,
+      "injection_volume": 0.1492781864,
+      "transgenic_line_id": 177838259
+    },
+    {
+      "data_set_id": 298351630,
+      "source_structure_id": 385,
+      "injection_volume": 0.02099990795,
+      "transgenic_line_id": 177838542
+    },
+    {
+      "data_set_id": 521402511,
+      "source_structure_id": 417,
+      "injection_volume": 0.0629706301,
+      "transgenic_line_id": 266649644
+    },
+    {
+      "data_set_id": 596828910,
+      "source_structure_id": 385,
+      "injection_volume": 0.0710505586,
+      "transgenic_line_id": 301021674
+    },
+    {
+      "data_set_id": 113887162,
+      "source_structure_id": 385,
+      "injection_volume": 0.4078438168,
+      "transgenic_line_id": null
+    },
+    {
+      "data_set_id": 180296424,
+      "source_structure_id": 385,
+      "injection_volume": 0.814006032,
+      "transgenic_line_id": null
+    },
+    {
+      "data_set_id": 298759552,
+      "source_structure_id": 385,
+      "injection_volume": 0.2014761616,
+      "transgenic_line_id": 266649644
+    },
+    {
+      "data_set_id": 299781566,
+      "source_structure_id": 385,
+      "injection_volume": 0.0054353733875,
+      "transgenic_line_id": 182693192
+    },
+    {
+      "data_set_id": 166269819,
+      "source_structure_id": 385,
+      "injection_volume": 0.0244599915,
+      "transgenic_line_id": 177837516
+    },
+    {
+      "data_set_id": 126861679,
+      "source_structure_id": 394,
+      "injection_volume": 0.1692370428,
+      "transgenic_line_id": null
+    },
+    {
+      "data_set_id": 277851379,
+      "source_structure_id": 417,
+      "injection_volume": 0.0341513879,
+      "transgenic_line_id": 177839331
+    },
+    {
+      "data_set_id": 182089608,
+      "source_structure_id": 385,
+      "injection_volume": 0.0437422706,
+      "transgenic_line_id": 177837516
+    },
+    {
+      "data_set_id": 301617370,
+      "source_structure_id": 409,
+      "injection_volume": 0.1141038598,
+      "transgenic_line_id": 179697864
+    },
+    {
+      "data_set_id": 298829455,
+      "source_structure_id": 409,
+      "injection_volume": 0.2518286008,
+      "transgenic_line_id": 177839022
+    },
+    {
+      "data_set_id": 297597186,
+      "source_structure_id": 385,
+      "injection_volume": 0.0324014362,
+      "transgenic_line_id": 182693192
+    },
+    {
+      "data_set_id": 530018580,
+      "source_structure_id": 409,
+      "injection_volume": 0.00684846785,
+      "transgenic_line_id": 266649644
+    },
+    {
+      "data_set_id": 564356750,
+      "source_structure_id": 385,
+      "injection_volume": 0.0094288684875,
+      "transgenic_line_id": 310459452
+    },
+    {
+      "data_set_id": 181601101,
+      "source_structure_id": 385,
+      "injection_volume": 0.0101814797,
+      "transgenic_line_id": 177839285
+    },
+    {
+      "data_set_id": 299859225,
+      "source_structure_id": 385,
+      "injection_volume": 0.0749521885,
+      "transgenic_line_id": 183941572
+    },
+    {
+      "data_set_id": 530008580,
+      "source_structure_id": 409,
+      "injection_volume": 0.0072212672,
+      "transgenic_line_id": 266649644
+    },
+    {
+      "data_set_id": 294312537,
+      "source_structure_id": 385,
+      "injection_volume": 0.0309824697,
+      "transgenic_line_id": 182761918
+    },
+    {
+      "data_set_id": 286835688,
+      "source_structure_id": 409,
+      "injection_volume": 0.0102249972125,
+      "transgenic_line_id": 182761781
+    },
+    {
+      "data_set_id": 266836749,
+      "source_structure_id": 385,
+      "injection_volume": 0.013660676925,
+      "transgenic_line_id": 177837834
+    },
+    {
+      "data_set_id": 146858755,
+      "source_structure_id": 409,
+      "injection_volume": 0.0661820313,
+      "transgenic_line_id": null
+    },
+    {
+      "data_set_id": 257667830,
+      "source_structure_id": 533,
+      "injection_volume": 0.048918709,
+      "transgenic_line_id": 177837516
+    },
+    {
+      "data_set_id": 286301303,
+      "source_structure_id": 417,
+      "injection_volume": 0.0887584922,
+      "transgenic_line_id": 177839022
+    },
+    {
+      "data_set_id": 159550125,
+      "source_structure_id": 385,
+      "injection_volume": 0.1685982004,
+      "transgenic_line_id": 177837713
+    },
+    {
+      "data_set_id": 166326736,
+      "source_structure_id": 385,
+      "injection_volume": 0.1259225422,
+      "transgenic_line_id": 177837516
+    },
+    {
+      "data_set_id": 184074388,
+      "source_structure_id": 385,
+      "injection_volume": 0.0442807953,
+      "transgenic_line_id": 177837516
+    },
+    {
+      "data_set_id": 266100645,
+      "source_structure_id": 385,
+      "injection_volume": 0.0153661158,
+      "transgenic_line_id": 177839331
+    },
+    {
+      "data_set_id": 100147853,
+      "source_structure_id": 385,
+      "injection_volume": 0.0735476182,
+      "transgenic_line_id": null
+    },
+    {
+      "data_set_id": 293821389,
+      "source_structure_id": 394,
+      "injection_volume": 0.01075071025,
+      "transgenic_line_id": 177837777
+    },
+    {
+      "data_set_id": 307321674,
+      "source_structure_id": 385,
+      "injection_volume": 0.8053739568,
+      "transgenic_line_id": null
+    },
+    {
+      "data_set_id": 648051857,
+      "source_structure_id": 385,
+      "injection_volume": 0.0161658693,
+      "transgenic_line_id": 517749378
+    },
+    {
+      "data_set_id": 297712045,
+      "source_structure_id": 417,
+      "injection_volume": 0.0306255978,
+      "transgenic_line_id": 177837777
+    },
+    {
+      "data_set_id": 294482052,
+      "source_structure_id": 385,
+      "injection_volume": 0.060788077,
+      "transgenic_line_id": 177838435
+    },
+    {
+      "data_set_id": 297946154,
+      "source_structure_id": 533,
+      "injection_volume": 0.0711644542,
+      "transgenic_line_id": 182693192
+    },
+    {
+      "data_set_id": 304586645,
+      "source_structure_id": 385,
+      "injection_volume": 0.2089061884,
+      "transgenic_line_id": null
+    },
+    {
+      "data_set_id": 184167484,
+      "source_structure_id": 394,
+      "injection_volume": 0.1270347834,
+      "transgenic_line_id": 177839022
+    },
+    {
+      "data_set_id": 297629282,
+      "source_structure_id": 385,
+      "injection_volume": 0.103709921,
+      "transgenic_line_id": 177837713
+    },
+    {
+      "data_set_id": 292792724,
+      "source_structure_id": 417,
+      "injection_volume": 0.0420604485,
+      "transgenic_line_id": 177838542
+    },
+    {
+      "data_set_id": 307558646,
+      "source_structure_id": 385,
+      "injection_volume": 1.0584762832,
+      "transgenic_line_id": null
+    },
+    {
+      "data_set_id": 298350212,
+      "source_structure_id": 385,
+      "injection_volume": 0.0206600562,
+      "transgenic_line_id": 182761781
+    },
+    {
+      "data_set_id": 307320960,
+      "source_structure_id": 385,
+      "injection_volume": 0.5142510016,
+      "transgenic_line_id": null
+    },
+    {
+      "data_set_id": 623289575,
+      "source_structure_id": 385,
+      "injection_volume": 0.0017588501,
+      "transgenic_line_id": 310459452
+    },
+    {
+      "data_set_id": 305489377,
+      "source_structure_id": 385,
+      "injection_volume": 0.0563692276,
+      "transgenic_line_id": 298341195
+    },
+    {
+      "data_set_id": 266250195,
+      "source_structure_id": 385,
+      "injection_volume": 0.1720099136,
+      "transgenic_line_id": 177838435
+    },
+    {
+      "data_set_id": 516491813,
+      "source_structure_id": 394,
+      "injection_volume": 0.045142524,
+      "transgenic_line_id": 265180449
+    },
+    {
+      "data_set_id": 166459778,
+      "source_structure_id": 402,
+      "injection_volume": 0.02803235855,
+      "transgenic_line_id": 177837516
+    },
+    {
+      "data_set_id": 166324604,
+      "source_structure_id": 385,
+      "injection_volume": 0.1073505916,
+      "transgenic_line_id": 177838542
+    },
+    {
+      "data_set_id": 297593235,
+      "source_structure_id": 385,
+      "injection_volume": 0.0142754591,
+      "transgenic_line_id": 265180449
+    },
+    {
+      "data_set_id": 156784823,
+      "source_structure_id": 385,
+      "injection_volume": 0.017221837675,
+      "transgenic_line_id": 177839216
+    },
+    {
+      "data_set_id": 177781006,
+      "source_structure_id": 385,
+      "injection_volume": 0.0306428409,
+      "transgenic_line_id": 177839331
+    },
+    {
+      "data_set_id": 257667118,
+      "source_structure_id": 385,
+      "injection_volume": 0.0276260677,
+      "transgenic_line_id": 177837516
+    },
+    {
+      "data_set_id": 638313933,
+      "source_structure_id": 385,
+      "injection_volume": 0.1036669774,
+      "transgenic_line_id": 177838104
+    },
+    {
+      "data_set_id": 307743253,
+      "source_structure_id": 385,
+      "injection_volume": 0.5686671088,
+      "transgenic_line_id": null
+    },
+    {
+      "data_set_id": 586054033,
+      "source_structure_id": 385,
+      "injection_volume": 0.04103320025,
+      "transgenic_line_id": 298725927
+    },
+    {
+      "data_set_id": 268038969,
+      "source_structure_id": 394,
+      "injection_volume": 0.01360473485,
+      "transgenic_line_id": 177837516
+    },
+    {
+      "data_set_id": 288264047,
+      "source_structure_id": 394,
+      "injection_volume": 0.2095367988,
+      "transgenic_line_id": 177838710
+    },
+    {
+      "data_set_id": 294484177,
+      "source_structure_id": 385,
+      "injection_volume": 0.0774230968,
+      "transgenic_line_id": 177839022
+    },
+    {
+      "data_set_id": 116903968,
+      "source_structure_id": 409,
+      "injection_volume": 0.1688734824,
+      "transgenic_line_id": null
+    },
+    {
+      "data_set_id": 176882966,
+      "source_structure_id": 385,
+      "injection_volume": 0.0287673463,
+      "transgenic_line_id": 177839331
+    },
+    {
+      "data_set_id": 648318728,
+      "source_structure_id": 385,
+      "injection_volume": 0.015978617025,
+      "transgenic_line_id": 177837563
+    },
+    {
+      "data_set_id": 297231636,
+      "source_structure_id": 402,
+      "injection_volume": 0.0830408194,
+      "transgenic_line_id": 265180449
+    },
+    {
+      "data_set_id": 287601808,
+      "source_structure_id": 394,
+      "injection_volume": 0.12358535,
+      "transgenic_line_id": 177838633
+    },
+    {
+      "data_set_id": 297592527,
+      "source_structure_id": 385,
+      "injection_volume": 0.0449954064,
+      "transgenic_line_id": 265180449
+    },
+    {
+      "data_set_id": 100148503,
+      "source_structure_id": 394,
+      "injection_volume": 0.0888404986,
+      "transgenic_line_id": null
+    },
+    {
+      "data_set_id": 301210923,
+      "source_structure_id": 409,
+      "injection_volume": 0.0458771859,
+      "transgenic_line_id": 177839285
+    },
+    {
+      "data_set_id": 287036898,
+      "source_structure_id": 409,
+      "injection_volume": 0.0089057591875,
+      "transgenic_line_id": 177837713
+    },
+    {
+      "data_set_id": 300929973,
+      "source_structure_id": 385,
+      "injection_volume": 0.081151987,
+      "transgenic_line_id": 179697864
+    },
+    {
+      "data_set_id": 113887868,
+      "source_structure_id": 385,
+      "injection_volume": 0.314177318,
+      "transgenic_line_id": null
+    },
+    {
+      "data_set_id": 308879859,
+      "source_structure_id": 385,
+      "injection_volume": 0.1124945724,
+      "transgenic_line_id": 177838633
+    },
+    {
+      "data_set_id": 294434867,
+      "source_structure_id": 394,
+      "injection_volume": 0.0775600567,
+      "transgenic_line_id": 177839022
+    },
+    {
+      "data_set_id": 307557934,
+      "source_structure_id": 385,
+      "injection_volume": 0.5278938168,
+      "transgenic_line_id": null
+    },
+    {
+      "data_set_id": 575772121,
+      "source_structure_id": 385,
+      "injection_volume": 0.0458860206,
+      "transgenic_line_id": 298725927
+    },
+    {
+      "data_set_id": 283020912,
+      "source_structure_id": 385,
+      "injection_volume": 0.0584606162,
+      "transgenic_line_id": 177838542
+    },
+    {
+      "data_set_id": 114008926,
+      "source_structure_id": 385,
+      "injection_volume": 0.1585755934,
+      "transgenic_line_id": null
+    },
+    {
+      "data_set_id": 309003780,
+      "source_structure_id": 385,
+      "injection_volume": 0.3140588164,
+      "transgenic_line_id": null
+    },
+    {
+      "data_set_id": 286302294,
+      "source_structure_id": 385,
+      "injection_volume": 0.2120955592,
+      "transgenic_line_id": 177839022
+    },
+    {
+      "data_set_id": 277712166,
+      "source_structure_id": 385,
+      "injection_volume": 0.03871535815,
+      "transgenic_line_id": null
+    },
+    {
+      "data_set_id": 605657236,
+      "source_structure_id": 385,
+      "injection_volume": 0.0047398024625,
+      "transgenic_line_id": 309779993
+    },
+    {
+      "data_set_id": 293548317,
+      "source_structure_id": 417,
+      "injection_volume": 0.0526850793,
+      "transgenic_line_id": 177839331
+    },
+    {
+      "data_set_id": 298404860,
+      "source_structure_id": 385,
+      "injection_volume": 0.124728618,
+      "transgenic_line_id": 177839285
+    },
+    {
+      "data_set_id": 283017324,
+      "source_structure_id": 409,
+      "injection_volume": 0.012784659825,
+      "transgenic_line_id": 177838542
+    },
+    {
+      "data_set_id": 167511639,
+      "source_structure_id": 385,
+      "injection_volume": 0.2103427508,
+      "transgenic_line_id": 177838584
+    },
+    {
+      "data_set_id": 298324391,
+      "source_structure_id": 533,
+      "injection_volume": 0.0194409362,
+      "transgenic_line_id": 177838542
+    },
+    {
+      "data_set_id": 268320515,
+      "source_structure_id": 385,
+      "injection_volume": 0.1890134624,
+      "transgenic_line_id": 177838633
+    },
+    {
+      "data_set_id": 146077302,
+      "source_structure_id": 533,
+      "injection_volume": 0.061059292,
+      "transgenic_line_id": null
+    },
+    {
+      "data_set_id": 585910380,
+      "source_structure_id": 385,
+      "injection_volume": 0.0677600616,
+      "transgenic_line_id": 298725927
+    },
+    {
+      "data_set_id": 293472335,
+      "source_structure_id": 385,
+      "injection_volume": 0.1914851204,
+      "transgenic_line_id": 177839022
+    },
+    {
+      "data_set_id": 304565427,
+      "source_structure_id": 385,
+      "injection_volume": 0.220694236,
+      "transgenic_line_id": null
+    },
+    {
+      "data_set_id": 166562678,
+      "source_structure_id": 385,
+      "injection_volume": 0.0373642542,
+      "transgenic_line_id": 177837858
+    },
+    {
+      "data_set_id": 294266031,
+      "source_structure_id": 409,
+      "injection_volume": 0.0030883027875,
+      "transgenic_line_id": 182761781
+    },
+    {
+      "data_set_id": 585931259,
+      "source_structure_id": 385,
+      "injection_volume": 0.01990000005,
+      "transgenic_line_id": 298725927
+    },
+    {
+      "data_set_id": 267704653,
+      "source_structure_id": 385,
+      "injection_volume": 0.01423080785,
+      "transgenic_line_id": 182761781
+    },
+    {
+      "data_set_id": 167794131,
+      "source_structure_id": 402,
+      "injection_volume": 0.1453511304,
+      "transgenic_line_id": 177838435
+    },
+    {
+      "data_set_id": 277616630,
+      "source_structure_id": 385,
+      "injection_volume": 0.0681208633,
+      "transgenic_line_id": null
+    },
+    {
+      "data_set_id": 266487079,
+      "source_structure_id": 409,
+      "injection_volume": 0.1263602886,
+      "transgenic_line_id": 177839022
+    },
+    {
+      "data_set_id": 286836394,
+      "source_structure_id": 385,
+      "injection_volume": 0.0334296375,
+      "transgenic_line_id": 177838542
+    },
+    {
+      "data_set_id": 278068196,
+      "source_structure_id": 385,
+      "injection_volume": 0.0261185925,
+      "transgenic_line_id": 182693192
+    },
+    {
+      "data_set_id": 670657874,
+      "source_structure_id": 385,
+      "injection_volume": 0.02970216095,
+      "transgenic_line_id": 298725927
+    },
+    {
+      "data_set_id": 297627858,
+      "source_structure_id": 385,
+      "injection_volume": 0.00530382615,
+      "transgenic_line_id": 182693192
+    },
+    {
+      "data_set_id": 301616660,
+      "source_structure_id": 385,
+      "injection_volume": 0.0937516412,
+      "transgenic_line_id": 179697864
+    },
+    {
+      "data_set_id": 308385516,
+      "source_structure_id": 385,
+      "injection_volume": 0.018558589525,
+      "transgenic_line_id": 177839406
+    },
+    {
+      "data_set_id": 272929308,
+      "source_structure_id": 417,
+      "injection_volume": 0.1067473232,
+      "transgenic_line_id": 177838435
+    },
+    {
+      "data_set_id": 477269754,
+      "source_structure_id": 385,
+      "injection_volume": 0.0269665718,
+      "transgenic_line_id": 301613169
+    },
+    {
+      "data_set_id": 288171964,
+      "source_structure_id": 385,
+      "injection_volume": 0.02481324965,
+      "transgenic_line_id": 265180449
+    },
+    {
+      "data_set_id": 120437703,
+      "source_structure_id": 402,
+      "injection_volume": 0.1135668198,
+      "transgenic_line_id": null
+    },
+    {
+      "data_set_id": 159330030,
+      "source_structure_id": 385,
+      "injection_volume": 0.0823954404,
+      "transgenic_line_id": 177839216
+    },
+    {
+      "data_set_id": 287224335,
+      "source_structure_id": 385,
+      "injection_volume": 0.0245048265,
+      "transgenic_line_id": 179697864
+    },
+    {
+      "data_set_id": 277714322,
+      "source_structure_id": 385,
+      "injection_volume": 0.0549243254,
+      "transgenic_line_id": null
+    },
+    {
+      "data_set_id": 307137980,
+      "source_structure_id": 385,
+      "injection_volume": 0.4885201608,
+      "transgenic_line_id": null
+    },
+    {
+      "data_set_id": 304585910,
+      "source_structure_id": 385,
+      "injection_volume": 0.0894132792,
+      "transgenic_line_id": null
+    },
+    {
+      "data_set_id": 301618122,
+      "source_structure_id": 533,
+      "injection_volume": 0.0257289249,
+      "transgenic_line_id": 179697864
+    },
+    {
+      "data_set_id": 298757426,
+      "source_structure_id": 409,
+      "injection_volume": 0.0868859768,
+      "transgenic_line_id": 179697864
+    },
+    {
+      "data_set_id": 309004492,
+      "source_structure_id": 385,
+      "injection_volume": 1.0830299872,
+      "transgenic_line_id": null
+    },
+    {
+      "data_set_id": 637365535,
+      "source_structure_id": 385,
+      "injection_volume": 0.139805379,
+      "transgenic_line_id": 177838104
+    },
+    {
+      "data_set_id": 623438145,
+      "source_structure_id": 385,
+      "injection_volume": 0.00706817405,
+      "transgenic_line_id": 310459452
+    },
+    {
+      "data_set_id": 297593942,
+      "source_structure_id": 409,
+      "injection_volume": 0.0437566374,
+      "transgenic_line_id": 265180449
+    },
+    {
+      "data_set_id": 182896517,
+      "source_structure_id": 533,
+      "injection_volume": 0.1508570056,
+      "transgenic_line_id": 177838361
+    },
+    {
+      "data_set_id": 309113907,
+      "source_structure_id": 385,
+      "injection_volume": 0.786978808,
+      "transgenic_line_id": null
+    },
+    {
+      "data_set_id": 158255941,
+      "source_structure_id": 385,
+      "injection_volume": 0.0474254977,
+      "transgenic_line_id": 177838542
+    },
+    {
+      "data_set_id": 266177248,
+      "source_structure_id": 385,
+      "injection_volume": 0.0272920935,
+      "transgenic_line_id": 177839331
+    },
+    {
+      "data_set_id": 156494530,
+      "source_structure_id": 385,
+      "injection_volume": 0.1190322406,
+      "transgenic_line_id": 177838361
+    },
+    {
+      "data_set_id": 277713580,
+      "source_structure_id": 385,
+      "injection_volume": 0.0524025845,
+      "transgenic_line_id": null
+    },
+    {
+      "data_set_id": 287225041,
+      "source_structure_id": 533,
+      "injection_volume": 0.02041358865,
+      "transgenic_line_id": 179697864
+    },
+    {
+      "data_set_id": 307295727,
+      "source_structure_id": 409,
+      "injection_volume": 0.5285815808,
+      "transgenic_line_id": null
+    },
+    {
+      "data_set_id": 292793967,
+      "source_structure_id": 385,
+      "injection_volume": 0.0358146635,
+      "transgenic_line_id": 177838542
+    },
+    {
+      "data_set_id": 182184486,
+      "source_structure_id": 385,
+      "injection_volume": 0.0785351322,
+      "transgenic_line_id": 177838266
+    },
+    {
+      "data_set_id": 126862385,
+      "source_structure_id": 385,
+      "injection_volume": 0.203589316,
+      "transgenic_line_id": null
+    },
+    {
+      "data_set_id": 159753308,
+      "source_structure_id": 394,
+      "injection_volume": 0.124456913,
+      "transgenic_line_id": 177838435
+    },
+    {
+      "data_set_id": 159224478,
+      "source_structure_id": 409,
+      "injection_volume": 0.0126789166,
+      "transgenic_line_id": 177839216
+    },
+    {
+      "data_set_id": 288168426,
+      "source_structure_id": 385,
+      "injection_volume": 0.1267770728,
+      "transgenic_line_id": 182761781
+    },
+    {
+      "data_set_id": 671030719,
+      "source_structure_id": 385,
+      "injection_volume": 0.0032535216,
+      "transgenic_line_id": 298725927
+    },
+    {
+      "data_set_id": 656842599,
+      "source_structure_id": 385,
+      "injection_volume": 0.0418577551,
+      "transgenic_line_id": 179697864
+    },
+    {
+      "data_set_id": 623855077,
+      "source_structure_id": 385,
+      "injection_volume": 0.0431056038,
+      "transgenic_line_id": 179697864
+    },
+    {
+      "data_set_id": 627869431,
+      "source_structure_id": 385,
+      "injection_volume": 0.0228879147,
+      "transgenic_line_id": 309779993
+    },
+    {
+      "data_set_id": 307296433,
+      "source_structure_id": 385,
+      "injection_volume": 0.792197112,
+      "transgenic_line_id": null
+    },
+    {
+      "data_set_id": 648048922,
+      "source_structure_id": 385,
+      "injection_volume": 0.01650363365,
+      "transgenic_line_id": 517749378
+    },
+    {
+      "data_set_id": 114250546,
+      "source_structure_id": 409,
+      "injection_volume": 0.1308292258,
+      "transgenic_line_id": null
+    },
+    {
+      "data_set_id": 277849965,
+      "source_structure_id": 409,
+      "injection_volume": 0.0299148479,
+      "transgenic_line_id": 177839331
+    },
+    {
+      "data_set_id": 121510421,
+      "source_structure_id": 385,
+      "injection_volume": 0.0480481358,
+      "transgenic_line_id": 177838435
+    },
+    {
+      "data_set_id": 309564818,
+      "source_structure_id": 409,
+      "injection_volume": 0.0055655700625,
+      "transgenic_line_id": 182761781
+    },
+    {
+      "data_set_id": 286773358,
+      "source_structure_id": 385,
+      "injection_volume": 0.0119634382,
+      "transgenic_line_id": 182761781
+    },
+    {
+      "data_set_id": 127138787,
+      "source_structure_id": 385,
+      "injection_volume": 0.202187328,
+      "transgenic_line_id": null
+    },
+    {
+      "data_set_id": 293116943,
+      "source_structure_id": 385,
+      "injection_volume": 0.02429098805,
+      "transgenic_line_id": 177839406
+    },
+    {
+      "data_set_id": 267931685,
+      "source_structure_id": 385,
+      "injection_volume": 0.03184096195,
+      "transgenic_line_id": 177839406
+    },
+    {
+      "data_set_id": 156671933,
+      "source_structure_id": 394,
+      "injection_volume": 0.0627471803,
+      "transgenic_line_id": 177837713
+    },
+    {
+      "data_set_id": 307593747,
+      "source_structure_id": 385,
+      "injection_volume": 0.5185301128,
+      "transgenic_line_id": null
+    },
+    {
+      "data_set_id": 626118851,
+      "source_structure_id": 385,
+      "injection_volume": 0.0231274757,
+      "transgenic_line_id": 309779993
+    },
+    {
+      "data_set_id": 288261928,
+      "source_structure_id": 385,
+      "injection_volume": 0.0676115671,
+      "transgenic_line_id": 177838710
+    },
+    {
+      "data_set_id": 174361040,
+      "source_structure_id": 385,
+      "injection_volume": 0.1299575452,
+      "transgenic_line_id": null
+    },
+    {
+      "data_set_id": 100141219,
+      "source_structure_id": 385,
+      "injection_volume": 0.2042788832,
+      "transgenic_line_id": null
+    },
+    {
+      "data_set_id": 182293273,
+      "source_structure_id": 385,
+      "injection_volume": 0.0236976446,
+      "transgenic_line_id": 177838622
+    },
+    {
+      "data_set_id": 181258571,
+      "source_structure_id": 385,
+      "injection_volume": 0.1705708816,
+      "transgenic_line_id": 177837713
+    },
+    {
+      "data_set_id": 616677276,
+      "source_structure_id": 385,
+      "injection_volume": 0.0094927847,
+      "transgenic_line_id": 517749378
+    },
+    {
+      "data_set_id": 272930013,
+      "source_structure_id": 385,
+      "injection_volume": 0.0060511122875,
+      "transgenic_line_id": 177838435
+    },
+    {
+      "data_set_id": 303616127,
+      "source_structure_id": 417,
+      "injection_volume": 0.1445271758,
+      "transgenic_line_id": 265180449
+    },
+    {
+      "data_set_id": 304564721,
+      "source_structure_id": 385,
+      "injection_volume": 0.0813999221,
+      "transgenic_line_id": null
+    },
+    {
+      "data_set_id": 272782668,
+      "source_structure_id": 385,
+      "injection_volume": 0.2356820816,
+      "transgenic_line_id": null
+    },
+    {
+      "data_set_id": 304762965,
+      "source_structure_id": 385,
+      "injection_volume": 0.078968988,
+      "transgenic_line_id": null
+    },
+    {
+      "data_set_id": 157767683,
+      "source_structure_id": 385,
+      "injection_volume": 0.012721349375,
+      "transgenic_line_id": 177839331
+    },
+    {
+      "data_set_id": 574950390,
+      "source_structure_id": 385,
+      "injection_volume": 0.2162888224,
+      "transgenic_line_id": 301467016
+    },
+    {
+      "data_set_id": 656657344,
+      "source_structure_id": 385,
+      "injection_volume": 0.00134560094375,
+      "transgenic_line_id": 310459452
+    },
+    {
+      "data_set_id": 184073678,
+      "source_structure_id": 417,
+      "injection_volume": 0.0494818072,
+      "transgenic_line_id": 177837516
+    },
+    {
+      "data_set_id": 297670312,
+      "source_structure_id": 394,
+      "injection_volume": 0.0804796139,
+      "transgenic_line_id": 266649644
+    },
+    {
+      "data_set_id": 100141599,
+      "source_structure_id": 394,
+      "injection_volume": 0.12548312,
+      "transgenic_line_id": null
+    },
+    {
+      "data_set_id": 309515141,
+      "source_structure_id": 394,
+      "injection_volume": 0.0434574091,
+      "transgenic_line_id": 182761781
+    },
+    {
+      "data_set_id": 183471884,
+      "source_structure_id": 385,
+      "injection_volume": 0.014149243675,
+      "transgenic_line_id": 177839022
+    },
+    {
+      "data_set_id": 297225422,
+      "source_structure_id": 409,
+      "injection_volume": 0.0464237368,
+      "transgenic_line_id": 265180449
+    },
+    {
+      "data_set_id": 125435783,
+      "source_structure_id": 385,
+      "injection_volume": 0.0288728531,
+      "transgenic_line_id": 177839216
+    },
+    {
+      "data_set_id": 268040381,
+      "source_structure_id": 385,
+      "injection_volume": 0.0382413346,
+      "transgenic_line_id": 177837516
+    },
+    {
+      "data_set_id": 511234217,
+      "source_structure_id": 385,
+      "injection_volume": 0.0183987944,
+      "transgenic_line_id": 301613169
+    },
+    {
+      "data_set_id": 309372716,
+      "source_structure_id": 385,
+      "injection_volume": 0.9087897504,
+      "transgenic_line_id": null
+    },
+    {
+      "data_set_id": 166461899,
+      "source_structure_id": 409,
+      "injection_volume": 0.0411706477,
+      "transgenic_line_id": 177838542
+    },
+    {
+      "data_set_id": 638314843,
+      "source_structure_id": 385,
+      "injection_volume": 0.2095822316,
+      "transgenic_line_id": null
+    },
+    {
+      "data_set_id": 671033786,
+      "source_structure_id": 385,
+      "injection_volume": 0.0427155687,
+      "transgenic_line_id": 298725927
+    },
+    {
+      "data_set_id": 176901480,
+      "source_structure_id": 385,
+      "injection_volume": 0.0619028025,
+      "transgenic_line_id": 177839331
+    },
+    {
+      "data_set_id": 296052133,
+      "source_structure_id": 385,
+      "injection_volume": 0.0658819896,
+      "transgenic_line_id": 265180449
+    },
+    {
+      "data_set_id": 168515938,
+      "source_structure_id": 385,
+      "injection_volume": 0.0146920718,
+      "transgenic_line_id": 177837281
+    },
+    {
+      "data_set_id": 292126180,
+      "source_structure_id": 385,
+      "injection_volume": 0.0517806912,
+      "transgenic_line_id": 182693192
+    },
+    {
+      "data_set_id": 267657327,
+      "source_structure_id": 394,
+      "injection_volume": 0.08457743,
+      "transgenic_line_id": 177839285
+    },
+    {
+      "data_set_id": 287495026,
+      "source_structure_id": 409,
+      "injection_volume": 0.1061046098,
+      "transgenic_line_id": 177839022
+    },
+    {
+      "data_set_id": 183173527,
+      "source_structure_id": 385,
+      "injection_volume": 0.017167989125,
+      "transgenic_line_id": 177838435
+    },
+    {
+      "data_set_id": 297233422,
+      "source_structure_id": 394,
+      "injection_volume": 0.0374068205,
+      "transgenic_line_id": 265180449
+    },
+    {
+      "data_set_id": 297629988,
+      "source_structure_id": 409,
+      "injection_volume": 0.0641696699,
+      "transgenic_line_id": 177837713
+    },
+    {
+      "data_set_id": 157955639,
+      "source_structure_id": 385,
+      "injection_volume": 0.2408309036,
+      "transgenic_line_id": 177838302
+    },
+    {
+      "data_set_id": 477475894,
+      "source_structure_id": 385,
+      "injection_volume": 0.011411248625,
+      "transgenic_line_id": 309779993
+    },
+    {
+      "data_set_id": 177781745,
+      "source_structure_id": 385,
+      "injection_volume": 0.0219538277,
+      "transgenic_line_id": 177839331
+    },
+    {
+      "data_set_id": 299820770,
+      "source_structure_id": 417,
+      "injection_volume": 0.0990182886,
+      "transgenic_line_id": 177839216
+    },
+    {
+      "data_set_id": 557200148,
+      "source_structure_id": 409,
+      "injection_volume": 0.0444596355,
+      "transgenic_line_id": 460133878
+    },
+    {
+      "data_set_id": 168097187,
+      "source_structure_id": 385,
+      "injection_volume": 0.01806967855,
+      "transgenic_line_id": 177839216
+    },
+    {
+      "data_set_id": 596571282,
+      "source_structure_id": 385,
+      "injection_volume": 0.0011576905375,
+      "transgenic_line_id": 301021674
+    },
+    {
+      "data_set_id": 638978767,
+      "source_structure_id": 385,
+      "injection_volume": 0.0061021813125,
+      "transgenic_line_id": 298725927
+    },
+    {
+      "data_set_id": 263780729,
+      "source_structure_id": 385,
+      "injection_volume": 0.22368353,
+      "transgenic_line_id": 177839022
+    },
+    {
+      "data_set_id": 156545918,
+      "source_structure_id": 385,
+      "injection_volume": 0.0315516733,
+      "transgenic_line_id": 177837713
+    }
+  ],
+  "weights_target_by_source": [
+    [
+      0.0,
+      3.2173915414923497,
+      3.16379035416843,
+      0.44184705419696046,
+      0.937596384283843,
+      1.1552348648202626
+    ],
+    [
+      0.182517090602249,
+      0.0,
+      1.491542947199255,
+      0.07280888762995945,
+      0.0654025596667045,
+      0.530665734113758
+    ],
+    [
+      0.0440720277542146,
+      0.58464868213788,
+      0.0,
+      0.2271017451952665,
+      0.121304749298074,
+      0.4550505921522135
+    ],
+    [
+      0.0168092267458489,
+      0.170051368097021,
+      1.021387644536141,
+      0.0,
+      0.0385018089103408,
+      0.3601229937879945
+    ],
+    [
+      0.0780689959312777,
+      0.42287677438647,
+      0.6735425114090849,
+      0.0428377379205379,
+      0.0,
+      0.8266242825605306
+    ],
+    [
+      0.0200710374870847,
+      0.2239072609726805,
+      0.716611189028155,
+      0.09009497604862375,
+      0.353520486897526,
+      0.0
+    ]
+  ]
+}

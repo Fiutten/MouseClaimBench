@@ -1,6 +1,11 @@
 \begin{figure}[t!]
 \centering
 \includegraphics[width=0.94\textwidth]{figures/claimbench_ablation.png}
-\caption{Known-truth comparison of the full gate, shortcut evaluators, and component ablations using the \ac{ori}. Lower \ac{ori} indicates fewer unsupported authorizations. It must be interpreted with the \ac{cni} in Table~\ref{tab:synthetic-evaluator-comparison}, since a restrictive evaluator can obtain low overclaiming risk by blocking supportable claims. Removing either topology or direction creates 12 false authorizations. Removing reproducibility creates no additional error in this suite and is retained as a negative ablation result.}
+\caption{Legacy contract-conformance comparison using the standard false-positive
+rate. The labels share the operational semantics of the v2 gate, so the figure
+tests software behaviour rather than independent scientific validity. Removing
+either topology or direction creates 12 false authorizations. Removing the
+legacy reproducibility block creates no additional error in this constructed
+suite and is retained as a negative ablation result.}
 \label{fig:ablation}
 \end{figure}

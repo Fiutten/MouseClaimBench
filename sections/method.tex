@@ -1,70 +1,73 @@
 \section{Method}
 \label{sec:method}
 
-ClaimBench is designed as a decision-support process for authors, reviewers, and research teams. Its inputs are a manuscript, a set of declared scientific claims, and the computational artifacts that may support those claims. Its output is not a paper-level acceptance score. It is a claim-level decision with an evidential rationale, provenance, permitted wording, and blocked wording. Fig.~\ref{fig:claimbench-workflow} presents the complete workflow.
+MouseClaimBench is a claim-level \ac{dss}. Its inputs are a candidate statement, a domain profile, and the artifacts that may support the statement. Its output is an auditable disposition with the contributing observations, rules, sources, and an editorial rationale. It does not calculate a paper-level acceptance score. Fig.~\ref{fig:claimbench-workflow} presents the workflow.
 
 \input{figures/claimbench_workflow}
 
-\subsection{Claim contracts and evidence representation}
+\subsection{Domain-aware evidence contracts}
 \label{subsec:claim-contracts}
 
-Let $c$ denote a candidate statement and let $k(c)$ denote its claim family. The current taxonomy contains predictive, reproducibility, evidence-retrieval, topology-specific, directional, structure--function, mechanistic, causal, digital-twin, and state-of-the-art claims. The taxonomy is operational. It captures recurring interpretation errors in scientific \ac{ai} papers and does not attempt to define a general philosophy of scientific explanation.
-
-A claim contract is represented as
+Let $c$ denote a candidate statement, $k(c)$ its claim family, and $d(c)$ the domain protocol under which its evidence was generated. A contract is defined as
 \begin{equation}
-\mathcal{C}(c)=\langle k, s, R_k, \boldsymbol{\tau}_k, u, w^{+}, w^{-}, \mathcal{A}\rangle,
+\mathcal{C}(c)=\langle k,d,R_k,\Phi_d,w^{+},w^{-},\mathcal{A}\rangle,
 \label{eq:claim-contract}
 \end{equation}
-where $s$ is the declared scope, $R_k$ is the set of mandatory evidence blocks, $\boldsymbol{\tau}_k$ contains their operational thresholds, $u$ is the uncertainty policy, $w^{+}$ and $w^{-}$ are the permitted and blocked formulations, and $\mathcal{A}$ is the set of bound artifacts. Each artifact declaration contains a path and one or more expectations over stored fields. A contract therefore fails when a required file is missing, an expected decision is not reproduced, or a mandatory evidence block does not pass.
+where $R_k$ is the set of evidence blocks required by claim family $k$, $\Phi_d$ is the set of domain-specific predicates, $w^{+}$ and $w^{-}$ are admissible and blocked wording, and $\mathcal{A}$ contains the source artifacts and revisions. The contract is executable because every required block names both a source and a decision rule.
 
-For a claim $c$, the evidence vector is $\mathbf{e}(c)=(e_1,\ldots,e_J)$. Its elements may be numerical, such as predictive agreement or a matched effect size, or logical, such as the availability of intervention evidence, independent validation, or a clean release. Every mandatory block is converted into a Boolean decision
+The observed value for block $j$ is denoted by $x_{j,d}$. It remains in the scale reported by its source analysis. The contract does not assume that predictive correlation, a cross-mouse coefficient, a matched structure--function delta, and a bootstrap interval are commensurable. Instead, the domain predicate produces one evidence state
 \begin{equation}
-b_j(c)=\mathbb{I}\bigl[e_j(c)\ \text{satisfies}\ \tau_{j,k}\bigr]\,\mathbb{I}\bigl[\mathcal{A}_j\ \text{passes}\bigr],
-\label{eq:evidence-block}
+B_{j,d}(c)=\phi_{j,d}\bigl(x_{j,d},\mathcal{A}_{j}\bigr)
+\in \mathcal{S}_{E},
+\qquad
+\mathcal{S}_{E}=\{P,F,U,N,R\},
+\label{eq:evidence-state}
 \end{equation}
-where the first indicator evaluates the declared criterion and the second evaluates artifact availability and expectations. This representation keeps numerical evidence and release provenance in the same contract without claiming that they measure the same construct.
+where $P$ means passed, $F$ failed, $U$ unknown, $N$ not applicable, and $R$ requires external review. A failed state means that the stated test was executed and did not pass. An unknown state means that a required observation is absent. A not-applicable state means that the protocol did not target the block. These states are not interchangeable.
 
-Table~\ref{tab:claim-semantics} gives the principal claim classes and their mandatory evidence. Stronger claim families contain additional veto conditions. For example, a mechanistic claim requires predictive, reproducibility, topology, and direction blocks. A causal claim requires explicit causal evidence. Digital-twin wording additionally requires entity and scope conditions that are not satisfied by a local association or a generic population model.
+The v3 taxonomy contains ten authorization targets. Prediction, topology specificity, direction, local structure--function association, mechanism, causality, and digital-twin scope describe scientific interpretation. Computational reproducibility, internal reproduction, and external replication describe distinct forms of repeatability and confirmation. Table~\ref{tab:claim-semantics} gives their required blocks. A mechanistic claim requires prediction, internal reproduction, topology specificity, and directed identifiability. A digital-twin claim also requires intervention, whole-brain coverage, independent validation, and reproducible computation.
 
 \input{tables/claim_semantics}
 
-\subsection{Non-compensatory authorization and uncertainty}
+The separation among reproducibility concepts is deliberate. A clean revision supports computational reproducibility. Consistency across non-overlapping mice or windows in one public resource supports internal reproduction. Replication requires a different resource, laboratory, or study. A result may pass the first two blocks while the third remains unknown. This is the situation for the available \ac{microns} hold-outs.
+
+\subsection{Non-compensatory disposition policy}
 \label{subsec:claim-authorization}
 
-ClaimBench authorizes claim family $k$ through a conjunctive rule
+For claim family $k$, let $\mathbf{B}_{k}(c)=\{B_{j,d}(c):j\in R_k\}$ contain the states of all required blocks. The policy is
 \begin{equation}
-G_k(c)=\prod_{j\in R_k} b_j(c).
-\label{eq:claim-gate}
+D_k(c)=
+\begin{cases}
+\text{blocked}, & F\in\mathbf{B}_{k},\\
+\text{external review}, & F\notin\mathbf{B}_{k}\text{ and }R\in\mathbf{B}_{k},\\
+\text{uncertain}, & F,R\notin\mathbf{B}_{k}\text{ and }U\in\mathbf{B}_{k},\\
+\text{out of scope}, & F,R,U\notin\mathbf{B}_{k}\text{ and }N\in\mathbf{B}_{k},\\
+\text{supported}, & \mathbf{B}_{k}=\{P\}.
+\end{cases}
+\label{eq:five-state-gate}
 \end{equation}
-The claim is authorized only when every mandatory block equals one. Equation~\ref{eq:claim-gate} is the formal source of non-compensation. It differs from a weighted score $S(c)=\sum_j w_j e_j(c)$ because no increase in a passing block can offset a failed block. The rule resembles a multicriteria veto, although ClaimBench applies it to claim authorization rather than alternative ranking \citep{figueira2013electre}.
+The first line makes the policy non-compensatory. Once a required executed test fails, a larger value in another block cannot recover the claim. The ordering also preserves a useful distinction. A failed topology test blocks a mechanistic statement even when direction was not measured, because the statement is already unsupported. In the absence of failure, missing evidence remains uncertain rather than being converted into a negative measurement.
 
-The operational thresholds are declared in the repository and exposed to sensitivity analysis. They are not universal scientific constants. The nominal implementation uses thresholds of $0.30$ for prediction, $0.70$ for reproducibility, $0.05$ for topology effect, $0.50$ for directed fraction, and $0.01$ for matched structure--function effect. Boolean requirements, including causal evidence and independent validation, are evaluated directly. The threshold grid reported in Section~\ref{subsec:known-truth-results} is part of the method because a gate that hides its dangerous configurations would provide false assurance.
+The policy is related to a multicriteria veto but differs from an outranking score \citep{figueira2013electre}. It does not compare alternatives and it contains no trade-off weights. A stronger claim simply has a larger set of mandatory blocks. The recommended manuscript action follows from the disposition. Supported wording remains bounded to the declared scope. Blocked wording is removed or weakened. Uncertain wording requires new evidence or explicit qualification. Out-of-scope wording is excluded from the evaluated contribution. External-review wording remains with a qualified human decision maker.
 
-ClaimBench adds an uncertain state through deterministic local perturbations. Let $\mathbf{e}^{(1)},\ldots,\mathbf{e}^{(M)}$ be the nominal evidence vector and the declared perturbations around its numerical components. The authorization stability is
-\begin{equation}
-s_k(c)=\frac{1}{M}\sum_{m=1}^{M}G_k\bigl(c,\mathbf{e}^{(m)}\bigr).
-\label{eq:claim-stability}
-\end{equation}
-The decision is supported when $s_k(c)\geq0.95$, blocked when $s_k(c)\leq0.05$, and uncertain otherwise. This score is a deterministic local stability proportion. It must not be interpreted as a posterior probability, a confidence level, or a distribution-free guarantee. Its purpose is to prevent a locally unstable authorization from being reported as established support.
+This workflow model is distinct from the legacy v2 numerical-stability analysis. The legacy analysis creates 11 samples from each constructed case. It evaluates the nominal vector and positive and negative perturbations of 0.03 for each of five numerical fields, changed one at a time. A claim is numerically stable-supported when at least 95\% of those samples pass, stable-blocked when at most 5\% pass, and locally uncertain otherwise. This three-state output is a deterministic neighbourhood diagnostic. It is not a posterior probability, confidence interval, conformal guarantee, or substitute for the five dispositions in Equation~\ref{eq:five-state-gate}.
 
-Known-truth experiments permit two explicit error measures. For each evaluator, a \ac{fp} is an unsupported claim that is authorized and a \ac{fn} is a supportable claim that is blocked. The complementary outcomes are a \ac{tn}, when an unsupported claim is blocked, and a \ac{tp}, when a supportable claim is authorized. The \ac{ori} and \ac{cni} are
+Evaluation uses ordinary classification measures. For a reference set of supportable claims, a \ac{fp} is an unsupported claim authorized by a policy and a \ac{fn} is a supportable claim not authorized. The corresponding rates are
 \begin{align}
-\mathrm{ORI} &= \frac{FP}{FP+TN},
-\label{eq:ori}\\
-\mathrm{CNI} &= \frac{FN}{FN+TP}.
-\label{eq:cni}
+\mathrm{FPR} &= \frac{FP}{FP+TN},
+\label{eq:fpr}\\
+\mathrm{FNR} &= \frac{FN}{FN+TP}.
+\label{eq:fnr}
 \end{align}
-\ac{ori} measures the fraction of unsupported claim opportunities that are admitted. \ac{cni} measures the fraction of supportable opportunities that are withheld. Both are required because a gate can avoid overclaiming by blocking everything. In the present benchmark, lower values are better and the two indices are interpreted together.
+These are standard error rates. Earlier artifacts also called them the Overclaiming Risk Index and Conservativeness Index. Version 3 retains those keys only for backward compatibility and does not present them as new metrics.
 
-\subsection{Artifact binding, claim discovery, and human authority}
+\subsection{Artifact binding and authority boundaries}
 \label{subsec:artifact-binding}
 
-Claim contracts are stored in a small \ac{yaml} schema. Each specification records the claim identifier, family, scope, evidence family, severity, permitted and blocked wording, blocked textual patterns, non-compensatory requirements, uncertainty policy, and required artifacts. The audit resolves each artifact path, reads structured outputs, evaluates the declared expectations, and records missing or failing evidence. This creates a reproducible link from manuscript wording to the exact code and data product used to justify it.
+Evidence blocks are immutable records containing a name, state, source path, rule, rationale, and named observations. Duplicate block names are rejected. Missing required blocks are represented as unknown. The real-case builder requires a complete inventory and raises an error when an expected source artifact is absent. This design prevents silent defaults from becoming evidence.
 
-Claim discovery occurs before authorization. The reproducible mode uses a deterministic extractor that identifies candidate sentences associated with prediction, mechanism, causality, structure--function relations, reproducibility, generalization, digital twins, and state-of-the-art language. An optional local \ac{json} file can contain candidates produced by an external \ac{llm}. The source of each candidate is recorded, but the candidate is treated as untrusted input. It cannot change thresholds, create evidence, or authorize a claim.
+Claim discovery precedes authorization. The reproducible mode uses deterministic patterns to identify candidate sentences associated with prediction, mechanism, causality, structure--function relations, replication, digital twins, and state-of-the-art language. An optional local \ac{json} file may contain candidates generated by an external \ac{llm}. Candidate source is recorded, but every candidate is untrusted. It cannot modify predicates, create observations, change provenance, or authorize a claim.
 
-This separation addresses authority drift in \ac{llm}-assisted scientific workflows. Modern verification systems can improve retrieval, decomposition, and attribution, but their outputs remain sensitive to context and evidence quality \citep{fadeeva2024factchecking,tan2026scitrue}. ClaimBench uses language models only to increase inspection coverage. The final decision remains deterministic for a fixed evidence package and can be traced to the contract and artifacts.
+Human authority remains necessary at three points. Domain experts define whether a rule is scientifically appropriate. Adjudicators establish reference labels for a future human evaluation. Authors and reviewers retain responsibility for the final wording and significance of a study. The automated system can expose a missing intervention or failed topology control. It cannot decide novelty, ethical acceptability, practical importance, or manuscript acceptance.
 
-The human retains authority at two points. First, domain experts define the contract scope and mandatory evidence. ClaimBench cannot determine that a domain-specific criterion is scientifically sufficient without that specification. Second, experts resolve claims marked as needing external review. The system supports editorial decisions but does not judge novelty, importance, ethical acceptability, or paper acceptance.
-
-The complete process has five stages. Candidate statements are discovered and classified. Contracts bind each statement to mandatory evidence. Artifact checks evaluate metrics, controls, provenance, and release integrity. The non-compensatory gate returns supported, blocked, or uncertain status. Finally, the decision artifact links the result to bounded wording and the release state. This design makes wording drift detectable. A numerical result may remain unchanged while an unsupported interpretation is reintroduced during manuscript revision, and the manuscript audit is intended to catch that case.
+The release gate enforces the same boundary. It verifies required artifacts, expected decisions, recorded revisions, and the absence of `-dirty' suffixes. It also retains active scientific blockers in the release output. A package can therefore be technically ready while human decision benefit and external biological replication remain unvalidated. This result is intentional. Technical readiness and scientific sufficiency are different decisions.

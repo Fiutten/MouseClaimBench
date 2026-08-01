@@ -1,18 +1,18 @@
 \section{Research Contributions}
 \label{sec:contributions}
 
-ClaimBench transforms the validation of mouse-brain modelling claims into a decision-support problem. The decision concerns the admissible interpretation of a result, rather than the ranking of models under interchangeable criteria. Given a manuscript and its computational artifacts, the framework determines which statements can be retained, which must be weakened, which remain uncertain, and which require evidence outside the current study. The contract design remains applicable to other scientific \ac{ai} domains, but the present scope and examples are neurocomputational. The paper makes the following contributions:
+MouseClaimBench transforms the interpretation of computational mouse-brain results into a claim-level decision problem. The system does not assign a global quality score to a paper. It determines which evidence requirements pass, which fail, which were not observed, and which were not targeted by the protocol. The resulting artifact recommends an editorial disposition while preserving human authority. The paper makes five contributions:
 
 \begin{itemize}
-    \item \textbf{An executable claim-contract model.} Predictive, reproducibility, topology-specific, directional, structure--function, mechanistic, causal, digital-twin, and state-of-the-art statements are represented through explicit requirements, scope, permitted wording, blocked wording, and artifact provenance.
+    \item \textbf{A domain-aware evidence contract.} The contract records original-scale observations, executable predicates, source revisions, required blocks, and admissible wording. It separates computational reproducibility, internal reproduction, and external replication rather than treating them as one property.
 
-    \item \textbf{A non-compensatory authorization rule.} Mandatory evidence blocks act as veto conditions. A strong score in one block cannot replace missing evidence in another. The proposal also introduces a separate uncertain state for decisions that are unstable under declared local perturbations.
+    \item \textbf{A five-disposition non-compensatory policy.} A failed required block vetoes the dependent claim. Missing evidence produces uncertainty, an untargeted block produces an out-of-scope decision, and non-automatable criteria are directed to external review. These workflow dispositions are distinct from local numerical stability.
 
-    \item \textbf{A bounded \ac{llm}-assisted workflow.} Deterministic rules or an optional external \ac{llm} can detect candidate claims, but candidate generation is separated from authorization. This preserves human oversight and prevents linguistic plausibility from becoming scientific evidence.
+    \item \textbf{An independently labelled structural-equation benchmark.} Five declared data-generating regimes produce 500 finite-sample cases. Their graph and intervention labels are independent of the thresholds used to evaluate the observations. The benchmark reports standard \ac{fpr}, \ac{fnr}, confidence intervals, and a paired policy comparison.
 
-    \item \textbf{A multi-layer experimental evaluation.} Gate semantics are tested on 144 known-truth adversarial cases and 243 threshold configurations. SciFact and Tuebingen provide external controls. Component ablations quantify the failure modes produced by correlation-only, leaderboard-only, reliability-only, and compensatory alternatives.
+    \item \textbf{An artifact-grounded mouse-brain case matrix.} Allen \ac{vbn}, Static Sensorium, Dynamic Sensorium, and \ac{microns} are evaluated from stored observed fields without invented cross-domain normalization. The matrix exposes the strongest bounded claim supported by each resource and the evidence that blocks stronger wording.
 
-    \item \textbf{A reproducible review artifact.} Numerical results, claim boundaries, manuscript wording, threat-model checks, and release metadata are connected in one inspectable package. The artifact records why a statement is supported, blocked, uncertain, or outside the automated scope.
+    \item \textbf{A reproducible decision-support package with explicit unresolved validation.} SciFact and Tuebingen test external failure modes. The release gate checks clean artifact revisions and retains active blockers. A 50-item expert-study package is provided for ethics review and preregistration, but no human result is claimed because the study has not been executed.
 \end{itemize}
 
-These contributions define a bounded methodological claim. ClaimBench does not establish biological truth, causal discovery performance, universal threshold calibration, or automated peer review. It provides a \ac{dss} layer that keeps these interpretations separate and makes the evidence boundary reproducible.
+These contributions support a bounded claim. MouseClaimBench implements and evaluates a traceable scientific-claim decision policy for the studied conditions. It does not establish universal claim validity, improved human review, causal-discovery performance, external biological replication, or a complete mouse-brain digital twin.

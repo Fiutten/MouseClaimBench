@@ -361,6 +361,11 @@ def run(
         "shortcut_only_correct": 0,
         "both_wrong": 0,
     }
+    case_level_comparison = {
+        "contract_fewer_errors": 0,
+        "shortcut_fewer_errors": 0,
+        "tied_errors": 0,
+    }
     regime_rows: list[dict[str, Any]] = []
     for regime_index, regime in enumerate(REGIMES):
         regime_aggregate = {name: {"tp": 0, "fp": 0, "tn": 0, "fn": 0} for name in aggregate}
@@ -409,6 +414,18 @@ def run(
                     else "both_wrong"
                 )
                 paired_correctness[paired_key] += 1
+            contract_errors = len(reference.symmetric_difference(contract_claims))
+            shortcut_errors = len(
+                reference.symmetric_difference(predictions["prediction_shortcut"])
+            )
+            case_key = (
+                "contract_fewer_errors"
+                if contract_errors < shortcut_errors
+                else "shortcut_fewer_errors"
+                if shortcut_errors < contract_errors
+                else "tied_errors"
+            )
+            case_level_comparison[case_key] += 1
         regime_rows.append(
             {
                 "regime": regime,
@@ -457,19 +474,19 @@ def run(
                 }
             )
 
-    discordant = paired_correctness["contract_only_correct"] + paired_correctness[
-        "shortcut_only_correct"
+    non_tied_cases = case_level_comparison["contract_fewer_errors"] + case_level_comparison[
+        "shortcut_fewer_errors"
     ]
-    mcnemar_p = (
+    case_sign_p = (
         float(
             stats.binomtest(
-                paired_correctness["contract_only_correct"],
-                discordant,
+                case_level_comparison["contract_fewer_errors"],
+                non_tied_cases,
                 p=0.5,
                 alternative="two-sided",
             ).pvalue
         )
-        if discordant
+        if non_tied_cases
         else 1.0
     )
 
@@ -488,10 +505,15 @@ def run(
         "num_claim_decisions_per_policy": seeds * len(REGIMES) * len(claim_universe),
         "aggregate_by_policy": aggregate_rows,
         "aggregate_by_policy_and_claim": per_claim_rows,
-        "paired_policy_comparison": {
+        "paired_decision_counts": {
             **paired_correctness,
-            "discordant_decisions": discordant,
-            "exact_mcnemar_p_value": mcnemar_p,
+            "interpretation": "descriptive only because claims within a generated case are dependent",
+        },
+        "case_level_policy_comparison": {
+            **case_level_comparison,
+            "non_tied_cases": non_tied_cases,
+            "exact_two_sided_sign_test_p_value": case_sign_p,
+            "unit": "independently generated structural-equation case",
         },
         "by_regime": regime_rows,
         "limits": [

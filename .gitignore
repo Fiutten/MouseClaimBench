@@ -10,6 +10,8 @@ __pycache__/
 build/
 dist/
 data/
+!mousebrainbench/data/
+!mousebrainbench/data/**
 outputs/
 runs/
 *.aux
@@ -21,4 +23,3 @@ runs/
 *.out
 *.synctex.gz
 *.toc
-

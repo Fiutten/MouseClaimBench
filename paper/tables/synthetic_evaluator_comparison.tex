@@ -1,21 +1,17 @@
 \begin{table}[t!]
 \centering
-\caption{Known-truth comparison over 1,152 claim opportunities. \ac{ori} is the fraction of unsupported opportunities authorized, while \ac{cni} is the fraction of supportable opportunities blocked. Lower values are better for both indices.}
-\label{tab:synthetic-evaluator-comparison}
+\caption{Oracle structural-equation benchmark over 500 generated cases and
+5,000 claim decisions per policy. Intervals are 95\% Wilson intervals. \acs{fpr} and
+\acs{fnr} retain their standard meanings and are not proposed as new metrics.}
+\label{tab:oracle-policy-comparison}
 \small
-\renewcommand{\arraystretch}{1.14}
-\begin{tabularx}{\textwidth}{@{}p{0.27\textwidth}rrrrY@{}}
+\renewcommand{\arraystretch}{1.13}
+\begin{tabularx}{\textwidth}{@{}p{0.24\textwidth}rrrrYY@{}}
 \toprule
-Evaluator & \ac{fp} & \ac{fn} & \ac{ori} & \ac{cni} & Main failure mode \\
+Policy & \acs{tp} & \acs{fp} & \acs{tn} & \acs{fn} & \acs{fpr} (95\% CI) & \acs{fnr} (95\% CI) \\
 \midrule
-ClaimBench gate & 0 & 0 & 0.000 & 0.000 & No error under declared known-truth semantics \\
-Correlation only & 325 & 61 & 0.521 & 0.116 & Prediction promoted to broad scientific support \\
-Leaderboard only & 319 & 67 & 0.511 & 0.127 & Rank performance promoted beyond prediction \\
-Reliability only & 178 & 202 & 0.285 & 0.383 & Reproducibility treated as structure and mechanism \\
-Compensatory score & 84 & 75 & 0.135 & 0.142 & Passing blocks offset missing mandatory evidence \\
-Topology only & 24 & 336 & 0.038 & 0.636 & Topology promoted to direction and mechanism \\
-No topology block & 12 & 0 & 0.019 & 0.000 & Mechanism admitted without topology specificity \\
-No direction block & 12 & 0 & 0.019 & 0.000 & Mechanism admitted without directed evidence \\
+Evidence contract v3 & 1,954 & 56 & 2,844 & 146 & 0.019 (0.015--0.025) & 0.070 (0.059--0.081) \\
+Prediction shortcut & 2,085 & 785 & 2,115 & 15 & 0.271 (0.255--0.287) & 0.007 (0.004--0.012) \\
 \bottomrule
 \end{tabularx}
 \end{table}

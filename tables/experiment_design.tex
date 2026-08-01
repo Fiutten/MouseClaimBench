@@ -1,26 +1,24 @@
 \begin{table}[t!]
 \centering
-\caption{Experimental design. Each experiment connects a decision-support question to a declared evidence source and a bounded acceptance criterion.}
+\caption{Evaluation questions, evidence units, and the interpretation allowed by
+each experiment. The last column is part of the protocol and prevents a passing
+software check from being reported as biological or human validation.}
 \label{tab:experiment-design}
 \small
-\renewcommand{\arraystretch}{1.15}
-\begin{tabularx}{\textwidth}{@{}p{0.07\textwidth}p{0.28\textwidth}p{0.27\textwidth}Y@{}}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\textwidth}{@{}p{0.07\textwidth}p{0.25\textwidth}p{0.29\textwidth}Y@{}}
 \toprule
-Experiment & Decision question & Stress test & Acceptance criterion \\
+ID & Question & Evidence unit & Maximum admissible interpretation \\
 \midrule
-E1 & Does the gate implement the intended claim semantics? & Synthetic known-truth evidence configurations & No unsupported claim is authorized as supported \\
+E1 & Does the contract reduce unsupported authorization when labels are independent of its thresholds? & 500 structural-equation cases and 5,000 claim decisions per policy & Finite-sample policy comparison on five declared generated regimes \\
 \addlinespace[2pt]
-E2 & Are thresholds informative rather than arbitrary? & Threshold sweep over safe and dangerous regions & Safe regions and dangerous regions are both reported \\
+E2 & What claims do real mouse-brain artifacts support? & Allen \acs{vbn}, Static Sensorium, Dynamic Sensorium, and \acs{microns} summaries & Artifact-grounded case study without causal or external-replication claims \\
 \addlinespace[2pt]
-E3 & Can external scientific claims be audited without lexical shortcuts? & SciFact retrieval and rationale control & Retrieval, support, abstention, and overclaiming risk are separated \\
+E3 & Does retrieval or association justify stronger wording? & 809/300 SciFact train/development claims and 108 Tuebingen pairs & External failure-mode control, not task state of the art \\
 \addlinespace[2pt]
-E4 & Does the framework block causal wording when direction is not identified? & Tuebingen cause-effect control & Correlation-only direction claims remain blocked \\
+E4 & Does the legacy implementation conform to its declared semantics? & 144 constructed cases, 1,152 opportunities, 243 threshold cells, and local perturbations & Software conformance and sensitivity only \\
 \addlinespace[2pt]
-E5 & Does \ac{llm} assistance remain non-authoritative? & Deterministic and optional-file candidate extraction & Candidate extraction cannot authorize a claim \\
-\addlinespace[2pt]
-E6 & Are the components non-redundant? & Component ablation and reviewer threat model & Component effects and negative ablations are reported without selection \\
-\addlinespace[2pt]
-E7 & Is the release package auditable? & Reproduction manifest and release check & Required artifacts are present, non-dirty, and aligned with expected decisions \\
+E5 & Is the package reproducible and honest about unresolved evidence? & Clean revisions, release expectations, and an unexecuted expert-study protocol & Methodological release readiness without human-effect validation \\
 \bottomrule
 \end{tabularx}
 \end{table}

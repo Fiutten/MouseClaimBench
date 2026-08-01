@@ -40,7 +40,8 @@ def run(output: Path = DEFAULT_OUTPUT) -> Path:
     for source in tex_sources:
         (output / source.name).write_text(_flatten_tex(source.read_text()))
 
-    shutil.copy2(ROOT / "references.bib", output / "references.bib")
+    for support_file in ("references.bib", "elsarticle.cls", "elsarticle-harv.bst"):
+        shutil.copy2(ROOT / support_file, output / support_file)
     for source in sorted((ROOT / "figures").glob("*.png")):
         shutil.copy2(source, output / source.name)
 
