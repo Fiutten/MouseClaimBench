@@ -298,7 +298,7 @@ def build_oracle_benchmark() -> Image.Image:
         y += 40
 
     draw.line((900, 35, 900, 720), fill="#94a3b8", width=3)
-    draw.text((1350, 55), "B. Paired decision correctness", font=HEAD, fill=INK, anchor="mm")
+    draw.text((1350, 55), "B. Descriptive decision pairing", font=HEAD, fill=INK, anchor="mm")
     paired = payload["paired_decision_counts"]
     paired_rows = [
         ("Both correct", paired["both_correct"], "#6b9f7c"),
@@ -475,7 +475,7 @@ def build_ablation() -> Image.Image:
         ("Topology only", "topology_only"),
         ("No topology block", "ablated_claim_gate_no_topology"),
         ("No direction block", "ablated_claim_gate_no_directed"),
-        ("Full ClaimBench gate", "claim_gate"),
+        ("Legacy v2 full gate", "claim_gate"),
     ]
 
     img = Image.new("RGB", (1800, 800), WHITE)
@@ -540,7 +540,7 @@ def build_sensitivity() -> Image.Image:
     )
 
     draw.rounded_rectangle((940, 35, 1730, 665), radius=18, fill=WHITE, outline="#94a3b8", width=3)
-    draw.text((1335, 80), "B. Three-state gate", font=HEAD, fill=INK, anchor="mm")
+    draw.text((1335, 80), "B. Legacy local stability", font=HEAD, fill=INK, anchor="mm")
     statuses = [
         ("Supported", uncertainty["status_counts"]["supported"], "#3d8b63"),
         ("Uncertain", uncertainty["status_counts"]["uncertain"], "#d69b3b"),
