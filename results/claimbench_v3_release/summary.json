@@ -1,6 +1,6 @@
 {
   "version": "0.7.0",
-  "git_revision": "d22d525888bdec76fb89b0f6648dcc747b2715e6",
+  "git_revision": "600f8dc",
   "analysis": "claimbench_v3_scientific_hardening_release",
   "required_artifacts": [
     {
@@ -9,7 +9,7 @@
       "field": "decision",
       "expected": "oracle_benchmark_supports_non_compensatory_contract_with_finite_sample_errors",
       "observed": "oracle_benchmark_supports_non_compensatory_contract_with_finite_sample_errors",
-      "git_revision": "d22d525888bdec76fb89b0f6648dcc747b2715e6"
+      "git_revision": "2115f8c"
     },
     {
       "artifact": "results/real_case_claim_matrix/summary.json",
