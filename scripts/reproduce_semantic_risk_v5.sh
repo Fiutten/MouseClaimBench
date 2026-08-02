@@ -20,5 +20,6 @@ HOME="$PWD/data/external/ibl/home" \
   "$env_path/bin/python" scripts/fetch_ibl_behavior_v5.py
 "$env_path/bin/python" -m mousebrainbench.benchmarks.ibl_behavior_v5_confirmation
 "$env_path/bin/python" -m mousebrainbench.benchmarks.semantic_risk_orthogonal_shifts_v5_4
+"$env_path/bin/python" -m mousebrainbench.benchmarks.knowledge_profile_internal_ai_audit
 "$env_path/bin/python" -m mousebrainbench.benchmarks.knowledge_profile_external_validation_v5
 "$env_path/bin/python" -m mousebrainbench.benchmarks.semantic_risk_v5_release

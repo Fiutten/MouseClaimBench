@@ -1,0 +1,85 @@
+audit_id: mouseclaimbench_knowledge_profile_internal_ai_audit
+version: 1.0.0
+status: frozen_internal_author_model_assisted_not_independent
+audit_date: 2026-08-02
+profile: mousebrainbench/knowledge/profiles/mouse_brain_claims_v1.yaml
+basis: mousebrainbench/knowledge/profiles/mouse_brain_claims_v1_basis.yaml
+review_packet: docs/knowledge_profile_external_review_v1/review_items.csv
+item_review: configs/validation/knowledge_profile_internal_ai_item_review_v1.csv
+
+governance:
+  auditor_identity: OpenAI_Codex_working_with_project_authors
+  independent_of_authors: false
+  human_participant: false
+  may_count_toward_external_panel: false
+  may_generate_cvi_or_interrater_agreement: false
+  may_replace_expert_recruitment: false
+  permitted_claim: internal_adversarial_content_audit
+
+audit_dimensions:
+  - source_traceability
+  - construct_alignment
+  - terminology_and_scope
+  - non_compensatory_rule_safety
+  - profile_comprehensiveness
+
+item_decisions: [retain, revise_minor, revise_major, critical_veto]
+acceptance:
+  maximum_critical_vetoes: 0
+  maximum_major_revisions: 0
+  complete_review_required: true
+  all_source_ids_must_resolve: true
+  exhaustive_rule_safety_must_pass: true
+
+cross_item_challenges:
+  - id: profile_support_is_not_scientific_truth
+    severity: critical
+    affected_items: [rule__all_requirements_satisfied]
+    finding: >-
+      The executable conclusion 'supported' can be read as scientific support,
+      while the relation basis repeatedly says that requirements are sufficient
+      only for profile authorization or are not scientifically sufficient.
+    required_action: >-
+      Rename the conclusion to profile_supported or add an unavoidable scope
+      qualifier to every exported decision and manuscript statement.
+  - id: mechanistic_sufficiency_gap
+    severity: major
+    affected_claims: [mechanistic]
+    finding: >-
+      Prediction, internal reproduction, topology specificity, and observational
+      direction do not jointly establish mechanism without perturbational
+      discrimination, parameter or structural identifiability, uncertainty, and
+      competing-mechanism analysis.
+    required_action: >-
+      Narrow the claim to directed_topology_consistent_prediction or add dedicated
+      mechanistic intervention, identifiability, and alternative-model blocks.
+  - id: generic_digital_twin_label_mismatch
+    severity: major
+    affected_claims: [digital_twin]
+    finding: >-
+      The generic claim identifier is evaluated using requirements for a complete,
+      causal, entity-specific, whole-brain and operational twin. This is safer
+      than under-restriction but obscures the construct and rejects partial twins.
+    required_action: >-
+      Rename the claim to complete_entity_specific_mouse_brain_digital_twin and
+      define separate partial-model or prototype claims if needed.
+  - id: evidence_status_priority_is_normative
+    severity: major
+    affected_items:
+      - rule__failed_block_veto
+      - rule__external_review_escalation
+      - rule__missing_evidence_uncertainty
+      - rule__protocol_scope_boundary
+    finding: >-
+      Mixed failed, review, unknown, and not-applicable states are resolved by a
+      fixed priority order. The implementation is deterministic, but the priority
+      is a normative policy choice and has no independent content validation.
+    required_action: >-
+      Publish the mixed-status truth table and obtain explicit expert judgement
+      on precedence, especially unknown versus not-applicable.
+
+claim_boundary: >-
+  Passing this audit would establish internal consistency and documented
+  literature-grounded criticism only. It cannot establish independent content
+  validity, human consensus, or improved human decision quality.
+

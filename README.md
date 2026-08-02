@@ -172,6 +172,12 @@ clusters existed. It therefore reports descriptive false-authorization fractions
 and no exact external certificate. Independent content validation of the 29-item
 knowledge profile is also pending.
 
+An internal AI-assisted audit now covers all 29 profile items, resolves every
+declared source identifier, and verifies rule safety over the full analytical
+status space. It found one critical veto, 11 major revisions, eight minor
+revisions, and nine retained items. This is a transparent internal negative
+result, not an independent panel. External content validation remains pending.
+
 Version 5.4 adds four orthogonal TimeGraph families with 13 evaluable levels.
 The fixed policy loses simultaneous certification under Student-t noise with two
 degrees of freedom and at eight variables. It remains certified across maximum

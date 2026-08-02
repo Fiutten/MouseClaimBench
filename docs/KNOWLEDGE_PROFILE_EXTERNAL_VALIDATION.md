@@ -23,6 +23,13 @@ agreement. Failed items require a documented revision and a new independent
 round. Until real ratings pass the executable audit, repository and manuscript
 language must remain `author-proposed, not externally content-validated`.
 
+An internal AI-assisted adversarial audit has now reviewed all 29 items. It is
+explicitly non-independent and cannot count toward the panel. The audit found
+one critical veto, 11 major revisions, eight minor revisions, and nine retained
+items. Its result is `internal_ai_audit_revision_required`; see
+`docs/KNOWLEDGE_PROFILE_INTERNAL_AI_AUDIT.md`. These findings should be resolved
+before external recruitment, but they do not replace external ratings.
+
 Methodological references include COSMIN content-validity methodology
 (doi:10.1007/s11136-018-1829-0), Lynn's CVI framework (PMID:3640358), and the
 ACCORD consensus-reporting guideline (doi:10.1371/journal.pmed.1004326).

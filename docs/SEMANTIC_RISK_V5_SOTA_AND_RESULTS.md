@@ -56,7 +56,7 @@ Primary resources:
 | IBL behavior v5.3 | 35 risk-lock + 35 final mice | Zero false mouse events in both splits, risk UCB 0.0820, coverage and recovery LCB 0.9180. | Positive transport for one behavioral alignment task, not causal-neural or laboratory-independent validity. |
 | Orthogonal shifts v5.4 | 13 levels, 100 bundles per level | Certification failed at Student-t 2 and eight variables. Lag and confounding contrasts remained certified. | Warning behavior is family-dependent and is not a calibrated universal alarm. |
 | CausalRivers transport | 3 dependent geographic clusters, 320 pair evaluations | False fractions among authorizations ranged from 0.1944 to 0.4595. Exact external inference was prohibited. | Real transport is negative/descriptive, not external validation. |
-| Profile content review | 29 items, 0 external raters | Review packet complete, ratings pending. | The profile remains author-proposed. |
+| Profile internal AI audit | 29 items, 0 external raters | 1 critical veto, 11 major revisions, 8 minor revisions, and 9 retained items. | Internal revision is required; external content validation remains pending. |
 
 The original six-level sweep used familywise 95% simultaneous confidence through
 a Bonferroni per-level confidence of 0.991667. Version 5.4 expands this evidence
@@ -87,3 +87,5 @@ The remaining major external-validity gap is independent content review of the
 knowledge profile. The IBL result is also task-specific and does not establish
 laboratory-level replication. These limits prevent a broad truth-verification or
 universal-deployment claim even though the second-paper package is now stronger.
+The completed internal AI audit cannot close this gap and instead identifies
+specific profile revisions that should precede external recruitment.
