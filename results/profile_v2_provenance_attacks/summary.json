@@ -1,0 +1,64 @@
+{
+  "version": "0.9.0",
+  "git_revision": "435b8e8",
+  "analysis": "profile_v2_provenance_attack_benchmark",
+  "protocol": "configs/benchmarks/profile_v2_provenance_attacks.yaml",
+  "protocol_sha256": "4a42f81b76f7ff8c96920ac77d7886a03f91b1536f02795a1fbc9ac993124282",
+  "cases": 370,
+  "pristine_cases": 10,
+  "attacked_cases": 360,
+  "full_integrity_gate": {
+    "false_authorizations": 0,
+    "false_rejections": 0,
+    "exact_attack_traces": 370,
+    "exact_attack_trace_rate": 1.0
+  },
+  "comparators": {
+    "profile_without_integrity_false_authorizations": 360,
+    "hash_only_false_authorizations": 280
+  },
+  "family_detection": {
+    "artifact_hash_tampering": {
+      "cases": 80,
+      "detected": 80
+    },
+    "profile_version_substitution": {
+      "cases": 80,
+      "detected": 80
+    },
+    "dangling_provenance_reference": {
+      "cases": 80,
+      "detected": 80
+    },
+    "circular_provenance": {
+      "cases": 80,
+      "detected": 80
+    },
+    "duplicate_independent_artifact": {
+      "cases": 80,
+      "detected": 80
+    },
+    "overlapping_independent_cohorts": {
+      "cases": 80,
+      "detected": 80
+    },
+    "contradictory_attestation": {
+      "cases": 80,
+      "detected": 80
+    },
+    "missing_block_lineage": {
+      "cases": 80,
+      "detected": 80
+    }
+  },
+  "endpoints": {
+    "full_integrity_gate_false_authorizations_equal_0": true,
+    "full_integrity_gate_false_rejections_equal_0": true,
+    "exact_attack_trace_rate_equal_1": true,
+    "core_profile_false_authorizes_at_least_one_attack": true,
+    "hash_only_baseline_false_authorizes_at_least_one_attack": true
+  },
+  "all_endpoints_passed": true,
+  "claim_boundary": "The benchmark establishes deterministic detection of the declared controlled attacks. It does not estimate their prevalence, adversarial adaptivity, source trustworthiness, or security against attacks outside this threat model.",
+  "decision": "provenance_attack_gate_confirmed"
+}
