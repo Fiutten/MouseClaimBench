@@ -1,6 +1,6 @@
 \begin{figure}[t!]
 \centering
 \includegraphics[width=0.98\textwidth]{figures/standards_workflow.pdf}
-\caption{Standards-aware MouseClaimBench workflow. Structural validation, package integrity, and scientific authorization are independent non-compensatory gates. The output retains all scientific and integrity deficits with their witnesses.}
+\caption{Standards-aware MouseClaimBench workflow. Evidence artifacts and observations are first represented as an RDF/PROV-O graph and checked by an external SHACL engine. Package identity, hashes, lineage, independence, and conflicts are then evaluated before the claim-specific evidence contract is applied. The three gates are non-compensatory. A failure at any gate prevents authorization, and the output retains every scientific and integrity deficit together with its witness.}
 \label{fig:standards-workflow}
 \end{figure}
