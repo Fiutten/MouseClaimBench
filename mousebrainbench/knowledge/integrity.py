@@ -120,32 +120,38 @@ class IntegrityAwareDecision:
 
 
 def _has_cycle(artifacts: dict[str, ArtifactRecord]) -> tuple[str, ...]:
-    visiting: set[str] = set()
-    visited: set[str] = set()
-    path: list[str] = []
-
-    def visit(node: str) -> tuple[str, ...]:
-        if node in visiting:
-            start = path.index(node)
-            return tuple(path[start:] + [node])
-        if node in visited:
-            return ()
-        visiting.add(node)
-        path.append(node)
-        for parent in artifacts[node].derived_from:
-            if parent in artifacts:
-                cycle = visit(parent)
-                if cycle:
-                    return cycle
-        path.pop()
-        visiting.remove(node)
-        visited.add(node)
-        return ()
-
-    for artifact_id in sorted(artifacts):
-        cycle = visit(artifact_id)
-        if cycle:
-            return cycle
+    # Iterative depth-first search avoids Python's recursion limit for evidence
+    # packages containing thousands of artifacts.
+    state: dict[str, int] = {}
+    for root in sorted(artifacts):
+        if state.get(root, 0) != 0:
+            continue
+        stack: list[tuple[str, int]] = [(root, 0)]
+        path: list[str] = []
+        positions: dict[str, int] = {}
+        while stack:
+            node, parent_index = stack[-1]
+            if parent_index == 0 and state.get(node, 0) == 0:
+                state[node] = 1
+                positions[node] = len(path)
+                path.append(node)
+            parents = artifacts[node].derived_from
+            if parent_index < len(parents):
+                parent = parents[parent_index]
+                stack[-1] = (node, parent_index + 1)
+                if parent not in artifacts:
+                    continue
+                parent_state = state.get(parent, 0)
+                if parent_state == 1:
+                    start = positions[parent]
+                    return tuple(path[start:] + [parent])
+                if parent_state == 0:
+                    stack.append((parent, 0))
+                continue
+            stack.pop()
+            state[node] = 2
+            positions.pop(node, None)
+            path.pop()
     return ()
 
 

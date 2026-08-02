@@ -1,0 +1,30 @@
+protocol_id: mouseclaimbench_profile_v2_scalability_ablation
+version: 1.0.0
+status: frozen_before_execution
+freeze_date: 2026-08-02
+profile: mousebrainbench/knowledge/profiles/mouse_brain_claims_v2.yaml
+
+batch_scaling:
+  package_counts: [100, 1000, 10000]
+  repetitions: 5
+  warmup_packages: 100
+
+artifact_scaling:
+  artifact_counts: [25, 100, 1000, 5000]
+  repetitions: 5
+  claim: complete_entity_specific_mouse_brain_digital_twin
+
+ablation:
+  attack_protocol: configs/benchmarks/profile_v2_provenance_attacks.yaml
+  include_profile_only_and_hash_only_baselines: true
+  leave_one_integrity_control_out: true
+
+endpoints:
+  all_pristine_scaling_decisions_authorized: true
+  full_gate_false_authorizations: 0
+  every_leave_one_out_ablation_exposes_at_least_one_false_authorization: true
+
+claim_boundary: >-
+  Timings describe this implementation and host only. The controlled ablation
+  isolates the declared attack families, not unknown attacks or real-world
+  prevalence. Neither result establishes scientific content validity.
