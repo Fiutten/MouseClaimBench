@@ -107,6 +107,44 @@ in `results/hybrid_selective_outcome_audit/audit.md`. These results must not be
 used to claim a second strong Q1 contribution, and a tuned rerun cannot be
 reported as independent confirmation.
 
+### Semantic-risk-control v3 branch
+
+The `semantic-risk-control-v3` branch is a separate second-paper evolution. Its
+thesis is narrower than automated scientific truth verification: it authorizes
+claim support only when an evidence contract is satisfied, a claim-specific
+Learn-Then-Test certificate exists, and that certificate covers the declared
+target population.
+
+The frozen 7,200-case synthetic confirmation passes with 0.5607 support coverage,
+0.00314 empirical Semantic False Authorization Risk, and zero semantic support
+violations. An independent clingo implementation matches the Python semantics on
+2,847 audited cases. These are positive in-scope results.
+
+External transport is not positive validation. Causal Chambers gives 0.0526 raw
+SFAR, CausalBench RPE1 gives 0.2474, and the locked seven-mouse IBL partition
+authorizes nothing. The synthetic certificate is out of scope for all three.
+The executable population contract blocks its reuse there while preserving the
+raw failures for analysis. The accurate status is therefore: methodological core
+validated, positive external generalization not established.
+
+The complete technical interpretation is in
+`docs/SEMANTIC_RISK_CONTROL_V3_TECHNICAL_REPORT.md`. Exact dependencies are in
+`requirements-semantic-risk-v3-lock.txt`. Reproduce without changing frozen
+artifacts with:
+
+```bash
+bash scripts/setup_semantic_risk_v3_env.sh .venv-risk-v3
+ENV_PATH=.venv-risk-v3 bash scripts/reproduce_semantic_risk_v3.sh verify
+```
+
+The association-aware direction repair and calibration-size sensitivity are
+post-confirmation analyses. They are explicitly barred from being relabelled as
+fresh confirmation.
+
+The current-state novelty assessment is in
+`docs/SEMANTIC_RISK_CONTROL_V3_NOVELTY_AUDIT.md`. It explicitly records close
+2026 work and blocks broad priority claims.
+
 ## Scope boundaries
 
 The current artifacts do not support claims of:
@@ -155,6 +193,10 @@ their adapters. Lightweight MICRONS summaries copied from
 # Experimental hybrid-selective branch only
 bash scripts/setup_hybrid_validation_env.sh .venv-hybrid
 .venv-hybrid/bin/python -m mousebrainbench.benchmarks.hybrid_selective_outcome_audit
+
+# Semantic-risk-control v3 branch
+bash scripts/setup_semantic_risk_v3_env.sh .venv-risk-v3
+ENV_PATH=.venv-risk-v3 bash scripts/reproduce_semantic_risk_v3.sh verify
 ```
 
 Artifacts whose `git_revision` ends in `-dirty` are provisional. Submission

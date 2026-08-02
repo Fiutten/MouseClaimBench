@@ -33,6 +33,12 @@ with future cases from the certified population. It is invalid after an unaccoun
 domain shift. Cross-domain CausalBench and IBL evaluations are therefore transport
 audits, not guaranteed applications of a synthetic certificate.
 
+The implementation additionally binds a certificate to a population family,
+independent unit, evidence protocol, and reference protocol. A mismatch forces
+abstention while retaining raw transfer metrics as diagnostics. This scope
+contract prevents guarantee misuse. It does not estimate distribution shift and
+does not provide positive external coverage.
+
 ## Directional evidence
 
 No single direction method is treated as universally valid. Routing uses declared
@@ -43,6 +49,11 @@ confounding. Hidden confounding, material unmodelled measurement error, selectio
 bias, unknown assumptions, and numerical failures force abstention. Observational
 direction remains evidence about identifiability under assumptions, not causal
 proof.
+
+The frozen primary router did not require a separately established association.
+Its independent-regime attempts are retained unchanged in the primary artifact.
+An association precondition added after outcome inspection is an exploratory
+repair for future protocols and cannot be described as part of the frozen result.
 
 ## Independent semantic execution
 
