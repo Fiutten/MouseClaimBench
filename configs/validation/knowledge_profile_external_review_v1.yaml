@@ -1,0 +1,58 @@
+study_id: mouseclaimbench_knowledge_profile_external_review
+version: 1.0.0
+status: protocol_complete_external_ratings_pending
+freeze_date: 2026-08-02
+profile: mousebrainbench/knowledge/profiles/mouse_brain_claims_v1.yaml
+basis: mousebrainbench/knowledge/profiles/mouse_brain_claims_v1_basis.yaml
+
+methodological_basis:
+  - id: COSMIN_CONTENT_VALIDITY
+    role: relevance_comprehensiveness_and_comprehensibility
+    doi: 10.1007/s11136-018-1829-0
+  - id: LYNN_CVI
+    role: item_and_scale_content_validity_quantification
+    pmid: 3640358
+  - id: ACCORD
+    role: transparent_reporting_of_consensus_methods
+    doi: 10.1371/journal.pmed.1004326
+
+panel:
+  minimum_completed_independent_experts: 7
+  minimum_years_relevant_experience: 5
+  minimum_per_expertise_stratum: 2
+  expertise_strata:
+    - causal_inference_or_causal_discovery
+    - computational_neuroscience_or_brain_modelling
+    - model_validation_reproducibility_or_digital_twins
+  author_or_system_developer_may_count_as_independent: false
+  conflicts_must_be_disclosed: true
+
+rating:
+  scale:
+    1: not_relevant_or_unsafe_or_unclear
+    2: major_revision_required
+    3: relevant_safe_clear_with_minor_revision
+    4: essential_safe_and_clear
+  dimensions: [relevance, comprehensibility, scientific_safety]
+  item_decisions: [retain, revise, remove]
+  critical_veto_requires_written_rationale: true
+  item_order: sha256_rater_item_blinded_order
+
+acceptance:
+  rating_considered_content_valid: [3, 4]
+  minimum_item_cvi: 0.78
+  minimum_scale_average_cvi: 0.90
+  minimum_binary_fleiss_kappa: 0.60
+  unresolved_critical_vetoes_allowed: 0
+  complete_item_response_required_per_rater: true
+  all_dimensions_must_pass: true
+
+decision:
+  validated: all_panel_completeness_cvi_agreement_and_veto_conditions_pass
+  revision_required: panel_complete_but_one_or_more_content_conditions_fail
+  pending: insufficient_or_incomplete_external_ratings
+
+prohibited_claims_before_validated:
+  - consensus_validated_profile
+  - independently_validated_evidence_to_claim_mapping
+  - universal_scientific_claim_ontology

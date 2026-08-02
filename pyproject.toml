@@ -116,6 +116,7 @@ mousebrainbench-causal-chambers-v4-1 = "mousebrainbench.benchmarks.causal_chambe
 mousebrainbench-timegraph-v5 = "mousebrainbench.benchmarks.timegraph_v5_confirmation:main"
 mousebrainbench-timegraph-v5-1 = "mousebrainbench.benchmarks.timegraph_v5_1_topology_confirmation:main"
 mousebrainbench-causalrivers-v5 = "mousebrainbench.benchmarks.causalrivers_v5_transport:main"
+mousebrainbench-profile-external-v5 = "mousebrainbench.benchmarks.knowledge_profile_external_validation_v5:main"
 mousebrainbench-run = "mousebrainbench.cli:main"
 
 [tool.setuptools.packages.find]

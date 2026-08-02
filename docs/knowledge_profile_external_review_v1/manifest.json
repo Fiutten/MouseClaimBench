@@ -1,0 +1,10 @@
+{
+  "study_id": "mouseclaimbench_knowledge_profile_external_review",
+  "version": "1.0.0",
+  "items": 29,
+  "relations": 22,
+  "inference_rules": 5,
+  "profile_comprehensiveness_items": 2,
+  "item_order_rule": "sha256_rater_item_blinded_order",
+  "items_sha256": "53d1283ebe1418481e7ece23db33f105078ec892aa2e138239f407dd217cbc0a"
+}
