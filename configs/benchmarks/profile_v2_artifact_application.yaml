@@ -1,0 +1,38 @@
+protocol_id: mouseclaimbench_profile_v2_artifact_application
+version: 1.0.0
+status: retrospective_mapping_fixed_after_source_results_before_v2_decisions
+freeze_date: 2026-08-02
+profile: mousebrainbench/knowledge/profiles/mouse_brain_claims_v2.yaml
+
+cases:
+  allen:
+    source: results/allen_vbn_mechanistic_identifiability_score.json
+    target_claim: directed_topology_consistent_prediction
+  sensorium_static:
+    source: results/sensorium_static_model_comparator/summary.json
+    target_claim: bounded_predictive_performance
+  dynamic_sensorium:
+    source: results/dynamic_sensorium_model_comparator/summary.json
+    target_claim: bounded_predictive_performance
+  microns:
+    robustness_source: results/microns_primary_robustness/summary.json
+    package_source: results/microns_q1_package/summary.json
+    target_claim: local_observational_structure_function_association
+
+mapping_rules:
+  - Source numerical outcomes and original acceptance predicates are not changed.
+  - New metadata fields may summarize explicit source-artifact content but may not add evidence.
+  - Absent evidence is unknown or not-applicable, never passed.
+  - Dynamic Sensorium data quality requires review because response reliability is not estimable.
+  - MICRONS network-dependence control requires review because unit-cluster weighted bootstrap is a stability analysis, not a complete dyadic or network-dependence estimator.
+  - Every case is also evaluated against the strict complete-twin claim.
+
+release_conditions:
+  - no_complete_twin_authorized
+  - all_decisions_have_complete_deficit_traces
+  - python_asp_equivalence_for_all_case_decisions
+
+interpretation: >-
+  This is a retrospective application of v2 to existing artifacts whose outcomes
+  were already known. It evaluates stricter claim scope and trace behavior, not
+  prospective scientific performance or independent validation.
