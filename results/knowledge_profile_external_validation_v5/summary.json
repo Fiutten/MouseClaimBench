@@ -1,0 +1,12 @@
+{
+  "version": "0.9.0",
+  "git_revision": "81de3cc",
+  "analysis": "knowledge_profile_external_content_validation_v5",
+  "protocol": "configs/validation/knowledge_profile_external_review_v1.yaml",
+  "packet": "docs/knowledge_profile_external_review_v1",
+  "profile_content_validated": false,
+  "decision": "external_content_validation_pending",
+  "reason": "no_external_ratings_received",
+  "items": 29,
+  "completed_independent_raters": 0
+}
