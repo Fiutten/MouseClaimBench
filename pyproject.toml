@@ -113,6 +113,7 @@ mousebrainbench-direction-router-v4-2 = "mousebrainbench.benchmarks.direction_ro
 mousebrainbench-semantic-risk-release-v4 = "mousebrainbench.benchmarks.semantic_risk_v4_release:main"
 mousebrainbench-causal-chambers-v4 = "mousebrainbench.benchmarks.causal_chambers_v4_confirmation:main"
 mousebrainbench-causal-chambers-v4-1 = "mousebrainbench.benchmarks.causal_chambers_v4_1_final:main"
+mousebrainbench-timegraph-v5 = "mousebrainbench.benchmarks.timegraph_v5_confirmation:main"
 mousebrainbench-run = "mousebrainbench.cli:main"
 
 [tool.setuptools.packages.find]
