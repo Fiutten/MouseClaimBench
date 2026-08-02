@@ -77,3 +77,39 @@ def test_full_official_adapter_smoke() -> None:
     assert len(data.records) == 16
     assert len(np.unique(data.top_level_ids)) == 1
     assert data.scores.shape == (16, 6)
+
+
+def test_paired_namespace_keeps_pair_identity_across_shift_roles() -> None:
+    source_root = Path("data/external/timegraph_v5")
+    if not source_root.exists():
+        pytest.skip("optional pinned TimeGraph source is not installed")
+    protocol = yaml.safe_load(
+        Path("configs/benchmarks/semantic_risk_shift_sweep_v5_2.yaml").read_text()
+    )
+    for role in ("shift_0", "shift_1"):
+        protocol["confirmatory_population"]["split_seeds"][role] = {
+            "start": 2026087999,
+            "count": 1,
+        }
+        protocol["confirmatory_population"]["role_factor_overrides"][role] = {
+            "n_points": 200,
+            "noise_scale": 0.1,
+        }
+    score_model = json.loads(Path("results/hybrid_selective_policy/model.json").read_text())
+    first = _role_data(
+        "shift_0",
+        protocol=protocol,
+        source_root=source_root,
+        score_model=score_model,
+        variable_claims=("topology_specific",),
+    )
+    second = _role_data(
+        "shift_1",
+        protocol=protocol,
+        source_root=source_root,
+        score_model=score_model,
+        variable_claims=("topology_specific",),
+    )
+    first_pairs = [(row["source"], row["target"], row["direct_edge"]) for row in first.records]
+    second_pairs = [(row["source"], row["target"], row["direct_edge"]) for row in second.records]
+    assert first_pairs == second_pairs

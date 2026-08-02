@@ -180,7 +180,11 @@ def _role_data(
     n_vars = int(factors["n_vars"])
     n_points = int(factors["n_points"])
     noise_scale = float(factors["noise_scale"])
-    if role == "ood_stress":
+    role_override = population.get("role_factor_overrides", {}).get(role)
+    if role_override is not None:
+        n_points = int(role_override.get("n_points", n_points))
+        noise_scale = float(role_override.get("noise_scale", noise_scale))
+    elif role == "ood_stress":
         stress = population["ood_stress_factors"]
         n_points = int(stress["n_points"])
         noise_scale = float(stress["noise_scale"])
@@ -198,6 +202,8 @@ def _role_data(
                     max_lag = int(max_lag_value)
                     stratum = f"{generator}/{noise}/lag-{max_lag}"
                     subgroup = f"{top_id}/{stratum}"
+                    pair_namespace = str(population.get("paired_pair_namespace", top_id))
+                    adapter_experiment = f"{pair_namespace}/seed-{seed}/{stratum}"
                     random_state = _derived_seed(seed, str(generator), str(noise), max_lag)
                     instance = module["LinearTimeSeriesGenerator"](
                         noise_type=str(noise),
@@ -215,10 +221,12 @@ def _role_data(
                     scenarios += 1
                     values_generated += numeric.size
                     edges = _observed_edges(module, n_vars, max_lag)
-                    available = direct_and_control_pairs(observed, edges, namespace=subgroup)
+                    available = direct_and_control_pairs(
+                        observed, edges, namespace=adapter_experiment
+                    )
                     selected = _select_pairs(
                         available,
-                        namespace=f"mouseclaimbench-v5:{subgroup}",
+                        namespace=f"mouseclaimbench-v5:{adapter_experiment}",
                         direct_count=int(pair_spec["direct_pairs_per_scenario"]),
                         control_count=int(pair_spec["control_pairs_per_scenario"]),
                     )
@@ -229,7 +237,7 @@ def _role_data(
                             frame,
                             dataset="timegraph-v5",
                             chamber=str(generator),
-                            experiment=subgroup,
+                            experiment=adapter_experiment,
                             source=source,
                             target=target,
                             direct_edge=direct_edge,

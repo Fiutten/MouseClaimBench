@@ -117,6 +117,7 @@ mousebrainbench-timegraph-v5 = "mousebrainbench.benchmarks.timegraph_v5_confirma
 mousebrainbench-timegraph-v5-1 = "mousebrainbench.benchmarks.timegraph_v5_1_topology_confirmation:main"
 mousebrainbench-causalrivers-v5 = "mousebrainbench.benchmarks.causalrivers_v5_transport:main"
 mousebrainbench-profile-external-v5 = "mousebrainbench.benchmarks.knowledge_profile_external_validation_v5:main"
+mousebrainbench-shift-sweep-v5-2 = "mousebrainbench.benchmarks.semantic_risk_shift_sweep_v5_2:main"
 mousebrainbench-run = "mousebrainbench.cli:main"
 
 [tool.setuptools.packages.find]
