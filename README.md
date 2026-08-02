@@ -145,6 +145,40 @@ The current-state novelty assessment is in
 `docs/SEMANTIC_RISK_CONTROL_V3_NOVELTY_AUDIT.md`. It explicitly records close
 2026 work and blocks broad priority claims.
 
+### Semantic-risk-control v5 research branch
+
+The `semantic-risk-control-v5` branch is a post-submission evolution. It uses
+official, hash-pinned TimeGraph generators and treats the seed bundle, rather
+than nested scenarios, pairs, or claims, as the independent inferential unit.
+The original six-family v5 contract failed and its final block remained closed.
+A disclosed topology-specific v5.1 follow-up then passed both a 100-bundle risk
+lock and a new 100-bundle final block. Four simple policies failed the same
+non-degenerate endpoint.
+
+This positive result has strict boundaries. The fixed policy failed on a
+100-bundle out-of-distribution block. In a six-level prospective degradation
+sweep, the shift warning first appeared at level 1 and the simultaneous
+certificate first failed at level 3. That ordering is evidence about one frozen
+path, not validation of a universal shift detector. CausalRivers transport used
+320 pair evaluations across four blocks, but only three geographic top-level
+clusters existed. It therefore reports descriptive false-authorization fractions
+and no exact external certificate. Independent content validation of the 29-item
+knowledge profile is also pending.
+
+The non-compensatory release audit is in
+`results/semantic_risk_v5_release/summary.json`. The scientific interpretation and
+current literature boundary are in `docs/SEMANTIC_RISK_V5_SOTA_AND_RESULTS.md`.
+Reproduce the full v5 pipeline from a clean revision with:
+
+```bash
+ENV_PATH=.venv-risk-v3 bash scripts/reproduce_semantic_risk_v5.sh
+```
+
+The accurate status is: methodological core confirmed for one synthetic
+topology-specific population, real-domain external risk control not confirmed,
+and independent profile content validity open. These latter failures cannot be
+compensated by synthetic coverage or an early shift warning.
+
 ## Scope boundaries
 
 The current artifacts do not support claims of:
@@ -197,6 +231,9 @@ bash scripts/setup_hybrid_validation_env.sh .venv-hybrid
 # Semantic-risk-control v3 branch
 bash scripts/setup_semantic_risk_v3_env.sh .venv-risk-v3
 ENV_PATH=.venv-risk-v3 bash scripts/reproduce_semantic_risk_v3.sh verify
+
+# Post-submission semantic-risk-control v5 branch
+ENV_PATH=.venv-risk-v3 bash scripts/reproduce_semantic_risk_v5.sh
 ```
 
 Artifacts whose `git_revision` ends in `-dirty` are provisional. Submission
