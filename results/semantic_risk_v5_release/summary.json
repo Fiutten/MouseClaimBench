@@ -1,0 +1,120 @@
+{
+  "version": "0.9.0",
+  "git_revision": "7375166",
+  "analysis": "semantic_risk_v5_noncompensatory_release_audit",
+  "artifacts": {
+    "global_v5": {
+      "path": "results/timegraph_v5_confirmation/summary.json",
+      "git_revision": "292a0e8"
+    },
+    "topology_v5_1": {
+      "path": "results/timegraph_v5_1_topology_confirmation/summary.json",
+      "git_revision": "d8f5874"
+    },
+    "shift_v5_2": {
+      "path": "results/semantic_risk_shift_sweep_v5_2/summary.json",
+      "git_revision": "064c235"
+    },
+    "causalrivers": {
+      "path": "results/causalrivers_v5_transport/summary.json",
+      "git_revision": "3c0f1ee"
+    },
+    "profile": {
+      "path": "results/knowledge_profile_external_validation_v5/summary.json",
+      "git_revision": "81de3cc"
+    }
+  },
+  "artifacts_clean": true,
+  "status": {
+    "global_six_family_contract": {
+      "implemented": true,
+      "passed": false,
+      "evidence": "v5_declared_synthetic_population_not_supported",
+      "expected_interpretation": "negative result retained; final block remained closed"
+    },
+    "topology_hierarchical_confirmation": {
+      "implemented": true,
+      "passed": true,
+      "evidence": {
+        "risk_lock_risk_ucb": 0.046559811453538935,
+        "final_risk_ucb": 0.046559811453538935,
+        "final_coverage_lcb": 0.7118650844593977,
+        "final_recovery_lcb": 0.7555031775509806
+      }
+    },
+    "same_endpoint_baselines": {
+      "implemented": true,
+      "passed": true,
+      "evidence": {
+        "comparators": [
+          "abstain_all",
+          "fixed_probability_0_5",
+          "evidence_contract_only",
+          "frozen_v3_topology_threshold"
+        ],
+        "all_failed": true
+      }
+    },
+    "out_of_distribution_boundary": {
+      "implemented": true,
+      "passed": true,
+      "evidence": {
+        "risk_ucb": 0.1149852556079209,
+        "shift_warning": true
+      }
+    },
+    "prospective_shift_path": {
+      "implemented": true,
+      "passed": true,
+      "evidence": {
+        "first_level_with_shift_warning": "shift_1",
+        "first_level_with_certificate_failure": "shift_3",
+        "warning_occurs_no_later_than_certificate_failure": true,
+        "detector_validated_for_general_use": false
+      },
+      "general_detector_validated": false
+    },
+    "real_causalrivers_transport": {
+      "implemented": true,
+      "passed": false,
+      "evidence": {
+        "independent_top_level_clusters": 3,
+        "exact_external_certificate_allowed": false,
+        "decision": "descriptive_real_transport_completed_no_external_certificate"
+      }
+    },
+    "independent_profile_content_validation": {
+      "implemented": true,
+      "passed": false,
+      "evidence": {
+        "completed_independent_raters": 0,
+        "decision": "external_content_validation_pending"
+      }
+    }
+  },
+  "methodological_core_confirmed": true,
+  "global_population_supported": false,
+  "real_domain_external_risk_confirmed": false,
+  "knowledge_profile_content_validated": false,
+  "strong_q1_second_paper_ready": false,
+  "decision": "methodological_core_confirmed_external_and_content_validity_open",
+  "non_compensation_rule": "synthetic confirmation and early shift warning cannot compensate for failed OOD transport, absent real-domain certification, or pending profile content validity",
+  "supported_claims": [
+    "the fixed topology contract met the hierarchical certificate twice in its declared synthetic population",
+    "the compared simple baselines did not meet the same certificate",
+    "the fixed certificate failed under stronger synthetic shift and transported poorly to CausalRivers",
+    "the shift warning preceded certificate loss on one frozen severity path"
+  ],
+  "required_before_strong_q1_claim": [
+    "independent expert content validation of the evidence-to-claim profile",
+    "a target with enough independent real top-level clusters for external risk inference",
+    "confirmation on a new untouched real population without threshold refitting"
+  ],
+  "prohibited_claims": [
+    "the six-family global authorizer is validated",
+    "false-authorization risk is controlled in CausalRivers or mouse-brain data",
+    "the shift diagnostic is a calibrated general-purpose detector",
+    "the knowledge profile is an expert consensus standard",
+    "MouseClaimBench verifies causal truth or validates a complete mouse-brain twin"
+  ]
+}
