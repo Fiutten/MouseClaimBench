@@ -1,0 +1,75 @@
+{
+  "version": "0.9.0",
+  "git_revision": "7401739",
+  "analysis": "semantic_risk_control_v3_release_audit",
+  "artifacts": {
+    "frozen_policy": {
+      "path": "results/semantic_risk_policy/model.json",
+      "git_revision": "f16aebc"
+    },
+    "synthetic": {
+      "path": "results/semantic_risk_confirmation/summary.json",
+      "git_revision": "7676b8d"
+    },
+    "asp_equivalence": {
+      "path": "results/semantic_equivalence_audit/summary.json",
+      "git_revision": "aba4b35"
+    },
+    "causal_chambers": {
+      "path": "results/causal_chambers_transport/summary.json",
+      "git_revision": "9f20771"
+    },
+    "causalbench": {
+      "path": "results/causalbench_transport/summary.json",
+      "git_revision": "095c650"
+    },
+    "ibl": {
+      "path": "results/ibl_mouse_transport/summary.json",
+      "git_revision": "095c650"
+    },
+    "guarantee_scope": {
+      "path": "results/guarantee_scope_audit/summary.json",
+      "git_revision": "8a08e1e"
+    },
+    "sensitivity": {
+      "path": "results/semantic_risk_sensitivity/summary.json",
+      "git_revision": "977225c"
+    },
+    "router_repair": {
+      "path": "results/direction_router_precondition/summary.json",
+      "git_revision": "0b7a206"
+    }
+  },
+  "conditions": {
+    "policy_frozen_before_fresh_outcome_access": true,
+    "synthetic_primary_passed": true,
+    "synthetic_zero_semantic_violations": true,
+    "asp_python_semantics_equivalent_on_audited_space": true,
+    "causal_chambers_zero_semantic_violations": true,
+    "causalbench_zero_semantic_violations": true,
+    "ibl_zero_semantic_violations": true,
+    "out_of_scope_certificates_blocked": true,
+    "sensitivity_is_explicitly_exploratory": true,
+    "router_repair_is_explicitly_post_hoc": true
+  },
+  "dirty_artifacts": [],
+  "integrity_ready": true,
+  "methodological_core_validated": true,
+  "external_raw_risk_failure_detected": true,
+  "external_positive_coverage": false,
+  "external_generalization_established": false,
+  "decision": "methodological_core_validated_external_generalization_not_established",
+  "publication_posture": "bounded_Q1_method_candidate_not_universal_risk_controller",
+  "prohibited_claims": [
+    "finite-sample risk control transfers unchanged across domains",
+    "positive external biological generalization is established",
+    "the direction router is universally valid",
+    "MouseClaimBench verifies scientific truth",
+    "a complete or causal mouse-brain digital twin has been built"
+  ],
+  "required_next_evidence_for_stronger_claim": [
+    "domain-specific calibration on exchangeable external units",
+    "a new untouched external test population with non-zero authorized coverage",
+    "prospective confirmation of the association-aware direction router"
+  ]
+}
