@@ -131,9 +131,12 @@ def _evaluate_decisions(
     decisions: dict[str, np.ndarray],
     data: RoleData,
     limits: dict[str, float],
+    thresholds: dict[str, float],
 ) -> dict[str, Any]:
     return {
-        name: _certificate_for_decisions(value, data, limits, threshold=-1.0).as_dict()
+        name: _certificate_for_decisions(
+            value, data, limits, threshold=thresholds[name]
+        ).as_dict()
         for name, value in decisions.items()
     }
 
@@ -212,7 +215,18 @@ def run(
         frozen_semantic=frozen_semantic,
         frozen_unconstrained=frozen_unconstrained,
     )
-    comparators = _evaluate_decisions(decisions, final, limits)
+    thresholds = {
+        "abstain_all": 1.0 + np.finfo(float).eps,
+        "fixed_probability_0_5": 0.5,
+        "evidence_contract_only": 0.0,
+        "unconstrained_ltt": -1.0,
+        "semantic_ltt_without_activation_floor": -1.0,
+        "confidence_only_target_calibrated": (
+            confidence.threshold if confidence else 1.0 + np.finfo(float).eps
+        ),
+        "semantic_ltt_nondegenerate_v4_1": expected_threshold,
+    }
+    comparators = _evaluate_decisions(decisions, final, limits, thresholds)
     primary = comparators["semantic_ltt_nondegenerate_v4_1"]
     shift = diagnose_shift(
         _experiment_feature_means(development),
@@ -245,6 +259,10 @@ def run(
     elapsed = time.perf_counter() - started
     total_candidates = final.scores.size
     authorizations = int(primary["authorizations"])
+    primary_decisions = decisions["semantic_ltt_nondegenerate_v4_1"]
+    eligible_truth = final.labels & final.admissible
+    missed_true_claims = int((eligible_truth & ~primary_decisions).sum())
+    eligible_true_claims = int(eligible_truth.sum())
     result = {
         "version": __version__,
         "git_revision": code_revision(),
@@ -295,6 +313,15 @@ def run(
             "final_authorizations": authorizations,
             "final_abstentions": total_candidates - authorizations,
             "final_abstention_rate": (total_candidates - authorizations) / total_candidates,
+            "abstention_opportunity_cost": {
+                "unit": "eligible_true_claims_not_authorized",
+                "missed_true_claims": missed_true_claims,
+                "eligible_true_claims": eligible_true_claims,
+                "miss_rate": (
+                    missed_true_claims / eligible_true_claims if eligible_true_claims else 0.0
+                ),
+                "monetary_cost_claimed": False,
+            },
             "claim_candidates_per_second": total_candidates / elapsed,
         },
         "decision": (

@@ -106,6 +106,11 @@ mousebrainbench-semantic-risk-sensitivity-v3 = "mousebrainbench.benchmarks.seman
 mousebrainbench-direction-precondition-v3 = "mousebrainbench.benchmarks.direction_router_precondition_audit:main"
 mousebrainbench-semantic-risk-release-v3 = "mousebrainbench.benchmarks.semantic_risk_v3_release:main"
 mousebrainbench-semantic-equivalence-v3 = "mousebrainbench.benchmarks.semantic_equivalence_audit:main"
+mousebrainbench-semantic-risk-power-v4 = "mousebrainbench.benchmarks.semantic_risk_v4_power:main"
+mousebrainbench-knowledge-profile-validity-v4 = "mousebrainbench.benchmarks.knowledge_profile_validity_v4:main"
+mousebrainbench-direction-router-v4 = "mousebrainbench.benchmarks.direction_router_v4_confirmation:main"
+mousebrainbench-causal-chambers-v4 = "mousebrainbench.benchmarks.causal_chambers_v4_confirmation:main"
+mousebrainbench-causal-chambers-v4-1 = "mousebrainbench.benchmarks.causal_chambers_v4_1_final:main"
 mousebrainbench-run = "mousebrainbench.cli:main"
 
 [tool.setuptools.packages.find]

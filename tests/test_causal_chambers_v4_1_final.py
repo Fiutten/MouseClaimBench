@@ -2,6 +2,7 @@ import numpy as np
 
 from mousebrainbench.benchmarks.causal_chambers_v4_1_final import (
     _combine,
+    _evaluate_decisions,
     _subset,
 )
 from mousebrainbench.benchmarks.causal_chambers_v4_confirmation import RoleData
@@ -37,3 +38,15 @@ def test_subset_changes_claim_axis_only() -> None:
     assert selected.features.shape == data.features.shape
     assert np.array_equal(selected.experiment_ids, data.experiment_ids)
 
+
+def test_comparator_threshold_metadata_is_preserved() -> None:
+    data = _subset(_data("final", 0), [1])
+    decisions = {"policy": np.ones_like(data.admissible)}
+    limits = {
+        "target_risk": 0.10,
+        "minimum_coverage": 0.10,
+        "minimum_positive_recovery": 0.05,
+        "confidence": 0.95,
+    }
+    result = _evaluate_decisions(decisions, data, limits, {"policy": 1.0})
+    assert result["policy"]["threshold"] == 1.0
