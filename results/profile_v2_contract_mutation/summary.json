@@ -1,6 +1,6 @@
 {
   "version": "0.9.0",
-  "git_revision": "9d4d4fa2a2fe023b1a1e31d58b8cf265d62c9566",
+  "git_revision": "93433ee1677d899b2536ad620d3d0503b0d1c59e",
   "analysis": "profile_v2_contract_mutation",
   "protocol": "configs/benchmarks/profile_v2_contract_mutation.yaml",
   "protocol_sha256": "071875041dee952750fd13113b60a954c61d7afeb062b51a7c940a14a45c08f2",

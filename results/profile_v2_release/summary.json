@@ -1,13 +1,13 @@
 {
   "version": "0.9.0",
-  "git_revision": "9d4d4fa2a2fe023b1a1e31d58b8cf265d62c9566",
+  "git_revision": "93433ee1677d899b2536ad620d3d0503b0d1c59e",
   "analysis": "profile_v2_hardening_release",
   "protocol": "configs/benchmarks/profile_v2_release.yaml",
   "protocol_sha256": "26feea273a7a389e02176047e76b02d0c0b2e153faac895c9ffa823fb4ac0be7",
   "artifact_revisions": {
-    "resolution": "9d4d4fa2a2fe023b1a1e31d58b8cf265d62c9566",
-    "mutation": "9d4d4fa2a2fe023b1a1e31d58b8cf265d62c9566",
-    "application": "9d4d4fa2a2fe023b1a1e31d58b8cf265d62c9566",
+    "resolution": "93433ee1677d899b2536ad620d3d0503b0d1c59e",
+    "mutation": "93433ee1677d899b2536ad620d3d0503b0d1c59e",
+    "application": "93433ee1677d899b2536ad620d3d0503b0d1c59e",
     "semantic_risk_v5": "7375166",
     "ibl": "3ebbca95660d7dfa80cd3a0b853e72694a630dd3",
     "orthogonal_shifts": "3ebbca95660d7dfa80cd3a0b853e72694a630dd3"

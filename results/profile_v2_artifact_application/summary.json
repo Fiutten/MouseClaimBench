@@ -1,6 +1,6 @@
 {
   "version": "0.9.0",
-  "git_revision": "9d4d4fa2a2fe023b1a1e31d58b8cf265d62c9566",
+  "git_revision": "93433ee1677d899b2536ad620d3d0503b0d1c59e",
   "analysis": "profile_v2_artifact_application",
   "protocol": "configs/benchmarks/profile_v2_artifact_application.yaml",
   "protocol_sha256": "866b3f90a419ba1f8ae14dd9671672a3999d98dba1923b9bbdced45bd16ce40d",

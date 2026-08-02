@@ -1,6 +1,6 @@
 {
   "version": "0.9.0",
-  "git_revision": "9d4d4fa2a2fe023b1a1e31d58b8cf265d62c9566",
+  "git_revision": "93433ee1677d899b2536ad620d3d0503b0d1c59e",
   "analysis": "profile_v2_resolution_audit",
   "protocol": "configs/validation/profile_v2_audit_resolution.yaml",
   "protocol_sha256": "c7371fb6caf919c818a3a427775bcdcd32477bcda194d4b8c10077c744adc514",

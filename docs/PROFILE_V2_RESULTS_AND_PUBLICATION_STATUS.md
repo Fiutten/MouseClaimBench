@@ -2,9 +2,8 @@
 
 ## Technical outcome
 
-The hardened release passes every frozen technical condition. All four new
-result packages were generated from source revision `9d4d4fa` without a
-`-dirty` suffix.
+The hardened release passes every frozen technical condition. Each of the four
+result packages records its exact source revision without a `-dirty` suffix.
 
 The internal audit contained 20 items that were not retained. Profile v2 maps
 all 20 to explicit changes. The generic `mechanistic`, `causal`, and
