@@ -15,6 +15,10 @@ their main guard. The adapter executes only definitions before that guard. This
 restriction was added after the source smoke test failed and before any v5
 outcome was generated.
 
+The source-only smoke test also showed that the unused Matplotlib import can
+block while discovering system fonts. It is removed with the unused Tigramite
+plotting import. Neither plotting package participates in data generation.
+
 ## Inferential unit
 
 Claims share variables and observations. Scenarios also share a fixed generator

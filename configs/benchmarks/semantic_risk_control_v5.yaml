@@ -40,6 +40,7 @@ confirmatory_population:
   source_transformations:
     - remove_colab_shell_magic_install_line
     - remove_unused_tigramite_plotting_import
+    - remove_unused_matplotlib_plotting_import
     - execute_definitions_before_main_guard_only
   upstream_interoperability_note: >-
     The published Python exports contain additional Colab shell and download
