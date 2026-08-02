@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import random
 from collections import Counter
 from collections.abc import Iterable
 from itertools import combinations, product
@@ -29,6 +30,8 @@ from mousebrainbench.validation.evidence_contract import EvidenceBlock, Evidence
 DEFAULT_OUTPUT = Path("results/semantic_equivalence_audit/summary.json")
 DEFAULT_MARKDOWN = Path("results/semantic_equivalence_audit/summary.md")
 EXHAUSTIVE_BLOCK_LIMIT = 4
+RANDOMIZED_LARGE_CONTRACT_CASES = 1_000
+RANDOMIZED_SEED = 2_026_080_201
 
 
 def _block(name: str, status: EvidenceStatus) -> EvidenceBlock:
@@ -66,11 +69,17 @@ def _large_contract_assignments(block_names: tuple[str, ...]) -> Iterable[tuple[
             assignment[right_index] = right_status
             yield tuple(assignment)
 
+    # A fixed property suite probes higher-order mixtures without claiming
+    # exhaustive coverage of the 5**len(block_names) state space.
+    rng = random.Random(RANDOMIZED_SEED)
+    for _ in range(RANDOMIZED_LARGE_CONTRACT_CASES):
+        yield tuple(rng.choice(statuses) for _ in block_names)
+
 
 def _assignments(block_names: tuple[str, ...]) -> tuple[str, Iterable[tuple[EvidenceStatus, ...]]]:
     if len(block_names) <= EXHAUSTIVE_BLOCK_LIMIT:
         return "exhaustive", product(EvidenceStatus, repeat=len(block_names))
-    return "boundary_and_pairwise_priority", _large_contract_assignments(block_names)
+    return "boundary_pairwise_and_fixed_randomized", _large_contract_assignments(block_names)
 
 
 def run(
@@ -149,6 +158,8 @@ def run(
         "boundary_audits": boundary_rows,
         "evaluated_case_count": total_cases,
         "unique_asp_program_count": len(unique_program_hashes),
+        "fixed_randomized_seed": RANDOMIZED_SEED,
+        "fixed_randomized_large_contract_cases": RANDOMIZED_LARGE_CONTRACT_CASES,
         "mismatch_count": len(mismatches),
         "mismatches": mismatches,
         "decision": "semantic_equivalence_observed" if passed else "semantic_equivalence_failed",
@@ -156,6 +167,7 @@ def run(
             "This is an executable equivalence audit, not a mathematical proof of correctness.",
             "Claims with at most four required blocks are exhausted over all five evidence states.",
             "Larger contracts use homogeneous, single-block, and pairwise-priority boundary cases.",
+            "Larger contracts additionally use a fixed 1,000-case randomized property suite.",
             "Agreement between engines does not establish that the curated scientific policy is true.",
         ],
     }

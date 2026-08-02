@@ -11,7 +11,7 @@ def test_semantic_equivalence_audit_has_no_engine_mismatch(tmp_path: Path) -> No
 
     assert payload["decision"] == "semantic_equivalence_observed"
     assert payload["mismatch_count"] == 0
-    assert payload["evaluated_case_count"] >= 1800
+    assert payload["evaluated_case_count"] >= 2800
     assert next(
         row for row in payload["claim_audits"] if row["claim"] == "mechanistic"
     )["case_count"] == 625
