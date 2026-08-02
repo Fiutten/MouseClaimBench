@@ -40,3 +40,8 @@ def test_selects_only_default_qc_passed_table_and_prefers_aws() -> None:
 def test_rejects_ambiguous_default_tables() -> None:
     with pytest.raises(ValueError, match="expected one"):
         select_trial_dataset([_row(default=True, qc="PASS"), _row(default=True, qc="PASS")])
+
+
+def test_accepts_warning_default_table_and_preserves_qc_status() -> None:
+    selected = select_trial_dataset([_row(default=True, qc="WARNING")])
+    assert selected["qc"] == "WARNING"

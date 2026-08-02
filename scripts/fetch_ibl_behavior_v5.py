@@ -12,6 +12,7 @@ import argparse
 import hashlib
 import json
 import os
+import ssl
 import urllib.request
 from pathlib import Path
 from typing import Any
@@ -38,11 +39,11 @@ def select_trial_dataset(rows: list[dict[str, Any]]) -> dict[str, Any]:
         for row in rows
         if row.get("name") == "_ibl_trials.table.pqt"
         and row.get("default_dataset") is True
-        and row.get("qc") == "PASS"
-        and row.get("public") == 1
+        and row.get("qc") in {"PASS", "WARNING"}
+        and int(row.get("public", 0)) >= 1
     ]
     if len(eligible) != 1:
-        raise ValueError(f"expected one default QC-PASS trial table, found {len(eligible)}")
+        raise ValueError(f"expected one default QC PASS/WARNING trial table, found {len(eligible)}")
     row = eligible[0]
     records = [
         item
@@ -76,9 +77,15 @@ def select_trial_dataset(rows: list[dict[str, Any]]) -> dict[str, Any]:
 
 
 def _download(url: str, destination: Path) -> None:
+    import certifi
+
     temporary = destination.with_suffix(destination.suffix + ".partial")
     request = urllib.request.Request(url, headers={"User-Agent": "MouseClaimBench/5.3"})
-    with urllib.request.urlopen(request, timeout=120) as response, temporary.open("wb") as handle:
+    context = ssl.create_default_context(cafile=certifi.where())
+    with (
+        urllib.request.urlopen(request, timeout=120, context=context) as response,
+        temporary.open("wb") as handle,
+    ):
         while chunk := response.read(1024 * 1024):
             handle.write(chunk)
     os.replace(temporary, destination)

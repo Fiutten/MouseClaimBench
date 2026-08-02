@@ -1,7 +1,18 @@
 protocol_id: mouseclaimbench_ibl_behavioral_external_population
-version: 5.3.0
-status: frozen_before_behavioral_table_download_or_outcome_generation
+version: 5.3.1
+status: amended_from_catalog_metadata_before_behavioral_value_access
 freeze_date: 2026-08-02
+amendment:
+  basis: >-
+    The first catalog-only pass found that the official default 2025-03-03
+    revisions comprise 54 PASS and 56 WARNING tables. A PASS-only population
+    would contain fewer than 29 mice in each locked role. No parquet table or
+    behavioral value had been opened when this availability amendment was made.
+  changes:
+    - accept_official_default_WARNING_revisions_in_primary_population
+    - retain_QC_status_as_a_prespecified_stratum
+    - report_PASS_only_results_as_descriptive_sensitivity
+  endpoint_or_threshold_changed: false
 
 population:
   resource: International Brain Laboratory Brain-Wide Map
@@ -21,7 +32,8 @@ source_contract:
   dataset_type: trials.table
   dataset_name: _ibl_trials.table.pqt
   required_default_dataset: true
-  required_qc: PASS
+  allowed_qc: [PASS, WARNING]
+  pass_only_sensitivity: descriptive_not_certificate_eligible_if_below_29_mice
   preferred_repository: aws_
   integrity_algorithm: md5
   required_columns:
@@ -100,4 +112,3 @@ claim_boundary: >-
   mechanism, independent laboratories, whole-brain validity, or digital-twin
   validity. Mice are biological units, but shared laboratories and task design
   remain higher-level dependencies and are reported as limitations.
-
