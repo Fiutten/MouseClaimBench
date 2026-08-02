@@ -57,6 +57,7 @@ confirmatory_population:
     target_calibration: {start: 2026085001, count: 50}
     risk_lock: {start: 2026085101, count: 50}
     final: {start: 2026085201, count: 50}
+    ood_stress: {start: 2026085301, count: 50}
   independent_unit: seed_bundle
   hierarchy:
     - seed_bundle
@@ -87,6 +88,10 @@ confirmatory_population:
     - worst_generator_family_empirical_failure
     - random_effect_heterogeneity_description
     - low_sample_high_noise_ood_stress_test
+  ood_stress_factors:
+    n_points: 400
+    noise_scale: 0.25
+    interpretation: diagnostic_only_not_part_of_the_confirmatory_certificate
 
 real_transport_population:
   resource: CausalRivers
