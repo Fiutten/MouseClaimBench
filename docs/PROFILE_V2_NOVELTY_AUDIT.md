@@ -1,84 +1,120 @@
-# Profile v2 scoped novelty audit
+# Profile v2 standards/prospective novelty audit
 
 Checked: 2026-08-02
 
-## Search boundary
+## Audit boundary
 
-The search covered scientific claim verification, fact checking, assurance
-cases, formal argumentation, causal-analysis frameworks, abstention, and
-finite-sample risk control. Sources were inspected through publisher,
-proceedings, DOI, or author pages. This is a scoped state-of-the-art audit, not a
-systematic review and not proof that no unindexed predecessor exists.
+The audit covered scientific claim verification, assurance cases, attributed
+argument graphs, semantic graph validation, provenance, model verification and
+validation, reproducibility, and computational mouse-brain benchmarking.
+Publisher, standards-body, proceedings, DOI, archive, and author pages were
+preferred. This is a scoped adversarial search. It is not a systematic review
+and cannot prove that no unindexed predecessor exists.
 
-Closest resources include:
+## Closest work and non-novel components
 
-- SciFact and recent scientific-verification benchmarks, which primarily test
-  retrieval, entailment, or claim-evidence reasoning:
-  https://aclanthology.org/2025.findings-acl.1059/
-- CLAIM-BENCH, which evaluates LLM extraction and linkage of scientific claims
-  and evidence rather than executable artifact authorization:
+The following components have substantial prior art and are not claimed as new:
+
+- Scientific claim verification retrieves documentary evidence and predicts
+  support or contradiction. SciFact, MultiVerS, SciFact-Open, SciTab, SciVer,
+  SciTrue, PhyVer, and MEVER cover text, tables, figures, and physical evidence.
+- CLAIM-BENCH evaluates LLM extraction and linkage of claim-evidence pairs from
+  papers. It does not execute artifact-level scientific authorization profiles:
   https://arxiv.org/abs/2506.08235
-- A 2026 trace analysis showing that many verification datasets remain dominated
-  by retrieval and entailment:
-  https://arxiv.org/abs/2604.01657
-- SAFE, which structures fact-checking arguments and explanations:
-  https://doi.org/10.24963/ijcai.2025/1274
-- Assurance-case research, which already provides structured claims, evidence,
-  defeaters, patterns, and formal reasoning. These components cannot be claimed
-  as new:
-  https://doi.org/10.1016/j.jss.2025.112353 and
-  https://doi.org/10.1016/j.infsof.2025.107767
-- Causal-Nest, which already integrates causal discovery, integrity metrics,
-  inference, refutation, and feature engineering:
-  https://doi.org/10.1016/j.knosys.2026.116005
-- Learn-Then-Test and conformal risk control, which already provide
-  finite-sample calibration. MouseClaimBench applies a different hierarchical
-  false-authorization event and must not claim invention of risk control:
-  https://arxiv.org/abs/2110.01052 and
-  https://proceedings.iclr.cc/paper_files/paper/2024/file/f3549ef9b5ff520a7e41ff3cc306ab2b-Paper-Conference.pdf
-- Work on evaluation incentives showing that binary accuracy can reward guessing
-  and that abstention must be valued explicitly:
-  https://doi.org/10.1038/s41586-026-10549-w
+- Assurance cases already represent claims, arguments, assumptions, defeaters,
+  confidence, and evidence.
+- Compliance-by-Construction Argument Graphs combine typed argument graphs,
+  deterministic completeness and admissibility constraints, and a W3C
+  PROV-aligned ledger in an AI-assisted certification workflow:
+  https://doi.org/10.1109/FACCT71761.2026.00009
+- Recent attributed-graph work compares the structure and provenance of human-
+  and machine-generated assurance cases:
+  https://arxiv.org/abs/2604.20577
+- Claim-level auditability for research agents already uses persistent semantic
+  provenance and protocolized validation:
+  https://arxiv.org/abs/2602.13855
+- SHACL already validates RDF graphs and returns machine-readable violations:
+  https://www.w3.org/TR/shacl/
+- PROV-O already provides an interoperable provenance vocabulary:
+  https://www.w3.org/TR/prov-o/
+- Verification, validation, uncertainty quantification, content hashing, and
+  formal rule checking are established engineering methods.
+- BMTK, the Virtual Mouse Brain, Allen V1 models, Sensorium, MICRONS, and
+  MouseDTB already address simulation, prediction, or biological modelling.
+  MouseClaimBench is not a replacement simulator.
 
-## Comparison
+## Capability boundary
 
-| Family | Existing contribution | Not novel here | Candidate distinction of profile v2 |
-|---|---|---|---|
-| Scientific claim verification | Evidence retrieval, entailment, reasoning, multimodal claims | Claim-evidence linkage | Executes source-artifact predicates and bounded scientific authorization contracts |
-| Assurance cases | Structured arguments, evidence, confidence methods, defeaters | Claim-evidence graphs and formal rules | Couples mandatory heterogeneous evidence blocks to measured hierarchical false authorization |
-| Causal frameworks | Discovery ensembles, graph metrics, refutation, effects | General causal workflow | Refuses promotion between prediction, topology, direction, intervention, and strict twin scope |
-| Risk-control methods | Finite-sample calibration and conformal risk control | Statistical risk-control principle | Defines the failure event at the independent experiment bundle and couples it to semantic non-compensation |
-| Selective prediction | Abstention and uncertainty-aware prediction | Abstention itself | Preserves typed scientific deficits and rejects passed facts with incomplete provenance schemas |
+| Family | Established capability | Profile-v2 distinction evaluated here |
+|---|---|---|
+| Scientific claim verification | Documentary retrieval, entailment, and multimodal support | Starts from computed artifacts and authorizes only typed domain claims |
+| Assurance and argument graphs | Structured claims, evidence, admissibility, and provenance | Executes a mouse-brain profile and returns every scientific and package-integrity deficit |
+| SHACL and PROV-O | Structural graph constraints and provenance interchange | Adds non-compensatory domain semantics and relational artifact-dependence controls |
+| Model V&V | Verification, validation, uncertainty, credibility, and context of use | Treats each resulting dimension as non-interchangeable evidence |
+| Neurocomputational benchmarks | Prediction, simulation, topology, or local biological analysis | Prevents a passed endpoint from promoting mechanism, causality, or twin scope |
 
-## Defensible novelty claim
+## Defensible novelty
 
-The defensible candidate contribution is the combination of:
+The defensible candidate contribution is the evaluated composition of:
 
-1. versioned, domain-specific evidence schemas for scientific artifacts
-2. non-compensatory profile authorization that never outputs scientific truth
-3. complete multi-deficit traces without priority masking
-4. an independent ASP conformance implementation
-5. a deterministic contract-mutation benchmark
-6. hierarchical false-authorization control over independent experiment units
-7. bounded applications to computational mouse-brain evidence
+1. a versioned domain profile with 10 bounded mouse-brain claim types, 22
+   evidence-block types, and mandatory source observations
+2. profile-relative, non-compensatory authorization rather than truth scoring
+3. complete multi-deficit traces instead of one prioritized rejection reason
+4. RDF/PROV-O exchange and third-party SHACL conformance
+5. independent Python, ASP, and SHACL execution with exact deficit agreement
+6. eight relational integrity controls over artifacts, lineage, cohorts,
+   attestations, and profile identity
+7. deterministic single and pairwise attacks plus leave-one-control-out ablation
+8. formal property checks and measured scalability to 10,000 packages and 5,000
+   artifacts
+9. two protocols frozen before numerical access to external DANDI assets
+10. a dependence-aware, narrowly scoped MICRONS structure-function application
 
-No inspected work presented this exact combination. This is evidence of
-differentiation, not proof of global priority.
+No inspected work reported this exact evaluated combination. The nearest 2026
+argument-graph systems overlap at architecture level. MouseClaimBench is
+differentiated by domain-operational scientific requirements, complete
+cross-engine deficits, controlled package attacks and ablations, and frozen
+external neurophysiology applications. This supports a bounded novelty argument
+and not a claim of universal priority.
+
+## Results that strengthen the novelty claim
+
+- Python classifies all 5,497 contract cases exactly.
+- Independent ASP matches all 262 selected conformance cases.
+- External pySHACL matches all 5,497 structural cases and therefore acts as a
+  meaningful negative baseline for structural novelty.
+- Six formal properties hold in 55,031 frozen checks over 10,000 packages.
+- The complete gate blocks all 360 controlled attacked packages. The
+  profile-only and hash-only baselines falsely authorize 360 and 280.
+- Removing any one of eight integrity controls reintroduces exactly 10 false
+  authorizations under the declared attack construction.
+- One prospective DANDI protocol remains negative without endpoint repair. A
+  second authorizes only held-out population-response prediction in 32 mice.
+- MICRONS authorizes one local observational association after directed dyadic
+  covariance and node-label permutation. It authorizes no causal or whole-brain
+  claim.
 
 ## Prohibited novelty claims
 
-The project must not claim invention of assurance cases, claim verification,
-fact checking, knowledge graphs, formal argumentation, causal discovery,
-abstention, conformal calibration, or digital-twin validation. It must not claim
-that the v2 profile is complete, optimal, consensus-validated, or biologically
-true.
+The project must not claim invention of assurance cases, argument graphs,
+scientific fact checking, knowledge graphs, RDF, PROV-O, SHACL, formal methods,
+causal discovery, risk control, or digital-twin validation. It must not claim
+that profile v2 is complete, optimal, consensus-validated, or biologically true.
+It must not claim a new simulator, state-of-the-art neural prediction, automatic
+peer review, human decision improvement, causal MICRONS evidence, external
+biological replication, or a complete mouse-brain twin.
 
-## Publication judgement before outcomes
+## Publication judgement
 
-The direction is plausible for Knowledge-Based Systems if the paper is framed as
-a formal knowledge-engineering and scientific-assurance method. It is not yet a
-guaranteed Q1 contribution. Publication strength depends on mutation results,
-independent executable conformance, existing hierarchy-valid risk evidence, and
-honest reporting of negative real transports. Absence of human validation blocks
-human-utility and consensus-taxonomy claims, but it does not invalidate a
-formal-method and executable-contract contribution.
+The current package is a technically substantial and plausibly novel
+Knowledge-Based Systems submission candidate when framed as scientific
+authorization and artifact-integrity knowledge engineering. It is materially
+stronger than a rule-engine demonstration because it contains independent
+executors, a standard external baseline, exact attacks and ablations, formal
+properties, scaling measurements, and frozen real-data applications.
+
+Acceptance cannot be guaranteed. The principal review risk is content validity:
+the profile remains author-defined. The absence of a human panel prevents claims
+about consensus and human utility, but it does not invalidate the executable
+systems contribution because those claims are explicitly outside scope.

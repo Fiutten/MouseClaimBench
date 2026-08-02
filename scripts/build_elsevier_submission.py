@@ -9,9 +9,10 @@ import re
 import shutil
 from pathlib import Path
 
-
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_OUTPUT = ROOT / "dist" / "elsevier-submission"
+INPUT_PATTERN = re.compile(r"\\input\{([^}]+)\}")
+GRAPHICS_PATTERN = re.compile(r"\\includegraphics(?:\[[^]]*\])?\{([^}]+)\}")
 
 
 def _flatten_tex(text: str) -> str:
@@ -26,6 +27,37 @@ def _flatten_tex(text: str) -> str:
     return text
 
 
+def _resolve_tex_dependencies(entrypoint: Path) -> tuple[list[Path], list[Path]]:
+    """Return the TeX and graphics files reachable from one entrypoint."""
+
+    pending = [entrypoint]
+    tex_sources: list[Path] = []
+    graphics: list[Path] = []
+    seen: set[Path] = set()
+    while pending:
+        source = pending.pop()
+        source = source if source.suffix else source.with_suffix(".tex")
+        source = source.resolve()
+        if source in seen:
+            continue
+        if not source.is_file():
+            raise FileNotFoundError(f"Missing manuscript dependency: {source}")
+        seen.add(source)
+        tex_sources.append(source)
+        text = source.read_text()
+        for name in INPUT_PATTERN.findall(text):
+            dependency = ROOT / name
+            pending.append(
+                dependency if dependency.suffix else dependency.with_suffix(".tex")
+            )
+        for name in GRAPHICS_PATTERN.findall(text):
+            graphic = (ROOT / name).resolve()
+            if not graphic.is_file():
+                raise FileNotFoundError(f"Missing manuscript graphic: {graphic}")
+            graphics.append(graphic)
+    return sorted(tex_sources), sorted(set(graphics))
+
+
 def run(output: Path = DEFAULT_OUTPUT) -> Path:
     """Create a flat source tree and a checksum manifest."""
 
@@ -33,21 +65,19 @@ def run(output: Path = DEFAULT_OUTPUT) -> Path:
         shutil.rmtree(output)
     output.mkdir(parents=True)
 
-    tex_sources = [ROOT / "main.tex", ROOT / "supplementary_material.tex"]
-    tex_sources.extend(sorted((ROOT / "sections").glob("*.tex")))
-    tex_sources.extend(sorted((ROOT / "tables").glob("*.tex")))
-    tex_sources.extend(sorted((ROOT / "figures").glob("*.tex")))
+    tex_sources, graphics = _resolve_tex_dependencies(ROOT / "main.tex")
     for source in tex_sources:
         (output / source.name).write_text(_flatten_tex(source.read_text()))
 
     for support_file in (
+        "highlights.txt",
         "references.bib",
         "elsarticle.cls",
         "elsarticle-num.bst",
         "elsarticle-harv.bst",
     ):
         shutil.copy2(ROOT / support_file, output / support_file)
-    for source in sorted((ROOT / "figures").glob("*.png")):
+    for source in graphics:
         shutil.copy2(source, output / source.name)
 
     manifest = {}

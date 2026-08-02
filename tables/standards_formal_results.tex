@@ -1,0 +1,18 @@
+\begin{table}[t!]
+\centering
+\caption{Conformance and formal-property results. Exactness is relative to the frozen profile-v2 contract.}
+\label{tab:standards-formal-results}
+\footnotesize
+\renewcommand{\arraystretch}{1.08}
+\begin{tabularx}{\textwidth}{@{}p{0.26\textwidth}r r Y@{}}
+\toprule
+Evaluation & Cases/checks & Errors & Result \\
+\midrule
+Python contract mutations & 5,497 & 0 & Exact authorization and deficits \\
+Independent \ac{asp} conformance & 262 & 0 & 100\% status and deficit agreement \\
+External \ac{shacl} conformance & 5,497 & 0 & 100\% Python agreement \\
+JSON-LD round trip & 1 graph & 0 & Isomorphic \ac{rdf} graph \\
+Formal-property benchmark & 55,031 & 0 & All six property families and outside closure hold \\
+\bottomrule
+\end{tabularx}
+\end{table}

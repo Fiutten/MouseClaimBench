@@ -1,0 +1,24 @@
+\begin{table}[t!]
+\centering
+\caption{False authorizations and false rejections in the 370-case integrity benchmark. Each leave-one-out system exposes the 10 single attacks governed only by the omitted control.}
+\label{tab:integrity-ablation-v2}
+\footnotesize
+\renewcommand{\arraystretch}{1.05}
+\begin{tabularx}{\textwidth}{@{}Y r r@{}}
+\toprule
+Authorization system & False authorizations / 360 & False rejections / 10 \\
+\midrule
+Profile without integrity & 360 & 0 \\
+Hash-only integrity & 280 & 0 \\
+Full integrity gate & 0 & 0 \\
+Without profile identity & 10 & 0 \\
+Without content hash & 10 & 0 \\
+Without resolved lineage & 10 & 0 \\
+Without cycle detection & 10 & 0 \\
+Without duplicate-independence check & 10 & 0 \\
+Without cohort-overlap check & 10 & 0 \\
+Without attestation consistency & 10 & 0 \\
+Without block lineage & 10 & 0 \\
+\bottomrule
+\end{tabularx}
+\end{table}

@@ -1,101 +1,125 @@
-# Profile v2 results and publication status
+# Profile v2 standards/prospective results and publication status
 
-## Technical outcome
+Frozen release: `results/standards_prospective_release/summary.json`
 
-The hardened release passes every frozen technical condition. Each of the four
-result packages records its exact source revision without a `-dirty` suffix.
+## Release decision
 
-The internal audit contained 20 items that were not retained. Profile v2 maps
-all 20 to explicit changes. The generic `mechanistic`, `causal`, and
-`digital_twin` identifiers are absent. The strict complete-twin subtype remains
-available only as an intentionally demanding boundary. No external content
-validity or human consensus is claimed.
+All 11 frozen release conditions pass. The release is classified as a bounded
+Knowledge-Based Systems submission candidate and not as an acceptance
+guarantee. Every referenced result records a clean source revision. Broad
+causal, whole-brain, digital-twin, consensus, and human-utility claims remain
+blocked.
 
-The contract-mutation benchmark contains 5,497 cases:
+## Executable contract and standards baseline
 
-| Case family | Cases |
+The contract benchmark contains 5,497 deterministic cases. Python produces zero
+false authorizations, zero false rejections, and exact recovery of all expected
+deficit sets. The independent ASP implementation matches authorization and
+deficits in 262 selected cases.
+
+All 5,497 cases are exported to RDF and evaluated by external `pySHACL` 0.40.1.
+SHACL also yields zero false authorizations or rejections and exact structural
+deficits. The profile graph contains 318 triples. JSON-LD serialization preserves
+graph isomorphism. These results establish standards conformance and also show
+that structural validation alone is not novel.
+
+## Formal properties
+
+Ten thousand deterministic packages produce 55,031 checks with no violation:
+
+| Property | Passed checks |
 |---|---:|
-| Pristine complete packages | 10 |
-| Single status defects | 240 |
-| Omitted required blocks | 60 |
-| Missing required observations | 339 |
-| Pairwise mixed status defects | 4,848 |
+| Soundness relative to profile v2 | 10,000 |
+| Completeness relative to profile v2 | 10,000 |
+| Exact deficit identity | 10,000 |
+| Input-order invariance | 10,000 |
+| Irrelevant-evidence invariance | 10,000 |
+| Monotonic degradation | 5,030 |
+| Outside-profile closure | 1 |
 
-Profile v2 has zero false authorizations, zero false rejections of pristine
-packages, and exact recovery of all 5,497 deficit sets. Python and the
-independent ASP implementation agree on status and deficits in all 262 selected
-conformance cases.
+These are properties of the executable profile. They are not proof of biological
+truth or profile content validity.
 
-The comparison is deliberately structural. A raw all-passed policy that ignores
-the provenance schema falsely authorizes all 339 metadata mutations. The
-75-percent compensatory policy falsely authorizes 4,674 mutation cases. The
-prediction shortcut falsely authorizes 4,242. A prioritized single-reason trace
-recovers the complete deficit set in 27.69 percent of cases, compared with 100
-percent for v2. These values establish contract behavior, not scientific truth.
+## Integrity attacks and ablation
 
-## Artifact-grounded application
+The benchmark contains 10 pristine packages and 360 attacked packages. It
+applies eight single attacks and every pairwise combination to all 10 claims.
+The complete integrity gate has zero false authorization and zero false
+rejection. It also recovers the exact attack trace in all 370 packages.
 
-Five existing evidence cases produce two bounded target authorizations and no
-complete-twin authorization:
+The core profile alone falsely authorizes all 360 attacks. A hash-only baseline
+falsely authorizes 280. Each leave-one-integrity-control-out system falsely
+authorizes 10 packages, corresponding to the omitted single attack in every
+claim. The result establishes necessity only under the declared deterministic
+threat model. It is not an adaptive security evaluation.
 
-| Case | Target result | Main interpretation |
-|---|---|---|
-| Allen VBN | Not authorized | Nine simultaneous deficits include failed topology and direction. |
-| Static Sensorium | Profile authorized | Static visual-response prediction only. No SOTA, mechanism, or causal claim. |
-| Dynamic Sensorium | Not authorized | Prediction passes, but response-reliability quality requires review. |
-| MICRONS | Not authorized | The local association survives stored controls, but dependence-aware network inference remains absent. |
-| IBL behavior | Profile authorized | One topology-specific behavioral prediction across two locked 35-mouse splits. |
+## Scalability
 
-The IBL result remains bounded to one shared task ecosystem. Simple source
-comparators also pass, so it supports transport and contract application rather
-than exclusive algorithmic superiority. The artifact application is
-retrospective because all source outcomes predate profile v2.
+On one Apple arm64 host with Python 3.14.4, median throughput remains between
+63,504 and 65,465 package decisions per second for batches of 100, 1,000, and
+10,000. Median time is 0.154 s for 10,000 packages. Integrity evaluation of one
+valid package takes 0.0498 ms with 25 artifacts and 2.545 ms with 5,000. The
+reported log-log slope is descriptive and not an asymptotic proof.
 
-## Novelty judgement
+## Mouse-brain applications
 
-The individual ingredients are not new. Claim-evidence graphs, assurance cases,
-formal argumentation, abstention, causal workflows, and risk calibration all
-have substantial prior literature. The candidate novelty is their specific
-combination in an executable scientific-authorization system:
+The profile-v2 artifact mapping authorizes three bounded target claims and no
+strict digital-twin claim. Static Sensorium authorizes its declared predictive
+comparison. IBL authorizes one topology-specific behavioural prediction under
+locked splits. MICRONS authorizes one local observational structure-function
+association after dependence-aware inference. Allen directed topology and
+Dynamic Sensorium remain unauthorized under their declared deficits.
 
-1. typed provenance schemas over heterogeneous scientific artifacts
-2. explicit profile authorization rather than truth verification
-3. non-compensatory conjunction with complete multi-deficit traces
-4. independent ASP conformance
-5. deterministic mutation testing of the evidence contract
-6. false-authorization control at the independent experiment hierarchy
-7. bounded mouse-brain applications with positive and negative cases
+The MICRONS coefficient is positive in discovery and two non-overlapping
+hold-out windows. Directed dyadic standard errors are 0.00200, 0.00209, and
+0.00205. Simultaneous node-label permutation gives `p = 0.000999` in every
+window. All windows belong to one cortical volume. This is internal reproduction
+of a local observational association and not causal or external replication.
 
-The scoped literature audit found no inspected system with this exact
-combination. This supports differentiation but does not prove universal priority.
+## Prospective DANDI applications
+
+DANDI:001176 remains negative because only 5 usable subjects satisfy the frozen
+simultaneous-signal schema against a minimum of 20. The model was not run and the
+endpoint was not repaired.
+
+DANDI:000039 contains 32 selected and usable mice. The frozen Ridge model gives
+a median held-out subject correlation of 0.310, a subject-bootstrap 95% interval
+of `[0.207, 0.369]`, 93.75% positive subjects, model squared error 11.579, and
+intercept squared error 12.244. All five frozen conditions pass. The authorized
+claim is limited to population contrast-response prediction within this
+resource. No state-of-the-art model claim is made.
 
 ## Publication assessment
 
-The package is technically ready for a substantial manuscript revision and is a
-plausible methodological submission candidate for Knowledge-Based Systems. A Q1
-acceptance cannot be guaranteed. The strongest paper must focus on executable
-knowledge engineering and semantic risk, not on digital-brain simulation or
-automatic scientific truth verification.
+The package now supports a substantial knowledge-engineering paper based on six
+orthogonal forms of evidence: contract mutation, independent execution,
+standards validation, formal properties, integrity attacks and ablations, and
+frozen external applications. The novelty claim is the evaluated integration,
+not any component in isolation.
 
-The remaining vulnerabilities must stay visible:
+The remaining scientific weaknesses are explicit:
 
-- profile v2 is author-defined rather than a consensus taxonomy
-- v2 artifact application is retrospective
-- real mouse-population risk evidence comes from one IBL task ecosystem
-- MICRONS still lacks a complete network-dependence estimator
-- no claim is made about human trace utility or decision quality
+- profile v2 is author-defined rather than consensus-validated
+- controlled attacks do not represent an adaptive adversary
+- SHACL checks structure, not biological truth
+- MICRONS contains one volume and internal hold-outs
+- one DANDI positive case uses a simple predictor and one case remains negative
+- no human interpretability or decision-quality claim is evaluated
 
-These limits no longer invalidate the formal methodological contribution because
-the paper does not claim consensus validity or human benefit. They do prevent a
-broader scientific-validation claim.
+These limitations make the claim boundary narrower. They do not erase the
+systems contribution. Journal acceptance remains uncertain and must not be
+described as guaranteed.
 
 ## Reproduction
 
 From a clean checkout:
 
 ```bash
-ENV_PATH=.venv-risk-v3 bash scripts/reproduce_profile_v2.sh
+ENV_PATH=.venv-risk-v3 bash scripts/reproduce_standards_prospective_v3.sh verify
 ```
 
-The release decision is stored in
-`results/profile_v2_release/summary.json`.
+Rebuild only when the required public raw data are locally available:
+
+```bash
+ENV_PATH=.venv-risk-v3 bash scripts/reproduce_standards_prospective_v3.sh rebuild
+```

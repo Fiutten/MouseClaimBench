@@ -6,9 +6,11 @@
 \usepackage{array}
 \usepackage{booktabs}
 \usepackage{enumitem}
+\usepackage{float}
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{lineno}
+\usepackage{microtype}
 \usepackage[section]{placeins}
 \usepackage{tabularx}
 \usepackage{xcolor}
@@ -21,36 +23,31 @@
   linkcolor=blue,
   citecolor=blue,
   urlcolor=blue,
-  pdftitle={MouseClaimBench: Evidence-Constrained Knowledge-Based Reasoning for Mouse-Brain Claims},
+  pdftitle={MouseClaimBench: Standards-Aware Authorization of Mouse-Brain Claims},
   pdfauthor={Alberto Fernandez-Isabel, Isaac Martin de Diego, Ruben Fuentes-Fernandez},
   pdfsubject={Knowledge-based authorization of computational mouse-brain claims},
-  pdfkeywords={Knowledge-Based Systems, Scientific Claim Authorization, Knowledge Validation, Evidence Provenance, Mouse-Brain Modelling, Reproducibility}
+  pdfkeywords={Knowledge-Based Systems, Scientific Claim Authorization, Evidence Provenance, Graph Validation, Mouse-Brain Models, Reproducibility}
 }
 
+\acrodef{ach}[ACh]{acetylcholine}
+\acrodef{ai}[AI]{Artificial Intelligence}
+\acrodef{asp}[ASP]{Answer Set Programming}
 \acrodef{bmtk}[BMTK]{Brain Modeling ToolKit}
-\acrodef{bm}[BM25]{Best Matching 25}
-\acrodef{ci}[CI]{confidence interval}
+\acrodef{dandi}[DANDI]{Distributed Archives for Neurophysiology Data Integration}
 \acrodef{fair}[FAIR]{Findable, Accessible, Interoperable, and Reusable}
-\acrodef{fn}[FN]{false negative}
-\acrodef{fnr}[FNR]{false-negative rate}
-\acrodef{fp}[FP]{false positive}
-\acrodef{fpr}[FPR]{false-positive rate}
-\acrodef{json}[JSON]{JavaScript Object Notation}
-\acrodef{kbs}[KBS]{Knowledge-Based System}
-\acrodef{kg}[KG]{Knowledge Graph}
-\acrodef{mever}[MEVER]{Multi-Modal and Explainable Claim Verification with Graph-based Evidence Retrieval}
+\acrodef{ibl}[IBL]{International Brain Laboratory}
 \acrodef{microns}[MICRONS]{Machine Intelligence from Cortical Networks}
-\acrodef{sem}[SEM]{Structural Equation Model}
-\acrodef{svd}[SVD]{singular value decomposition}
-\acrodef{tn}[TN]{true negative}
-\acrodef{tp}[TP]{true positive}
-\acrodef{uq}[UQ]{Uncertainty Quantification}
+\acrodef{nwb}[NWB]{Neurodata Without Borders}
+\acrodef{prov}[PROV-O]{PROV Ontology}
+\acrodef{rdf}[RDF]{Resource Description Framework}
+\acrodef{shacl}[SHACL]{Shapes Constraint Language}
 \acrodef{vbn}[VBN]{Visual Behavior Neuropixels}
 \acrodef{vone}[V1]{primary visual cortex}
 \acrodef{vv}[V\&V]{Verification and Validation}
 
 \setlist[itemize]{leftmargin=*,itemsep=0.45em,topsep=0.45em}
 \newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
 \modulolinenumbers[5]
 \setlength{\emergencystretch}{2em}
 
@@ -58,7 +55,7 @@
 
 \begin{frontmatter}
 
-\title{MouseClaimBench: Evidence-Constrained Knowledge-Based Reasoning for Mouse-Brain Claims}
+\title{MouseClaimBench: Standards-Aware Authorization of Mouse-Brain Claims}
 
 \author[urjc]{Alberto Fern\'andez-Isabel\corref{cor1}}
 \ead{alberto.fernandez.isabel@urjc.es}
@@ -84,7 +81,7 @@
 \end{abstract}
 
 \begin{keyword}
-Knowledge-Based Systems \sep Scientific Claim Authorization \sep Knowledge Validation \sep Evidence Provenance \sep Mouse-Brain Modelling \sep Reproducibility
+Knowledge-Based Systems \sep Scientific Claim Authorization \sep Evidence Provenance \sep Graph Validation \sep Mouse-Brain Models \sep Reproducibility
 \end{keyword}
 
 \end{frontmatter}
@@ -111,7 +108,11 @@ The authors declare no known competing financial interests or personal relations
 
 \section*{Data and Code Availability}
 \label{sec:data-code-availability}
-The source code, knowledge profiles, tests, lightweight result artifacts, and manuscript are maintained in the \href{https://github.com/Fiutten/MouseClaimBench}{public MouseClaimBench repository}. Raw Allen, Sensorium, Tuebingen, SciFact, and MICRONS data are governed by their original providers and are not redistributed. Every reported result is linked to a recorded Git revision. Artifact files marked as dirty are excluded from the release gate.
+The source code, knowledge profiles, tests, frozen protocols, lightweight result artifacts, and manuscript are maintained in the \href{https://github.com/Fiutten/MouseClaimBench}{public MouseClaimBench repository}. Raw Allen, Sensorium, IBL, MICRONS, and DANDI data remain governed by their providers and are not redistributed. The prospective artifact manifests retain public identifiers, versions, sizes, and official hashes. Every reported result is linked to a recorded Git revision, and artifacts marked as dirty are excluded from the release gate.
+
+\section*{Declaration of Generative AI and AI-Assisted Technologies}
+\label{sec:generative-ai}
+During preparation of this work, the authors used OpenAI Codex, an \ac{ai}-assisted tool, for software assistance and language editing. The authors reviewed and edited all generated material and take full responsibility for the content of the publication.
 
 \section*{Acknowledgements}
 \label{sec:acknowledgements}

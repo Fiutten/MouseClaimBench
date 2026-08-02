@@ -5,7 +5,6 @@ from __future__ import annotations
 import shutil
 from pathlib import Path
 
-
 ROOT = Path(__file__).resolve().parents[1]
 MIRROR = ROOT / "paper"
 
@@ -15,7 +14,7 @@ def run() -> None:
 
     for filename in (
         "main.tex",
-        "supplementary_material.tex",
+        "highlights.txt",
         "references.bib",
         "elsarticle.cls",
         "elsarticle-num.bst",

@@ -1,0 +1,19 @@
+\begin{table}[t!]
+\centering
+\caption{Claim families in profile v2 and their decisive evidence. Every row also requires the context and quality fields declared by the profile.}
+\label{tab:profile-v2-claims}
+\footnotesize
+\renewcommand{\arraystretch}{1.08}
+\begin{tabularx}{\textwidth}{@{}p{0.25\textwidth}p{0.13\textwidth}Y@{}}
+\toprule
+Claim family & Required blocks & Decisive evidence \\
+\midrule
+Bounded prediction and clean computation & 3 and 1 & Held-out target, split, metric, comparator, and clean revision \\
+Within-resource and external reproduction & 2 and 3 & Non-overlapping units, then an independent study or resource \\
+Topology and direction & 5 and 4 & Prespecified topology controls and assumption-conditional direction test \\
+Local structure--function and intervention & 6 and 5 & Matched association with dependence control, or a declared intervention \\
+Directed topology-consistent prediction & 10 & Prediction, topology, direction, uncertainty, shift, alternatives, and robustness \\
+Complete entity-specific digital twin & 21 & All previous dimensions plus causality, whole-brain coverage, entity specificity, operational update, and multiscale fidelity \\
+\bottomrule
+\end{tabularx}
+\end{table}

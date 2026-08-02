@@ -4,7 +4,7 @@ from pathlib import Path
 def test_overleaf_root_and_structured_paper_mirror_are_identical() -> None:
     pairs = [
         (Path("main.tex"), Path("paper/main.tex")),
-        (Path("supplementary_material.tex"), Path("paper/supplementary_material.tex")),
+        (Path("highlights.txt"), Path("paper/highlights.txt")),
         (Path("references.bib"), Path("paper/references.bib")),
         (Path("elsarticle-num.bst"), Path("paper/elsarticle-num.bst")),
     ]

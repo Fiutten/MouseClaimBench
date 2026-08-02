@@ -1,0 +1,19 @@
+\begin{table}[t!]
+\centering
+\caption{Descriptive scalability on one Apple arm64 host. Every value is the median of five repetitions after warm-up.}
+\label{tab:scalability-results}
+\footnotesize
+\renewcommand{\arraystretch}{1.05}
+\begin{tabularx}{\textwidth}{@{}Y r r r@{}}
+\toprule
+Workload & Size & Median time (ms) & Throughput \\
+\midrule
+Evidence-package batch & 100 packages & 1.528 & 65,465 packages/s \\
+Evidence-package batch & 1,000 packages & 15.747 & 63,504 packages/s \\
+Evidence-package batch & 10,000 packages & 154.189 & 64,856 packages/s \\
+Single digital-twin package & 25 artifacts & 0.050 & Not pooled \\
+Single digital-twin package & 1,000 artifacts & 0.533 & Not pooled \\
+Single digital-twin package & 5,000 artifacts & 2.545 & Not pooled \\
+\bottomrule
+\end{tabularx}
+\end{table}

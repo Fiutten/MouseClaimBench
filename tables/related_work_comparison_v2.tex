@@ -1,0 +1,19 @@
+\begin{table}[t!]
+\centering
+\caption{Capability comparison with the closest methodological families. ``Partial'' denotes a capability that is narrower, implicit, or implementation-dependent.}
+\label{tab:related-work-v2}
+\footnotesize
+\renewcommand{\arraystretch}{1.08}
+\begin{tabularx}{\textwidth}{@{}P{0.21\textwidth}P{0.18\textwidth}P{0.12\textwidth}P{0.14\textwidth}Y@{}}
+\toprule
+Family & Decision object & Graph validation & Package integrity & Scientific authorization \\
+\midrule
+Scientific claim verification & Documentary support or contradiction & No & Source traceability & Partial \\
+Assurance cases & Structured argument for a system property & Partial & Partial & Context-specific \\
+\ac{shacl} and \ac{prov} & Graph conformance and provenance interchange & Yes & Partial & No \\
+Model \ac{vv} and reproducibility & Credibility, execution, and context of use & Partial & Partial & Partial \\
+Neural model benchmarks & Prediction, simulation, or biological analysis & No & Dataset-specific & One endpoint \\
+MouseClaimBench & Profile-relative authorization from scientific artifacts & Yes & Eight mandatory controls & Ten bounded claim types \\
+\bottomrule
+\end{tabularx}
+\end{table}
