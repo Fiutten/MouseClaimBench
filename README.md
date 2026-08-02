@@ -82,6 +82,31 @@ The legacy 144-case suite remains a software contract-conformance test because
 its labels share the operational semantics of the legacy gate. It is not
 presented as independent scientific validation.
 
+### Post-submission research branch
+
+The `hybrid-selective-v2` branch is an experimental evolution kept separate
+from the submitted manuscript. It combines a development-trained selective
+classifier with semantic support vetoes and an established additive-noise
+direction method. Its model was fitted and calibrated on 3740 already-consumed
+cases, then frozen before one 3600-case confirmation run over ten new
+data-generating regimes.
+
+The frozen primary endpoint did **not** pass. Six substantive conditions passed,
+including zero semantic-veto violations, 97.73% aggregate coverage, a 4.72%
+selective error, and a 2.00% false-authorization fraction. The directional
+condition failed materially: ANM attempted 74.47% of cases but achieved 51.73%
+accuracy across all attempted regimes and 65.15% within regimes with a declared
+structural direction. The outcome therefore supports only a partial engineering
+claim: hard vetoes enforce semantic boundaries and reduce false support, while
+the tested ANM component is not a reliable universal direction gate under
+confounding, selection, post-nonlinearity, and measurement error.
+
+The immutable outcome is in
+`results/hybrid_selective_confirmation/summary.json`. Its descriptive audit is
+in `results/hybrid_selective_outcome_audit/audit.md`. These results must not be
+used to claim a second strong Q1 contribution, and a tuned rerun cannot be
+reported as independent confirmation.
+
 ## Scope boundaries
 
 The current artifacts do not support claims of:
@@ -105,7 +130,7 @@ Use an isolated environment. Exact validated versions are recorded in
 `requirements-lock.txt`, while supported ranges remain in `pyproject.toml`.
 
 ```bash
-python3.12 -m venv .venv
+python3 -m venv .venv
 .venv/bin/python -m pip install --upgrade pip
 .venv/bin/python -m pip install -r requirements-lock.txt
 .venv/bin/python -m pip install -e .
@@ -126,6 +151,10 @@ their adapters. Lightweight MICRONS summaries copied from
 .venv/bin/python -m mousebrainbench.benchmarks.real_case_claim_matrix
 .venv/bin/python -m mousebrainbench.benchmarks.knowledge_system_audit
 .venv/bin/python -m mousebrainbench.benchmarks.knowledge_system_release
+
+# Experimental hybrid-selective branch only
+bash scripts/setup_hybrid_validation_env.sh .venv-hybrid
+.venv-hybrid/bin/python -m mousebrainbench.benchmarks.hybrid_selective_outcome_audit
 ```
 
 Artifacts whose `git_revision` ends in `-dirty` are provisional. Submission
