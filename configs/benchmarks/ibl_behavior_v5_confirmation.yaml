@@ -1,0 +1,103 @@
+protocol_id: mouseclaimbench_ibl_behavioral_external_population
+version: 5.3.0
+status: frozen_before_behavioral_table_download_or_outcome_generation
+freeze_date: 2026-08-02
+
+population:
+  resource: International Brain Laboratory Brain-Wide Map
+  citation_doi: 10.1038/s41586-025-09235-0
+  selection_path: configs/benchmarks/ibl_behavior_v5_selection.json
+  selection_sha256: 58485e0db216cbeabf112e037e31537c33076ea7d3c00badf03c34cbb1f7996e
+  previously_consumed_mice_excluded: 24
+  independent_unit: mouse
+  lower_level_units: [session, trial, temporal_control]
+  role_counts: {calibration: 40, risk_lock: 35, final: 35}
+  final_access_requires_risk_lock: true
+  replacement_after_missing_or_invalid_behavior: false
+  behavioral_outcomes_used_for_selection: false
+
+source_contract:
+  alyx_base_url: https://openalyx.internationalbrainlab.org
+  dataset_type: trials.table
+  dataset_name: _ibl_trials.table.pqt
+  required_default_dataset: true
+  required_qc: PASS
+  preferred_repository: aws_
+  integrity_algorithm: md5
+  required_columns:
+    - contrastLeft
+    - contrastRight
+    - choice
+    - probabilityLeft
+  minimum_usable_trials: 200
+  exact_source_revision_and_hash_recorded_after_download: true
+
+behavioral_task:
+  endpoint: trial_aligned_visual_evidence_specificity
+  signed_contrast: 100 * (nan_to_zero(contrastRight) - nan_to_zero(contrastLeft))
+  right_choice: choice == -1
+  block_covariate: probabilityLeft
+  no_go_trials_excluded: true
+  candidate_offsets: [0, 17, 43, 89]
+  true_candidate_offset: 0
+  controls: global_circular_trial_shifts
+  fold_rule: sha256(mouse_eid, trial_index) modulo 3
+  folds: 3
+  estimator: standardized_logistic_regression_with_block_only_baseline
+  estimator_settings:
+    C: 1.0
+    max_iter: 2000
+    random_state: 0
+  prediction_pass_requires:
+    pooled_probability_choice_correlation_minimum: 0.10
+    pooled_correlation_p_value_maximum: 0.01
+    held_out_tjur_r2_minimum: 0.02
+  internal_reproduction_requires:
+    minimum_folds_with_positive_log_loss_improvement: 2
+  topology_specificity_requires:
+    held_out_tjur_r2_margin_over_best_other_candidate: 0.02
+
+authorization:
+  claim: topology_specific
+  score_model: results/hybrid_selective_policy/model.json
+  score_model_sha256: b8e42c0a90a9ca676c3c587abb2b1107fa12fe43c1bd3b63bb9227d657663c50
+  fixed_threshold: 0.9272577728502728
+  threshold_source: configs/benchmarks/semantic_risk_control_v5_1.yaml
+  threshold_refitting_allowed: false
+  evidence_rule_refitting_after_calibration_allowed: false
+  risk_event: at_least_one_false_temporal_control_authorized_for_a_mouse
+
+inferential_contract:
+  target_mouse_failure_probability: 0.10
+  confidence_level: 0.95
+  minimum_authorized_mouse_coverage: 0.10
+  minimum_positive_recovery: 0.05
+  minimum_independent_mice: 29
+  pair_or_trial_level_binomial_inference_prohibited: true
+  final_claim_requires:
+    - risk_lock_passes_before_final_is_opened
+    - final_split_independently_passes_the_same_fixed_contract
+    - no_semantic_gate_violations
+    - at_least_29_selected_mice_in_each_locked_split
+
+comparators:
+  - abstain_all
+  - fixed_probability_0_5
+  - evidence_contract_only
+  - frozen_v5_1_complete_authorizer
+
+decision_boundary:
+  positive: >-
+    The frozen topology-specific authorizer controls mouse-level false
+    authorization while remaining active on both locked IBL splits.
+  negative: >-
+    Any availability, risk, activation, recovery, semantic, unit-count, or
+    protocol-order condition fails.
+
+claim_boundary: >-
+  A positive result is external evidence for one behavioral alignment task in
+  one shared IBL experimental protocol. It is not evidence of causal neural
+  mechanism, independent laboratories, whole-brain validity, or digital-twin
+  validity. Mice are biological units, but shared laboratories and task design
+  remain higher-level dependencies and are reported as limitations.
+
