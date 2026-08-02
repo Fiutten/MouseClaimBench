@@ -1,0 +1,79 @@
+protocol_id: mouseclaimbench_dandi_ach_prospective_profile_v2_1
+version: 1.0.0
+status: frozen_before_asset_value_access
+freeze_date: 2026-08-02
+
+resource:
+  archive: DANDI
+  dandiset: "001176"
+  version: "0.260610.2204"
+  doi: 10.48324/dandi.001176/0.260610.2204
+  title: Cortical acetylcholine dynamics are predicted by cholinergic axon activity and behavior state
+  species: Mus musculus
+  metadata_subject_count: 29
+  metadata_asset_count: 132
+  metadata_total_bytes: 924200000
+  data_standard: NWB
+
+prospective_boundary:
+  metadata_inspected_before_freeze:
+    - dandiset title and description
+    - published version and DOI
+    - subject, asset, and byte counts
+    - declared NWB variables and measurement techniques
+  prohibited_before_freeze:
+    - fluorescence values
+    - behavioral values
+    - source-paper numerical outcomes
+    - model comparisons
+  endpoint_or_threshold_refitting_after_value_access: false
+  asset_exclusion_after_value_access: forbidden_except_declared_schema_or_quality_failure
+
+population:
+  independent_unit: subject
+  include_all_published_subjects_with_usable_paired_signals: true
+  minimum_subjects: 20
+  minimum_samples_per_subject: 500
+  minimum_finite_fraction: 0.90
+  replacement_after_exclusion: false
+
+endpoint:
+  target: cortical_acetylcholine_sensor_signal
+  predictors:
+    - cholinergic_axon_signal
+    - pupil_or_declared_behavior_state
+  comparator: subject_specific_intercept
+  secondary_comparators:
+    - behavior_only_ridge
+    - axon_only_ridge
+  model: ridge_regression
+  alpha: 1.0
+  temporal_split: first_60_percent_train_next_20_percent_calibration_last_20_percent_test
+  preprocessing: training_partition_median_imputation_and_standardization
+  metric: held_out_pearson_correlation
+
+acceptance:
+  minimum_subjects: 20
+  median_subject_correlation_minimum: 0.10
+  subject_bootstrap_lower_95_minimum: 0.00
+  minimum_fraction_positive_subjects: 0.65
+  pooled_mean_squared_error_better_than_intercept: true
+  primary_authorization_requires_all_conditions: true
+
+profile_mapping:
+  claim: bounded_predictive_performance
+  required_blocks:
+    prediction: prospective_endpoint_result
+    context_of_use: cortical_ach_prediction_within_this_dandiset
+    data_quality: nwb_schema_exclusions_missingness_and_lineage
+
+claim_boundary: >-
+  A positive result authorizes only bounded prediction of the declared cortical
+  acetylcholine signal for usable subjects in DANDI:001176. It does not authorize
+  cholinergic mechanism, causal direction, independent-study replication,
+  whole-brain generalization, behavioral decision support, or a digital twin.
+
+negative_outcome_policy: >-
+  Failure of any availability, quality, sample-size, predictive, uncertainty, or
+  comparator condition remains a valid prospective result and must not trigger
+  endpoint, threshold, model-family, or subject-selection changes.
