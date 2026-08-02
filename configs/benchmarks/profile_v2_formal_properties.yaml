@@ -1,0 +1,25 @@
+protocol_id: mouseclaimbench_profile_v2_formal_properties
+version: 1.0.0
+status: frozen_before_property_benchmark_execution
+freeze_date: 2026-08-02
+profile: mousebrainbench/knowledge/profiles/mouse_brain_claims_v2.yaml
+
+deterministic_random_packages:
+  seed: 2026080201
+  packages_per_claim: 1000
+  total_packages: 10000
+
+properties:
+  - authorization_soundness_relative_to_profile
+  - authorization_completeness_relative_to_profile
+  - complete_deficit_identity
+  - monotonicity_under_evidence_degradation
+  - invariance_to_input_order
+  - invariance_to_irrelevant_evidence
+  - outside_profile_closure
+
+claim_boundary: >-
+  The properties are theorems of the declared authorization semantics and
+  executable conformance checks of this implementation. They do not prove that
+  the author-defined profile is scientifically complete, biologically true, or
+  externally valid.

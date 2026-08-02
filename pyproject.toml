@@ -129,6 +129,7 @@ mousebrainbench-profile-v2-resolution = "mousebrainbench.benchmarks.profile_v2_r
 mousebrainbench-profile-v2-artifacts = "mousebrainbench.benchmarks.profile_v2_artifact_application:main"
 mousebrainbench-profile-v2-release = "mousebrainbench.benchmarks.profile_v2_release:main"
 mousebrainbench-profile-v2-standards = "mousebrainbench.benchmarks.profile_v2_standards:main"
+mousebrainbench-profile-v2-properties = "mousebrainbench.benchmarks.profile_v2_formal_properties:main"
 mousebrainbench-run = "mousebrainbench.cli:main"
 
 [tool.setuptools.packages.find]
