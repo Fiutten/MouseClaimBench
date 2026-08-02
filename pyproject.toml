@@ -42,6 +42,7 @@ semantic-risk-v3 = [
   "causalchamber==0.2.8",
   "clingo==5.8.0",
   "mapie==1.4.1",
+  "ONE-api==3.5.2",
   "openpyxl==3.1.5",
 ]
 
@@ -98,6 +99,7 @@ mousebrainbench-semantic-risk-v3 = "mousebrainbench.benchmarks.semantic_risk_con
 mousebrainbench-semantic-risk-calibrate = "mousebrainbench.benchmarks.semantic_risk_calibration:main"
 mousebrainbench-causal-chambers-v3 = "mousebrainbench.benchmarks.causal_chambers_transport:main"
 mousebrainbench-causalbench-v3 = "mousebrainbench.benchmarks.causalbench_transport:main"
+mousebrainbench-ibl-mouse-v3 = "mousebrainbench.benchmarks.ibl_mouse_transport:main"
 mousebrainbench-semantic-equivalence-v3 = "mousebrainbench.benchmarks.semantic_equivalence_audit:main"
 mousebrainbench-run = "mousebrainbench.cli:main"
 
