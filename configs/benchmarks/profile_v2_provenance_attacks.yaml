@@ -1,0 +1,34 @@
+protocol_id: mouseclaimbench_profile_v2_provenance_attacks
+version: 1.0.0
+status: frozen_before_attack_benchmark_execution
+freeze_date: 2026-08-02
+profile: mousebrainbench/knowledge/profiles/mouse_brain_claims_v2.yaml
+
+attack_families:
+  - artifact_hash_tampering
+  - profile_version_substitution
+  - dangling_provenance_reference
+  - circular_provenance
+  - duplicate_independent_artifact
+  - overlapping_independent_cohorts
+  - contradictory_attestation
+  - missing_block_lineage
+
+design:
+  pristine_package_per_claim: 1
+  single_attack_per_claim_and_family: 1
+  all_pairwise_attack_combinations_per_claim: true
+  expected_cases: 370
+  expected_attacked_cases: 360
+
+endpoints:
+  full_integrity_gate_false_authorizations: 0
+  full_integrity_gate_false_rejections: 0
+  exact_attack_trace_rate: 1.0
+  core_profile_false_authorizes_at_least_one_attack: true
+  hash_only_baseline_false_authorizes_at_least_one_attack: true
+
+claim_boundary: >-
+  The benchmark establishes deterministic detection of the declared controlled
+  attacks. It does not estimate their prevalence, adversarial adaptivity, source
+  trustworthiness, or security against attacks outside this threat model.

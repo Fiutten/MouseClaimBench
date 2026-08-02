@@ -21,6 +21,16 @@ from mousebrainbench.knowledge.engine import (
     InferenceStep,
     KnowledgeInference,
 )
+from mousebrainbench.knowledge.integrity import (
+    ArtifactRecord,
+    EvidenceAttestation,
+    EvidencePackageManifest,
+    IntegrityAwareAuthorizationSystem,
+    IntegrityAwareDecision,
+    IntegrityDeficit,
+    IntegrityDeficitCode,
+    validate_evidence_manifest,
+)
 from mousebrainbench.knowledge.profile import (
     InferenceRule,
     KnowledgeProfile,
@@ -36,6 +46,7 @@ from mousebrainbench.knowledge.standards import (
 )
 
 __all__ = [
+    "ArtifactRecord",
     "AspDecision",
     "AspProfileAuthorizationDecision",
     "AuthorizationRequirement",
@@ -43,9 +54,15 @@ __all__ = [
     "ClaimAuthorizationSystem",
     "ClaimKnowledgeSystem",
     "EvaluatedEvidenceFact",
+    "EvidenceAttestation",
     "EvidenceBlockSpecification",
+    "EvidencePackageManifest",
     "InferenceRule",
     "InferenceStep",
+    "IntegrityAwareAuthorizationSystem",
+    "IntegrityAwareDecision",
+    "IntegrityDeficit",
+    "IntegrityDeficitCode",
     "KnowledgeInference",
     "KnowledgeProfile",
     "ProfileAuthorizationDecision",
@@ -61,4 +78,5 @@ __all__ = [
     "load_default_profile_basis",
     "profile_to_rdf",
     "shacl_shapes_for_claim",
+    "validate_evidence_manifest",
 ]
