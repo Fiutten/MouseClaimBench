@@ -1,0 +1,185 @@
+{
+  "version": "0.9.0",
+  "git_revision": "8a08e1e",
+  "analysis": "finite_sample_guarantee_population_scope_audit_v1",
+  "calibration_scope": {
+    "scope_id": "consumed_v2_sem_calibration",
+    "population_family": "synthetic_sem_claim_cases",
+    "independent_unit": "complete_case",
+    "evidence_protocol": "mouseclaimbench_hybrid_evidence_v2_v3",
+    "reference_protocol": "declared_structural_equation_claim_truth",
+    "fingerprint": "sha256:9727fc8d3452af0ecc695ba23bf669a36b4e97d940769e53f94c9229370034b9"
+  },
+  "cases": [
+    {
+      "case": "fresh_synthetic_v3",
+      "assessment": {
+        "valid": true,
+        "calibration_scope": {
+          "scope_id": "consumed_v2_sem_calibration",
+          "population_family": "synthetic_sem_claim_cases",
+          "independent_unit": "complete_case",
+          "evidence_protocol": "mouseclaimbench_hybrid_evidence_v2_v3",
+          "reference_protocol": "declared_structural_equation_claim_truth",
+          "fingerprint": "sha256:9727fc8d3452af0ecc695ba23bf669a36b4e97d940769e53f94c9229370034b9"
+        },
+        "target_scope": {
+          "scope_id": "fresh_synthetic_v3",
+          "population_family": "synthetic_sem_claim_cases",
+          "independent_unit": "complete_case",
+          "evidence_protocol": "mouseclaimbench_hybrid_evidence_v2_v3",
+          "reference_protocol": "declared_structural_equation_claim_truth",
+          "fingerprint": "sha256:65fb2441884ec89ac4983a4eb7ae79289774a2dd8aa083235ba316cd210d80a1"
+        },
+        "detected_shift": false,
+        "blockers": []
+      },
+      "raw_transfer": {
+        "authorizations": 24223,
+        "false_authorizations": 76,
+        "coverage": 0.5607175925925926,
+        "sfar": 0.0031375139330388473
+      },
+      "scope_enforced": {
+        "authorizations": 24223,
+        "false_authorizations": 76,
+        "coverage": 0.5607175925925926,
+        "sfar": 0.0031375139330388473,
+        "decision": "certificate_applied"
+      }
+    },
+    {
+      "case": "causal_chambers_locked",
+      "assessment": {
+        "valid": false,
+        "calibration_scope": {
+          "scope_id": "consumed_v2_sem_calibration",
+          "population_family": "synthetic_sem_claim_cases",
+          "independent_unit": "complete_case",
+          "evidence_protocol": "mouseclaimbench_hybrid_evidence_v2_v3",
+          "reference_protocol": "declared_structural_equation_claim_truth",
+          "fingerprint": "sha256:9727fc8d3452af0ecc695ba23bf669a36b4e97d940769e53f94c9229370034b9"
+        },
+        "target_scope": {
+          "scope_id": "causal_chambers_locked",
+          "population_family": "physical_chamber_experiments",
+          "independent_unit": "experiment",
+          "evidence_protocol": "physical_pair_evidence",
+          "reference_protocol": "published_physical_graph",
+          "fingerprint": "sha256:255fd9fb59ffd0695a4589f463d61eaad0c29325e5687d3ce8dd8094d3810da2"
+        },
+        "detected_shift": null,
+        "blockers": [
+          "scope_mismatch:population_family",
+          "scope_mismatch:independent_unit",
+          "scope_mismatch:evidence_protocol",
+          "scope_mismatch:reference_protocol"
+        ]
+      },
+      "raw_transfer": {
+        "authorizations": 247,
+        "false_authorizations": 13,
+        "coverage": 0.24215686274509804,
+        "sfar": 0.05263157894736842
+      },
+      "scope_enforced": {
+        "authorizations": 0,
+        "false_authorizations": 0,
+        "coverage": 0.0,
+        "sfar": 0.0,
+        "decision": "abstained_out_of_scope"
+      }
+    },
+    {
+      "case": "causalbench_rpe1_locked",
+      "assessment": {
+        "valid": false,
+        "calibration_scope": {
+          "scope_id": "consumed_v2_sem_calibration",
+          "population_family": "synthetic_sem_claim_cases",
+          "independent_unit": "complete_case",
+          "evidence_protocol": "mouseclaimbench_hybrid_evidence_v2_v3",
+          "reference_protocol": "declared_structural_equation_claim_truth",
+          "fingerprint": "sha256:9727fc8d3452af0ecc695ba23bf669a36b4e97d940769e53f94c9229370034b9"
+        },
+        "target_scope": {
+          "scope_id": "causalbench_rpe1_locked",
+          "population_family": "single_cell_perturbseq_pairs",
+          "independent_unit": "source_gene_cluster",
+          "evidence_protocol": "two_fold_intervention_effect",
+          "reference_protocol": "third_fold_intervention_effect",
+          "fingerprint": "sha256:9572427520a96041a4f5279bb9cdd3bc7dbaf543f1447aa1ae383a4d96eab7bb"
+        },
+        "detected_shift": null,
+        "blockers": [
+          "scope_mismatch:population_family",
+          "scope_mismatch:independent_unit",
+          "scope_mismatch:evidence_protocol",
+          "scope_mismatch:reference_protocol"
+        ]
+      },
+      "raw_transfer": {
+        "authorizations": 2316,
+        "false_authorizations": 573,
+        "coverage": 0.009698492462311558,
+        "sfar": 0.24740932642487046
+      },
+      "scope_enforced": {
+        "authorizations": 0,
+        "false_authorizations": 0,
+        "coverage": 0.0,
+        "sfar": 0.0,
+        "decision": "abstained_out_of_scope"
+      }
+    },
+    {
+      "case": "ibl_locked_mice",
+      "assessment": {
+        "valid": false,
+        "calibration_scope": {
+          "scope_id": "consumed_v2_sem_calibration",
+          "population_family": "synthetic_sem_claim_cases",
+          "independent_unit": "complete_case",
+          "evidence_protocol": "mouseclaimbench_hybrid_evidence_v2_v3",
+          "reference_protocol": "declared_structural_equation_claim_truth",
+          "fingerprint": "sha256:9727fc8d3452af0ecc695ba23bf669a36b4e97d940769e53f94c9229370034b9"
+        },
+        "target_scope": {
+          "scope_id": "ibl_locked_mice",
+          "population_family": "ibl_unit_anatomy_classification",
+          "independent_unit": "mouse",
+          "evidence_protocol": "two_fold_observational_prediction",
+          "reference_protocol": "third_fold_observational_prediction",
+          "fingerprint": "sha256:ad07eca587bccfb3b3dd62b80e2c825e9945d2768bd71bf5ec6177b7e9504680"
+        },
+        "detected_shift": null,
+        "blockers": [
+          "scope_mismatch:population_family",
+          "scope_mismatch:independent_unit",
+          "scope_mismatch:evidence_protocol",
+          "scope_mismatch:reference_protocol"
+        ]
+      },
+      "raw_transfer": {
+        "authorizations": 0,
+        "false_authorizations": 0,
+        "coverage": 0.0,
+        "sfar": 0.0
+      },
+      "scope_enforced": {
+        "authorizations": 0,
+        "false_authorizations": 0,
+        "coverage": 0.0,
+        "sfar": 0.0,
+        "decision": "abstained_out_of_scope"
+      }
+    }
+  ],
+  "decision": "out_of_scope_certificates_blocked",
+  "interpretation": "External raw-transfer metrics remain diagnostic results. Scope enforcement prevents those results from carrying the synthetic LTT guarantee.",
+  "limits": [
+    "Population identity is a protocol assertion, not a statistical shift estimate.",
+    "Out-of-scope abstention prevents misuse but provides no positive external coverage.",
+    "A new domain requires its own calibration and a new untouched test population."
+  ]
+}
