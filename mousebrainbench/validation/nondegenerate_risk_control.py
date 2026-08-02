@@ -136,6 +136,41 @@ def evaluate_nondegenerate_policy(
             raise ValueError(f"{name} must lie between zero and one")
 
     decisions = gate & (values >= threshold)
+    return evaluate_authorization_decisions(
+        decisions,
+        truth,
+        gate,
+        units,
+        threshold=threshold,
+        target_risk=target_risk,
+        minimum_coverage=minimum_coverage,
+        minimum_positive_recovery=minimum_positive_recovery,
+        confidence=confidence,
+    )
+
+
+def evaluate_authorization_decisions(
+    decisions: np.ndarray,
+    labels: np.ndarray,
+    admissible: np.ndarray,
+    experiment_ids: np.ndarray,
+    *,
+    threshold: float,
+    target_risk: float,
+    minimum_coverage: float,
+    minimum_positive_recovery: float,
+    confidence: float = 0.95,
+) -> NonDegenerateCertificate:
+    """Evaluate arbitrary baseline decisions under the same experiment contract."""
+
+    decisions = np.asarray(decisions, dtype=bool)
+    truth = np.asarray(labels, dtype=bool)
+    gate = np.asarray(admissible, dtype=bool)
+    units = np.asarray(experiment_ids).astype(str)
+    if decisions.shape != truth.shape or decisions.shape != gate.shape:
+        raise ValueError("decisions, labels, and admissibility must have identical shape")
+    if decisions.ndim != 2 or len(units) != decisions.shape[0]:
+        raise ValueError("decision inputs require rows by claims and one unit id per row")
     unique_units = np.unique(units)
     failed = authorized = eligible_positive = recovered = 0
     for unit in unique_units:
@@ -227,4 +262,3 @@ def calibrate_nondegenerate_policy(
             item.threshold,
         ),
     )
-

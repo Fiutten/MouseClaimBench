@@ -42,6 +42,11 @@ external_population:
   final_labels_hidden_until_risk_lock: true
   independent_unit: physical_experiment_csv
   pair_level_inference_prohibited: true
+  adapter:
+    direct_pairs_per_experiment: 1
+    control_pairs_per_experiment: 1
+    pair_selection: sha256_dataset_experiment_source_target
+    minimum_finite_observations: 100
 
 risk_and_activation_contract:
   target_experiment_failure_probability: 0.10
@@ -121,13 +126,14 @@ failure_taxonomy:
   mutually_exclusive_precedence:
     - invalid_input
     - out_of_population_scope
-    - detected_shift_warning
     - semantic_inadmissibility
     - uncertifiable_risk
     - activation_floor_not_met
     - score_below_threshold
     - numerical_failure
     - authorized
+  orthogonal_context_flags:
+    - detected_shift_warning
 
 decision_rule:
   externally_supported: all_risk_and_activation_conditions_pass_on_final_evaluation

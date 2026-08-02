@@ -25,7 +25,10 @@ within an experiment share observations and variables. They are therefore not
 treated as independent replicates. For each experiment, the primary risk event
 is binary: at least one authorized claim is false. This deliberately stringent
 endpoint allows an exact binomial upper confidence bound without pretending that
-pair rows are independent.
+pair rows are independent. The adapter selects at most one observable direct
+edge and one non-edge control per experiment using a frozen SHA-256 order. This
+prevents experiments with more observable pairs from receiving more inferential
+weight.
 
 The certificate is non-degenerate. It requires an upper confidence bound on
 experiment failure at or below 0.10, a lower confidence bound on authorized
