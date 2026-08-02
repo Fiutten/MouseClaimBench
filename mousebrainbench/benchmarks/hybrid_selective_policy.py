@@ -116,6 +116,33 @@ def _semantic_veto_state(
     return "unresolved" if unresolved else "passed"
 
 
+def semantic_admissibility_matrix(
+    features: np.ndarray,
+    *,
+    claim_names: Sequence[str],
+    feature_names: Sequence[str],
+    support_vetoes: Mapping[str, Sequence[str]],
+) -> np.ndarray:
+    """Return the immutable support-gate result for every case and claim.
+
+    A claim is admissible only when every evidence block listed by its semantic
+    veto is explicitly passed. Failed, unknown, not-applicable, missing, and
+    review states all remain inadmissible.
+    """
+
+    values = np.asarray(features, dtype=float)
+    indices = _status_indices(feature_names)
+    admissible = np.zeros((len(values), len(claim_names)), dtype=bool)
+    for row_index, row in enumerate(values):
+        for claim_index, claim in enumerate(claim_names):
+            admissible[row_index, claim_index] = _semantic_veto_state(
+                row,
+                required_blocks=support_vetoes.get(claim, ()),
+                status_indices=indices,
+            ) == "passed"
+    return admissible
+
+
 def selective_decisions(
     probabilities: np.ndarray,
     features: np.ndarray,
