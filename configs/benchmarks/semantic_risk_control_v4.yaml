@@ -1,0 +1,140 @@
+protocol_id: mouseclaimbench_semantic_risk_control
+version: 4.0.0
+status: frozen_before_v4_external_outcome_access
+freeze_date: 2026-08-02
+parent_release: semantic-risk-control-v3@71a4d10
+
+scientific_question: >-
+  Can an executable knowledge profile authorize non-trivial scientific claims
+  while controlling false authorization risk in its declared target population,
+  and expose why a claim is abstained rather than hiding failure behind one score?
+
+profile_validity:
+  status: author_proposed_operational_profile
+  consensus_standard_claimed: false
+  content_expert_validation_claimed: false
+  external_basis:
+    - id: ARRIVE_2_0
+      role: reporting_rigor_and_experimental_design
+      url: https://arriveguidelines.org/arrive-guidelines
+    - id: NIH_RIGOR_REPRODUCIBILITY
+      role: controlled_design_analysis_interpretation_and_reporting
+      url: https://www.grants.nih.gov/policy-and-compliance/policy-topics/reproducibility
+    - id: FAIR
+      role: machine_actionable_provenance_and_reuse
+      doi: 10.1038/sdata.2016.18
+    - id: NIST_AI_RMF_1_0
+      role: validity_reliability_transparency_and_scope
+      doi: 10.6028/NIST.AI.100-1
+  author_extensions:
+    - topology_specificity
+    - directed_identifiability
+    - causal_intervention
+    - structure_function_association
+  interpretation: >-
+    Standards motivate reporting and trustworthiness dimensions. They do not
+    validate the proposed evidence-to-claim mapping or its thresholds.
+
+external_population:
+  manifest: configs/benchmarks/causal_chambers_v4_population.yaml
+  target_calibration_labels_used_for_threshold_selection: true
+  risk_lock_labels_used_for_threshold_selection: false
+  final_labels_hidden_until_risk_lock: true
+  independent_unit: physical_experiment_csv
+  pair_level_inference_prohibited: true
+
+risk_and_activation_contract:
+  target_experiment_failure_probability: 0.10
+  confidence_level: 0.95
+  failure_event: at_least_one_false_authorization_in_experiment
+  minimum_authorized_experiment_coverage: 0.10
+  coverage_confidence_level: 0.95
+  minimum_positive_recovery: 0.05
+  positive_recovery_definition: experiments_with_at_least_one_true_authorization_over_eligible_positive_experiments
+  certification_requires_all:
+    - risk_upper_bound_at_or_below_target
+    - coverage_lower_bound_at_or_above_minimum
+    - positive_recovery_lower_bound_at_or_above_minimum
+    - zero_semantic_gate_violations
+    - risk_lock_passed_before_final_evaluation
+
+comparators:
+  - fixed_probability_0_5
+  - confidence_only_target_calibrated
+  - evidence_contract_only
+  - unconstrained_ltt
+  - semantic_ltt_without_activation_floor
+  - semantic_ltt_nondegenerate
+
+router_confirmation:
+  analysis_role: prospective_synthetic_confirmation
+  association_precondition_frozen: true
+  seed_namespace: 2026084000
+  regimes:
+    - independent_student_t
+    - independent_nonlinear_marginals
+    - direct_linear_laplace
+    - reverse_linear_uniform
+    - direct_nonlinear_additive
+    - reverse_nonlinear_additive
+    - confounded_nonlinear
+    - measurement_error_direct
+  sample_sizes: [200, 800, 2000]
+  noise_scales: [0.5, 1.0, 1.75]
+  seeds_per_cell: 30
+  primary_endpoints:
+    - spurious_attempts_in_independent_regimes_equal_0
+    - attempted_direction_accuracy_at_least_0_80
+    - association_precondition_does_not_reduce_valid_route_accuracy_by_more_than_0_02
+
+shift_diagnostics:
+  role: warning_only
+  may_authorize_or_restore_certificate: false
+  tests:
+    - ks_feature_marginals_with_holm_correction
+    - energy_distance_on_standardized_features
+
+prospective_power:
+  method: exact_clopper_pearson_operating_characteristics
+  familywise_multiplicity: none_for_single_external_contract
+  report_required:
+    - minimum_units_for_zero_failures
+    - maximum_failures_compatible_with_target
+    - attainable_coverage_lower_bound_by_sample_size
+
+efficiency:
+  report_required:
+    - wall_time_seconds
+    - peak_rss_megabytes
+    - source_bytes
+    - claim_candidates_per_second
+    - authorized_claims_per_second
+    - abstention_count_and_rate
+    - calibration_overhead_seconds
+
+failure_taxonomy:
+  mutually_exclusive_precedence:
+    - invalid_input
+    - out_of_population_scope
+    - detected_shift_warning
+    - semantic_inadmissibility
+    - uncertifiable_risk
+    - activation_floor_not_met
+    - score_below_threshold
+    - numerical_failure
+    - authorized
+
+decision_rule:
+  externally_supported: all_risk_and_activation_conditions_pass_on_final_evaluation
+  method_only: internal_semantics_and_router_pass_but_external_contract_does_not
+  rejected: semantic_violation_or_router_primary_failure
+
+prohibited_claims:
+  - universal_scientific_truth_verification
+  - universal_distribution_free_transfer
+  - consensus_validated_knowledge_profile
+  - complete_mouse_brain_twin
+  - whole_brain_mechanistic_validity
+  - causality_from_observational_association
+  - superiority_over_OPAL_outside_scientific_claim_contracts
+
