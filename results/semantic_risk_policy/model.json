@@ -1,0 +1,261 @@
+{
+  "version": "0.9.0",
+  "git_revision": "f16aebc",
+  "analysis": "semantic_risk_ltt_calibration_v3",
+  "data_role": "consumed_v2_development_only",
+  "protocol_id": "mouseclaimbench_semantic_risk_control",
+  "protocol_version": "3.0.0",
+  "protocol_hash": "sha256:68d48963dd2483f69fea2d050967301cda029199cbce71f0f79d8413e158a790",
+  "consumed_cases_hash": "sha256:dd284e8f79d56ced66e5a06d332b120f76e8872f551e0ec90a7c088013615e9a",
+  "v2_score_model_hash": "sha256:b8e42c0a90a9ca676c3c587abb2b1107fa12fe43c1bd3b63bb9227d657663c50",
+  "score_model_refitted": false,
+  "thresholds_selected_before_v3_outcome_access": true,
+  "calibration_cases": 3600,
+  "all_claims": [
+    "predictive",
+    "computationally_reproducible",
+    "internally_reproduced",
+    "externally_replicated",
+    "topology_specific",
+    "directed",
+    "structure_function",
+    "mechanistic",
+    "causal",
+    "digital_twin"
+  ],
+  "variable_claims": [
+    "predictive",
+    "internally_reproduced",
+    "topology_specific",
+    "directed",
+    "mechanistic",
+    "causal"
+  ],
+  "nonvariable_claims_excluded_from_multiplicity": [
+    "computationally_reproducible",
+    "externally_replicated",
+    "structure_function",
+    "digital_twin"
+  ],
+  "complete_semantic_requirements": {
+    "predictive": [
+      "prediction"
+    ],
+    "computationally_reproducible": [
+      "reproducible_compute"
+    ],
+    "internally_reproduced": [
+      "internal_reproduction"
+    ],
+    "externally_replicated": [
+      "external_replication"
+    ],
+    "topology_specific": [
+      "topology_specificity"
+    ],
+    "directed": [
+      "directed_identifiability"
+    ],
+    "structure_function": [
+      "structure_function_association"
+    ],
+    "mechanistic": [
+      "prediction",
+      "internal_reproduction",
+      "topology_specificity",
+      "directed_identifiability"
+    ],
+    "causal": [
+      "causal_intervention"
+    ],
+    "digital_twin": [
+      "prediction",
+      "internal_reproduction",
+      "topology_specificity",
+      "directed_identifiability",
+      "causal_intervention",
+      "whole_brain_coverage",
+      "independent_validation",
+      "reproducible_compute",
+      "entity_specificity",
+      "operational_compute"
+    ]
+  },
+  "semantic_policy": {
+    "claims": [
+      "predictive",
+      "internally_reproduced",
+      "topology_specific",
+      "directed",
+      "mechanistic",
+      "causal"
+    ],
+    "certificates": [
+      {
+        "claim": "predictive",
+        "threshold": 0.01,
+        "target_sfar": 0.05,
+        "confidence_level": 0.9916666666666667,
+        "calibration_cases": 3600,
+        "calibration_authorizations": 3180,
+        "calibration_false_authorizations": 2,
+        "valid_threshold_count": 99,
+        "certified": true,
+        "implementation": "MAPIE-1.4.1:LTT-precision"
+      },
+      {
+        "claim": "internally_reproduced",
+        "threshold": 0.01,
+        "target_sfar": 0.05,
+        "confidence_level": 0.9916666666666667,
+        "calibration_cases": 3600,
+        "calibration_authorizations": 3143,
+        "calibration_false_authorizations": 0,
+        "valid_threshold_count": 99,
+        "certified": true,
+        "implementation": "MAPIE-1.4.1:LTT-precision"
+      },
+      {
+        "claim": "topology_specific",
+        "threshold": 0.01,
+        "target_sfar": 0.05,
+        "confidence_level": 0.9916666666666667,
+        "calibration_cases": 3600,
+        "calibration_authorizations": 2577,
+        "calibration_false_authorizations": 64,
+        "valid_threshold_count": 99,
+        "certified": true,
+        "implementation": "MAPIE-1.4.1:LTT-precision"
+      },
+      {
+        "claim": "directed",
+        "threshold": 0.81,
+        "target_sfar": 0.05,
+        "confidence_level": 0.9916666666666667,
+        "calibration_cases": 3600,
+        "calibration_authorizations": 940,
+        "calibration_false_authorizations": 21,
+        "valid_threshold_count": 19,
+        "certified": true,
+        "implementation": "MAPIE-1.4.1:LTT-precision"
+      },
+      {
+        "claim": "mechanistic",
+        "threshold": 0.81,
+        "target_sfar": 0.05,
+        "confidence_level": 0.9916666666666667,
+        "calibration_cases": 3600,
+        "calibration_authorizations": 931,
+        "calibration_false_authorizations": 19,
+        "valid_threshold_count": 19,
+        "certified": true,
+        "implementation": "MAPIE-1.4.1:LTT-precision"
+      },
+      {
+        "claim": "causal",
+        "threshold": 0.01,
+        "target_sfar": 0.05,
+        "confidence_level": 0.9916666666666667,
+        "calibration_cases": 3600,
+        "calibration_authorizations": 360,
+        "calibration_false_authorizations": 0,
+        "valid_threshold_count": 99,
+        "certified": true,
+        "implementation": "MAPIE-1.4.1:LTT-precision"
+      }
+    ],
+    "target_sfar": 0.05,
+    "familywise_confidence": 0.95,
+    "multiplicity_method": "Bonferroni across declared claim families",
+    "simultaneously_certified": true
+  },
+  "unconstrained_policy": {
+    "claims": [
+      "predictive",
+      "internally_reproduced",
+      "topology_specific",
+      "directed",
+      "mechanistic",
+      "causal"
+    ],
+    "certificates": [
+      {
+        "claim": "predictive",
+        "threshold": 0.01,
+        "target_sfar": 0.05,
+        "confidence_level": 0.9916666666666667,
+        "calibration_cases": 3600,
+        "calibration_authorizations": 3317,
+        "calibration_false_authorizations": 77,
+        "valid_threshold_count": 99,
+        "certified": true,
+        "implementation": "MAPIE-1.4.1:LTT-precision"
+      },
+      {
+        "claim": "internally_reproduced",
+        "threshold": 0.01,
+        "target_sfar": 0.05,
+        "confidence_level": 0.9916666666666667,
+        "calibration_cases": 3600,
+        "calibration_authorizations": 3317,
+        "calibration_false_authorizations": 77,
+        "valid_threshold_count": 99,
+        "certified": true,
+        "implementation": "MAPIE-1.4.1:LTT-precision"
+      },
+      {
+        "claim": "topology_specific",
+        "threshold": 0.22,
+        "target_sfar": 0.05,
+        "confidence_level": 0.9916666666666667,
+        "calibration_cases": 3600,
+        "calibration_authorizations": 2588,
+        "calibration_false_authorizations": 72,
+        "valid_threshold_count": 78,
+        "certified": true,
+        "implementation": "MAPIE-1.4.1:LTT-precision"
+      },
+      {
+        "claim": "directed",
+        "threshold": 0.81,
+        "target_sfar": 0.05,
+        "confidence_level": 0.9916666666666667,
+        "calibration_cases": 3600,
+        "calibration_authorizations": 1147,
+        "calibration_false_authorizations": 29,
+        "valid_threshold_count": 19,
+        "certified": true,
+        "implementation": "MAPIE-1.4.1:LTT-precision"
+      },
+      {
+        "claim": "mechanistic",
+        "threshold": 0.81,
+        "target_sfar": 0.05,
+        "confidence_level": 0.9916666666666667,
+        "calibration_cases": 3600,
+        "calibration_authorizations": 1147,
+        "calibration_false_authorizations": 29,
+        "valid_threshold_count": 19,
+        "certified": true,
+        "implementation": "MAPIE-1.4.1:LTT-precision"
+      },
+      {
+        "claim": "causal",
+        "threshold": 0.01,
+        "target_sfar": 0.05,
+        "confidence_level": 0.9916666666666667,
+        "calibration_cases": 3600,
+        "calibration_authorizations": 360,
+        "calibration_false_authorizations": 0,
+        "valid_threshold_count": 99,
+        "certified": true,
+        "implementation": "MAPIE-1.4.1:LTT-precision"
+      }
+    ],
+    "target_sfar": 0.05,
+    "familywise_confidence": 0.95,
+    "multiplicity_method": "Bonferroni across declared claim families",
+    "simultaneously_certified": true
+  },
+  "decision": "semantic_ltt_policy_frozen_for_v3_confirmation"
+}
