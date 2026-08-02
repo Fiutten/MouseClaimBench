@@ -1,0 +1,98 @@
+{
+  "version": "0.9.0",
+  "git_revision": "db91234",
+  "analysis": "independent_asp_semantic_equivalence_audit_v1",
+  "knowledge_profile_id": "mouse_brain_claims",
+  "knowledge_profile_version": "1.1.0",
+  "knowledge_profile_hash": "sha256:12770573922ea4bf00fabf519f565480df7475d313726cc3281a5c200d696137",
+  "asp_backends": {
+    "clingo-5.8.0": 1845
+  },
+  "claim_audits": [
+    {
+      "claim": "predictive",
+      "required_block_count": 1,
+      "enumeration_mode": "exhaustive",
+      "case_count": 5
+    },
+    {
+      "claim": "computationally_reproducible",
+      "required_block_count": 1,
+      "enumeration_mode": "exhaustive",
+      "case_count": 5
+    },
+    {
+      "claim": "internally_reproduced",
+      "required_block_count": 1,
+      "enumeration_mode": "exhaustive",
+      "case_count": 5
+    },
+    {
+      "claim": "externally_replicated",
+      "required_block_count": 1,
+      "enumeration_mode": "exhaustive",
+      "case_count": 5
+    },
+    {
+      "claim": "topology_specific",
+      "required_block_count": 1,
+      "enumeration_mode": "exhaustive",
+      "case_count": 5
+    },
+    {
+      "claim": "directed",
+      "required_block_count": 1,
+      "enumeration_mode": "exhaustive",
+      "case_count": 5
+    },
+    {
+      "claim": "structure_function",
+      "required_block_count": 1,
+      "enumeration_mode": "exhaustive",
+      "case_count": 5
+    },
+    {
+      "claim": "mechanistic",
+      "required_block_count": 4,
+      "enumeration_mode": "exhaustive",
+      "case_count": 625
+    },
+    {
+      "claim": "causal",
+      "required_block_count": 1,
+      "enumeration_mode": "exhaustive",
+      "case_count": 5
+    },
+    {
+      "claim": "digital_twin",
+      "required_block_count": 10,
+      "enumeration_mode": "boundary_and_pairwise_priority",
+      "case_count": 1180
+    }
+  ],
+  "boundary_audits": [
+    {
+      "claim": "predictive",
+      "python_status": "uncertain",
+      "asp_status": "uncertain",
+      "equivalent": true
+    },
+    {
+      "claim": "conscious",
+      "python_status": "out_of_scope",
+      "asp_status": "out_of_scope",
+      "equivalent": true
+    }
+  ],
+  "evaluated_case_count": 1847,
+  "unique_asp_program_count": 1430,
+  "mismatch_count": 0,
+  "mismatches": [],
+  "decision": "semantic_equivalence_observed",
+  "limits": [
+    "This is an executable equivalence audit, not a mathematical proof of correctness.",
+    "Claims with at most four required blocks are exhausted over all five evidence states.",
+    "Larger contracts use homogeneous, single-block, and pairwise-priority boundary cases.",
+    "Agreement between engines does not establish that the curated scientific policy is true."
+  ]
+}
