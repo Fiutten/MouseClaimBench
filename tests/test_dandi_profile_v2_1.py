@@ -7,6 +7,7 @@ import yaml
 from mousebrainbench.benchmarks.dandi_profile_v2_1 import (
     _contrast_features,
     _fact,
+    _public_manifest,
     analyze_contrast_subject,
 )
 from mousebrainbench.knowledge import (
@@ -48,6 +49,36 @@ def test_zero_exclusions_are_explicit_not_missing() -> None:
 
     assert fact.effective_status is EvidenceStatus.PASSED
     assert fact.missing_required_observations == ()
+
+
+def test_public_manifest_removes_local_state() -> None:
+    public = _public_manifest(
+        {
+            "resource": "contrast",
+            "dandiset": "000039",
+            "version": "published",
+            "catalog_assets": 2,
+            "selected_assets": 1,
+            "selected_subjects": 1,
+            "selected_bytes": 10,
+            "selection_rule": "frozen",
+            "assets": [
+                {
+                    "asset_id": "asset-1",
+                    "path": "sub-1/session.nwb",
+                    "size": 10,
+                    "official_sha256": "abc",
+                    "observed_sha256": "abc",
+                    "local_path": "/private/machine/session.nwb",
+                    "reused": False,
+                }
+            ],
+        }
+    )
+
+    assert public["assets"][0]["official_sha256"] == "abc"
+    assert "local_path" not in public["assets"][0]
+    assert "observed_sha256" not in public["assets"][0]
 
 
 def test_synthetic_nwb_schema_executes_frozen_subject_contract(tmp_path: Path) -> None:

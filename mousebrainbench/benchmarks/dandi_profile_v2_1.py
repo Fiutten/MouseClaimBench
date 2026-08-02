@@ -64,6 +64,37 @@ def _validate_manifest(manifest: dict[str, Any], *, expected_resource: str) -> N
             raise ValueError(f"unverified DANDI asset in manifest: {path}")
 
 
+def _public_manifest(manifest: dict[str, Any]) -> dict[str, Any]:
+    """Retain exact public asset provenance without machine-local paths."""
+
+    return {
+        key: manifest[key]
+        for key in (
+            "resource",
+            "dandiset",
+            "version",
+            "catalog_assets",
+            "selected_assets",
+            "selected_subjects",
+            "selected_bytes",
+            "selection_rule",
+        )
+    } | {
+        "assets": [
+            {
+                key: asset[key]
+                for key in (
+                    "asset_id",
+                    "path",
+                    "size",
+                    "official_sha256",
+                )
+            }
+            for asset in manifest["assets"]
+        ]
+    }
+
+
 def _ach_availability(protocol: dict[str, Any], manifest: dict[str, Any]) -> dict[str, Any]:
     usable_subjects: set[str] = set()
     schema_failures = []
@@ -468,6 +499,10 @@ def run(
         "protocol_sha256": {
             str(path): hashlib.sha256(path.read_bytes()).hexdigest()
             for path in (ACH_PROTOCOL, CONTRAST_PROTOCOL)
+        },
+        "data_manifests": {
+            "ach": _public_manifest(ach_manifest),
+            "contrast": _public_manifest(contrast_manifest),
         },
         **assessment,
         "decision": (
