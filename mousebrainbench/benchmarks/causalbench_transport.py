@@ -252,12 +252,20 @@ def _normalized_expression(
     """Read bounded rows and normalize raw counts in chunks without loading the H5AD."""
 
     output = np.empty((len(row_indices), len(column_indices)), dtype=np.float64)
+    recorded_library_size = (
+        data.obs["UMI_count"].to_numpy(dtype=float)
+        if "UMI_count" in data.obs
+        else None
+    )
     for start in range(0, len(row_indices), 512):
         stop = min(start + 512, len(row_indices))
         rows = row_indices[start:stop]
         target_counts = _dense(data[rows, column_indices].X)
-        full_counts = data[rows, :].X
-        library_size = np.asarray(full_counts.sum(axis=1), dtype=float).reshape(-1)
+        if recorded_library_size is not None:
+            library_size = recorded_library_size[rows].copy()
+        else:
+            full_counts = data[rows, :].X
+            library_size = np.asarray(full_counts.sum(axis=1), dtype=float).reshape(-1)
         library_size[library_size <= 0.0] = 1.0
         output[start:stop] = np.log1p(target_counts * (10_000.0 / library_size[:, None]))
     return output
