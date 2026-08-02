@@ -54,7 +54,10 @@ activation.
 The association-aware direction router is confirmed in a new seed namespace and
 new structural equations. Its rule is fixed before generation. Independent
 regimes must receive no directional attempt, while valid routed regimes must
-retain at least 0.80 attempted-direction accuracy.
+retain at least 0.80 attempted-direction accuracy. Association is established
+only when either Pearson or Spearman association has absolute magnitude at least
+0.10 and its Bonferroni-adjusted two-test p-value is below 0.01. This is a routing
+precondition, not a causal or directional test.
 
 ## Validity of the knowledge profile
 

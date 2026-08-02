@@ -34,6 +34,65 @@ class DirectionAssumptions:
     provenance: str = "undeclared"
 
 
+def association_precondition(
+    x: np.ndarray,
+    y: np.ndarray,
+    *,
+    familywise_alpha: float = 0.01,
+    minimum_absolute_association: float = 0.10,
+) -> dict[str, Any]:
+    """Screen for association before spending directional evidence.
+
+    Pearson and Spearman tests cover linear and monotone association.  The
+    Bonferroni two-test correction is frozen prospectively in v4.  Passing this
+    screen does not identify direction or causality; it only prevents a direction
+    estimator from orienting pairs for which association was not established.
+    """
+
+    x_values = np.asarray(x, dtype=float).reshape(-1)
+    y_values = np.asarray(y, dtype=float).reshape(-1)
+    if len(x_values) != len(y_values):
+        raise ValueError("association variables must contain equal observations")
+    finite = np.isfinite(x_values) & np.isfinite(y_values)
+    x_values = x_values[finite]
+    y_values = y_values[finite]
+    if len(x_values) < 20 or min(np.std(x_values), np.std(y_values)) == 0.0:
+        return {
+            "established": False,
+            "blocker": "insufficient_or_constant_association_data",
+            "finite_samples": len(x_values),
+        }
+    pearson = stats.pearsonr(x_values, y_values)
+    spearman = stats.spearmanr(x_values, y_values)
+    tests = (
+        ("pearson", float(pearson.statistic), float(pearson.pvalue)),
+        ("spearman", float(spearman.statistic), float(spearman.pvalue)),
+    )
+    passing = [
+        name
+        for name, statistic, p_value in tests
+        if abs(statistic) >= minimum_absolute_association
+        and min(1.0, 2.0 * p_value) < familywise_alpha
+    ]
+    return {
+        "established": bool(passing),
+        "passing_tests": passing,
+        "tests": [
+            {
+                "name": name,
+                "statistic": statistic,
+                "raw_p_value": p_value,
+                "bonferroni_p_value": min(1.0, 2.0 * p_value),
+            }
+            for name, statistic, p_value in tests
+        ],
+        "familywise_alpha": familywise_alpha,
+        "minimum_absolute_association": minimum_absolute_association,
+        "finite_samples": len(x_values),
+        "causal_or_directional_evidence": False,
+    }
+
+
 def _direct_lingam(x: np.ndarray, y: np.ndarray, *, seed: int) -> dict[str, Any]:
     try:
         from causallearn.search.FCMBased import lingam

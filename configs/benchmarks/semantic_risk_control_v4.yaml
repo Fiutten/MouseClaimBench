@@ -69,6 +69,11 @@ comparators:
 router_confirmation:
   analysis_role: prospective_synthetic_confirmation
   association_precondition_frozen: true
+  association_rule:
+    tests: [pearson, spearman]
+    multiplicity: bonferroni_two_tests
+    familywise_alpha: 0.01
+    minimum_absolute_association: 0.10
   seed_namespace: 2026084000
   regimes:
     - independent_student_t
@@ -137,4 +142,3 @@ prohibited_claims:
   - whole_brain_mechanistic_validity
   - causality_from_observational_association
   - superiority_over_OPAL_outside_scientific_claim_contracts
-
