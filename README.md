@@ -155,6 +155,13 @@ A disclosed topology-specific v5.1 follow-up then passed both a 100-bundle risk
 lock and a new 100-bundle final block. Four simple policies failed the same
 non-degenerate endpoint.
 
+The subsequent v5.3 IBL experiment adds 110 previously unused mice. The frozen
+35-mouse risk lock and conditionally opened 35-mouse final split each produced
+zero false mouse-level authorizations and exact risk UCB 0.0820. This is positive
+external population evidence for one trial-alignment task. It is not independent
+laboratory replication, neural causal evidence, or exclusive superiority because
+the fixed 0.5 and contract-only comparators also passed.
+
 This positive result has strict boundaries. The fixed policy failed on a
 100-bundle out-of-distribution block. In a six-level prospective degradation
 sweep, the shift warning first appeared at level 1 and the simultaneous
@@ -164,6 +171,13 @@ path, not validation of a universal shift detector. CausalRivers transport used
 clusters existed. It therefore reports descriptive false-authorization fractions
 and no exact external certificate. Independent content validation of the 29-item
 knowledge profile is also pending.
+
+Version 5.4 adds four orthogonal TimeGraph families with 13 evaluable levels.
+The fixed policy loses simultaneous certification under Student-t noise with two
+degrees of freedom and at eight variables. It remains certified across maximum
+lags 2-4 and both official confounding generators. Shift warnings are early,
+coincident, absent, or conservative depending on the family, so no universal
+alarm claim is supported.
 
 The non-compensatory release audit is in
 `results/semantic_risk_v5_release/summary.json`. The scientific interpretation and
@@ -175,9 +189,10 @@ ENV_PATH=.venv-risk-v3 bash scripts/reproduce_semantic_risk_v5.sh
 ```
 
 The accurate status is: methodological core confirmed for one synthetic
-topology-specific population, real-domain external risk control not confirmed,
-and independent profile content validity open. These latter failures cannot be
-compensated by synthetic coverage or an early shift warning.
+topology-specific population, bounded real-population transport confirmed for
+one IBL behavioral alignment task, heterogeneous shift limits measured, and
+independent profile content validity still open. None of these results supports
+causal-neural, cross-domain, or digital-twin validity.
 
 ## Scope boundaries
 

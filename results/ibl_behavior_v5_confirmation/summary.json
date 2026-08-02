@@ -1,0 +1,1160 @@
+{
+  "version": "0.9.0",
+  "git_revision": "b6a3d8a",
+  "analysis": "ibl_behavior_v5_external_mouse_population",
+  "protocol": "configs/benchmarks/ibl_behavior_v5_confirmation.yaml",
+  "protocol_version": "5.3.1",
+  "protocol_status": "amended_from_catalog_metadata_before_behavioral_value_access",
+  "protocol_amendment": {
+    "basis": "The first catalog-only pass found that the official default 2025-03-03 revisions comprise 54 PASS and 56 WARNING tables. A PASS-only population would contain fewer than 29 mice in each locked role. No parquet table or behavioral value had been opened when this availability amendment was made.",
+    "changes": [
+      "accept_official_default_WARNING_revisions_in_primary_population",
+      "retain_QC_status_as_a_prespecified_stratum",
+      "report_PASS_only_results_as_descriptive_sensitivity"
+    ],
+    "endpoint_or_threshold_changed": false
+  },
+  "manifest": "data/external/ibl_behavior_v5/manifest.json",
+  "manifest_sha256": "fa6abc824f2a2e884c2e2329d5e7867fcee4f038c53ae561d50f62355056f518",
+  "selected_mice": 110,
+  "verified_tables": 110,
+  "inferential_unit": "mouse",
+  "trial_level_inference_permitted": false,
+  "fixed_claim": "topology_specific",
+  "fixed_threshold": 0.9272577728502728,
+  "threshold_refitted": false,
+  "calibration_context": {
+    "selected_mice": 40,
+    "usable_mice": 40,
+    "candidate_rows": 160,
+    "qc_counts": {
+      "PASS": 16,
+      "WARNING": 24
+    },
+    "actual_alignment": {
+      "median_tjur_r_squared": 0.493153637697914,
+      "median_topology_margin": 0.23706003168515855
+    },
+    "posthoc_prediction_only_diagnostic": {
+      "status": "added_after_primary_outcomes_descriptive_only",
+      "authorized_candidate_rows": 157,
+      "mice_with_false_temporal_control": 39,
+      "interpretation": "correlation without alignment specificity is not a prespecified comparator"
+    },
+    "comparators": {
+      "abstain_all": {
+        "threshold": 2.0,
+        "experiments": 40,
+        "failing_experiments": 0,
+        "authorized_experiments": 0,
+        "eligible_positive_experiments": 40,
+        "recovered_positive_experiments": 0,
+        "authorizations": 0,
+        "false_authorizations": 0,
+        "semantic_violations": 0,
+        "empirical_experiment_failure_rate": 0.0,
+        "empirical_authorized_experiment_coverage": 0.0,
+        "empirical_positive_recovery": 0.0,
+        "empirical_pair_sfar": 0.0,
+        "risk_upper_bound": 0.07215752450551455,
+        "coverage_lower_bound": 0.0,
+        "positive_recovery_lower_bound": 0.0,
+        "target_risk": 0.1,
+        "minimum_coverage": 0.1,
+        "minimum_positive_recovery": 0.05,
+        "confidence": 0.95,
+        "certified": false,
+        "inferential_unit": "top_level_cluster",
+        "minimum_independent_units": 29,
+        "hierarchy_valid": true,
+        "sufficient_independent_units": true,
+        "lower_level_summary": {
+          "subgroups": {
+            "units": 160,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 40,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          },
+          "claim_rows": {
+            "rows": 160,
+            "claim_candidates": 160,
+            "authorizations": 0,
+            "false_authorizations": 0,
+            "semantic_violations": 0,
+            "inferential_status": "descriptive_only"
+          }
+        },
+        "stratum_summary": {
+          "qc-PASS": {
+            "units": 64,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 16,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          },
+          "qc-WARNING": {
+            "units": 96,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 24,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          }
+        },
+        "lower_level_inference_allowed": false
+      },
+      "fixed_probability_0_5": {
+        "threshold": 0.5,
+        "experiments": 40,
+        "failing_experiments": 0,
+        "authorized_experiments": 40,
+        "eligible_positive_experiments": 40,
+        "recovered_positive_experiments": 40,
+        "authorizations": 40,
+        "false_authorizations": 0,
+        "semantic_violations": 0,
+        "empirical_experiment_failure_rate": 0.0,
+        "empirical_authorized_experiment_coverage": 1.0,
+        "empirical_positive_recovery": 1.0,
+        "empirical_pair_sfar": 0.0,
+        "risk_upper_bound": 0.07215752450551455,
+        "coverage_lower_bound": 0.9278424754944854,
+        "positive_recovery_lower_bound": 0.9278424754944854,
+        "target_risk": 0.1,
+        "minimum_coverage": 0.1,
+        "minimum_positive_recovery": 0.05,
+        "confidence": 0.95,
+        "certified": true,
+        "inferential_unit": "top_level_cluster",
+        "minimum_independent_units": 29,
+        "hierarchy_valid": true,
+        "sufficient_independent_units": true,
+        "lower_level_summary": {
+          "subgroups": {
+            "units": 160,
+            "failing_units": 0,
+            "authorized_units": 40,
+            "eligible_positive_units": 40,
+            "recovered_positive_units": 40,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.25,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "claim_rows": {
+            "rows": 160,
+            "claim_candidates": 160,
+            "authorizations": 40,
+            "false_authorizations": 0,
+            "semantic_violations": 0,
+            "inferential_status": "descriptive_only"
+          }
+        },
+        "stratum_summary": {
+          "qc-PASS": {
+            "units": 64,
+            "failing_units": 0,
+            "authorized_units": 16,
+            "eligible_positive_units": 16,
+            "recovered_positive_units": 16,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.25,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "qc-WARNING": {
+            "units": 96,
+            "failing_units": 0,
+            "authorized_units": 24,
+            "eligible_positive_units": 24,
+            "recovered_positive_units": 24,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.25,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          }
+        },
+        "lower_level_inference_allowed": false
+      },
+      "evidence_contract_only": {
+        "threshold": 0.0,
+        "experiments": 40,
+        "failing_experiments": 0,
+        "authorized_experiments": 40,
+        "eligible_positive_experiments": 40,
+        "recovered_positive_experiments": 40,
+        "authorizations": 40,
+        "false_authorizations": 0,
+        "semantic_violations": 0,
+        "empirical_experiment_failure_rate": 0.0,
+        "empirical_authorized_experiment_coverage": 1.0,
+        "empirical_positive_recovery": 1.0,
+        "empirical_pair_sfar": 0.0,
+        "risk_upper_bound": 0.07215752450551455,
+        "coverage_lower_bound": 0.9278424754944854,
+        "positive_recovery_lower_bound": 0.9278424754944854,
+        "target_risk": 0.1,
+        "minimum_coverage": 0.1,
+        "minimum_positive_recovery": 0.05,
+        "confidence": 0.95,
+        "certified": true,
+        "inferential_unit": "top_level_cluster",
+        "minimum_independent_units": 29,
+        "hierarchy_valid": true,
+        "sufficient_independent_units": true,
+        "lower_level_summary": {
+          "subgroups": {
+            "units": 160,
+            "failing_units": 0,
+            "authorized_units": 40,
+            "eligible_positive_units": 40,
+            "recovered_positive_units": 40,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.25,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "claim_rows": {
+            "rows": 160,
+            "claim_candidates": 160,
+            "authorizations": 40,
+            "false_authorizations": 0,
+            "semantic_violations": 0,
+            "inferential_status": "descriptive_only"
+          }
+        },
+        "stratum_summary": {
+          "qc-PASS": {
+            "units": 64,
+            "failing_units": 0,
+            "authorized_units": 16,
+            "eligible_positive_units": 16,
+            "recovered_positive_units": 16,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.25,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "qc-WARNING": {
+            "units": 96,
+            "failing_units": 0,
+            "authorized_units": 24,
+            "eligible_positive_units": 24,
+            "recovered_positive_units": 24,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.25,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          }
+        },
+        "lower_level_inference_allowed": false
+      },
+      "frozen_v5_1_complete_authorizer": {
+        "threshold": 0.9272577728502728,
+        "experiments": 40,
+        "failing_experiments": 0,
+        "authorized_experiments": 40,
+        "eligible_positive_experiments": 40,
+        "recovered_positive_experiments": 40,
+        "authorizations": 40,
+        "false_authorizations": 0,
+        "semantic_violations": 0,
+        "empirical_experiment_failure_rate": 0.0,
+        "empirical_authorized_experiment_coverage": 1.0,
+        "empirical_positive_recovery": 1.0,
+        "empirical_pair_sfar": 0.0,
+        "risk_upper_bound": 0.07215752450551455,
+        "coverage_lower_bound": 0.9278424754944854,
+        "positive_recovery_lower_bound": 0.9278424754944854,
+        "target_risk": 0.1,
+        "minimum_coverage": 0.1,
+        "minimum_positive_recovery": 0.05,
+        "confidence": 0.95,
+        "certified": true,
+        "inferential_unit": "top_level_cluster",
+        "minimum_independent_units": 29,
+        "hierarchy_valid": true,
+        "sufficient_independent_units": true,
+        "lower_level_summary": {
+          "subgroups": {
+            "units": 160,
+            "failing_units": 0,
+            "authorized_units": 40,
+            "eligible_positive_units": 40,
+            "recovered_positive_units": 40,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.25,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "claim_rows": {
+            "rows": 160,
+            "claim_candidates": 160,
+            "authorizations": 40,
+            "false_authorizations": 0,
+            "semantic_violations": 0,
+            "inferential_status": "descriptive_only"
+          }
+        },
+        "stratum_summary": {
+          "qc-PASS": {
+            "units": 64,
+            "failing_units": 0,
+            "authorized_units": 16,
+            "eligible_positive_units": 16,
+            "recovered_positive_units": 16,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.25,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "qc-WARNING": {
+            "units": 96,
+            "failing_units": 0,
+            "authorized_units": 24,
+            "eligible_positive_units": 24,
+            "recovered_positive_units": 24,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.25,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          }
+        },
+        "lower_level_inference_allowed": false
+      },
+      "pass_only_sensitivity": {
+        "threshold": 0.9272577728502728,
+        "experiments": 16,
+        "failing_experiments": 0,
+        "authorized_experiments": 16,
+        "eligible_positive_experiments": 16,
+        "recovered_positive_experiments": 16,
+        "authorizations": 16,
+        "false_authorizations": 0,
+        "semantic_violations": 0,
+        "empirical_experiment_failure_rate": 0.0,
+        "empirical_authorized_experiment_coverage": 1.0,
+        "empirical_positive_recovery": 1.0,
+        "empirical_pair_sfar": 0.0,
+        "risk_upper_bound": 0.1707497229824809,
+        "coverage_lower_bound": 0.8292502770175191,
+        "positive_recovery_lower_bound": 0.8292502770175191,
+        "target_risk": 0.1,
+        "minimum_coverage": 0.1,
+        "minimum_positive_recovery": 0.05,
+        "confidence": 0.95,
+        "certified": false,
+        "inferential_unit": "top_level_cluster",
+        "minimum_independent_units": 29,
+        "hierarchy_valid": true,
+        "sufficient_independent_units": false,
+        "lower_level_summary": {
+          "subgroups": {
+            "units": 64,
+            "failing_units": 0,
+            "authorized_units": 16,
+            "eligible_positive_units": 16,
+            "recovered_positive_units": 16,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.25,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "claim_rows": {
+            "rows": 64,
+            "claim_candidates": 64,
+            "authorizations": 16,
+            "false_authorizations": 0,
+            "semantic_violations": 0,
+            "inferential_status": "descriptive_only"
+          }
+        },
+        "stratum_summary": {
+          "qc-PASS": {
+            "units": 64,
+            "failing_units": 0,
+            "authorized_units": 16,
+            "eligible_positive_units": 16,
+            "recovered_positive_units": 16,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.25,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          }
+        },
+        "lower_level_inference_allowed": false
+      }
+    }
+  },
+  "risk_lock": {
+    "selected_mice": 35,
+    "usable_mice": 35,
+    "candidate_rows": 140,
+    "qc_counts": {
+      "PASS": 17,
+      "WARNING": 18
+    },
+    "actual_alignment": {
+      "median_tjur_r_squared": 0.4802673031958625,
+      "median_topology_margin": 0.2758571650267682
+    },
+    "posthoc_prediction_only_diagnostic": {
+      "status": "added_after_primary_outcomes_descriptive_only",
+      "authorized_candidate_rows": 140,
+      "mice_with_false_temporal_control": 35,
+      "interpretation": "correlation without alignment specificity is not a prespecified comparator"
+    },
+    "comparators": {
+      "abstain_all": {
+        "threshold": 2.0,
+        "experiments": 35,
+        "failing_experiments": 0,
+        "authorized_experiments": 0,
+        "eligible_positive_experiments": 35,
+        "recovered_positive_experiments": 0,
+        "authorizations": 0,
+        "false_authorizations": 0,
+        "semantic_violations": 0,
+        "empirical_experiment_failure_rate": 0.0,
+        "empirical_authorized_experiment_coverage": 0.0,
+        "empirical_positive_recovery": 0.0,
+        "empirical_pair_sfar": 0.0,
+        "risk_upper_bound": 0.08203163585667045,
+        "coverage_lower_bound": 0.0,
+        "positive_recovery_lower_bound": 0.0,
+        "target_risk": 0.1,
+        "minimum_coverage": 0.1,
+        "minimum_positive_recovery": 0.05,
+        "confidence": 0.95,
+        "certified": false,
+        "inferential_unit": "top_level_cluster",
+        "minimum_independent_units": 29,
+        "hierarchy_valid": true,
+        "sufficient_independent_units": true,
+        "lower_level_summary": {
+          "subgroups": {
+            "units": 140,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 35,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          },
+          "claim_rows": {
+            "rows": 140,
+            "claim_candidates": 140,
+            "authorizations": 0,
+            "false_authorizations": 0,
+            "semantic_violations": 0,
+            "inferential_status": "descriptive_only"
+          }
+        },
+        "stratum_summary": {
+          "qc-PASS": {
+            "units": 68,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 17,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          },
+          "qc-WARNING": {
+            "units": 72,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 18,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          }
+        },
+        "lower_level_inference_allowed": false
+      },
+      "fixed_probability_0_5": {
+        "threshold": 0.5,
+        "experiments": 35,
+        "failing_experiments": 0,
+        "authorized_experiments": 35,
+        "eligible_positive_experiments": 35,
+        "recovered_positive_experiments": 35,
+        "authorizations": 35,
+        "false_authorizations": 0,
+        "semantic_violations": 0,
+        "empirical_experiment_failure_rate": 0.0,
+        "empirical_authorized_experiment_coverage": 1.0,
+        "empirical_positive_recovery": 1.0,
+        "empirical_pair_sfar": 0.0,
+        "risk_upper_bound": 0.08203163585667045,
+        "coverage_lower_bound": 0.9179683641433296,
+        "positive_recovery_lower_bound": 0.9179683641433296,
+        "target_risk": 0.1,
+        "minimum_coverage": 0.1,
+        "minimum_positive_recovery": 0.05,
+        "confidence": 0.95,
+        "certified": true,
+        "inferential_unit": "top_level_cluster",
+        "minimum_independent_units": 29,
+        "hierarchy_valid": true,
+        "sufficient_independent_units": true,
+        "lower_level_summary": {
+          "subgroups": {
+            "units": 140,
+            "failing_units": 0,
+            "authorized_units": 35,
+            "eligible_positive_units": 35,
+            "recovered_positive_units": 35,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.25,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "claim_rows": {
+            "rows": 140,
+            "claim_candidates": 140,
+            "authorizations": 35,
+            "false_authorizations": 0,
+            "semantic_violations": 0,
+            "inferential_status": "descriptive_only"
+          }
+        },
+        "stratum_summary": {
+          "qc-PASS": {
+            "units": 68,
+            "failing_units": 0,
+            "authorized_units": 17,
+            "eligible_positive_units": 17,
+            "recovered_positive_units": 17,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.25,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "qc-WARNING": {
+            "units": 72,
+            "failing_units": 0,
+            "authorized_units": 18,
+            "eligible_positive_units": 18,
+            "recovered_positive_units": 18,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.25,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          }
+        },
+        "lower_level_inference_allowed": false
+      },
+      "evidence_contract_only": {
+        "threshold": 0.0,
+        "experiments": 35,
+        "failing_experiments": 0,
+        "authorized_experiments": 35,
+        "eligible_positive_experiments": 35,
+        "recovered_positive_experiments": 35,
+        "authorizations": 35,
+        "false_authorizations": 0,
+        "semantic_violations": 0,
+        "empirical_experiment_failure_rate": 0.0,
+        "empirical_authorized_experiment_coverage": 1.0,
+        "empirical_positive_recovery": 1.0,
+        "empirical_pair_sfar": 0.0,
+        "risk_upper_bound": 0.08203163585667045,
+        "coverage_lower_bound": 0.9179683641433296,
+        "positive_recovery_lower_bound": 0.9179683641433296,
+        "target_risk": 0.1,
+        "minimum_coverage": 0.1,
+        "minimum_positive_recovery": 0.05,
+        "confidence": 0.95,
+        "certified": true,
+        "inferential_unit": "top_level_cluster",
+        "minimum_independent_units": 29,
+        "hierarchy_valid": true,
+        "sufficient_independent_units": true,
+        "lower_level_summary": {
+          "subgroups": {
+            "units": 140,
+            "failing_units": 0,
+            "authorized_units": 35,
+            "eligible_positive_units": 35,
+            "recovered_positive_units": 35,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.25,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "claim_rows": {
+            "rows": 140,
+            "claim_candidates": 140,
+            "authorizations": 35,
+            "false_authorizations": 0,
+            "semantic_violations": 0,
+            "inferential_status": "descriptive_only"
+          }
+        },
+        "stratum_summary": {
+          "qc-PASS": {
+            "units": 68,
+            "failing_units": 0,
+            "authorized_units": 17,
+            "eligible_positive_units": 17,
+            "recovered_positive_units": 17,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.25,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "qc-WARNING": {
+            "units": 72,
+            "failing_units": 0,
+            "authorized_units": 18,
+            "eligible_positive_units": 18,
+            "recovered_positive_units": 18,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.25,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          }
+        },
+        "lower_level_inference_allowed": false
+      },
+      "frozen_v5_1_complete_authorizer": {
+        "threshold": 0.9272577728502728,
+        "experiments": 35,
+        "failing_experiments": 0,
+        "authorized_experiments": 35,
+        "eligible_positive_experiments": 35,
+        "recovered_positive_experiments": 35,
+        "authorizations": 35,
+        "false_authorizations": 0,
+        "semantic_violations": 0,
+        "empirical_experiment_failure_rate": 0.0,
+        "empirical_authorized_experiment_coverage": 1.0,
+        "empirical_positive_recovery": 1.0,
+        "empirical_pair_sfar": 0.0,
+        "risk_upper_bound": 0.08203163585667045,
+        "coverage_lower_bound": 0.9179683641433296,
+        "positive_recovery_lower_bound": 0.9179683641433296,
+        "target_risk": 0.1,
+        "minimum_coverage": 0.1,
+        "minimum_positive_recovery": 0.05,
+        "confidence": 0.95,
+        "certified": true,
+        "inferential_unit": "top_level_cluster",
+        "minimum_independent_units": 29,
+        "hierarchy_valid": true,
+        "sufficient_independent_units": true,
+        "lower_level_summary": {
+          "subgroups": {
+            "units": 140,
+            "failing_units": 0,
+            "authorized_units": 35,
+            "eligible_positive_units": 35,
+            "recovered_positive_units": 35,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.25,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "claim_rows": {
+            "rows": 140,
+            "claim_candidates": 140,
+            "authorizations": 35,
+            "false_authorizations": 0,
+            "semantic_violations": 0,
+            "inferential_status": "descriptive_only"
+          }
+        },
+        "stratum_summary": {
+          "qc-PASS": {
+            "units": 68,
+            "failing_units": 0,
+            "authorized_units": 17,
+            "eligible_positive_units": 17,
+            "recovered_positive_units": 17,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.25,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "qc-WARNING": {
+            "units": 72,
+            "failing_units": 0,
+            "authorized_units": 18,
+            "eligible_positive_units": 18,
+            "recovered_positive_units": 18,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.25,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          }
+        },
+        "lower_level_inference_allowed": false
+      },
+      "pass_only_sensitivity": {
+        "threshold": 0.9272577728502728,
+        "experiments": 17,
+        "failing_experiments": 0,
+        "authorized_experiments": 17,
+        "eligible_positive_experiments": 17,
+        "recovered_positive_experiments": 17,
+        "authorizations": 17,
+        "false_authorizations": 0,
+        "semantic_violations": 0,
+        "empirical_experiment_failure_rate": 0.0,
+        "empirical_authorized_experiment_coverage": 1.0,
+        "empirical_positive_recovery": 1.0,
+        "empirical_pair_sfar": 0.0,
+        "risk_upper_bound": 0.16156611126074005,
+        "coverage_lower_bound": 0.83843388873926,
+        "positive_recovery_lower_bound": 0.83843388873926,
+        "target_risk": 0.1,
+        "minimum_coverage": 0.1,
+        "minimum_positive_recovery": 0.05,
+        "confidence": 0.95,
+        "certified": false,
+        "inferential_unit": "top_level_cluster",
+        "minimum_independent_units": 29,
+        "hierarchy_valid": true,
+        "sufficient_independent_units": false,
+        "lower_level_summary": {
+          "subgroups": {
+            "units": 68,
+            "failing_units": 0,
+            "authorized_units": 17,
+            "eligible_positive_units": 17,
+            "recovered_positive_units": 17,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.25,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "claim_rows": {
+            "rows": 68,
+            "claim_candidates": 68,
+            "authorizations": 17,
+            "false_authorizations": 0,
+            "semantic_violations": 0,
+            "inferential_status": "descriptive_only"
+          }
+        },
+        "stratum_summary": {
+          "qc-PASS": {
+            "units": 68,
+            "failing_units": 0,
+            "authorized_units": 17,
+            "eligible_positive_units": 17,
+            "recovered_positive_units": 17,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.25,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          }
+        },
+        "lower_level_inference_allowed": false
+      }
+    },
+    "passed": true
+  },
+  "final_evaluation": {
+    "opened": true,
+    "selected_mice": 35,
+    "usable_mice": 35,
+    "candidate_rows": 140,
+    "qc_counts": {
+      "PASS": 21,
+      "WARNING": 14
+    },
+    "actual_alignment": {
+      "median_tjur_r_squared": 0.4399041574738556,
+      "median_topology_margin": 0.24922945422078696
+    },
+    "posthoc_prediction_only_diagnostic": {
+      "status": "added_after_primary_outcomes_descriptive_only",
+      "authorized_candidate_rows": 140,
+      "mice_with_false_temporal_control": 35,
+      "interpretation": "correlation without alignment specificity is not a prespecified comparator"
+    },
+    "comparators": {
+      "abstain_all": {
+        "threshold": 2.0,
+        "experiments": 35,
+        "failing_experiments": 0,
+        "authorized_experiments": 0,
+        "eligible_positive_experiments": 35,
+        "recovered_positive_experiments": 0,
+        "authorizations": 0,
+        "false_authorizations": 0,
+        "semantic_violations": 0,
+        "empirical_experiment_failure_rate": 0.0,
+        "empirical_authorized_experiment_coverage": 0.0,
+        "empirical_positive_recovery": 0.0,
+        "empirical_pair_sfar": 0.0,
+        "risk_upper_bound": 0.08203163585667045,
+        "coverage_lower_bound": 0.0,
+        "positive_recovery_lower_bound": 0.0,
+        "target_risk": 0.1,
+        "minimum_coverage": 0.1,
+        "minimum_positive_recovery": 0.05,
+        "confidence": 0.95,
+        "certified": false,
+        "inferential_unit": "top_level_cluster",
+        "minimum_independent_units": 29,
+        "hierarchy_valid": true,
+        "sufficient_independent_units": true,
+        "lower_level_summary": {
+          "subgroups": {
+            "units": 140,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 35,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          },
+          "claim_rows": {
+            "rows": 140,
+            "claim_candidates": 140,
+            "authorizations": 0,
+            "false_authorizations": 0,
+            "semantic_violations": 0,
+            "inferential_status": "descriptive_only"
+          }
+        },
+        "stratum_summary": {
+          "qc-PASS": {
+            "units": 84,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 21,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          },
+          "qc-WARNING": {
+            "units": 56,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 14,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          }
+        },
+        "lower_level_inference_allowed": false
+      },
+      "fixed_probability_0_5": {
+        "threshold": 0.5,
+        "experiments": 35,
+        "failing_experiments": 0,
+        "authorized_experiments": 35,
+        "eligible_positive_experiments": 35,
+        "recovered_positive_experiments": 35,
+        "authorizations": 35,
+        "false_authorizations": 0,
+        "semantic_violations": 0,
+        "empirical_experiment_failure_rate": 0.0,
+        "empirical_authorized_experiment_coverage": 1.0,
+        "empirical_positive_recovery": 1.0,
+        "empirical_pair_sfar": 0.0,
+        "risk_upper_bound": 0.08203163585667045,
+        "coverage_lower_bound": 0.9179683641433296,
+        "positive_recovery_lower_bound": 0.9179683641433296,
+        "target_risk": 0.1,
+        "minimum_coverage": 0.1,
+        "minimum_positive_recovery": 0.05,
+        "confidence": 0.95,
+        "certified": true,
+        "inferential_unit": "top_level_cluster",
+        "minimum_independent_units": 29,
+        "hierarchy_valid": true,
+        "sufficient_independent_units": true,
+        "lower_level_summary": {
+          "subgroups": {
+            "units": 140,
+            "failing_units": 0,
+            "authorized_units": 35,
+            "eligible_positive_units": 35,
+            "recovered_positive_units": 35,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.25,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "claim_rows": {
+            "rows": 140,
+            "claim_candidates": 140,
+            "authorizations": 35,
+            "false_authorizations": 0,
+            "semantic_violations": 0,
+            "inferential_status": "descriptive_only"
+          }
+        },
+        "stratum_summary": {
+          "qc-PASS": {
+            "units": 84,
+            "failing_units": 0,
+            "authorized_units": 21,
+            "eligible_positive_units": 21,
+            "recovered_positive_units": 21,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.25,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "qc-WARNING": {
+            "units": 56,
+            "failing_units": 0,
+            "authorized_units": 14,
+            "eligible_positive_units": 14,
+            "recovered_positive_units": 14,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.25,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          }
+        },
+        "lower_level_inference_allowed": false
+      },
+      "evidence_contract_only": {
+        "threshold": 0.0,
+        "experiments": 35,
+        "failing_experiments": 0,
+        "authorized_experiments": 35,
+        "eligible_positive_experiments": 35,
+        "recovered_positive_experiments": 35,
+        "authorizations": 35,
+        "false_authorizations": 0,
+        "semantic_violations": 0,
+        "empirical_experiment_failure_rate": 0.0,
+        "empirical_authorized_experiment_coverage": 1.0,
+        "empirical_positive_recovery": 1.0,
+        "empirical_pair_sfar": 0.0,
+        "risk_upper_bound": 0.08203163585667045,
+        "coverage_lower_bound": 0.9179683641433296,
+        "positive_recovery_lower_bound": 0.9179683641433296,
+        "target_risk": 0.1,
+        "minimum_coverage": 0.1,
+        "minimum_positive_recovery": 0.05,
+        "confidence": 0.95,
+        "certified": true,
+        "inferential_unit": "top_level_cluster",
+        "minimum_independent_units": 29,
+        "hierarchy_valid": true,
+        "sufficient_independent_units": true,
+        "lower_level_summary": {
+          "subgroups": {
+            "units": 140,
+            "failing_units": 0,
+            "authorized_units": 35,
+            "eligible_positive_units": 35,
+            "recovered_positive_units": 35,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.25,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "claim_rows": {
+            "rows": 140,
+            "claim_candidates": 140,
+            "authorizations": 35,
+            "false_authorizations": 0,
+            "semantic_violations": 0,
+            "inferential_status": "descriptive_only"
+          }
+        },
+        "stratum_summary": {
+          "qc-PASS": {
+            "units": 84,
+            "failing_units": 0,
+            "authorized_units": 21,
+            "eligible_positive_units": 21,
+            "recovered_positive_units": 21,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.25,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "qc-WARNING": {
+            "units": 56,
+            "failing_units": 0,
+            "authorized_units": 14,
+            "eligible_positive_units": 14,
+            "recovered_positive_units": 14,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.25,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          }
+        },
+        "lower_level_inference_allowed": false
+      },
+      "frozen_v5_1_complete_authorizer": {
+        "threshold": 0.9272577728502728,
+        "experiments": 35,
+        "failing_experiments": 0,
+        "authorized_experiments": 35,
+        "eligible_positive_experiments": 35,
+        "recovered_positive_experiments": 35,
+        "authorizations": 35,
+        "false_authorizations": 0,
+        "semantic_violations": 0,
+        "empirical_experiment_failure_rate": 0.0,
+        "empirical_authorized_experiment_coverage": 1.0,
+        "empirical_positive_recovery": 1.0,
+        "empirical_pair_sfar": 0.0,
+        "risk_upper_bound": 0.08203163585667045,
+        "coverage_lower_bound": 0.9179683641433296,
+        "positive_recovery_lower_bound": 0.9179683641433296,
+        "target_risk": 0.1,
+        "minimum_coverage": 0.1,
+        "minimum_positive_recovery": 0.05,
+        "confidence": 0.95,
+        "certified": true,
+        "inferential_unit": "top_level_cluster",
+        "minimum_independent_units": 29,
+        "hierarchy_valid": true,
+        "sufficient_independent_units": true,
+        "lower_level_summary": {
+          "subgroups": {
+            "units": 140,
+            "failing_units": 0,
+            "authorized_units": 35,
+            "eligible_positive_units": 35,
+            "recovered_positive_units": 35,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.25,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "claim_rows": {
+            "rows": 140,
+            "claim_candidates": 140,
+            "authorizations": 35,
+            "false_authorizations": 0,
+            "semantic_violations": 0,
+            "inferential_status": "descriptive_only"
+          }
+        },
+        "stratum_summary": {
+          "qc-PASS": {
+            "units": 84,
+            "failing_units": 0,
+            "authorized_units": 21,
+            "eligible_positive_units": 21,
+            "recovered_positive_units": 21,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.25,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "qc-WARNING": {
+            "units": 56,
+            "failing_units": 0,
+            "authorized_units": 14,
+            "eligible_positive_units": 14,
+            "recovered_positive_units": 14,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.25,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          }
+        },
+        "lower_level_inference_allowed": false
+      },
+      "pass_only_sensitivity": {
+        "threshold": 0.9272577728502728,
+        "experiments": 21,
+        "failing_experiments": 0,
+        "authorized_experiments": 21,
+        "eligible_positive_experiments": 21,
+        "recovered_positive_experiments": 21,
+        "authorizations": 21,
+        "false_authorizations": 0,
+        "semantic_violations": 0,
+        "empirical_experiment_failure_rate": 0.0,
+        "empirical_authorized_experiment_coverage": 1.0,
+        "empirical_positive_recovery": 1.0,
+        "empirical_pair_sfar": 0.0,
+        "risk_upper_bound": 0.13294591102652337,
+        "coverage_lower_bound": 0.8670540889734767,
+        "positive_recovery_lower_bound": 0.8670540889734767,
+        "target_risk": 0.1,
+        "minimum_coverage": 0.1,
+        "minimum_positive_recovery": 0.05,
+        "confidence": 0.95,
+        "certified": false,
+        "inferential_unit": "top_level_cluster",
+        "minimum_independent_units": 29,
+        "hierarchy_valid": true,
+        "sufficient_independent_units": false,
+        "lower_level_summary": {
+          "subgroups": {
+            "units": 84,
+            "failing_units": 0,
+            "authorized_units": 21,
+            "eligible_positive_units": 21,
+            "recovered_positive_units": 21,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.25,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "claim_rows": {
+            "rows": 84,
+            "claim_candidates": 84,
+            "authorizations": 21,
+            "false_authorizations": 0,
+            "semantic_violations": 0,
+            "inferential_status": "descriptive_only"
+          }
+        },
+        "stratum_summary": {
+          "qc-PASS": {
+            "units": 84,
+            "failing_units": 0,
+            "authorized_units": 21,
+            "eligible_positive_units": 21,
+            "recovered_positive_units": 21,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.25,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          }
+        },
+        "lower_level_inference_allowed": false
+      }
+    },
+    "passed": true
+  },
+  "decision": "external_ibl_behavioral_population_supported",
+  "claim_boundary": "A positive result is external evidence for one behavioral alignment task in one shared IBL experimental protocol. It is not evidence of causal neural mechanism, independent laboratories, whole-brain validity, or digital-twin validity. Mice are biological units, but shared laboratories and task design remain higher-level dependencies and are reported as limitations.",
+  "efficiency": {
+    "wall_time_seconds": 4.745670957956463,
+    "peak_rss_megabytes": 213.359375
+  }
+}

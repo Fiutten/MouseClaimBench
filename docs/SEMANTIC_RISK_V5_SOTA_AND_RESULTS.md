@@ -53,35 +53,37 @@ Primary resources:
 | Same-endpoint baselines | 100 + 100 bundles | Abstention, confidence 0.5, contract-only, and the v3 threshold all fail the complete endpoint. | The result is not reproduced by these simple comparators. |
 | TimeGraph v5.1 OOD | 100 bundles | 6 failures, risk UCB 0.1150, certificate failed, shift warned. | The certificate does not transport to the declared OOD block. |
 | Frozen severity sweep v5.2 | 6 levels, 100 paired bundles per level | First warning at shift 1. First simultaneous certificate loss at shift 3. | Warning preceded loss on this path only. It is not a universal detector. |
+| IBL behavior v5.3 | 35 risk-lock + 35 final mice | Zero false mouse events in both splits, risk UCB 0.0820, coverage and recovery LCB 0.9180. | Positive transport for one behavioral alignment task, not causal-neural or laboratory-independent validity. |
+| Orthogonal shifts v5.4 | 13 levels, 100 bundles per level | Certification failed at Student-t 2 and eight variables. Lag and confounding contrasts remained certified. | Warning behavior is family-dependent and is not a calibrated universal alarm. |
 | CausalRivers transport | 3 dependent geographic clusters, 320 pair evaluations | False fractions among authorizations ranged from 0.1944 to 0.4595. Exact external inference was prohibited. | Real transport is negative/descriptive, not external validation. |
 | Profile content review | 29 items, 0 external raters | Review packet complete, ratings pending. | The profile remains author-proposed. |
 
-The six-level sweep used familywise 95% simultaneous confidence through a
-Bonferroni per-level confidence of 0.991667. The warning appeared two severity
-levels before loss, but only one frozen path was evaluated. The result therefore
-supports boundary characterization, not sensitivity, specificity, or calibrated
-alarm performance.
+The original six-level sweep used familywise 95% simultaneous confidence through
+a Bonferroni per-level confidence of 0.991667. Version 5.4 expands this evidence
+to 13 evaluable levels and uses per-level confidence 0.996154. Warning behavior
+varies across families. These results support boundary characterization, not a
+stable sensitivity, specificity, or calibrated universal alarm.
 
 ## Scientific judgement
 
-The v5 work materially improves the evidence over v4. It provides a positive
-hierarchy-valid synthetic confirmation, direct same-endpoint failures of four
-simple comparators, a prospective degradation boundary, and a real benchmark that
-exposes poor transport rather than concealing it. This is a credible methodological
-core and a useful negative external result.
+The v5 work materially improves the evidence over v4. It now provides a positive
+hierarchy-valid synthetic confirmation, a positive task-bounded IBL transport,
+direct same-endpoint comparators, and heterogeneous degradation boundaries. The
+negative CausalRivers transport and the two v5.4 certificate failures remain
+visible. This is a credible methodological package rather than a uniformly
+favorable benchmark narrative.
 
-It is not yet a criticism-resistant strong Q1 package. The positive result is
-claim-specific and synthetic. CausalRivers does not contain enough independent
-top-level systems for external risk certification and shows high descriptive false
-authorization fractions. The knowledge profile has no independent content-validity
-evidence. The shift diagnostic has one prospective path but no calibrated operating
-characteristics across heterogeneous shifts. No result establishes mouse-brain
-causal validity.
+It is still not criticism-proof. The positive evidence is claim-specific. IBL
+mice are genuine biological units, but they share a standardized consortium task
+and do not establish laboratory-level replication. Two simple IBL comparators
+also pass, so that result supports external transport rather than exclusive
+algorithmic superiority. The knowledge profile has no independent content-validity
+evidence, and four shift families do not calibrate a deployment alarm. No result
+establishes mouse-brain causal validity.
 
-The next evidence should therefore be acquired rather than tuned. The profile
-packet requires at least seven eligible independent raters across the frozen
-expertise strata. External risk requires a new untouched population with at least
-29 genuinely independent top-level units, not additional pairs from the same river
-network or mouse. A second prospective shift family is needed to estimate warning
-errors rather than narrate one successful ordering. Until those blocks exist, the
-release gate must remain closed for a strong Q1 claim.
+Two previously open evidence blocks are now materially improved. IBL v5.3 supplies
+two locked 35-mouse evaluations, and v5.4 evaluates four orthogonal shift families.
+The remaining major external-validity gap is independent content review of the
+knowledge profile. The IBL result is also task-specific and does not establish
+laboratory-level replication. These limits prevent a broad truth-verification or
+universal-deployment claim even though the second-paper package is now stronger.
