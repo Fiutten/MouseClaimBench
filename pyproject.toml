@@ -133,6 +133,7 @@ mousebrainbench-profile-v2-properties = "mousebrainbench.benchmarks.profile_v2_f
 mousebrainbench-profile-v2-provenance-attacks = "mousebrainbench.benchmarks.profile_v2_provenance_attacks:main"
 mousebrainbench-dandi-profile-v2-1 = "mousebrainbench.benchmarks.dandi_profile_v2_1:main"
 mousebrainbench-profile-v2-scalability-ablation = "mousebrainbench.benchmarks.profile_v2_scalability_ablation:main"
+mousebrainbench-standards-prospective-release = "mousebrainbench.benchmarks.standards_prospective_release:main"
 mousebrainbench-run = "mousebrainbench.cli:main"
 
 [tool.setuptools.packages.find]

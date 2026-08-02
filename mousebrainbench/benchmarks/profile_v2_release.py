@@ -133,7 +133,7 @@ def evaluate(protocol: dict[str, Any]) -> dict[str, Any]:
             "artifact application is retrospective rather than a new blind v2 evaluation",
             "only one shared IBL task ecosystem supplies real mouse-population risk evidence",
             "simple IBL comparators also pass, so exclusive algorithmic superiority is unsupported",
-            "MICRONS remains unauthorized until dependence-aware network inference is added",
+            "MICRONS authorizes only one local observational association after directed dyadic and node-permutation controls",
             "no human trace-utility or decision-quality claim is evaluated",
         ],
         "interpretation": protocol["interpretation"],

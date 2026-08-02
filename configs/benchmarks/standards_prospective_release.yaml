@@ -1,0 +1,41 @@
+protocol_id: mouseclaimbench_standards_prospective_release
+version: 1.0.0
+status: frozen_release_contract
+freeze_date: 2026-08-02
+
+artifacts:
+  contract_mutation: results/profile_v2_contract_mutation/summary.json
+  standards: results/profile_v2_standards/summary.json
+  formal_properties: results/profile_v2_formal_properties/summary.json
+  provenance_attacks: results/profile_v2_provenance_attacks/summary.json
+  scalability_ablation: results/profile_v2_scalability_ablation/summary.json
+  artifact_application: results/profile_v2_artifact_application/summary.json
+  prospective_dandi: results/dandi_profile_v2_1/summary.json
+
+release_requirements:
+  contract_cases: 5497
+  asp_cases: 262
+  shacl_cases: 5497
+  minimum_formal_checks: 55000
+  attack_cases: 370
+  attacked_cases: 360
+  minimum_batch_packages: 10000
+  minimum_artifacts_per_package: 5000
+  bounded_artifact_authorizations: 3
+  prospective_positive_authorizations: 1
+  complete_twin_authorizations: 0
+
+claim_policy:
+  authorize_scientific_truth: false
+  complete_mouse_brain_twin: false
+  causal_microns_mechanism: false
+  sensorium_state_of_the_art: false
+  human_utility_or_consensus: false
+  portable_runtime_guarantee: false
+
+interpretation: >-
+  Passing this release authorizes a bounded knowledge-engineering contribution:
+  executable profile-relative claim authorization, standards interoperability,
+  deterministic formal properties, declared package-integrity controls, and
+  limited mouse-brain applications. It does not validate scientific truth,
+  human utility, a consensus taxonomy, causality, or a complete digital twin.
