@@ -1,0 +1,80 @@
+protocol_id: mouseclaimbench_semantic_risk_shift_degradation
+version: 5.2.0
+status: frozen_before_shift_sweep_generation
+freeze_date: 2026-08-02
+parent_result:
+  path: results/timegraph_v5_1_topology_confirmation/summary.json
+  sha256: f8d60e3775824a1948e33e9ce6a665d3135f58a39e79adf9a74fe6414ddebe88
+
+claim: topology_specific
+fixed_threshold: 0.9272577728502728
+threshold_refitting_allowed: false
+source_protocol: configs/benchmarks/semantic_risk_control_v5_1.yaml
+
+confirmatory_population:
+  resource: TimeGraph
+  repository: https://github.com/hferdous/TimeGraph
+  source_revision: 4d93403b002664fa55607f308ad0e80623472ded
+  source_files:
+    Codes/a1.py: sha256:1840a5c267c671cb74ad03aa7090608a02cb67cd44416e347f00f8431a744799
+    Codes/a1c.py: sha256:795d6e86cf894e25b386c9dae4b4910288931d343da4d58c328e7b349c82e038
+  factors:
+    generator: [a1, a1c]
+    noise: [gaussian, student_t]
+    max_lag: [2, 3]
+    n_vars: 6
+    n_points: 1200
+    noise_scale: 0.1
+    student_t_df: 3
+  split_seeds:
+    reference: {start: 2026086001, count: 100}
+    shift_0: {start: 2026087001, count: 100}
+    shift_1: {start: 2026087001, count: 100}
+    shift_2: {start: 2026087001, count: 100}
+    shift_3: {start: 2026087001, count: 100}
+    shift_4: {start: 2026087001, count: 100}
+    shift_5: {start: 2026087001, count: 100}
+  role_factor_overrides:
+    shift_0: {n_points: 1200, noise_scale: 0.10}
+    shift_1: {n_points: 900, noise_scale: 0.125}
+    shift_2: {n_points: 700, noise_scale: 0.16}
+    shift_3: {n_points: 500, noise_scale: 0.21}
+    shift_4: {n_points: 400, noise_scale: 0.25}
+    shift_5: {n_points: 250, noise_scale: 0.35}
+  independent_unit: seed_bundle_within_level
+  hierarchy: [seed_bundle, generator_scenario, directed_pair, claim_candidate]
+  pair_sampling:
+    direct_pairs_per_scenario: 1
+    control_pairs_per_scenario: 1
+    rule: sha256_namespace_order_without_replacement
+
+simultaneous_contract:
+  levels: 6
+  familywise_confidence: 0.95
+  per_level_confidence: 0.9916666666666667
+  multiplicity_method: Bonferroni_across_six_prespecified_levels
+  target_seed_bundle_failure_probability: 0.10
+  minimum_authorized_seed_bundle_coverage: 0.10
+  minimum_positive_recovery: 0.05
+  minimum_independent_units: 29
+
+shift_diagnostic:
+  reference_role: reference
+  alpha: 0.01
+  permutations: 199
+  role: warning_only
+  may_refit_threshold: false
+  may_restore_certificate: false
+
+primary_endpoints:
+  - first_level_with_shift_warning
+  - first_level_with_certificate_failure
+  - warning_occurs_no_later_than_certificate_failure
+  - monotonic_trend_context_without_monotonicity_claim
+
+prohibited_claims:
+  - calibrated_shift_detector
+  - guaranteed_early_warning
+  - distribution_free_robustness
+  - threshold_adaptation_under_shift
+  - real_domain_certificate
