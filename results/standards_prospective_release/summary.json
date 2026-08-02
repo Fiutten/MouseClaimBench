@@ -1,0 +1,62 @@
+{
+  "version": "0.9.0",
+  "git_revision": "f87d396",
+  "analysis": "standards_prospective_release",
+  "protocol": "configs/benchmarks/standards_prospective_release.yaml",
+  "protocol_sha256": "619e1ca6a199f997e0bbb76c03c9217a96ae42c8f716d8ef313a00fcbb2c4688",
+  "artifact_revisions": {
+    "contract_mutation": "93433ee1677d899b2536ad620d3d0503b0d1c59e",
+    "standards": "2c9ac4f",
+    "formal_properties": "1e9b965",
+    "provenance_attacks": "435b8e8",
+    "scalability_ablation": "32edf9d",
+    "artifact_application": "cf123fb",
+    "prospective_dandi": "3add706"
+  },
+  "conditions": {
+    "python_contract_exact": true,
+    "independent_asp_exact": true,
+    "external_shacl_exact": true,
+    "formal_properties_hold": true,
+    "declared_attacks_blocked": true,
+    "every_integrity_control_is_decisive": true,
+    "scaling_workloads_complete": true,
+    "bounded_mouse_artifacts_only": true,
+    "prospective_outcomes_retained": true,
+    "all_source_revisions_clean": true,
+    "broad_claims_blocked": true
+  },
+  "all_release_conditions_passed": true,
+  "evidence_counts": {
+    "contract_cases": 5497,
+    "asp_cases": 262,
+    "shacl_cases": 5497,
+    "formal_checks": 55031,
+    "attack_cases": 370,
+    "attacked_cases": 360,
+    "largest_batch_packages": 10000,
+    "largest_artifact_package": 5000,
+    "bounded_artifact_authorizations": 3,
+    "prospective_positive_authorizations": 1
+  },
+  "claim_policy": {
+    "authorize_scientific_truth": false,
+    "complete_mouse_brain_twin": false,
+    "causal_microns_mechanism": false,
+    "sensorium_state_of_the_art": false,
+    "human_utility_or_consensus": false,
+    "portable_runtime_guarantee": false
+  },
+  "technically_ready_for_kbs_manuscript": true,
+  "publication_assessment": "bounded_kbs_submission_candidate_not_acceptance_guarantee",
+  "remaining_scientific_limits": [
+    "the profile is author-defined rather than a consensus taxonomy",
+    "formal and SHACL results are profile-relative rather than biological truth",
+    "the attack suite covers a declared non-adaptive threat model",
+    "MICRONS evidence comes from one cortical volume and remains observational",
+    "the positive prospective DANDI result concerns one simple bounded endpoint",
+    "human trace utility and independent content validity are not evaluated"
+  ],
+  "interpretation": "Passing this release authorizes a bounded knowledge-engineering contribution: executable profile-relative claim authorization, standards interoperability, deterministic formal properties, declared package-integrity controls, and limited mouse-brain applications. It does not validate scientific truth, human utility, a consensus taxonomy, causality, or a complete digital twin.",
+  "decision": "standards_prospective_release_complete"
+}
