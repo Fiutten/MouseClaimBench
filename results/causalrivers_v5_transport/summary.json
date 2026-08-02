@@ -1,0 +1,847 @@
+{
+  "version": "0.9.0",
+  "git_revision": "3c0f1ee",
+  "analysis": "causalrivers_v5_fixed_topology_gate_transport",
+  "protocol": "configs/benchmarks/causalrivers_v5_transport.yaml",
+  "protocol_status": "frozen_after_source_metadata_audit_before_transport_outcomes",
+  "source_hashes": {
+    "rivers_bavaria.p": "sha256:a798c76cba8ecd3e0971916783c94d29e56d81b4663b24c32fd1e7e81610d1f4",
+    "rivers_east_germany.p": "sha256:d6ff7df27325be8e1a8b7194ee2d1dd915a29e253561e389db66338a6711ade3",
+    "rivers_flood.p": "sha256:7f8befac07c5980d5de633063fb939716f13126be9fcb1169924e54fbc94adf2",
+    "rivers_ts_bavaria.csv": "sha256:fae1fc5aac3d46c603d7f86950fba466022a970f2602e1b47d13dfb740508426",
+    "rivers_ts_east_germany.csv": "sha256:c0b2202df0c69eefd3174160d8d537aa4977452bd0545c77e3ef41052da8abc5",
+    "rivers_ts_flood.csv": "sha256:86aa0b64bf399c44588e1ae2e3aea9e38ef5514226c1ce65a801f2c80f0f2f66"
+  },
+  "claim": "topology_specific",
+  "fixed_threshold": 0.9272577728502728,
+  "threshold_refitted": false,
+  "independent_top_level_clusters": 3,
+  "exact_external_certificate_allowed": false,
+  "pair_level_confidence_intervals_allowed": false,
+  "blocks": {
+    "bavaria_historical": {
+      "role": "real_historical_transport",
+      "graph_nodes": 494,
+      "graph_edges": 490,
+      "selected_pairs": 80,
+      "usable_pairs": 80,
+      "source_rows": 175296,
+      "sampled_rows": 10000,
+      "loaded_columns": 275,
+      "exclusions": {
+        "pair_adapter_failed": 0
+      },
+      "comparators": {
+        "abstain_all": {
+          "usable_pairs": 80,
+          "authorizations": 0,
+          "false_authorizations": 0,
+          "authorization_coverage": 0.0,
+          "false_authorization_fraction": 0.0,
+          "eligible_positive_pairs": 29,
+          "recovered_positive_pairs": 0,
+          "empirical_positive_recovery": 0.0,
+          "semantic_violations": 0,
+          "inferential_status": "descriptive_only_shared_network_and_stations"
+        },
+        "fixed_probability_0_5": {
+          "usable_pairs": 80,
+          "authorizations": 40,
+          "false_authorizations": 8,
+          "authorization_coverage": 0.5,
+          "false_authorization_fraction": 0.2,
+          "eligible_positive_pairs": 29,
+          "recovered_positive_pairs": 29,
+          "empirical_positive_recovery": 1.0,
+          "semantic_violations": 3,
+          "inferential_status": "descriptive_only_shared_network_and_stations"
+        },
+        "evidence_contract_only": {
+          "usable_pairs": 80,
+          "authorizations": 37,
+          "false_authorizations": 8,
+          "authorization_coverage": 0.4625,
+          "false_authorization_fraction": 0.21621621621621623,
+          "eligible_positive_pairs": 29,
+          "recovered_positive_pairs": 29,
+          "empirical_positive_recovery": 1.0,
+          "semantic_violations": 0,
+          "inferential_status": "descriptive_only_shared_network_and_stations"
+        },
+        "frozen_v3_topology_threshold": {
+          "usable_pairs": 80,
+          "authorizations": 37,
+          "false_authorizations": 8,
+          "authorization_coverage": 0.4625,
+          "false_authorization_fraction": 0.21621621621621623,
+          "eligible_positive_pairs": 29,
+          "recovered_positive_pairs": 29,
+          "empirical_positive_recovery": 1.0,
+          "semantic_violations": 0,
+          "inferential_status": "descriptive_only_shared_network_and_stations"
+        },
+        "v5_1_fixed_hierarchical_threshold": {
+          "usable_pairs": 80,
+          "authorizations": 36,
+          "false_authorizations": 7,
+          "authorization_coverage": 0.45,
+          "false_authorization_fraction": 0.19444444444444445,
+          "eligible_positive_pairs": 29,
+          "recovered_positive_pairs": 29,
+          "empirical_positive_recovery": 1.0,
+          "semantic_violations": 0,
+          "inferential_status": "descriptive_only_shared_network_and_stations"
+        }
+      }
+    },
+    "east_germany_historical": {
+      "role": "real_historical_transport",
+      "graph_nodes": 666,
+      "graph_edges": 651,
+      "selected_pairs": 80,
+      "usable_pairs": 80,
+      "source_rows": 175296,
+      "sampled_rows": 10000,
+      "loaded_columns": 302,
+      "exclusions": {
+        "pair_adapter_failed": 0
+      },
+      "comparators": {
+        "abstain_all": {
+          "usable_pairs": 80,
+          "authorizations": 0,
+          "false_authorizations": 0,
+          "authorization_coverage": 0.0,
+          "false_authorization_fraction": 0.0,
+          "eligible_positive_pairs": 29,
+          "recovered_positive_pairs": 0,
+          "empirical_positive_recovery": 0.0,
+          "semantic_violations": 0,
+          "inferential_status": "descriptive_only_shared_network_and_stations"
+        },
+        "fixed_probability_0_5": {
+          "usable_pairs": 80,
+          "authorizations": 42,
+          "false_authorizations": 11,
+          "authorization_coverage": 0.525,
+          "false_authorization_fraction": 0.2619047619047619,
+          "eligible_positive_pairs": 29,
+          "recovered_positive_pairs": 29,
+          "empirical_positive_recovery": 1.0,
+          "semantic_violations": 4,
+          "inferential_status": "descriptive_only_shared_network_and_stations"
+        },
+        "evidence_contract_only": {
+          "usable_pairs": 80,
+          "authorizations": 38,
+          "false_authorizations": 9,
+          "authorization_coverage": 0.475,
+          "false_authorization_fraction": 0.23684210526315788,
+          "eligible_positive_pairs": 29,
+          "recovered_positive_pairs": 29,
+          "empirical_positive_recovery": 1.0,
+          "semantic_violations": 0,
+          "inferential_status": "descriptive_only_shared_network_and_stations"
+        },
+        "frozen_v3_topology_threshold": {
+          "usable_pairs": 80,
+          "authorizations": 38,
+          "false_authorizations": 9,
+          "authorization_coverage": 0.475,
+          "false_authorization_fraction": 0.23684210526315788,
+          "eligible_positive_pairs": 29,
+          "recovered_positive_pairs": 29,
+          "empirical_positive_recovery": 1.0,
+          "semantic_violations": 0,
+          "inferential_status": "descriptive_only_shared_network_and_stations"
+        },
+        "v5_1_fixed_hierarchical_threshold": {
+          "usable_pairs": 80,
+          "authorizations": 38,
+          "false_authorizations": 9,
+          "authorization_coverage": 0.475,
+          "false_authorization_fraction": 0.23684210526315788,
+          "eligible_positive_pairs": 29,
+          "recovered_positive_pairs": 29,
+          "empirical_positive_recovery": 1.0,
+          "semantic_violations": 0,
+          "inferential_status": "descriptive_only_shared_network_and_stations"
+        }
+      }
+    },
+    "elbe_historical_matched": {
+      "role": "matched_station_pre_event_context",
+      "graph_nodes": 42,
+      "graph_edges": 42,
+      "selected_pairs": 80,
+      "usable_pairs": 80,
+      "source_rows": 175296,
+      "sampled_rows": 10000,
+      "loaded_columns": 235,
+      "exclusions": {
+        "pair_adapter_failed": 0
+      },
+      "comparators": {
+        "abstain_all": {
+          "usable_pairs": 80,
+          "authorizations": 0,
+          "false_authorizations": 0,
+          "authorization_coverage": 0.0,
+          "false_authorization_fraction": 0.0,
+          "eligible_positive_pairs": 20,
+          "recovered_positive_pairs": 0,
+          "empirical_positive_recovery": 0.0,
+          "semantic_violations": 0,
+          "inferential_status": "descriptive_only_shared_network_and_stations"
+        },
+        "fixed_probability_0_5": {
+          "usable_pairs": 80,
+          "authorizations": 50,
+          "false_authorizations": 24,
+          "authorization_coverage": 0.625,
+          "false_authorization_fraction": 0.48,
+          "eligible_positive_pairs": 20,
+          "recovered_positive_pairs": 20,
+          "empirical_positive_recovery": 1.0,
+          "semantic_violations": 12,
+          "inferential_status": "descriptive_only_shared_network_and_stations"
+        },
+        "evidence_contract_only": {
+          "usable_pairs": 80,
+          "authorizations": 38,
+          "false_authorizations": 18,
+          "authorization_coverage": 0.475,
+          "false_authorization_fraction": 0.47368421052631576,
+          "eligible_positive_pairs": 20,
+          "recovered_positive_pairs": 20,
+          "empirical_positive_recovery": 1.0,
+          "semantic_violations": 0,
+          "inferential_status": "descriptive_only_shared_network_and_stations"
+        },
+        "frozen_v3_topology_threshold": {
+          "usable_pairs": 80,
+          "authorizations": 38,
+          "false_authorizations": 18,
+          "authorization_coverage": 0.475,
+          "false_authorization_fraction": 0.47368421052631576,
+          "eligible_positive_pairs": 20,
+          "recovered_positive_pairs": 20,
+          "empirical_positive_recovery": 1.0,
+          "semantic_violations": 0,
+          "inferential_status": "descriptive_only_shared_network_and_stations"
+        },
+        "v5_1_fixed_hierarchical_threshold": {
+          "usable_pairs": 80,
+          "authorizations": 37,
+          "false_authorizations": 17,
+          "authorization_coverage": 0.4625,
+          "false_authorization_fraction": 0.4594594594594595,
+          "eligible_positive_pairs": 20,
+          "recovered_positive_pairs": 20,
+          "empirical_positive_recovery": 1.0,
+          "semantic_violations": 0,
+          "inferential_status": "descriptive_only_shared_network_and_stations"
+        }
+      }
+    },
+    "elbe_flood_2024": {
+      "role": "matched_station_distribution_shift",
+      "graph_nodes": 42,
+      "graph_edges": 42,
+      "selected_pairs": 80,
+      "usable_pairs": 80,
+      "source_rows": 3010,
+      "sampled_rows": 3010,
+      "loaded_columns": 43,
+      "exclusions": {
+        "pair_adapter_failed": 0
+      },
+      "comparators": {
+        "abstain_all": {
+          "usable_pairs": 80,
+          "authorizations": 0,
+          "false_authorizations": 0,
+          "authorization_coverage": 0.0,
+          "false_authorization_fraction": 0.0,
+          "eligible_positive_pairs": 17,
+          "recovered_positive_pairs": 0,
+          "empirical_positive_recovery": 0.0,
+          "semantic_violations": 0,
+          "inferential_status": "descriptive_only_shared_network_and_stations"
+        },
+        "fixed_probability_0_5": {
+          "usable_pairs": 80,
+          "authorizations": 29,
+          "false_authorizations": 11,
+          "authorization_coverage": 0.3625,
+          "false_authorization_fraction": 0.3793103448275862,
+          "eligible_positive_pairs": 17,
+          "recovered_positive_pairs": 17,
+          "empirical_positive_recovery": 1.0,
+          "semantic_violations": 2,
+          "inferential_status": "descriptive_only_shared_network_and_stations"
+        },
+        "evidence_contract_only": {
+          "usable_pairs": 80,
+          "authorizations": 27,
+          "false_authorizations": 10,
+          "authorization_coverage": 0.3375,
+          "false_authorization_fraction": 0.37037037037037035,
+          "eligible_positive_pairs": 17,
+          "recovered_positive_pairs": 17,
+          "empirical_positive_recovery": 1.0,
+          "semantic_violations": 0,
+          "inferential_status": "descriptive_only_shared_network_and_stations"
+        },
+        "frozen_v3_topology_threshold": {
+          "usable_pairs": 80,
+          "authorizations": 27,
+          "false_authorizations": 10,
+          "authorization_coverage": 0.3375,
+          "false_authorization_fraction": 0.37037037037037035,
+          "eligible_positive_pairs": 17,
+          "recovered_positive_pairs": 17,
+          "empirical_positive_recovery": 1.0,
+          "semantic_violations": 0,
+          "inferential_status": "descriptive_only_shared_network_and_stations"
+        },
+        "v5_1_fixed_hierarchical_threshold": {
+          "usable_pairs": 80,
+          "authorizations": 27,
+          "false_authorizations": 10,
+          "authorization_coverage": 0.3375,
+          "false_authorization_fraction": 0.37037037037037035,
+          "eligible_positive_pairs": 17,
+          "recovered_positive_pairs": 17,
+          "empirical_positive_recovery": 1.0,
+          "semantic_violations": 0,
+          "inferential_status": "descriptive_only_shared_network_and_stations"
+        }
+      }
+    }
+  },
+  "matched_flood_shift": {
+    "policy": "v5_1_fixed_hierarchical_threshold",
+    "transition": {
+      "shared_pairs": 80,
+      "historical_only_pairs": 0,
+      "shift_only_pairs": 0,
+      "transitions": {
+        "off_to_off": 33,
+        "off_to_on": 10,
+        "on_to_off": 20,
+        "on_to_on": 17
+      },
+      "inferential_status": "descriptive_paired_shared_station_dependence"
+    },
+    "feature_shift": {
+      "warning": true,
+      "role": "warning_only",
+      "may_authorize_or_restore_certificate": false,
+      "alpha": 0.01,
+      "calibration_rows": 80,
+      "target_rows": 80,
+      "marginal_ks": [
+        {
+          "feature": "status:causal_intervention:passed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:causal_intervention:failed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:causal_intervention:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:causal_intervention:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:causal_intervention:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:causal_intervention",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:directed_identifiability:passed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:directed_identifiability:failed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:directed_identifiability:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:directed_identifiability:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:directed_identifiability:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:directed_identifiability",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:entity_specificity:passed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:entity_specificity:failed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:entity_specificity:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:entity_specificity:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:entity_specificity:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:entity_specificity",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:external_replication:passed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:external_replication:failed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:external_replication:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:external_replication:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:external_replication:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:external_replication",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:independent_validation:passed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:independent_validation:failed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:independent_validation:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:independent_validation:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:independent_validation:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:independent_validation",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:internal_reproduction:passed",
+          "p_value": 0.3306962478058585,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:internal_reproduction:failed",
+          "p_value": 0.3306962478058585,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:internal_reproduction:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:internal_reproduction:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:internal_reproduction:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:internal_reproduction",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:operational_compute:passed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:operational_compute:failed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:operational_compute:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:operational_compute:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:operational_compute:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:operational_compute",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:prediction:passed",
+          "p_value": 0.5624609023639255,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:prediction:failed",
+          "p_value": 0.5624609023639255,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:prediction:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:prediction:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:prediction:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:prediction",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:reproducible_compute:passed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:reproducible_compute:failed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:reproducible_compute:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:reproducible_compute:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:reproducible_compute:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:reproducible_compute",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:structure_function_association:passed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:structure_function_association:failed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:structure_function_association:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:structure_function_association:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:structure_function_association:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:structure_function_association",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:topology_specificity:passed",
+          "p_value": 0.4382622708472999,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:topology_specificity:failed",
+          "p_value": 0.4382622708472999,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:topology_specificity:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:topology_specificity:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:topology_specificity:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:topology_specificity",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:whole_brain_coverage:passed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:whole_brain_coverage:failed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:whole_brain_coverage:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:whole_brain_coverage:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:whole_brain_coverage:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:whole_brain_coverage",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "prediction_correlation",
+          "p_value": 0.00453303060557918,
+          "holm_rejected": false
+        },
+        {
+          "feature": "prediction_negative_log10_p",
+          "p_value": 0.6953371976633547,
+          "holm_rejected": false
+        },
+        {
+          "feature": "prediction_r_squared",
+          "p_value": 0.00453303060557918,
+          "holm_rejected": false
+        },
+        {
+          "feature": "reproduction_first_correlation",
+          "p_value": 0.00453303060557918,
+          "holm_rejected": false
+        },
+        {
+          "feature": "reproduction_second_correlation",
+          "p_value": 0.021626029395464805,
+          "holm_rejected": false
+        },
+        {
+          "feature": "reproduction_first_r_squared",
+          "p_value": 0.00453303060557918,
+          "holm_rejected": false
+        },
+        {
+          "feature": "reproduction_second_r_squared",
+          "p_value": 0.021626029395464805,
+          "holm_rejected": false
+        },
+        {
+          "feature": "topology_candidate_r_squared",
+          "p_value": 0.00453303060557918,
+          "holm_rejected": false
+        },
+        {
+          "feature": "topology_best_control_margin",
+          "p_value": 0.12022067556844308,
+          "holm_rejected": false
+        },
+        {
+          "feature": "legacy_direction_forward_dependence",
+          "p_value": 0.9793613278485205,
+          "holm_rejected": false
+        },
+        {
+          "feature": "legacy_direction_reverse_dependence",
+          "p_value": 0.2424351142427097,
+          "holm_rejected": false
+        },
+        {
+          "feature": "legacy_direction_margin",
+          "p_value": 0.2424351142427097,
+          "holm_rejected": false
+        },
+        {
+          "feature": "anm_p_forward",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "anm_p_backward",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "anm_signed_margin",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "anm_absolute_margin",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "causal_intervention_available",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "causal_intervention_effect",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "causal_intervention_negative_log10_p",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "log10_sample_size",
+          "p_value": 2.7638617227251404e-43,
+          "holm_rejected": true
+        },
+        {
+          "feature": "known_noise_scale",
+          "p_value": 1.0,
+          "holm_rejected": false
+        }
+      ],
+      "energy_distance": 2.0322135805604837,
+      "energy_permutation_p_value": 0.005,
+      "permutations": 199
+    },
+    "historical_metrics": {
+      "usable_pairs": 80,
+      "authorizations": 37,
+      "false_authorizations": 17,
+      "authorization_coverage": 0.4625,
+      "false_authorization_fraction": 0.4594594594594595,
+      "eligible_positive_pairs": 20,
+      "recovered_positive_pairs": 20,
+      "empirical_positive_recovery": 1.0,
+      "semantic_violations": 0,
+      "inferential_status": "descriptive_only_shared_network_and_stations"
+    },
+    "flood_metrics": {
+      "usable_pairs": 80,
+      "authorizations": 27,
+      "false_authorizations": 10,
+      "authorization_coverage": 0.3375,
+      "false_authorization_fraction": 0.37037037037037035,
+      "eligible_positive_pairs": 17,
+      "recovered_positive_pairs": 17,
+      "empirical_positive_recovery": 1.0,
+      "semantic_violations": 0,
+      "inferential_status": "descriptive_only_shared_network_and_stations"
+    }
+  },
+  "efficiency": {
+    "wall_time_seconds": 7.635757874988485,
+    "peak_rss_megabytes": 2262.6875,
+    "source_bytes": 1085668522
+  },
+  "decision": "descriptive_real_transport_completed_no_external_certificate",
+  "interpretation": "CausalRivers tests real-data transport and a matched flood shift. Its three dependent geographical clusters cannot validate the exact TimeGraph risk bound."
+}
