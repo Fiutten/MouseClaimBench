@@ -27,6 +27,13 @@ from mousebrainbench.knowledge.profile import (
     load_default_profile,
     load_default_profile_basis,
 )
+from mousebrainbench.knowledge.standards import (
+    ShaclAuthorizationDecision,
+    authorize_with_shacl_v2,
+    evidence_package_to_rdf,
+    profile_to_rdf,
+    shacl_shapes_for_claim,
+)
 
 __all__ = [
     "AspDecision",
@@ -43,10 +50,15 @@ __all__ = [
     "KnowledgeProfile",
     "ProfileAuthorizationDecision",
     "ProfileAuthorizationStatus",
+    "ShaclAuthorizationDecision",
     "authorize_with_clingo_v2",
+    "authorize_with_shacl_v2",
+    "evidence_package_to_rdf",
     "infer_with_clingo",
     "load_authorization_profile_v2",
     "load_authorization_profile_v2_basis",
     "load_default_profile",
     "load_default_profile_basis",
+    "profile_to_rdf",
+    "shacl_shapes_for_claim",
 ]
