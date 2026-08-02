@@ -1,0 +1,29 @@
+{
+  "version": "0.8.0",
+  "git_revision": "4f56809d9fb79f3f544eaa046b0ff6a249b31625",
+  "analysis": "hybrid_selective_v2_release_audit",
+  "checks": {
+    "development_matrix_hash_matches_manifest": true,
+    "development_contains_no_v2_cases": true,
+    "policy_uses_frozen_protocol": true,
+    "policy_uses_frozen_matrix": true,
+    "policy_contains_no_v2_cases": true,
+    "confirmation_uses_frozen_policy": true,
+    "confirmation_case_hash_matches": true,
+    "confirmation_scale_is_complete": true,
+    "confirmation_was_not_refitted": true,
+    "primary_endpoint_is_preserved_as_negative": true,
+    "outcome_audit_uses_frozen_confirmation": true,
+    "outcome_audit_uses_frozen_cases": true,
+    "outcome_audit_did_not_refit": true,
+    "outcome_audit_did_not_change_thresholds": true,
+    "strong_q1_claim_remains_blocked": true,
+    "all_source_revisions_are_clean": true
+  },
+  "passed": true,
+  "q1_ready": false,
+  "scientific_status": "negative_confirmation_with_partial_engineering_signal",
+  "permitted_use": "method-development evidence and reproducible negative-result analysis",
+  "blocked_use": "strong Q1 superiority, universal direction, causal identification, or independent-confirmation claims",
+  "decision": "hybrid_v2_reproducible_negative_release"
+}
