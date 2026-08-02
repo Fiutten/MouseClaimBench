@@ -1,0 +1,163 @@
+{
+  "version": "0.9.0",
+  "git_revision": "47b715f4bb68932efcd9102911f908fa0de9c1c5",
+  "analysis": "semantic_risk_v4_eight_point_release_audit",
+  "artifacts": {
+    "external_v4": {
+      "path": "results/causal_chambers_v4_confirmation/summary.json",
+      "git_revision": "3484055"
+    },
+    "external_v4_1": {
+      "path": "results/causal_chambers_v4_1_final/summary.json",
+      "git_revision": "4ad71d72a4acc1e8fa1da29d4a0c36f3185e91a7"
+    },
+    "router_v4": {
+      "path": "results/direction_router_v4_confirmation/summary.json",
+      "git_revision": "4ad71d72a4acc1e8fa1da29d4a0c36f3185e91a7"
+    },
+    "router_v4_2": {
+      "path": "results/direction_router_v4_2_confirmation/summary.json",
+      "git_revision": "542a606d4282e55ede3ce327ecbbde3b27ea5a80"
+    },
+    "profile": {
+      "path": "results/knowledge_profile_validity_v4/summary.json",
+      "git_revision": "4ad71d72a4acc1e8fa1da29d4a0c36f3185e91a7"
+    },
+    "power": {
+      "path": "results/semantic_risk_v4_power/summary.json",
+      "git_revision": "4ad71d72a4acc1e8fa1da29d4a0c36f3185e91a7"
+    }
+  },
+  "artifacts_clean": true,
+  "eight_point_status": {
+    "target_calibrated_external_block": {
+      "implemented": true,
+      "passed": false,
+      "evidence": "v4_1_bounded_predictive_external_confirmation_failed"
+    },
+    "nondegenerate_coverage_and_recovery": {
+      "implemented": true,
+      "passed": false,
+      "evidence": {
+        "risk_upper_bound": 0.1787342875974976,
+        "coverage_lower_bound": 0.4784150061371678,
+        "positive_recovery_lower_bound": 0.8541314966877566,
+        "abstain_all_certified": false
+      }
+    },
+    "direct_competitor_baselines": {
+      "implemented": true,
+      "passed": true,
+      "evidence": {
+        "comparators": [
+          "abstain_all",
+          "fixed_probability_0_5",
+          "evidence_contract_only",
+          "unconstrained_ltt",
+          "semantic_ltt_without_activation_floor",
+          "confidence_only_target_calibrated",
+          "semantic_ltt_nondegenerate_v4_1"
+        ],
+        "certified_comparators": []
+      }
+    },
+    "prospective_association_router": {
+      "implemented": true,
+      "passed": true,
+      "evidence": {
+        "v4_decision": "association_aware_router_not_confirmed",
+        "v4_2_decision": "strict_association_router_prospectively_confirmed",
+        "v4_2_metrics": {
+          "cases": 2160,
+          "attempts": 1080,
+          "coverage": 0.5,
+          "spurious_attempts_without_reference_direction": 0,
+          "attempted_direction_accuracy": 0.9287037037037037,
+          "valid_route_accuracy": 0.9287037037037037,
+          "valid_route_coverage": 1.0
+        }
+      }
+    },
+    "knowledge_profile_validity": {
+      "implemented": true,
+      "passed": false,
+      "evidence": "author_proposed_profile_transparently_documented_not_content_validated",
+      "reason": "content validity has not been independently established"
+    },
+    "prospective_power_and_sample_size": {
+      "implemented": true,
+      "passed": true,
+      "evidence": {
+        "minimum_units_for_zero_failures": 29,
+        "method": "exact one-sided Clopper-Pearson"
+      }
+    },
+    "warning_only_shift_diagnostics": {
+      "implemented": true,
+      "passed": true,
+      "evidence": {
+        "warning": true,
+        "certificate_restoration_allowed": false
+      }
+    },
+    "efficiency_abstention_cost_and_failure_taxonomy": {
+      "implemented": true,
+      "passed": true,
+      "evidence": {
+        "efficiency": {
+          "wall_time_seconds": 6.08888900000602,
+          "peak_rss_megabytes": 1038.1875,
+          "source_bytes_read": 999472406,
+          "final_claim_candidates": 132,
+          "final_authorizations": 52,
+          "final_abstentions": 80,
+          "final_abstention_rate": 0.6060606060606061,
+          "abstention_opportunity_cost": {
+            "unit": "eligible_true_claims_not_authorized",
+            "missed_true_claims": 0,
+            "eligible_true_claims": 48,
+            "miss_rate": 0.0,
+            "monetary_cost_claimed": false
+          },
+          "claim_candidates_per_second": 21.678831721167768
+        },
+        "failure_taxonomy": {
+          "mutually_exclusive_counts": {
+            "invalid_input": 0,
+            "out_of_population_scope": 0,
+            "semantic_inadmissibility": 80,
+            "uncertifiable_risk": 0,
+            "activation_floor_not_met": 0,
+            "score_below_threshold": 0,
+            "numerical_failure": 0,
+            "authorized": 52
+          },
+          "total_claim_candidates": 132,
+          "orthogonal_context_flags": {
+            "detected_shift_warning": true
+          }
+        }
+      }
+    }
+  },
+  "implementation_complete": true,
+  "external_authorization_confirmed": false,
+  "router_repair_confirmed": true,
+  "knowledge_profile_content_validated": false,
+  "strong_q1_second_paper_ready": false,
+  "decision": "eight_point_program_complete_external_authorization_not_confirmed",
+  "non_compensation_rule": "router success, reproducibility, coverage, or efficiency cannot compensate for failed external risk control or absent profile content validation",
+  "required_evidence_before_strong_q1_claim": [
+    "a new untouched target population for the revised authorizer",
+    "dependence-aware calibration robust to experiments nested in datasets",
+    "independent domain-expert validation of profile content and mappings"
+  ],
+  "prohibited_claims": [
+    "external false-authorization control has been established",
+    "the knowledge profile is a consensus scientific standard",
+    "router association establishes causal direction",
+    "MouseClaimBench verifies scientific truth",
+    "a complete mouse-brain digital twin has been validated"
+  ],
+  "original_v4_external_decision": "v4_external_contract_not_supported"
+}
