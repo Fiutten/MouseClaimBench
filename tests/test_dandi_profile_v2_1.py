@@ -6,8 +6,14 @@ import yaml
 
 from mousebrainbench.benchmarks.dandi_profile_v2_1 import (
     _contrast_features,
+    _fact,
     analyze_contrast_subject,
 )
+from mousebrainbench.knowledge import (
+    ClaimAuthorizationSystem,
+    load_authorization_profile_v2,
+)
+from mousebrainbench.validation.evidence_contract import EvidenceStatus
 
 
 def test_contrast_feature_map_has_frozen_five_columns() -> None:
@@ -17,6 +23,31 @@ def test_contrast_feature_map_has_frozen_five_columns() -> None:
 
     assert features.shape == (2, 5)
     assert np.isfinite(features).all()
+
+
+def test_zero_exclusions_are_explicit_not_missing() -> None:
+    block = _fact(
+        "data_quality",
+        EvidenceStatus.PASSED,
+        "manifest.json",
+        "frozen quality rule",
+        {
+            "source": "DANDI:test",
+            "lineage": "manifest.json",
+            "exclusions": {"count": 0, "assets": [], "rule": "schema only"},
+            "missingness": "finite trials only",
+            "quality_checks": {"usable_subjects": 32},
+            "result": True,
+        },
+    )
+
+    decision = ClaimAuthorizationSystem(
+        load_authorization_profile_v2(), {"data_quality": block}
+    ).infer("bounded_predictive_performance")
+    fact = next(item for item in decision.facts if item.name == "data_quality")
+
+    assert fact.effective_status is EvidenceStatus.PASSED
+    assert fact.missing_required_observations == ()
 
 
 def test_synthetic_nwb_schema_executes_frozen_subject_contract(tmp_path: Path) -> None:

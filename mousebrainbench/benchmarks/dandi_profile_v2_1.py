@@ -127,7 +127,11 @@ def _ach_availability(protocol: dict[str, Any], manifest: dict[str, Any]) -> dic
             {
                 "source": "DANDI:001176 version 0.260610.2204",
                 "lineage": str(ACH_MANIFEST),
-                "exclusions": schema_failures,
+                "exclusions": {
+                    "count": len(schema_failures),
+                    "assets": schema_failures,
+                    "rule": "declared NWB schema or paired-sample failure only",
+                },
                 "missingness": "schema inspected for every candidate paired asset",
                 "quality_checks": {
                     "minimum_subjects": minimum,
@@ -339,7 +343,11 @@ def _contrast_evaluation(
             {
                 "source": "DANDI:000039 version 0.230223.1216",
                 "lineage": source,
-                "exclusions": [row for row in rows if not row["usable"]],
+                "exclusions": {
+                    "count": sum(not row["usable"] for row in rows),
+                    "assets": [row for row in rows if not row["usable"]],
+                    "rule": "frozen NWB schema or finite nonconstant trial failure only",
+                },
                 "missingness": "finite contrast, direction, and response trials only",
                 "quality_checks": {
                     "selected_subjects": manifest["selected_subjects"],
