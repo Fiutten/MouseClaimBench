@@ -16,8 +16,8 @@ def test_v2_artifact_application_is_bounded_and_semantically_equivalent() -> Non
         if row["claim"] != "complete_entity_specific_mouse_brain_digital_twin"
     }
 
-    assert result["cases"] == 4
-    assert result["decisions"] == 8
+    assert result["cases"] == 5
+    assert result["decisions"] == 10
     assert result["strict_twin_authorizations"] == 0
     assert targets["sensorium_static_bounded_prediction"]["authorized"] is True
     assert targets["allen_vbn_negative"]["authorized"] is False
@@ -29,4 +29,7 @@ def test_v2_artifact_application_is_bounded_and_semantically_equivalent() -> Non
     assert any(
         row["name"] == "network_dependence_control" for row in microns["deficits"]
     )
+    ibl = targets["ibl_behavior_topology_specific_prediction"]
+    assert ibl["authorized"] is True
+    assert ibl["deficits"] == []
     assert all(result["release_conditions"].values())

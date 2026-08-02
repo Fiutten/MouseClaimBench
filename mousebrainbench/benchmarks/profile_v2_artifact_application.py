@@ -423,6 +423,139 @@ def _microns_case(config: dict[str, Any]) -> ArtifactCase:
     )
 
 
+def _ibl_case(config: dict[str, Any]) -> ArtifactCase:
+    source = str(config["source"])
+    source_protocol = str(config["source_protocol"])
+    payload = _load(source)
+    protocol = yaml.safe_load(Path(source_protocol).read_text())
+    risk = payload.get("risk_lock", {})
+    final = payload.get("final_evaluation", {})
+    policy_name = "frozen_v5_1_complete_authorizer"
+    risk_certificate = risk.get("comparators", {}).get(policy_name, {})
+    final_certificate = final.get("comparators", {}).get(policy_name, {})
+    prediction_rule = protocol["behavioral_task"]["prediction_pass_requires"]
+    topology_rule = protocol["behavioral_task"]["topology_specificity_requires"]
+    risk_alignment = risk.get("actual_alignment", {})
+    final_alignment = final.get("actual_alignment", {})
+    prediction_passed = all(
+        float(row.get("median_tjur_r_squared", 0.0))
+        >= float(prediction_rule["held_out_tjur_r2_minimum"])
+        for row in (risk_alignment, final_alignment)
+    )
+    topology_passed = all(
+        float(row.get("median_topology_margin", 0.0))
+        >= float(topology_rule["held_out_tjur_r2_margin_over_best_other_candidate"])
+        for row in (risk_alignment, final_alignment)
+    )
+    certificates_passed = (
+        risk_certificate.get("certified") is True
+        and final_certificate.get("certified") is True
+        and int(risk_certificate.get("experiments", 0)) == 35
+        and int(final_certificate.get("experiments", 0)) == 35
+    )
+    blocks = {
+        "prediction": _fact(
+            "prediction",
+            EvidenceStatus.PASSED if prediction_passed else EvidenceStatus.FAILED,
+            source,
+            "the true trial alignment passes the frozen held-out prediction rule in both mouse splits",
+            {
+                "target": protocol["behavioral_task"]["endpoint"],
+                "target_population": "35 risk-lock and 35 final IBL mice",
+                "split": "mouse-disjoint risk-lock and final roles",
+                "split_integrity": "mouse identifiers are assigned once by the frozen selection",
+                "metric": "held-out Tjur R-squared with correlation and p-value guards",
+                "threshold": prediction_rule,
+                "comparator": "block-only behavioral baseline",
+                "value": {
+                    "risk_lock": risk_alignment,
+                    "final": final_alignment,
+                },
+            },
+        ),
+        "topology_specificity": _fact(
+            "topology_specificity",
+            EvidenceStatus.PASSED if topology_passed else EvidenceStatus.FAILED,
+            source,
+            "the true trial alignment exceeds every frozen circular-offset control",
+            {
+                "topology_scale": "trial-alignment relation within each mouse",
+                "candidate": "offset 0",
+                "control_family": protocol["behavioral_task"]["candidate_offsets"][1:],
+                "complexity_matching": "identical estimator and folds for every offset",
+                "metric": "held-out Tjur R-squared margin",
+                "margin": {
+                    "risk_lock": risk_alignment.get("median_topology_margin"),
+                    "final": final_alignment.get("median_topology_margin"),
+                },
+            },
+        ),
+        "uncertainty_quantification": _fact(
+            "uncertainty_quantification",
+            EvidenceStatus.PASSED if certificates_passed else EvidenceStatus.FAILED,
+            source,
+            "mouse-level Clopper-Pearson risk and utility bounds pass in both locked splits",
+            {
+                "inferential_unit": "mouse",
+                "uncertainty_sources": ["finite mouse population", "nested trial decisions"],
+                "method": "one-sided exact Clopper-Pearson bounds",
+                "confidence_level": risk_certificate.get("confidence"),
+                "interval": {
+                    "risk_lock_risk_ucb": risk_certificate.get("risk_upper_bound"),
+                    "final_risk_ucb": final_certificate.get("risk_upper_bound"),
+                    "risk_lock_coverage_lcb": risk_certificate.get("coverage_lower_bound"),
+                    "final_coverage_lcb": final_certificate.get("coverage_lower_bound"),
+                },
+                "acceptance_rule": protocol["inferential_contract"]["final_claim_requires"],
+            },
+        ),
+        "robustness": _fact(
+            "robustness",
+            EvidenceStatus.PASSED if certificates_passed else EvidenceStatus.FAILED,
+            source,
+            "the unchanged contract passes in two non-overlapping 35-mouse roles",
+            {
+                "perturbation_family": "risk-lock versus untouched final mouse split",
+                "locked_endpoint": protocol["behavioral_task"]["endpoint"],
+                "acceptance_rule": "the complete mouse-level contract passes in both roles",
+                "worst_case_result": max(
+                    float(risk_certificate.get("risk_upper_bound", 1.0)),
+                    float(final_certificate.get("risk_upper_bound", 1.0)),
+                ),
+            },
+        ),
+        "context_of_use": _fact(
+            "context_of_use",
+            EvidenceStatus.PASSED,
+            source,
+            "the source claim is explicitly bounded to one IBL behavioral alignment task",
+            {
+                "use": "audit visual-evidence trial-alignment specificity",
+                "population": "IBL Brain-Wide Map mice under one standardized task",
+                "output": "mouse-level topology-specific authorization",
+                "decision_consequence": "permit one bounded behavioral alignment claim",
+                "prohibited_uses": [
+                    "neural mechanism",
+                    "independent laboratories",
+                    "whole-brain validity",
+                    "digital twin",
+                ],
+            },
+        ),
+    }
+    return ArtifactCase(
+        name="ibl_behavior_topology_specific_prediction",
+        target_claim=str(config["target_claim"]),
+        blocks=blocks,
+        sources=(source, source_protocol),
+        interpretation=(
+            "The bounded topology-specific behavioral prediction is profile-authorized across "
+            "two locked mouse splits. Simple source comparators also passed, and all mice share "
+            "the IBL task ecosystem, so no exclusive superiority or laboratory replication follows."
+        ),
+    )
+
+
 def build_cases(protocol: dict[str, Any]) -> tuple[ArtifactCase, ...]:
     cases = protocol["cases"]
     return (
@@ -430,6 +563,7 @@ def build_cases(protocol: dict[str, Any]) -> tuple[ArtifactCase, ...]:
         _sensorium_static_case(cases["sensorium_static"]),
         _dynamic_sensorium_case(cases["dynamic_sensorium"]),
         _microns_case(cases["microns"]),
+        _ibl_case(cases["ibl"]),
     )
 
 

@@ -1,6 +1,6 @@
 protocol_id: mouseclaimbench_profile_v2_artifact_application
-version: 1.0.0
-status: retrospective_mapping_fixed_after_source_results_before_v2_decisions
+version: 1.1.0
+status: retrospective_mapping_amended_after_v1_0_to_add_preexisting_ibl_case
 freeze_date: 2026-08-02
 profile: mousebrainbench/knowledge/profiles/mouse_brain_claims_v2.yaml
 
@@ -18,6 +18,18 @@ cases:
     robustness_source: results/microns_primary_robustness/summary.json
     package_source: results/microns_q1_package/summary.json
     target_claim: local_observational_structure_function_association
+  ibl:
+    source: results/ibl_behavior_v5_confirmation/summary.json
+    source_protocol: configs/benchmarks/ibl_behavior_v5_confirmation.yaml
+    target_claim: topology_specific_prediction
+
+amendment:
+  timing: after_v1_0_artifact_decisions
+  change: add_preexisting_ibl_behavior_v5_case
+  endpoint_or_threshold_refitted: false
+  interpretation: >-
+    IBL outcomes and the source protocol predate profile v2. The case increases
+    retrospective coverage only and is not a blind v2 confirmation.
 
 mapping_rules:
   - Source numerical outcomes and original acceptance predicates are not changed.
@@ -26,6 +38,7 @@ mapping_rules:
   - Dynamic Sensorium data quality requires review because response reliability is not estimable.
   - MICRONS network-dependence control requires review because unit-cluster weighted bootstrap is a stability analysis, not a complete dyadic or network-dependence estimator.
   - Every case is also evaluated against the strict complete-twin claim.
+  - IBL mappings use the original prediction, topology, mouse-level uncertainty, locked-split, and context rules without refitting.
 
 release_conditions:
   - no_complete_twin_authorized
