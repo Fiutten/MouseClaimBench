@@ -1,0 +1,2732 @@
+{
+  "version": "0.9.0",
+  "git_revision": "292a0e8",
+  "analysis": "timegraph_v5_prospective_hierarchical_confirmation",
+  "protocol": "configs/benchmarks/semantic_risk_control_v5.yaml",
+  "protocol_status": "frozen_before_v5_outcome_generation",
+  "source_revision": "4d93403b002664fa55607f308ad0e80623472ded",
+  "source_hashes": {
+    "Codes/a1.py": "sha256:1840a5c267c671cb74ad03aa7090608a02cb67cd44416e347f00f8431a744799",
+    "Codes/a1c.py": "sha256:795d6e86cf894e25b386c9dae4b4910288931d343da4d58c328e7b349c82e038"
+  },
+  "source_transformations": [
+    "remove_colab_shell_magic_install_line",
+    "remove_unused_tigramite_plotting_import",
+    "remove_unused_matplotlib_plotting_import",
+    "execute_definitions_before_main_guard_only"
+  ],
+  "inferential_unit": "seed_bundle",
+  "lower_level_inference_permitted": false,
+  "variable_claims": [
+    "predictive",
+    "internally_reproduced",
+    "topology_specific",
+    "directed",
+    "mechanistic",
+    "causal"
+  ],
+  "target_limits": {
+    "target_risk": 0.1,
+    "minimum_coverage": 0.1,
+    "minimum_positive_recovery": 0.05,
+    "minimum_independent_units": 29,
+    "confidence": 0.95
+  },
+  "calibration": {
+    "seed_bundles": 50,
+    "generator_scenarios": 400,
+    "pair_records": 800,
+    "claim_candidates": 4800,
+    "generated_values": 2880000,
+    "aggregate_data_hash": "sha256:e4aeea39296c2794faea95bcf9f43d0b11d1e0f68f6298eaf492893c843f7361",
+    "strata": [
+      "a1/gaussian/lag-2",
+      "a1/gaussian/lag-3",
+      "a1/student_t/lag-2",
+      "a1/student_t/lag-3",
+      "a1c/gaussian/lag-2",
+      "a1c/gaussian/lag-3",
+      "a1c/student_t/lag-2",
+      "a1c/student_t/lag-3"
+    ],
+    "complete_policy": null,
+    "confidence_only_policy": null
+  },
+  "risk_lock": {
+    "seed_bundles": 50,
+    "generator_scenarios": 400,
+    "pair_records": 800,
+    "claim_candidates": 4800,
+    "generated_values": 2880000,
+    "aggregate_data_hash": "sha256:7656ef794d7db01c63872bc8a5ed084258401c3b0f92c96b47928f95fa262f4e",
+    "strata": [
+      "a1/gaussian/lag-2",
+      "a1/gaussian/lag-3",
+      "a1/student_t/lag-2",
+      "a1/student_t/lag-3",
+      "a1c/gaussian/lag-2",
+      "a1c/gaussian/lag-3",
+      "a1c/student_t/lag-2",
+      "a1c/student_t/lag-3"
+    ],
+    "comparators": {
+      "abstain_all": {
+        "threshold": 2.0,
+        "experiments": 50,
+        "failing_experiments": 0,
+        "authorized_experiments": 0,
+        "eligible_positive_experiments": 47,
+        "recovered_positive_experiments": 0,
+        "authorizations": 0,
+        "false_authorizations": 0,
+        "semantic_violations": 0,
+        "empirical_experiment_failure_rate": 0.0,
+        "empirical_authorized_experiment_coverage": 0.0,
+        "empirical_positive_recovery": 0.0,
+        "empirical_pair_sfar": 0.0,
+        "risk_upper_bound": 0.05815507911697226,
+        "coverage_lower_bound": 0.0,
+        "positive_recovery_lower_bound": 0.0,
+        "target_risk": 0.1,
+        "minimum_coverage": 0.1,
+        "minimum_positive_recovery": 0.05,
+        "confidence": 0.95,
+        "certified": false,
+        "inferential_unit": "top_level_cluster",
+        "minimum_independent_units": 29,
+        "hierarchy_valid": true,
+        "sufficient_independent_units": true,
+        "lower_level_summary": {
+          "subgroups": {
+            "units": 400,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 135,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          },
+          "claim_rows": {
+            "rows": 800,
+            "claim_candidates": 4800,
+            "authorizations": 0,
+            "false_authorizations": 0,
+            "semantic_violations": 0,
+            "inferential_status": "descriptive_only"
+          }
+        },
+        "stratum_summary": {
+          "a1/gaussian/lag-2": {
+            "units": 50,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 7,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1/gaussian/lag-3": {
+            "units": 50,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 12,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1/student_t/lag-2": {
+            "units": 50,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 13,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1/student_t/lag-3": {
+            "units": 50,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 14,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1c/gaussian/lag-2": {
+            "units": 50,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 23,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1c/gaussian/lag-3": {
+            "units": 50,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 25,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1c/student_t/lag-2": {
+            "units": 50,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 19,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1c/student_t/lag-3": {
+            "units": 50,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 22,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          }
+        },
+        "lower_level_inference_allowed": false
+      },
+      "fixed_probability_0_5": {
+        "threshold": 0.5,
+        "experiments": 50,
+        "failing_experiments": 31,
+        "authorized_experiments": 50,
+        "eligible_positive_experiments": 47,
+        "recovered_positive_experiments": 47,
+        "authorizations": 771,
+        "false_authorizations": 115,
+        "semantic_violations": 361,
+        "empirical_experiment_failure_rate": 0.62,
+        "empirical_authorized_experiment_coverage": 1.0,
+        "empirical_positive_recovery": 1.0,
+        "empirical_pair_sfar": 0.14915693904020752,
+        "risk_upper_bound": 0.7349308415130889,
+        "coverage_lower_bound": 0.9418449208830277,
+        "positive_recovery_lower_bound": 0.9382498652891755,
+        "target_risk": 0.1,
+        "minimum_coverage": 0.1,
+        "minimum_positive_recovery": 0.05,
+        "confidence": 0.95,
+        "certified": false,
+        "inferential_unit": "top_level_cluster",
+        "minimum_independent_units": 29,
+        "hierarchy_valid": true,
+        "sufficient_independent_units": true,
+        "lower_level_summary": {
+          "subgroups": {
+            "units": 400,
+            "failing_units": 43,
+            "authorized_units": 164,
+            "eligible_positive_units": 135,
+            "recovered_positive_units": 134,
+            "empirical_failure_rate": 0.1075,
+            "empirical_coverage": 0.41,
+            "empirical_positive_recovery": 0.9925925925925926,
+            "inferential_status": "descriptive_only"
+          },
+          "claim_rows": {
+            "rows": 800,
+            "claim_candidates": 4800,
+            "authorizations": 771,
+            "false_authorizations": 115,
+            "semantic_violations": 361,
+            "inferential_status": "descriptive_only"
+          }
+        },
+        "stratum_summary": {
+          "a1/gaussian/lag-2": {
+            "units": 50,
+            "failing_units": 0,
+            "authorized_units": 7,
+            "eligible_positive_units": 7,
+            "recovered_positive_units": 7,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.14,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1/gaussian/lag-3": {
+            "units": 50,
+            "failing_units": 0,
+            "authorized_units": 13,
+            "eligible_positive_units": 12,
+            "recovered_positive_units": 12,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.26,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1/student_t/lag-2": {
+            "units": 50,
+            "failing_units": 5,
+            "authorized_units": 16,
+            "eligible_positive_units": 13,
+            "recovered_positive_units": 13,
+            "empirical_failure_rate": 0.1,
+            "empirical_coverage": 0.32,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1/student_t/lag-3": {
+            "units": 50,
+            "failing_units": 6,
+            "authorized_units": 18,
+            "eligible_positive_units": 14,
+            "recovered_positive_units": 14,
+            "empirical_failure_rate": 0.12,
+            "empirical_coverage": 0.36,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1c/gaussian/lag-2": {
+            "units": 50,
+            "failing_units": 6,
+            "authorized_units": 23,
+            "eligible_positive_units": 23,
+            "recovered_positive_units": 23,
+            "empirical_failure_rate": 0.12,
+            "empirical_coverage": 0.46,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1c/gaussian/lag-3": {
+            "units": 50,
+            "failing_units": 3,
+            "authorized_units": 26,
+            "eligible_positive_units": 25,
+            "recovered_positive_units": 25,
+            "empirical_failure_rate": 0.06,
+            "empirical_coverage": 0.52,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1c/student_t/lag-2": {
+            "units": 50,
+            "failing_units": 15,
+            "authorized_units": 30,
+            "eligible_positive_units": 19,
+            "recovered_positive_units": 18,
+            "empirical_failure_rate": 0.3,
+            "empirical_coverage": 0.6,
+            "empirical_positive_recovery": 0.9473684210526315,
+            "inferential_status": "descriptive_only"
+          },
+          "a1c/student_t/lag-3": {
+            "units": 50,
+            "failing_units": 8,
+            "authorized_units": 31,
+            "eligible_positive_units": 22,
+            "recovered_positive_units": 22,
+            "empirical_failure_rate": 0.16,
+            "empirical_coverage": 0.62,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          }
+        },
+        "lower_level_inference_allowed": false
+      },
+      "confidence_only_target_calibrated": {
+        "threshold": -1.0,
+        "experiments": 50,
+        "failing_experiments": 0,
+        "authorized_experiments": 0,
+        "eligible_positive_experiments": 47,
+        "recovered_positive_experiments": 0,
+        "authorizations": 0,
+        "false_authorizations": 0,
+        "semantic_violations": 0,
+        "empirical_experiment_failure_rate": 0.0,
+        "empirical_authorized_experiment_coverage": 0.0,
+        "empirical_positive_recovery": 0.0,
+        "empirical_pair_sfar": 0.0,
+        "risk_upper_bound": 0.05815507911697226,
+        "coverage_lower_bound": 0.0,
+        "positive_recovery_lower_bound": 0.0,
+        "target_risk": 0.1,
+        "minimum_coverage": 0.1,
+        "minimum_positive_recovery": 0.05,
+        "confidence": 0.95,
+        "certified": false,
+        "inferential_unit": "top_level_cluster",
+        "minimum_independent_units": 29,
+        "hierarchy_valid": true,
+        "sufficient_independent_units": true,
+        "lower_level_summary": {
+          "subgroups": {
+            "units": 400,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 135,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          },
+          "claim_rows": {
+            "rows": 800,
+            "claim_candidates": 4800,
+            "authorizations": 0,
+            "false_authorizations": 0,
+            "semantic_violations": 0,
+            "inferential_status": "descriptive_only"
+          }
+        },
+        "stratum_summary": {
+          "a1/gaussian/lag-2": {
+            "units": 50,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 7,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1/gaussian/lag-3": {
+            "units": 50,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 12,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1/student_t/lag-2": {
+            "units": 50,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 13,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1/student_t/lag-3": {
+            "units": 50,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 14,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1c/gaussian/lag-2": {
+            "units": 50,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 23,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1c/gaussian/lag-3": {
+            "units": 50,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 25,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1c/student_t/lag-2": {
+            "units": 50,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 19,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1c/student_t/lag-3": {
+            "units": 50,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 22,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          }
+        },
+        "lower_level_inference_allowed": false
+      },
+      "evidence_contract_only": {
+        "threshold": 0.0,
+        "experiments": 50,
+        "failing_experiments": 23,
+        "authorized_experiments": 47,
+        "eligible_positive_experiments": 47,
+        "recovered_positive_experiments": 47,
+        "authorizations": 411,
+        "false_authorizations": 48,
+        "semantic_violations": 0,
+        "empirical_experiment_failure_rate": 0.46,
+        "empirical_authorized_experiment_coverage": 0.94,
+        "empirical_positive_recovery": 1.0,
+        "empirical_pair_sfar": 0.11678832116788321,
+        "risk_upper_bound": 0.5852427590032403,
+        "coverage_lower_bound": 0.8521628236358187,
+        "positive_recovery_lower_bound": 0.9382498652891755,
+        "target_risk": 0.1,
+        "minimum_coverage": 0.1,
+        "minimum_positive_recovery": 0.05,
+        "confidence": 0.95,
+        "certified": false,
+        "inferential_unit": "top_level_cluster",
+        "minimum_independent_units": 29,
+        "hierarchy_valid": true,
+        "sufficient_independent_units": true,
+        "lower_level_summary": {
+          "subgroups": {
+            "units": 400,
+            "failing_units": 29,
+            "authorized_units": 144,
+            "eligible_positive_units": 135,
+            "recovered_positive_units": 135,
+            "empirical_failure_rate": 0.0725,
+            "empirical_coverage": 0.36,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "claim_rows": {
+            "rows": 800,
+            "claim_candidates": 4800,
+            "authorizations": 411,
+            "false_authorizations": 48,
+            "semantic_violations": 0,
+            "inferential_status": "descriptive_only"
+          }
+        },
+        "stratum_summary": {
+          "a1/gaussian/lag-2": {
+            "units": 50,
+            "failing_units": 0,
+            "authorized_units": 7,
+            "eligible_positive_units": 7,
+            "recovered_positive_units": 7,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.14,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1/gaussian/lag-3": {
+            "units": 50,
+            "failing_units": 0,
+            "authorized_units": 12,
+            "eligible_positive_units": 12,
+            "recovered_positive_units": 12,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.24,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1/student_t/lag-2": {
+            "units": 50,
+            "failing_units": 3,
+            "authorized_units": 14,
+            "eligible_positive_units": 13,
+            "recovered_positive_units": 13,
+            "empirical_failure_rate": 0.06,
+            "empirical_coverage": 0.28,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1/student_t/lag-3": {
+            "units": 50,
+            "failing_units": 4,
+            "authorized_units": 14,
+            "eligible_positive_units": 14,
+            "recovered_positive_units": 14,
+            "empirical_failure_rate": 0.08,
+            "empirical_coverage": 0.28,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1c/gaussian/lag-2": {
+            "units": 50,
+            "failing_units": 4,
+            "authorized_units": 23,
+            "eligible_positive_units": 23,
+            "recovered_positive_units": 23,
+            "empirical_failure_rate": 0.08,
+            "empirical_coverage": 0.46,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1c/gaussian/lag-3": {
+            "units": 50,
+            "failing_units": 3,
+            "authorized_units": 26,
+            "eligible_positive_units": 25,
+            "recovered_positive_units": 25,
+            "empirical_failure_rate": 0.06,
+            "empirical_coverage": 0.52,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1c/student_t/lag-2": {
+            "units": 50,
+            "failing_units": 9,
+            "authorized_units": 23,
+            "eligible_positive_units": 19,
+            "recovered_positive_units": 19,
+            "empirical_failure_rate": 0.18,
+            "empirical_coverage": 0.46,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1c/student_t/lag-3": {
+            "units": 50,
+            "failing_units": 6,
+            "authorized_units": 25,
+            "eligible_positive_units": 22,
+            "recovered_positive_units": 22,
+            "empirical_failure_rate": 0.12,
+            "empirical_coverage": 0.5,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          }
+        },
+        "lower_level_inference_allowed": false
+      },
+      "frozen_v3_semantic_ltt": {
+        "threshold": -1.0,
+        "experiments": 50,
+        "failing_experiments": 23,
+        "authorized_experiments": 47,
+        "eligible_positive_experiments": 47,
+        "recovered_positive_experiments": 47,
+        "authorizations": 411,
+        "false_authorizations": 48,
+        "semantic_violations": 0,
+        "empirical_experiment_failure_rate": 0.46,
+        "empirical_authorized_experiment_coverage": 0.94,
+        "empirical_positive_recovery": 1.0,
+        "empirical_pair_sfar": 0.11678832116788321,
+        "risk_upper_bound": 0.5852427590032403,
+        "coverage_lower_bound": 0.8521628236358187,
+        "positive_recovery_lower_bound": 0.9382498652891755,
+        "target_risk": 0.1,
+        "minimum_coverage": 0.1,
+        "minimum_positive_recovery": 0.05,
+        "confidence": 0.95,
+        "certified": false,
+        "inferential_unit": "top_level_cluster",
+        "minimum_independent_units": 29,
+        "hierarchy_valid": true,
+        "sufficient_independent_units": true,
+        "lower_level_summary": {
+          "subgroups": {
+            "units": 400,
+            "failing_units": 29,
+            "authorized_units": 144,
+            "eligible_positive_units": 135,
+            "recovered_positive_units": 135,
+            "empirical_failure_rate": 0.0725,
+            "empirical_coverage": 0.36,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "claim_rows": {
+            "rows": 800,
+            "claim_candidates": 4800,
+            "authorizations": 411,
+            "false_authorizations": 48,
+            "semantic_violations": 0,
+            "inferential_status": "descriptive_only"
+          }
+        },
+        "stratum_summary": {
+          "a1/gaussian/lag-2": {
+            "units": 50,
+            "failing_units": 0,
+            "authorized_units": 7,
+            "eligible_positive_units": 7,
+            "recovered_positive_units": 7,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.14,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1/gaussian/lag-3": {
+            "units": 50,
+            "failing_units": 0,
+            "authorized_units": 12,
+            "eligible_positive_units": 12,
+            "recovered_positive_units": 12,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.24,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1/student_t/lag-2": {
+            "units": 50,
+            "failing_units": 3,
+            "authorized_units": 14,
+            "eligible_positive_units": 13,
+            "recovered_positive_units": 13,
+            "empirical_failure_rate": 0.06,
+            "empirical_coverage": 0.28,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1/student_t/lag-3": {
+            "units": 50,
+            "failing_units": 4,
+            "authorized_units": 14,
+            "eligible_positive_units": 14,
+            "recovered_positive_units": 14,
+            "empirical_failure_rate": 0.08,
+            "empirical_coverage": 0.28,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1c/gaussian/lag-2": {
+            "units": 50,
+            "failing_units": 4,
+            "authorized_units": 23,
+            "eligible_positive_units": 23,
+            "recovered_positive_units": 23,
+            "empirical_failure_rate": 0.08,
+            "empirical_coverage": 0.46,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1c/gaussian/lag-3": {
+            "units": 50,
+            "failing_units": 3,
+            "authorized_units": 26,
+            "eligible_positive_units": 25,
+            "recovered_positive_units": 25,
+            "empirical_failure_rate": 0.06,
+            "empirical_coverage": 0.52,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1c/student_t/lag-2": {
+            "units": 50,
+            "failing_units": 9,
+            "authorized_units": 23,
+            "eligible_positive_units": 19,
+            "recovered_positive_units": 19,
+            "empirical_failure_rate": 0.18,
+            "empirical_coverage": 0.46,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1c/student_t/lag-3": {
+            "units": 50,
+            "failing_units": 6,
+            "authorized_units": 25,
+            "eligible_positive_units": 22,
+            "recovered_positive_units": 22,
+            "empirical_failure_rate": 0.12,
+            "empirical_coverage": 0.5,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          }
+        },
+        "lower_level_inference_allowed": false
+      },
+      "v5_hierarchical_nondegenerate": {
+        "threshold": -1.0,
+        "experiments": 50,
+        "failing_experiments": 0,
+        "authorized_experiments": 0,
+        "eligible_positive_experiments": 47,
+        "recovered_positive_experiments": 0,
+        "authorizations": 0,
+        "false_authorizations": 0,
+        "semantic_violations": 0,
+        "empirical_experiment_failure_rate": 0.0,
+        "empirical_authorized_experiment_coverage": 0.0,
+        "empirical_positive_recovery": 0.0,
+        "empirical_pair_sfar": 0.0,
+        "risk_upper_bound": 0.05815507911697226,
+        "coverage_lower_bound": 0.0,
+        "positive_recovery_lower_bound": 0.0,
+        "target_risk": 0.1,
+        "minimum_coverage": 0.1,
+        "minimum_positive_recovery": 0.05,
+        "confidence": 0.95,
+        "certified": false,
+        "inferential_unit": "top_level_cluster",
+        "minimum_independent_units": 29,
+        "hierarchy_valid": true,
+        "sufficient_independent_units": true,
+        "lower_level_summary": {
+          "subgroups": {
+            "units": 400,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 135,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          },
+          "claim_rows": {
+            "rows": 800,
+            "claim_candidates": 4800,
+            "authorizations": 0,
+            "false_authorizations": 0,
+            "semantic_violations": 0,
+            "inferential_status": "descriptive_only"
+          }
+        },
+        "stratum_summary": {
+          "a1/gaussian/lag-2": {
+            "units": 50,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 7,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1/gaussian/lag-3": {
+            "units": 50,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 12,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1/student_t/lag-2": {
+            "units": 50,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 13,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1/student_t/lag-3": {
+            "units": 50,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 14,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1c/gaussian/lag-2": {
+            "units": 50,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 23,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1c/gaussian/lag-3": {
+            "units": 50,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 25,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1c/student_t/lag-2": {
+            "units": 50,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 19,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1c/student_t/lag-3": {
+            "units": 50,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 22,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          }
+        },
+        "lower_level_inference_allowed": false
+      }
+    },
+    "shift_from_calibration": {
+      "warning": false,
+      "role": "warning_only",
+      "may_authorize_or_restore_certificate": false,
+      "alpha": 0.01,
+      "calibration_rows": 50,
+      "target_rows": 50,
+      "marginal_ks": [
+        {
+          "feature": "status:causal_intervention:passed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:causal_intervention:failed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:causal_intervention:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:causal_intervention:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:causal_intervention:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:causal_intervention",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:directed_identifiability:passed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:directed_identifiability:failed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:directed_identifiability:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:directed_identifiability:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:directed_identifiability:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:directed_identifiability",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:entity_specificity:passed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:entity_specificity:failed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:entity_specificity:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:entity_specificity:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:entity_specificity:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:entity_specificity",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:external_replication:passed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:external_replication:failed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:external_replication:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:external_replication:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:external_replication:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:external_replication",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:independent_validation:passed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:independent_validation:failed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:independent_validation:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:independent_validation:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:independent_validation:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:independent_validation",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:internal_reproduction:passed",
+          "p_value": 0.9977109764909107,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:internal_reproduction:failed",
+          "p_value": 0.9977109764909107,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:internal_reproduction:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:internal_reproduction:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:internal_reproduction:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:internal_reproduction",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:operational_compute:passed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:operational_compute:failed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:operational_compute:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:operational_compute:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:operational_compute:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:operational_compute",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:prediction:passed",
+          "p_value": 0.3959398631708505,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:prediction:failed",
+          "p_value": 0.3959398631708505,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:prediction:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:prediction:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:prediction:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:prediction",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:reproducible_compute:passed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:reproducible_compute:failed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:reproducible_compute:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:reproducible_compute:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:reproducible_compute:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:reproducible_compute",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:structure_function_association:passed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:structure_function_association:failed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:structure_function_association:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:structure_function_association:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:structure_function_association:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:structure_function_association",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:topology_specificity:passed",
+          "p_value": 0.5486851446031328,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:topology_specificity:failed",
+          "p_value": 0.5486851446031328,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:topology_specificity:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:topology_specificity:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:topology_specificity:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:topology_specificity",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:whole_brain_coverage:passed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:whole_brain_coverage:failed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:whole_brain_coverage:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:whole_brain_coverage:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:whole_brain_coverage:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:whole_brain_coverage",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "prediction_correlation",
+          "p_value": 0.3959398631708505,
+          "holm_rejected": false
+        },
+        {
+          "feature": "prediction_negative_log10_p",
+          "p_value": 0.7166468440414822,
+          "holm_rejected": false
+        },
+        {
+          "feature": "prediction_r_squared",
+          "p_value": 0.2719135601522248,
+          "holm_rejected": false
+        },
+        {
+          "feature": "reproduction_first_correlation",
+          "p_value": 0.3959398631708505,
+          "holm_rejected": false
+        },
+        {
+          "feature": "reproduction_second_correlation",
+          "p_value": 0.7166468440414822,
+          "holm_rejected": false
+        },
+        {
+          "feature": "reproduction_first_r_squared",
+          "p_value": 0.2719135601522248,
+          "holm_rejected": false
+        },
+        {
+          "feature": "reproduction_second_r_squared",
+          "p_value": 0.2719135601522248,
+          "holm_rejected": false
+        },
+        {
+          "feature": "topology_candidate_r_squared",
+          "p_value": 0.2719135601522248,
+          "holm_rejected": false
+        },
+        {
+          "feature": "topology_best_control_margin",
+          "p_value": 0.2719135601522248,
+          "holm_rejected": false
+        },
+        {
+          "feature": "legacy_direction_forward_dependence",
+          "p_value": 0.9977109764909107,
+          "holm_rejected": false
+        },
+        {
+          "feature": "legacy_direction_reverse_dependence",
+          "p_value": 0.8692618870414056,
+          "holm_rejected": false
+        },
+        {
+          "feature": "legacy_direction_margin",
+          "p_value": 0.8692618870414056,
+          "holm_rejected": false
+        },
+        {
+          "feature": "anm_p_forward",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "anm_p_backward",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "anm_signed_margin",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "anm_absolute_margin",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "causal_intervention_available",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "causal_intervention_effect",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "causal_intervention_negative_log10_p",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "log10_sample_size",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "known_noise_scale",
+          "p_value": 1.0,
+          "holm_rejected": false
+        }
+      ],
+      "energy_distance": 0.7000407906365282,
+      "energy_permutation_p_value": 0.3,
+      "permutations": 199
+    },
+    "passed": false
+  },
+  "final_evaluation": {
+    "opened": false,
+    "reason": "risk_lock_did_not_pass"
+  },
+  "ood_stress": {
+    "seed_bundles": 50,
+    "generator_scenarios": 400,
+    "pair_records": 800,
+    "claim_candidates": 4800,
+    "generated_values": 960000,
+    "aggregate_data_hash": "sha256:059d96d2bf39f9355a361b440f3c16f7e77ef27327e1d6fd4db3982f03dbaaa7",
+    "strata": [
+      "a1/gaussian/lag-2",
+      "a1/gaussian/lag-3",
+      "a1/student_t/lag-2",
+      "a1/student_t/lag-3",
+      "a1c/gaussian/lag-2",
+      "a1c/gaussian/lag-3",
+      "a1c/student_t/lag-2",
+      "a1c/student_t/lag-3"
+    ],
+    "role": "diagnostic_only_not_part_of_the_confirmatory_certificate",
+    "comparators": {
+      "abstain_all": {
+        "threshold": 2.0,
+        "experiments": 50,
+        "failing_experiments": 0,
+        "authorized_experiments": 0,
+        "eligible_positive_experiments": 46,
+        "recovered_positive_experiments": 0,
+        "authorizations": 0,
+        "false_authorizations": 0,
+        "semantic_violations": 0,
+        "empirical_experiment_failure_rate": 0.0,
+        "empirical_authorized_experiment_coverage": 0.0,
+        "empirical_positive_recovery": 0.0,
+        "empirical_pair_sfar": 0.0,
+        "risk_upper_bound": 0.05815507911697226,
+        "coverage_lower_bound": 0.0,
+        "positive_recovery_lower_bound": 0.0,
+        "target_risk": 0.1,
+        "minimum_coverage": 0.1,
+        "minimum_positive_recovery": 0.05,
+        "confidence": 0.95,
+        "certified": false,
+        "inferential_unit": "top_level_cluster",
+        "minimum_independent_units": 29,
+        "hierarchy_valid": true,
+        "sufficient_independent_units": true,
+        "lower_level_summary": {
+          "subgroups": {
+            "units": 400,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 87,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          },
+          "claim_rows": {
+            "rows": 800,
+            "claim_candidates": 4800,
+            "authorizations": 0,
+            "false_authorizations": 0,
+            "semantic_violations": 0,
+            "inferential_status": "descriptive_only"
+          }
+        },
+        "stratum_summary": {
+          "a1/gaussian/lag-2": {
+            "units": 50,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 5,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1/gaussian/lag-3": {
+            "units": 50,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 8,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1/student_t/lag-2": {
+            "units": 50,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 7,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1/student_t/lag-3": {
+            "units": 50,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 8,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1c/gaussian/lag-2": {
+            "units": 50,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 18,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1c/gaussian/lag-3": {
+            "units": 50,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 16,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1c/student_t/lag-2": {
+            "units": 50,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 13,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1c/student_t/lag-3": {
+            "units": 50,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 12,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          }
+        },
+        "lower_level_inference_allowed": false
+      },
+      "fixed_probability_0_5": {
+        "threshold": 0.5,
+        "experiments": 50,
+        "failing_experiments": 50,
+        "authorized_experiments": 50,
+        "eligible_positive_experiments": 46,
+        "recovered_positive_experiments": 46,
+        "authorizations": 817,
+        "false_authorizations": 423,
+        "semantic_violations": 582,
+        "empirical_experiment_failure_rate": 1.0,
+        "empirical_authorized_experiment_coverage": 1.0,
+        "empirical_positive_recovery": 1.0,
+        "empirical_pair_sfar": 0.5177478580171359,
+        "risk_upper_bound": 1.0,
+        "coverage_lower_bound": 0.9418449208830277,
+        "positive_recovery_lower_bound": 0.9369506983259456,
+        "target_risk": 0.1,
+        "minimum_coverage": 0.1,
+        "minimum_positive_recovery": 0.05,
+        "confidence": 0.95,
+        "certified": false,
+        "inferential_unit": "top_level_cluster",
+        "minimum_independent_units": 29,
+        "hierarchy_valid": true,
+        "sufficient_independent_units": true,
+        "lower_level_summary": {
+          "subgroups": {
+            "units": 400,
+            "failing_units": 161,
+            "authorized_units": 212,
+            "eligible_positive_units": 87,
+            "recovered_positive_units": 85,
+            "empirical_failure_rate": 0.4025,
+            "empirical_coverage": 0.53,
+            "empirical_positive_recovery": 0.9770114942528736,
+            "inferential_status": "descriptive_only"
+          },
+          "claim_rows": {
+            "rows": 800,
+            "claim_candidates": 4800,
+            "authorizations": 817,
+            "false_authorizations": 423,
+            "semantic_violations": 582,
+            "inferential_status": "descriptive_only"
+          }
+        },
+        "stratum_summary": {
+          "a1/gaussian/lag-2": {
+            "units": 50,
+            "failing_units": 20,
+            "authorized_units": 24,
+            "eligible_positive_units": 5,
+            "recovered_positive_units": 5,
+            "empirical_failure_rate": 0.4,
+            "empirical_coverage": 0.48,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1/gaussian/lag-3": {
+            "units": 50,
+            "failing_units": 12,
+            "authorized_units": 16,
+            "eligible_positive_units": 8,
+            "recovered_positive_units": 8,
+            "empirical_failure_rate": 0.24,
+            "empirical_coverage": 0.32,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1/student_t/lag-2": {
+            "units": 50,
+            "failing_units": 24,
+            "authorized_units": 24,
+            "eligible_positive_units": 7,
+            "recovered_positive_units": 7,
+            "empirical_failure_rate": 0.48,
+            "empirical_coverage": 0.48,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1/student_t/lag-3": {
+            "units": 50,
+            "failing_units": 29,
+            "authorized_units": 31,
+            "eligible_positive_units": 8,
+            "recovered_positive_units": 7,
+            "empirical_failure_rate": 0.58,
+            "empirical_coverage": 0.62,
+            "empirical_positive_recovery": 0.875,
+            "inferential_status": "descriptive_only"
+          },
+          "a1c/gaussian/lag-2": {
+            "units": 50,
+            "failing_units": 17,
+            "authorized_units": 30,
+            "eligible_positive_units": 18,
+            "recovered_positive_units": 18,
+            "empirical_failure_rate": 0.34,
+            "empirical_coverage": 0.6,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1c/gaussian/lag-3": {
+            "units": 50,
+            "failing_units": 18,
+            "authorized_units": 31,
+            "eligible_positive_units": 16,
+            "recovered_positive_units": 16,
+            "empirical_failure_rate": 0.36,
+            "empirical_coverage": 0.62,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1c/student_t/lag-2": {
+            "units": 50,
+            "failing_units": 21,
+            "authorized_units": 29,
+            "eligible_positive_units": 13,
+            "recovered_positive_units": 12,
+            "empirical_failure_rate": 0.42,
+            "empirical_coverage": 0.58,
+            "empirical_positive_recovery": 0.9230769230769231,
+            "inferential_status": "descriptive_only"
+          },
+          "a1c/student_t/lag-3": {
+            "units": 50,
+            "failing_units": 20,
+            "authorized_units": 27,
+            "eligible_positive_units": 12,
+            "recovered_positive_units": 12,
+            "empirical_failure_rate": 0.4,
+            "empirical_coverage": 0.54,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          }
+        },
+        "lower_level_inference_allowed": false
+      },
+      "confidence_only_target_calibrated": {
+        "threshold": -1.0,
+        "experiments": 50,
+        "failing_experiments": 0,
+        "authorized_experiments": 0,
+        "eligible_positive_experiments": 46,
+        "recovered_positive_experiments": 0,
+        "authorizations": 0,
+        "false_authorizations": 0,
+        "semantic_violations": 0,
+        "empirical_experiment_failure_rate": 0.0,
+        "empirical_authorized_experiment_coverage": 0.0,
+        "empirical_positive_recovery": 0.0,
+        "empirical_pair_sfar": 0.0,
+        "risk_upper_bound": 0.05815507911697226,
+        "coverage_lower_bound": 0.0,
+        "positive_recovery_lower_bound": 0.0,
+        "target_risk": 0.1,
+        "minimum_coverage": 0.1,
+        "minimum_positive_recovery": 0.05,
+        "confidence": 0.95,
+        "certified": false,
+        "inferential_unit": "top_level_cluster",
+        "minimum_independent_units": 29,
+        "hierarchy_valid": true,
+        "sufficient_independent_units": true,
+        "lower_level_summary": {
+          "subgroups": {
+            "units": 400,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 87,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          },
+          "claim_rows": {
+            "rows": 800,
+            "claim_candidates": 4800,
+            "authorizations": 0,
+            "false_authorizations": 0,
+            "semantic_violations": 0,
+            "inferential_status": "descriptive_only"
+          }
+        },
+        "stratum_summary": {
+          "a1/gaussian/lag-2": {
+            "units": 50,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 5,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1/gaussian/lag-3": {
+            "units": 50,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 8,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1/student_t/lag-2": {
+            "units": 50,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 7,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1/student_t/lag-3": {
+            "units": 50,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 8,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1c/gaussian/lag-2": {
+            "units": 50,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 18,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1c/gaussian/lag-3": {
+            "units": 50,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 16,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1c/student_t/lag-2": {
+            "units": 50,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 13,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1c/student_t/lag-3": {
+            "units": 50,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 12,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          }
+        },
+        "lower_level_inference_allowed": false
+      },
+      "evidence_contract_only": {
+        "threshold": 0.0,
+        "experiments": 50,
+        "failing_experiments": 38,
+        "authorized_experiments": 49,
+        "eligible_positive_experiments": 46,
+        "recovered_positive_experiments": 46,
+        "authorizations": 240,
+        "false_authorizations": 80,
+        "semantic_violations": 0,
+        "empirical_experiment_failure_rate": 0.76,
+        "empirical_authorized_experiment_coverage": 0.98,
+        "empirical_positive_recovery": 1.0,
+        "empirical_pair_sfar": 0.3333333333333333,
+        "risk_upper_bound": 0.85528184479195,
+        "coverage_lower_bound": 0.9086018692803026,
+        "positive_recovery_lower_bound": 0.9369506983259456,
+        "target_risk": 0.1,
+        "minimum_coverage": 0.1,
+        "minimum_positive_recovery": 0.05,
+        "confidence": 0.95,
+        "certified": false,
+        "inferential_unit": "top_level_cluster",
+        "minimum_independent_units": 29,
+        "hierarchy_valid": true,
+        "sufficient_independent_units": true,
+        "lower_level_summary": {
+          "subgroups": {
+            "units": 400,
+            "failing_units": 55,
+            "authorized_units": 105,
+            "eligible_positive_units": 87,
+            "recovered_positive_units": 87,
+            "empirical_failure_rate": 0.1375,
+            "empirical_coverage": 0.2625,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "claim_rows": {
+            "rows": 800,
+            "claim_candidates": 4800,
+            "authorizations": 240,
+            "false_authorizations": 80,
+            "semantic_violations": 0,
+            "inferential_status": "descriptive_only"
+          }
+        },
+        "stratum_summary": {
+          "a1/gaussian/lag-2": {
+            "units": 50,
+            "failing_units": 6,
+            "authorized_units": 9,
+            "eligible_positive_units": 5,
+            "recovered_positive_units": 5,
+            "empirical_failure_rate": 0.12,
+            "empirical_coverage": 0.18,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1/gaussian/lag-3": {
+            "units": 50,
+            "failing_units": 4,
+            "authorized_units": 8,
+            "eligible_positive_units": 8,
+            "recovered_positive_units": 8,
+            "empirical_failure_rate": 0.08,
+            "empirical_coverage": 0.16,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1/student_t/lag-2": {
+            "units": 50,
+            "failing_units": 13,
+            "authorized_units": 14,
+            "eligible_positive_units": 7,
+            "recovered_positive_units": 7,
+            "empirical_failure_rate": 0.26,
+            "empirical_coverage": 0.28,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1/student_t/lag-3": {
+            "units": 50,
+            "failing_units": 6,
+            "authorized_units": 10,
+            "eligible_positive_units": 8,
+            "recovered_positive_units": 8,
+            "empirical_failure_rate": 0.12,
+            "empirical_coverage": 0.2,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1c/gaussian/lag-2": {
+            "units": 50,
+            "failing_units": 6,
+            "authorized_units": 19,
+            "eligible_positive_units": 18,
+            "recovered_positive_units": 18,
+            "empirical_failure_rate": 0.12,
+            "empirical_coverage": 0.38,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1c/gaussian/lag-3": {
+            "units": 50,
+            "failing_units": 4,
+            "authorized_units": 17,
+            "eligible_positive_units": 16,
+            "recovered_positive_units": 16,
+            "empirical_failure_rate": 0.08,
+            "empirical_coverage": 0.34,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1c/student_t/lag-2": {
+            "units": 50,
+            "failing_units": 5,
+            "authorized_units": 13,
+            "eligible_positive_units": 13,
+            "recovered_positive_units": 13,
+            "empirical_failure_rate": 0.1,
+            "empirical_coverage": 0.26,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1c/student_t/lag-3": {
+            "units": 50,
+            "failing_units": 11,
+            "authorized_units": 15,
+            "eligible_positive_units": 12,
+            "recovered_positive_units": 12,
+            "empirical_failure_rate": 0.22,
+            "empirical_coverage": 0.3,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          }
+        },
+        "lower_level_inference_allowed": false
+      },
+      "frozen_v3_semantic_ltt": {
+        "threshold": -1.0,
+        "experiments": 50,
+        "failing_experiments": 38,
+        "authorized_experiments": 49,
+        "eligible_positive_experiments": 46,
+        "recovered_positive_experiments": 46,
+        "authorizations": 237,
+        "false_authorizations": 80,
+        "semantic_violations": 0,
+        "empirical_experiment_failure_rate": 0.76,
+        "empirical_authorized_experiment_coverage": 0.98,
+        "empirical_positive_recovery": 1.0,
+        "empirical_pair_sfar": 0.33755274261603374,
+        "risk_upper_bound": 0.85528184479195,
+        "coverage_lower_bound": 0.9086018692803026,
+        "positive_recovery_lower_bound": 0.9369506983259456,
+        "target_risk": 0.1,
+        "minimum_coverage": 0.1,
+        "minimum_positive_recovery": 0.05,
+        "confidence": 0.95,
+        "certified": false,
+        "inferential_unit": "top_level_cluster",
+        "minimum_independent_units": 29,
+        "hierarchy_valid": true,
+        "sufficient_independent_units": true,
+        "lower_level_summary": {
+          "subgroups": {
+            "units": 400,
+            "failing_units": 55,
+            "authorized_units": 105,
+            "eligible_positive_units": 87,
+            "recovered_positive_units": 85,
+            "empirical_failure_rate": 0.1375,
+            "empirical_coverage": 0.2625,
+            "empirical_positive_recovery": 0.9770114942528736,
+            "inferential_status": "descriptive_only"
+          },
+          "claim_rows": {
+            "rows": 800,
+            "claim_candidates": 4800,
+            "authorizations": 237,
+            "false_authorizations": 80,
+            "semantic_violations": 0,
+            "inferential_status": "descriptive_only"
+          }
+        },
+        "stratum_summary": {
+          "a1/gaussian/lag-2": {
+            "units": 50,
+            "failing_units": 6,
+            "authorized_units": 9,
+            "eligible_positive_units": 5,
+            "recovered_positive_units": 5,
+            "empirical_failure_rate": 0.12,
+            "empirical_coverage": 0.18,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1/gaussian/lag-3": {
+            "units": 50,
+            "failing_units": 4,
+            "authorized_units": 8,
+            "eligible_positive_units": 8,
+            "recovered_positive_units": 8,
+            "empirical_failure_rate": 0.08,
+            "empirical_coverage": 0.16,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1/student_t/lag-2": {
+            "units": 50,
+            "failing_units": 13,
+            "authorized_units": 14,
+            "eligible_positive_units": 7,
+            "recovered_positive_units": 7,
+            "empirical_failure_rate": 0.26,
+            "empirical_coverage": 0.28,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1/student_t/lag-3": {
+            "units": 50,
+            "failing_units": 6,
+            "authorized_units": 10,
+            "eligible_positive_units": 8,
+            "recovered_positive_units": 7,
+            "empirical_failure_rate": 0.12,
+            "empirical_coverage": 0.2,
+            "empirical_positive_recovery": 0.875,
+            "inferential_status": "descriptive_only"
+          },
+          "a1c/gaussian/lag-2": {
+            "units": 50,
+            "failing_units": 6,
+            "authorized_units": 19,
+            "eligible_positive_units": 18,
+            "recovered_positive_units": 18,
+            "empirical_failure_rate": 0.12,
+            "empirical_coverage": 0.38,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1c/gaussian/lag-3": {
+            "units": 50,
+            "failing_units": 4,
+            "authorized_units": 17,
+            "eligible_positive_units": 16,
+            "recovered_positive_units": 16,
+            "empirical_failure_rate": 0.08,
+            "empirical_coverage": 0.34,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1c/student_t/lag-2": {
+            "units": 50,
+            "failing_units": 5,
+            "authorized_units": 13,
+            "eligible_positive_units": 13,
+            "recovered_positive_units": 12,
+            "empirical_failure_rate": 0.1,
+            "empirical_coverage": 0.26,
+            "empirical_positive_recovery": 0.9230769230769231,
+            "inferential_status": "descriptive_only"
+          },
+          "a1c/student_t/lag-3": {
+            "units": 50,
+            "failing_units": 11,
+            "authorized_units": 15,
+            "eligible_positive_units": 12,
+            "recovered_positive_units": 12,
+            "empirical_failure_rate": 0.22,
+            "empirical_coverage": 0.3,
+            "empirical_positive_recovery": 1.0,
+            "inferential_status": "descriptive_only"
+          }
+        },
+        "lower_level_inference_allowed": false
+      },
+      "v5_hierarchical_nondegenerate": {
+        "threshold": -1.0,
+        "experiments": 50,
+        "failing_experiments": 0,
+        "authorized_experiments": 0,
+        "eligible_positive_experiments": 46,
+        "recovered_positive_experiments": 0,
+        "authorizations": 0,
+        "false_authorizations": 0,
+        "semantic_violations": 0,
+        "empirical_experiment_failure_rate": 0.0,
+        "empirical_authorized_experiment_coverage": 0.0,
+        "empirical_positive_recovery": 0.0,
+        "empirical_pair_sfar": 0.0,
+        "risk_upper_bound": 0.05815507911697226,
+        "coverage_lower_bound": 0.0,
+        "positive_recovery_lower_bound": 0.0,
+        "target_risk": 0.1,
+        "minimum_coverage": 0.1,
+        "minimum_positive_recovery": 0.05,
+        "confidence": 0.95,
+        "certified": false,
+        "inferential_unit": "top_level_cluster",
+        "minimum_independent_units": 29,
+        "hierarchy_valid": true,
+        "sufficient_independent_units": true,
+        "lower_level_summary": {
+          "subgroups": {
+            "units": 400,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 87,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          },
+          "claim_rows": {
+            "rows": 800,
+            "claim_candidates": 4800,
+            "authorizations": 0,
+            "false_authorizations": 0,
+            "semantic_violations": 0,
+            "inferential_status": "descriptive_only"
+          }
+        },
+        "stratum_summary": {
+          "a1/gaussian/lag-2": {
+            "units": 50,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 5,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1/gaussian/lag-3": {
+            "units": 50,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 8,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1/student_t/lag-2": {
+            "units": 50,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 7,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1/student_t/lag-3": {
+            "units": 50,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 8,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1c/gaussian/lag-2": {
+            "units": 50,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 18,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1c/gaussian/lag-3": {
+            "units": 50,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 16,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1c/student_t/lag-2": {
+            "units": 50,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 13,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          },
+          "a1c/student_t/lag-3": {
+            "units": 50,
+            "failing_units": 0,
+            "authorized_units": 0,
+            "eligible_positive_units": 12,
+            "recovered_positive_units": 0,
+            "empirical_failure_rate": 0.0,
+            "empirical_coverage": 0.0,
+            "empirical_positive_recovery": 0.0,
+            "inferential_status": "descriptive_only"
+          }
+        },
+        "lower_level_inference_allowed": false
+      }
+    },
+    "shift_from_calibration": {
+      "warning": true,
+      "role": "warning_only",
+      "may_authorize_or_restore_certificate": false,
+      "alpha": 0.01,
+      "calibration_rows": 50,
+      "target_rows": 50,
+      "marginal_ks": [
+        {
+          "feature": "status:causal_intervention:passed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:causal_intervention:failed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:causal_intervention:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:causal_intervention:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:causal_intervention:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:causal_intervention",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:directed_identifiability:passed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:directed_identifiability:failed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:directed_identifiability:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:directed_identifiability:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:directed_identifiability:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:directed_identifiability",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:entity_specificity:passed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:entity_specificity:failed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:entity_specificity:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:entity_specificity:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:entity_specificity:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:entity_specificity",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:external_replication:passed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:external_replication:failed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:external_replication:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:external_replication:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:external_replication:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:external_replication",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:independent_validation:passed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:independent_validation:failed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:independent_validation:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:independent_validation:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:independent_validation:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:independent_validation",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:internal_reproduction:passed",
+          "p_value": 1.4534580579142488e-07,
+          "holm_rejected": true
+        },
+        {
+          "feature": "status:internal_reproduction:failed",
+          "p_value": 1.4534580579142488e-07,
+          "holm_rejected": true
+        },
+        {
+          "feature": "status:internal_reproduction:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:internal_reproduction:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:internal_reproduction:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:internal_reproduction",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:operational_compute:passed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:operational_compute:failed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:operational_compute:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:operational_compute:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:operational_compute:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:operational_compute",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:prediction:passed",
+          "p_value": 4.929118631187453e-07,
+          "holm_rejected": true
+        },
+        {
+          "feature": "status:prediction:failed",
+          "p_value": 4.929118631187453e-07,
+          "holm_rejected": true
+        },
+        {
+          "feature": "status:prediction:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:prediction:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:prediction:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:prediction",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:reproducible_compute:passed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:reproducible_compute:failed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:reproducible_compute:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:reproducible_compute:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:reproducible_compute:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:reproducible_compute",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:structure_function_association:passed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:structure_function_association:failed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:structure_function_association:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:structure_function_association:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:structure_function_association:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:structure_function_association",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:topology_specificity:passed",
+          "p_value": 0.0013147736033165794,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:topology_specificity:failed",
+          "p_value": 0.0013147736033165794,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:topology_specificity:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:topology_specificity:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:topology_specificity:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:topology_specificity",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:whole_brain_coverage:passed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:whole_brain_coverage:failed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:whole_brain_coverage:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:whole_brain_coverage:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:whole_brain_coverage:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:whole_brain_coverage",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "prediction_correlation",
+          "p_value": 0.11238524845512393,
+          "holm_rejected": false
+        },
+        {
+          "feature": "prediction_negative_log10_p",
+          "p_value": 1.409544601041165e-13,
+          "holm_rejected": true
+        },
+        {
+          "feature": "prediction_r_squared",
+          "p_value": 1.3182765881237494e-10,
+          "holm_rejected": true
+        },
+        {
+          "feature": "reproduction_first_correlation",
+          "p_value": 0.11238524845512393,
+          "holm_rejected": false
+        },
+        {
+          "feature": "reproduction_second_correlation",
+          "p_value": 0.039194586195352224,
+          "holm_rejected": false
+        },
+        {
+          "feature": "reproduction_first_r_squared",
+          "p_value": 1.3182765881237494e-10,
+          "holm_rejected": true
+        },
+        {
+          "feature": "reproduction_second_r_squared",
+          "p_value": 1.0624962385385807e-08,
+          "holm_rejected": true
+        },
+        {
+          "feature": "topology_candidate_r_squared",
+          "p_value": 1.3182765881237494e-10,
+          "holm_rejected": true
+        },
+        {
+          "feature": "topology_best_control_margin",
+          "p_value": 4.8075337049514946e-06,
+          "holm_rejected": true
+        },
+        {
+          "feature": "legacy_direction_forward_dependence",
+          "p_value": 1.9823306042836677e-27,
+          "holm_rejected": true
+        },
+        {
+          "feature": "legacy_direction_reverse_dependence",
+          "p_value": 1.4924475501661872e-21,
+          "holm_rejected": true
+        },
+        {
+          "feature": "legacy_direction_margin",
+          "p_value": 0.011511738725894704,
+          "holm_rejected": false
+        },
+        {
+          "feature": "anm_p_forward",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "anm_p_backward",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "anm_signed_margin",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "anm_absolute_margin",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "causal_intervention_available",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "causal_intervention_effect",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "causal_intervention_negative_log10_p",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "log10_sample_size",
+          "p_value": 1.9823306042836678e-29,
+          "holm_rejected": true
+        },
+        {
+          "feature": "known_noise_scale",
+          "p_value": 1.0,
+          "holm_rejected": false
+        }
+      ],
+      "energy_distance": 8.198231433066379,
+      "energy_permutation_p_value": 0.005,
+      "permutations": 199
+    }
+  },
+  "efficiency": {
+    "wall_time_seconds": 55.178031332965475,
+    "peak_rss_megabytes": 169.0625,
+    "generated_scenarios": 1200
+  },
+  "decision": "v5_declared_synthetic_population_not_supported",
+  "claim_boundary": "A positive result is limited to the frozen TimeGraph generator mixture. It is not a real-domain, biological, or distribution-free guarantee."
+}
