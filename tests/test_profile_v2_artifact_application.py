@@ -1,3 +1,4 @@
+import json
 from pathlib import Path
 
 import yaml
@@ -33,3 +34,14 @@ def test_v2_artifact_application_is_bounded_and_semantically_equivalent() -> Non
     assert ibl["authorized"] is True
     assert ibl["deficits"] == []
     assert all(result["release_conditions"].values())
+
+
+def test_frozen_artifact_application_preserves_bounded_results() -> None:
+    payload = json.loads(
+        Path("results/profile_v2_artifact_application/summary.json").read_text()
+    )
+
+    assert payload["cases"] == 5
+    assert payload["target_authorizations"] == 2
+    assert payload["strict_twin_authorizations"] == 0
+    assert not payload["git_revision"].endswith("-dirty")

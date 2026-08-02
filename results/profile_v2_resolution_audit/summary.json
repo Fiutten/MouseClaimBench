@@ -1,0 +1,33 @@
+{
+  "version": "0.9.0",
+  "git_revision": "9d4d4fa2a2fe023b1a1e31d58b8cf265d62c9566",
+  "analysis": "profile_v2_resolution_audit",
+  "protocol": "configs/validation/profile_v2_audit_resolution.yaml",
+  "protocol_sha256": "c7371fb6caf919c818a3a427775bcdcd32477bcda194d4b8c10077c744adc514",
+  "parent_nonretained_items": 20,
+  "resolution_items": 20,
+  "unresolved_items": [],
+  "unreviewed_resolution_items": [],
+  "invalid_resolution_status": [],
+  "declared_source_ids": 20,
+  "unresolved_source_ids": [],
+  "conditions": {
+    "all_nonretained_v1_items_have_resolution": true,
+    "resolution_map_contains_no_unreviewed_items": true,
+    "resolution_statuses_are_valid": true,
+    "v2_does_not_use_supported_conclusion": true,
+    "generic_mechanistic_claim_removed": true,
+    "generic_causal_claim_removed": true,
+    "generic_digital_twin_claim_removed": true,
+    "strict_complete_twin_claim_declared": true,
+    "every_passing_block_requires_provenance_fields": true,
+    "basis_relations_exactly_cover_profile": true,
+    "all_basis_sources_resolve": true,
+    "external_consensus_not_claimed": true
+  },
+  "all_conditions_passed": true,
+  "external_content_validity": false,
+  "human_validation": false,
+  "remaining_limit": "This map resolves issues identified by the internal audit at the level of executable design. It does not establish external content validity, consensus, scientific completeness, or improved human decisions.",
+  "decision": "profile_v2_internal_audit_issues_resolved"
+}

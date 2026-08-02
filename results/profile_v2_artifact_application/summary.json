@@ -1,0 +1,1528 @@
+{
+  "version": "0.9.0",
+  "git_revision": "9d4d4fa2a2fe023b1a1e31d58b8cf265d62c9566",
+  "analysis": "profile_v2_artifact_application",
+  "protocol": "configs/benchmarks/profile_v2_artifact_application.yaml",
+  "protocol_sha256": "866b3f90a419ba1f8ae14dd9671672a3999d98dba1923b9bbdced45bd16ce40d",
+  "cases": 5,
+  "decisions": 10,
+  "target_authorizations": 2,
+  "strict_twin_authorizations": 0,
+  "decision_rows": [
+    {
+      "case": "allen_vbn_negative",
+      "claim": "directed_topology_consistent_prediction",
+      "status": "profile_not_authorized",
+      "authorized": false,
+      "deficits": [
+        {
+          "name": "prediction",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "results/allen_vbn_mechanistic_identifiability_score.json",
+          "rule": "retrospective v2 mapping of the unchanged source predicate",
+          "rationale": "the artifact evaluates target stability rather than a held-out prediction contract",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "internal_reproduction",
+          "declared_status": "requires_review",
+          "effective_status": "requires_review",
+          "source": "results/allen_vbn_mechanistic_identifiability_score.json",
+          "rule": "retrospective v2 mapping of the unchanged source predicate",
+          "rationale": "cross-mouse and split-half stability pass, but overlap and unit identity are not fully encoded",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "topology_specificity",
+          "declared_status": "failed",
+          "effective_status": "failed",
+          "source": "results/allen_vbn_mechanistic_identifiability_score.json",
+          "rule": "retrospective v2 mapping of the unchanged source predicate",
+          "rationale": "the stored topology block does not outperform its controls",
+          "observations": {
+            "criteria": [
+              {
+                "name": "allen_minus_median_permutation",
+                "value": -0.0053784679059247775,
+                "threshold": 0.05,
+                "direction": "gt",
+                "passed": false,
+                "normalized_score": 0.0
+              },
+              {
+                "name": "fraction_permutations_outperformed",
+                "value": 0.21,
+                "threshold": 0.95,
+                "direction": "gte",
+                "passed": false,
+                "normalized_score": 0.22105263157894736
+              },
+              {
+                "name": "paired_advantage_bootstrap_95_lower",
+                "value": -0.007462997435285529,
+                "threshold": 0.0,
+                "direction": "gt",
+                "passed": false,
+                "normalized_score": 0.0
+              },
+              {
+                "name": "allen_minus_disconnected",
+                "value": 0.0035004355444882007,
+                "threshold": 0.05,
+                "direction": "gt",
+                "passed": false,
+                "normalized_score": 0.07000871088976401
+              }
+            ],
+            "score": 0.07276533561717785
+          },
+          "missing_required_observations": []
+        },
+        {
+          "name": "directed_identifiability",
+          "declared_status": "failed",
+          "effective_status": "failed",
+          "source": "results/allen_vbn_mechanistic_identifiability_score.json",
+          "rule": "retrospective v2 mapping of the unchanged source predicate",
+          "rationale": "the stored latency and lead-lag tests do not identify direction",
+          "observations": {
+            "criteria": [
+              {
+                "name": "latency_median_cross_mouse_tau",
+                "value": 0.0,
+                "threshold": 0.3,
+                "direction": "gt",
+                "passed": false,
+                "normalized_score": 0.0
+              },
+              {
+                "name": "latency_median_split_half_tau",
+                "value": 0.0,
+                "threshold": 0.5,
+                "direction": "gt",
+                "passed": false,
+                "normalized_score": 0.0
+              },
+              {
+                "name": "latency_fraction_above_own_null_95th",
+                "value": 0.0,
+                "threshold": 0.5,
+                "direction": "gte",
+                "passed": false,
+                "normalized_score": 0.0
+              },
+              {
+                "name": "latency_median_resolvable_pair_fraction",
+                "value": 0.0,
+                "threshold": 0.5,
+                "direction": "gte",
+                "passed": false,
+                "normalized_score": 0.0
+              },
+              {
+                "name": "lead_lag_fraction_above_own_null_95th",
+                "value": 0.0,
+                "threshold": 0.5,
+                "direction": "gte",
+                "passed": false,
+                "normalized_score": 0.0
+              },
+              {
+                "name": "lead_lag_median_nonzero_pair_fraction",
+                "value": 0.0,
+                "threshold": 0.25,
+                "direction": "gte",
+                "passed": false,
+                "normalized_score": 0.0
+              }
+            ],
+            "score": 0.0
+          },
+          "missing_required_observations": []
+        },
+        {
+          "name": "uncertainty_quantification",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "results/allen_vbn_mechanistic_identifiability_score.json",
+          "rule": "retrospective v2 mapping of the unchanged source predicate",
+          "rationale": "no complete claim-level uncertainty contract is stored",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "distribution_shift",
+          "declared_status": "not_applicable",
+          "effective_status": "not_applicable",
+          "source": "results/allen_vbn_mechanistic_identifiability_score.json",
+          "rule": "retrospective v2 mapping of the unchanged source predicate",
+          "rationale": "the Allen analysis did not target a transport population",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "competing_mechanisms",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "results/allen_vbn_mechanistic_identifiability_score.json",
+          "rule": "retrospective v2 mapping of the unchanged source predicate",
+          "rationale": "the artifact does not evaluate a declared competing-mechanism set",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "robustness",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "results/allen_vbn_mechanistic_identifiability_score.json",
+          "rule": "retrospective v2 mapping of the unchanged source predicate",
+          "rationale": "no locked perturbation-family endpoint is stored",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "data_quality",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "results/allen_vbn_mechanistic_identifiability_score.json",
+          "rule": "retrospective v2 mapping of the unchanged source predicate",
+          "rationale": "the legacy summary does not encode the complete v2 data-quality contract",
+          "observations": {},
+          "missing_required_observations": []
+        }
+      ],
+      "passed_blocks": [
+        "context_of_use"
+      ],
+      "sources": [
+        "results/allen_vbn_mechanistic_identifiability_score.json"
+      ],
+      "interpretation": "The narrowed directed-topology claim remains unauthorized because prediction, topology, direction, uncertainty, shift, alternatives, robustness, and data quality are failed, absent, untargeted, or require review.",
+      "python_asp_equivalent": true
+    },
+    {
+      "case": "allen_vbn_negative",
+      "claim": "complete_entity_specific_mouse_brain_digital_twin",
+      "status": "profile_not_authorized",
+      "authorized": false,
+      "deficits": [
+        {
+          "name": "prediction",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "results/allen_vbn_mechanistic_identifiability_score.json",
+          "rule": "retrospective v2 mapping of the unchanged source predicate",
+          "rationale": "the artifact evaluates target stability rather than a held-out prediction contract",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "internal_reproduction",
+          "declared_status": "requires_review",
+          "effective_status": "requires_review",
+          "source": "results/allen_vbn_mechanistic_identifiability_score.json",
+          "rule": "retrospective v2 mapping of the unchanged source predicate",
+          "rationale": "cross-mouse and split-half stability pass, but overlap and unit identity are not fully encoded",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "external_replication",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "topology_specificity",
+          "declared_status": "failed",
+          "effective_status": "failed",
+          "source": "results/allen_vbn_mechanistic_identifiability_score.json",
+          "rule": "retrospective v2 mapping of the unchanged source predicate",
+          "rationale": "the stored topology block does not outperform its controls",
+          "observations": {
+            "criteria": [
+              {
+                "name": "allen_minus_median_permutation",
+                "value": -0.0053784679059247775,
+                "threshold": 0.05,
+                "direction": "gt",
+                "passed": false,
+                "normalized_score": 0.0
+              },
+              {
+                "name": "fraction_permutations_outperformed",
+                "value": 0.21,
+                "threshold": 0.95,
+                "direction": "gte",
+                "passed": false,
+                "normalized_score": 0.22105263157894736
+              },
+              {
+                "name": "paired_advantage_bootstrap_95_lower",
+                "value": -0.007462997435285529,
+                "threshold": 0.0,
+                "direction": "gt",
+                "passed": false,
+                "normalized_score": 0.0
+              },
+              {
+                "name": "allen_minus_disconnected",
+                "value": 0.0035004355444882007,
+                "threshold": 0.05,
+                "direction": "gt",
+                "passed": false,
+                "normalized_score": 0.07000871088976401
+              }
+            ],
+            "score": 0.07276533561717785
+          },
+          "missing_required_observations": []
+        },
+        {
+          "name": "directed_identifiability",
+          "declared_status": "failed",
+          "effective_status": "failed",
+          "source": "results/allen_vbn_mechanistic_identifiability_score.json",
+          "rule": "retrospective v2 mapping of the unchanged source predicate",
+          "rationale": "the stored latency and lead-lag tests do not identify direction",
+          "observations": {
+            "criteria": [
+              {
+                "name": "latency_median_cross_mouse_tau",
+                "value": 0.0,
+                "threshold": 0.3,
+                "direction": "gt",
+                "passed": false,
+                "normalized_score": 0.0
+              },
+              {
+                "name": "latency_median_split_half_tau",
+                "value": 0.0,
+                "threshold": 0.5,
+                "direction": "gt",
+                "passed": false,
+                "normalized_score": 0.0
+              },
+              {
+                "name": "latency_fraction_above_own_null_95th",
+                "value": 0.0,
+                "threshold": 0.5,
+                "direction": "gte",
+                "passed": false,
+                "normalized_score": 0.0
+              },
+              {
+                "name": "latency_median_resolvable_pair_fraction",
+                "value": 0.0,
+                "threshold": 0.5,
+                "direction": "gte",
+                "passed": false,
+                "normalized_score": 0.0
+              },
+              {
+                "name": "lead_lag_fraction_above_own_null_95th",
+                "value": 0.0,
+                "threshold": 0.5,
+                "direction": "gte",
+                "passed": false,
+                "normalized_score": 0.0
+              },
+              {
+                "name": "lead_lag_median_nonzero_pair_fraction",
+                "value": 0.0,
+                "threshold": 0.25,
+                "direction": "gte",
+                "passed": false,
+                "normalized_score": 0.0
+              }
+            ],
+            "score": 0.0
+          },
+          "missing_required_observations": []
+        },
+        {
+          "name": "causal_intervention",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "whole_brain_coverage",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "independent_validation",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "reproducible_compute",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "entity_specificity",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "operational_compute",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "uncertainty_quantification",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "results/allen_vbn_mechanistic_identifiability_score.json",
+          "rule": "retrospective v2 mapping of the unchanged source predicate",
+          "rationale": "no complete claim-level uncertainty contract is stored",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "distribution_shift",
+          "declared_status": "not_applicable",
+          "effective_status": "not_applicable",
+          "source": "results/allen_vbn_mechanistic_identifiability_score.json",
+          "rule": "retrospective v2 mapping of the unchanged source predicate",
+          "rationale": "the Allen analysis did not target a transport population",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "competing_mechanisms",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "results/allen_vbn_mechanistic_identifiability_score.json",
+          "rule": "retrospective v2 mapping of the unchanged source predicate",
+          "rationale": "the artifact does not evaluate a declared competing-mechanism set",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "network_dependence_control",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "robustness",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "results/allen_vbn_mechanistic_identifiability_score.json",
+          "rule": "retrospective v2 mapping of the unchanged source predicate",
+          "rationale": "no locked perturbation-family endpoint is stored",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "biological_fidelity",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "multiscale_consistency",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "data_quality",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "results/allen_vbn_mechanistic_identifiability_score.json",
+          "rule": "retrospective v2 mapping of the unchanged source predicate",
+          "rationale": "the legacy summary does not encode the complete v2 data-quality contract",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "entity_update",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        }
+      ],
+      "passed_blocks": [
+        "context_of_use"
+      ],
+      "sources": [
+        "results/allen_vbn_mechanistic_identifiability_score.json"
+      ],
+      "interpretation": "The narrowed directed-topology claim remains unauthorized because prediction, topology, direction, uncertainty, shift, alternatives, robustness, and data quality are failed, absent, untargeted, or require review.",
+      "python_asp_equivalent": true
+    },
+    {
+      "case": "sensorium_static_bounded_prediction",
+      "claim": "bounded_predictive_performance",
+      "status": "profile_authorized",
+      "authorized": true,
+      "deficits": [],
+      "passed_blocks": [
+        "prediction",
+        "context_of_use",
+        "data_quality"
+      ],
+      "sources": [
+        "results/sensorium_static_model_comparator/summary.json"
+      ],
+      "interpretation": "The bounded predictive claim may be profile-authorized. It does not establish SOTA performance, topology, direction, mechanism, or external replication.",
+      "python_asp_equivalent": true
+    },
+    {
+      "case": "sensorium_static_bounded_prediction",
+      "claim": "complete_entity_specific_mouse_brain_digital_twin",
+      "status": "profile_not_authorized",
+      "authorized": false,
+      "deficits": [
+        {
+          "name": "internal_reproduction",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "external_replication",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "topology_specificity",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "directed_identifiability",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "causal_intervention",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "whole_brain_coverage",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "independent_validation",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "reproducible_compute",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "entity_specificity",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "operational_compute",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "uncertainty_quantification",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "distribution_shift",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "competing_mechanisms",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "network_dependence_control",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "robustness",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "biological_fidelity",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "multiscale_consistency",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "entity_update",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        }
+      ],
+      "passed_blocks": [
+        "prediction",
+        "context_of_use",
+        "data_quality"
+      ],
+      "sources": [
+        "results/sensorium_static_model_comparator/summary.json"
+      ],
+      "interpretation": "The bounded predictive claim may be profile-authorized. It does not establish SOTA performance, topology, direction, mechanism, or external replication.",
+      "python_asp_equivalent": true
+    },
+    {
+      "case": "dynamic_sensorium_prediction_with_quality_deficit",
+      "claim": "bounded_predictive_performance",
+      "status": "profile_not_authorized",
+      "authorized": false,
+      "deficits": [
+        {
+          "name": "data_quality",
+          "declared_status": "requires_review",
+          "effective_status": "requires_review",
+          "source": "results/dynamic_sensorium_model_comparator/summary.json",
+          "rule": "retrospective v2 mapping of the unchanged source predicate",
+          "rationale": "response reliability is not estimable in the stored cohorts",
+          "observations": {
+            "cohorts": [
+              {
+                "cohort": "dynamic_sensorium2023_oracle",
+                "n_mice": 5,
+                "wins": 4,
+                "median_delta": 0.038886276953342624,
+                "reliability_estimable_count": 0
+              },
+              {
+                "cohort": "dynamic_sensorium_legacy_ood",
+                "n_mice": 5,
+                "wins": 5,
+                "median_delta": 0.03091042171243108,
+                "reliability_estimable_count": 0
+              }
+            ]
+          },
+          "missing_required_observations": []
+        }
+      ],
+      "passed_blocks": [
+        "prediction",
+        "context_of_use"
+      ],
+      "sources": [
+        "results/dynamic_sensorium_model_comparator/summary.json"
+      ],
+      "interpretation": "Prediction passes its stored comparison, but the v2 bounded claim is not authorized because response-reliability quality remains unresolved.",
+      "python_asp_equivalent": true
+    },
+    {
+      "case": "dynamic_sensorium_prediction_with_quality_deficit",
+      "claim": "complete_entity_specific_mouse_brain_digital_twin",
+      "status": "profile_not_authorized",
+      "authorized": false,
+      "deficits": [
+        {
+          "name": "internal_reproduction",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "external_replication",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "topology_specificity",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "directed_identifiability",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "causal_intervention",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "whole_brain_coverage",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "independent_validation",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "reproducible_compute",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "entity_specificity",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "operational_compute",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "uncertainty_quantification",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "distribution_shift",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "competing_mechanisms",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "network_dependence_control",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "robustness",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "biological_fidelity",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "multiscale_consistency",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "data_quality",
+          "declared_status": "requires_review",
+          "effective_status": "requires_review",
+          "source": "results/dynamic_sensorium_model_comparator/summary.json",
+          "rule": "retrospective v2 mapping of the unchanged source predicate",
+          "rationale": "response reliability is not estimable in the stored cohorts",
+          "observations": {
+            "cohorts": [
+              {
+                "cohort": "dynamic_sensorium2023_oracle",
+                "n_mice": 5,
+                "wins": 4,
+                "median_delta": 0.038886276953342624,
+                "reliability_estimable_count": 0
+              },
+              {
+                "cohort": "dynamic_sensorium_legacy_ood",
+                "n_mice": 5,
+                "wins": 5,
+                "median_delta": 0.03091042171243108,
+                "reliability_estimable_count": 0
+              }
+            ]
+          },
+          "missing_required_observations": []
+        },
+        {
+          "name": "entity_update",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        }
+      ],
+      "passed_blocks": [
+        "prediction",
+        "context_of_use"
+      ],
+      "sources": [
+        "results/dynamic_sensorium_model_comparator/summary.json"
+      ],
+      "interpretation": "Prediction passes its stored comparison, but the v2 bounded claim is not authorized because response-reliability quality remains unresolved.",
+      "python_asp_equivalent": true
+    },
+    {
+      "case": "microns_local_association_with_dependence_deficit",
+      "claim": "local_observational_structure_function_association",
+      "status": "profile_not_authorized",
+      "authorized": false,
+      "deficits": [
+        {
+          "name": "network_dependence_control",
+          "declared_status": "requires_review",
+          "effective_status": "requires_review",
+          "source": "results/microns_q1_package/summary.json",
+          "rule": "retrospective v2 mapping of the unchanged source predicate",
+          "rationale": "unit-cluster weighted bootstrap is a stability analysis but not a complete dyadic or network-dependence estimator",
+          "observations": {
+            "inferential_unit": "neuron-weighted directed pair frame",
+            "dependence_structure": "directed pairs share pre- and postsynaptic units",
+            "method": "unit-cluster weighted bootstrap",
+            "estimand": "matched readout-location difference",
+            "result": [
+              {
+                "cohort": "discovery",
+                "distance": {
+                  "n": 300,
+                  "median": 0.021811440377764522,
+                  "ci95_low": 0.01664541931264082,
+                  "ci95_high": 0.026283913768938752
+                },
+                "degree": {
+                  "n": 300,
+                  "median": 0.04051065648360996,
+                  "ci95_low": 0.03486467417490266,
+                  "ci95_high": 0.045416980099525855
+                }
+              },
+              {
+                "cohort": "holdout_offset1000",
+                "distance": {
+                  "n": 300,
+                  "median": 0.020944034875242303,
+                  "ci95_low": 0.01421789459759002,
+                  "ci95_high": 0.026277254959318857
+                },
+                "degree": {
+                  "n": 300,
+                  "median": 0.03774194741508296,
+                  "ci95_low": 0.03214217645795173,
+                  "ci95_high": 0.04309364267864572
+                }
+              },
+              {
+                "cohort": "holdout_offset2000",
+                "distance": {
+                  "n": 300,
+                  "median": 0.018130617014715467,
+                  "ci95_low": 0.011504298671558841,
+                  "ci95_high": 0.023796608417984554
+                },
+                "degree": {
+                  "n": 300,
+                  "median": 0.028700317801537104,
+                  "ci95_low": 0.022873768722809218,
+                  "ci95_high": 0.03536698554630101
+                }
+              }
+            ]
+          },
+          "missing_required_observations": []
+        }
+      ],
+      "passed_blocks": [
+        "structure_function_association",
+        "uncertainty_quantification",
+        "robustness",
+        "context_of_use",
+        "data_quality"
+      ],
+      "sources": [
+        "results/microns_primary_robustness/summary.json",
+        "results/microns_q1_package/summary.json"
+      ],
+      "interpretation": "The local endpoint, uncertainty stability, robustness, context, and data quality pass. The claim remains unauthorized because complete network-dependence inference is absent.",
+      "python_asp_equivalent": true
+    },
+    {
+      "case": "microns_local_association_with_dependence_deficit",
+      "claim": "complete_entity_specific_mouse_brain_digital_twin",
+      "status": "profile_not_authorized",
+      "authorized": false,
+      "deficits": [
+        {
+          "name": "prediction",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "internal_reproduction",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "external_replication",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "topology_specificity",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "directed_identifiability",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "causal_intervention",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "whole_brain_coverage",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "independent_validation",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "reproducible_compute",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "entity_specificity",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "operational_compute",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "distribution_shift",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "competing_mechanisms",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "network_dependence_control",
+          "declared_status": "requires_review",
+          "effective_status": "requires_review",
+          "source": "results/microns_q1_package/summary.json",
+          "rule": "retrospective v2 mapping of the unchanged source predicate",
+          "rationale": "unit-cluster weighted bootstrap is a stability analysis but not a complete dyadic or network-dependence estimator",
+          "observations": {
+            "inferential_unit": "neuron-weighted directed pair frame",
+            "dependence_structure": "directed pairs share pre- and postsynaptic units",
+            "method": "unit-cluster weighted bootstrap",
+            "estimand": "matched readout-location difference",
+            "result": [
+              {
+                "cohort": "discovery",
+                "distance": {
+                  "n": 300,
+                  "median": 0.021811440377764522,
+                  "ci95_low": 0.01664541931264082,
+                  "ci95_high": 0.026283913768938752
+                },
+                "degree": {
+                  "n": 300,
+                  "median": 0.04051065648360996,
+                  "ci95_low": 0.03486467417490266,
+                  "ci95_high": 0.045416980099525855
+                }
+              },
+              {
+                "cohort": "holdout_offset1000",
+                "distance": {
+                  "n": 300,
+                  "median": 0.020944034875242303,
+                  "ci95_low": 0.01421789459759002,
+                  "ci95_high": 0.026277254959318857
+                },
+                "degree": {
+                  "n": 300,
+                  "median": 0.03774194741508296,
+                  "ci95_low": 0.03214217645795173,
+                  "ci95_high": 0.04309364267864572
+                }
+              },
+              {
+                "cohort": "holdout_offset2000",
+                "distance": {
+                  "n": 300,
+                  "median": 0.018130617014715467,
+                  "ci95_low": 0.011504298671558841,
+                  "ci95_high": 0.023796608417984554
+                },
+                "degree": {
+                  "n": 300,
+                  "median": 0.028700317801537104,
+                  "ci95_low": 0.022873768722809218,
+                  "ci95_high": 0.03536698554630101
+                }
+              }
+            ]
+          },
+          "missing_required_observations": []
+        },
+        {
+          "name": "biological_fidelity",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "multiscale_consistency",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "entity_update",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        }
+      ],
+      "passed_blocks": [
+        "uncertainty_quantification",
+        "robustness",
+        "context_of_use",
+        "data_quality"
+      ],
+      "sources": [
+        "results/microns_primary_robustness/summary.json",
+        "results/microns_q1_package/summary.json"
+      ],
+      "interpretation": "The local endpoint, uncertainty stability, robustness, context, and data quality pass. The claim remains unauthorized because complete network-dependence inference is absent.",
+      "python_asp_equivalent": true
+    },
+    {
+      "case": "ibl_behavior_topology_specific_prediction",
+      "claim": "topology_specific_prediction",
+      "status": "profile_authorized",
+      "authorized": true,
+      "deficits": [],
+      "passed_blocks": [
+        "prediction",
+        "topology_specificity",
+        "uncertainty_quantification",
+        "robustness",
+        "context_of_use"
+      ],
+      "sources": [
+        "results/ibl_behavior_v5_confirmation/summary.json",
+        "configs/benchmarks/ibl_behavior_v5_confirmation.yaml"
+      ],
+      "interpretation": "The bounded topology-specific behavioral prediction is profile-authorized across two locked mouse splits. Simple source comparators also passed, and all mice share the IBL task ecosystem, so no exclusive superiority or laboratory replication follows.",
+      "python_asp_equivalent": true
+    },
+    {
+      "case": "ibl_behavior_topology_specific_prediction",
+      "claim": "complete_entity_specific_mouse_brain_digital_twin",
+      "status": "profile_not_authorized",
+      "authorized": false,
+      "deficits": [
+        {
+          "name": "internal_reproduction",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "external_replication",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "directed_identifiability",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "causal_intervention",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "whole_brain_coverage",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "independent_validation",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "reproducible_compute",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "entity_specificity",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "operational_compute",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "distribution_shift",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "competing_mechanisms",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "network_dependence_control",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "biological_fidelity",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "multiscale_consistency",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "data_quality",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        },
+        {
+          "name": "entity_update",
+          "declared_status": "unknown",
+          "effective_status": "unknown",
+          "source": "missing",
+          "rule": "no evidence predicate was executed",
+          "rationale": "required evidence block is absent",
+          "observations": {},
+          "missing_required_observations": []
+        }
+      ],
+      "passed_blocks": [
+        "prediction",
+        "topology_specificity",
+        "uncertainty_quantification",
+        "robustness",
+        "context_of_use"
+      ],
+      "sources": [
+        "results/ibl_behavior_v5_confirmation/summary.json",
+        "configs/benchmarks/ibl_behavior_v5_confirmation.yaml"
+      ],
+      "interpretation": "The bounded topology-specific behavioral prediction is profile-authorized across two locked mouse splits. Simple source comparators also passed, and all mice share the IBL task ecosystem, so no exclusive superiority or laboratory replication follows.",
+      "python_asp_equivalent": true
+    }
+  ],
+  "release_conditions": {
+    "no_complete_twin_authorized": true,
+    "all_decisions_have_complete_deficit_traces": true,
+    "python_asp_equivalence_for_all_case_decisions": true
+  },
+  "all_release_conditions_passed": true,
+  "interpretation": "This is a retrospective application of v2 to existing artifacts whose outcomes were already known. It evaluates stricter claim scope and trace behavior, not prospective scientific performance or independent validation.",
+  "decision": "profile_v2_artifact_application_complete"
+}

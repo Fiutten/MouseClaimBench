@@ -1,0 +1,64 @@
+{
+  "version": "0.9.0",
+  "git_revision": "9d4d4fa2a2fe023b1a1e31d58b8cf265d62c9566",
+  "analysis": "profile_v2_hardening_release",
+  "protocol": "configs/benchmarks/profile_v2_release.yaml",
+  "protocol_sha256": "26feea273a7a389e02176047e76b02d0c0b2e153faac895c9ffa823fb4ac0be7",
+  "artifact_revisions": {
+    "resolution": "9d4d4fa2a2fe023b1a1e31d58b8cf265d62c9566",
+    "mutation": "9d4d4fa2a2fe023b1a1e31d58b8cf265d62c9566",
+    "application": "9d4d4fa2a2fe023b1a1e31d58b8cf265d62c9566",
+    "semantic_risk_v5": "7375166",
+    "ibl": "3ebbca95660d7dfa80cd3a0b853e72694a630dd3",
+    "orthogonal_shifts": "3ebbca95660d7dfa80cd3a0b853e72694a630dd3"
+  },
+  "conditions": {
+    "all_internal_audit_issues_mapped": true,
+    "mutation_primary_endpoints_pass": true,
+    "independent_asp_conformance_passes": true,
+    "at_least_two_bounded_real_target_authorizations": true,
+    "no_complete_twin_authorized": true,
+    "existing_hierarchical_risk_core_confirmed": true,
+    "real_mouse_population_evidence_present": true,
+    "heterogeneous_shift_failures_remain_visible": true,
+    "all_artifact_revisions_clean": true
+  },
+  "all_release_conditions_passed": true,
+  "contract_mutation_cases": 5497,
+  "contract_mutation_false_authorizations": 0,
+  "asp_conformance_cases": 262,
+  "real_artifact_cases": 5,
+  "bounded_real_target_authorizations": 2,
+  "strict_twin_authorizations": 0,
+  "ibl_locked_mice": 70,
+  "orthogonal_shift_families": 4,
+  "orthogonal_shift_certificate_failures": 2,
+  "claim_policy": {
+    "external_content_validity_required": false,
+    "reason": "Profile v2 is presented as author-defined executable requirements engineering, not as a consensus taxonomy or human-validated instrument.",
+    "human_utility_claim_allowed": false,
+    "consensus_taxonomy_claim_allowed": false,
+    "scientific_truth_claim_allowed": false,
+    "q1_acceptance_guarantee_allowed": false
+  },
+  "claim_boundaries": {
+    "external_content_validity_claimed": false,
+    "human_utility_claimed": false,
+    "consensus_taxonomy_claimed": false,
+    "scientific_truth_claimed": false,
+    "q1_acceptance_guaranteed": false,
+    "profile_v2_prospective_external_validation": false
+  },
+  "technically_ready_for_manuscript_revision": true,
+  "publication_assessment": "bounded_methodological_submission_candidate_not_acceptance_guarantee",
+  "remaining_scientific_limits": [
+    "profile v2 is author-defined and not a consensus taxonomy",
+    "artifact application is retrospective rather than a new blind v2 evaluation",
+    "only one shared IBL task ecosystem supplies real mouse-population risk evidence",
+    "simple IBL comparators also pass, so exclusive algorithmic superiority is unsupported",
+    "MICRONS remains unauthorized until dependence-aware network inference is added",
+    "no human trace-utility or decision-quality claim is evaluated"
+  ],
+  "interpretation": "Passing this release makes the v2 package technically ready for manuscript revision as a bounded formal knowledge-system contribution. It does not imply editorial acceptance, scientific completeness, prospective external v2 validation, or improved human decisions.",
+  "decision": "profile_v2_technical_release_complete"
+}

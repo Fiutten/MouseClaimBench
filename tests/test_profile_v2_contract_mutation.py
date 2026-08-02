@@ -1,3 +1,6 @@
+import json
+from pathlib import Path
+
 from mousebrainbench.benchmarks.profile_v2_contract_mutation import (
     _asp_selection,
     evaluate,
@@ -53,3 +56,20 @@ def test_v2_passes_mutation_endpoints_and_shortcuts_fail() -> None:
         value > 0 for value in summary["comparator_false_authorizations"].values()
     )
     assert summary["prioritized_single_reason_trace"]["exact_deficit_rate"] < 1.0
+
+
+def test_frozen_mutation_artifact_has_exact_counts_and_clean_revision() -> None:
+    payload = json.loads(
+        Path("results/profile_v2_contract_mutation/summary.json").read_text()
+    )
+
+    assert payload["cases"] == 5_497
+    assert payload["mutation_cases"] == 5_487
+    assert payload["profile_v2"]["false_authorizations"] == 0
+    assert payload["profile_v2"]["exact_deficit_rate"] == 1.0
+    assert payload["asp_conformance"] == {
+        "cases": 262,
+        "exact_status_and_deficit_matches": 262,
+        "rate": 1.0,
+    }
+    assert not payload["git_revision"].endswith("-dirty")

@@ -1,3 +1,4 @@
+import json
 from pathlib import Path
 
 import pandas as pd
@@ -20,3 +21,16 @@ def test_v2_maps_every_internal_audit_issue_without_claiming_humans() -> None:
     assert result["all_conditions_passed"] is True
     assert result["external_content_validity"] is False
     assert result["human_validation"] is False
+
+
+def test_frozen_resolution_audit_is_complete_and_clean() -> None:
+    payload = json.loads(
+        Path("results/profile_v2_resolution_audit/summary.json").read_text()
+    )
+
+    assert payload["parent_nonretained_items"] == 20
+    assert payload["resolution_items"] == 20
+    assert payload["unresolved_items"] == []
+    assert payload["unresolved_source_ids"] == []
+    assert payload["all_conditions_passed"] is True
+    assert not payload["git_revision"].endswith("-dirty")

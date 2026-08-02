@@ -1,3 +1,4 @@
+import json
 from pathlib import Path
 
 import yaml
@@ -24,3 +25,12 @@ def test_profile_v2_release_is_technical_not_consensus_or_acceptance_claim() -> 
     assert result["publication_assessment"] == (
         "bounded_methodological_submission_candidate_not_acceptance_guarantee"
     )
+
+
+def test_frozen_profile_v2_release_is_clean_and_complete() -> None:
+    payload = json.loads(Path("results/profile_v2_release/summary.json").read_text())
+
+    assert payload["decision"] == "profile_v2_technical_release_complete"
+    assert payload["technically_ready_for_manuscript_revision"] is True
+    assert all(payload["conditions"].values())
+    assert not payload["git_revision"].endswith("-dirty")

@@ -186,6 +186,14 @@ provenance fields, and mixed deficits are returned together without priority
 masking. The profile remains author-defined and makes no consensus-validity or
 human-evaluation claim.
 
+The frozen v2 hardening release evaluates 5,497 deterministic contract cases,
+262 independent ASP conformance cases, and five artifact-grounded applications.
+It reports zero contract false authorizations, exact recovery of every deficit
+set, two bounded real target authorizations, and zero complete-twin
+authorizations. These are formal and retrospective application results, not
+content validity or scientific-truth verification. See
+`docs/PROFILE_V2_RESULTS_AND_PUBLICATION_STATUS.md`.
+
 Version 5.4 adds four orthogonal TimeGraph families with 13 evaluable levels.
 The fixed policy loses simultaneous certification under Student-t noise with two
 degrees of freedom and at eight variables. It remains certified across maximum
@@ -200,6 +208,8 @@ Reproduce the full v5 pipeline from a clean revision with:
 
 ```bash
 ENV_PATH=.venv-risk-v3 bash scripts/reproduce_semantic_risk_v5.sh
+
+ENV_PATH=.venv-risk-v3 bash scripts/reproduce_profile_v2.sh
 ```
 
 The accurate status is: methodological core confirmed for one synthetic
