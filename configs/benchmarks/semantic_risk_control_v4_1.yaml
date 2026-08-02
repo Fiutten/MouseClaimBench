@@ -1,0 +1,79 @@
+protocol_id: mouseclaimbench_semantic_risk_control
+version: 4.1.0
+status: frozen_after_v4_negative_before_final_outcome_access
+freeze_date: 2026-08-02
+parent_protocol: configs/benchmarks/semantic_risk_control_v4.yaml
+parent_external_result: results/causal_chambers_v4_confirmation/summary.json
+
+development_population:
+  consumed_roles: [target_calibration, risk_lock]
+  experiments: 117
+  role_after_v4_failure: development_only
+  final_role_consumed: false
+
+claim_family_selection:
+  rule: >-
+    Calibrate each declared family separately on the pooled development
+    experiments under the complete risk, coverage, and recovery contract. Retain
+    only families with a non-degenerate certificate, then recalibrate one joint
+    threshold using the experiment-level any-false-authorization event.
+  declared_families:
+    - predictive
+    - internally_reproduced
+    - topology_specific
+    - directed
+    - mechanistic
+    - causal
+  selected_families:
+    - predictive
+    - internally_reproduced
+  excluded_families:
+    topology_specific: no_nondegenerate_development_certificate
+    directed: no_nondegenerate_development_certificate
+    mechanistic: no_nondegenerate_development_certificate
+    causal: no_nondegenerate_development_certificate
+  selection_is_data_dependent: true
+  selection_is_confirmatory_evidence: false
+
+frozen_policy:
+  semantic_gate_required: true
+  score_threshold: 1.0
+  threshold_source: pooled_development_calibration
+  score_model_refitted: false
+  knowledge_profile_changed: false
+
+final_evaluation:
+  datasets:
+    - lt_walks_v1
+    - wt_intake_impulse_v1
+    - wt_validate_v1
+  labels_or_csv_values_accessed_before_freeze: false
+  threshold_changes_permitted: false
+  claim_family_changes_permitted: false
+  risk_target: 0.10
+  confidence: 0.95
+  minimum_coverage: 0.10
+  minimum_positive_recovery: 0.05
+  semantic_violations_permitted: 0
+  success_requires_all:
+    - experiment_failure_upper_bound_at_or_below_0_10
+    - experiment_coverage_lower_bound_at_or_above_0_10
+    - positive_recovery_lower_bound_at_or_above_0_05
+    - semantic_violations_equal_0
+
+interpretation_if_passed: >-
+  Positive external confirmation is limited to predictive and internal-
+  reproduction authorizations in the declared physical-experiment population.
+interpretation_if_failed: >-
+  The v4.1 selected policy lacks external support. No further use of the final
+  datasets for confirmatory tuning is permitted.
+
+prohibited_claims:
+  - external_topology_confirmation
+  - external_direction_confirmation
+  - external_mechanism_confirmation
+  - external_causal_confirmation
+  - universal_transfer
+  - independence_of_pair_rows
+  - consensus_validated_knowledge_profile
+
