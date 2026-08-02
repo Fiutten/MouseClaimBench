@@ -1,0 +1,91 @@
+{
+  "version": "0.9.0",
+  "git_revision": "9f20771",
+  "analysis": "causal_chambers_physical_transport_audit_v3",
+  "source": "official causalchamber package and published ground-truth graphs",
+  "causalchamber_version": "0.2.8",
+  "license": "CC BY 4.0 data; MIT package",
+  "datasets": [
+    "lt_test_v1",
+    "wt_test_v1"
+  ],
+  "dataset_file_hashes": {
+    "data/external/causal_chambers/lt_test_v1/analog_calibration.csv": "sha256:a64add270c9057fe13ff88bbb6cc9b01e7a48d47f42df0ef223b61f2a588da41",
+    "data/external/causal_chambers/lt_test_v1/angle_sensors.csv": "sha256:0ccbe561a9df4136ed305b366640793e24cd8f11b404ee5100ab22ef572598bf",
+    "data/external/causal_chambers/lt_test_v1/current_sensor.csv": "sha256:6c5ffac382c2a372f925c9dc5803a8045a7aae57561cc1dbe9ae473d26283cca",
+    "data/external/causal_chambers/lt_test_v1/ir_sensors.csv": "sha256:c091a494349796bed784375ee6771bebdeebb1092415deb48bbb5a3a68bd50df",
+    "data/external/causal_chambers/wt_test_v1/analog_calibration.csv": "sha256:24bb50e6bd7b3b867f2bc5fd9f40f44b670b552c43cdd2aa4be32d747ec41dab",
+    "data/external/causal_chambers/wt_test_v1/mic_effects.csv": "sha256:a31b4c000dd028e7b3392e25a2211e3abbaf3603c7c0668a0125bc47990a1e87",
+    "data/external/causal_chambers/wt_test_v1/no_load.csv": "sha256:b2a3104429a631061033ed036e799619ecf7a38cbdf07b39647573e6f619cc26",
+    "data/external/causal_chambers/wt_test_v1/osr_barometers.csv": "sha256:17738c98ece9c5c6662f4b07d935f1a245f77d621b7e9e2db8f337fbff93cc72",
+    "data/external/causal_chambers/wt_test_v1/osr_mic.csv": "sha256:c20348201f5b4da75b940bbc99d91c42d02d5f07ebd0f4978de84fa1cd85e00c",
+    "data/external/causal_chambers/wt_test_v1/potis_coarse.csv": "sha256:34a011a6505e9340582bb9d99f67ea752cced750600ca525e697951d0fe3def0",
+    "data/external/causal_chambers/wt_test_v1/potis_fine.csv": "sha256:a51fd6652ab125ced3edd7e16b201b0fa4a6963c8cacfb546cb1459904a932c9",
+    "data/external/causal_chambers/wt_test_v1/steps.csv": "sha256:c67518fe7e7605478a763fa2835b8774d9ea6dc4d78934e75439ede06f190eba",
+    "data/external/causal_chambers/wt_test_v1/tach_resolution.csv": "sha256:a88a370fbbbcf86caa1f2d44c003cd3e61a646533a3cbfc7f6461cf70cd69b08",
+    "data/external/causal_chambers/wt_test_v1/zero_load.csv": "sha256:5aa39fdc0336fbbeeb388e368ef14154cac5bd272203afbf33221a7ca74be934"
+  },
+  "frozen_score_model_hash": "sha256:b8e42c0a90a9ca676c3c587abb2b1107fa12fe43c1bd3b63bb9227d657663c50",
+  "frozen_risk_policy_hash": "sha256:454e58456d31a6ed2c7532ea3fc276a7a4769773dee3b7c767454e2ab2a3cb4a",
+  "score_model_refitted": false,
+  "risk_policy_recalibrated": false,
+  "pairs": 306,
+  "experiments": 14,
+  "variable_claims": [
+    "predictive",
+    "internally_reproduced",
+    "topology_specific",
+    "directed",
+    "mechanistic",
+    "causal"
+  ],
+  "by_partition": [
+    {
+      "partition": "calibration_context",
+      "cases": 136,
+      "claim_families": 6,
+      "authorizations": 166,
+      "false_authorizations": 16,
+      "supported_coverage": 0.2034313725490196,
+      "semantic_false_authorization_risk": 0.0963855421686747,
+      "semantic_support_violations": 0,
+      "experiments": [
+        "lt_test_v1/current_sensor",
+        "wt_test_v1/analog_calibration",
+        "wt_test_v1/no_load",
+        "wt_test_v1/osr_barometers",
+        "wt_test_v1/tach_resolution",
+        "wt_test_v1/zero_load"
+      ],
+      "direct_edge_cases": 68,
+      "guarantee_transport_valid": false,
+      "guarantee_limitation": "the frozen synthetic LTT certificate does not cover physical-domain shift, and edge pairs are dependent within experiments"
+    },
+    {
+      "partition": "locked_test",
+      "cases": 170,
+      "claim_families": 6,
+      "authorizations": 247,
+      "false_authorizations": 13,
+      "supported_coverage": 0.24215686274509804,
+      "semantic_false_authorization_risk": 0.05263157894736842,
+      "semantic_support_violations": 0,
+      "experiments": [
+        "lt_test_v1/analog_calibration",
+        "lt_test_v1/angle_sensors",
+        "lt_test_v1/ir_sensors",
+        "wt_test_v1/mic_effects",
+        "wt_test_v1/osr_mic",
+        "wt_test_v1/potis_coarse",
+        "wt_test_v1/potis_fine",
+        "wt_test_v1/steps"
+      ],
+      "direct_edge_cases": 85,
+      "guarantee_transport_valid": false,
+      "guarantee_limitation": "the frozen synthetic LTT certificate does not cover physical-domain shift, and edge pairs are dependent within experiments"
+    }
+  ],
+  "locked_test_zero_semantic_violations": true,
+  "causal_or_directional_claims_from_pair_association_allowed": false,
+  "decision": "physical_transport_completed_without_semantic_violation"
+}
