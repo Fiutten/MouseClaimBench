@@ -44,6 +44,7 @@ semantic-risk-v3 = [
   "mapie==1.4.1",
   "ONE-api==3.5.2",
   "openpyxl==3.1.5",
+  "requests>=2.32,<3",
 ]
 
 [project.scripts]

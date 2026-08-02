@@ -7,8 +7,8 @@ import hashlib
 import shutil
 import zipfile
 from pathlib import Path
-from urllib import request
 
+import requests
 import yaml
 
 BASE_URL = "https://causalchamber.s3.eu-central-1.amazonaws.com/downloadables"
@@ -32,11 +32,12 @@ def run(manifest: Path, root: Path) -> None:
         destination = root / name
         if not archive.exists() or _md5(archive) != expected:
             temporary = archive.with_suffix(".zip.part")
-            with (
-                request.urlopen(f"{BASE_URL}/{name}.zip") as response,
-                temporary.open("wb") as stream,
-            ):
-                shutil.copyfileobj(response, stream)
+            with requests.get(
+                f"{BASE_URL}/{name}.zip", stream=True, timeout=(30, 300)
+            ) as response:
+                response.raise_for_status()
+                with temporary.open("wb") as stream:
+                    shutil.copyfileobj(response.raw, stream)
             temporary.replace(archive)
         observed = _md5(archive)
         if observed != expected:
