@@ -1,0 +1,34 @@
+{
+  "version": "0.9.0",
+  "git_revision": "0b7a206",
+  "analysis": "direction_router_association_precondition_audit_v1",
+  "analysis_role": "post_confirmation_exploratory_repair",
+  "frozen_primary_router_unchanged": true,
+  "no_association_regimes": [
+    "independent_heavy_tailed"
+  ],
+  "precondition": "Observational direction routing requires independently declared evidence that association is established.",
+  "original": {
+    "cases": 7200,
+    "attempts": 3600,
+    "coverage": 0.5,
+    "attempted_accuracy": 0.8244444444444444,
+    "identifiable_regime_attempted_accuracy": 0.9422222222222222,
+    "spurious_attempts_without_reference_direction": 450
+  },
+  "with_association_precondition": {
+    "cases": 7200,
+    "attempts": 3150,
+    "coverage": 0.4375,
+    "attempted_accuracy": 0.9422222222222222,
+    "identifiable_regime_attempted_accuracy": 0.9422222222222222,
+    "spurious_attempts_without_reference_direction": 0
+  },
+  "removed_attempts": 450,
+  "decision": "precondition_removes_archived_spurious_attempts",
+  "limits": [
+    "The no-association regime was identified after the primary v3 result.",
+    "Association status is supplied by synthetic ground truth, not estimated from data.",
+    "The repair requires a new frozen protocol and fresh cases before confirmatory use."
+  ]
+}
