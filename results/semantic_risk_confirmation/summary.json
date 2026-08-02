@@ -1,0 +1,405 @@
+{
+  "version": "0.9.0",
+  "git_revision": "7676b8d",
+  "analysis": "semantic_risk_control_synthetic_confirmation_v3",
+  "protocol_id": "mouseclaimbench_semantic_risk_control",
+  "protocol_version": "3.0.0",
+  "protocol_hash": "sha256:68d48963dd2483f69fea2d050967301cda029199cbce71f0f79d8413e158a790",
+  "frozen_score_model_hash": "sha256:b8e42c0a90a9ca676c3c587abb2b1107fa12fe43c1bd3b63bb9227d657663c50",
+  "frozen_risk_policy_hash": "sha256:454e58456d31a6ed2c7532ea3fc276a7a4769773dee3b7c767454e2ab2a3cb4a",
+  "score_model_refitted": false,
+  "risk_policy_recalibrated": false,
+  "test_mode": false,
+  "scale_matches_frozen_protocol": true,
+  "cases": 7200,
+  "variable_claims": [
+    "predictive",
+    "internally_reproduced",
+    "topology_specific",
+    "directed",
+    "mechanistic",
+    "causal"
+  ],
+  "regimes": [
+    "independent_heavy_tailed",
+    "confounded_sine",
+    "confounded_piecewise",
+    "reverse_quadratic_additive",
+    "direct_sigmoid_additive",
+    "direct_cubic_additive",
+    "direct_linear_laplace",
+    "direct_linear_uniform",
+    "direct_interventional_quadratic",
+    "direct_interventional_sigmoid",
+    "direct_post_nonlinear",
+    "direct_heteroscedastic",
+    "measurement_error_direct",
+    "collider_selection",
+    "confounded_direct",
+    "direct_multiplicative_noise"
+  ],
+  "sample_sizes": [
+    200,
+    800,
+    2000
+  ],
+  "noise_scales": [
+    0.5,
+    1.0,
+    1.75
+  ],
+  "seeds_per_cell": 50,
+  "workers": 8,
+  "case_artifact": "results/semantic_risk_confirmation/cases.npz",
+  "case_artifact_sha256": "sha256:a34e52b84522390e22779d0a3f2c484ff3210647aca9acc9b5b47285e8654311",
+  "aggregate_by_policy": [
+    {
+      "policy": "naive_probability_threshold",
+      "cases": 7200,
+      "claim_families": 6,
+      "authorizations": 29494,
+      "false_authorizations": 1451,
+      "supported_coverage": 0.6827314814814814,
+      "semantic_false_authorization_risk": 0.049196446734929136,
+      "semantic_support_violations": 4701,
+      "per_claim": [
+        {
+          "claim": "predictive",
+          "cases": 7200,
+          "claim_families": 1,
+          "authorizations": 6775,
+          "false_authorizations": 30,
+          "supported_coverage": 0.9409722222222222,
+          "semantic_false_authorization_risk": 0.004428044280442804
+        },
+        {
+          "claim": "internally_reproduced",
+          "cases": 7200,
+          "claim_families": 1,
+          "authorizations": 6775,
+          "false_authorizations": 30,
+          "supported_coverage": 0.9409722222222222,
+          "semantic_false_authorization_risk": 0.004428044280442804
+        },
+        {
+          "claim": "topology_specific",
+          "cases": 7200,
+          "claim_families": 1,
+          "authorizations": 5188,
+          "false_authorizations": 99,
+          "supported_coverage": 0.7205555555555555,
+          "semantic_false_authorization_risk": 0.019082498072474943
+        },
+        {
+          "claim": "directed",
+          "cases": 7200,
+          "claim_families": 1,
+          "authorizations": 4928,
+          "false_authorizations": 646,
+          "supported_coverage": 0.6844444444444444,
+          "semantic_false_authorization_risk": 0.13108766233766234
+        },
+        {
+          "claim": "mechanistic",
+          "cases": 7200,
+          "claim_families": 1,
+          "authorizations": 4928,
+          "false_authorizations": 646,
+          "supported_coverage": 0.6844444444444444,
+          "semantic_false_authorization_risk": 0.13108766233766234
+        },
+        {
+          "claim": "causal",
+          "cases": 7200,
+          "claim_families": 1,
+          "authorizations": 900,
+          "false_authorizations": 0,
+          "supported_coverage": 0.125,
+          "semantic_false_authorization_risk": 0.0
+        }
+      ]
+    },
+    {
+      "policy": "semantic_gate_without_risk_control",
+      "cases": 7200,
+      "claim_families": 6,
+      "authorizations": 24793,
+      "false_authorizations": 76,
+      "supported_coverage": 0.5739120370370371,
+      "semantic_false_authorization_risk": 0.0030653813576412697,
+      "semantic_support_violations": 0,
+      "per_claim": [
+        {
+          "claim": "predictive",
+          "cases": 7200,
+          "claim_families": 1,
+          "authorizations": 6634,
+          "false_authorizations": 1,
+          "supported_coverage": 0.9213888888888889,
+          "semantic_false_authorization_risk": 0.00015073861923424781
+        },
+        {
+          "claim": "internally_reproduced",
+          "cases": 7200,
+          "claim_families": 1,
+          "authorizations": 6553,
+          "false_authorizations": 0,
+          "supported_coverage": 0.9101388888888889,
+          "semantic_false_authorization_risk": 0.0
+        },
+        {
+          "claim": "topology_specific",
+          "cases": 7200,
+          "claim_families": 1,
+          "authorizations": 5113,
+          "false_authorizations": 74,
+          "supported_coverage": 0.7101388888888889,
+          "semantic_false_authorization_risk": 0.01447291218462742
+        },
+        {
+          "claim": "directed",
+          "cases": 7200,
+          "claim_families": 1,
+          "authorizations": 2807,
+          "false_authorizations": 1,
+          "supported_coverage": 0.3898611111111111,
+          "semantic_false_authorization_risk": 0.0003562522265764161
+        },
+        {
+          "claim": "mechanistic",
+          "cases": 7200,
+          "claim_families": 1,
+          "authorizations": 2786,
+          "false_authorizations": 0,
+          "supported_coverage": 0.3869444444444444,
+          "semantic_false_authorization_risk": 0.0
+        },
+        {
+          "claim": "causal",
+          "cases": 7200,
+          "claim_families": 1,
+          "authorizations": 900,
+          "false_authorizations": 0,
+          "supported_coverage": 0.125,
+          "semantic_false_authorization_risk": 0.0
+        }
+      ]
+    },
+    {
+      "policy": "unconstrained_MAPIE_risk_control",
+      "cases": 7200,
+      "claim_families": 6,
+      "authorizations": 27414,
+      "false_authorizations": 328,
+      "supported_coverage": 0.6345833333333334,
+      "semantic_false_authorization_risk": 0.011964689574669876,
+      "semantic_support_violations": 3196,
+      "per_claim": [
+        {
+          "claim": "predictive",
+          "cases": 7200,
+          "claim_families": 1,
+          "authorizations": 6849,
+          "false_authorizations": 99,
+          "supported_coverage": 0.95125,
+          "semantic_false_authorization_risk": 0.01445466491458607
+        },
+        {
+          "claim": "internally_reproduced",
+          "cases": 7200,
+          "claim_families": 1,
+          "authorizations": 6849,
+          "false_authorizations": 99,
+          "supported_coverage": 0.95125,
+          "semantic_false_authorization_risk": 0.01445466491458607
+        },
+        {
+          "claim": "topology_specific",
+          "cases": 7200,
+          "claim_families": 1,
+          "authorizations": 5196,
+          "false_authorizations": 104,
+          "supported_coverage": 0.7216666666666667,
+          "semantic_false_authorization_risk": 0.020015396458814474
+        },
+        {
+          "claim": "directed",
+          "cases": 7200,
+          "claim_families": 1,
+          "authorizations": 3810,
+          "false_authorizations": 13,
+          "supported_coverage": 0.5291666666666667,
+          "semantic_false_authorization_risk": 0.0034120734908136482
+        },
+        {
+          "claim": "mechanistic",
+          "cases": 7200,
+          "claim_families": 1,
+          "authorizations": 3810,
+          "false_authorizations": 13,
+          "supported_coverage": 0.5291666666666667,
+          "semantic_false_authorization_risk": 0.0034120734908136482
+        },
+        {
+          "claim": "causal",
+          "cases": 7200,
+          "claim_families": 1,
+          "authorizations": 900,
+          "false_authorizations": 0,
+          "supported_coverage": 0.125,
+          "semantic_false_authorization_risk": 0.0
+        }
+      ]
+    },
+    {
+      "policy": "semantic_MAPIE_risk_control",
+      "cases": 7200,
+      "claim_families": 6,
+      "authorizations": 24223,
+      "false_authorizations": 76,
+      "supported_coverage": 0.5607175925925926,
+      "semantic_false_authorization_risk": 0.0031375139330388473,
+      "semantic_support_violations": 0,
+      "per_claim": [
+        {
+          "claim": "predictive",
+          "cases": 7200,
+          "claim_families": 1,
+          "authorizations": 6635,
+          "false_authorizations": 2,
+          "supported_coverage": 0.9215277777777777,
+          "semantic_false_authorization_risk": 0.0003014318010550113
+        },
+        {
+          "claim": "internally_reproduced",
+          "cases": 7200,
+          "claim_families": 1,
+          "authorizations": 6553,
+          "false_authorizations": 0,
+          "supported_coverage": 0.9101388888888889,
+          "semantic_false_authorization_risk": 0.0
+        },
+        {
+          "claim": "topology_specific",
+          "cases": 7200,
+          "claim_families": 1,
+          "authorizations": 5119,
+          "false_authorizations": 74,
+          "supported_coverage": 0.7109722222222222,
+          "semantic_false_authorization_risk": 0.014455948427427232
+        },
+        {
+          "claim": "directed",
+          "cases": 7200,
+          "claim_families": 1,
+          "authorizations": 2511,
+          "false_authorizations": 0,
+          "supported_coverage": 0.34875,
+          "semantic_false_authorization_risk": 0.0
+        },
+        {
+          "claim": "mechanistic",
+          "cases": 7200,
+          "claim_families": 1,
+          "authorizations": 2505,
+          "false_authorizations": 0,
+          "supported_coverage": 0.34791666666666665,
+          "semantic_false_authorization_risk": 0.0
+        },
+        {
+          "claim": "causal",
+          "cases": 7200,
+          "claim_families": 1,
+          "authorizations": 900,
+          "false_authorizations": 0,
+          "supported_coverage": 0.125,
+          "semantic_false_authorization_risk": 0.0
+        }
+      ]
+    },
+    {
+      "policy": "evidence_contract_only",
+      "cases": 7200,
+      "claim_families": 6,
+      "authorizations": 25327,
+      "false_authorizations": 207,
+      "supported_coverage": 0.5862731481481481,
+      "semantic_false_authorization_risk": 0.008173095905555336,
+      "semantic_support_violations": 0,
+      "per_claim": [
+        {
+          "claim": "predictive",
+          "cases": 7200,
+          "claim_families": 1,
+          "authorizations": 6635,
+          "false_authorizations": 2,
+          "supported_coverage": 0.9215277777777777,
+          "semantic_false_authorization_risk": 0.0003014318010550113
+        },
+        {
+          "claim": "internally_reproduced",
+          "cases": 7200,
+          "claim_families": 1,
+          "authorizations": 6553,
+          "false_authorizations": 0,
+          "supported_coverage": 0.9101388888888889,
+          "semantic_false_authorization_risk": 0.0
+        },
+        {
+          "claim": "topology_specific",
+          "cases": 7200,
+          "claim_families": 1,
+          "authorizations": 5120,
+          "false_authorizations": 74,
+          "supported_coverage": 0.7111111111111111,
+          "semantic_false_authorization_risk": 0.014453125
+        },
+        {
+          "claim": "directed",
+          "cases": 7200,
+          "claim_families": 1,
+          "authorizations": 3151,
+          "false_authorizations": 131,
+          "supported_coverage": 0.4376388888888889,
+          "semantic_false_authorization_risk": 0.041574103459219296
+        },
+        {
+          "claim": "mechanistic",
+          "cases": 7200,
+          "claim_families": 1,
+          "authorizations": 2968,
+          "false_authorizations": 0,
+          "supported_coverage": 0.4122222222222222,
+          "semantic_false_authorization_risk": 0.0
+        },
+        {
+          "claim": "causal",
+          "cases": 7200,
+          "claim_families": 1,
+          "authorizations": 900,
+          "false_authorizations": 0,
+          "supported_coverage": 0.125,
+          "semantic_false_authorization_risk": 0.0
+        }
+      ]
+    }
+  ],
+  "direction_router": {
+    "cases": 7200,
+    "attempts": 3600,
+    "coverage": 0.5,
+    "attempted_accuracy": 0.8244444444444444,
+    "identifiable_regime_attempted_accuracy": 0.9422222222222222,
+    "spurious_attempts_without_reference_direction": 450
+  },
+  "primary_conditions": {
+    "scale_matches_frozen_protocol": true,
+    "semantic_support_violations_equal_0": true,
+    "all_variable_claim_families_ltt_certified": true,
+    "synthetic_macro_supported_coverage_at_least_0.20": true,
+    "synthetic_empirical_sfar_at_most_0.05": true
+  },
+  "computational_primary_passed": true,
+  "wall_time_seconds": 22.298065415991005,
+  "decision": "v3_synthetic_primary_passed"
+}
