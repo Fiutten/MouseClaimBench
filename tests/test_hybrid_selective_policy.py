@@ -70,6 +70,8 @@ def test_training_respects_disjoint_development_roles(tmp_path):
     assert all(value > 0 for value in payload["split_counts"].values())
     assert payload["confirmatory_v2_cases_used"] == 0
     assert payload["confirmatory_refitting_permitted"] is False
+    assert payload["runtime"]["packages"]["causal-learn"] == "0.1.4.8"
+    assert payload["runtime"]["packages"]["scikit-learn"] == "1.9.0"
     assert payload["locked_development_audit"]["constrained_full"][
         "semantic_support_veto_violations"
     ] == 0

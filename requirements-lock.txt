@@ -1,5 +1,6 @@
 # Reproducibility snapshot used for the scientific-hardening validation.
-# Python 3.12.13. Install the package itself with: python -m pip install -e .
+# Validated on CPython 3.12 and 3.14. Record the exact runtime in each artifact.
+# Install the package itself with: python -m pip install -e .
 h5py==3.16.0
 matplotlib==3.11.0
 networkx==3.6.1

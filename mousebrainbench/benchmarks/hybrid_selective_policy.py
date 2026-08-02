@@ -10,8 +10,11 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import importlib.metadata
 import json
+import platform
 from pathlib import Path
+import sys
 from typing import Any, Mapping, Sequence
 
 import numpy as np
@@ -559,6 +562,21 @@ def train(
     payload = {
         "version": __version__,
         "git_revision": code_revision(),
+        "runtime": {
+            "python": platform.python_version(),
+            "python_implementation": platform.python_implementation(),
+            "platform": platform.platform(),
+            "executable": sys.executable,
+            "packages": {
+                package: importlib.metadata.version(package)
+                for package in (
+                    "causal-learn",
+                    "numpy",
+                    "scikit-learn",
+                    "scipy",
+                )
+            },
+        },
         "analysis": "hybrid_selective_policy_frozen_before_v2_confirmation",
         "protocol_id": protocol["protocol_id"],
         "protocol_version": str(protocol["version"]),
