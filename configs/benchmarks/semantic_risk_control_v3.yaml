@@ -1,0 +1,182 @@
+protocol_id: mouseclaimbench_semantic_risk_control
+version: 3.0.0
+status: frozen_before_external_outcome_access
+freeze_date: 2026-08-02
+
+scientific_thesis: >-
+  A knowledge-based claim authorizer can combine immutable semantic admissibility
+  constraints with finite-sample risk control, thereby controlling false scientific
+  authorizations without allowing predictive confidence to compensate for missing
+  mechanistic evidence.
+
+development_only_sources:
+  - oracle_sem_v0
+  - prospective_claim_validation_v1
+  - hybrid_selective_validation_v2
+  - tuebingen_cause_effect_pairs
+  - allen_vbn
+  - sensorium_static
+  - sensorium_dynamic
+  - microns_local_structure_function
+development_only_interpretation: >-
+  Every result previously generated or inspected is development evidence. None of
+  these sources may be described as v3 confirmation.
+
+knowledge_semantics:
+  profile_id: mouse_brain_claims
+  version: 1.1.0
+  profile_changes_permitted_after_freeze: false
+  authoritative_backend: prioritized_python_rules
+  independent_executable_backend: clingo_answer_set_program
+  equivalence_requirement:
+    - exhaustive_all_625_mechanistic_assignments
+    - exhaustive_each_claim_up_to_four_required_blocks
+    - deterministic_boundary_suite_for_larger_claims
+    - randomized_property_suite_for_larger_claims
+  semantic_support_violations_permitted: 0
+  independent_expert_content_validation: not_performed
+
+claim_authorization:
+  positive_decision: supported
+  negative_decision: abstained
+  prohibited_negative_interpretation: >-
+    Abstention means that support is not authorized. It does not prove that the
+    scientific claim is false.
+  semantic_gate: all_claim_required_blocks_must_be_passed
+  learned_score_role: ranks_only_semantically_admissible_support_candidates
+  learned_score_can_override_semantic_gate: false
+
+risk_control:
+  method: learn_then_test
+  implementation: MAPIE_BinaryClassificationController
+  package_version: 1.4.1
+  target:
+    name: semantic_false_authorization_risk
+    definition: false_supported_claims_divided_by_all_supported_claims
+    maximum: 0.05
+  familywise_confidence: 0.95
+  simultaneous_families: declared_variable_claims
+  multiplicity_control: bonferroni_over_declared_claims
+  per_claim_delta: familywise_delta_divided_by_number_of_declared_claims
+  calibration_unit: complete_case
+  assumptions:
+    - calibration_cases_are_iid_within_the_certified_target_population
+    - case_labels_are_not_used_to_fit_the_scoring_model
+    - semantic_gate_is_part_of_the_calibrated_policy
+  invalid_guarantees:
+    - pooled_claim_decisions_as_independent_units
+    - transfer_between_domains_without_recalibration
+    - transfer_under_detected_distribution_shift
+  selection_objective: maximize_supported_coverage_subject_to_valid_risk_control
+
+direction_router:
+  route_precedence:
+    - randomized_or_controlled_intervention
+    - linear_nongaussian_acyclic_no_hidden_confounding
+    - additive_noise_continuous_acyclic_no_hidden_confounding
+    - abstain
+  established_implementations:
+    intervention: scipy_welch_or_permutation_contrast
+    linear_nongaussian: causal_learn_DirectLiNGAM
+    additive_noise: causal_learn_ANM
+  hard_abstention_conditions:
+    - hidden_confounding_not_excluded
+    - selection_bias_not_excluded
+    - measurement_error_material_and_unmodelled
+    - required_method_assumptions_unknown
+    - numerical_failure
+  prohibited_interpretation: observational_direction_is_not_causal_proof
+
+fresh_confirmatory_blocks:
+  synthetic_v3:
+    role: in_distribution_finite_sample_confirmation
+    outcome_access_before_protocol_freeze: false
+    regimes: 16
+    sample_sizes: [200, 800, 2000]
+    noise_scales: [0.5, 1.0, 1.75]
+    seeds_per_cell: 50
+    seed_namespace: 2026082000
+    expected_cases: 7200
+  causal_chambers:
+    role: real_physical_system_external_validation
+    source: official_causalchamber_package
+    package_version: 0.2.8
+    datasets:
+      - lt_test_v1
+      - wt_test_v1
+    split_unit: experiment
+    split_rule: sha256_experiment_name_modulo_5
+    calibration_values: [0, 1, 2]
+    test_values: [3, 4]
+    test_labels_hidden_until_threshold_freeze: true
+  causalbench_single_cell:
+    role: interventional_cross_domain_transport_audit
+    source: official_causalbench_repository
+    calibration_domain: weissmann_k562
+    locked_test_domain: weissmann_rpe1
+    training_regime: observational_and_partial_interventional
+    maximum_genes_for_bounded_adapter: 200
+    transport_guarantee_claimed: false
+  ibl_brain_wide_map:
+    role: mouse_brain_observational_transport_audit
+    source: official_IBL_ONE_public_release
+    release: 2025_brain_wide_map
+    unit: mouse
+    split_rule: sha256_subject_uuid_modulo_5
+    calibration_values: [0, 1, 2]
+    test_values: [3, 4]
+    maximum_probe_insertions: 24
+    directed_or_causal_support_permitted: false
+    transport_guarantee_claimed: false
+
+comparators:
+  - evidence_contract_only
+  - naive_probability_threshold
+  - unconstrained_MAPIE_risk_control
+  - semantic_gate_without_risk_control
+  - semantic_MAPIE_risk_control
+  - oracle_assumption_router
+
+primary_endpoints:
+  all_required: true
+  conditions:
+    - semantic_support_violations_equal_0
+    - synthetic_simultaneous_sfar_control_certified_at_0.05_with_0.95_confidence
+    - synthetic_macro_supported_coverage_at_least_0.20
+    - synthetic_empirical_sfar_at_most_0.05
+    - clingo_and_python_decisions_equivalent
+
+secondary_endpoints:
+  - per_claim_certification_and_coverage
+  - macro_average_over_variable_claims
+  - false_authorization_count_and_rate
+  - abstention_rate
+  - direction_accuracy_conditioned_on_router_attempt
+  - direction_router_coverage
+  - assumption_violation_ablation
+  - semantic_gate_ablation
+  - risk_control_ablation
+  - calibration_size_sensitivity
+  - distribution_shift_detection_and_transport_failure
+  - wall_time_and_peak_memory
+  - external_domain_results_with_clustered_uncertainty
+
+prohibited_claims:
+  - complete_mouse_brain_twin
+  - whole_brain_mechanistic_validity
+  - causal_identification_from_observational_association
+  - universal_finite_sample_guarantee_under_distribution_shift
+  - independent_expert_validation
+  - improved_human_decision_quality
+  - causalbench_state_of_the_art
+  - ibl_behavioral_digital_twin
+  - external_confirmation_when_data_were_used_for_tuning
+
+decision_rule:
+  strong_methodological_paper: all_primary_endpoints_pass
+  bounded_methodological_paper: >-
+    Semantic equivalence and zero violations pass, but finite-sample certification
+    is non-trivial only for a subset of claims or does not transport externally.
+  negative_result: >-
+    No non-trivial risk-controlled coverage is obtained or the independent semantic
+    backend disagrees with the authoritative engine.
