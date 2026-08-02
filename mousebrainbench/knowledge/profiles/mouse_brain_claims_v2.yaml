@@ -1,0 +1,188 @@
+profile_id: mouse_brain_claim_authorization
+version: 2.0.0
+domain: computational_mouse_brain
+status: author_defined_operational_profile_not_consensus_taxonomy
+description: >-
+  Strict evidence contracts for bounded claims about computational mouse-brain
+  studies. Authorization means only that every requirement of this exact
+  versioned profile is admissibly passed.
+claim_boundary: >-
+  A profile_authorized result is not proof of scientific truth, mechanism,
+  causality, biological fidelity, generalization, or publication quality. The
+  profile is an author-defined operational policy that remains contestable and
+  versioned. Undeclared broad claims stay outside the profile.
+
+evidence_blocks:
+  - id: prediction
+    meaning: Held-out predictive performance for a declared target population and comparator.
+    required_observations_when_passed:
+      [target, target_population, split, split_integrity, metric, threshold, comparator, value]
+  - id: reproducible_compute
+    meaning: Clean re-execution contract for code, environment, entry point, and artifacts.
+    required_observations_when_passed:
+      [source_revision, environment, entrypoint, artifact_revision]
+  - id: internal_reproduction
+    meaning: Reproduction on declared non-overlapping units within one resource.
+    required_observations_when_passed:
+      [unit, partition_a, partition_b, overlap, agreement_metric, threshold, value]
+  - id: external_replication
+    meaning: Same endpoint evaluated using a genuinely new data-generation process.
+    required_observations_when_passed:
+      [study_id, data_generation_id, laboratory, independence_basis, endpoint, value]
+  - id: topology_specificity
+    meaning: Candidate topology outperforms prespecified and complexity-matched controls.
+    required_observations_when_passed:
+      [topology_scale, candidate, control_family, complexity_matching, metric, margin]
+  - id: directed_identifiability
+    meaning: Direction is identified within a declared model class and assumption domain.
+    required_observations_when_passed:
+      [model_class, assumptions, calibration_domain, directional_test, abstention_rule, direction]
+  - id: structure_function_association
+    meaning: A local observational association survives declared matching and multiplicity controls.
+    required_observations_when_passed:
+      [tissue, functional_descriptor, connected_pairs, matched_controls, matching_variables, estimate]
+  - id: causal_intervention
+    meaning: An intervention or identification design estimates a declared effect.
+    required_observations_when_passed:
+      [design_type, estimand, intervention, outcome, identification_assumptions, effect]
+  - id: whole_brain_coverage
+    meaning: Anatomical coverage includes the declared whole mouse brain at specified resolutions.
+    required_observations_when_passed:
+      [atlas, included_regions, excluded_regions, spatial_resolution, cellular_resolution]
+  - id: independent_validation
+    meaning: Validation data and decisions are independent of model construction.
+    required_observations_when_passed:
+      [validation_resource, construction_resource, independence_basis, locked_endpoint, result]
+  - id: entity_specificity
+    meaning: The model represents one identified animal rather than a population archetype.
+    required_observations_when_passed:
+      [entity_id, calibration_data, identity_link, state_time, update_policy]
+  - id: operational_compute
+    meaning: Runtime and resource use satisfy a declared operational budget.
+    required_observations_when_passed:
+      [hardware, runtime, memory, energy, update_frequency, acceptance_budget]
+  - id: uncertainty_quantification
+    meaning: Relevant uncertainty sources and intervals are declared at the inferential unit.
+    required_observations_when_passed:
+      [inferential_unit, uncertainty_sources, method, confidence_level, interval, acceptance_rule]
+  - id: distribution_shift
+    meaning: Transport or shift is evaluated against a declared target context.
+    required_observations_when_passed:
+      [source_population, target_population, shift_family, diagnostic, acceptance_rule, result]
+  - id: competing_mechanisms
+    meaning: Prespecified competing explanations are evaluated without claiming exhaustiveness.
+    required_observations_when_passed:
+      [candidate_explanation, alternatives, discrimination_test, unresolved_alternatives, result]
+  - id: network_dependence_control
+    meaning: Inference accounts for shared nodes or other dependence in relational observations.
+    required_observations_when_passed:
+      [inferential_unit, dependence_structure, method, estimand, result]
+  - id: robustness
+    meaning: The endpoint survives prespecified perturbations of data, model, or analysis choices.
+    required_observations_when_passed:
+      [perturbation_family, locked_endpoint, acceptance_rule, worst_case_result]
+  - id: context_of_use
+    meaning: The claim is bounded to a declared use, population, output, and decision consequence.
+    required_observations_when_passed:
+      [use, population, output, decision_consequence, prohibited_uses]
+  - id: biological_fidelity
+    meaning: Fidelity is evaluated for declared biological observables and scales.
+    required_observations_when_passed:
+      [observables, scales, reference_data, metric, acceptance_rule, result]
+  - id: multiscale_consistency
+    meaning: Coupled model scales satisfy declared interface and consistency checks.
+    required_observations_when_passed:
+      [scales, coupling_interface, conservation_or_consistency_rule, test, result]
+  - id: data_quality
+    meaning: Source data quality, exclusions, missingness, and lineage are explicitly assessed.
+    required_observations_when_passed:
+      [source, lineage, exclusions, missingness, quality_checks, result]
+  - id: entity_update
+    meaning: Entity state is synchronized through a declared observation and update process.
+    required_observations_when_passed:
+      [entity_id, observation_time, model_time, update_method, synchronization_error, threshold]
+
+claims:
+  - id: bounded_predictive_performance
+    required_blocks: [prediction, context_of_use, data_quality]
+    meaning: >-
+      Held-out prediction meets a declared rule for one target population and context of use.
+  - id: clean_computational_reproduction
+    required_blocks: [reproducible_compute]
+    meaning: >-
+      The declared computation can be re-executed from a clean revision and recorded environment.
+  - id: within_resource_reproduction
+    required_blocks: [internal_reproduction, data_quality]
+    meaning: >-
+      The same bounded endpoint is reproduced on non-overlapping units within one resource.
+  - id: independent_study_replication
+    required_blocks: [external_replication, context_of_use, data_quality]
+    meaning: >-
+      A genuinely new data-generation process evaluates the same bounded endpoint.
+  - id: topology_specific_prediction
+    required_blocks:
+      [prediction, topology_specificity, uncertainty_quantification, robustness, context_of_use]
+    meaning: >-
+      Predictive performance depends on the declared topology relative to prespecified controls.
+  - id: assumption_conditional_direction
+    required_blocks:
+      [directed_identifiability, uncertainty_quantification, robustness, context_of_use]
+    meaning: >-
+      Direction is identified only within the declared model class and assumptions.
+  - id: local_observational_structure_function_association
+    required_blocks:
+      - structure_function_association
+      - network_dependence_control
+      - uncertainty_quantification
+      - robustness
+      - context_of_use
+      - data_quality
+    meaning: >-
+      A local observational structure-function association survives its declared controls.
+  - id: intervention_supported_effect
+    required_blocks:
+      [causal_intervention, uncertainty_quantification, robustness, context_of_use, data_quality]
+    meaning: >-
+      A declared intervention or identification design supports one bounded causal effect.
+  - id: directed_topology_consistent_prediction
+    required_blocks:
+      - prediction
+      - internal_reproduction
+      - topology_specificity
+      - directed_identifiability
+      - uncertainty_quantification
+      - distribution_shift
+      - competing_mechanisms
+      - robustness
+      - context_of_use
+      - data_quality
+    meaning: >-
+      Prediction is internally reproduced, topology-specific, and directionally consistent while
+      uncertainty, shift, robustness, data quality, and declared alternatives are preserved.
+  - id: complete_entity_specific_mouse_brain_digital_twin
+    required_blocks:
+      - prediction
+      - internal_reproduction
+      - external_replication
+      - topology_specificity
+      - directed_identifiability
+      - causal_intervention
+      - whole_brain_coverage
+      - independent_validation
+      - reproducible_compute
+      - entity_specificity
+      - operational_compute
+      - uncertainty_quantification
+      - distribution_shift
+      - competing_mechanisms
+      - network_dependence_control
+      - robustness
+      - context_of_use
+      - biological_fidelity
+      - multiscale_consistency
+      - data_quality
+      - entity_update
+    meaning: >-
+      A complete mouse-brain twin satisfies entity identity and update, whole-brain and multiscale
+      scope, prediction, replication, intervention, validation, fidelity, uncertainty, robustness,
+      operational compute, and explicit context-of-use requirements.

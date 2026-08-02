@@ -1,0 +1,72 @@
+resolution_id: mouseclaimbench_profile_v2_internal_audit_resolution
+version: 1.0.0
+status: frozen_traceability_map
+parent_review: configs/validation/knowledge_profile_internal_ai_item_review_v1.csv
+profile: mousebrainbench/knowledge/profiles/mouse_brain_claims_v2.yaml
+
+resolutions:
+  relation__predictive__prediction:
+    status: resolved_in_v2
+    action: Required prediction metadata now exposes target, population, split integrity, metric, threshold, comparator, and value.
+  relation__externally_replicated__external_replication:
+    status: resolved_in_v2
+    action: Independent-study replication now requires a new data-generation identifier and explicit independence basis.
+  relation__topology_specific__topology_specificity:
+    status: resolved_in_v2
+    action: Topology facts now require scale, control family, complexity matching, metric, and margin.
+  relation__directed__directed_identifiability:
+    status: resolved_in_v2
+    action: The claim is now assumption-conditional and requires model class, assumptions, calibration domain, test, and abstention rule.
+  relation__structure_function__structure_function_association:
+    status: resolved_in_v2
+    action: The local observational claim adds a mandatory network-dependence block and inferential-unit uncertainty.
+  relation__mechanistic__prediction:
+    status: resolved_in_v2
+    action: The broad mechanistic claim was removed and replaced by directed_topology_consistent_prediction.
+  relation__mechanistic__internal_reproduction:
+    status: resolved_in_v2
+    action: Internal reproduction remains necessary only for the narrowed observable claim.
+  relation__mechanistic__topology_specificity:
+    status: resolved_in_v2
+    action: The narrowed claim adds competing-alternative and robustness blocks.
+  relation__mechanistic__directed_identifiability:
+    status: resolved_in_v2
+    action: Direction remains assumption-conditional and is not promoted to mechanism.
+  relation__causal__causal_intervention:
+    status: resolved_in_v2
+    action: The generic causal claim was replaced by intervention_supported_effect with explicit design and estimand metadata.
+  relation__digital_twin__internal_reproduction:
+    status: resolved_in_v2
+    action: Entity identity, state time, update policy, and synchronization are now separate strict requirements.
+  relation__digital_twin__topology_specificity:
+    status: resolved_in_v2
+    action: Complete-twin topology requires declared anatomical scale and complexity-matched controls.
+  relation__digital_twin__directed_identifiability:
+    status: resolved_in_v2
+    action: Direction is bound only to the explicitly complete causal entity-specific twin subtype.
+  relation__digital_twin__causal_intervention:
+    status: resolved_in_v2
+    action: Intervention is bound only to the strict complete causal twin subtype.
+  relation__digital_twin__whole_brain_coverage:
+    status: resolved_in_v2
+    action: The executable claim is explicitly named complete_entity_specific_mouse_brain_digital_twin.
+  relation__digital_twin__operational_compute:
+    status: resolved_in_v2
+    action: Hardware, runtime, memory, energy, update frequency, and budget are mandatory metadata.
+  rule__protocol_scope_boundary:
+    status: resolved_in_v2
+    action: V2 removes priority masking and reports every failed, unknown, not-applicable, and review deficit together.
+  rule__all_requirements_satisfied:
+    status: resolved_in_v2
+    action: V2 returns profile_authorized and attaches profile identity, version, hash, claim meaning, and all source facts.
+  coverage__claim_set:
+    status: resolved_in_v2
+    action: The claim set is narrowed while robustness, uncertainty, data quality, context, multiscale consistency, and fidelity become evidence blocks.
+  coverage__evidence_block_set:
+    status: resolved_in_v2
+    action: Dedicated uncertainty, shift, data quality, competing-mechanism, robustness, dependence, fidelity, context, and update blocks were added.
+
+remaining_limit: >-
+  This map resolves issues identified by the internal audit at the level of
+  executable design. It does not establish external content validity, consensus,
+  scientific completeness, or improved human decisions.

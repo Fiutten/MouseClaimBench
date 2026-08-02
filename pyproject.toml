@@ -119,6 +119,8 @@ mousebrainbench-causalrivers-v5 = "mousebrainbench.benchmarks.causalrivers_v5_tr
 mousebrainbench-profile-external-v5 = "mousebrainbench.benchmarks.knowledge_profile_external_validation_v5:main"
 mousebrainbench-shift-sweep-v5-2 = "mousebrainbench.benchmarks.semantic_risk_shift_sweep_v5_2:main"
 mousebrainbench-semantic-risk-release-v5 = "mousebrainbench.benchmarks.semantic_risk_v5_release:main"
+mousebrainbench-profile-v2-mutation = "mousebrainbench.benchmarks.profile_v2_contract_mutation:main"
+mousebrainbench-profile-v2-resolution = "mousebrainbench.benchmarks.profile_v2_resolution_audit:main"
 mousebrainbench-run = "mousebrainbench.cli:main"
 
 [tool.setuptools.packages.find]

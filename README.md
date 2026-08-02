@@ -178,6 +178,14 @@ status space. It found one critical veto, 11 major revisions, eight minor
 revisions, and nine retained items. This is a transparent internal negative
 result, not an independent panel. External content validation remains pending.
 
+The hardened v2 profile is developed in parallel without changing any frozen
+v1 result. It replaces broad `mechanistic`, `causal`, and generic
+`digital_twin` identifiers with bounded operational claims. Its conclusion is
+`profile_authorized`, never scientific truth. Passing facts require explicit
+provenance fields, and mixed deficits are returned together without priority
+masking. The profile remains author-defined and makes no consensus-validity or
+human-evaluation claim.
+
 Version 5.4 adds four orthogonal TimeGraph families with 13 evaluable levels.
 The fixed policy loses simultaneous certification under Student-t noise with two
 degrees of freedom and at eight variables. It remains certified across maximum

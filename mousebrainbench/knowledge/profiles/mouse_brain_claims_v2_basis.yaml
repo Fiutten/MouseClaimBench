@@ -1,0 +1,226 @@
+profile_id: mouse_brain_claim_authorization
+version: 2.0.0
+status: author_defined_literature_grounded_internally_adversarially_audited
+independent_expert_validation: not_performed_and_not_claimed_as_consensus
+acquisition_method: >-
+  Targeted methodological synthesis and an internal AI-assisted adversarial audit. The profile is
+  treated as executable requirements engineering, not as an expert-validated scientific taxonomy.
+audit_parent: configs/validation/knowledge_profile_internal_ai_item_review_v1.csv
+
+evidence_block_templates:
+  prediction: &prediction
+    evidence_block: prediction
+    role: necessary_under_this_profile_not_scientifically_sufficient
+    rationale: Held-out prediction must identify its target, population, split, metric, threshold, and comparator.
+    scope: One declared predictive context of use.
+    exceptions: Prediction neither identifies mechanism nor transports beyond its evaluated population.
+    source_ids: [sargent2013verification, riedmaier2021vvuq]
+  reproducible_compute: &reproducible_compute
+    evidence_block: reproducible_compute
+    role: necessary_under_this_profile_not_scientifically_sufficient
+    rationale: Reproduction requires a clean source revision, environment, entry point, and bound artifacts.
+    scope: Re-execution of the declared computational workflow.
+    exceptions: Computational reproduction is not biological replication.
+    source_ids: [nasem2019reproducibility, pineau2021reproducibility, barker2022fair4rs]
+  internal_reproduction: &internal_reproduction
+    evidence_block: internal_reproduction
+    role: necessary_under_this_profile_not_scientifically_sufficient
+    rationale: Non-overlapping within-resource units and their overlap must be explicit.
+    scope: One resource with a preserved sampling unit.
+    exceptions: Partitions from one resource are not independent-study replication.
+    source_ids: [nasem2019reproducibility, pineau2021reproducibility]
+  external_replication: &external_replication
+    evidence_block: external_replication
+    role: necessary_under_this_profile_not_scientifically_sufficient
+    rationale: Replication requires a genuinely new data-generation process, not a repackaged resource.
+    scope: Same bounded endpoint in a new study or independently generated dataset.
+    exceptions: New files, windows, or repositories may still share the same underlying observations.
+    source_ids: [nasem2019reproducibility]
+  topology_specificity: &topology_specificity
+    evidence_block: topology_specificity
+    role: necessary_under_this_profile_not_scientifically_sufficient
+    rationale: A topology claim requires prespecified and complexity-matched controls at a declared scale.
+    scope: The tested topology and control family.
+    exceptions: Passing declared controls does not eliminate every alternative topology.
+    source_ids: [knox2019connectome, billeh2020v1]
+  directed_identifiability: &directed_identifiability
+    evidence_block: directed_identifiability
+    role: necessary_under_this_profile_not_scientifically_sufficient
+    rationale: Direction is conditional on a model class, assumptions, calibration domain, and abstention rule.
+    scope: One declared directional-identification problem.
+    exceptions: Temporal order and association alone do not identify biological direction.
+    source_ids: [mooij2016cause]
+  structure_function_association: &structure_function_association
+    evidence_block: structure_function_association
+    role: necessary_under_this_profile_not_scientifically_sufficient
+    rationale: Local observational structure-function evidence requires matched controls and a bounded estimand.
+    scope: Declared tissue, descriptor, matching variables, and connected-pair population.
+    exceptions: Association does not establish causality, mechanism, or whole-brain scope.
+    source_ids: [bae2025microns, ding2025wiring]
+  causal_intervention: &causal_intervention
+    evidence_block: causal_intervention
+    role: necessary_under_this_profile_not_scientifically_sufficient
+    rationale: The design, estimand, intervention, outcome, and identification assumptions must be explicit.
+    scope: One bounded interventional or assumption-conditional effect.
+    exceptions: The profile does not promote observational association into causal evidence.
+    source_ids: [mooij2016cause, asme2018vv40]
+  whole_brain_coverage: &whole_brain_coverage
+    evidence_block: whole_brain_coverage
+    role: necessary_under_this_profile_not_scientifically_sufficient
+    rationale: Complete-brain wording requires atlas-grounded included and excluded regions and resolutions.
+    scope: The declared whole mouse brain.
+    exceptions: Regional, cortical, and mesoscale models remain partial.
+    source_ids: [oh2014mesoscale, bae2025microns, chen2026mousedtb]
+  independent_validation: &independent_validation
+    evidence_block: independent_validation
+    role: necessary_under_this_profile_not_scientifically_sufficient
+    rationale: Validation resources and locked endpoints must be independent of model construction.
+    scope: One declared model and context of use.
+    exceptions: Internal hold-outs and development labels are not independent validation.
+    source_ids: [oberkampf2010verification, riedmaier2021vvuq]
+  entity_specificity: &entity_specificity
+    evidence_block: entity_specificity
+    role: necessary_under_this_profile_not_scientifically_sufficient
+    rationale: A twin must preserve entity identity, calibration lineage, state time, and update policy.
+    scope: One identified animal.
+    exceptions: Population and canonical models are not entity-specific twins.
+    source_ids: [xiong2023dtb, riedmaier2021vvuq]
+  operational_compute: &operational_compute
+    evidence_block: operational_compute
+    role: necessary_under_this_profile_not_scientifically_sufficient
+    rationale: Runtime, memory, energy, and update frequency must satisfy a context-specific budget.
+    scope: Declared hardware and operational use.
+    exceptions: Successful offline execution does not imply operational adequacy.
+    source_ids: [asme2018vv40, riedmaier2021vvuq]
+  uncertainty_quantification: &uncertainty_quantification
+    evidence_block: uncertainty_quantification
+    role: necessary_under_this_profile_not_scientifically_sufficient
+    rationale: Uncertainty must be estimated at the inferential unit with a declared acceptance rule.
+    scope: The uncertainty sources material to the bounded claim.
+    exceptions: One interval cannot cover omitted model, data, and transport uncertainties.
+    source_ids: [oberkampf2010verification, riedmaier2021vvuq, asme2018vv40]
+  distribution_shift: &distribution_shift
+    evidence_block: distribution_shift
+    role: necessary_under_this_profile_not_scientifically_sufficient
+    rationale: Source and target populations and the tested shift family must be explicit.
+    scope: One declared transport path or deployment context.
+    exceptions: Passing one shift family is not universal out-of-distribution validity.
+    source_ids: [riedmaier2021vvuq, geifman2019selectivenet]
+  competing_mechanisms: &competing_mechanisms
+    evidence_block: competing_mechanisms
+    role: necessary_under_this_profile_not_scientifically_sufficient
+    rationale: Declared alternatives and unresolved explanations prevent topology or direction from becoming mechanism by wording.
+    scope: A prespecified, explicitly non-exhaustive alternative set.
+    exceptions: No finite control set excludes all observationally equivalent mechanisms.
+    source_ids: [mooij2016cause, oberkampf2010verification]
+  network_dependence_control: &network_dependence_control
+    evidence_block: network_dependence_control
+    role: necessary_under_this_profile_not_scientifically_sufficient
+    rationale: Relational observations sharing nodes require an explicit dependence-aware inferential method.
+    scope: The declared directed-pair frame and estimand.
+    exceptions: Naive pair-level independence and descriptive stability are insufficient substitutes.
+    source_ids: [bae2025microns, ding2025wiring]
+  robustness: &robustness
+    evidence_block: robustness
+    role: necessary_under_this_profile_not_scientifically_sufficient
+    rationale: The locked endpoint must survive a prespecified perturbation family and worst-case rule.
+    scope: Declared data, model, and analytical perturbations.
+    exceptions: Robustness to tested perturbations does not establish universal stability.
+    source_ids: [oberkampf2010verification, riedmaier2021vvuq]
+  context_of_use: &context_of_use
+    evidence_block: context_of_use
+    role: necessary_under_this_profile_not_scientifically_sufficient
+    rationale: Use, population, output, consequence, and prohibited uses bound every authorization.
+    scope: One declared decision context.
+    exceptions: Authorization cannot be transported by wording to another context.
+    source_ids: [asme2018vv40, riedmaier2021vvuq]
+  biological_fidelity: &biological_fidelity
+    evidence_block: biological_fidelity
+    role: necessary_under_this_profile_not_scientifically_sufficient
+    rationale: Fidelity must name biological observables, scales, references, metrics, and acceptance rules.
+    scope: The represented biological scales and outputs.
+    exceptions: Predictive similarity on one observable is not comprehensive biological realism.
+    source_ids: [billeh2020v1, dai2020bmtk, melozzi2017virtualmouse]
+  multiscale_consistency: &multiscale_consistency
+    evidence_block: multiscale_consistency
+    role: necessary_under_this_profile_not_scientifically_sufficient
+    rationale: Coupled scales need explicit interfaces and executable consistency checks.
+    scope: The declared scale interfaces.
+    exceptions: Coexistence of modules is not validated multiscale coupling.
+    source_ids: [dai2020bmtk, melozzi2017virtualmouse, xiong2023dtb]
+  data_quality: &data_quality
+    evidence_block: data_quality
+    role: necessary_under_this_profile_not_scientifically_sufficient
+    rationale: Data lineage, exclusions, missingness, and source-specific quality checks must be inspectable.
+    scope: Every source used by the bounded claim.
+    exceptions: Public availability alone does not establish fitness for use.
+    source_ids: [wilkinson2016fair, gebru2021datasheets, barker2022fair4rs]
+  entity_update: &entity_update
+    evidence_block: entity_update
+    role: necessary_under_this_profile_not_scientifically_sufficient
+    rationale: A twin must record observation time, model time, update method, and synchronization error.
+    scope: One identified entity and update cycle.
+    exceptions: A static entity-specific model is not an updating twin.
+    source_ids: [xiong2023dtb, chen2026mousedtb]
+
+relations:
+  - {<<: *prediction, claim: bounded_predictive_performance, audit_resolution: exposes_target_split_comparator_and_population}
+  - {<<: *context_of_use, claim: bounded_predictive_performance, audit_resolution: adds_context_boundary}
+  - {<<: *data_quality, claim: bounded_predictive_performance, audit_resolution: adds_data_fitness_guard}
+  - {<<: *reproducible_compute, claim: clean_computational_reproduction, audit_resolution: preserves_bounded_reproducibility}
+  - {<<: *internal_reproduction, claim: within_resource_reproduction, audit_resolution: preserves_sampling_unit_and_overlap}
+  - {<<: *data_quality, claim: within_resource_reproduction, audit_resolution: adds_data_fitness_guard}
+  - {<<: *external_replication, claim: independent_study_replication, audit_resolution: requires_new_data_generation_process}
+  - {<<: *context_of_use, claim: independent_study_replication, audit_resolution: locks_same_bounded_endpoint}
+  - {<<: *data_quality, claim: independent_study_replication, audit_resolution: adds_data_fitness_guard}
+  - {<<: *prediction, claim: topology_specific_prediction, audit_resolution: preserves_empirical_adequacy_without_mechanism}
+  - {<<: *topology_specificity, claim: topology_specific_prediction, audit_resolution: adds_scale_and_complexity_matched_controls}
+  - {<<: *uncertainty_quantification, claim: topology_specific_prediction, audit_resolution: adds_inferential_uncertainty}
+  - {<<: *robustness, claim: topology_specific_prediction, audit_resolution: adds_control_family_perturbation}
+  - {<<: *context_of_use, claim: topology_specific_prediction, audit_resolution: bounds_topology_claim}
+  - {<<: *directed_identifiability, claim: assumption_conditional_direction, audit_resolution: makes_assumptions_and_abstention_executable}
+  - {<<: *uncertainty_quantification, claim: assumption_conditional_direction, audit_resolution: adds_directional_uncertainty}
+  - {<<: *robustness, claim: assumption_conditional_direction, audit_resolution: adds_assumption_perturbation}
+  - {<<: *context_of_use, claim: assumption_conditional_direction, audit_resolution: blocks_universal_direction_wording}
+  - {<<: *structure_function_association, claim: local_observational_structure_function_association, audit_resolution: narrows_to_local_observational_association}
+  - {<<: *network_dependence_control, claim: local_observational_structure_function_association, audit_resolution: requires_dyadic_or_network_dependence_method}
+  - {<<: *uncertainty_quantification, claim: local_observational_structure_function_association, audit_resolution: preserves_inferential_unit}
+  - {<<: *robustness, claim: local_observational_structure_function_association, audit_resolution: requires_locked_endpoint_perturbations}
+  - {<<: *context_of_use, claim: local_observational_structure_function_association, audit_resolution: confines_tissue_and_descriptor}
+  - {<<: *data_quality, claim: local_observational_structure_function_association, audit_resolution: records_volume_lineage_and_exclusions}
+  - {<<: *causal_intervention, claim: intervention_supported_effect, audit_resolution: replaces_generic_causal_claim_with_bounded_effect}
+  - {<<: *uncertainty_quantification, claim: intervention_supported_effect, audit_resolution: requires_effect_interval}
+  - {<<: *robustness, claim: intervention_supported_effect, audit_resolution: requires_identification_sensitivity}
+  - {<<: *context_of_use, claim: intervention_supported_effect, audit_resolution: bounds_estimand_and_use}
+  - {<<: *data_quality, claim: intervention_supported_effect, audit_resolution: adds_data_fitness_guard}
+  - {<<: *prediction, claim: directed_topology_consistent_prediction, audit_resolution: narrows_mechanistic_claim_to_observed_properties}
+  - {<<: *internal_reproduction, claim: directed_topology_consistent_prediction, audit_resolution: preserves_within_resource_stability}
+  - {<<: *topology_specificity, claim: directed_topology_consistent_prediction, audit_resolution: requires_complexity_matched_controls}
+  - {<<: *directed_identifiability, claim: directed_topology_consistent_prediction, audit_resolution: makes_direction_assumption_conditional}
+  - {<<: *uncertainty_quantification, claim: directed_topology_consistent_prediction, audit_resolution: adds_uncertainty_guard}
+  - {<<: *distribution_shift, claim: directed_topology_consistent_prediction, audit_resolution: adds_transport_boundary}
+  - {<<: *competing_mechanisms, claim: directed_topology_consistent_prediction, audit_resolution: preserves_unresolved_alternatives}
+  - {<<: *robustness, claim: directed_topology_consistent_prediction, audit_resolution: adds_perturbation_family}
+  - {<<: *context_of_use, claim: directed_topology_consistent_prediction, audit_resolution: blocks_mechanism_promotion}
+  - {<<: *data_quality, claim: directed_topology_consistent_prediction, audit_resolution: adds_data_fitness_guard}
+  - {<<: *prediction, claim: complete_entity_specific_mouse_brain_digital_twin, audit_resolution: strict_complete_twin_requirement}
+  - {<<: *internal_reproduction, claim: complete_entity_specific_mouse_brain_digital_twin, audit_resolution: strict_complete_twin_requirement}
+  - {<<: *external_replication, claim: complete_entity_specific_mouse_brain_digital_twin, audit_resolution: requires_new_data_generation_process}
+  - {<<: *topology_specificity, claim: complete_entity_specific_mouse_brain_digital_twin, audit_resolution: scale_specific_topology_guard}
+  - {<<: *directed_identifiability, claim: complete_entity_specific_mouse_brain_digital_twin, audit_resolution: strict_causal_twin_subtype}
+  - {<<: *causal_intervention, claim: complete_entity_specific_mouse_brain_digital_twin, audit_resolution: strict_causal_twin_subtype}
+  - {<<: *whole_brain_coverage, claim: complete_entity_specific_mouse_brain_digital_twin, audit_resolution: claim_renamed_to_complete_whole_brain_scope}
+  - {<<: *independent_validation, claim: complete_entity_specific_mouse_brain_digital_twin, audit_resolution: independent_model_validation_required}
+  - {<<: *reproducible_compute, claim: complete_entity_specific_mouse_brain_digital_twin, audit_resolution: clean_compute_required}
+  - {<<: *entity_specificity, claim: complete_entity_specific_mouse_brain_digital_twin, audit_resolution: entity_identity_and_time_required}
+  - {<<: *operational_compute, claim: complete_entity_specific_mouse_brain_digital_twin, audit_resolution: context_specific_budget_required}
+  - {<<: *uncertainty_quantification, claim: complete_entity_specific_mouse_brain_digital_twin, audit_resolution: uncertainty_guard_added}
+  - {<<: *distribution_shift, claim: complete_entity_specific_mouse_brain_digital_twin, audit_resolution: transport_guard_added}
+  - {<<: *competing_mechanisms, claim: complete_entity_specific_mouse_brain_digital_twin, audit_resolution: alternative_model_guard_added}
+  - {<<: *network_dependence_control, claim: complete_entity_specific_mouse_brain_digital_twin, audit_resolution: relational_inference_guard_added}
+  - {<<: *robustness, claim: complete_entity_specific_mouse_brain_digital_twin, audit_resolution: perturbation_guard_added}
+  - {<<: *context_of_use, claim: complete_entity_specific_mouse_brain_digital_twin, audit_resolution: use_and_prohibited_uses_required}
+  - {<<: *biological_fidelity, claim: complete_entity_specific_mouse_brain_digital_twin, audit_resolution: explicit_fidelity_scales_required}
+  - {<<: *multiscale_consistency, claim: complete_entity_specific_mouse_brain_digital_twin, audit_resolution: coupling_consistency_required}
+  - {<<: *data_quality, claim: complete_entity_specific_mouse_brain_digital_twin, audit_resolution: source_fitness_required}
+  - {<<: *entity_update, claim: complete_entity_specific_mouse_brain_digital_twin, audit_resolution: synchronization_and_update_required}
