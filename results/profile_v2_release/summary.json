@@ -1,13 +1,13 @@
 {
   "version": "0.9.0",
-  "git_revision": "93433ee1677d899b2536ad620d3d0503b0d1c59e",
+  "git_revision": "4795e70",
   "analysis": "profile_v2_hardening_release",
   "protocol": "configs/benchmarks/profile_v2_release.yaml",
   "protocol_sha256": "26feea273a7a389e02176047e76b02d0c0b2e153faac895c9ffa823fb4ac0be7",
   "artifact_revisions": {
     "resolution": "93433ee1677d899b2536ad620d3d0503b0d1c59e",
     "mutation": "93433ee1677d899b2536ad620d3d0503b0d1c59e",
-    "application": "93433ee1677d899b2536ad620d3d0503b0d1c59e",
+    "application": "cf123fb",
     "semantic_risk_v5": "7375166",
     "ibl": "3ebbca95660d7dfa80cd3a0b853e72694a630dd3",
     "orthogonal_shifts": "3ebbca95660d7dfa80cd3a0b853e72694a630dd3"
@@ -28,7 +28,7 @@
   "contract_mutation_false_authorizations": 0,
   "asp_conformance_cases": 262,
   "real_artifact_cases": 5,
-  "bounded_real_target_authorizations": 2,
+  "bounded_real_target_authorizations": 3,
   "strict_twin_authorizations": 0,
   "ibl_locked_mice": 70,
   "orthogonal_shift_families": 4,
@@ -56,7 +56,7 @@
     "artifact application is retrospective rather than a new blind v2 evaluation",
     "only one shared IBL task ecosystem supplies real mouse-population risk evidence",
     "simple IBL comparators also pass, so exclusive algorithmic superiority is unsupported",
-    "MICRONS remains unauthorized until dependence-aware network inference is added",
+    "MICRONS authorizes only one local observational association after directed dyadic and node-permutation controls",
     "no human trace-utility or decision-quality claim is evaluated"
   ],
   "interpretation": "Passing this release makes the v2 package technically ready for manuscript revision as a bounded formal knowledge-system contribution. It does not imply editorial acceptance, scientific completeness, prospective external v2 validation, or improved human decisions.",
