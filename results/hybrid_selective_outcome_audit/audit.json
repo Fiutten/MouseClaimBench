@@ -1,0 +1,543 @@
+{
+  "version": "0.8.0",
+  "git_revision": "f5a7ea5f4bff35728badb101c6f908b79089fd48",
+  "analysis": "postconfirmation_hybrid_v2_outcome_audit",
+  "source_summary_hash": "sha256:b4c82d7d48cc3455259b61c0f603ac117944ca6529b47f89d117f26b7a99cfe9",
+  "source_cases_hash": "sha256:dd284e8f79d56ced66e5a06d332b120f76e8872f551e0ec90a7c088013615e9a",
+  "source_primary_decision": "hybrid_selective_v2_primary_endpoint_not_passed",
+  "source_primary_passed": false,
+  "confirmation_reexecuted": false,
+  "model_refitted": false,
+  "thresholds_changed": false,
+  "variable_claim_aggregate": {
+    "evidence_contract_v3": {
+      "coverage": 0.78875,
+      "selective_error": 0.11410459587955626,
+      "false_authorizations": 437,
+      "supports": 11991,
+      "false_authorization_fraction": 0.03644399966641648
+    },
+    "equal_weight_compensatory_75": {
+      "coverage": 1.0,
+      "selective_error": 0.09333333333333334,
+      "false_authorizations": 870,
+      "supports": 13404,
+      "false_authorization_fraction": 0.06490599820948971
+    },
+    "prediction_shortcut": {
+      "coverage": 1.0,
+      "selective_error": 0.262037037037037,
+      "false_authorizations": 5530,
+      "supports": 19080,
+      "false_authorization_fraction": 0.28983228511530396
+    },
+    "unconstrained_selective_logistic": {
+      "coverage": 1.0,
+      "selective_error": 0.04736111111111111,
+      "false_authorizations": 669,
+      "supports": 13995,
+      "false_authorization_fraction": 0.04780278670953912
+    },
+    "constrained_selective_hybrid": {
+      "coverage": 0.9621296296296297,
+      "selective_error": 0.0799249350399384,
+      "false_authorizations": 313,
+      "supports": 12027,
+      "false_authorization_fraction": 0.02602477758376985
+    },
+    "constrained_anm_predictor_ablation": {
+      "coverage": 0.975462962962963,
+      "selective_error": 0.09477930707166587,
+      "false_authorizations": 227,
+      "supports": 11711,
+      "false_authorization_fraction": 0.01938348561181795
+    },
+    "constrained_uncalibrated_ablation": {
+      "coverage": 0.9623148148148148,
+      "selective_error": 0.07909169633407101,
+      "false_authorizations": 270,
+      "supports": 11958,
+      "false_authorization_fraction": 0.022579026593075764
+    }
+  },
+  "per_variable_claim": [
+    {
+      "claim": "predictive",
+      "policies": {
+        "evidence_contract_v3": {
+          "coverage": 1.0,
+          "selective_error": 0.017777777777777778,
+          "false_authorizations": 2,
+          "supports": 3180,
+          "false_authorization_fraction": 0.0006289308176100629
+        },
+        "equal_weight_compensatory_75": {
+          "coverage": 1.0,
+          "selective_error": 0.017777777777777778,
+          "false_authorizations": 2,
+          "supports": 3180,
+          "false_authorization_fraction": 0.0006289308176100629
+        },
+        "prediction_shortcut": {
+          "coverage": 1.0,
+          "selective_error": 0.017777777777777778,
+          "false_authorizations": 2,
+          "supports": 3180,
+          "false_authorization_fraction": 0.0006289308176100629
+        },
+        "unconstrained_selective_logistic": {
+          "coverage": 1.0,
+          "selective_error": 0.006666666666666667,
+          "false_authorizations": 19,
+          "supports": 3254,
+          "false_authorization_fraction": 0.005838967424708051
+        },
+        "constrained_selective_hybrid": {
+          "coverage": 1.0,
+          "selective_error": 0.006666666666666667,
+          "false_authorizations": 19,
+          "supports": 3254,
+          "false_authorization_fraction": 0.005838967424708051
+        },
+        "constrained_anm_predictor_ablation": {
+          "coverage": 1.0,
+          "selective_error": 0.009166666666666667,
+          "false_authorizations": 30,
+          "supports": 3267,
+          "false_authorization_fraction": 0.009182736455463728
+        },
+        "constrained_uncalibrated_ablation": {
+          "coverage": 1.0,
+          "selective_error": 0.005555555555555556,
+          "false_authorizations": 4,
+          "supports": 3228,
+          "false_authorization_fraction": 0.0012391573729863693
+        }
+      }
+    },
+    {
+      "claim": "internally_reproduced",
+      "policies": {
+        "evidence_contract_v3": {
+          "coverage": 1.0,
+          "selective_error": 0.026944444444444444,
+          "false_authorizations": 0,
+          "supports": 3143,
+          "false_authorization_fraction": 0.0
+        },
+        "equal_weight_compensatory_75": {
+          "coverage": 1.0,
+          "selective_error": 0.026944444444444444,
+          "false_authorizations": 0,
+          "supports": 3143,
+          "false_authorization_fraction": 0.0
+        },
+        "prediction_shortcut": {
+          "coverage": 1.0,
+          "selective_error": 0.017777777777777778,
+          "false_authorizations": 2,
+          "supports": 3180,
+          "false_authorization_fraction": 0.0006289308176100629
+        },
+        "unconstrained_selective_logistic": {
+          "coverage": 1.0,
+          "selective_error": 0.006666666666666667,
+          "false_authorizations": 19,
+          "supports": 3254,
+          "false_authorization_fraction": 0.005838967424708051
+        },
+        "constrained_selective_hybrid": {
+          "coverage": 1.0,
+          "selective_error": 0.006666666666666667,
+          "false_authorizations": 19,
+          "supports": 3254,
+          "false_authorization_fraction": 0.005838967424708051
+        },
+        "constrained_anm_predictor_ablation": {
+          "coverage": 1.0,
+          "selective_error": 0.009166666666666667,
+          "false_authorizations": 30,
+          "supports": 3267,
+          "false_authorization_fraction": 0.009182736455463728
+        },
+        "constrained_uncalibrated_ablation": {
+          "coverage": 1.0,
+          "selective_error": 0.005555555555555556,
+          "false_authorizations": 4,
+          "supports": 3228,
+          "false_authorization_fraction": 0.0012391573729863693
+        }
+      }
+    },
+    {
+      "claim": "topology_specific",
+      "policies": {
+        "evidence_contract_v3": {
+          "coverage": 1.0,
+          "selective_error": 0.01972222222222222,
+          "false_authorizations": 64,
+          "supports": 2577,
+          "false_authorization_fraction": 0.02483507954986418
+        },
+        "equal_weight_compensatory_75": {
+          "coverage": 1.0,
+          "selective_error": 0.01972222222222222,
+          "false_authorizations": 64,
+          "supports": 2577,
+          "false_authorization_fraction": 0.02483507954986418
+        },
+        "prediction_shortcut": {
+          "coverage": 1.0,
+          "selective_error": 0.18444444444444444,
+          "false_authorizations": 662,
+          "supports": 3180,
+          "false_authorization_fraction": 0.20817610062893083
+        },
+        "unconstrained_selective_logistic": {
+          "coverage": 1.0,
+          "selective_error": 0.020833333333333332,
+          "false_authorizations": 71,
+          "supports": 2587,
+          "false_authorization_fraction": 0.027444916892153073
+        },
+        "constrained_selective_hybrid": {
+          "coverage": 1.0,
+          "selective_error": 0.020833333333333332,
+          "false_authorizations": 71,
+          "supports": 2587,
+          "false_authorization_fraction": 0.027444916892153073
+        },
+        "constrained_anm_predictor_ablation": {
+          "coverage": 1.0,
+          "selective_error": 0.020833333333333332,
+          "false_authorizations": 71,
+          "supports": 2587,
+          "false_authorization_fraction": 0.027444916892153073
+        },
+        "constrained_uncalibrated_ablation": {
+          "coverage": 1.0,
+          "selective_error": 0.01888888888888889,
+          "false_authorizations": 64,
+          "supports": 2580,
+          "false_authorization_fraction": 0.024806201550387597
+        }
+      }
+    },
+    {
+      "claim": "directed",
+      "policies": {
+        "evidence_contract_v3": {
+          "coverage": 0.7447222222222222,
+          "selective_error": 0.34986945169712796,
+          "false_authorizations": 273,
+          "supports": 1458,
+          "false_authorization_fraction": 0.18724279835390947
+        },
+        "equal_weight_compensatory_75": {
+          "coverage": 1.0,
+          "selective_error": 0.3466666666666667,
+          "false_authorizations": 273,
+          "supports": 1458,
+          "false_authorization_fraction": 0.18724279835390947
+        },
+        "prediction_shortcut": {
+          "coverage": 1.0,
+          "selective_error": 0.28444444444444444,
+          "false_authorizations": 1022,
+          "supports": 3180,
+          "false_authorization_fraction": 0.3213836477987421
+        },
+        "unconstrained_selective_logistic": {
+          "coverage": 1.0,
+          "selective_error": 0.125,
+          "false_authorizations": 280,
+          "supports": 2270,
+          "false_authorization_fraction": 0.12334801762114538
+        },
+        "constrained_selective_hybrid": {
+          "coverage": 0.8863888888888889,
+          "selective_error": 0.24099028517706048,
+          "false_authorizations": 102,
+          "supports": 1286,
+          "false_authorization_fraction": 0.07931570762052877
+        },
+        "constrained_anm_predictor_ablation": {
+          "coverage": 0.9263888888888889,
+          "selective_error": 0.2782608695652174,
+          "false_authorizations": 48,
+          "supports": 1115,
+          "false_authorization_fraction": 0.04304932735426009
+        },
+        "constrained_uncalibrated_ablation": {
+          "coverage": 0.8869444444444444,
+          "selective_error": 0.24052615095521454,
+          "false_authorizations": 99,
+          "supports": 1281,
+          "false_authorization_fraction": 0.07728337236533958
+        }
+      }
+    },
+    {
+      "claim": "mechanistic",
+      "policies": {
+        "evidence_contract_v3": {
+          "coverage": 0.8877777777777778,
+          "selective_error": 0.24217772215269087,
+          "false_authorizations": 98,
+          "supports": 1273,
+          "false_authorization_fraction": 0.0769835035349568
+        },
+        "equal_weight_compensatory_75": {
+          "coverage": 1.0,
+          "selective_error": 0.14888888888888888,
+          "false_authorizations": 531,
+          "supports": 2686,
+          "false_authorization_fraction": 0.19769173492181683
+        },
+        "prediction_shortcut": {
+          "coverage": 1.0,
+          "selective_error": 0.28444444444444444,
+          "false_authorizations": 1022,
+          "supports": 3180,
+          "false_authorization_fraction": 0.3213836477987421
+        },
+        "unconstrained_selective_logistic": {
+          "coverage": 1.0,
+          "selective_error": 0.125,
+          "false_authorizations": 280,
+          "supports": 2270,
+          "false_authorization_fraction": 0.12334801762114538
+        },
+        "constrained_selective_hybrid": {
+          "coverage": 0.8863888888888889,
+          "selective_error": 0.24099028517706048,
+          "false_authorizations": 102,
+          "supports": 1286,
+          "false_authorization_fraction": 0.07931570762052877
+        },
+        "constrained_anm_predictor_ablation": {
+          "coverage": 0.9263888888888889,
+          "selective_error": 0.2782608695652174,
+          "false_authorizations": 48,
+          "supports": 1115,
+          "false_authorization_fraction": 0.04304932735426009
+        },
+        "constrained_uncalibrated_ablation": {
+          "coverage": 0.8869444444444444,
+          "selective_error": 0.24052615095521454,
+          "false_authorizations": 99,
+          "supports": 1281,
+          "false_authorization_fraction": 0.07728337236533958
+        }
+      }
+    },
+    {
+      "claim": "causal",
+      "policies": {
+        "evidence_contract_v3": {
+          "coverage": 0.1,
+          "selective_error": 0.0,
+          "false_authorizations": 0,
+          "supports": 360,
+          "false_authorization_fraction": 0.0
+        },
+        "equal_weight_compensatory_75": {
+          "coverage": 1.0,
+          "selective_error": 0.0,
+          "false_authorizations": 0,
+          "supports": 360,
+          "false_authorization_fraction": 0.0
+        },
+        "prediction_shortcut": {
+          "coverage": 1.0,
+          "selective_error": 0.7833333333333333,
+          "false_authorizations": 2820,
+          "supports": 3180,
+          "false_authorization_fraction": 0.8867924528301887
+        },
+        "unconstrained_selective_logistic": {
+          "coverage": 1.0,
+          "selective_error": 0.0,
+          "false_authorizations": 0,
+          "supports": 360,
+          "false_authorization_fraction": 0.0
+        },
+        "constrained_selective_hybrid": {
+          "coverage": 1.0,
+          "selective_error": 0.0,
+          "false_authorizations": 0,
+          "supports": 360,
+          "false_authorization_fraction": 0.0
+        },
+        "constrained_anm_predictor_ablation": {
+          "coverage": 1.0,
+          "selective_error": 0.0,
+          "false_authorizations": 0,
+          "supports": 360,
+          "false_authorization_fraction": 0.0
+        },
+        "constrained_uncalibrated_ablation": {
+          "coverage": 1.0,
+          "selective_error": 0.0,
+          "false_authorizations": 0,
+          "supports": 360,
+          "false_authorization_fraction": 0.0
+        }
+      }
+    }
+  ],
+  "calibration": {
+    "scope": [
+      "predictive",
+      "internally_reproduced",
+      "topology_specific",
+      "directed",
+      "mechanistic",
+      "causal"
+    ],
+    "raw": {
+      "brier_score": 0.036821614457621166,
+      "ece_10_equal_width_bins": 0.023718284041464904
+    },
+    "isotonic": {
+      "brier_score": 0.03693289238259941,
+      "ece_10_equal_width_bins": 0.025683814978853886
+    },
+    "interpretation": "descriptive postconfirmation audit; no threshold was changed"
+  },
+  "direction_failure": {
+    "by_regime": [
+      {
+        "regime": "independent_mixture",
+        "structural_direction": "none",
+        "cases": 360,
+        "attempts": 60,
+        "coverage": 0.16666666666666666,
+        "attempted_accuracy": 0.0,
+        "forward": 31,
+        "reverse": 29,
+        "review": 300
+      },
+      {
+        "regime": "confounded_threshold",
+        "structural_direction": "none",
+        "cases": 360,
+        "attempts": 267,
+        "coverage": 0.7416666666666667,
+        "attempted_accuracy": 0.0,
+        "forward": 46,
+        "reverse": 221,
+        "review": 93
+      },
+      {
+        "regime": "reverse_piecewise",
+        "structural_direction": "y_to_x",
+        "cases": 360,
+        "attempts": 279,
+        "coverage": 0.775,
+        "attempted_accuracy": 0.7240143369175627,
+        "forward": 77,
+        "reverse": 202,
+        "review": 81
+      },
+      {
+        "regime": "direct_exponential",
+        "structural_direction": "x_to_y",
+        "cases": 360,
+        "attempts": 350,
+        "coverage": 0.9722222222222222,
+        "attempted_accuracy": 0.9971428571428571,
+        "forward": 349,
+        "reverse": 1,
+        "review": 10
+      },
+      {
+        "regime": "direct_piecewise",
+        "structural_direction": "x_to_y",
+        "cases": 360,
+        "attempts": 286,
+        "coverage": 0.7944444444444444,
+        "attempted_accuracy": 0.7517482517482518,
+        "forward": 215,
+        "reverse": 71,
+        "review": 74
+      },
+      {
+        "regime": "direct_post_nonlinear",
+        "structural_direction": "x_to_y",
+        "cases": 360,
+        "attempts": 354,
+        "coverage": 0.9833333333333333,
+        "attempted_accuracy": 0.0,
+        "forward": 0,
+        "reverse": 354,
+        "review": 6
+      },
+      {
+        "regime": "direct_linear_nongaussian",
+        "structural_direction": "x_to_y",
+        "cases": 360,
+        "attempts": 324,
+        "coverage": 0.9,
+        "attempted_accuracy": 0.9074074074074074,
+        "forward": 294,
+        "reverse": 30,
+        "review": 36
+      },
+      {
+        "regime": "measurement_error_direct",
+        "structural_direction": "x_to_y",
+        "cases": 360,
+        "attempts": 249,
+        "coverage": 0.6916666666666667,
+        "attempted_accuracy": 0.4939759036144578,
+        "forward": 123,
+        "reverse": 126,
+        "review": 111
+      },
+      {
+        "regime": "collider_truncation",
+        "structural_direction": "none",
+        "cases": 360,
+        "attempts": 225,
+        "coverage": 0.625,
+        "attempted_accuracy": 0.0,
+        "forward": 119,
+        "reverse": 106,
+        "review": 135
+      },
+      {
+        "regime": "direct_interventional_piecewise",
+        "structural_direction": "x_to_y",
+        "cases": 360,
+        "attempts": 287,
+        "coverage": 0.7972222222222223,
+        "attempted_accuracy": 0.710801393728223,
+        "forward": 204,
+        "reverse": 83,
+        "review": 73
+      }
+    ],
+    "spurious_attempt_rate_in_no_direction_regimes": 0.5111111111111111,
+    "principal_failures": [
+      "direct_post_nonlinear is outside the additive-noise assumption and is predominantly reversed",
+      "measurement_error_direct remains close to chance among attempted directions",
+      "confounded and collider regimes receive many assumption-invalid forced directions"
+    ]
+  },
+  "engineering_signal": {
+    "all_claim_hybrid_false_authorization_fraction": 0.020029436232162284,
+    "all_claim_unconstrained_false_authorization_fraction": 0.03802216538789429,
+    "variable_claim_hybrid_selective_error": 0.0799249350399384,
+    "variable_claim_unconstrained_selective_error": 0.04736111111111111,
+    "interpretation": "hard vetoes enforce zero semantic violations and reduce false support, but do not establish lower predictive error"
+  },
+  "publication_assessment": {
+    "strong_new_q1_claim_supported": false,
+    "negative_result_is_reproducible": true,
+    "reason": "The frozen primary endpoint failed materially on ANM direction, while aggregate error is diluted by constant-label claims and calibration adds no clear confirmatory advantage.",
+    "defensible_claim": "A constrained selective layer can enforce semantic support boundaries with non-trivial coverage, but the tested ANM gate is not a reliable general directional-evidence component across assumption violations.",
+    "prohibited_next_action": "Do not tune on v2 and present a rerun as independent confirmation."
+  },
+  "decision": "negative_confirmatory_result_with_partial_engineering_signal"
+}
