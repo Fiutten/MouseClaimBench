@@ -40,6 +40,12 @@ confirmatory_population:
   source_transformations:
     - remove_colab_shell_magic_install_line
     - remove_unused_tigramite_plotting_import
+    - execute_definitions_before_main_guard_only
+  upstream_interoperability_note: >-
+    The published Python exports contain additional Colab shell and download
+    commands after the main guard. They are not importable as ordinary Python
+    modules. The v5 adapter executes only the hash-verified definitions before
+    that guard and does not alter numerical generator statements.
   numerical_generator_reimplementation_allowed: false
   generated_target_population: >-
     Equal-weight mixture of the official A1 and A1C generators, Gaussian and

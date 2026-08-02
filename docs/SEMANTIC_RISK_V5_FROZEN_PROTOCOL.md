@@ -10,6 +10,10 @@ The confirmatory block uses the published TimeGraph generators. The official
 source is executed after two non-numerical compatibility transformations. Colab
 shell magic and an unused plotting import are removed. The equations, random
 draws, coefficients, state updates, and returned data are not reimplemented.
+The published exports also contain Colab archive and download commands after
+their main guard. The adapter executes only definitions before that guard. This
+restriction was added after the source smoke test failed and before any v5
+outcome was generated.
 
 ## Inferential unit
 
