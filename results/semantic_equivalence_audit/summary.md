@@ -1,9 +1,9 @@
 # Independent ASP Semantic Equivalence Audit
 
 - Decision: `semantic_equivalence_observed`
-- Evaluated assignments and boundaries: `1847`
+- Evaluated assignments and boundaries: `2847`
 - Mismatches: `0`
-- ASP backend: `{'clingo-5.8.0': 1845}`
+- ASP backend: `{'clingo-5.8.0': 2845}`
 - Knowledge profile hash: `sha256:12770573922ea4bf00fabf519f565480df7475d313726cc3281a5c200d696137`
 
 ## Claim coverage
@@ -17,11 +17,12 @@
 - `structure_function`: `5` cases (`exhaustive`)
 - `mechanistic`: `625` cases (`exhaustive`)
 - `causal`: `5` cases (`exhaustive`)
-- `digital_twin`: `1180` cases (`boundary_and_pairwise_priority`)
+- `digital_twin`: `2180` cases (`boundary_pairwise_and_fixed_randomized`)
 
 ## Limits
 
 - This is an executable equivalence audit, not a mathematical proof of correctness.
 - Claims with at most four required blocks are exhausted over all five evidence states.
 - Larger contracts use homogeneous, single-block, and pairwise-priority boundary cases.
+- Larger contracts additionally use a fixed 1,000-case randomized property suite.
 - Agreement between engines does not establish that the curated scientific policy is true.

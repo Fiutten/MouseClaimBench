@@ -1,12 +1,12 @@
 {
   "version": "0.9.0",
-  "git_revision": "db91234",
+  "git_revision": "aba4b35",
   "analysis": "independent_asp_semantic_equivalence_audit_v1",
   "knowledge_profile_id": "mouse_brain_claims",
   "knowledge_profile_version": "1.1.0",
   "knowledge_profile_hash": "sha256:12770573922ea4bf00fabf519f565480df7475d313726cc3281a5c200d696137",
   "asp_backends": {
-    "clingo-5.8.0": 1845
+    "clingo-5.8.0": 2845
   },
   "claim_audits": [
     {
@@ -66,8 +66,8 @@
     {
       "claim": "digital_twin",
       "required_block_count": 10,
-      "enumeration_mode": "boundary_and_pairwise_priority",
-      "case_count": 1180
+      "enumeration_mode": "boundary_pairwise_and_fixed_randomized",
+      "case_count": 2180
     }
   ],
   "boundary_audits": [
@@ -84,8 +84,10 @@
       "equivalent": true
     }
   ],
-  "evaluated_case_count": 1847,
-  "unique_asp_program_count": 1430,
+  "evaluated_case_count": 2847,
+  "unique_asp_program_count": 2430,
+  "fixed_randomized_seed": 2026080201,
+  "fixed_randomized_large_contract_cases": 1000,
   "mismatch_count": 0,
   "mismatches": [],
   "decision": "semantic_equivalence_observed",
@@ -93,6 +95,7 @@
     "This is an executable equivalence audit, not a mathematical proof of correctness.",
     "Claims with at most four required blocks are exhausted over all five evidence states.",
     "Larger contracts use homogeneous, single-block, and pairwise-priority boundary cases.",
+    "Larger contracts additionally use a fixed 1,000-case randomized property suite.",
     "Agreement between engines does not establish that the curated scientific policy is true."
   ]
 }
