@@ -38,9 +38,11 @@ hybrid-validation = [
   "scikit-learn>=1.9,<2",
 ]
 semantic-risk-v3 = [
+  "anndata==0.13.2",
   "causalchamber==0.2.8",
   "clingo==5.8.0",
   "mapie==1.4.1",
+  "openpyxl==3.1.5",
 ]
 
 [project.scripts]
@@ -95,6 +97,7 @@ mousebrainbench-hybrid-release-audit = "mousebrainbench.benchmarks.hybrid_select
 mousebrainbench-semantic-risk-v3 = "mousebrainbench.benchmarks.semantic_risk_confirmation:main"
 mousebrainbench-semantic-risk-calibrate = "mousebrainbench.benchmarks.semantic_risk_calibration:main"
 mousebrainbench-causal-chambers-v3 = "mousebrainbench.benchmarks.causal_chambers_transport:main"
+mousebrainbench-causalbench-v3 = "mousebrainbench.benchmarks.causalbench_transport:main"
 mousebrainbench-semantic-equivalence-v3 = "mousebrainbench.benchmarks.semantic_equivalence_audit:main"
 mousebrainbench-run = "mousebrainbench.cli:main"
 
