@@ -1,6 +1,6 @@
 {
   "version": "0.9.0",
-  "git_revision": "c81932c",
+  "git_revision": "3ebbca95660d7dfa80cd3a0b853e72694a630dd3",
   "analysis": "semantic_risk_orthogonal_shifts_v5_4",
   "protocol": "configs/benchmarks/semantic_risk_orthogonal_shifts_v5_4.yaml",
   "protocol_status": "amended_after_preoutcome_adapter_compatibility_failure",
@@ -8048,8 +8048,8 @@
   ],
   "claim_boundary": "These families estimate failure behavior on exact official TimeGraph model contrasts. They do not calibrate a universal shift detector, establish monotonic degradation outside ordered families, or provide real-domain risk.",
   "efficiency": {
-    "wall_time_seconds": 149.26003404101357,
-    "peak_rss_megabytes": 191.125,
+    "wall_time_seconds": 148.8809411249822,
+    "peak_rss_megabytes": 190.953125,
     "generated_scenarios": 5200
   }
 }
