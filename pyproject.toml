@@ -95,6 +95,7 @@ mousebrainbench-hybrid-release-audit = "mousebrainbench.benchmarks.hybrid_select
 mousebrainbench-semantic-risk-v3 = "mousebrainbench.benchmarks.semantic_risk_confirmation:main"
 mousebrainbench-semantic-risk-calibrate = "mousebrainbench.benchmarks.semantic_risk_calibration:main"
 mousebrainbench-causal-chambers-v3 = "mousebrainbench.benchmarks.causal_chambers_transport:main"
+mousebrainbench-semantic-equivalence-v3 = "mousebrainbench.benchmarks.semantic_equivalence_audit:main"
 mousebrainbench-run = "mousebrainbench.cli:main"
 
 [tool.setuptools.packages.find]
