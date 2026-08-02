@@ -1,0 +1,293 @@
+{
+  "protocol": "ibl_bwm_mouse_observational_transport_v3",
+  "selection_revision": "8d6f10c",
+  "release_tag": "Brainwidemap",
+  "published_dataset_doi": "10.1038/s41586-025-09235-0",
+  "official_repository_revision": "118fc36cb3602934466ad2c6087c2b3b441f9f1f",
+  "selection_uses_model_predictions": false,
+  "selection_basis": "official frozen 699-insertion fixture, at least 50 good units, at least two non-root Cosmos classes, one SHA-256-selected insertion per mouse, and 24 SHA-256-selected mouse nicknames",
+  "subject_split": "sha256(subject_uuid) modulo 5; 0-2 context, 3-4 locked test",
+  "maximum_insertions": 24,
+  "insertions": [
+    {
+      "pid": "6be21156-33b0-4f70-9a0f-65b3e3cd6d4a",
+      "eid": "56956777-dca5-468c-87cb-78150432cc57",
+      "probe_name": "probe00",
+      "subject": "NYU-11",
+      "subject_uuid": "0f47b24d-3909-428c-a18d-666006c7c834",
+      "subject_partition_value": 2,
+      "lab": "angelakilab",
+      "good_units": 94,
+      "regions": 3
+    },
+    {
+      "pid": "6a22a5b4-79ec-4b3c-b023-1ec7b4a2b675",
+      "eid": "cc45c568-c3b9-4f74-836e-c87762e898c8",
+      "probe_name": "probe01",
+      "subject": "KS023",
+      "subject_uuid": "c6e8125f-b6c7-4349-b74d-32e8bd606f63",
+      "subject_partition_value": 0,
+      "lab": "cortexlab",
+      "good_units": 124,
+      "regions": 3
+    },
+    {
+      "pid": "adcd791c-ead3-4572-a9cb-028bbee1d2e4",
+      "eid": "6f6d2c8e-28be-49f4-ae4d-06be2d3148c1",
+      "probe_name": "probe00",
+      "subject": "ZFM-02370",
+      "subject_uuid": "a41930e3-a385-479c-912d-e24c197d6626",
+      "subject_partition_value": 0,
+      "lab": "mainenlab",
+      "good_units": 252,
+      "regions": 3
+    },
+    {
+      "pid": "9e979599-11e1-4372-96fc-e80520f3e668",
+      "eid": "549caacc-3bd7-40f1-913d-e94141816547",
+      "probe_name": "probe01",
+      "subject": "CSH_ZAD_025",
+      "subject_uuid": "a5903920-456d-4750-82f5-8efe22295995",
+      "subject_partition_value": 3,
+      "lab": "zadorlab",
+      "good_units": 146,
+      "regions": 2
+    },
+    {
+      "pid": "f72e60c3-3593-466a-afaf-91145c44fb2b",
+      "eid": "36573e0b-ddd6-4504-94ec-9a23c877486c",
+      "probe_name": "probe00",
+      "subject": "PL035",
+      "subject_uuid": "0a8528e8-cf20-4040-b501-94478e8eaf68",
+      "subject_partition_value": 4,
+      "lab": "hausserlab",
+      "good_units": 61,
+      "regions": 2
+    },
+    {
+      "pid": "1df6ebb3-9d16-4c0f-96cc-e1b1596d2006",
+      "eid": "ac7d3064-7f09-48a3-88d2-e86a4eb86461",
+      "probe_name": "probe00",
+      "subject": "KS052",
+      "subject_uuid": "67f61ffd-abb6-4dfa-89a1-0ccf1a2c0fc7",
+      "subject_partition_value": 1,
+      "lab": "cortexlab",
+      "good_units": 53,
+      "regions": 2
+    },
+    {
+      "pid": "6fc4d73c-2071-43ec-a756-c6c6d8322c8b",
+      "eid": "dac3a4c1-b666-4de0-87e8-8c514483cacf",
+      "probe_name": "probe01",
+      "subject": "SWC_060",
+      "subject_uuid": "a25f2ed4-2f8b-4708-9c70-2fb84dbb9b29",
+      "subject_partition_value": 0,
+      "lab": "hoferlab",
+      "good_units": 60,
+      "regions": 2
+    },
+    {
+      "pid": "8b31b4bd-003e-4816-a3bf-2df4cc3558f8",
+      "eid": "37ac03f1-9831-4a30-90fc-a59e635b98bd",
+      "probe_name": "probe00",
+      "subject": "PL033",
+      "subject_uuid": "8ff283ef-b9a1-4862-bd1c-b18f5ac71f05",
+      "subject_partition_value": 2,
+      "lab": "hausserlab",
+      "good_units": 71,
+      "regions": 2
+    },
+    {
+      "pid": "decc8d40-cf74-4263-ae9d-a0cc68b47e86",
+      "eid": "f88d4dd4-ccd7-400e-9035-fa00be3bcfa8",
+      "probe_name": "probe01",
+      "subject": "NYU-37",
+      "subject_uuid": "5fb794b7-3151-4910-8a09-e6daa8383cc3",
+      "subject_partition_value": 0,
+      "lab": "angelakilab",
+      "good_units": 89,
+      "regions": 2
+    },
+    {
+      "pid": "507b20cf-4ab0-4f55-9a81-88b02839d127",
+      "eid": "e45481fa-be22-4365-972c-e7404ed8ab5a",
+      "probe_name": "probe00",
+      "subject": "KS086",
+      "subject_uuid": "8a69dc87-c460-49f5-91a3-9d43d9b36471",
+      "subject_partition_value": 1,
+      "lab": "cortexlab",
+      "good_units": 122,
+      "regions": 4
+    },
+    {
+      "pid": "0dfc64c5-80bc-43b6-a7c4-2fb6e638e9f3",
+      "eid": "5d01d14e-aced-4465-8f8e-9a1c674f62ec",
+      "probe_name": "probe01",
+      "subject": "CSH_ZAD_026",
+      "subject_uuid": "56c9ce96-6af7-4cae-94a2-8a077e3e3e11",
+      "subject_partition_value": 0,
+      "lab": "zadorlab",
+      "good_units": 190,
+      "regions": 3
+    },
+    {
+      "pid": "55001cb4-e10f-4657-9760-1228b590a69c",
+      "eid": "cb2ad999-a6cb-42ff-bf71-1774c57e5308",
+      "probe_name": "probe01",
+      "subject": "ZM_2245",
+      "subject_uuid": "20ed6bed-9bfd-44f9-8c57-a9344e206cfd",
+      "subject_partition_value": 4,
+      "lab": "mainenlab",
+      "good_units": 143,
+      "regions": 4
+    },
+    {
+      "pid": "f9656eee-141c-453d-a016-4aba68f674dc",
+      "eid": "0cbeae00-e229-4b7d-bdcc-1b0569d7e0c3",
+      "probe_name": "probe01",
+      "subject": "CSHL055",
+      "subject_uuid": "3614ee37-c892-4eb4-ab83-f6c1f3804977",
+      "subject_partition_value": 2,
+      "lab": "churchlandlab",
+      "good_units": 50,
+      "regions": 2
+    },
+    {
+      "pid": "97207d87-3fcd-4ebb-b0c7-087bdbf8a95c",
+      "eid": "07dc4b76-5b93-4a03-82a0-b3d9cc73f412",
+      "probe_name": "probe01",
+      "subject": "KS042",
+      "subject_uuid": "4d98934d-a289-4854-b113-33679aae3ce6",
+      "subject_partition_value": 1,
+      "lab": "cortexlab",
+      "good_units": 125,
+      "regions": 2
+    },
+    {
+      "pid": "7587e3bb-dd11-4853-b48b-feab0b56ae05",
+      "eid": "15948667-747b-4702-9d53-354ac70e9119",
+      "probe_name": "probe01",
+      "subject": "NYU-47",
+      "subject_uuid": "e403a1bd-408e-401c-8d9f-56e497c923d6",
+      "subject_partition_value": 0,
+      "lab": "angelakilab",
+      "good_units": 161,
+      "regions": 2
+    },
+    {
+      "pid": "53b58cc3-8d88-4257-aa63-48da088f2091",
+      "eid": "dfd8e7df-dc51-4589-b6ca-7baccfeb94b4",
+      "probe_name": "probe01",
+      "subject": "CSHL045",
+      "subject_uuid": "b04fd8a4-1ba4-4bc2-9593-238386281a6c",
+      "subject_partition_value": 2,
+      "lab": "churchlandlab",
+      "good_units": 57,
+      "regions": 2
+    },
+    {
+      "pid": "76f16631-cbf7-4883-9437-4e8d8c4f34a3",
+      "eid": "537677fe-1e24-4755-948c-fa4a4e8ecce5",
+      "probe_name": "probe01",
+      "subject": "NYU-45",
+      "subject_uuid": "6dca8a66-af3d-444d-bc26-80719356dca5",
+      "subject_partition_value": 1,
+      "lab": "angelakilab",
+      "good_units": 85,
+      "regions": 2
+    },
+    {
+      "pid": "fe41986d-4966-4a77-af7e-e7f71c25aec5",
+      "eid": "93ad879a-aa42-4150-83e1-38773c9785e4",
+      "probe_name": "probe01",
+      "subject": "NYU-48",
+      "subject_uuid": "5fdc719a-9615-4be6-91fd-80b14e8551de",
+      "subject_partition_value": 4,
+      "lab": "angelakilab",
+      "good_units": 138,
+      "regions": 2
+    },
+    {
+      "pid": "179ce6d0-e348-4257-b718-e58dd4134589",
+      "eid": "6a601cc5-7b79-4c75-b0e8-552246532f82",
+      "probe_name": "probe01",
+      "subject": "CSH_ZAD_022",
+      "subject_uuid": "20086e93-a271-4a57-89fc-15604d8e92c0",
+      "subject_partition_value": 3,
+      "lab": "zadorlab",
+      "good_units": 114,
+      "regions": 2
+    },
+    {
+      "pid": "8c732bf2-639d-496c-bf82-464bc9c2d54b",
+      "eid": "ebce500b-c530-47de-8cb1-963c552703ea",
+      "probe_name": "probe00",
+      "subject": "MFD_09",
+      "subject_uuid": "08b6df4c-65cd-40f5-a0d6-77e24df955d5",
+      "subject_partition_value": 3,
+      "lab": "churchlandlab_ucla",
+      "good_units": 282,
+      "regions": 3
+    },
+    {
+      "pid": "fddceb2e-82ba-493d-baba-c5d8af65981f",
+      "eid": "4aa1d525-5c7d-4c50-a147-ec53a9014812",
+      "probe_name": "probe00",
+      "subject": "ZFM-01936",
+      "subject_uuid": "369756c4-59bb-4349-9e8c-cc364bd6e613",
+      "subject_partition_value": 2,
+      "lab": "mainenlab",
+      "good_units": 141,
+      "regions": 2
+    },
+    {
+      "pid": "b83407f8-8220-46f9-9b90-a4c9f150c572",
+      "eid": "bb099402-fb31-4cfd-824e-1c97530a0875",
+      "probe_name": "probe00",
+      "subject": "UCLA017",
+      "subject_uuid": "01f6648a-dc2e-4de9-934d-a7e92c2e0cd8",
+      "subject_partition_value": 3,
+      "lab": "churchlandlab_ucla",
+      "good_units": 215,
+      "regions": 3
+    },
+    {
+      "pid": "06b677d6-b074-4444-bd4a-3235a310e6e0",
+      "eid": "c46b8def-620d-4d70-9397-be5694255f73",
+      "probe_name": "probe00",
+      "subject": "MFD_07",
+      "subject_uuid": "610be891-23dc-4848-89e6-55e525e4b004",
+      "subject_partition_value": 1,
+      "lab": "churchlandlab_ucla",
+      "good_units": 226,
+      "regions": 2
+    },
+    {
+      "pid": "f68d9f26-ac40-4c67-9cbf-9ad1851292f7",
+      "eid": "687017d4-c9fc-458f-a7d5-0979fe1a7470",
+      "probe_name": "probe00",
+      "subject": "UCLA052",
+      "subject_uuid": "bea106e9-0636-4576-b954-f229b31cf915",
+      "subject_partition_value": 2,
+      "lab": "churchlandlab_ucla",
+      "good_units": 84,
+      "regions": 3
+    }
+  ],
+  "partition_counts": {
+    "calibration_context": 17,
+    "locked_mouse_test": 7
+  },
+  "source_files": {
+    "clusters_2024_Q2.pqt": {
+      "bytes": 91555529,
+      "md5": "b89fac76289f3a3d585910711f1eef41"
+    },
+    "2023_12_bwm_release.csv": {
+      "sha256": "db9edfc6f5d92a4df81d488bfb1068f43526a13717bb8fc7da2aecdd28876ac4"
+    },
+    "region_info.csv": {
+      "sha256": "03f3db63aec6650a051d768b633b45cde32b854bf714e745bbacf704256c40b3"
+    }
+  }
+}
