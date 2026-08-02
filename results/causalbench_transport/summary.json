@@ -1,0 +1,210 @@
+{
+  "version": "0.9.0",
+  "git_revision": "095c650",
+  "analysis": "causalbench_interventional_transport_audit_v3",
+  "official_repository_revision": "1a2143cffdc85f835b41ce8d52034be1bf903e71",
+  "figshare_doi": "10.25452/figshare.plus.20029387.v1",
+  "anndata_version": "0.13.2",
+  "selection_path": "configs/benchmarks/causalbench_v3_selection.json",
+  "selection_sha256": "7361ce88fb4f5588404725b196ceeae06f1398a90349a360269d32b1bf450b98",
+  "selected_gene_count": 200,
+  "pair_cases_per_domain": 39800,
+  "evidence_folds": [
+    0,
+    1
+  ],
+  "reference_fold": 2,
+  "reference_used_as_policy_input": false,
+  "multiple_testing": "Benjamini-Hochberg within domain and cell fold",
+  "effect_threshold": 0.1,
+  "score_model_refitted": false,
+  "risk_policy_recalibrated": false,
+  "synthetic_guarantee_transported": false,
+  "variable_claims": [
+    "predictive",
+    "internally_reproduced",
+    "topology_specific",
+    "directed",
+    "mechanistic",
+    "causal"
+  ],
+  "domains": [
+    {
+      "dataset": "weissmann_k562",
+      "role": "calibration_context",
+      "extraction": {
+        "n_obs": 310385,
+        "n_vars": 8563,
+        "selected_cells": 32942,
+        "normalization": "log1p(raw_count / per_cell_library_size * 10000)"
+      },
+      "pair_cases": 39800,
+      "reference_positive_pairs": 622,
+      "cases": 39800,
+      "claim_families": 6,
+      "authorizations": 441,
+      "false_authorizations": 123,
+      "supported_coverage": 0.0018467336683417085,
+      "semantic_false_authorization_risk": 0.2789115646258503,
+      "by_claim": {
+        "predictive": {
+          "cases": 39800,
+          "claim_families": 1,
+          "authorizations": 0,
+          "false_authorizations": 0,
+          "supported_coverage": 0.0,
+          "semantic_false_authorization_risk": 0.0
+        },
+        "internally_reproduced": {
+          "cases": 39800,
+          "claim_families": 1,
+          "authorizations": 198,
+          "false_authorizations": 54,
+          "supported_coverage": 0.004974874371859297,
+          "semantic_false_authorization_risk": 0.2727272727272727
+        },
+        "topology_specific": {
+          "cases": 39800,
+          "claim_families": 1,
+          "authorizations": 0,
+          "false_authorizations": 0,
+          "supported_coverage": 0.0,
+          "semantic_false_authorization_risk": 0.0
+        },
+        "directed": {
+          "cases": 39800,
+          "claim_families": 1,
+          "authorizations": 45,
+          "false_authorizations": 15,
+          "supported_coverage": 0.0011306532663316582,
+          "semantic_false_authorization_risk": 0.3333333333333333
+        },
+        "mechanistic": {
+          "cases": 39800,
+          "claim_families": 1,
+          "authorizations": 0,
+          "false_authorizations": 0,
+          "supported_coverage": 0.0,
+          "semantic_false_authorization_risk": 0.0
+        },
+        "causal": {
+          "cases": 39800,
+          "claim_families": 1,
+          "authorizations": 198,
+          "false_authorizations": 54,
+          "supported_coverage": 0.004974874371859297,
+          "semantic_false_authorization_risk": 0.2727272727272727
+        }
+      },
+      "semantic_support_violations": 0,
+      "source_cluster_bootstrap": {
+        "unit": "source_gene_cluster",
+        "replicates": 1000,
+        "seed": 2026080202,
+        "coverage_interval_95": [
+          0.0012937604690117252,
+          0.0024749790619765493
+        ],
+        "sfar_interval_95": [
+          0.21442147034252296,
+          0.35549996036778686
+        ],
+        "limitation": "source clustering does not remove all dependence induced by shared targets and non-targeting control cells"
+      },
+      "guarantee_transport_valid": false
+    },
+    {
+      "dataset": "weissmann_rpe1",
+      "role": "locked_transport_test",
+      "extraction": {
+        "n_obs": 247914,
+        "n_vars": 8749,
+        "selected_cells": 28447,
+        "normalization": "log1p(raw_count / per_cell_library_size * 10000)"
+      },
+      "pair_cases": 39800,
+      "reference_positive_pairs": 1948,
+      "cases": 39800,
+      "claim_families": 6,
+      "authorizations": 2316,
+      "false_authorizations": 573,
+      "supported_coverage": 0.009698492462311558,
+      "semantic_false_authorization_risk": 0.24740932642487046,
+      "by_claim": {
+        "predictive": {
+          "cases": 39800,
+          "claim_families": 1,
+          "authorizations": 0,
+          "false_authorizations": 0,
+          "supported_coverage": 0.0,
+          "semantic_false_authorization_risk": 0.0
+        },
+        "internally_reproduced": {
+          "cases": 39800,
+          "claim_families": 1,
+          "authorizations": 1055,
+          "false_authorizations": 267,
+          "supported_coverage": 0.02650753768844221,
+          "semantic_false_authorization_risk": 0.25308056872037915
+        },
+        "topology_specific": {
+          "cases": 39800,
+          "claim_families": 1,
+          "authorizations": 0,
+          "false_authorizations": 0,
+          "supported_coverage": 0.0,
+          "semantic_false_authorization_risk": 0.0
+        },
+        "directed": {
+          "cases": 39800,
+          "claim_families": 1,
+          "authorizations": 206,
+          "false_authorizations": 39,
+          "supported_coverage": 0.0051758793969849245,
+          "semantic_false_authorization_risk": 0.18932038834951456
+        },
+        "mechanistic": {
+          "cases": 39800,
+          "claim_families": 1,
+          "authorizations": 0,
+          "false_authorizations": 0,
+          "supported_coverage": 0.0,
+          "semantic_false_authorization_risk": 0.0
+        },
+        "causal": {
+          "cases": 39800,
+          "claim_families": 1,
+          "authorizations": 1055,
+          "false_authorizations": 267,
+          "supported_coverage": 0.02650753768844221,
+          "semantic_false_authorization_risk": 0.25308056872037915
+        }
+      },
+      "semantic_support_violations": 0,
+      "source_cluster_bootstrap": {
+        "unit": "source_gene_cluster",
+        "replicates": 1000,
+        "seed": 2026080202,
+        "coverage_interval_95": [
+          0.007755443886097152,
+          0.011689070351758792
+        ],
+        "sfar_interval_95": [
+          0.21363800998042903,
+          0.2865614528861922
+        ],
+        "limitation": "source clustering does not remove all dependence induced by shared targets and non-targeting control cells"
+      },
+      "guarantee_transport_valid": false
+    }
+  ],
+  "locked_test_zero_semantic_violations": true,
+  "decision": "causalbench_transport_completed_without_semantic_violation",
+  "limits": [
+    "Cross-cell-line results are transport evidence, not a transported LTT guarantee.",
+    "Perturbation effects can reflect indirect paths, off-target effects, or cell-state shifts.",
+    "The adapter evaluates a bounded gene subset and is not a causal-discovery leaderboard.",
+    "Source-gene bootstrap intervals retain dependence through shared targets and controls.",
+    "A failed authorization is abstention and does not establish absence of an effect."
+  ]
+}
