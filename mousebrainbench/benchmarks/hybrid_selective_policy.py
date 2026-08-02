@@ -153,7 +153,28 @@ def selective_decisions(
             elif state == "unresolved":
                 decisions[row_index, claim_index] = 0
 
-    # This postcondition makes the non-compensatory property executable.
+    veto_violations = count_support_veto_violations(
+        decisions,
+        features,
+        claim_names=claim_names,
+        feature_names=feature_names,
+        support_vetoes=support_vetoes,
+    )
+    return decisions, veto_violations
+
+
+def count_support_veto_violations(
+    decisions: np.ndarray,
+    features: np.ndarray,
+    *,
+    claim_names: Sequence[str],
+    feature_names: Sequence[str],
+    support_vetoes: Mapping[str, Sequence[str]],
+) -> int:
+    """Count supported decisions that contradict a non-negotiable veto."""
+
+    indices = _status_indices(feature_names)
+    veto_violations = 0
     for row_index, row in enumerate(features):
         for claim_index, claim in enumerate(claim_names):
             if decisions[row_index, claim_index] != 1:
@@ -164,7 +185,7 @@ def selective_decisions(
                 status_indices=indices,
             ) != "passed":
                 veto_violations += 1
-    return decisions, veto_violations
+    return veto_violations
 
 
 def _fit_claim_model(
