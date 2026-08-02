@@ -5,7 +5,8 @@ and final split but failed the declared OOD stress. Version 5.2 characterizes
 that boundary with six prespecified severity levels.
 
 Each level contains 100 seed bundles and uses the same seed identifiers to
-support paired descriptive comparisons. Within a level, seed bundles are the
+support paired descriptive comparisons. Pair and adapter-control selection also
+uses one shared namespace across levels. Within a level, seed bundles are the
 independent units. The six risk statements use Bonferroni-adjusted one-sided
 confidence. Dependence across paired levels therefore does not invalidate the
 simultaneous error allocation.

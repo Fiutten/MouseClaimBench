@@ -43,6 +43,7 @@ confirmatory_population:
     shift_5: {n_points: 250, noise_scale: 0.35}
   independent_unit: seed_bundle_within_level
   hierarchy: [seed_bundle, generator_scenario, directed_pair, claim_candidate]
+  paired_pair_namespace: timegraph_shift_sweep_v5_2
   pair_sampling:
     direct_pairs_per_scenario: 1
     control_pairs_per_scenario: 1
