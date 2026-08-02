@@ -51,6 +51,7 @@ DEFAULT_SCORE_MODEL = Path("results/hybrid_selective_policy/model.json")
 DEFAULT_OUTPUT = Path("results/ibl_behavior_v5_confirmation/summary.json")
 DEFAULT_MARKDOWN = Path("results/ibl_behavior_v5_confirmation/summary.md")
 DEFAULT_DETAILS = Path("results/ibl_behavior_v5_confirmation/mouse_candidates.csv")
+DEFAULT_SOURCE_MANIFEST = Path("results/ibl_behavior_v5_confirmation/source_manifest.json")
 
 
 @dataclass(frozen=True)
@@ -500,6 +501,11 @@ def _evaluate(data: RoleData, protocol: dict[str, Any]) -> dict[str, Any]:
 
 def _role_summary(data: RoleData, evaluations: dict[str, Any]) -> dict[str, Any]:
     actual = [row for row in data.records if row["true_candidate"]]
+    prediction_rule = [
+        row
+        for row in data.records
+        if row["diagnostic"].correlation >= 0.10 and row["diagnostic"].p_value <= 0.01
+    ]
     return {
         "selected_mice": data.selected_mice,
         "usable_mice": data.usable_mice,
@@ -513,6 +519,20 @@ def _role_summary(data: RoleData, evaluations: dict[str, Any]) -> dict[str, Any]
                 np.median([row["diagnostic"].tjur_r_squared for row in actual])
             ),
             "median_topology_margin": float(np.median([row["topology_margin"] for row in actual])),
+        },
+        "posthoc_prediction_only_diagnostic": {
+            "status": "added_after_primary_outcomes_descriptive_only",
+            "authorized_candidate_rows": len(prediction_rule),
+            "mice_with_false_temporal_control": len(
+                {
+                    row["subject"]
+                    for row in prediction_rule
+                    if not row["true_candidate"]
+                }
+            ),
+            "interpretation": (
+                "correlation without alignment specificity is not a prespecified comparator"
+            ),
         },
         "comparators": evaluations,
     }
@@ -556,6 +576,7 @@ def run(
     output: Path = DEFAULT_OUTPUT,
     markdown: Path = DEFAULT_MARKDOWN,
     details: Path = DEFAULT_DETAILS,
+    source_manifest: Path = DEFAULT_SOURCE_MANIFEST,
 ) -> Path:
     """Run calibration context, locked risk, and conditionally opened final mice."""
 
@@ -599,6 +620,7 @@ def run(
         "protocol_status": protocol["status"],
         "protocol_amendment": protocol["amendment"],
         "manifest": str(manifest_path),
+        "manifest_sha256": hashlib.sha256(manifest_path.read_bytes()).hexdigest(),
         "selected_mice": manifest["selected_mice"],
         "verified_tables": manifest["verified_tables"],
         "inferential_unit": "mouse",
@@ -630,6 +652,7 @@ def run(
         detail_data += _detail_rows(final_data)
     details.parent.mkdir(parents=True, exist_ok=True)
     pd.DataFrame(detail_data).to_csv(details, index=False)
+    source_manifest.write_text(json.dumps(manifest, indent=2) + "\n")
     _write_markdown(result, markdown)
     return output
 
@@ -673,6 +696,7 @@ def main() -> None:
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
     parser.add_argument("--markdown", type=Path, default=DEFAULT_MARKDOWN)
     parser.add_argument("--details", type=Path, default=DEFAULT_DETAILS)
+    parser.add_argument("--source-manifest", type=Path, default=DEFAULT_SOURCE_MANIFEST)
     args = parser.parse_args()
     print(
         run(
@@ -682,10 +706,10 @@ def main() -> None:
             output=args.output,
             markdown=args.markdown,
             details=args.details,
+            source_manifest=args.source_manifest,
         ).resolve()
     )
 
 
 if __name__ == "__main__":
     main()
-

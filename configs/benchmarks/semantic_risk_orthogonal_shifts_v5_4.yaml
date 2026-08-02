@@ -1,0 +1,124 @@
+protocol_id: mouseclaimbench_orthogonal_semantic_risk_shifts
+version: 5.4.0
+status: frozen_before_orthogonal_shift_generation
+freeze_date: 2026-08-02
+parent_result:
+  path: results/timegraph_v5_1_topology_confirmation/summary.json
+  sha256: f8d60e3775824a1948e33e9ce6a665d3135f58a39e79adf9a74fe6414ddebe88
+
+claim: topology_specific
+fixed_threshold: 0.9272577728502728
+threshold_refitting_allowed: false
+
+confirmatory_population:
+  resource: TimeGraph
+  citation_doi: 10.1145/3711896.3737439
+  repository: https://github.com/hferdous/TimeGraph
+  source_revision: 4d93403b002664fa55607f308ad0e80623472ded
+  source_files:
+    Codes/a1.py: sha256:1840a5c267c671cb74ad03aa7090608a02cb67cd44416e347f00f8431a744799
+    Codes/a1c.py: sha256:795d6e86cf894e25b386c9dae4b4910288931d343da4d58c328e7b349c82e038
+  factors:
+    generator: [a1, a1c]
+    noise: [gaussian, student_t]
+    max_lag: [2, 3]
+    n_vars: 6
+    n_points: 1200
+    noise_scale: 0.1
+    student_t_df: 3
+  split_seeds:
+    tail_gaussian: {start: 2026090001, count: 100}
+    tail_t30: {start: 2026090001, count: 100}
+    tail_t10: {start: 2026090001, count: 100}
+    tail_t5: {start: 2026090001, count: 100}
+    tail_t3: {start: 2026090001, count: 100}
+    tail_t2: {start: 2026090001, count: 100}
+    dimension_4: {start: 2026091001, count: 100}
+    dimension_6: {start: 2026091001, count: 100}
+    dimension_8: {start: 2026091001, count: 100}
+    lag_2: {start: 2026092001, count: 100}
+    lag_3: {start: 2026092001, count: 100}
+    lag_4: {start: 2026092001, count: 100}
+    confound_absent: {start: 2026093001, count: 100}
+    confound_present: {start: 2026093001, count: 100}
+  role_factor_overrides:
+    tail_gaussian:
+      {noise: [gaussian], student_t_df: 3, pair_namespace: orthogonal-tail-v5-4}
+    tail_t30:
+      {noise: [student_t], student_t_df: 30, pair_namespace: orthogonal-tail-v5-4}
+    tail_t10:
+      {noise: [student_t], student_t_df: 10, pair_namespace: orthogonal-tail-v5-4}
+    tail_t5:
+      {noise: [student_t], student_t_df: 5, pair_namespace: orthogonal-tail-v5-4}
+    tail_t3:
+      {noise: [student_t], student_t_df: 3, pair_namespace: orthogonal-tail-v5-4}
+    tail_t2:
+      {noise: [student_t], student_t_df: 2, pair_namespace: orthogonal-tail-v5-4}
+    dimension_4:
+      {n_vars: 4, noise: [gaussian], pair_namespace: orthogonal-dimension-v5-4}
+    dimension_6:
+      {n_vars: 6, noise: [gaussian], pair_namespace: orthogonal-dimension-v5-4}
+    dimension_8:
+      {n_vars: 8, noise: [gaussian], pair_namespace: orthogonal-dimension-v5-4}
+    lag_2:
+      {max_lag: [2], pair_namespace: orthogonal-lag-v5-4}
+    lag_3:
+      {max_lag: [3], pair_namespace: orthogonal-lag-v5-4}
+    lag_4:
+      {max_lag: [4], pair_namespace: orthogonal-lag-v5-4}
+    confound_absent:
+      {generator: [a1], pair_namespace: orthogonal-confounding-v5-4}
+    confound_present:
+      {generator: [a1c], pair_namespace: orthogonal-confounding-v5-4}
+  pair_sampling:
+    direct_pairs_per_scenario: 1
+    control_pairs_per_scenario: 1
+    rule: sha256_namespace_order_without_replacement
+
+families:
+  tail_heaviness:
+    levels: [tail_gaussian, tail_t30, tail_t10, tail_t5, tail_t3, tail_t2]
+    reference: tail_gaussian
+    interpretation: increasing_tail_heaviness_with_fixed_scale
+  dimensionality:
+    levels: [dimension_4, dimension_6, dimension_8]
+    reference: dimension_6
+    interpretation: categorical_topology_size_transport_not_a_monotone_dose
+  temporal_depth:
+    levels: [lag_2, lag_3, lag_4]
+    reference: lag_2
+    interpretation: increasing_maximum_structural_lag
+  latent_confounding:
+    levels: [confound_absent, confound_present]
+    reference: confound_absent
+    interpretation: binary_official_generator_contrast_not_a_confounding_dose_curve
+
+simultaneous_contract:
+  total_levels: 14
+  familywise_confidence: 0.95
+  per_level_confidence: 0.9964285714285714
+  multiplicity_method: Bonferroni_across_fourteen_prespecified_family_levels
+  target_seed_bundle_failure_probability: 0.10
+  minimum_authorized_seed_bundle_coverage: 0.10
+  minimum_positive_recovery: 0.05
+  minimum_independent_units: 29
+
+shift_diagnostic:
+  familywise_alpha: 0.05
+  per_level_alpha: 0.0035714285714285718
+  permutations: 999
+  role: warning_only
+  may_refit_threshold: false
+  may_restore_certificate: false
+
+primary_endpoints:
+  - false_authorization_seed_bundles_by_level
+  - missed_positive_seed_bundles_by_level
+  - first_shift_warning_within_ordered_families
+  - first_certificate_failure_within_ordered_families
+
+claim_boundary: >-
+  These families estimate failure behavior on exact official TimeGraph model
+  contrasts. They do not calibrate a universal shift detector, establish
+  monotonic degradation outside ordered families, or provide real-domain risk.
+

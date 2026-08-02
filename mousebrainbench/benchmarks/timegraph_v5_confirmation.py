@@ -180,10 +180,19 @@ def _role_data(
     n_vars = int(factors["n_vars"])
     n_points = int(factors["n_points"])
     noise_scale = float(factors["noise_scale"])
+    student_t_df = float(factors["student_t_df"])
+    generators = tuple(str(value) for value in factors["generator"])
+    noises = tuple(str(value) for value in factors["noise"])
+    max_lags = tuple(int(value) for value in factors["max_lag"])
     role_override = population.get("role_factor_overrides", {}).get(role)
     if role_override is not None:
+        n_vars = int(role_override.get("n_vars", n_vars))
         n_points = int(role_override.get("n_points", n_points))
         noise_scale = float(role_override.get("noise_scale", noise_scale))
+        student_t_df = float(role_override.get("student_t_df", student_t_df))
+        generators = tuple(str(value) for value in role_override.get("generator", generators))
+        noises = tuple(str(value) for value in role_override.get("noise", noises))
+        max_lags = tuple(int(value) for value in role_override.get("max_lag", max_lags))
     elif role == "ood_stress":
         stress = population["ood_stress_factors"]
         n_points = int(stress["n_points"])
@@ -195,20 +204,24 @@ def _role_data(
     pair_spec = population["pair_sampling"]
     for seed in _role_seeds(protocol, role):
         top_id = f"{role}/seed-{seed}"
-        for generator in factors["generator"]:
+        for generator in generators:
             module = modules[str(generator)]
-            for noise in factors["noise"]:
-                for max_lag_value in factors["max_lag"]:
+            for noise in noises:
+                for max_lag_value in max_lags:
                     max_lag = int(max_lag_value)
                     stratum = f"{generator}/{noise}/lag-{max_lag}"
                     subgroup = f"{top_id}/{stratum}"
-                    pair_namespace = str(population.get("paired_pair_namespace", top_id))
+                    pair_namespace = str(
+                        (role_override or {}).get(
+                            "pair_namespace", population.get("paired_pair_namespace", top_id)
+                        )
+                    )
                     adapter_experiment = f"{pair_namespace}/seed-{seed}/{stratum}"
                     random_state = _derived_seed(seed, str(generator), str(noise), max_lag)
                     instance = module["LinearTimeSeriesGenerator"](
                         noise_type=str(noise),
                         noise_scale=noise_scale,
-                        df=int(factors["student_t_df"]),
+                        df=student_t_df,
                         random_state=random_state,
                     )
                     frame = instance.generate_multivariate_ts(n_points, n_vars, max_lag)
