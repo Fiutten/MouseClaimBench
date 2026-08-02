@@ -1,0 +1,68 @@
+protocol_id: mouseclaimbench_dandi_contrast_prospective_profile_v2_1
+version: 1.0.0
+status: frozen_before_asset_catalog_and_value_access
+freeze_date: 2026-08-02
+
+resource:
+  archive: DANDI
+  dandiset: "000039"
+  version: "0.230223.1216"
+  doi: 10.48324/dandi.000039/0.230223.1216
+  title: Allen Institute - Contrast tuning in mouse visual cortex with calcium imaging
+  species: Mus musculus
+  metadata_subject_count: 32
+  metadata_asset_count: 100
+  metadata_total_bytes: 22607247880
+  data_standard: NWB
+
+selection:
+  independent_unit: subject
+  eligible_path_suffix: behavior+ophys.nwb
+  one_asset_per_subject: lexicographically_first_eligible_path
+  minimum_selected_subjects: 25
+  replacement_after_value_access: false
+  selection_uses_response_values: false
+
+endpoint:
+  target: trial_level_population_mean_calcium_event_response
+  predictors:
+    - log_contrast
+    - sine_direction
+    - cosine_direction
+    - log_contrast_by_sine_direction
+    - log_contrast_by_cosine_direction
+  comparator: training_partition_intercept
+  model: ridge_regression
+  alpha: 1.0
+  temporal_split: first_60_percent_train_next_20_percent_calibration_last_20_percent_test
+  preprocessing: training_partition_standardization
+  metric: held_out_pearson_correlation
+  minimum_trials_per_subject: 200
+
+acceptance:
+  minimum_subjects: 25
+  median_subject_correlation_minimum: 0.10
+  subject_bootstrap_lower_95_minimum: 0.00
+  minimum_fraction_positive_subjects: 0.65
+  pooled_mean_squared_error_better_than_intercept: true
+  subject_bootstrap_replicates: 5000
+  subject_bootstrap_seed: 2026080202
+  primary_authorization_requires_all_conditions: true
+
+profile_mapping:
+  claim: bounded_predictive_performance
+  required_blocks:
+    prediction: prospectively_locked_contrast_response_endpoint
+    context_of_use: one_contrast_tuning_resource_and_population_response
+    data_quality: nwb_schema_selection_missingness_and_lineage
+
+claim_boundary: >-
+  A positive result authorizes only bounded held-out prediction of trial-level
+  population response in selected DANDI:000039 sessions. It does not establish
+  single-neuron tuning, biological topology, causal visual processing,
+  independent-study replication, or a digital twin.
+
+negative_outcome_policy: >-
+  Failure of any availability, schema, quality, sample-size, predictive,
+  uncertainty, or comparator condition is retained without endpoint, model,
+  threshold, split, or subject-selection repair.
