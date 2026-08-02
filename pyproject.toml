@@ -103,6 +103,7 @@ mousebrainbench-ibl-mouse-v3 = "mousebrainbench.benchmarks.ibl_mouse_transport:m
 mousebrainbench-guarantee-scope-v3 = "mousebrainbench.benchmarks.guarantee_scope_audit:main"
 mousebrainbench-semantic-risk-sensitivity-v3 = "mousebrainbench.benchmarks.semantic_risk_sensitivity:main"
 mousebrainbench-direction-precondition-v3 = "mousebrainbench.benchmarks.direction_router_precondition_audit:main"
+mousebrainbench-semantic-risk-release-v3 = "mousebrainbench.benchmarks.semantic_risk_v3_release:main"
 mousebrainbench-semantic-equivalence-v3 = "mousebrainbench.benchmarks.semantic_equivalence_audit:main"
 mousebrainbench-run = "mousebrainbench.cli:main"
 
