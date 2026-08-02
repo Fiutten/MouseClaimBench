@@ -1,0 +1,48 @@
+{
+  "version": "0.9.0",
+  "git_revision": "4ad71d72a4acc1e8fa1da29d4a0c36f3185e91a7",
+  "analysis": "knowledge_profile_validity_v4",
+  "basis": "mousebrainbench/knowledge/profiles/mouse_brain_claims_v1_basis.yaml",
+  "protocol": "configs/benchmarks/semantic_risk_control_v4.yaml",
+  "conditions": {
+    "profile_marked_author_proposed": true,
+    "independent_validation_not_claimed": true,
+    "every_relation_has_scope_rationale_exceptions_and_sources": true,
+    "external_standards_have_bounded_roles": true,
+    "author_extensions_are_declared": true,
+    "consensus_mapping_not_claimed": true
+  },
+  "incomplete_relations": [],
+  "relations": 22,
+  "external_bases": [
+    {
+      "id": "ARRIVE_2_0",
+      "role": "reporting_rigor_and_experimental_design",
+      "url": "https://arriveguidelines.org/arrive-guidelines"
+    },
+    {
+      "id": "NIH_RIGOR_REPRODUCIBILITY",
+      "role": "controlled_design_analysis_interpretation_and_reporting",
+      "url": "https://www.grants.nih.gov/policy-and-compliance/policy-topics/reproducibility"
+    },
+    {
+      "id": "FAIR",
+      "role": "machine_actionable_provenance_and_reuse",
+      "doi": "10.1038/sdata.2016.18"
+    },
+    {
+      "id": "NIST_AI_RMF_1_0",
+      "role": "validity_reliability_transparency_and_scope",
+      "doi": "10.6028/NIST.AI.100-1"
+    }
+  ],
+  "author_extensions": [
+    "causal_intervention",
+    "directed_identifiability",
+    "structure_function_association",
+    "topology_specificity"
+  ],
+  "profile_content_validated": false,
+  "structural_documentation_complete": true,
+  "decision": "author_proposed_profile_transparently_documented_not_content_validated"
+}

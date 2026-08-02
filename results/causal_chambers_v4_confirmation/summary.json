@@ -1,0 +1,895 @@
+{
+  "version": "0.9.0",
+  "git_revision": "3484055",
+  "analysis": "causal_chambers_v4_target_calibrated_confirmation",
+  "protocol": "configs/benchmarks/semantic_risk_control_v4.yaml",
+  "population_manifest": "configs/benchmarks/causal_chambers_v4_population.yaml",
+  "protocol_status": "frozen_before_v4_external_outcome_access",
+  "population_outcome_access_before_freeze": false,
+  "inferential_unit": "physical_experiment_csv",
+  "pair_level_inference_permitted": false,
+  "exact_bound_assumption": "exchangeable independent experiment-level events",
+  "within_dataset_dependence_sensitivity_required": true,
+  "variable_claims": [
+    "predictive",
+    "internally_reproduced",
+    "topology_specific",
+    "directed",
+    "mechanistic",
+    "causal"
+  ],
+  "target_limits": {
+    "target_risk": 0.1,
+    "minimum_coverage": 0.1,
+    "minimum_positive_recovery": 0.05,
+    "confidence": 0.95
+  },
+  "calibration": {
+    "experiments": 74,
+    "pair_records": 148,
+    "datasets": [
+      "lt_interventions_standard_v1",
+      "lt_spice_v1",
+      "wt_bernoulli_v1",
+      "wt_changepoints_v1",
+      "wt_pressure_control_v1"
+    ],
+    "source_bytes": 337775925,
+    "file_hashes": {
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_blue_mid.csv": "sha256:7ba45fa8234a2e7ac4598d9328be4f2ff42648402aba94f4d9edc1e5ae243532",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_blue_strong.csv": "sha256:c450b6a2b929c1cfaabed8738e22110e8752cccba41628e62f146456eb22ed5e",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_diode_ir_1_mid.csv": "sha256:0a7cb066fbe885966731f9f55fac3db07318438c7bd237954295a56704f8903c",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_diode_ir_1_strong.csv": "sha256:07043b586267459f7b4cca482e254d1956f16879b537efe4c3fa29ff670fd77f",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_diode_ir_2_mid.csv": "sha256:1750dafc61843c7216a075d2417199d92c9ee633baf6413c31252ea6284edcaa",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_diode_ir_2_strong.csv": "sha256:6f69f4313a0cbb54aa6080961845be3bcf8e325d6b6cc00d69a918534d5aa49e",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_diode_ir_3_mid.csv": "sha256:0a99bee6ab7b7b28811d4eb5d74761edc421418ff4b3e1bad13658cc4b2eac1b",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_diode_ir_3_strong.csv": "sha256:51e5095b4e1e514b4734b3aa20e6885660a62a062d0a7e683ad1881c2ee1f898",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_diode_vis_1_mid.csv": "sha256:e56957b115a2cb5f00b33ebf2f04bcc08aee6f8ecab4ed17aa04d817209f47f1",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_diode_vis_2_mid.csv": "sha256:31c40de644e992aad505b36ca19b9e35331066ca139e0cf0cf2059072c076c32",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_diode_vis_3_mid.csv": "sha256:860cf288d8959fc1e3aa8fb2a8d105df7691bf55cbef78bb8961e8d6de0163ae",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_green_mid.csv": "sha256:f9b06d128f6750be65f6f4f3f89989c158b38737dff20e32a6b47d38a0ba4c1e",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_green_strong.csv": "sha256:e7eeeb4bc3f0535e5dcab2844a00ae29cf43ac19f2efb736dce9e314a990a2eb",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_l_11_mid.csv": "sha256:f5c9c1bfc6172bfa2374ee50703eec9106536eb4555b3a7d6e382678a05bcaf4",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_l_12_mid.csv": "sha256:d4bd24337bd4606b1c35ce890d79e38473ab63171dee0e7ec0cd01998fcc5265",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_l_21_mid.csv": "sha256:5f348035f06fdef6aa1ba7fafc6f6fb3565eafb83e0f501a185fab506f478487",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_l_22_mid.csv": "sha256:3f95289f68e43725614ee638fed5bc4ac000a90d8228b88c116267ee1b599f6a",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_l_31_mid.csv": "sha256:9ea800e56f6806128fdb6336ddc89361464ff027122199c1d1598555fc484494",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_l_32_mid.csv": "sha256:52ffa9608fa6885c51f334d43fc7cf92321989c7d34361e867f40c53891b8140",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_osr_angle_1_mid.csv": "sha256:c6ed75cad4c4f9efa5cc977fffd29d1b3468eab422a822702a8259b42ee2788e",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_osr_angle_1_strong.csv": "sha256:ef70b30b363e5f0c94d329d0e960995827cf559b1cefbffcc4d717b9e9061cba",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_osr_angle_1_weak.csv": "sha256:0f36a04d36ebce4128b81a2b6668bb0a7cedd2761a1734d313ddd60b1df367c4",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_osr_angle_2_mid.csv": "sha256:f6cda88ec5d0254d8f6d6c3012351d5632c6edd29e20f5af44f51ca66feb5bcf",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_osr_angle_2_strong.csv": "sha256:73b58fec0ce7a8bfd138e289c522f46927179d88cb5b1658dd1e02f939127a2b",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_osr_angle_2_weak.csv": "sha256:56fbf5888d604378533b5b882820455f72cb0cea1821074f546c265030060257",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_osr_c_mid.csv": "sha256:ef402d2b16cec8aa03dfe83ed8a0adf14058ce0c5d562a2b8003cce02b800e66",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_osr_c_strong.csv": "sha256:56c367398cf0ff89b9e993980d3b008890ade7d33ed4f457daaf176e273b650f",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_osr_c_weak.csv": "sha256:d6f5a328a83f004931bc422e0e1c67af972923f7c8d11d81b132eb9181419390",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_pol_1_mid.csv": "sha256:32a1e73eecac9a62357d66adfb584af9d889a59e7cc6212f5b8a19a098cee258",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_pol_1_strong.csv": "sha256:a676a2b6839d847daf6aa9d108ab358fd9f8320e4f38b92d5cbb32f3f2ff02a4",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_pol_2_mid.csv": "sha256:f24434a4a8d157c5e7acc0a53e86a5f18e53c1dae64b6a796b2d5e5a7352bd5a",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_pol_2_strong.csv": "sha256:01e92f4bc9e834dbeaa95119c94aefeaa5aafe9a685acebd746e9f1828444d8b",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_red_mid.csv": "sha256:8d392b02fd9366a6710a441fe75b15eed670d2c3d3ba32f00d693064eff962a7",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_red_strong.csv": "sha256:622cf3a6f45ea7e766702b3c1c71f0bc61b49d20c399cfe8b7a04701e7d9758e",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_reference.csv": "sha256:dabfabf99e7919941a761335c813063b243f35e0302eb53cfdf69d7c9368719f",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_t_ir_1_mid.csv": "sha256:d291204b6b748dbd42472863daf1abdcc987945d6bd13a80f769bd9faa3f9ca9",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_t_ir_1_strong.csv": "sha256:d40bb49503495d3e72ae3282ddcb6811a65fcfab75da7ff63f87c7eaaac18fd4",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_t_ir_1_weak.csv": "sha256:e375dcf470f4bc36ca7659f4a9d4d6548cca077c8c0e934ba5b696dd8ebf0267",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_t_ir_2_mid.csv": "sha256:bc434e232aaea9fd8188ab3b5f2edf2b9b33140950292009905a0c715251d59f",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_t_ir_2_strong.csv": "sha256:73a301af86c112adb1bd6a09edacf95e1aba1666a20010b47b8fda0d00f73849",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_t_ir_2_weak.csv": "sha256:09ebcff81edbf5da1115b310ee1fa9e23d6650c4fa97447adaaffbe2ee55eea7",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_t_ir_3_mid.csv": "sha256:e26e17d6849508b936496d5bd4b7682ec0c75816c35f0b59b151779419c2889f",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_t_ir_3_strong.csv": "sha256:fa77f093901e133608c77632f1b0121bd54ff3dbb80cd37b8d44ff0377e20b8b",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_t_ir_3_weak.csv": "sha256:08e4c7c9e6d915ba8844fd00d0d2c119ca0a5646c9f8aae92de0d7ec402f7b25",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_t_vis_1_mid.csv": "sha256:24bf13a8b4285343e2c38c7d596b7c7f1a1e682fe19998c9f3cb95d32ff0c5fe",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_t_vis_1_strong.csv": "sha256:f9e1cd1f1540c29cb2580928c774fcf59c7b13eadab80e248dcc383ccf9d455b",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_t_vis_1_weak.csv": "sha256:fad2a46801875d582741a5329eb39396e31686fe3d1ac6387fea02ff3a531c94",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_t_vis_2_mid.csv": "sha256:adbaf6f3806a13449e2234a8dcf1154dfcf1d090216fe3f4ac689abae1f25539",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_t_vis_2_strong.csv": "sha256:252e85215cda1c01e74f54e27a71ab3ff8714a915f641d4be387f4a0c74b39b9",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_t_vis_2_weak.csv": "sha256:9d6c6f3f91c9d94f6dbd03c328ab032cb9af4f804a29ab306a5edec23f857f58",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_t_vis_3_mid.csv": "sha256:f1121d4b3f06fd5e0a24c5bf0408b56e9dcc8f14eeb989da548e94d6f910ef9d",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_t_vis_3_strong.csv": "sha256:b828877f317dc16fc2689eccd7cca96a4b6e553d6856899a8c29aed21a03d181",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_t_vis_3_weak.csv": "sha256:da2fc16f2cf0b57ee6fa9f4081dd70c2915a4cd764ac5dcc23a43f080953d447",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_v_angle_1_mid.csv": "sha256:0d665e1fc2e9f5081b8a56f272bffadecc18c84295b4ad0628d9ef957d0e0a8a",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_v_angle_1_strong.csv": "sha256:5781a9d67ce9a7d94e8cfefb7f9b14dea71026c03458b244da208844ccf4927f",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_v_angle_2_mid.csv": "sha256:4de5b32d4d81c27fce62322f9e6d430f14f5d6cc119be478826294b07d22cd0f",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_v_angle_2_strong.csv": "sha256:ce6096816e497ffa61d0603e673bcbfaa138d8a17fb9172ccded957f4e5414b1",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_v_c_mid.csv": "sha256:83235619dc51de7fa3d69af9004fd08858c696946a0c4b4f5d771dfb653a8005",
+      "data/external/causal_chambers_v4/lt_interventions_standard_v1/uniform_v_c_strong.csv": "sha256:ff1a9720f21f4c3a6408c3ba9cf72fb63a8fba9758b0b117c60750cacd50752a",
+      "data/external/causal_chambers_v4/lt_spice_v1/exp_1_low_noise.csv": "sha256:7f59bf7d42333dc77e9532a4d0d40f3d48fcc654a70fe1d5050b71012c4e0858",
+      "data/external/causal_chambers_v4/lt_spice_v1/exp_2_noisy.csv": "sha256:71edffe9a868efe1afbbb261431ebce30472a55b755cf7919f2073fe12208508",
+      "data/external/causal_chambers_v4/lt_spice_v1/exp_3_spice_net_noise_1.csv": "sha256:b4721d28db91ddd79deaf8b3a5bfbd6d136038f278160f4c5fb166e130f5906e",
+      "data/external/causal_chambers_v4/lt_spice_v1/exp_3_spice_net_noise_2.csv": "sha256:f355438b79e5c8a84f6e12adc2c1790eb979d029666e3a430203e8292c659f2e",
+      "data/external/causal_chambers_v4/wt_bernoulli_v1/fans_off.csv": "sha256:0f93d4b3abefed39608429e3de95bb9a6bfc2491b82c942fabed034d79826eb2",
+      "data/external/causal_chambers_v4/wt_bernoulli_v1/random_loads_both.csv": "sha256:fda2e7f46722d6f1f6c868df2accf39aa4b1d9dcaabd92ad9668a620d0421336",
+      "data/external/causal_chambers_v4/wt_bernoulli_v1/random_loads_intake.csv": "sha256:fd00ee43102077de2ca8ef806a4d77d5e8881ff4e9c2dd295c08fb0bd43bb38e",
+      "data/external/causal_chambers_v4/wt_pressure_control_v1/hatch_0.csv": "sha256:353be9a9742060b183310bc7bac8e3dc3d70e918214d4dd57ea4e17aa1776454",
+      "data/external/causal_chambers_v4/wt_changepoints_v1/load_in_seed_0.csv": "sha256:e3dcd01d9bd69a9dd9ab31cb1ca902acaaf2a1b0c243fe8aa04e3044cbc75b96",
+      "data/external/causal_chambers_v4/wt_changepoints_v1/load_in_seed_1.csv": "sha256:cc00af188420d70dd1cc085d0157365096c03439d388cb4b72a1c3332dd57137",
+      "data/external/causal_chambers_v4/wt_changepoints_v1/load_in_seed_2.csv": "sha256:83bd66c7ee06cc12585ae23b98dc7d27d1f445aa06911dcd6df0d05a98952a43",
+      "data/external/causal_chambers_v4/wt_changepoints_v1/load_in_seed_3.csv": "sha256:c5e61841cca86f8079048f886938090944f0bdbac3c5cd2e2248173dd9fd4395",
+      "data/external/causal_chambers_v4/wt_changepoints_v1/load_in_seed_4.csv": "sha256:2c7fe52505a17f17efca9cc905233e3d4e112e0df784049a3a27f232678e0b6f",
+      "data/external/causal_chambers_v4/wt_changepoints_v1/load_in_seed_5.csv": "sha256:833203eaeecb7bbf5bf017e56582905eca0b796f21e8cda8aac4aecda8eaacc9",
+      "data/external/causal_chambers_v4/wt_changepoints_v1/load_in_seed_6.csv": "sha256:467c2a60a1d9e707d96b44a071898e82069a0ebc34b63577d73ddae476b4d32a",
+      "data/external/causal_chambers_v4/wt_changepoints_v1/load_in_seed_7.csv": "sha256:c5bb840281eb4773965a62c91555457a60e89f440c842c4561709c49f4353d7f",
+      "data/external/causal_chambers_v4/wt_changepoints_v1/load_in_seed_8.csv": "sha256:d65e8dcf8d2465b87ac7671cfc15c0086a9a8a30901c27a9a0df907de0e5919d",
+      "data/external/causal_chambers_v4/wt_changepoints_v1/load_in_seed_9.csv": "sha256:b8fbbeb00eec960850d51f23425b64b3447a99edcb01a595f166443c7f019923"
+    },
+    "exclusions": {
+      "insufficient_columns": 0,
+      "no_selected_pair": 3,
+      "invalid_pair_record": 0
+    },
+    "complete_policy": null,
+    "risk_only_policy": {
+      "threshold": 1.0000000000000002,
+      "experiments": 74,
+      "failing_experiments": 0,
+      "authorized_experiments": 0,
+      "eligible_positive_experiments": 50,
+      "recovered_positive_experiments": 0,
+      "authorizations": 0,
+      "false_authorizations": 0,
+      "semantic_violations": 0,
+      "empirical_experiment_failure_rate": 0.0,
+      "empirical_authorized_experiment_coverage": 0.0,
+      "empirical_positive_recovery": 0.0,
+      "empirical_pair_sfar": 0.0,
+      "risk_upper_bound": 0.03967438387031345,
+      "coverage_lower_bound": 0.0,
+      "positive_recovery_lower_bound": 0.0,
+      "target_risk": 0.1,
+      "minimum_coverage": 0.0,
+      "minimum_positive_recovery": 0.0,
+      "confidence": 0.95,
+      "certified": true,
+      "inferential_unit": "experiment"
+    },
+    "confidence_only_policy": null,
+    "failure_reason": "activation_floor_not_met"
+  },
+  "risk_lock": {
+    "experiments": 43,
+    "pair_records": 86,
+    "datasets": [
+      "lt_malus_v1",
+      "lt_validate_v1",
+      "wt_walks_v1"
+    ],
+    "source_bytes": 273225379,
+    "file_hashes": {
+      "data/external/causal_chambers_v4/lt_malus_v1/blue_128.csv": "sha256:5e10b63c4ebdc08e07bb8749aa65c012b460a8a811cec7cb9f29c95ef4704a8c",
+      "data/external/causal_chambers_v4/lt_malus_v1/blue_255.csv": "sha256:3bb1808937d3e11868cb1a26e19f1236d4a0914cae8adf8b5be841ab102f2af5",
+      "data/external/causal_chambers_v4/lt_malus_v1/blue_64.csv": "sha256:b0f5ba8d061dd8f2d12921ec41cb1d6a2c2a2f6482638ad21ae59f1fbd19c703",
+      "data/external/causal_chambers_v4/lt_malus_v1/green_128.csv": "sha256:1f228080b970a6ddbbe78da39a1df8849ea3e47a25627c0b0d9f9e82964cafdd",
+      "data/external/causal_chambers_v4/lt_malus_v1/green_255.csv": "sha256:981f2b7d56902f4bb9fbba7003b0dfa621307e27bbcb64c82402664c33a59b94",
+      "data/external/causal_chambers_v4/lt_malus_v1/green_64.csv": "sha256:df0222106c4f1cf193c69a894df60194460cb7423f4413e11cddfa270db3b010",
+      "data/external/causal_chambers_v4/lt_malus_v1/red_128.csv": "sha256:7cce16926168c73a902c23e84b47dc087366dec254ca413cc34cfed53f83bfd4",
+      "data/external/causal_chambers_v4/lt_malus_v1/red_255.csv": "sha256:b375903f8b569f374f8ea57ffff534a6f0e9e68c80229fcccfa04eb8e2f1dabc",
+      "data/external/causal_chambers_v4/lt_malus_v1/red_64.csv": "sha256:ae06b74eb2c455ec05956c25a2b8473e7528b4ad8fd202f7db4e9ef964072c8a",
+      "data/external/causal_chambers_v4/lt_malus_v1/white_128.csv": "sha256:351acc62f557d22e971daeef5e99132fab7bfd0b8af2ffdbf46fa2316b193602",
+      "data/external/causal_chambers_v4/lt_malus_v1/white_255.csv": "sha256:c92a5519ee2d171f5cbe668f014586c72eb1677856249038fe8359145c867c50",
+      "data/external/causal_chambers_v4/lt_malus_v1/white_64.csv": "sha256:be1d659a65e6626fe984c2a3b738fa21a034829d79d154e431001b9f1704eb14",
+      "data/external/causal_chambers_v4/lt_validate_v1/validate_blue.csv": "sha256:9f5b8b1191cf5f1556cc3935da4ab66cef5007ec571af6da7737d08216f83387",
+      "data/external/causal_chambers_v4/lt_validate_v1/validate_diode_ir_1.csv": "sha256:586f0eee1a2e21f24be4ea84103f0e3976239038172cfb8558e47b0317f45279",
+      "data/external/causal_chambers_v4/lt_validate_v1/validate_diode_ir_2.csv": "sha256:b731635ddd304cea6010a79e9bd3133a359d499e40aeea5eed7fcec017258087",
+      "data/external/causal_chambers_v4/lt_validate_v1/validate_diode_ir_3.csv": "sha256:e259466e5350deabd5dc092f6c63b09ca9412237de28a1a058d8bb751db00ab5",
+      "data/external/causal_chambers_v4/lt_validate_v1/validate_diode_vis_1.csv": "sha256:68ae0c2f24f337389130a86c6dd0e67720a4ce685e5740ecdbaf44c0ee24be9f",
+      "data/external/causal_chambers_v4/lt_validate_v1/validate_diode_vis_2.csv": "sha256:1589439f4ebd095dbebe92944f4aaed5730c1a3d419b2623b9ed63ba28dc9995",
+      "data/external/causal_chambers_v4/lt_validate_v1/validate_diode_vis_3.csv": "sha256:3ec035804ae3e51953178d92e95a98992a47a65af51e937a50a8fc0fd78a230c",
+      "data/external/causal_chambers_v4/lt_validate_v1/validate_green.csv": "sha256:c52e16cac869523e7cf9fa7cea25ea39b1997bc3d9a3a9e74f9cd6ba1bb5d0be",
+      "data/external/causal_chambers_v4/lt_validate_v1/validate_l_11.csv": "sha256:35fc550ec87212788c99abc529ea739c8c36288ea8a89877e66f1af4c9f08a61",
+      "data/external/causal_chambers_v4/lt_validate_v1/validate_l_12.csv": "sha256:737a7998c99c004ec5960974b9e2c19e715020752f211b3ad867eae526a04793",
+      "data/external/causal_chambers_v4/lt_validate_v1/validate_l_21.csv": "sha256:6573a423e97aa0a5746850879081cb9225d427dc29fc4fab2f12b4261b25ee37",
+      "data/external/causal_chambers_v4/lt_validate_v1/validate_l_22.csv": "sha256:a19cd204809cbe8f3a1f2b0d6c131f5b3a3483ec8073c44479255361095b0c54",
+      "data/external/causal_chambers_v4/lt_validate_v1/validate_l_31.csv": "sha256:f992cc48162a7512b99e9e4139068bdc3bb0b25c59e3fe0d2fd839f0a6d3047f",
+      "data/external/causal_chambers_v4/lt_validate_v1/validate_l_32.csv": "sha256:b152c7ebee691b18ca8b00f0b16a9e7f71e85eb804a54dc6630bb2fd8e2a6ea5",
+      "data/external/causal_chambers_v4/lt_validate_v1/validate_osr_angle_1.csv": "sha256:b2ab7fb9133c278728dbb80220322310a9a22ca860715d9d895776b338c074ad",
+      "data/external/causal_chambers_v4/lt_validate_v1/validate_osr_angle_2.csv": "sha256:4fb08cd050e89541cd572b3a2a5f8d827eaebdb6e1754ecf328a2e644c28cb9a",
+      "data/external/causal_chambers_v4/lt_validate_v1/validate_osr_c.csv": "sha256:750177db01ab0580ed7060a6c9a792035a484f22df8040125aebbb2fb1dca46d",
+      "data/external/causal_chambers_v4/lt_validate_v1/validate_pol_1.csv": "sha256:45698e8ece65c93ba8e56164f06b60b8c922fdb4dde2c9b13a9955301b150b71",
+      "data/external/causal_chambers_v4/lt_validate_v1/validate_pol_2.csv": "sha256:2adf43ff18cb4ca8819f05fd9be5035bff6919cf7796d90cd1cc2286ff6d2761",
+      "data/external/causal_chambers_v4/lt_validate_v1/validate_red.csv": "sha256:53347ecb64da49df6c43ff75cdc3e99aab4e8271a5a14f0be7aa522c5a9b1aaa",
+      "data/external/causal_chambers_v4/lt_validate_v1/validate_t_ir_1.csv": "sha256:0f763e4d0714dd5b5afc63e7a68b0be9f3ea3c3d0857bd01782f6c5898f878ed",
+      "data/external/causal_chambers_v4/lt_validate_v1/validate_t_ir_2.csv": "sha256:73f191fd6291585628cb2d9600f81474cfd9e06ab29e3b6a99f1898144801d58",
+      "data/external/causal_chambers_v4/lt_validate_v1/validate_t_ir_3.csv": "sha256:25731f0192d622cad4ba0e39d6777fd3906416352b9372c5fb0b439ece236a9c",
+      "data/external/causal_chambers_v4/lt_validate_v1/validate_t_vis_1.csv": "sha256:289927c19519771287771de2538cb7ca03b61dc02ac0bc0a9b1df54b786b5c96",
+      "data/external/causal_chambers_v4/lt_validate_v1/validate_t_vis_2.csv": "sha256:f21c06214897377be645c65f5de875513be4a0f1e17db947540e652302430551",
+      "data/external/causal_chambers_v4/lt_validate_v1/validate_t_vis_3.csv": "sha256:a8e2d69a0982e5bdae2647fa11714afdfbaf8ac51216eb7d9c6f7d721dc9e206",
+      "data/external/causal_chambers_v4/lt_validate_v1/validate_v_angle_1.csv": "sha256:f339a14ad4eb446950e84b79f9f935739e222282e2f06cecebf627f87dfad09c",
+      "data/external/causal_chambers_v4/lt_validate_v1/validate_v_angle_2.csv": "sha256:0624916af5e636be475ca5a0c91425e80c5ebeb064bd1f95789ab785366f361e",
+      "data/external/causal_chambers_v4/lt_validate_v1/validate_v_c.csv": "sha256:7c265fbaebd6cf9108d58c1f32be69fcc3ad0b420d78f8412ccd6426a4b1dbc5",
+      "data/external/causal_chambers_v4/wt_walks_v1/actuators_random_walk_1.csv": "sha256:3926ddaa3acf6cbf4e46e3ff7a99d239f7677d9029eb68c95f4e5547302e7a40",
+      "data/external/causal_chambers_v4/wt_walks_v1/actuators_random_walk_10.csv": "sha256:4e9630d13ddea8d481190b764e816523045550d8c73a4484d1cd9b04be548cae",
+      "data/external/causal_chambers_v4/wt_walks_v1/actuators_random_walk_11.csv": "sha256:061c8dee8a92b5f9c43ac5c93cddd293e04243c78880622f8d43e4c218b7294c",
+      "data/external/causal_chambers_v4/wt_walks_v1/actuators_random_walk_12.csv": "sha256:d0d43a3c54c76c573bc2559378faa072704a2692a2247efeeab1b01c08ce20af",
+      "data/external/causal_chambers_v4/wt_walks_v1/actuators_random_walk_13.csv": "sha256:78901a7fd0347406dfb216a7413c31bcc06690388eac83ae1a8612f088b8086e",
+      "data/external/causal_chambers_v4/wt_walks_v1/actuators_random_walk_14.csv": "sha256:2f841be2549b1586e253171c1b12cd5d38ebc4803e4a08f9888464f5faba1014",
+      "data/external/causal_chambers_v4/wt_walks_v1/actuators_random_walk_15.csv": "sha256:e8946b817621fce7d5106d6b99069340972f6edce54e736fe9481e6d4b68eaef",
+      "data/external/causal_chambers_v4/wt_walks_v1/actuators_random_walk_16.csv": "sha256:030ff9d09d11eb66cd775209dc0cbc77ed83f8910d2efbec7c2a64bda393802e",
+      "data/external/causal_chambers_v4/wt_walks_v1/actuators_random_walk_2.csv": "sha256:de9ddacd37582f9b8b3fe28c6d852c86ef891e4b87de48679a54f84b00326f9a",
+      "data/external/causal_chambers_v4/wt_walks_v1/actuators_random_walk_3.csv": "sha256:7a039b92188c78d906f9d8f0ab5646281c89d83a3e458f1661cdccd096dd2d3b",
+      "data/external/causal_chambers_v4/wt_walks_v1/actuators_random_walk_4.csv": "sha256:022c754017fa4ac831adf91a98fbd49d984086d7c21164ec2c5986bfd85e8c6b",
+      "data/external/causal_chambers_v4/wt_walks_v1/actuators_random_walk_5.csv": "sha256:f4e26667ef8650edbdb5bc9b182543527461d2e7bde03063ea7cf1e7bab45a37",
+      "data/external/causal_chambers_v4/wt_walks_v1/actuators_random_walk_6.csv": "sha256:7502f2acd9ed1b40d2039f17320d50a58d01b7d749d4c8298af7f5efa8bba18d",
+      "data/external/causal_chambers_v4/wt_walks_v1/actuators_random_walk_7.csv": "sha256:710c2d7ca785971f73e3c8777fefda85fcd241e3f0c771f05706204cfe46e8b9",
+      "data/external/causal_chambers_v4/wt_walks_v1/actuators_random_walk_8.csv": "sha256:cc38d03b6b7e0f53a9c4b46a1227d34979fda58a9db15137791e66b2c00c05e6",
+      "data/external/causal_chambers_v4/wt_walks_v1/actuators_random_walk_9.csv": "sha256:750d9e25f3ef9c8b6eb2c6b1cc3743a10ffd4ac0dc3ab1c2141f2b66f17d4ea4",
+      "data/external/causal_chambers_v4/wt_walks_v1/loads_hatch_mix_fast_run_1.csv": "sha256:5a934c96363c4c50ad7527df9bd15360e4d5e9c7b022f730c07d57b9f38f5366",
+      "data/external/causal_chambers_v4/wt_walks_v1/loads_hatch_mix_fast_run_2.csv": "sha256:b461b23bb97fd84a5a7957e42ea702928d6c4ef52cbb2888b27dfb6f2bd0e961",
+      "data/external/causal_chambers_v4/wt_walks_v1/loads_hatch_mix_fast_run_3.csv": "sha256:09158f23bd02e901c747389d18fb6969406295e51b2d140bef60d1d44dae549b",
+      "data/external/causal_chambers_v4/wt_walks_v1/loads_hatch_mix_fast_run_4.csv": "sha256:dd3ba685297f1587b70e812a45d561fb4735dfbcdcd5925e2cf7b02d33b919b9",
+      "data/external/causal_chambers_v4/wt_walks_v1/loads_hatch_mix_fast_run_5.csv": "sha256:e08425ce575204589d971168542b71543d910a2f174b01a520c65d9b05d797c0",
+      "data/external/causal_chambers_v4/wt_walks_v1/loads_hatch_mix_slow_run_1.csv": "sha256:5232684108d53b4928dd67f8faba676e76f850388223eeaf04f70b557ce3cba4",
+      "data/external/causal_chambers_v4/wt_walks_v1/loads_hatch_mix_slow_run_2.csv": "sha256:ca35cfa9892213b5cc5fa69d141d10ed7d26d189ce506f15220f1fdd7f92a834",
+      "data/external/causal_chambers_v4/wt_walks_v1/loads_hatch_mix_slow_run_3.csv": "sha256:a3226f3006e9034f3e6dffbc6060d6918f8e1c1eb8956e8923af84b64aeca517",
+      "data/external/causal_chambers_v4/wt_walks_v1/loads_hatch_mix_slow_run_4.csv": "sha256:31d5eea7b0eb48f32c8a92799e3c20d7a047d330f125a80d44b03b2946f65856",
+      "data/external/causal_chambers_v4/wt_walks_v1/loads_hatch_mix_slow_run_5.csv": "sha256:7e4b8a00796631244d60c1a33fc0e8c56bf5149321d6c3207412359bcd505de1",
+      "data/external/causal_chambers_v4/wt_walks_v1/regime_jumps_multi.csv": "sha256:6e5e28d969067263151915ecfa2a8bdbb2c0eeb2ad5e6c601dbc3fb7cb956618",
+      "data/external/causal_chambers_v4/wt_walks_v1/regime_jumps_single.csv": "sha256:ae00d09adddde4db86f571d85f402adc959017f376848e14cc16625b02cd59e0",
+      "data/external/causal_chambers_v4/wt_pc_validate_v1/validate_pressure_downwind_loads.csv": "sha256:d2720822ecbfdf5600105f5ee4aec41a1c821c537abf871a820e6d6b887829f5"
+    },
+    "exclusions": {
+      "insufficient_columns": 27,
+      "no_selected_pair": 0,
+      "invalid_pair_record": 0
+    },
+    "shift_diagnostic": {
+      "warning": true,
+      "role": "warning_only",
+      "may_authorize_or_restore_certificate": false,
+      "alpha": 0.01,
+      "calibration_rows": 74,
+      "target_rows": 43,
+      "marginal_ks": [
+        {
+          "feature": "status:causal_intervention:passed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:causal_intervention:failed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:causal_intervention:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:causal_intervention:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:causal_intervention:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:causal_intervention",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:directed_identifiability:passed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:directed_identifiability:failed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:directed_identifiability:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:directed_identifiability:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:directed_identifiability:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:directed_identifiability",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:entity_specificity:passed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:entity_specificity:failed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:entity_specificity:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:entity_specificity:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:entity_specificity:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:entity_specificity",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:external_replication:passed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:external_replication:failed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:external_replication:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:external_replication:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:external_replication:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:external_replication",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:independent_validation:passed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:independent_validation:failed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:independent_validation:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:independent_validation:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:independent_validation:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:independent_validation",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:internal_reproduction:passed",
+          "p_value": 0.9434911916094318,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:internal_reproduction:failed",
+          "p_value": 0.9434911916094318,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:internal_reproduction:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:internal_reproduction:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:internal_reproduction:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:internal_reproduction",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:operational_compute:passed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:operational_compute:failed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:operational_compute:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:operational_compute:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:operational_compute:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:operational_compute",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:prediction:passed",
+          "p_value": 0.8392849522486258,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:prediction:failed",
+          "p_value": 0.8392849522486258,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:prediction:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:prediction:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:prediction:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:prediction",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:reproducible_compute:passed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:reproducible_compute:failed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:reproducible_compute:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:reproducible_compute:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:reproducible_compute:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:reproducible_compute",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:structure_function_association:passed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:structure_function_association:failed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:structure_function_association:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:structure_function_association:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:structure_function_association:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:structure_function_association",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:topology_specificity:passed",
+          "p_value": 0.15456772908239244,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:topology_specificity:failed",
+          "p_value": 0.15456772908239244,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:topology_specificity:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:topology_specificity:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:topology_specificity:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:topology_specificity",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:whole_brain_coverage:passed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:whole_brain_coverage:failed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:whole_brain_coverage:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:whole_brain_coverage:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:whole_brain_coverage:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:whole_brain_coverage",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "prediction_correlation",
+          "p_value": 0.15456772908239244,
+          "holm_rejected": false
+        },
+        {
+          "feature": "prediction_negative_log10_p",
+          "p_value": 0.8809790146402455,
+          "holm_rejected": false
+        },
+        {
+          "feature": "prediction_r_squared",
+          "p_value": 0.11094037267128727,
+          "holm_rejected": false
+        },
+        {
+          "feature": "reproduction_first_correlation",
+          "p_value": 0.15456772908239244,
+          "holm_rejected": false
+        },
+        {
+          "feature": "reproduction_second_correlation",
+          "p_value": 0.10657210454669024,
+          "holm_rejected": false
+        },
+        {
+          "feature": "reproduction_first_r_squared",
+          "p_value": 0.11094037267128727,
+          "holm_rejected": false
+        },
+        {
+          "feature": "reproduction_second_r_squared",
+          "p_value": 0.08408906883967866,
+          "holm_rejected": false
+        },
+        {
+          "feature": "topology_candidate_r_squared",
+          "p_value": 0.11094037267128727,
+          "holm_rejected": false
+        },
+        {
+          "feature": "topology_best_control_margin",
+          "p_value": 0.4594711779094449,
+          "holm_rejected": false
+        },
+        {
+          "feature": "legacy_direction_forward_dependence",
+          "p_value": 0.020562326508201566,
+          "holm_rejected": false
+        },
+        {
+          "feature": "legacy_direction_reverse_dependence",
+          "p_value": 0.314856353209045,
+          "holm_rejected": false
+        },
+        {
+          "feature": "legacy_direction_margin",
+          "p_value": 0.05281582196064187,
+          "holm_rejected": false
+        },
+        {
+          "feature": "anm_p_forward",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "anm_p_backward",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "anm_signed_margin",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "anm_absolute_margin",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "causal_intervention_available",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "causal_intervention_effect",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "causal_intervention_negative_log10_p",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "log10_sample_size",
+          "p_value": 4.8880293575210766e-08,
+          "holm_rejected": true
+        },
+        {
+          "feature": "known_noise_scale",
+          "p_value": 1.0,
+          "holm_rejected": false
+        }
+      ],
+      "energy_distance": 1.0973749568168785,
+      "energy_permutation_p_value": 0.005,
+      "permutations": 199
+    },
+    "comparators": {
+      "fixed_probability_0_5": {
+        "threshold": 0.5,
+        "experiments": 43,
+        "failing_experiments": 14,
+        "authorized_experiments": 31,
+        "eligible_positive_experiments": 25,
+        "recovered_positive_experiments": 25,
+        "authorizations": 131,
+        "false_authorizations": 31,
+        "semantic_violations": 48,
+        "empirical_experiment_failure_rate": 0.32558139534883723,
+        "empirical_authorized_experiment_coverage": 0.7209302325581395,
+        "empirical_positive_recovery": 1.0,
+        "empirical_pair_sfar": 0.2366412213740458,
+        "risk_upper_bound": 0.4613202341078739,
+        "coverage_lower_bound": 0.5874126571154125,
+        "positive_recovery_lower_bound": 0.8870718549931568,
+        "target_risk": 0.1,
+        "minimum_coverage": 0.1,
+        "minimum_positive_recovery": 0.05,
+        "confidence": 0.95,
+        "certified": false,
+        "inferential_unit": "experiment"
+      },
+      "evidence_contract_only": {
+        "threshold": 0.0,
+        "experiments": 43,
+        "failing_experiments": 6,
+        "authorized_experiments": 26,
+        "eligible_positive_experiments": 25,
+        "recovered_positive_experiments": 25,
+        "authorizations": 83,
+        "false_authorizations": 7,
+        "semantic_violations": 0,
+        "empirical_experiment_failure_rate": 0.13953488372093023,
+        "empirical_authorized_experiment_coverage": 0.6046511627906976,
+        "empirical_positive_recovery": 1.0,
+        "empirical_pair_sfar": 0.08433734939759036,
+        "risk_upper_bound": 0.25694288669509635,
+        "coverage_lower_bound": 0.46784825383882805,
+        "positive_recovery_lower_bound": 0.8870718549931568,
+        "target_risk": 0.1,
+        "minimum_coverage": 0.1,
+        "minimum_positive_recovery": 0.05,
+        "confidence": 0.95,
+        "certified": false,
+        "inferential_unit": "experiment"
+      },
+      "unconstrained_ltt": {
+        "threshold": -1.0,
+        "experiments": 43,
+        "failing_experiments": 10,
+        "authorized_experiments": 28,
+        "eligible_positive_experiments": 25,
+        "recovered_positive_experiments": 25,
+        "authorizations": 117,
+        "false_authorizations": 24,
+        "semantic_violations": 34,
+        "empirical_experiment_failure_rate": 0.23255813953488372,
+        "empirical_authorized_experiment_coverage": 0.6511627906976745,
+        "empirical_positive_recovery": 1.0,
+        "empirical_pair_sfar": 0.20512820512820512,
+        "risk_upper_bound": 0.3624720610556602,
+        "coverage_lower_bound": 0.5147806130190538,
+        "positive_recovery_lower_bound": 0.8870718549931568,
+        "target_risk": 0.1,
+        "minimum_coverage": 0.1,
+        "minimum_positive_recovery": 0.05,
+        "confidence": 0.95,
+        "certified": false,
+        "inferential_unit": "experiment"
+      },
+      "semantic_ltt_without_activation_floor": {
+        "threshold": -1.0,
+        "experiments": 43,
+        "failing_experiments": 6,
+        "authorized_experiments": 26,
+        "eligible_positive_experiments": 25,
+        "recovered_positive_experiments": 25,
+        "authorizations": 83,
+        "false_authorizations": 7,
+        "semantic_violations": 0,
+        "empirical_experiment_failure_rate": 0.13953488372093023,
+        "empirical_authorized_experiment_coverage": 0.6046511627906976,
+        "empirical_positive_recovery": 1.0,
+        "empirical_pair_sfar": 0.08433734939759036,
+        "risk_upper_bound": 0.25694288669509635,
+        "coverage_lower_bound": 0.46784825383882805,
+        "positive_recovery_lower_bound": 0.8870718549931568,
+        "target_risk": 0.1,
+        "minimum_coverage": 0.1,
+        "minimum_positive_recovery": 0.05,
+        "confidence": 0.95,
+        "certified": false,
+        "inferential_unit": "experiment"
+      },
+      "confidence_only_target_calibrated": {
+        "threshold": -1.0,
+        "experiments": 43,
+        "failing_experiments": 0,
+        "authorized_experiments": 0,
+        "eligible_positive_experiments": 25,
+        "recovered_positive_experiments": 0,
+        "authorizations": 0,
+        "false_authorizations": 0,
+        "semantic_violations": 0,
+        "empirical_experiment_failure_rate": 0.0,
+        "empirical_authorized_experiment_coverage": 0.0,
+        "empirical_positive_recovery": 0.0,
+        "empirical_pair_sfar": 0.0,
+        "risk_upper_bound": 0.06729675341386782,
+        "coverage_lower_bound": 0.0,
+        "positive_recovery_lower_bound": 0.0,
+        "target_risk": 0.1,
+        "minimum_coverage": 0.1,
+        "minimum_positive_recovery": 0.05,
+        "confidence": 0.95,
+        "certified": false,
+        "inferential_unit": "experiment"
+      },
+      "semantic_ltt_nondegenerate": {
+        "threshold": -1.0,
+        "experiments": 43,
+        "failing_experiments": 0,
+        "authorized_experiments": 0,
+        "eligible_positive_experiments": 25,
+        "recovered_positive_experiments": 0,
+        "authorizations": 0,
+        "false_authorizations": 0,
+        "semantic_violations": 0,
+        "empirical_experiment_failure_rate": 0.0,
+        "empirical_authorized_experiment_coverage": 0.0,
+        "empirical_positive_recovery": 0.0,
+        "empirical_pair_sfar": 0.0,
+        "risk_upper_bound": 0.06729675341386782,
+        "coverage_lower_bound": 0.0,
+        "positive_recovery_lower_bound": 0.0,
+        "target_risk": 0.1,
+        "minimum_coverage": 0.1,
+        "minimum_positive_recovery": 0.05,
+        "confidence": 0.95,
+        "certified": false,
+        "inferential_unit": "experiment"
+      }
+    },
+    "failure_taxonomy": {
+      "mutually_exclusive_counts": {
+        "invalid_input": 0,
+        "out_of_population_scope": 0,
+        "semantic_inadmissibility": 433,
+        "uncertifiable_risk": 0,
+        "activation_floor_not_met": 83,
+        "score_below_threshold": 0,
+        "numerical_failure": 0,
+        "authorized": 0
+      },
+      "total_claim_candidates": 516,
+      "orthogonal_context_flags": {
+        "detected_shift_warning": true
+      }
+    },
+    "passed": false
+  },
+  "final_evaluation": {
+    "opened": false,
+    "reason": "risk_lock_did_not_pass"
+  },
+  "efficiency": {
+    "wall_time_seconds": 4.254728792002425,
+    "calibration_overhead_seconds": 0.31924291601171717,
+    "peak_rss_megabytes": 1003.46875,
+    "source_bytes_read": 611001304,
+    "claim_candidates": 1404,
+    "claim_candidates_per_second": 329.985780207445,
+    "authorized_claims": 0,
+    "authorized_claims_per_second": 0.0,
+    "abstentions": 1404,
+    "abstention_rate": 1.0
+  },
+  "decision": "v4_external_contract_not_supported"
+}

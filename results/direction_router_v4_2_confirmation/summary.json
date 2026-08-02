@@ -1,0 +1,28 @@
+{
+  "version": "0.9.0",
+  "git_revision": "542a606d4282e55ede3ce327ecbbde3b27ea5a80",
+  "analysis": "direction_router_v4_2_prospective_confirmation",
+  "protocol": "configs/benchmarks/direction_router_v4_2.yaml",
+  "test_mode": false,
+  "cases": 2160,
+  "association_aware_router": {
+    "cases": 2160,
+    "attempts": 1080,
+    "coverage": 0.5,
+    "spurious_attempts_without_reference_direction": 0,
+    "attempted_direction_accuracy": 0.9287037037037037,
+    "valid_route_accuracy": 0.9287037037037037,
+    "valid_route_coverage": 1.0
+  },
+  "conditions": {
+    "scale_matches_protocol": true,
+    "spurious_attempts_equal_0": true,
+    "attempted_accuracy_at_least_0_80": true,
+    "valid_accuracy_at_least_0_80": true,
+    "valid_coverage_at_least_0_80": true
+  },
+  "primary_passed": true,
+  "wall_time_seconds": 4.942082958004903,
+  "decision": "strict_association_router_prospectively_confirmed",
+  "causal_proof_allowed": false
+}

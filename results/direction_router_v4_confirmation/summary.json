@@ -1,0 +1,36 @@
+{
+  "version": "0.9.0",
+  "git_revision": "4ad71d72a4acc1e8fa1da29d4a0c36f3185e91a7",
+  "analysis": "direction_router_v4_prospective_confirmation",
+  "protocol": "configs/benchmarks/semantic_risk_control_v4.yaml",
+  "test_mode": false,
+  "cases": 2160,
+  "legacy_router": {
+    "cases": 2160,
+    "attempts": 1620,
+    "coverage": 0.75,
+    "spurious_attempts_without_reference_direction": 540,
+    "attempted_direction_accuracy": 0.6277777777777778,
+    "valid_route_accuracy": 0.9416666666666667,
+    "valid_route_coverage": 1.0
+  },
+  "association_aware_router": {
+    "cases": 2160,
+    "attempts": 1083,
+    "coverage": 0.5013888888888889,
+    "spurious_attempts_without_reference_direction": 3,
+    "attempted_direction_accuracy": 0.9390581717451524,
+    "valid_route_accuracy": 0.9416666666666667,
+    "valid_route_coverage": 1.0
+  },
+  "valid_route_accuracy_drop": 0.0,
+  "conditions": {
+    "scale_matches_protocol": true,
+    "spurious_attempts_in_independent_regimes_equal_0": false,
+    "attempted_direction_accuracy_at_least_0_80": true,
+    "valid_route_accuracy_drop_at_most_0_02": true
+  },
+  "primary_passed": false,
+  "wall_time_seconds": 12.753701084002387,
+  "decision": "association_aware_router_not_confirmed"
+}

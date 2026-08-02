@@ -1,0 +1,963 @@
+{
+  "version": "0.9.0",
+  "git_revision": "4ad71d72a4acc1e8fa1da29d4a0c36f3185e91a7",
+  "analysis": "causal_chambers_v4_1_locked_final_evaluation",
+  "protocol": "configs/benchmarks/semantic_risk_control_v4_1.yaml",
+  "parent_protocol": "configs/benchmarks/semantic_risk_control_v4.yaml",
+  "final_values_accessed_only_after_v4_1_lock": true,
+  "selected_claim_families": [
+    "predictive",
+    "internally_reproduced"
+  ],
+  "excluded_claim_families": {
+    "topology_specific": "no_nondegenerate_development_certificate",
+    "directed": "no_nondegenerate_development_certificate",
+    "mechanistic": "no_nondegenerate_development_certificate",
+    "causal": "no_nondegenerate_development_certificate"
+  },
+  "family_selection_data_dependent": true,
+  "development": {
+    "experiments": 117,
+    "family_policies": {
+      "predictive": {
+        "threshold": 1.0,
+        "experiments": 117,
+        "failing_experiments": 6,
+        "authorized_experiments": 78,
+        "eligible_positive_experiments": 74,
+        "recovered_positive_experiments": 74,
+        "authorizations": 101,
+        "false_authorizations": 7,
+        "semantic_violations": 0,
+        "empirical_experiment_failure_rate": 0.05128205128205128,
+        "empirical_authorized_experiment_coverage": 0.6666666666666666,
+        "empirical_positive_recovery": 1.0,
+        "empirical_pair_sfar": 0.06930693069306931,
+        "risk_upper_bound": 0.09870290749702404,
+        "coverage_lower_bound": 0.5880745057004194,
+        "positive_recovery_lower_bound": 0.9603256161296866,
+        "target_risk": 0.1,
+        "minimum_coverage": 0.1,
+        "minimum_positive_recovery": 0.05,
+        "confidence": 0.95,
+        "certified": true,
+        "inferential_unit": "experiment"
+      },
+      "internally_reproduced": {
+        "threshold": 1.0,
+        "experiments": 117,
+        "failing_experiments": 3,
+        "authorized_experiments": 75,
+        "eligible_positive_experiments": 73,
+        "recovered_positive_experiments": 73,
+        "authorizations": 94,
+        "false_authorizations": 3,
+        "semantic_violations": 0,
+        "empirical_experiment_failure_rate": 0.02564102564102564,
+        "empirical_authorized_experiment_coverage": 0.6410256410256411,
+        "empirical_positive_recovery": 1.0,
+        "empirical_pair_sfar": 0.031914893617021274,
+        "risk_upper_bound": 0.06493501474507492,
+        "coverage_lower_bound": 0.5616948580466661,
+        "positive_recovery_lower_bound": 0.9597932057468341,
+        "target_risk": 0.1,
+        "minimum_coverage": 0.1,
+        "minimum_positive_recovery": 0.05,
+        "confidence": 0.95,
+        "certified": true,
+        "inferential_unit": "experiment"
+      },
+      "topology_specific": null,
+      "directed": null,
+      "mechanistic": null,
+      "causal": null
+    },
+    "joint_policy": {
+      "threshold": 1.0,
+      "experiments": 117,
+      "failing_experiments": 6,
+      "authorized_experiments": 78,
+      "eligible_positive_experiments": 74,
+      "recovered_positive_experiments": 74,
+      "authorizations": 195,
+      "false_authorizations": 10,
+      "semantic_violations": 0,
+      "empirical_experiment_failure_rate": 0.05128205128205128,
+      "empirical_authorized_experiment_coverage": 0.6666666666666666,
+      "empirical_positive_recovery": 1.0,
+      "empirical_pair_sfar": 0.05128205128205128,
+      "risk_upper_bound": 0.09870290749702404,
+      "coverage_lower_bound": 0.5880745057004194,
+      "positive_recovery_lower_bound": 0.9603256161296866,
+      "target_risk": 0.1,
+      "minimum_coverage": 0.1,
+      "minimum_positive_recovery": 0.05,
+      "confidence": 0.95,
+      "certified": true,
+      "inferential_unit": "experiment"
+    },
+    "confidence_only_policy": {
+      "threshold": 1.0,
+      "experiments": 117,
+      "failing_experiments": 6,
+      "authorized_experiments": 78,
+      "eligible_positive_experiments": 75,
+      "recovered_positive_experiments": 74,
+      "authorizations": 202,
+      "false_authorizations": 14,
+      "semantic_violations": 0,
+      "empirical_experiment_failure_rate": 0.05128205128205128,
+      "empirical_authorized_experiment_coverage": 0.6666666666666666,
+      "empirical_positive_recovery": 0.9866666666666667,
+      "empirical_pair_sfar": 0.06930693069306931,
+      "risk_upper_bound": 0.09870290749702404,
+      "coverage_lower_bound": 0.5880745057004194,
+      "positive_recovery_lower_bound": 0.9383054571005736,
+      "target_risk": 0.1,
+      "minimum_coverage": 0.1,
+      "minimum_positive_recovery": 0.05,
+      "confidence": 0.95,
+      "certified": true,
+      "inferential_unit": "experiment"
+    }
+  },
+  "final": {
+    "experiments": 33,
+    "pair_records": 66,
+    "datasets": [
+      "lt_walks_v1",
+      "wt_intake_impulse_v1",
+      "wt_validate_v1"
+    ],
+    "source_bytes": 388471102,
+    "file_hashes": {
+      "data/external/causal_chambers_v4/lt_walks_v1/actuators_white.csv": "sha256:5f220699e4090fa6e723e5a369434b58647a84c179a12903e1f550f0a988c670",
+      "data/external/causal_chambers_v4/lt_walks_v1/color_mix.csv": "sha256:b9088d72f079ce320d6958025c7930d124b2d89919bfa4aa8c618c84cf50846f",
+      "data/external/causal_chambers_v4/lt_walks_v1/smooth_polarizers.csv": "sha256:0bb0c193c44d73e7ad51b2519daf5f112d4b57904434b9e89d03f63ff95cae1d",
+      "data/external/causal_chambers_v4/wt_intake_impulse_v1/load_out_0.01_osr_downwind_4.csv": "sha256:4012422af519981e09a88b88494f2057815f0534cb6e7028eb4154e5024a9904",
+      "data/external/causal_chambers_v4/wt_intake_impulse_v1/load_out_0.5_osr_downwind_2.csv": "sha256:e8bfaec392fc268fb82087f7d0820f9e3c9401875ca34390f9cd2198d59b5b09",
+      "data/external/causal_chambers_v4/wt_intake_impulse_v1/load_out_0.5_osr_downwind_4.csv": "sha256:9d6e66d32a7f7ecdb4b6880dca0b981eb7c53866589ef53d3cbd4c56f8ead0f9",
+      "data/external/causal_chambers_v4/wt_intake_impulse_v1/load_out_0.5_osr_downwind_8.csv": "sha256:32a9c0645c26ed7fc9ba68ef1c38d78e579a0851c2286c11e490680bcf5137e4",
+      "data/external/causal_chambers_v4/wt_intake_impulse_v1/load_out_1_osr_downwind_4.csv": "sha256:b196235e9517e57f03192fd83981f2c53352ed8860dd189897b082a71140daaf",
+      "data/external/causal_chambers_v4/wt_validate_v1/validate_hatch_mic.csv": "sha256:5e64b5e341be24464495c4a5ea3d90c4e982b16e4e56d3684720370877363fd1",
+      "data/external/causal_chambers_v4/wt_validate_v1/validate_hatch_pressures.csv": "sha256:a0dcb684c23f16e9ccde530e54ff1fd80c62c619f17cf1ad6ebc37963682746a",
+      "data/external/causal_chambers_v4/wt_validate_v1/validate_hatch_rpms.csv": "sha256:62797d9e98540d6bc53f1113364e36fa2054ef2d71ceb27b523016bb765b5cca",
+      "data/external/causal_chambers_v4/wt_validate_v1/validate_load_in.csv": "sha256:ea0c19d18579b1f125f9be2d609ddf7f400a678f0210d8d10d6df7c0d7a6bf3e",
+      "data/external/causal_chambers_v4/wt_validate_v1/validate_load_in_current_out.csv": "sha256:6c05b84b559de76affbc85fad42dcc194e0c7d9ab44f14499d92b08efb152f69",
+      "data/external/causal_chambers_v4/wt_validate_v1/validate_load_in_mic.csv": "sha256:a48ee43b14b1db6359b70b293f8d9407349a13536f134236c39eea3e507c53cc",
+      "data/external/causal_chambers_v4/wt_validate_v1/validate_load_out.csv": "sha256:e22bb54f26e56f665498d9cb75fa83f843d20bf802ca5f7afbe1a2135f243dd7",
+      "data/external/causal_chambers_v4/wt_validate_v1/validate_load_out_current_in.csv": "sha256:31191011f68ac36b5f1e7565167399abf748bb18783975121c9d2563d7773da7",
+      "data/external/causal_chambers_v4/wt_validate_v1/validate_load_out_mic.csv": "sha256:e7f46c874d1654bd4ec9c5dfbd6f3e69963e09eb6900f889072c3439d99c4037",
+      "data/external/causal_chambers_v4/wt_validate_v1/validate_load_out_pressure_intake.csv": "sha256:b00e342324bb4ccd8a4ad9a5a33799157df07a41751ad4ed1881f401ae9a662a",
+      "data/external/causal_chambers_v4/wt_validate_v1/validate_osr_1.csv": "sha256:a72881123fc13b451566c7f457910f56bb57ec71f35103d1e4d7fd13f73a81bc",
+      "data/external/causal_chambers_v4/wt_validate_v1/validate_osr_2.csv": "sha256:59e30dfc22927244e011f90a41be65c09d6c398b95a45417bf66f1169111177c",
+      "data/external/causal_chambers_v4/wt_validate_v1/validate_osr_ambient.csv": "sha256:28a6c0c8959f1a0300be0ca53127a4f74ba308f6005f305fbd6a6e05e7eccd18",
+      "data/external/causal_chambers_v4/wt_validate_v1/validate_osr_downwind.csv": "sha256:357b906fe3b7bb90cdec685e247db26df7bc12d1b9be3b81b3dea245de82f37d",
+      "data/external/causal_chambers_v4/wt_validate_v1/validate_osr_in.csv": "sha256:f5ec25799b5997c54b345677b36f34e33b6046173e7b1cc9c99e2c1af8636560",
+      "data/external/causal_chambers_v4/wt_validate_v1/validate_osr_intake.csv": "sha256:0935398fb12b38be1e3355cff056c23991d96f36da91804d48caca68d4f3aa05",
+      "data/external/causal_chambers_v4/wt_validate_v1/validate_osr_mic.csv": "sha256:0655e8112745f1622eb0ef8800239380790ee15d4b83dac4141fa95e0f02c2d8",
+      "data/external/causal_chambers_v4/wt_validate_v1/validate_osr_out.csv": "sha256:1bdfe0193f685c7027e1cdbeefc9844ed83149622780fb8562cc4839ef217fc0",
+      "data/external/causal_chambers_v4/wt_validate_v1/validate_osr_upwind.csv": "sha256:689f678f3425b0e88269b002b22d91a593a51cebfe4aa22d62ca8388f3080cd8",
+      "data/external/causal_chambers_v4/wt_validate_v1/validate_pot_1.csv": "sha256:6069849b9768fce4dcea1c7835a85ecffe9afd26d0a73f3f6eb76602f309347a",
+      "data/external/causal_chambers_v4/wt_validate_v1/validate_pot_2.csv": "sha256:b312424d4e66e8acebc4d2b3d3e3a05a6e7fa3ac2b2e39eb13e11a5680c383c4",
+      "data/external/causal_chambers_v4/wt_validate_v1/validate_res_in.csv": "sha256:ce61036295b16e5fe3e0e87d05cab0bb938e42c402bc7f332c9464feb2c0d4bc",
+      "data/external/causal_chambers_v4/wt_validate_v1/validate_res_out.csv": "sha256:de765b81fab641daced51fb02d598cb6f73a8e05850a1b2ab489b766d943e201",
+      "data/external/causal_chambers_v4/wt_validate_v1/validate_v_1.csv": "sha256:4341cf192417ff8830bfc2178e52e6236b08af08ffeb6ff46040573b4f93e722",
+      "data/external/causal_chambers_v4/wt_validate_v1/validate_v_2.csv": "sha256:dbd0c599a7625fc7d4a5747f0dd5efe9f071f6154e424dc2a8ae95a4d0c0ece5",
+      "data/external/causal_chambers_v4/wt_validate_v1/validate_v_in.csv": "sha256:0270b9ff9a4c7cc2e9bf7c3136467015030cdc842492a0273009465920da720a",
+      "data/external/causal_chambers_v4/wt_validate_v1/validate_v_mic.csv": "sha256:2e68dce7c96a7cc33acf463e453238403ca86bdb627f28bd30b6e8d21d803140",
+      "data/external/causal_chambers_v4/wt_validate_v1/validate_v_out.csv": "sha256:4ab41cc03ee6939225ade565cdc1822f41440377c310ec63097723241ab41e5c"
+    },
+    "exclusions": {
+      "insufficient_columns": 3,
+      "no_selected_pair": 0,
+      "invalid_pair_record": 0
+    },
+    "comparators": {
+      "abstain_all": {
+        "threshold": 1.0000000000000002,
+        "experiments": 33,
+        "failing_experiments": 0,
+        "authorized_experiments": 0,
+        "eligible_positive_experiments": 19,
+        "recovered_positive_experiments": 0,
+        "authorizations": 0,
+        "false_authorizations": 0,
+        "semantic_violations": 0,
+        "empirical_experiment_failure_rate": 0.0,
+        "empirical_authorized_experiment_coverage": 0.0,
+        "empirical_positive_recovery": 0.0,
+        "empirical_pair_sfar": 0.0,
+        "risk_upper_bound": 0.08678118929147494,
+        "coverage_lower_bound": 0.0,
+        "positive_recovery_lower_bound": 0.0,
+        "target_risk": 0.1,
+        "minimum_coverage": 0.1,
+        "minimum_positive_recovery": 0.05,
+        "confidence": 0.95,
+        "certified": false,
+        "inferential_unit": "experiment"
+      },
+      "fixed_probability_0_5": {
+        "threshold": 0.5,
+        "experiments": 33,
+        "failing_experiments": 9,
+        "authorized_experiments": 26,
+        "eligible_positive_experiments": 19,
+        "recovered_positive_experiments": 19,
+        "authorizations": 70,
+        "false_authorizations": 20,
+        "semantic_violations": 18,
+        "empirical_experiment_failure_rate": 0.2727272727272727,
+        "empirical_authorized_experiment_coverage": 0.7878787878787878,
+        "empirical_positive_recovery": 1.0,
+        "empirical_pair_sfar": 0.2857142857142857,
+        "risk_upper_bound": 0.4276450547016,
+        "coverage_lower_bound": 0.6382357337713704,
+        "positive_recovery_lower_bound": 0.8541314966877566,
+        "target_risk": 0.1,
+        "minimum_coverage": 0.1,
+        "minimum_positive_recovery": 0.05,
+        "confidence": 0.95,
+        "certified": false,
+        "inferential_unit": "experiment"
+      },
+      "evidence_contract_only": {
+        "threshold": 0.0,
+        "experiments": 33,
+        "failing_experiments": 2,
+        "authorized_experiments": 21,
+        "eligible_positive_experiments": 19,
+        "recovered_positive_experiments": 19,
+        "authorizations": 52,
+        "false_authorizations": 4,
+        "semantic_violations": 0,
+        "empirical_experiment_failure_rate": 0.06060606060606061,
+        "empirical_authorized_experiment_coverage": 0.6363636363636364,
+        "empirical_positive_recovery": 1.0,
+        "empirical_pair_sfar": 0.07692307692307693,
+        "risk_upper_bound": 0.1787342875974976,
+        "coverage_lower_bound": 0.4784150061371678,
+        "positive_recovery_lower_bound": 0.8541314966877566,
+        "target_risk": 0.1,
+        "minimum_coverage": 0.1,
+        "minimum_positive_recovery": 0.05,
+        "confidence": 0.95,
+        "certified": false,
+        "inferential_unit": "experiment"
+      },
+      "unconstrained_ltt": {
+        "threshold": -1.0,
+        "experiments": 33,
+        "failing_experiments": 11,
+        "authorized_experiments": 26,
+        "eligible_positive_experiments": 19,
+        "recovered_positive_experiments": 19,
+        "authorizations": 76,
+        "false_authorizations": 26,
+        "semantic_violations": 24,
+        "empirical_experiment_failure_rate": 0.3333333333333333,
+        "empirical_authorized_experiment_coverage": 0.7878787878787878,
+        "empirical_positive_recovery": 1.0,
+        "empirical_pair_sfar": 0.34210526315789475,
+        "risk_upper_bound": 0.4908559047701853,
+        "coverage_lower_bound": 0.6382357337713704,
+        "positive_recovery_lower_bound": 0.8541314966877566,
+        "target_risk": 0.1,
+        "minimum_coverage": 0.1,
+        "minimum_positive_recovery": 0.05,
+        "confidence": 0.95,
+        "certified": false,
+        "inferential_unit": "experiment"
+      },
+      "semantic_ltt_without_activation_floor": {
+        "threshold": -1.0,
+        "experiments": 33,
+        "failing_experiments": 2,
+        "authorized_experiments": 21,
+        "eligible_positive_experiments": 19,
+        "recovered_positive_experiments": 19,
+        "authorizations": 52,
+        "false_authorizations": 4,
+        "semantic_violations": 0,
+        "empirical_experiment_failure_rate": 0.06060606060606061,
+        "empirical_authorized_experiment_coverage": 0.6363636363636364,
+        "empirical_positive_recovery": 1.0,
+        "empirical_pair_sfar": 0.07692307692307693,
+        "risk_upper_bound": 0.1787342875974976,
+        "coverage_lower_bound": 0.4784150061371678,
+        "positive_recovery_lower_bound": 0.8541314966877566,
+        "target_risk": 0.1,
+        "minimum_coverage": 0.1,
+        "minimum_positive_recovery": 0.05,
+        "confidence": 0.95,
+        "certified": false,
+        "inferential_unit": "experiment"
+      },
+      "confidence_only_target_calibrated": {
+        "threshold": 1.0,
+        "experiments": 33,
+        "failing_experiments": 6,
+        "authorized_experiments": 24,
+        "eligible_positive_experiments": 19,
+        "recovered_positive_experiments": 19,
+        "authorizations": 62,
+        "false_authorizations": 12,
+        "semantic_violations": 10,
+        "empirical_experiment_failure_rate": 0.18181818181818182,
+        "empirical_authorized_experiment_coverage": 0.7272727272727273,
+        "empirical_positive_recovery": 1.0,
+        "empirical_pair_sfar": 0.1935483870967742,
+        "risk_upper_bound": 0.32762675185040113,
+        "coverage_lower_bound": 0.5723549452984,
+        "positive_recovery_lower_bound": 0.8541314966877566,
+        "target_risk": 0.1,
+        "minimum_coverage": 0.1,
+        "minimum_positive_recovery": 0.05,
+        "confidence": 0.95,
+        "certified": false,
+        "inferential_unit": "experiment"
+      },
+      "semantic_ltt_nondegenerate_v4_1": {
+        "threshold": 1.0,
+        "experiments": 33,
+        "failing_experiments": 2,
+        "authorized_experiments": 21,
+        "eligible_positive_experiments": 19,
+        "recovered_positive_experiments": 19,
+        "authorizations": 52,
+        "false_authorizations": 4,
+        "semantic_violations": 0,
+        "empirical_experiment_failure_rate": 0.06060606060606061,
+        "empirical_authorized_experiment_coverage": 0.6363636363636364,
+        "empirical_positive_recovery": 1.0,
+        "empirical_pair_sfar": 0.07692307692307693,
+        "risk_upper_bound": 0.1787342875974976,
+        "coverage_lower_bound": 0.4784150061371678,
+        "positive_recovery_lower_bound": 0.8541314966877566,
+        "target_risk": 0.1,
+        "minimum_coverage": 0.1,
+        "minimum_positive_recovery": 0.05,
+        "confidence": 0.95,
+        "certified": false,
+        "inferential_unit": "experiment"
+      }
+    },
+    "primary": {
+      "threshold": 1.0,
+      "experiments": 33,
+      "failing_experiments": 2,
+      "authorized_experiments": 21,
+      "eligible_positive_experiments": 19,
+      "recovered_positive_experiments": 19,
+      "authorizations": 52,
+      "false_authorizations": 4,
+      "semantic_violations": 0,
+      "empirical_experiment_failure_rate": 0.06060606060606061,
+      "empirical_authorized_experiment_coverage": 0.6363636363636364,
+      "empirical_positive_recovery": 1.0,
+      "empirical_pair_sfar": 0.07692307692307693,
+      "risk_upper_bound": 0.1787342875974976,
+      "coverage_lower_bound": 0.4784150061371678,
+      "positive_recovery_lower_bound": 0.8541314966877566,
+      "target_risk": 0.1,
+      "minimum_coverage": 0.1,
+      "minimum_positive_recovery": 0.05,
+      "confidence": 0.95,
+      "certified": false,
+      "inferential_unit": "experiment"
+    },
+    "by_dataset_sensitivity": {
+      "lt_walks_v1": {
+        "threshold": 1.0,
+        "experiments": 3,
+        "failing_experiments": 0,
+        "authorized_experiments": 2,
+        "eligible_positive_experiments": 2,
+        "recovered_positive_experiments": 2,
+        "authorizations": 8,
+        "false_authorizations": 0,
+        "semantic_violations": 0,
+        "empirical_experiment_failure_rate": 0.0,
+        "empirical_authorized_experiment_coverage": 0.6666666666666666,
+        "empirical_positive_recovery": 1.0,
+        "empirical_pair_sfar": 0.0,
+        "risk_upper_bound": 0.6315968501359612,
+        "coverage_lower_bound": 0.13535036217158386,
+        "positive_recovery_lower_bound": 0.22360679774997907,
+        "target_risk": 0.1,
+        "minimum_coverage": 0.1,
+        "minimum_positive_recovery": 0.05,
+        "confidence": 0.95,
+        "certified": false,
+        "inferential_unit": "experiment"
+      },
+      "wt_intake_impulse_v1": {
+        "threshold": 1.0,
+        "experiments": 5,
+        "failing_experiments": 1,
+        "authorized_experiments": 3,
+        "eligible_positive_experiments": 2,
+        "recovered_positive_experiments": 2,
+        "authorizations": 8,
+        "false_authorizations": 2,
+        "semantic_violations": 0,
+        "empirical_experiment_failure_rate": 0.2,
+        "empirical_authorized_experiment_coverage": 0.6,
+        "empirical_positive_recovery": 1.0,
+        "empirical_pair_sfar": 0.25,
+        "risk_upper_bound": 0.6574083180011386,
+        "coverage_lower_bound": 0.18925537743777085,
+        "positive_recovery_lower_bound": 0.22360679774997907,
+        "target_risk": 0.1,
+        "minimum_coverage": 0.1,
+        "minimum_positive_recovery": 0.05,
+        "confidence": 0.95,
+        "certified": false,
+        "inferential_unit": "experiment"
+      },
+      "wt_validate_v1": {
+        "threshold": 1.0,
+        "experiments": 25,
+        "failing_experiments": 1,
+        "authorized_experiments": 16,
+        "eligible_positive_experiments": 15,
+        "recovered_positive_experiments": 15,
+        "authorizations": 36,
+        "false_authorizations": 2,
+        "semantic_violations": 0,
+        "empirical_experiment_failure_rate": 0.04,
+        "empirical_authorized_experiment_coverage": 0.64,
+        "empirical_positive_recovery": 1.0,
+        "empirical_pair_sfar": 0.05555555555555555,
+        "risk_upper_bound": 0.176120710604518,
+        "coverage_lower_bound": 0.4560667860770927,
+        "positive_recovery_lower_bound": 0.8189637274779153,
+        "target_risk": 0.1,
+        "minimum_coverage": 0.1,
+        "minimum_positive_recovery": 0.05,
+        "confidence": 0.95,
+        "certified": false,
+        "inferential_unit": "experiment"
+      }
+    },
+    "shift_diagnostic": {
+      "warning": true,
+      "role": "warning_only",
+      "may_authorize_or_restore_certificate": false,
+      "alpha": 0.01,
+      "calibration_rows": 117,
+      "target_rows": 33,
+      "marginal_ks": [
+        {
+          "feature": "status:causal_intervention:passed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:causal_intervention:failed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:causal_intervention:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:causal_intervention:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:causal_intervention:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:causal_intervention",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:directed_identifiability:passed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:directed_identifiability:failed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:directed_identifiability:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:directed_identifiability:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:directed_identifiability:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:directed_identifiability",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:entity_specificity:passed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:entity_specificity:failed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:entity_specificity:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:entity_specificity:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:entity_specificity:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:entity_specificity",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:external_replication:passed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:external_replication:failed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:external_replication:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:external_replication:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:external_replication:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:external_replication",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:independent_validation:passed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:independent_validation:failed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:independent_validation:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:independent_validation:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:independent_validation:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:independent_validation",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:internal_reproduction:passed",
+          "p_value": 0.9999999999779654,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:internal_reproduction:failed",
+          "p_value": 0.9999999999779654,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:internal_reproduction:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:internal_reproduction:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:internal_reproduction:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:internal_reproduction",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:operational_compute:passed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:operational_compute:failed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:operational_compute:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:operational_compute:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:operational_compute:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:operational_compute",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:prediction:passed",
+          "p_value": 0.9980637033990432,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:prediction:failed",
+          "p_value": 0.9980637033990432,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:prediction:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:prediction:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:prediction:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:prediction",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:reproducible_compute:passed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:reproducible_compute:failed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:reproducible_compute:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:reproducible_compute:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:reproducible_compute:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:reproducible_compute",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:structure_function_association:passed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:structure_function_association:failed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:structure_function_association:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:structure_function_association:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:structure_function_association:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:structure_function_association",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:topology_specificity:passed",
+          "p_value": 0.9999944840404119,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:topology_specificity:failed",
+          "p_value": 0.9999944840404119,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:topology_specificity:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:topology_specificity:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:topology_specificity:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:topology_specificity",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:whole_brain_coverage:passed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:whole_brain_coverage:failed",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:whole_brain_coverage:unknown",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:whole_brain_coverage:not_applicable",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "status:whole_brain_coverage:requires_review",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "missing:whole_brain_coverage",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "prediction_correlation",
+          "p_value": 0.3035590071468276,
+          "holm_rejected": false
+        },
+        {
+          "feature": "prediction_negative_log10_p",
+          "p_value": 0.9022545727089838,
+          "holm_rejected": false
+        },
+        {
+          "feature": "prediction_r_squared",
+          "p_value": 0.19317287706958466,
+          "holm_rejected": false
+        },
+        {
+          "feature": "reproduction_first_correlation",
+          "p_value": 0.3035590071468276,
+          "holm_rejected": false
+        },
+        {
+          "feature": "reproduction_second_correlation",
+          "p_value": 0.272685433204881,
+          "holm_rejected": false
+        },
+        {
+          "feature": "reproduction_first_r_squared",
+          "p_value": 0.19317287706958466,
+          "holm_rejected": false
+        },
+        {
+          "feature": "reproduction_second_r_squared",
+          "p_value": 0.43492622061431263,
+          "holm_rejected": false
+        },
+        {
+          "feature": "topology_candidate_r_squared",
+          "p_value": 0.19317287706958466,
+          "holm_rejected": false
+        },
+        {
+          "feature": "topology_best_control_margin",
+          "p_value": 0.03080214556867593,
+          "holm_rejected": false
+        },
+        {
+          "feature": "legacy_direction_forward_dependence",
+          "p_value": 1.4269786079271826e-08,
+          "holm_rejected": true
+        },
+        {
+          "feature": "legacy_direction_reverse_dependence",
+          "p_value": 3.9740469956349936e-07,
+          "holm_rejected": true
+        },
+        {
+          "feature": "legacy_direction_margin",
+          "p_value": 0.04057441605051154,
+          "holm_rejected": false
+        },
+        {
+          "feature": "anm_p_forward",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "anm_p_backward",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "anm_signed_margin",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "anm_absolute_margin",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "causal_intervention_available",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "causal_intervention_effect",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "causal_intervention_negative_log10_p",
+          "p_value": 1.0,
+          "holm_rejected": false
+        },
+        {
+          "feature": "log10_sample_size",
+          "p_value": 1.2541958307822399e-07,
+          "holm_rejected": true
+        },
+        {
+          "feature": "known_noise_scale",
+          "p_value": 1.0,
+          "holm_rejected": false
+        }
+      ],
+      "energy_distance": 1.2740801992795605,
+      "energy_permutation_p_value": 0.005,
+      "permutations": 199
+    },
+    "failure_taxonomy": {
+      "mutually_exclusive_counts": {
+        "invalid_input": 0,
+        "out_of_population_scope": 0,
+        "semantic_inadmissibility": 80,
+        "uncertifiable_risk": 0,
+        "activation_floor_not_met": 0,
+        "score_below_threshold": 0,
+        "numerical_failure": 0,
+        "authorized": 52
+      },
+      "total_claim_candidates": 132,
+      "orthogonal_context_flags": {
+        "detected_shift_warning": true
+      }
+    }
+  },
+  "inferential_conditions": {
+    "pair_rows_are_independent": false,
+    "exact_interval_conditional_on_experiment_exchangeability": true,
+    "dataset_stratified_results_are_descriptive_sensitivity": true
+  },
+  "efficiency": {
+    "wall_time_seconds": 6.08888900000602,
+    "peak_rss_megabytes": 1038.1875,
+    "source_bytes_read": 999472406,
+    "final_claim_candidates": 132,
+    "final_authorizations": 52,
+    "final_abstentions": 80,
+    "final_abstention_rate": 0.6060606060606061,
+    "abstention_opportunity_cost": {
+      "unit": "eligible_true_claims_not_authorized",
+      "missed_true_claims": 0,
+      "eligible_true_claims": 48,
+      "miss_rate": 0.0,
+      "monetary_cost_claimed": false
+    },
+    "claim_candidates_per_second": 21.678831721167768
+  },
+  "decision": "v4_1_bounded_predictive_external_confirmation_failed",
+  "stronger_external_claims_supported": false
+}

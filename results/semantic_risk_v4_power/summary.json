@@ -1,0 +1,62 @@
+{
+  "version": "0.9.0",
+  "git_revision": "4ad71d72a4acc1e8fa1da29d4a0c36f3185e91a7",
+  "analysis": "semantic_risk_v4_prospective_power",
+  "protocol": "configs/benchmarks/semantic_risk_control_v4.yaml",
+  "target_risk": 0.1,
+  "confidence": 0.95,
+  "minimum_coverage": 0.1,
+  "minimum_positive_recovery": 0.05,
+  "minimum_units_for_zero_failures": 29,
+  "operating_characteristics": [
+    {
+      "units": 10,
+      "maximum_compatible_failures": -1,
+      "minimum_authorized_units": 4,
+      "minimum_recovered_positive_units": 3
+    },
+    {
+      "units": 20,
+      "maximum_compatible_failures": -1,
+      "minimum_authorized_units": 5,
+      "minimum_recovered_positive_units": 4
+    },
+    {
+      "units": 29,
+      "maximum_compatible_failures": 0,
+      "minimum_authorized_units": 7,
+      "minimum_recovered_positive_units": 5
+    },
+    {
+      "units": 40,
+      "maximum_compatible_failures": 0,
+      "minimum_authorized_units": 8,
+      "minimum_recovered_positive_units": 5
+    },
+    {
+      "units": 60,
+      "maximum_compatible_failures": 1,
+      "minimum_authorized_units": 11,
+      "minimum_recovered_positive_units": 7
+    },
+    {
+      "units": 100,
+      "maximum_compatible_failures": 4,
+      "minimum_authorized_units": 16,
+      "minimum_recovered_positive_units": 10
+    },
+    {
+      "units": 200,
+      "maximum_compatible_failures": 12,
+      "minimum_authorized_units": 28,
+      "minimum_recovered_positive_units": 16
+    },
+    {
+      "units": 500,
+      "maximum_compatible_failures": 38,
+      "minimum_authorized_units": 62,
+      "minimum_recovered_positive_units": 34
+    }
+  ],
+  "interpretation": "These are exact design constraints, not observed performance and not a post-hoc power calculation."
+}
