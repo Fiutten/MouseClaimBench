@@ -1,0 +1,1018 @@
+{
+  "version": "0.9.0",
+  "git_revision": "3add706",
+  "analysis": "prospective_dandi_profile_v2_1",
+  "protocols": [
+    "configs/benchmarks/dandi_ach_profile_v2_1.yaml",
+    "configs/benchmarks/dandi_contrast_profile_v2_1.yaml"
+  ],
+  "protocol_sha256": {
+    "configs/benchmarks/dandi_ach_profile_v2_1.yaml": "75f31addaa105eecdece57e5f146271b5a8504e2fce6f44767438471c09d1f3c",
+    "configs/benchmarks/dandi_contrast_profile_v2_1.yaml": "713cbf40f4b0154b79e85486df49a505195e225992d102abedee4bc53babb0e0"
+  },
+  "data_manifests": {
+    "ach": {
+      "resource": "ach",
+      "dandiset": "001176",
+      "version": "0.260610.2204",
+      "catalog_assets": 132,
+      "selected_assets": 28,
+      "selected_subjects": 5,
+      "selected_bytes": 330439462,
+      "selection_rule": "non-Ach behavior+ophys schema candidates",
+      "assets": [
+        {
+          "asset_id": "f38dad6f-bb74-479b-b41a-99de169d0dc9",
+          "path": "sub-26536/sub-26536_ses-26536-1-2_behavior+ophys.nwb",
+          "size": 12183465,
+          "official_sha256": "1f1696e7fd8e073ed11f31343264d9204c6c429f12cda5f5661f05536ebf3e1e"
+        },
+        {
+          "asset_id": "c0bec9f2-ce78-4ce6-a790-3c83794f2d07",
+          "path": "sub-26536/sub-26536_ses-26536-2-2_behavior+ophys.nwb",
+          "size": 11960851,
+          "official_sha256": "4074ccfc0529e10743723ad62297916bff7fa41089836949fe7ff7956bc7fb3f"
+        },
+        {
+          "asset_id": "01d66324-f04f-48a1-af2f-75149c6852aa",
+          "path": "sub-26536/sub-26536_ses-26536-2-3_behavior+ophys.nwb",
+          "size": 12029590,
+          "official_sha256": "36bd62e9a388095dd72905f50d4912d5c19d872e6302ba9559cede195cf92ebf"
+        },
+        {
+          "asset_id": "bb095d21-f9c9-493a-947c-2829fba67d71",
+          "path": "sub-27221/sub-27221_ses-27221-1-1_behavior+ophys.nwb",
+          "size": 11977830,
+          "official_sha256": "e8d821f2f3897ae5a46b4fd4e3ef686b298bd0fe83f95d7151ca8bea6d5a827d"
+        },
+        {
+          "asset_id": "6583d5bb-6449-403b-8db7-fbe5eb75f71e",
+          "path": "sub-27221/sub-27221_ses-27221-1-2_behavior+ophys.nwb",
+          "size": 12033625,
+          "official_sha256": "bcc6ef6e165dc43a11d7c3e4e41bd2753429761a4d7e1e2350d746814a5b8d9b"
+        },
+        {
+          "asset_id": "9ef9776d-28b8-4b1b-ba0c-68237caac920",
+          "path": "sub-27221/sub-27221_ses-27221-1-3_behavior+ophys.nwb",
+          "size": 11995496,
+          "official_sha256": "a2897fedec3c270b837a0c3de121369130b9a5dd9bf2afa9181696899770e126"
+        },
+        {
+          "asset_id": "3537b254-e976-47d6-8a75-782f2bdc8db0",
+          "path": "sub-27221/sub-27221_ses-27221-1-4_behavior+ophys.nwb",
+          "size": 11911535,
+          "official_sha256": "27b8acf678d91a2bcdade38b9ae687a651083aa059d8b66cb955565e79afc101"
+        },
+        {
+          "asset_id": "6ebe043b-7ad9-4eda-aa90-1090e995f854",
+          "path": "sub-27221/sub-27221_ses-27221-2-3_behavior+ophys.nwb",
+          "size": 10974033,
+          "official_sha256": "a7f541ce5b4006696947b948533ccbaccba033274a7662395d51a155194adc60"
+        },
+        {
+          "asset_id": "59d31296-ffaf-433a-8b1e-4fe008d7e20f",
+          "path": "sub-27221/sub-27221_ses-27221-2-4_behavior+ophys.nwb",
+          "size": 10986323,
+          "official_sha256": "c653db80117bdd0de07357720f90fbca7336496836a3e3d9d9ac1afd0b3cfb72"
+        },
+        {
+          "asset_id": "efbcf49e-1c43-4128-ae5a-eb636a50abdc",
+          "path": "sub-27222/sub-27222_ses-27222-1-1_behavior+ophys.nwb",
+          "size": 9851989,
+          "official_sha256": "7bf3ac00a0323e3741b7cadd7f002a58911bca5c72a09e0cab1f6e936937a45a"
+        },
+        {
+          "asset_id": "02fd155b-38db-4893-bc70-141f07a984d4",
+          "path": "sub-27222/sub-27222_ses-27222-1-2_behavior+ophys.nwb",
+          "size": 9781065,
+          "official_sha256": "71cae474c1d3e251bd6bcd3d0489ca1a1f52f46465485747951e3f0ef622260b"
+        },
+        {
+          "asset_id": "cd624165-f3c3-48c7-b1d2-49c4959fdc63",
+          "path": "sub-27222/sub-27222_ses-27222-1-3_behavior+ophys.nwb",
+          "size": 12121106,
+          "official_sha256": "f708813e916493a9698ad752196ef4644136b60616a4dc1cf06c340a43d7c333"
+        },
+        {
+          "asset_id": "50ade2e8-9750-4a5b-a56a-e353b252df32",
+          "path": "sub-27222/sub-27222_ses-27222-2-2_behavior+ophys.nwb",
+          "size": 12165127,
+          "official_sha256": "6488d2b53d008fa22c4f8491e763e559bb49c207f8ecdea0991b45a4808aae26"
+        },
+        {
+          "asset_id": "993e59ac-c0df-44b2-97bd-483e0c0c1d1b",
+          "path": "sub-27222/sub-27222_ses-27222-2-3_behavior+ophys.nwb",
+          "size": 12022253,
+          "official_sha256": "e9d3263ce0ac94c91df7cc5f8138672600968dffd9e5083697938df4f106d124"
+        },
+        {
+          "asset_id": "e97a0f50-6529-4ffc-8713-0ef62b1c79b1",
+          "path": "sub-27222/sub-27222_ses-27222-3-2_behavior+ophys.nwb",
+          "size": 12105969,
+          "official_sha256": "464b88fd6a84bd63e75488c2c46c67cc479c0806b8b5f064f480c8973bd19c64"
+        },
+        {
+          "asset_id": "27c8c6a8-fef4-474e-819b-a7100ea79f96",
+          "path": "sub-27222/sub-27222_ses-27222-3-4_behavior+ophys.nwb",
+          "size": 12068685,
+          "official_sha256": "78623ccfb0c2d560f502d917134811e396d84419b455b868fd19c2c53b280a17"
+        },
+        {
+          "asset_id": "fd4d2b7c-c094-42e3-8d83-4f7ca6d9e511",
+          "path": "sub-27223/sub-27223_ses-27223-1-1_behavior+ophys.nwb",
+          "size": 12138350,
+          "official_sha256": "a63457c611d364c76b024995ae4dff5b91a60db8f14fe3c62146166a28379194"
+        },
+        {
+          "asset_id": "9da89e11-ad6f-4b30-9fc0-ac846c28e9ef",
+          "path": "sub-27223/sub-27223_ses-27223-1-2_behavior+ophys.nwb",
+          "size": 12056794,
+          "official_sha256": "40f3a3ff900db465f8316a0d16d7d5ec870116dc5fb09a0d3f5a5b811ad5f03a"
+        },
+        {
+          "asset_id": "350ab365-0abb-40b1-98d5-ba559c31b96a",
+          "path": "sub-27223/sub-27223_ses-27223-1-3_behavior+ophys.nwb",
+          "size": 12135956,
+          "official_sha256": "09b37bc6922b7246668ac9db91d5e3c2aeee41e2a0a85d0ae717d2102c97ea9e"
+        },
+        {
+          "asset_id": "0f64b703-bb62-402a-8e7e-1a810813ff04",
+          "path": "sub-27223/sub-27223_ses-27223-1-4_behavior+ophys.nwb",
+          "size": 12027501,
+          "official_sha256": "6c4157a32c57010480042d5f819780a5a5ea4ff2e91dca4349eb33e74a67f2e2"
+        },
+        {
+          "asset_id": "3ff95e86-4250-4d16-9f76-3cfd2a9df6d8",
+          "path": "sub-27223/sub-27223_ses-27223-2-1_behavior+ophys.nwb",
+          "size": 12221390,
+          "official_sha256": "4c8566607d51a9e45c0f4a5e3b145da03ee369c051bb84e853946255284d5eb1"
+        },
+        {
+          "asset_id": "955955c6-b036-4812-87c8-388659861611",
+          "path": "sub-27223/sub-27223_ses-27223-2-2_behavior+ophys.nwb",
+          "size": 12177091,
+          "official_sha256": "297e138337efbc94af99e7b9c8828348974750ece2db81d5b0b38487777ca537"
+        },
+        {
+          "asset_id": "780339ca-5647-42f8-b921-8807ddb3b869",
+          "path": "sub-27224/sub-27224_ses-27224-1-1_behavior+ophys.nwb",
+          "size": 12251010,
+          "official_sha256": "c8a36442901806b3abb5956e91a8cde90d14a50e140d78bdcf49cfba9eb3246b"
+        },
+        {
+          "asset_id": "5866c180-20b3-47d6-a873-83d45b7e95f5",
+          "path": "sub-27224/sub-27224_ses-27224-1-2_behavior+ophys.nwb",
+          "size": 12242036,
+          "official_sha256": "1602853fa65882f20010339d31c672dc5f6b99f9edca09ced1a30d8e222876ce"
+        },
+        {
+          "asset_id": "53c559a7-e590-45e6-9f11-8aae559826b2",
+          "path": "sub-27224/sub-27224_ses-27224-1-3_behavior+ophys.nwb",
+          "size": 12308788,
+          "official_sha256": "2abac55f2f10c93a7bc545ff7a5bdebc88eab24062ada5b9c92ad195ebf3400a"
+        },
+        {
+          "asset_id": "ad04a183-6ae8-422e-9733-027dc68c32f6",
+          "path": "sub-27224/sub-27224_ses-27224-3-2_behavior+ophys.nwb",
+          "size": 12450956,
+          "official_sha256": "e835a3e2d5da98dfaf3bd21155ba3454ef3fb71b3b9832033e7f55e77b505a3a"
+        },
+        {
+          "asset_id": "64034075-2ad5-4404-b2d3-bd693079b135",
+          "path": "sub-27224/sub-27224_ses-27224-3-4_behavior+ophys.nwb",
+          "size": 12276797,
+          "official_sha256": "bd8ea3c532da81fc4b8e03f226730f91457158c104ac168a149063f47104dd08"
+        },
+        {
+          "asset_id": "a1b646d7-a70c-4155-8176-ae349e830941",
+          "path": "sub-27224/sub-27224_ses-27224-3-5_behavior+ophys.nwb",
+          "size": 9983851,
+          "official_sha256": "caf7e294e0ee6dbaf7206fec463edf6d15872003c3c314221dc524230fee12e3"
+        }
+      ]
+    },
+    "contrast": {
+      "resource": "contrast",
+      "dandiset": "000039",
+      "version": "0.230223.1216",
+      "catalog_assets": 100,
+      "selected_assets": 32,
+      "selected_subjects": 32,
+      "selected_bytes": 7640927264,
+      "selection_rule": "lexicographically first behavior+ophys asset per subject",
+      "assets": [
+        {
+          "asset_id": "ff41f1ad-2aa7-42b3-8449-bab5071740f8",
+          "path": "sub-661968859/sub-661968859_ses-682746585_behavior+ophys.nwb",
+          "size": 99276784,
+          "official_sha256": "d0445b76368e95baa160e7f194309a8594472fa8814e836b81b0ab88fd456ca3"
+        },
+        {
+          "asset_id": "645adfe1-7fdf-48f0-9c61-304df785e92d",
+          "path": "sub-664605504/sub-664605504_ses-694856258_behavior+ophys.nwb",
+          "size": 31313992,
+          "official_sha256": "d0eb4b7bf49e99412a1889393ecf49fbc6b51e610ecc4e7b8b8d2e2a3c35df06"
+        },
+        {
+          "asset_id": "48506234-f584-4fe6-9408-8ee60b2da053",
+          "path": "sub-666788991/sub-666788991_ses-686569087_behavior+ophys.nwb",
+          "size": 99320856,
+          "official_sha256": "3c02c7dff6555aad244d90ba76165e170a6a8a59831fb082359009188238436b"
+        },
+        {
+          "asset_id": "d8acfbf9-57b1-4e47-8614-4ed662dcd21d",
+          "path": "sub-666839638/sub-666839638_ses-692796041_behavior+ophys.nwb",
+          "size": 771499544,
+          "official_sha256": "85c9cf3e93f9e4cf36f92026db537b8069034ca06b1a676771446f5011210733"
+        },
+        {
+          "asset_id": "07623374-a0a0-4376-b541-c33472e41e8b",
+          "path": "sub-669165768/sub-669165768_ses-691862168_behavior+ophys.nwb",
+          "size": 62016416,
+          "official_sha256": "f5838c6ef2a93cb947608d83e8f746ac9a5dc114d64dd219db30336a109249a3"
+        },
+        {
+          "asset_id": "5c2a8d51-7989-41a4-a567-9b864fd02c65",
+          "path": "sub-671540231/sub-671540231_ses-689723323_behavior+ophys.nwb",
+          "size": 638578880,
+          "official_sha256": "300a4446b39218e671ecd72ee0013fb97e4896131b16f68fded2fad0f5c64e0f"
+        },
+        {
+          "asset_id": "c94ca0dd-08e2-4722-b4c6-cdd541461f5d",
+          "path": "sub-673580710/sub-673580710_ses-692496401_behavior+ophys.nwb",
+          "size": 48365664,
+          "official_sha256": "742f9ca77d232454e1a86f46d1c34ff2469264302014e688f2baef8a8f0fbfa7"
+        },
+        {
+          "asset_id": "f2ca9a62-7034-4b58-892b-8a3cbf32f253",
+          "path": "sub-673647168/sub-673647168_ses-698273664_behavior+ophys.nwb",
+          "size": 62025920,
+          "official_sha256": "5afab88c1ac71f0e3c9a0047371529201782bbebd13c295d3c8b6e66f6d854a3"
+        },
+        {
+          "asset_id": "5a54c86b-2712-4452-afc6-5ab0b72721a2",
+          "path": "sub-673728456/sub-673728456_ses-696250333_behavior+ophys.nwb",
+          "size": 109534872,
+          "official_sha256": "38f214fa684f5935d6109f347eedca7187b7a5f2c7764c38a4a681bf894216c1"
+        },
+        {
+          "asset_id": "58dc08c7-9ee1-427f-ba8d-5a8a87e5ec38",
+          "path": "sub-675881553/sub-675881553_ses-692896730_behavior+ophys.nwb",
+          "size": 609633448,
+          "official_sha256": "36cb087df853136cc034fe7adc40e3b01898ac2c2f501dab17e60a960502461b"
+        },
+        {
+          "asset_id": "4c37c794-3d5c-495b-96d1-df67435bea92",
+          "path": "sub-678530120/sub-678530120_ses-696742747_behavior+ophys.nwb",
+          "size": 65288936,
+          "official_sha256": "96241589bea4895e1f8f4157d3e438ffc0a056971d99d1432a88b3e7edb68d3b"
+        },
+        {
+          "asset_id": "62cb3376-1465-48ac-8e28-9d63a343ed83",
+          "path": "sub-678653760/sub-678653760_ses-701070416_behavior+ophys.nwb",
+          "size": 211655264,
+          "official_sha256": "b11d20c4b23c2ab54157963b0f21c7b308855e62981a3a5f3dbefca71064e5d5"
+        },
+        {
+          "asset_id": "da7be806-674b-4371-a424-887716511aa1",
+          "path": "sub-699590236/sub-699590236_ses-712155740_behavior+ophys.nwb",
+          "size": 337363728,
+          "official_sha256": "12c13b1ef7477b80ca3216d2e8a56763941b5389427c05ad0c201c0b046ef428"
+        },
+        {
+          "asset_id": "574256ca-a46d-4896-b97d-ae73d5c2ae2a",
+          "path": "sub-710318403/sub-710318403_ses-728188287_behavior+ophys.nwb",
+          "size": 216254936,
+          "official_sha256": "de74b41c4216fe342609f1a43053b75547c69f5269406e937e9143b6634609a1"
+        },
+        {
+          "asset_id": "62bf74c1-c7fb-4d02-b055-1db0e429f369",
+          "path": "sub-726138104/sub-726138104_ses-750551095_behavior+ophys.nwb",
+          "size": 216843336,
+          "official_sha256": "fbfa120112fa4f447a2f6ac32706afe5a2c8eab3cb44d6a032ae848167c7ad27"
+        },
+        {
+          "asset_id": "194c8b9e-3e5d-4d58-aa3f-9ccf9d240b16",
+          "path": "sub-727126845/sub-727126845_ses-756102026_behavior+ophys.nwb",
+          "size": 178621776,
+          "official_sha256": "c52b9e0241743147293bd7d9e8c0c76c784d75b6e45adb05f7b1a5a5cb68dd85"
+        },
+        {
+          "asset_id": "2ee3be0f-42d1-4190-b09a-03341e3e23eb",
+          "path": "sub-745634050/sub-745634050_ses-762656639_behavior+ophys.nwb",
+          "size": 189399472,
+          "official_sha256": "06cf97121a982596321fed1d1d78063706add90685984edc2a12648a83a2c760"
+        },
+        {
+          "asset_id": "7918ef9d-3c25-445b-a265-2e298744b2ac",
+          "path": "sub-746910369/sub-746910369_ses-764175792_behavior+ophys.nwb",
+          "size": 318818840,
+          "official_sha256": "23b5b3660dee5f2fa39aa9365fe831c7a94e7d863b31fe8597e1793fef05dbf5"
+        },
+        {
+          "asset_id": "41cb0158-02a1-4950-84f7-fd3304b74e4c",
+          "path": "sub-746926904/sub-746926904_ses-764182166_behavior+ophys.nwb",
+          "size": 406006800,
+          "official_sha256": "79b4e925e26fe3e478d7edfc7205961ed30406afb6494f926504dc126088efcd"
+        },
+        {
+          "asset_id": "7b5f81a9-155b-4309-840e-0227ea9f2a4c",
+          "path": "sub-754469470/sub-754469470_ses-769811903_behavior+ophys.nwb",
+          "size": 582888840,
+          "official_sha256": "0b41ed131791d97e14c35e7ca5991dcdaaa37a99bc860a38f1cd7f7cc45f402d"
+        },
+        {
+          "asset_id": "65d10d27-542d-4fad-8f21-b57f9522f015",
+          "path": "sub-759066288/sub-759066288_ses-773643161_behavior+ophys.nwb",
+          "size": 65375056,
+          "official_sha256": "c706e62e485cb2c5534149c150828a393f174a7cfb58bf3237ae283363dced6e"
+        },
+        {
+          "asset_id": "8f5bd91d-113e-4a41-afd2-5c7924a2bcc2",
+          "path": "sub-760696809/sub-760696809_ses-770235078_behavior+ophys.nwb",
+          "size": 27092080,
+          "official_sha256": "120ebac1ce047b1527e8122a125bf1f377e91495563c0fce3ef202878d0fdcf1"
+        },
+        {
+          "asset_id": "211cd07b-19b9-48a3-b2ef-1ee6f1655310",
+          "path": "sub-760933183/sub-760933183_ses-783618264_behavior+ophys.nwb",
+          "size": 81558832,
+          "official_sha256": "26d1cdf0e2d63c6078ba679d45bc1a9e16fa9a35c1532c5277dbb243ca09c36b"
+        },
+        {
+          "asset_id": "7289e959-8d02-431a-b885-51927023f6f2",
+          "path": "sub-760940732/sub-760940732_ses-791125374_behavior+ophys.nwb",
+          "size": 64916592,
+          "official_sha256": "47d45ca61286e1dd1ba9716d6be1b55f92bdc0cac7f0b76c9b1270fb0d468749"
+        },
+        {
+          "asset_id": "1b47c358-4926-4774-9280-5676bb219f5a",
+          "path": "sub-760984688/sub-760984688_ses-782956726_behavior+ophys.nwb",
+          "size": 49204528,
+          "official_sha256": "a73a10c7ec769b52ca4cfc9f40f935ab6a0fae7e3d45161f5c2b735989003354"
+        },
+        {
+          "asset_id": "6ba42acb-a839-48e8-8ec8-b10cbdc041cc",
+          "path": "sub-763247322/sub-763247322_ses-789877828_behavior+ophys.nwb",
+          "size": 76325328,
+          "official_sha256": "f7bf652454853b50df0dabfd0b700163d860b485ebb301a2d865b16f89250b20"
+        },
+        {
+          "asset_id": "5f500f67-4794-435f-a865-8ea31d6599a2",
+          "path": "sub-763248171/sub-763248171_ses-790073891_behavior+ophys.nwb",
+          "size": 54601712,
+          "official_sha256": "2835936db46710c84887a97452d1a5120db7c9236385d78ab40cc089ad477e83"
+        },
+        {
+          "asset_id": "4ee255c1-580f-48cb-8cf4-247d46fc7c62",
+          "path": "sub-765991985/sub-765991985_ses-788605284_behavior+ophys.nwb",
+          "size": 199587112,
+          "official_sha256": "6469871581ebe04d5515434d7b60c979bcd3f4f828d954550579e238c426417b"
+        },
+        {
+          "asset_id": "3756218c-a07c-403e-b707-05b56c653b6b",
+          "path": "sub-769316535/sub-769316535_ses-790636906_behavior+ophys.nwb",
+          "size": 210393768,
+          "official_sha256": "b20f2023de946c4937b1c194a385756eca5c40bc51f91803e0c7af72a17838c0"
+        },
+        {
+          "asset_id": "a6f73634-2f72-4d97-b294-8a2394eeaabf",
+          "path": "sub-772622312/sub-772622312_ses-806050255_behavior+ophys.nwb",
+          "size": 1080797520,
+          "official_sha256": "4b1d57e0e3b705a8c38cda495fe0db542a99dbc86cd837ab2f2fb7272150fbb5"
+        },
+        {
+          "asset_id": "3b8db3fd-7d2a-4fdd-8eae-9b70b8e60d30",
+          "path": "sub-772649832/sub-772649832_ses-803232810_behavior+ophys.nwb",
+          "size": 254117032,
+          "official_sha256": "ef1d1988d386132aaf3bb509d871f5b29241c9bd90c668b54ec3e9c90136b13e"
+        },
+        {
+          "asset_id": "64b9b8a5-811b-4964-a9ca-40850c5851f4",
+          "path": "sub-772656187/sub-772656187_ses-800171732_behavior+ophys.nwb",
+          "size": 222249400,
+          "official_sha256": "35239a9a04978d1dae44ea2ddddb86154f81856864d94078f4831154f20d7c5c"
+        }
+      ]
+    }
+  },
+  "applications": [
+    {
+      "resource": "DANDI:001176",
+      "prospective": true,
+      "selected_assets": 28,
+      "selected_subjects": 5,
+      "usable_paired_subjects": 5,
+      "minimum_subjects": 20,
+      "availability_passed": false,
+      "model_executed": false,
+      "authorization": {
+        "profile_id": "mouse_brain_claim_authorization",
+        "profile_version": "2.0.0",
+        "profile_hash": "sha256:9bbde507f1f3bf74f0562e896b29ec440122b2eeec20b02d464617fc3e2e2354",
+        "claim": "bounded_predictive_performance",
+        "status": "profile_not_authorized",
+        "authorized": false,
+        "meaning": "Held-out prediction meets a declared rule for one target population and context of use.",
+        "required_blocks": [
+          "prediction",
+          "context_of_use",
+          "data_quality"
+        ],
+        "facts": [
+          {
+            "name": "prediction",
+            "declared_status": "unknown",
+            "effective_status": "unknown",
+            "source": "data/external/dandi_ach_profile_v2_1/manifest.json",
+            "rule": "prediction is not executed when the frozen subject minimum is unavailable",
+            "rationale": "the frozen DANDI profile-v2.1 rule returned `unknown`",
+            "observations": {},
+            "missing_required_observations": []
+          },
+          {
+            "name": "context_of_use",
+            "declared_status": "passed",
+            "effective_status": "passed",
+            "source": "configs/benchmarks/dandi_ach_profile_v2_1.yaml",
+            "rule": "the protocol restricts interpretation to within-resource cortical ACh prediction",
+            "rationale": "the frozen DANDI profile-v2.1 rule returned `passed`",
+            "observations": {
+              "use": "predict cortical acetylcholine signal",
+              "population": "usable DANDI:001176 subjects",
+              "output": "held-out signal prediction",
+              "decision_consequence": "permit or withhold one bounded predictive claim",
+              "prohibited_uses": [
+                "mechanism",
+                "causality",
+                "replication",
+                "whole brain",
+                "digital twin"
+              ]
+            },
+            "missing_required_observations": []
+          },
+          {
+            "name": "data_quality",
+            "declared_status": "failed",
+            "effective_status": "failed",
+            "source": "data/external/dandi_ach_profile_v2_1/manifest.json",
+            "rule": "at least twenty subjects must contain paired ACh, axon, and behavioral signals",
+            "rationale": "the frozen DANDI profile-v2.1 rule returned `failed`",
+            "observations": {
+              "source": "DANDI:001176 version 0.260610.2204",
+              "lineage": "data/external/dandi_ach_profile_v2_1/manifest.json",
+              "exclusions": {
+                "count": 0,
+                "assets": [],
+                "rule": "declared NWB schema or paired-sample failure only"
+              },
+              "missingness": "schema inspected for every candidate paired asset",
+              "quality_checks": {
+                "minimum_subjects": 20,
+                "usable_subjects": 5
+              },
+              "result": false
+            },
+            "missing_required_observations": []
+          }
+        ],
+        "deficits": [
+          {
+            "name": "prediction",
+            "declared_status": "unknown",
+            "effective_status": "unknown",
+            "source": "data/external/dandi_ach_profile_v2_1/manifest.json",
+            "rule": "prediction is not executed when the frozen subject minimum is unavailable",
+            "rationale": "the frozen DANDI profile-v2.1 rule returned `unknown`",
+            "observations": {},
+            "missing_required_observations": []
+          },
+          {
+            "name": "data_quality",
+            "declared_status": "failed",
+            "effective_status": "failed",
+            "source": "data/external/dandi_ach_profile_v2_1/manifest.json",
+            "rule": "at least twenty subjects must contain paired ACh, axon, and behavioral signals",
+            "rationale": "the frozen DANDI profile-v2.1 rule returned `failed`",
+            "observations": {
+              "source": "DANDI:001176 version 0.260610.2204",
+              "lineage": "data/external/dandi_ach_profile_v2_1/manifest.json",
+              "exclusions": {
+                "count": 0,
+                "assets": [],
+                "rule": "declared NWB schema or paired-sample failure only"
+              },
+              "missingness": "schema inspected for every candidate paired asset",
+              "quality_checks": {
+                "minimum_subjects": 20,
+                "usable_subjects": 5
+              },
+              "result": false
+            },
+            "missing_required_observations": []
+          }
+        ],
+        "deficit_counts": {
+          "failed": 1,
+          "unknown": 1,
+          "not_applicable": 0,
+          "requires_review": 0
+        }
+      },
+      "decision": "availability_failed_without_protocol_repair",
+      "interpretation": "A positive result authorizes only bounded prediction of the declared cortical acetylcholine signal for usable subjects in DANDI:001176. It does not authorize cholinergic mechanism, causal direction, independent-study replication, whole-brain generalization, behavioral decision support, or a digital twin."
+    },
+    {
+      "resource": "DANDI:000039",
+      "prospective": true,
+      "selected_subjects": 32,
+      "usable_subjects": 32,
+      "subject_results": [
+        {
+          "path": "data/external/dandi_contrast_profile_v2_1/sub-661968859/sub-661968859_ses-682746585_behavior+ophys.nwb",
+          "subject": "661968859",
+          "usable": true,
+          "trials": 691,
+          "neurons": 27,
+          "test_trials": 139,
+          "correlation": 0.0804927790225796,
+          "model_mse_sum": 0.03868846906033262,
+          "baseline_mse_sum": 0.03916625065427923
+        },
+        {
+          "path": "data/external/dandi_contrast_profile_v2_1/sub-664605504/sub-664605504_ses-694856258_behavior+ophys.nwb",
+          "subject": "664605504",
+          "usable": true,
+          "trials": 690,
+          "neurons": 6,
+          "test_trials": 138,
+          "correlation": 0.5004057674298247,
+          "model_mse_sum": 2.3530088958012088,
+          "baseline_mse_sum": 2.1545480516828324
+        },
+        {
+          "path": "data/external/dandi_contrast_profile_v2_1/sub-666788991/sub-666788991_ses-686569087_behavior+ophys.nwb",
+          "subject": "666788991",
+          "usable": true,
+          "trials": 692,
+          "neurons": 26,
+          "test_trials": 139,
+          "correlation": 0.21953332607413462,
+          "model_mse_sum": 0.0018620720032929438,
+          "baseline_mse_sum": 0.001957542348987064
+        },
+        {
+          "path": "data/external/dandi_contrast_profile_v2_1/sub-666839638/sub-666839638_ses-692796041_behavior+ophys.nwb",
+          "subject": "666839638",
+          "usable": true,
+          "trials": 691,
+          "neurons": 223,
+          "test_trials": 139,
+          "correlation": 0.06571960892428265,
+          "model_mse_sum": 0.012835278084527656,
+          "baseline_mse_sum": 0.01275886499772889
+        },
+        {
+          "path": "data/external/dandi_contrast_profile_v2_1/sub-669165768/sub-669165768_ses-691862168_behavior+ophys.nwb",
+          "subject": "669165768",
+          "usable": true,
+          "trials": 692,
+          "neurons": 15,
+          "test_trials": 139,
+          "correlation": 0.23016988007730663,
+          "model_mse_sum": 0.05261762190578799,
+          "baseline_mse_sum": 0.05447712054051822
+        },
+        {
+          "path": "data/external/dandi_contrast_profile_v2_1/sub-671540231/sub-671540231_ses-689723323_behavior+ophys.nwb",
+          "subject": "671540231",
+          "usable": true,
+          "trials": 691,
+          "neurons": 184,
+          "test_trials": 139,
+          "correlation": 0.20680024659915142,
+          "model_mse_sum": 0.02565831735377938,
+          "baseline_mse_sum": 0.025514829134987985
+        },
+        {
+          "path": "data/external/dandi_contrast_profile_v2_1/sub-673580710/sub-673580710_ses-692496401_behavior+ophys.nwb",
+          "subject": "673580710",
+          "usable": true,
+          "trials": 691,
+          "neurons": 11,
+          "test_trials": 139,
+          "correlation": 0.03557172989010446,
+          "model_mse_sum": 0.15795763812996816,
+          "baseline_mse_sum": 0.1540046138933763
+        },
+        {
+          "path": "data/external/dandi_contrast_profile_v2_1/sub-673647168/sub-673647168_ses-698273664_behavior+ophys.nwb",
+          "subject": "673647168",
+          "usable": true,
+          "trials": 693,
+          "neurons": 15,
+          "test_trials": 139,
+          "correlation": 0.3891535962300858,
+          "model_mse_sum": 0.6671345067253155,
+          "baseline_mse_sum": 0.7840234834431625
+        },
+        {
+          "path": "data/external/dandi_contrast_profile_v2_1/sub-673728456/sub-673728456_ses-696250333_behavior+ophys.nwb",
+          "subject": "673728456",
+          "usable": true,
+          "trials": 690,
+          "neurons": 29,
+          "test_trials": 138,
+          "correlation": 0.347913588234876,
+          "model_mse_sum": 0.03140706836313374,
+          "baseline_mse_sum": 0.03327456249488722
+        },
+        {
+          "path": "data/external/dandi_contrast_profile_v2_1/sub-675881553/sub-675881553_ses-692896730_behavior+ophys.nwb",
+          "subject": "675881553",
+          "usable": true,
+          "trials": 690,
+          "neurons": 177,
+          "test_trials": 138,
+          "correlation": 0.6773450635983218,
+          "model_mse_sum": 0.024294487415777326,
+          "baseline_mse_sum": 0.04068467448460271
+        },
+        {
+          "path": "data/external/dandi_contrast_profile_v2_1/sub-678530120/sub-678530120_ses-696742747_behavior+ophys.nwb",
+          "subject": "678530120",
+          "usable": true,
+          "trials": 691,
+          "neurons": 16,
+          "test_trials": 139,
+          "correlation": 0.06864168366971089,
+          "model_mse_sum": 1.186514166315735,
+          "baseline_mse_sum": 1.1664013459396256
+        },
+        {
+          "path": "data/external/dandi_contrast_profile_v2_1/sub-678653760/sub-678653760_ses-701070416_behavior+ophys.nwb",
+          "subject": "678653760",
+          "usable": true,
+          "trials": 694,
+          "neurons": 59,
+          "test_trials": 139,
+          "correlation": 0.4128367178435931,
+          "model_mse_sum": 0.006974217752902658,
+          "baseline_mse_sum": 0.00806654691678322
+        },
+        {
+          "path": "data/external/dandi_contrast_profile_v2_1/sub-699590236/sub-699590236_ses-712155740_behavior+ophys.nwb",
+          "subject": "699590236",
+          "usable": true,
+          "trials": 691,
+          "neurons": 97,
+          "test_trials": 139,
+          "correlation": 0.20711489156277021,
+          "model_mse_sum": 0.026352249096477532,
+          "baseline_mse_sum": 0.026402313351547836
+        },
+        {
+          "path": "data/external/dandi_contrast_profile_v2_1/sub-710318403/sub-710318403_ses-728188287_behavior+ophys.nwb",
+          "subject": "710318403",
+          "usable": true,
+          "trials": 1152,
+          "neurons": 38,
+          "test_trials": 231,
+          "correlation": 0.11601954136583562,
+          "model_mse_sum": 0.024218827354251588,
+          "baseline_mse_sum": 0.02455009471752394
+        },
+        {
+          "path": "data/external/dandi_contrast_profile_v2_1/sub-726138104/sub-726138104_ses-750551095_behavior+ophys.nwb",
+          "subject": "726138104",
+          "usable": true,
+          "trials": 1152,
+          "neurons": 37,
+          "test_trials": 231,
+          "correlation": 0.33664117512854,
+          "model_mse_sum": 0.058966041872326604,
+          "baseline_mse_sum": 0.0650638971745949
+        },
+        {
+          "path": "data/external/dandi_contrast_profile_v2_1/sub-727126845/sub-727126845_ses-756102026_behavior+ophys.nwb",
+          "subject": "727126845",
+          "usable": true,
+          "trials": 1152,
+          "neurons": 30,
+          "test_trials": 231,
+          "correlation": -0.08233465770964966,
+          "model_mse_sum": 0.6577324483558928,
+          "baseline_mse_sum": 0.6404215530466638
+        },
+        {
+          "path": "data/external/dandi_contrast_profile_v2_1/sub-745634050/sub-745634050_ses-762656639_behavior+ophys.nwb",
+          "subject": "745634050",
+          "usable": true,
+          "trials": 1152,
+          "neurons": 32,
+          "test_trials": 231,
+          "correlation": 0.34737840974071327,
+          "model_mse_sum": 0.10568763519666893,
+          "baseline_mse_sum": 0.11951324387709528
+        },
+        {
+          "path": "data/external/dandi_contrast_profile_v2_1/sub-746910369/sub-746910369_ses-764175792_behavior+ophys.nwb",
+          "subject": "746910369",
+          "usable": true,
+          "trials": 1152,
+          "neurons": 56,
+          "test_trials": 231,
+          "correlation": 0.44745275879981905,
+          "model_mse_sum": 0.09999619533225516,
+          "baseline_mse_sum": 0.12458877479784643
+        },
+        {
+          "path": "data/external/dandi_contrast_profile_v2_1/sub-746926904/sub-746926904_ses-764182166_behavior+ophys.nwb",
+          "subject": "746926904",
+          "usable": true,
+          "trials": 1152,
+          "neurons": 72,
+          "test_trials": 231,
+          "correlation": 0.09465209352689218,
+          "model_mse_sum": 0.013809961611287995,
+          "baseline_mse_sum": 0.0139321637896368
+        },
+        {
+          "path": "data/external/dandi_contrast_profile_v2_1/sub-754469470/sub-754469470_ses-769811903_behavior+ophys.nwb",
+          "subject": "754469470",
+          "usable": true,
+          "trials": 1152,
+          "neurons": 105,
+          "test_trials": 231,
+          "correlation": 0.27591133617307434,
+          "model_mse_sum": 0.01064229035117949,
+          "baseline_mse_sum": 0.011503629934921843
+        },
+        {
+          "path": "data/external/dandi_contrast_profile_v2_1/sub-759066288/sub-759066288_ses-773643161_behavior+ophys.nwb",
+          "subject": "759066288",
+          "usable": true,
+          "trials": 1152,
+          "neurons": 9,
+          "test_trials": 231,
+          "correlation": 0.5780228347024128,
+          "model_mse_sum": 0.8943360313765979,
+          "baseline_mse_sum": 1.0902754247787367
+        },
+        {
+          "path": "data/external/dandi_contrast_profile_v2_1/sub-760696809/sub-760696809_ses-770235078_behavior+ophys.nwb",
+          "subject": "760696809",
+          "usable": true,
+          "trials": 1152,
+          "neurons": 3,
+          "test_trials": 231,
+          "correlation": 0.3692620617188479,
+          "model_mse_sum": 0.38268445397699835,
+          "baseline_mse_sum": 0.4450006178355753
+        },
+        {
+          "path": "data/external/dandi_contrast_profile_v2_1/sub-760933183/sub-760933183_ses-783618264_behavior+ophys.nwb",
+          "subject": "760933183",
+          "usable": true,
+          "trials": 1152,
+          "neurons": 12,
+          "test_trials": 231,
+          "correlation": 0.3586304713260596,
+          "model_mse_sum": 1.6986597251416347,
+          "baseline_mse_sum": 1.87831771302979
+        },
+        {
+          "path": "data/external/dandi_contrast_profile_v2_1/sub-760940732/sub-760940732_ses-791125374_behavior+ophys.nwb",
+          "subject": "760940732",
+          "usable": true,
+          "trials": 1152,
+          "neurons": 10,
+          "test_trials": 231,
+          "correlation": 0.5411060665528598,
+          "model_mse_sum": 0.23224973669107674,
+          "baseline_mse_sum": 0.3283294649128783
+        },
+        {
+          "path": "data/external/dandi_contrast_profile_v2_1/sub-760984688/sub-760984688_ses-782956726_behavior+ophys.nwb",
+          "subject": "760984688",
+          "usable": true,
+          "trials": 1152,
+          "neurons": 6,
+          "test_trials": 231,
+          "correlation": 0.36431341740853335,
+          "model_mse_sum": 1.19888987498754,
+          "baseline_mse_sum": 1.2590394433348369
+        },
+        {
+          "path": "data/external/dandi_contrast_profile_v2_1/sub-763247322/sub-763247322_ses-789877828_behavior+ophys.nwb",
+          "subject": "763247322",
+          "usable": true,
+          "trials": 1152,
+          "neurons": 11,
+          "test_trials": 231,
+          "correlation": 0.15547017963899534,
+          "model_mse_sum": 0.23165313782894084,
+          "baseline_mse_sum": 0.23391791973534237
+        },
+        {
+          "path": "data/external/dandi_contrast_profile_v2_1/sub-763248171/sub-763248171_ses-790073891_behavior+ophys.nwb",
+          "subject": "763248171",
+          "usable": true,
+          "trials": 1152,
+          "neurons": 7,
+          "test_trials": 231,
+          "correlation": 0.3821940996486469,
+          "model_mse_sum": 0.8618690511803059,
+          "baseline_mse_sum": 0.9833020592592445
+        },
+        {
+          "path": "data/external/dandi_contrast_profile_v2_1/sub-765991985/sub-765991985_ses-788605284_behavior+ophys.nwb",
+          "subject": "765991985",
+          "usable": true,
+          "trials": 1152,
+          "neurons": 35,
+          "test_trials": 231,
+          "correlation": 0.3753841764870905,
+          "model_mse_sum": 0.0817169856233908,
+          "baseline_mse_sum": 0.09423849494235062
+        },
+        {
+          "path": "data/external/dandi_contrast_profile_v2_1/sub-769316535/sub-769316535_ses-790636906_behavior+ophys.nwb",
+          "subject": "769316535",
+          "usable": true,
+          "trials": 1152,
+          "neurons": 37,
+          "test_trials": 231,
+          "correlation": 0.28337959276302194,
+          "model_mse_sum": 0.13999058093091843,
+          "baseline_mse_sum": 0.11528074188514521
+        },
+        {
+          "path": "data/external/dandi_contrast_profile_v2_1/sub-772622312/sub-772622312_ses-806050255_behavior+ophys.nwb",
+          "subject": "772622312",
+          "usable": true,
+          "trials": 1152,
+          "neurons": 198,
+          "test_trials": 231,
+          "correlation": 0.12314001488758466,
+          "model_mse_sum": 0.018356361552766563,
+          "baseline_mse_sum": 0.018441430855989614
+        },
+        {
+          "path": "data/external/dandi_contrast_profile_v2_1/sub-772649832/sub-772649832_ses-803232810_behavior+ophys.nwb",
+          "subject": "772649832",
+          "usable": true,
+          "trials": 1152,
+          "neurons": 44,
+          "test_trials": 231,
+          "correlation": -0.0807189932175078,
+          "model_mse_sum": 0.09951197217273988,
+          "baseline_mse_sum": 0.0887316695954237
+        },
+        {
+          "path": "data/external/dandi_contrast_profile_v2_1/sub-772656187/sub-772656187_ses-800171732_behavior+ophys.nwb",
+          "subject": "772656187",
+          "usable": true,
+          "trials": 1152,
+          "neurons": 38,
+          "test_trials": 231,
+          "correlation": 0.40968560053747705,
+          "model_mse_sum": 0.18249719194021072,
+          "baseline_mse_sum": 0.2080373041777222
+        }
+      ],
+      "aggregate": {
+        "median_subject_correlation": 0.31001038394578095,
+        "bootstrap_lower_95": 0.20680024659915142,
+        "bootstrap_upper_95": 0.3692620617188479,
+        "positive_subject_fraction": 0.9375,
+        "model_sse": 11.578773491485222,
+        "baseline_sse": 12.243765841564638
+      },
+      "conditions": {
+        "minimum_subjects": true,
+        "median_correlation": true,
+        "bootstrap_lower_positive": true,
+        "positive_subject_fraction": true,
+        "mse_better_than_intercept": true
+      },
+      "authorization": {
+        "profile_id": "mouse_brain_claim_authorization",
+        "profile_version": "2.0.0",
+        "profile_hash": "sha256:9bbde507f1f3bf74f0562e896b29ec440122b2eeec20b02d464617fc3e2e2354",
+        "claim": "bounded_predictive_performance",
+        "status": "profile_authorized",
+        "authorized": true,
+        "meaning": "Held-out prediction meets a declared rule for one target population and context of use.",
+        "required_blocks": [
+          "prediction",
+          "context_of_use",
+          "data_quality"
+        ],
+        "facts": [
+          {
+            "name": "prediction",
+            "declared_status": "passed",
+            "effective_status": "passed",
+            "source": "data/external/dandi_contrast_profile_v2_1/manifest.json",
+            "rule": "all frozen mouse-level prediction and comparator conditions must pass",
+            "rationale": "the frozen DANDI profile-v2.1 rule returned `passed`",
+            "observations": {
+              "target": "trial_level_population_mean_calcium_event_response",
+              "target_population": "selected DANDI:000039 mouse sessions",
+              "split": "first_60_percent_train_next_20_percent_calibration_last_20_percent_test",
+              "split_integrity": "chronological split fixed before asset access",
+              "metric": "held_out_pearson_correlation",
+              "threshold": {
+                "minimum_subjects": 25,
+                "median_subject_correlation_minimum": 0.1,
+                "subject_bootstrap_lower_95_minimum": 0.0,
+                "minimum_fraction_positive_subjects": 0.65,
+                "pooled_mean_squared_error_better_than_intercept": true,
+                "subject_bootstrap_replicates": 5000,
+                "subject_bootstrap_seed": 2026080202,
+                "primary_authorization_requires_all_conditions": true
+              },
+              "comparator": "training_partition_intercept",
+              "value": {
+                "median_subject_correlation": 0.31001038394578095,
+                "bootstrap_lower_95": 0.20680024659915142,
+                "positive_subject_fraction": 0.9375,
+                "model_sse": 11.578773491485222,
+                "baseline_sse": 12.243765841564638
+              }
+            },
+            "missing_required_observations": []
+          },
+          {
+            "name": "context_of_use",
+            "declared_status": "passed",
+            "effective_status": "passed",
+            "source": "configs/benchmarks/dandi_contrast_profile_v2_1.yaml",
+            "rule": "the protocol permits only within-resource population-response prediction",
+            "rationale": "the frozen DANDI profile-v2.1 rule returned `passed`",
+            "observations": {
+              "use": "predict trial-level population response to contrast and direction",
+              "population": "selected DANDI:000039 sessions",
+              "output": "held-out population-response estimate",
+              "decision_consequence": "permit or withhold one bounded predictive claim",
+              "prohibited_uses": [
+                "single-neuron tuning",
+                "topology",
+                "causality",
+                "replication",
+                "digital twin"
+              ]
+            },
+            "missing_required_observations": []
+          },
+          {
+            "name": "data_quality",
+            "declared_status": "passed",
+            "effective_status": "passed",
+            "source": "data/external/dandi_contrast_profile_v2_1/manifest.json",
+            "rule": "at least twenty-five selected subjects must satisfy the frozen NWB schema",
+            "rationale": "the frozen DANDI profile-v2.1 rule returned `passed`",
+            "observations": {
+              "source": "DANDI:000039 version 0.230223.1216",
+              "lineage": "data/external/dandi_contrast_profile_v2_1/manifest.json",
+              "exclusions": {
+                "count": 0,
+                "assets": [],
+                "rule": "frozen NWB schema or finite nonconstant trial failure only"
+              },
+              "missingness": "finite contrast, direction, and response trials only",
+              "quality_checks": {
+                "selected_subjects": 32,
+                "usable_subjects": 32,
+                "minimum_subjects": 25
+              },
+              "result": true
+            },
+            "missing_required_observations": []
+          }
+        ],
+        "deficits": [],
+        "deficit_counts": {
+          "failed": 0,
+          "unknown": 0,
+          "not_applicable": 0,
+          "requires_review": 0
+        }
+      },
+      "decision": "bounded_predictive_performance_profile_authorized",
+      "interpretation": "A positive result authorizes only bounded held-out prediction of trial-level population response in selected DANDI:000039 sessions. It does not establish single-neuron tuning, biological topology, causal visual processing, independent-study replication, or a digital twin."
+    }
+  ],
+  "release_conditions": {
+    "ach_negative_outcome_retained_without_repair": true,
+    "contrast_minimum_population_available": true,
+    "contrast_profile_decision_complete": true,
+    "no_broad_claim_authorized": true
+  },
+  "all_release_conditions_passed": true,
+  "positive_authorizations": 1,
+  "interpretation": "Both applications were frozen before numerical asset access. A positive result authorizes only its bounded predictive claim; a negative result is retained.",
+  "decision": "prospective_dandi_profile_v2_1_complete"
+}
