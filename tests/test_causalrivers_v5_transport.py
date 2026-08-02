@@ -1,8 +1,11 @@
+from dataclasses import replace
+
 import networkx as nx
 import numpy as np
 
 from mousebrainbench.benchmarks.causalrivers_v5_transport import (
     BlockData,
+    _decision_metrics,
     matched_transition,
     select_graph_pairs,
 )
@@ -57,3 +60,17 @@ def test_matched_transition_uses_only_identical_pairs() -> None:
     assert result["shift_only_pairs"] == 1
     assert result["transitions"]["off_to_on"] == 1
     assert result["transitions"]["on_to_on"] == 1
+
+
+def test_recovery_excludes_semantically_inadmissible_true_pairs() -> None:
+    data = _block("gate", ("a->b", "b->c"))
+    data = replace(
+        data,
+        labels=np.asarray([True, True]),
+        admissible=np.asarray([True, False]),
+    )
+    metrics = _decision_metrics(np.asarray([True, True]), data)
+    assert metrics["eligible_positive_pairs"] == 1
+    assert metrics["recovered_positive_pairs"] == 1
+    assert metrics["empirical_positive_recovery"] == 1.0
+    assert metrics["semantic_violations"] == 1

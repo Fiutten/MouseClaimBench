@@ -274,6 +274,7 @@ def _decision_metrics(
     chosen = np.asarray(decisions, dtype=bool)
     false = chosen & ~data.labels
     positives = data.labels & data.admissible
+    recovered = chosen & positives
     return {
         "usable_pairs": len(data.records),
         "authorizations": int(chosen.sum()),
@@ -283,8 +284,8 @@ def _decision_metrics(
         if chosen.any()
         else 0.0,
         "eligible_positive_pairs": int(positives.sum()),
-        "recovered_positive_pairs": int((chosen & data.labels).sum()),
-        "empirical_positive_recovery": float((chosen & data.labels).sum() / positives.sum())
+        "recovered_positive_pairs": int(recovered.sum()),
+        "empirical_positive_recovery": float(recovered.sum() / positives.sum())
         if positives.any()
         else 0.0,
         "semantic_violations": int((chosen & ~data.admissible).sum()),
