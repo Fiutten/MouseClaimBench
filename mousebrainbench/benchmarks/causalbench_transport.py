@@ -144,9 +144,10 @@ def _strong_k562_genes(summary_path: Path) -> set[str]:
         & (frame["percent knockdown"] <= -0.3)
         & (frame["number of cells (filtered)"] > 25)
     )
-    # This is the exact transformation used by the official CausalBench code.
+    # CausalBench filters the same rows by gene symbol. The H5AD intervention
+    # and variable indices use Ensembl IDs, stored as the final token here.
     return {
-        value.split("_", maxsplit=1)[1]
+        value.rsplit("_", maxsplit=1)[-1]
         for value in frame.loc[keep, "genetic perturbation"].astype(str)
         if "_" in value
     }

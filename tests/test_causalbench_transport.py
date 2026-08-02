@@ -1,7 +1,9 @@
 import numpy as np
+import pandas as pd
 
 from mousebrainbench.benchmarks.causalbench_transport import (
     _pair_feature_and_label,
+    _strong_k562_genes,
     benjamini_hochberg,
     deterministic_fold_indices,
     intervention_effect_matrices,
@@ -27,6 +29,25 @@ def test_benjamini_hochberg_is_monotone_in_ranked_p_values() -> None:
     assert np.all(np.diff(adjusted[order]) >= 0.0)
     assert np.all(adjusted >= values)
     assert np.all(adjusted <= 1.0)
+
+
+def test_strong_perturbation_filter_returns_h5ad_ensembl_identifier(tmp_path) -> None:
+    path = tmp_path / "summary.xlsx"
+    frame = pd.DataFrame(
+        {
+            "genetic perturbation": [
+                "10023_ZC3H18_P1P2_ENSG00000158545",
+                "10040_ZCCHC9_P1P2_ENSG00000131732",
+            ],
+            "Number of DEGs (anderson-darling)": [51, 50],
+            "percent knockdown": [-0.31, -0.90],
+            "number of cells (filtered)": [26, 100],
+        }
+    )
+    with pd.ExcelWriter(path) as writer:
+        frame.to_excel(writer, sheet_name="TabB_K562_day6_summary_stat", index=False)
+
+    assert _strong_k562_genes(path) == {"ENSG00000158545"}
 
 
 def test_intervention_matrices_recover_a_directed_effect() -> None:
