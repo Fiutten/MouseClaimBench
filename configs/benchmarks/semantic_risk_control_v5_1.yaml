@@ -1,0 +1,107 @@
+protocol_id: mouseclaimbench_claim_specific_hierarchical_confirmation
+version: 5.1.0
+status: frozen_after_v5_development_before_v5_1_outcome_generation
+freeze_date: 2026-08-02
+parent_result:
+  path: results/timegraph_v5_confirmation/summary.json
+  sha256: 9ff34414ba7708fa158a32c94fbe3fcb8f32b4c9947d16de0266636f6a9c752b
+  decision: v5_declared_synthetic_population_not_supported
+
+revision_rationale: >-
+  The global six-family event admitted no active threshold in v5 development.
+  A prespecified diagnostic showed that topology_specific was the only isolated
+  claim family with a non-degenerate development certificate. Version 5.1 fixes
+  that family and its threshold before evaluating entirely new seed bundles.
+
+post_development_selection_disclosure:
+  selected_claim: topology_specific
+  selected_after_observing_v5_calibration: true
+  selected_threshold: 0.9272577728502728
+  threshold_refitting_on_v5_1_allowed: false
+  excluded_claim_families:
+    predictive: no_active_v5_development_certificate
+    internally_reproduced: no_active_v5_development_certificate
+    directed: semantically_inadmissible_without_direction_route
+    mechanistic: semantically_inadmissible_without_direction_route
+    causal: semantically_inadmissible_without_intervention
+  interpretation: >-
+    V5.1 is an independent confirmation of a development-selected, claim-specific
+    hypothesis. It is not confirmation of the failed global v5 policy.
+
+confirmatory_population:
+  resource: TimeGraph
+  citation_doi: 10.1145/3711896.3737439
+  repository: https://github.com/hferdous/TimeGraph
+  source_revision: 4d93403b002664fa55607f308ad0e80623472ded
+  source_files:
+    Codes/a1.py: sha256:1840a5c267c671cb74ad03aa7090608a02cb67cd44416e347f00f8431a744799
+    Codes/a1c.py: sha256:795d6e86cf894e25b386c9dae4b4910288931d343da4d58c328e7b349c82e038
+  source_transformations:
+    - remove_colab_shell_magic_install_line
+    - remove_unused_tigramite_plotting_import
+    - remove_unused_matplotlib_plotting_import
+    - execute_definitions_before_main_guard_only
+  numerical_generator_reimplementation_allowed: false
+  factors:
+    generator: [a1, a1c]
+    noise: [gaussian, student_t]
+    max_lag: [2, 3]
+    n_vars: 6
+    n_points: 1200
+    noise_scale: 0.1
+    student_t_df: 3
+  split_seeds:
+    risk_lock: {start: 2026086001, count: 100}
+    final: {start: 2026086101, count: 100}
+    ood_stress: {start: 2026086201, count: 100}
+  independent_unit: seed_bundle
+  hierarchy: [seed_bundle, generator_scenario, directed_pair, claim_candidate]
+  pair_sampling:
+    direct_pairs_per_scenario: 1
+    control_pairs_per_scenario: 1
+    rule: sha256_namespace_order_without_replacement
+  ood_stress_factors:
+    n_points: 400
+    noise_scale: 0.25
+    interpretation: diagnostic_only_not_part_of_the_confirmatory_certificate
+  inferential_contract:
+    target_seed_bundle_failure_probability: 0.10
+    confidence_level: 0.95
+    minimum_authorized_seed_bundle_coverage: 0.10
+    minimum_positive_recovery: 0.05
+    minimum_independent_units: 29
+    failure_event: >-
+      at_least_one_false_topology_specific_authorization_within_seed_bundle
+    final_access_requires_risk_lock: true
+    threshold_refitting_or_rescoping_after_risk_lock: false
+    pair_or_scenario_level_binomial_inference_prohibited: true
+    certification_requires_all:
+      - risk_upper_bound_at_or_below_target
+      - coverage_lower_bound_at_or_above_minimum
+      - positive_recovery_lower_bound_at_or_above_minimum
+      - zero_semantic_gate_violations
+      - risk_lock_passed_before_final_evaluation
+      - minimum_29_independent_seed_bundles
+
+comparators:
+  - abstain_all
+  - fixed_probability_0_5
+  - evidence_contract_only
+  - frozen_v3_topology_threshold
+  - v5_1_fixed_hierarchical_threshold
+
+decision_boundary:
+  positive: >-
+    The fixed topology-specific threshold satisfies the complete contract in
+    both new seed-bundle splits.
+  negative: >-
+    Any risk, activation, recovery, semantic, unit-count, or protocol-order
+    condition fails.
+
+prohibited_claims:
+  - global_six_family_policy_confirmed
+  - predictive_or_internal_reproduction_risk_control
+  - causal_or_mechanistic_validation
+  - real_domain_external_risk_control
+  - universal_or_distribution_free_guarantee
+  - mouse_brain_digital_twin_validation
