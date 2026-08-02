@@ -1,0 +1,91 @@
+protocol_id: mouseclaimbench_causalrivers_v5_transport
+version: 1.0.0
+status: frozen_after_source_metadata_audit_before_transport_outcomes
+freeze_date: 2026-08-02
+parent_protocol: configs/benchmarks/semantic_risk_control_v5.yaml
+frozen_policy:
+  claim: topology_specific
+  threshold: 0.9272577728502728
+  source: configs/benchmarks/semantic_risk_control_v5_1.yaml
+  refitting_allowed: false
+
+source:
+  resource: CausalRivers
+  paper: https://proceedings.iclr.cc/paper_files/paper/2025/hash/a205fda871b0f6c1e18a7ad7325eb6cf-Abstract-Conference.html
+  repository: https://github.com/CausalRivers/causalrivers
+  repository_revision: a30154fbb9a2e03bae133c643d7e978df63b3766
+  release_asset: https://github.com/CausalRivers/causalrivers/releases/download/First_release/product.zip
+  archive_sha256: 4f779fa9222653af092046eacba39a955cc65638bfb70fb7e31a32d9d8373b55
+  file_sha256:
+    rivers_bavaria.p: a798c76cba8ecd3e0971916783c94d29e56d81b4663b24c32fd1e7e81610d1f4
+    rivers_east_germany.p: d6ff7df27325be8e1a8b7194ee2d1dd915a29e253561e389db66338a6711ade3
+    rivers_flood.p: 7f8befac07c5980d5de633063fb939716f13126be9fcb1169924e54fbc94adf2
+    rivers_ts_bavaria.csv: fae1fc5aac3d46c603d7f86950fba466022a970f2602e1b47d13dfb740508426
+    rivers_ts_east_germany.csv: c0b2202df0c69eefd3174160d8d537aa4977452bd0545c77e3ef41052da8abc5
+    rivers_ts_flood.csv: 86aa0b64bf399c44588e1ae2e3aea9e38ef5514226c1ce65a801f2c80f0f2f66
+  license: Datenlizenz_Deutschland_2_0_attribution
+
+pre_outcome_access_disclosure:
+  inspected:
+    - archive_member_names_and_sizes
+    - csv_headers_and_first_two_rows
+    - graph_node_edge_counts_and_example_metadata
+  authorization_or_error_metrics_computed: false
+  selection_used_observed_values: false
+
+sampling:
+  namespace: mouseclaimbench-v5-causalrivers
+  historical_uniform_rows: 10000
+  direct_pairs_per_region: 40
+  nonedge_controls_per_region: 40
+  pair_order: sha256_region_source_target
+  nonedge_definition: neither_direction_is_a_reference_edge
+  control_interpretation: class_balanced_deterministic_nonedge_not_covariate_matched
+  adapter_controls_per_pair: 3
+  adapter_control_order: existing_sha256_pair_control_rule
+  missing_data_rule: complete_rows_for_pair_and_adapter_controls
+  minimum_complete_rows_per_modulo_partition: 20
+  no_replacement_after_outcome_failure: true
+
+blocks:
+  - id: bavaria_historical
+    graph: rivers_bavaria.p
+    time_series: rivers_ts_bavaria.csv
+    role: real_historical_transport
+  - id: east_germany_historical
+    graph: rivers_east_germany.p
+    time_series: rivers_ts_east_germany.csv
+    role: real_historical_transport
+  - id: elbe_historical_matched
+    graph: rivers_flood.p
+    time_series: rivers_ts_east_germany.csv
+    role: matched_station_pre_event_context
+  - id: elbe_flood_2024
+    graph: rivers_flood.p
+    time_series: rivers_ts_flood.csv
+    role: matched_station_distribution_shift
+
+endpoints:
+  primary:
+    - frozen_policy_false_authorizations_by_block
+    - frozen_policy_authorized_pair_coverage_by_block
+    - historical_to_flood_authorization_transition_on_identical_pairs
+  secondary:
+    - baseline_comparison
+    - evidence_feature_shift_warning
+    - exclusions_and_missingness
+    - topology_reference_quality_context
+
+inference:
+  independent_top_level_clusters: 3
+  exact_binomial_certificate_allowed: false
+  pair_level_confidence_interval_allowed: false
+  paired_flood_transition_interpretation: descriptive_with_shared_station_dependence
+
+prohibited_claims:
+  - causal_effect_validation
+  - independent_replication_by_pair_or_subgraph
+  - exact_external_false_authorization_control
+  - hydrology_to_neuroscience_generalization
+  - distribution_free_robustness
+  - recovery_of_the_failed_ood_certificate
