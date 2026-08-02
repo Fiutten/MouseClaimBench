@@ -1,0 +1,176 @@
+{
+  "version": "0.9.0",
+  "git_revision": "32edf9d",
+  "analysis": "profile_v2_scalability_ablation",
+  "protocol": "configs/benchmarks/profile_v2_scalability_ablation.yaml",
+  "protocol_sha256": "7a6671193f4cab7fa0c034b40cf43ccbd0b3ce59d667b4d93a6009e4a748a91b",
+  "runtime": {
+    "python": "3.14.4",
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "machine": "arm64",
+    "processor": "arm"
+  },
+  "ablation": {
+    "cases": 370,
+    "attacked_cases": 360,
+    "pristine_cases": 10,
+    "systems": {
+      "profile_only": {
+        "false_authorizations": 360,
+        "false_rejections": 0
+      },
+      "hash_only": {
+        "false_authorizations": 280,
+        "false_rejections": 0
+      },
+      "full_integrity": {
+        "false_authorizations": 0,
+        "false_rejections": 0
+      },
+      "without_profile_identity_mismatch": {
+        "false_authorizations": 10,
+        "false_rejections": 0
+      },
+      "without_artifact_hash_mismatch": {
+        "false_authorizations": 10,
+        "false_rejections": 0
+      },
+      "without_unknown_provenance_reference": {
+        "false_authorizations": 10,
+        "false_rejections": 0
+      },
+      "without_provenance_cycle": {
+        "false_authorizations": 10,
+        "false_rejections": 0
+      },
+      "without_duplicate_independent_artifact": {
+        "false_authorizations": 10,
+        "false_rejections": 0
+      },
+      "without_overlapping_independent_cohorts": {
+        "false_authorizations": 10,
+        "false_rejections": 0
+      },
+      "without_contradictory_attestation": {
+        "false_authorizations": 10,
+        "false_rejections": 0
+      },
+      "without_missing_block_lineage": {
+        "false_authorizations": 10,
+        "false_rejections": 0
+      }
+    }
+  },
+  "scalability": {
+    "batch_scaling": [
+      {
+        "packages": 100,
+        "repetitions": 5,
+        "authorized_per_repetition": 100,
+        "median_seconds": 0.001527541,
+        "median_packages_per_second": 65464.691291428506,
+        "durations_seconds": [
+          0.001538333,
+          0.001525292,
+          0.001527541,
+          0.001529625,
+          0.001526416
+        ]
+      },
+      {
+        "packages": 1000,
+        "repetitions": 5,
+        "authorized_per_repetition": 1000,
+        "median_seconds": 0.015747083,
+        "median_packages_per_second": 63503.824803616015,
+        "durations_seconds": [
+          0.016244125,
+          0.0158415,
+          0.015747083,
+          0.015551833,
+          0.015561333
+        ]
+      },
+      {
+        "packages": 10000,
+        "repetitions": 5,
+        "authorized_per_repetition": 10000,
+        "median_seconds": 0.154188792,
+        "median_packages_per_second": 64855.557075769815,
+        "durations_seconds": [
+          0.1533045,
+          0.156159708,
+          0.154436333,
+          0.1537785,
+          0.154188792
+        ]
+      }
+    ],
+    "artifact_scaling": [
+      {
+        "artifacts": 25,
+        "repetitions": 5,
+        "authorized_per_repetition": 1,
+        "median_seconds": 4.975e-05,
+        "durations_seconds": [
+          5.6542e-05,
+          5.0708e-05,
+          4.9375e-05,
+          4.975e-05,
+          4.9333e-05
+        ]
+      },
+      {
+        "artifacts": 100,
+        "repetitions": 5,
+        "authorized_per_repetition": 1,
+        "median_seconds": 8.5209e-05,
+        "durations_seconds": [
+          9.5416e-05,
+          8.8167e-05,
+          8.5209e-05,
+          8.4292e-05,
+          8.3334e-05
+        ]
+      },
+      {
+        "artifacts": 1000,
+        "repetitions": 5,
+        "authorized_per_repetition": 1,
+        "median_seconds": 0.000533,
+        "durations_seconds": [
+          0.000568958,
+          0.000550458,
+          0.000533,
+          0.000526541,
+          0.000514292
+        ]
+      },
+      {
+        "artifacts": 5000,
+        "repetitions": 5,
+        "authorized_per_repetition": 1,
+        "median_seconds": 0.002545375,
+        "durations_seconds": [
+          0.002650958,
+          0.002545375,
+          0.00253725,
+          0.002575,
+          0.002419291
+        ]
+      }
+    ],
+    "descriptive_log_log_artifact_slope": 0.7540653499872797,
+    "all_pristine_decisions_authorized": true,
+    "timing_boundary": "descriptive wall-clock measurements on one host"
+  },
+  "endpoints": {
+    "all_pristine_scaling_decisions_authorized": true,
+    "full_gate_false_authorizations_equal_0": true,
+    "full_gate_false_rejections_equal_0": true,
+    "every_leave_one_out_exposes_false_authorization": true
+  },
+  "all_endpoints_passed": true,
+  "claim_boundary": "Timings describe this implementation and host only. The controlled ablation isolates the declared attack families, not unknown attacks or real-world prevalence. Neither result establishes scientific content validity.",
+  "decision": "scalability_ablation_confirmed"
+}
