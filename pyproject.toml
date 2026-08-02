@@ -86,6 +86,7 @@ mousebrainbench-anm-direction = "mousebrainbench.benchmarks.causal_direction_anm
 mousebrainbench-hybrid-policy = "mousebrainbench.benchmarks.hybrid_selective_policy:main"
 mousebrainbench-hybrid-confirmation = "mousebrainbench.benchmarks.hybrid_selective_confirmation:main"
 mousebrainbench-hybrid-outcome-audit = "mousebrainbench.benchmarks.hybrid_selective_outcome_audit:main"
+mousebrainbench-hybrid-release-audit = "mousebrainbench.benchmarks.hybrid_selective_release_audit:main"
 mousebrainbench-run = "mousebrainbench.cli:main"
 
 [tool.setuptools.packages.find]
