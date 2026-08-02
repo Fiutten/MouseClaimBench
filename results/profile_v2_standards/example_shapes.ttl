@@ -1,0 +1,67 @@
+@prefix mcb: <https://w3id.org/mouseclaimbench/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+<https://w3id.org/mouseclaimbench/shape/bounded_predictive_performance-context_of_use> a sh:NodeShape ;
+    sh:sparql [ sh:message "inadmissible required block: context_of_use" ;
+            sh:select """SELECT $this WHERE {
+  FILTER NOT EXISTS {
+    $this <https://w3id.org/mouseclaimbench/hasEvidence> ?fact .
+    ?fact <https://w3id.org/mouseclaimbench/blockName> "context_of_use" .
+    ?fact <https://w3id.org/mouseclaimbench/declaredStatus> "passed" .
+    ?fact <https://w3id.org/mouseclaimbench/source> ?source .
+    ?fact <https://w3id.org/mouseclaimbench/rule> ?rule .
+    ?fact <https://w3id.org/mouseclaimbench/rationale> ?rationale .
+    ?fact <https://w3id.org/mouseclaimbench/observation/use> ?obs0 .
+    ?fact <https://w3id.org/mouseclaimbench/observation/population> ?obs1 .
+    ?fact <https://w3id.org/mouseclaimbench/observation/output> ?obs2 .
+    ?fact <https://w3id.org/mouseclaimbench/observation/decision_consequence> ?obs3 .
+    ?fact <https://w3id.org/mouseclaimbench/observation/prohibited_uses> ?obs4 .
+  }
+}""" ] ;
+    sh:targetNode <https://w3id.org/mouseclaimbench/package/bounded_predictive_performance__pristine> ;
+    mcb:blockName "context_of_use" .
+
+<https://w3id.org/mouseclaimbench/shape/bounded_predictive_performance-data_quality> a sh:NodeShape ;
+    sh:sparql [ sh:message "inadmissible required block: data_quality" ;
+            sh:select """SELECT $this WHERE {
+  FILTER NOT EXISTS {
+    $this <https://w3id.org/mouseclaimbench/hasEvidence> ?fact .
+    ?fact <https://w3id.org/mouseclaimbench/blockName> "data_quality" .
+    ?fact <https://w3id.org/mouseclaimbench/declaredStatus> "passed" .
+    ?fact <https://w3id.org/mouseclaimbench/source> ?source .
+    ?fact <https://w3id.org/mouseclaimbench/rule> ?rule .
+    ?fact <https://w3id.org/mouseclaimbench/rationale> ?rationale .
+    ?fact <https://w3id.org/mouseclaimbench/observation/source> ?obs0 .
+    ?fact <https://w3id.org/mouseclaimbench/observation/lineage> ?obs1 .
+    ?fact <https://w3id.org/mouseclaimbench/observation/exclusions> ?obs2 .
+    ?fact <https://w3id.org/mouseclaimbench/observation/missingness> ?obs3 .
+    ?fact <https://w3id.org/mouseclaimbench/observation/quality_checks> ?obs4 .
+    ?fact <https://w3id.org/mouseclaimbench/observation/result> ?obs5 .
+  }
+}""" ] ;
+    sh:targetNode <https://w3id.org/mouseclaimbench/package/bounded_predictive_performance__pristine> ;
+    mcb:blockName "data_quality" .
+
+<https://w3id.org/mouseclaimbench/shape/bounded_predictive_performance-prediction> a sh:NodeShape ;
+    sh:sparql [ sh:message "inadmissible required block: prediction" ;
+            sh:select """SELECT $this WHERE {
+  FILTER NOT EXISTS {
+    $this <https://w3id.org/mouseclaimbench/hasEvidence> ?fact .
+    ?fact <https://w3id.org/mouseclaimbench/blockName> "prediction" .
+    ?fact <https://w3id.org/mouseclaimbench/declaredStatus> "passed" .
+    ?fact <https://w3id.org/mouseclaimbench/source> ?source .
+    ?fact <https://w3id.org/mouseclaimbench/rule> ?rule .
+    ?fact <https://w3id.org/mouseclaimbench/rationale> ?rationale .
+    ?fact <https://w3id.org/mouseclaimbench/observation/target> ?obs0 .
+    ?fact <https://w3id.org/mouseclaimbench/observation/target_population> ?obs1 .
+    ?fact <https://w3id.org/mouseclaimbench/observation/split> ?obs2 .
+    ?fact <https://w3id.org/mouseclaimbench/observation/split_integrity> ?obs3 .
+    ?fact <https://w3id.org/mouseclaimbench/observation/metric> ?obs4 .
+    ?fact <https://w3id.org/mouseclaimbench/observation/threshold> ?obs5 .
+    ?fact <https://w3id.org/mouseclaimbench/observation/comparator> ?obs6 .
+    ?fact <https://w3id.org/mouseclaimbench/observation/value> ?obs7 .
+  }
+}""" ] ;
+    sh:targetNode <https://w3id.org/mouseclaimbench/package/bounded_predictive_performance__pristine> ;
+    mcb:blockName "prediction" .
+

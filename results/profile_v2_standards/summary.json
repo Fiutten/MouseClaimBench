@@ -1,0 +1,42 @@
+{
+  "version": "0.9.0",
+  "git_revision": "2c9ac4f",
+  "analysis": "profile_v2_prov_o_shacl_conformance",
+  "protocol": "configs/benchmarks/profile_v2_standards.yaml",
+  "protocol_sha256": "4700ddd7ee38cba115bef4c511dcc81d1ef61cdcb83608f106619ce40e810cfb",
+  "profile_id": "mouse_brain_claim_authorization",
+  "profile_version": "2.0.0",
+  "profile_hash": "sha256:9bbde507f1f3bf74f0562e896b29ec440122b2eeec20b02d464617fc3e2e2354",
+  "cases": 5497,
+  "shacl": {
+    "backend": "pyshacl-0.40.1",
+    "rdflib": "7.6.0",
+    "false_authorizations": 0,
+    "false_rejections": 0,
+    "exact_deficit_sets": 5497,
+    "exact_deficit_rate": 1.0,
+    "python_equivalent_cases": 5497,
+    "python_equivalence_rate": 1.0,
+    "elapsed_seconds": 312.8615990409744,
+    "cases_per_second": 17.570069375244984
+  },
+  "rdf": {
+    "profile_triples": 318,
+    "exported_claims": 10,
+    "exported_evidence_blocks": 22,
+    "example_package_triples": 53,
+    "example_shape_triples": 18,
+    "json_ld_round_trip_isomorphic": true
+  },
+  "endpoints": {
+    "shacl_false_authorizations_equal_0": true,
+    "shacl_false_rejections_equal_0": true,
+    "shacl_exact_deficit_rate_equal_1": true,
+    "python_shacl_equivalence_rate_equal_1": true,
+    "prov_profile_contains_all_claims_and_blocks": true,
+    "json_ld_round_trip_preserves_graph_isomorphism": true
+  },
+  "all_endpoints_passed": true,
+  "interpretation": "SHACL is a real external standard baseline for the structural evidence contract. Exact SHACL conformance would show that schema validation and complete structural deficit reporting are not novel by themselves. The remaining candidate contribution must therefore be evaluated at the domain authorization, evidence-dependence, hierarchical-risk, and application levels.",
+  "decision": "standards_conformance_confirmed"
+}

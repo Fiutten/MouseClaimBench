@@ -1,0 +1,354 @@
+@prefix mcb: <https://w3id.org/mouseclaimbench/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+
+<https://w3id.org/mouseclaimbench/claim/assumption_conditional_direction> a mcb:ClaimType ;
+    mcb:claimId "assumption_conditional_direction" ;
+    mcb:meaning "Direction is identified only within the declared model class and assumptions." ;
+    mcb:requiresEvidence <https://w3id.org/mouseclaimbench/evidence-block/context_of_use>,
+        <https://w3id.org/mouseclaimbench/evidence-block/directed_identifiability>,
+        <https://w3id.org/mouseclaimbench/evidence-block/robustness>,
+        <https://w3id.org/mouseclaimbench/evidence-block/uncertainty_quantification> .
+
+<https://w3id.org/mouseclaimbench/claim/bounded_predictive_performance> a mcb:ClaimType ;
+    mcb:claimId "bounded_predictive_performance" ;
+    mcb:meaning "Held-out prediction meets a declared rule for one target population and context of use." ;
+    mcb:requiresEvidence <https://w3id.org/mouseclaimbench/evidence-block/context_of_use>,
+        <https://w3id.org/mouseclaimbench/evidence-block/data_quality>,
+        <https://w3id.org/mouseclaimbench/evidence-block/prediction> .
+
+<https://w3id.org/mouseclaimbench/claim/clean_computational_reproduction> a mcb:ClaimType ;
+    mcb:claimId "clean_computational_reproduction" ;
+    mcb:meaning "The declared computation can be re-executed from a clean revision and recorded environment." ;
+    mcb:requiresEvidence <https://w3id.org/mouseclaimbench/evidence-block/reproducible_compute> .
+
+<https://w3id.org/mouseclaimbench/claim/complete_entity_specific_mouse_brain_digital_twin> a mcb:ClaimType ;
+    mcb:claimId "complete_entity_specific_mouse_brain_digital_twin" ;
+    mcb:meaning "A complete mouse-brain twin satisfies entity identity and update, whole-brain and multiscale scope, prediction, replication, intervention, validation, fidelity, uncertainty, robustness, operational compute, and explicit context-of-use requirements." ;
+    mcb:requiresEvidence <https://w3id.org/mouseclaimbench/evidence-block/biological_fidelity>,
+        <https://w3id.org/mouseclaimbench/evidence-block/causal_intervention>,
+        <https://w3id.org/mouseclaimbench/evidence-block/competing_mechanisms>,
+        <https://w3id.org/mouseclaimbench/evidence-block/context_of_use>,
+        <https://w3id.org/mouseclaimbench/evidence-block/data_quality>,
+        <https://w3id.org/mouseclaimbench/evidence-block/directed_identifiability>,
+        <https://w3id.org/mouseclaimbench/evidence-block/distribution_shift>,
+        <https://w3id.org/mouseclaimbench/evidence-block/entity_specificity>,
+        <https://w3id.org/mouseclaimbench/evidence-block/entity_update>,
+        <https://w3id.org/mouseclaimbench/evidence-block/external_replication>,
+        <https://w3id.org/mouseclaimbench/evidence-block/independent_validation>,
+        <https://w3id.org/mouseclaimbench/evidence-block/internal_reproduction>,
+        <https://w3id.org/mouseclaimbench/evidence-block/multiscale_consistency>,
+        <https://w3id.org/mouseclaimbench/evidence-block/network_dependence_control>,
+        <https://w3id.org/mouseclaimbench/evidence-block/operational_compute>,
+        <https://w3id.org/mouseclaimbench/evidence-block/prediction>,
+        <https://w3id.org/mouseclaimbench/evidence-block/reproducible_compute>,
+        <https://w3id.org/mouseclaimbench/evidence-block/robustness>,
+        <https://w3id.org/mouseclaimbench/evidence-block/topology_specificity>,
+        <https://w3id.org/mouseclaimbench/evidence-block/uncertainty_quantification>,
+        <https://w3id.org/mouseclaimbench/evidence-block/whole_brain_coverage> .
+
+<https://w3id.org/mouseclaimbench/claim/directed_topology_consistent_prediction> a mcb:ClaimType ;
+    mcb:claimId "directed_topology_consistent_prediction" ;
+    mcb:meaning "Prediction is internally reproduced, topology-specific, and directionally consistent while uncertainty, shift, robustness, data quality, and declared alternatives are preserved." ;
+    mcb:requiresEvidence <https://w3id.org/mouseclaimbench/evidence-block/competing_mechanisms>,
+        <https://w3id.org/mouseclaimbench/evidence-block/context_of_use>,
+        <https://w3id.org/mouseclaimbench/evidence-block/data_quality>,
+        <https://w3id.org/mouseclaimbench/evidence-block/directed_identifiability>,
+        <https://w3id.org/mouseclaimbench/evidence-block/distribution_shift>,
+        <https://w3id.org/mouseclaimbench/evidence-block/internal_reproduction>,
+        <https://w3id.org/mouseclaimbench/evidence-block/prediction>,
+        <https://w3id.org/mouseclaimbench/evidence-block/robustness>,
+        <https://w3id.org/mouseclaimbench/evidence-block/topology_specificity>,
+        <https://w3id.org/mouseclaimbench/evidence-block/uncertainty_quantification> .
+
+<https://w3id.org/mouseclaimbench/claim/independent_study_replication> a mcb:ClaimType ;
+    mcb:claimId "independent_study_replication" ;
+    mcb:meaning "A genuinely new data-generation process evaluates the same bounded endpoint." ;
+    mcb:requiresEvidence <https://w3id.org/mouseclaimbench/evidence-block/context_of_use>,
+        <https://w3id.org/mouseclaimbench/evidence-block/data_quality>,
+        <https://w3id.org/mouseclaimbench/evidence-block/external_replication> .
+
+<https://w3id.org/mouseclaimbench/claim/intervention_supported_effect> a mcb:ClaimType ;
+    mcb:claimId "intervention_supported_effect" ;
+    mcb:meaning "A declared intervention or identification design supports one bounded causal effect." ;
+    mcb:requiresEvidence <https://w3id.org/mouseclaimbench/evidence-block/causal_intervention>,
+        <https://w3id.org/mouseclaimbench/evidence-block/context_of_use>,
+        <https://w3id.org/mouseclaimbench/evidence-block/data_quality>,
+        <https://w3id.org/mouseclaimbench/evidence-block/robustness>,
+        <https://w3id.org/mouseclaimbench/evidence-block/uncertainty_quantification> .
+
+<https://w3id.org/mouseclaimbench/claim/local_observational_structure_function_association> a mcb:ClaimType ;
+    mcb:claimId "local_observational_structure_function_association" ;
+    mcb:meaning "A local observational structure-function association survives its declared controls." ;
+    mcb:requiresEvidence <https://w3id.org/mouseclaimbench/evidence-block/context_of_use>,
+        <https://w3id.org/mouseclaimbench/evidence-block/data_quality>,
+        <https://w3id.org/mouseclaimbench/evidence-block/network_dependence_control>,
+        <https://w3id.org/mouseclaimbench/evidence-block/robustness>,
+        <https://w3id.org/mouseclaimbench/evidence-block/structure_function_association>,
+        <https://w3id.org/mouseclaimbench/evidence-block/uncertainty_quantification> .
+
+<https://w3id.org/mouseclaimbench/claim/topology_specific_prediction> a mcb:ClaimType ;
+    mcb:claimId "topology_specific_prediction" ;
+    mcb:meaning "Predictive performance depends on the declared topology relative to prespecified controls." ;
+    mcb:requiresEvidence <https://w3id.org/mouseclaimbench/evidence-block/context_of_use>,
+        <https://w3id.org/mouseclaimbench/evidence-block/prediction>,
+        <https://w3id.org/mouseclaimbench/evidence-block/robustness>,
+        <https://w3id.org/mouseclaimbench/evidence-block/topology_specificity>,
+        <https://w3id.org/mouseclaimbench/evidence-block/uncertainty_quantification> .
+
+<https://w3id.org/mouseclaimbench/claim/within_resource_reproduction> a mcb:ClaimType ;
+    mcb:claimId "within_resource_reproduction" ;
+    mcb:meaning "The same bounded endpoint is reproduced on non-overlapping units within one resource." ;
+    mcb:requiresEvidence <https://w3id.org/mouseclaimbench/evidence-block/data_quality>,
+        <https://w3id.org/mouseclaimbench/evidence-block/internal_reproduction> .
+
+<https://w3id.org/mouseclaimbench/evidence-block/biological_fidelity> a mcb:EvidenceBlockSpecification ;
+    prov:wasDerivedFrom <https://w3id.org/mouseclaimbench/profile/mouse_brain_claim_authorization-2.0.0> ;
+    mcb:blockName "biological_fidelity" ;
+    mcb:meaning "Fidelity is evaluated for declared biological observables and scales." ;
+    mcb:requiresObservation "acceptance_rule",
+        "metric",
+        "observables",
+        "reference_data",
+        "result",
+        "scales" .
+
+<https://w3id.org/mouseclaimbench/evidence-block/entity_specificity> a mcb:EvidenceBlockSpecification ;
+    prov:wasDerivedFrom <https://w3id.org/mouseclaimbench/profile/mouse_brain_claim_authorization-2.0.0> ;
+    mcb:blockName "entity_specificity" ;
+    mcb:meaning "The model represents one identified animal rather than a population archetype." ;
+    mcb:requiresObservation "calibration_data",
+        "entity_id",
+        "identity_link",
+        "state_time",
+        "update_policy" .
+
+<https://w3id.org/mouseclaimbench/evidence-block/entity_update> a mcb:EvidenceBlockSpecification ;
+    prov:wasDerivedFrom <https://w3id.org/mouseclaimbench/profile/mouse_brain_claim_authorization-2.0.0> ;
+    mcb:blockName "entity_update" ;
+    mcb:meaning "Entity state is synchronized through a declared observation and update process." ;
+    mcb:requiresObservation "entity_id",
+        "model_time",
+        "observation_time",
+        "synchronization_error",
+        "threshold",
+        "update_method" .
+
+<https://w3id.org/mouseclaimbench/evidence-block/independent_validation> a mcb:EvidenceBlockSpecification ;
+    prov:wasDerivedFrom <https://w3id.org/mouseclaimbench/profile/mouse_brain_claim_authorization-2.0.0> ;
+    mcb:blockName "independent_validation" ;
+    mcb:meaning "Validation data and decisions are independent of model construction." ;
+    mcb:requiresObservation "construction_resource",
+        "independence_basis",
+        "locked_endpoint",
+        "result",
+        "validation_resource" .
+
+<https://w3id.org/mouseclaimbench/evidence-block/multiscale_consistency> a mcb:EvidenceBlockSpecification ;
+    prov:wasDerivedFrom <https://w3id.org/mouseclaimbench/profile/mouse_brain_claim_authorization-2.0.0> ;
+    mcb:blockName "multiscale_consistency" ;
+    mcb:meaning "Coupled model scales satisfy declared interface and consistency checks." ;
+    mcb:requiresObservation "conservation_or_consistency_rule",
+        "coupling_interface",
+        "result",
+        "scales",
+        "test" .
+
+<https://w3id.org/mouseclaimbench/evidence-block/operational_compute> a mcb:EvidenceBlockSpecification ;
+    prov:wasDerivedFrom <https://w3id.org/mouseclaimbench/profile/mouse_brain_claim_authorization-2.0.0> ;
+    mcb:blockName "operational_compute" ;
+    mcb:meaning "Runtime and resource use satisfy a declared operational budget." ;
+    mcb:requiresObservation "acceptance_budget",
+        "energy",
+        "hardware",
+        "memory",
+        "runtime",
+        "update_frequency" .
+
+<https://w3id.org/mouseclaimbench/evidence-block/structure_function_association> a mcb:EvidenceBlockSpecification ;
+    prov:wasDerivedFrom <https://w3id.org/mouseclaimbench/profile/mouse_brain_claim_authorization-2.0.0> ;
+    mcb:blockName "structure_function_association" ;
+    mcb:meaning "A local observational association survives declared matching and multiplicity controls." ;
+    mcb:requiresObservation "connected_pairs",
+        "estimate",
+        "functional_descriptor",
+        "matched_controls",
+        "matching_variables",
+        "tissue" .
+
+<https://w3id.org/mouseclaimbench/evidence-block/whole_brain_coverage> a mcb:EvidenceBlockSpecification ;
+    prov:wasDerivedFrom <https://w3id.org/mouseclaimbench/profile/mouse_brain_claim_authorization-2.0.0> ;
+    mcb:blockName "whole_brain_coverage" ;
+    mcb:meaning "Anatomical coverage includes the declared whole mouse brain at specified resolutions." ;
+    mcb:requiresObservation "atlas",
+        "cellular_resolution",
+        "excluded_regions",
+        "included_regions",
+        "spatial_resolution" .
+
+<https://w3id.org/mouseclaimbench/evidence-block/causal_intervention> a mcb:EvidenceBlockSpecification ;
+    prov:wasDerivedFrom <https://w3id.org/mouseclaimbench/profile/mouse_brain_claim_authorization-2.0.0> ;
+    mcb:blockName "causal_intervention" ;
+    mcb:meaning "An intervention or identification design estimates a declared effect." ;
+    mcb:requiresObservation "design_type",
+        "effect",
+        "estimand",
+        "identification_assumptions",
+        "intervention",
+        "outcome" .
+
+<https://w3id.org/mouseclaimbench/evidence-block/competing_mechanisms> a mcb:EvidenceBlockSpecification ;
+    prov:wasDerivedFrom <https://w3id.org/mouseclaimbench/profile/mouse_brain_claim_authorization-2.0.0> ;
+    mcb:blockName "competing_mechanisms" ;
+    mcb:meaning "Prespecified competing explanations are evaluated without claiming exhaustiveness." ;
+    mcb:requiresObservation "alternatives",
+        "candidate_explanation",
+        "discrimination_test",
+        "result",
+        "unresolved_alternatives" .
+
+<https://w3id.org/mouseclaimbench/evidence-block/distribution_shift> a mcb:EvidenceBlockSpecification ;
+    prov:wasDerivedFrom <https://w3id.org/mouseclaimbench/profile/mouse_brain_claim_authorization-2.0.0> ;
+    mcb:blockName "distribution_shift" ;
+    mcb:meaning "Transport or shift is evaluated against a declared target context." ;
+    mcb:requiresObservation "acceptance_rule",
+        "diagnostic",
+        "result",
+        "shift_family",
+        "source_population",
+        "target_population" .
+
+<https://w3id.org/mouseclaimbench/evidence-block/external_replication> a mcb:EvidenceBlockSpecification ;
+    prov:wasDerivedFrom <https://w3id.org/mouseclaimbench/profile/mouse_brain_claim_authorization-2.0.0> ;
+    mcb:blockName "external_replication" ;
+    mcb:meaning "Same endpoint evaluated using a genuinely new data-generation process." ;
+    mcb:requiresObservation "data_generation_id",
+        "endpoint",
+        "independence_basis",
+        "laboratory",
+        "study_id",
+        "value" .
+
+<https://w3id.org/mouseclaimbench/evidence-block/network_dependence_control> a mcb:EvidenceBlockSpecification ;
+    prov:wasDerivedFrom <https://w3id.org/mouseclaimbench/profile/mouse_brain_claim_authorization-2.0.0> ;
+    mcb:blockName "network_dependence_control" ;
+    mcb:meaning "Inference accounts for shared nodes or other dependence in relational observations." ;
+    mcb:requiresObservation "dependence_structure",
+        "estimand",
+        "inferential_unit",
+        "method",
+        "result" .
+
+<https://w3id.org/mouseclaimbench/evidence-block/reproducible_compute> a mcb:EvidenceBlockSpecification ;
+    prov:wasDerivedFrom <https://w3id.org/mouseclaimbench/profile/mouse_brain_claim_authorization-2.0.0> ;
+    mcb:blockName "reproducible_compute" ;
+    mcb:meaning "Clean re-execution contract for code, environment, entry point, and artifacts." ;
+    mcb:requiresObservation "artifact_revision",
+        "entrypoint",
+        "environment",
+        "source_revision" .
+
+<https://w3id.org/mouseclaimbench/evidence-block/directed_identifiability> a mcb:EvidenceBlockSpecification ;
+    prov:wasDerivedFrom <https://w3id.org/mouseclaimbench/profile/mouse_brain_claim_authorization-2.0.0> ;
+    mcb:blockName "directed_identifiability" ;
+    mcb:meaning "Direction is identified within a declared model class and assumption domain." ;
+    mcb:requiresObservation "abstention_rule",
+        "assumptions",
+        "calibration_domain",
+        "direction",
+        "directional_test",
+        "model_class" .
+
+<https://w3id.org/mouseclaimbench/evidence-block/internal_reproduction> a mcb:EvidenceBlockSpecification ;
+    prov:wasDerivedFrom <https://w3id.org/mouseclaimbench/profile/mouse_brain_claim_authorization-2.0.0> ;
+    mcb:blockName "internal_reproduction" ;
+    mcb:meaning "Reproduction on declared non-overlapping units within one resource." ;
+    mcb:requiresObservation "agreement_metric",
+        "overlap",
+        "partition_a",
+        "partition_b",
+        "threshold",
+        "unit",
+        "value" .
+
+<https://w3id.org/mouseclaimbench/evidence-block/topology_specificity> a mcb:EvidenceBlockSpecification ;
+    prov:wasDerivedFrom <https://w3id.org/mouseclaimbench/profile/mouse_brain_claim_authorization-2.0.0> ;
+    mcb:blockName "topology_specificity" ;
+    mcb:meaning "Candidate topology outperforms prespecified and complexity-matched controls." ;
+    mcb:requiresObservation "candidate",
+        "complexity_matching",
+        "control_family",
+        "margin",
+        "metric",
+        "topology_scale" .
+
+<https://w3id.org/mouseclaimbench/evidence-block/prediction> a mcb:EvidenceBlockSpecification ;
+    prov:wasDerivedFrom <https://w3id.org/mouseclaimbench/profile/mouse_brain_claim_authorization-2.0.0> ;
+    mcb:blockName "prediction" ;
+    mcb:meaning "Held-out predictive performance for a declared target population and comparator." ;
+    mcb:requiresObservation "comparator",
+        "metric",
+        "split",
+        "split_integrity",
+        "target",
+        "target_population",
+        "threshold",
+        "value" .
+
+<https://w3id.org/mouseclaimbench/evidence-block/robustness> a mcb:EvidenceBlockSpecification ;
+    prov:wasDerivedFrom <https://w3id.org/mouseclaimbench/profile/mouse_brain_claim_authorization-2.0.0> ;
+    mcb:blockName "robustness" ;
+    mcb:meaning "The endpoint survives prespecified perturbations of data, model, or analysis choices." ;
+    mcb:requiresObservation "acceptance_rule",
+        "locked_endpoint",
+        "perturbation_family",
+        "worst_case_result" .
+
+<https://w3id.org/mouseclaimbench/evidence-block/uncertainty_quantification> a mcb:EvidenceBlockSpecification ;
+    prov:wasDerivedFrom <https://w3id.org/mouseclaimbench/profile/mouse_brain_claim_authorization-2.0.0> ;
+    mcb:blockName "uncertainty_quantification" ;
+    mcb:meaning "Relevant uncertainty sources and intervals are declared at the inferential unit." ;
+    mcb:requiresObservation "acceptance_rule",
+        "confidence_level",
+        "inferential_unit",
+        "interval",
+        "method",
+        "uncertainty_sources" .
+
+<https://w3id.org/mouseclaimbench/evidence-block/data_quality> a mcb:EvidenceBlockSpecification ;
+    prov:wasDerivedFrom <https://w3id.org/mouseclaimbench/profile/mouse_brain_claim_authorization-2.0.0> ;
+    mcb:blockName "data_quality" ;
+    mcb:meaning "Source data quality, exclusions, missingness, and lineage are explicitly assessed." ;
+    mcb:requiresObservation "exclusions",
+        "lineage",
+        "missingness",
+        "quality_checks",
+        "result",
+        "source" .
+
+<https://w3id.org/mouseclaimbench/evidence-block/context_of_use> a mcb:EvidenceBlockSpecification ;
+    prov:wasDerivedFrom <https://w3id.org/mouseclaimbench/profile/mouse_brain_claim_authorization-2.0.0> ;
+    mcb:blockName "context_of_use" ;
+    mcb:meaning "The claim is bounded to a declared use, population, output, and decision consequence." ;
+    mcb:requiresObservation "decision_consequence",
+        "output",
+        "population",
+        "prohibited_uses",
+        "use" .
+
+<https://w3id.org/mouseclaimbench/profile/mouse_brain_claim_authorization-2.0.0> a prov:Entity,
+        mcb:AuthorizationProfile ;
+    mcb:declaresClaim <https://w3id.org/mouseclaimbench/claim/assumption_conditional_direction>,
+        <https://w3id.org/mouseclaimbench/claim/bounded_predictive_performance>,
+        <https://w3id.org/mouseclaimbench/claim/clean_computational_reproduction>,
+        <https://w3id.org/mouseclaimbench/claim/complete_entity_specific_mouse_brain_digital_twin>,
+        <https://w3id.org/mouseclaimbench/claim/directed_topology_consistent_prediction>,
+        <https://w3id.org/mouseclaimbench/claim/independent_study_replication>,
+        <https://w3id.org/mouseclaimbench/claim/intervention_supported_effect>,
+        <https://w3id.org/mouseclaimbench/claim/local_observational_structure_function_association>,
+        <https://w3id.org/mouseclaimbench/claim/topology_specific_prediction>,
+        <https://w3id.org/mouseclaimbench/claim/within_resource_reproduction> ;
+    mcb:domain "computational_mouse_brain" ;
+    mcb:profileHash "sha256:9bbde507f1f3bf74f0562e896b29ec440122b2eeec20b02d464617fc3e2e2354" ;
+    mcb:profileId "mouse_brain_claim_authorization" ;
+    mcb:profileVersion "2.0.0" .
+
