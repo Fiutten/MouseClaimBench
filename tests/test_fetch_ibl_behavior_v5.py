@@ -45,3 +45,10 @@ def test_rejects_ambiguous_default_tables() -> None:
 def test_accepts_warning_default_table_and_preserves_qc_status() -> None:
     selected = select_trial_dataset([_row(default=True, qc="WARNING")])
     assert selected["qc"] == "WARNING"
+
+
+def test_percent_encodes_revision_delimiters_in_remote_path() -> None:
+    row = _row(default=True, qc="PASS")
+    row["file_records"][1]["data_url"] = "https://aws.example/alf/#2025-03-03#/trials.pqt"
+    selected = select_trial_dataset([row])
+    assert selected["url"] == "https://aws.example/alf/%232025-03-03%23/trials.pqt"

@@ -69,7 +69,10 @@ def select_trial_dataset(rows: list[dict[str, Any]]) -> dict[str, Any]:
         "default_dataset": True,
         "file_size": int(row["file_size"]),
         "md5": str(row["hash"]),
-        "url": str(records[0]["data_url"]),
+        # Alyx exposes revision directories as #revision# path components. A
+        # literal hash is a URL fragment delimiter, so it must be percent-encoded
+        # before an HTTP client can address the S3 object itself.
+        "url": str(records[0]["data_url"]).replace("#", "%23"),
         "repository": str(records[0].get("data_repository", "")),
         "created_datetime": row.get("created_datetime"),
         "data_version": row.get("version"),
