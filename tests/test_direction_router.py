@@ -115,3 +115,46 @@ def test_confident_reverse_orientation_still_passes_identifiability() -> None:
     assert result["predicted_direction"] == "reverse"
     assert result["status"] == "passed"
     assert result["direction_support_allowed"] is True
+
+
+def test_association_precondition_blocks_observational_direction_attempt() -> None:
+    values = np.arange(30, dtype=float)
+    result = route_direction(
+        values,
+        values + 1.0,
+        DirectionAssumptions(
+            additive_noise=True,
+            acyclic=True,
+            hidden_confounding_excluded=True,
+            selection_bias_excluded=True,
+            association_established=False,
+            provenance="declared independent synthetic regime",
+        ),
+        seed=6,
+        anm_function=_forward_method,
+        require_association_precondition=True,
+    )
+
+    assert result["attempted"] is False
+    assert result["method"] == "abstain"
+    assert "association_not_established" in result["blockers"]
+
+
+def test_randomized_intervention_does_not_require_prior_association() -> None:
+    rng = np.random.default_rng(7)
+    result = route_direction(
+        rng.normal(size=40),
+        rng.normal(size=40),
+        DirectionAssumptions(
+            randomized_intervention=True,
+            association_established=None,
+            provenance="randomized experiment",
+        ),
+        seed=7,
+        intervention_control=rng.normal(0.0, 1.0, size=80),
+        intervention_treated=rng.normal(1.5, 1.0, size=80),
+        require_association_precondition=True,
+    )
+
+    assert result["attempted"] is True
+    assert result["causal_support_allowed"] is True

@@ -30,6 +30,7 @@ class DirectionAssumptions:
     hidden_confounding_excluded: bool = False
     selection_bias_excluded: bool = False
     material_measurement_error: bool = False
+    association_established: bool | None = None
     provenance: str = "undeclared"
 
 
@@ -103,8 +104,16 @@ def route_direction(
     intervention_treated: np.ndarray | None = None,
     anm_function: Callable[..., dict[str, Any]] = anm_direction_evidence,
     lingam_function: Callable[..., dict[str, Any]] = _direct_lingam,
+    require_association_precondition: bool = False,
 ) -> dict[str, Any]:
-    """Select a valid established estimator or return a reasoned abstention."""
+    """Select a valid established estimator or return a reasoned abstention.
+
+    ``require_association_precondition`` is opt-in to preserve the frozen v3
+    router. New protocols should enable it so an observational direction method
+    cannot orient variables whose association has not first been established.
+    Randomized intervention evidence is exempt because its contrast directly
+    tests an intervention effect.
+    """
 
     common_blockers = []
     if not assumptions.hidden_confounding_excluded:
@@ -113,6 +122,12 @@ def route_direction(
         common_blockers.append("selection_bias_not_excluded")
     if assumptions.material_measurement_error:
         common_blockers.append("material_measurement_error")
+    if (
+        require_association_precondition
+        and not assumptions.randomized_intervention
+        and assumptions.association_established is not True
+    ):
+        common_blockers.append("association_not_established")
 
     method = "abstain"
     evidence: dict[str, Any] = {
