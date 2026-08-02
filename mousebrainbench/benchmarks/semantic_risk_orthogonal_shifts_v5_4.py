@@ -79,7 +79,7 @@ def run(
 
     started = time.perf_counter()
     protocol = yaml.safe_load(protocol_path.read_text())
-    if protocol["status"] != "frozen_before_orthogonal_shift_generation":
+    if protocol["status"] != "amended_after_preoutcome_adapter_compatibility_failure":
         raise ValueError("orthogonal shift protocol is not outcome-frozen")
     score_model = json.loads(score_model_path.read_text())
     claim = str(protocol["claim"])
@@ -213,7 +213,7 @@ def _write_markdown(payload: dict[str, Any], path: Path) -> None:
     lines = [
         "# Orthogonal semantic-risk shifts v5.4",
         "",
-        f"- All 14 levels certified: `{str(payload['all_levels_certified']).lower()}`",
+        f"- All 13 evaluable levels certified: `{str(payload['all_levels_certified']).lower()}`",
         f"- False-authorization levels: `{payload['levels_with_false_authorization']}`",
         f"- Missed-positive levels: `{payload['levels_with_missed_positives']}`",
         "",

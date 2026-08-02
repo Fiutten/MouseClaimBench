@@ -1,7 +1,15 @@
 protocol_id: mouseclaimbench_orthogonal_semantic_risk_shifts
-version: 5.4.0
-status: frozen_before_orthogonal_shift_generation
+version: 5.4.1
+status: amended_after_preoutcome_adapter_compatibility_failure
 freeze_date: 2026-08-02
+amendment:
+  basis: >-
+    The four-variable level cannot satisfy the unchanged three-control topology
+    evidence contract because only two variables remain after source and target
+    selection. Execution stopped before an artifact was produced or level
+    outcomes were inspected.
+  action: exclude_dimension_4_without_relaxing_the_evidence_contract
+  endpoint_threshold_or_remaining_factors_changed: false
 parent_result:
   path: results/timegraph_v5_1_topology_confirmation/summary.json
   sha256: f8d60e3775824a1948e33e9ce6a665d3135f58a39e79adf9a74fe6414ddebe88
@@ -33,7 +41,6 @@ confirmatory_population:
     tail_t5: {start: 2026090001, count: 100}
     tail_t3: {start: 2026090001, count: 100}
     tail_t2: {start: 2026090001, count: 100}
-    dimension_4: {start: 2026091001, count: 100}
     dimension_6: {start: 2026091001, count: 100}
     dimension_8: {start: 2026091001, count: 100}
     lag_2: {start: 2026092001, count: 100}
@@ -54,8 +61,6 @@ confirmatory_population:
       {noise: [student_t], student_t_df: 3, pair_namespace: orthogonal-tail-v5-4}
     tail_t2:
       {noise: [student_t], student_t_df: 2, pair_namespace: orthogonal-tail-v5-4}
-    dimension_4:
-      {n_vars: 4, noise: [gaussian], pair_namespace: orthogonal-dimension-v5-4}
     dimension_6:
       {n_vars: 6, noise: [gaussian], pair_namespace: orthogonal-dimension-v5-4}
     dimension_8:
@@ -81,7 +86,7 @@ families:
     reference: tail_gaussian
     interpretation: increasing_tail_heaviness_with_fixed_scale
   dimensionality:
-    levels: [dimension_4, dimension_6, dimension_8]
+    levels: [dimension_6, dimension_8]
     reference: dimension_6
     interpretation: categorical_topology_size_transport_not_a_monotone_dose
   temporal_depth:
@@ -94,10 +99,10 @@ families:
     interpretation: binary_official_generator_contrast_not_a_confounding_dose_curve
 
 simultaneous_contract:
-  total_levels: 14
+  total_levels: 13
   familywise_confidence: 0.95
-  per_level_confidence: 0.9964285714285714
-  multiplicity_method: Bonferroni_across_fourteen_prespecified_family_levels
+  per_level_confidence: 0.9961538461538462
+  multiplicity_method: Bonferroni_across_thirteen_evaluable_family_levels
   target_seed_bundle_failure_probability: 0.10
   minimum_authorized_seed_bundle_coverage: 0.10
   minimum_positive_recovery: 0.05
@@ -105,7 +110,7 @@ simultaneous_contract:
 
 shift_diagnostic:
   familywise_alpha: 0.05
-  per_level_alpha: 0.0035714285714285718
+  per_level_alpha: 0.0038461538461538464
   permutations: 999
   role: warning_only
   may_refit_threshold: false
@@ -121,4 +126,3 @@ claim_boundary: >-
   These families estimate failure behavior on exact official TimeGraph model
   contrasts. They do not calibrate a universal shift detector, establish
   monotonic degradation outside ordered families, or provide real-domain risk.
-
