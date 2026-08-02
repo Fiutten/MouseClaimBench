@@ -1,12 +1,12 @@
 {
   "version": "0.9.0",
-  "git_revision": "93433ee1677d899b2536ad620d3d0503b0d1c59e",
+  "git_revision": "cf123fb",
   "analysis": "profile_v2_artifact_application",
   "protocol": "configs/benchmarks/profile_v2_artifact_application.yaml",
-  "protocol_sha256": "866b3f90a419ba1f8ae14dd9671672a3999d98dba1923b9bbdced45bd16ce40d",
+  "protocol_sha256": "a4015059edcef0f1b12c43aa50c223645933cc573c2caff66bf70df4e0e41c81",
   "cases": 5,
   "decisions": 10,
-  "target_authorizations": 2,
+  "target_authorizations": 3,
   "strict_twin_authorizations": 0,
   "decision_rows": [
     {
@@ -991,76 +991,14 @@
       "python_asp_equivalent": true
     },
     {
-      "case": "microns_local_association_with_dependence_deficit",
+      "case": "microns_local_association_with_dyadic_control",
       "claim": "local_observational_structure_function_association",
-      "status": "profile_not_authorized",
-      "authorized": false,
-      "deficits": [
-        {
-          "name": "network_dependence_control",
-          "declared_status": "requires_review",
-          "effective_status": "requires_review",
-          "source": "results/microns_q1_package/summary.json",
-          "rule": "retrospective v2 mapping of the unchanged source predicate",
-          "rationale": "unit-cluster weighted bootstrap is a stability analysis but not a complete dyadic or network-dependence estimator",
-          "observations": {
-            "inferential_unit": "neuron-weighted directed pair frame",
-            "dependence_structure": "directed pairs share pre- and postsynaptic units",
-            "method": "unit-cluster weighted bootstrap",
-            "estimand": "matched readout-location difference",
-            "result": [
-              {
-                "cohort": "discovery",
-                "distance": {
-                  "n": 300,
-                  "median": 0.021811440377764522,
-                  "ci95_low": 0.01664541931264082,
-                  "ci95_high": 0.026283913768938752
-                },
-                "degree": {
-                  "n": 300,
-                  "median": 0.04051065648360996,
-                  "ci95_low": 0.03486467417490266,
-                  "ci95_high": 0.045416980099525855
-                }
-              },
-              {
-                "cohort": "holdout_offset1000",
-                "distance": {
-                  "n": 300,
-                  "median": 0.020944034875242303,
-                  "ci95_low": 0.01421789459759002,
-                  "ci95_high": 0.026277254959318857
-                },
-                "degree": {
-                  "n": 300,
-                  "median": 0.03774194741508296,
-                  "ci95_low": 0.03214217645795173,
-                  "ci95_high": 0.04309364267864572
-                }
-              },
-              {
-                "cohort": "holdout_offset2000",
-                "distance": {
-                  "n": 300,
-                  "median": 0.018130617014715467,
-                  "ci95_low": 0.011504298671558841,
-                  "ci95_high": 0.023796608417984554
-                },
-                "degree": {
-                  "n": 300,
-                  "median": 0.028700317801537104,
-                  "ci95_low": 0.022873768722809218,
-                  "ci95_high": 0.03536698554630101
-                }
-              }
-            ]
-          },
-          "missing_required_observations": []
-        }
-      ],
+      "status": "profile_authorized",
+      "authorized": true,
+      "deficits": [],
       "passed_blocks": [
         "structure_function_association",
+        "network_dependence_control",
         "uncertainty_quantification",
         "robustness",
         "context_of_use",
@@ -1068,13 +1006,14 @@
       ],
       "sources": [
         "results/microns_primary_robustness/summary.json",
-        "results/microns_q1_package/summary.json"
+        "results/microns_q1_package/summary.json",
+        "results/microns_network_inference/summary.json"
       ],
-      "interpretation": "The local endpoint, uncertainty stability, robustness, context, and data quality pass. The claim remains unauthorized because complete network-dependence inference is absent.",
+      "interpretation": "The local endpoint passes matched controls, unit-cluster stability, directed dyadic uncertainty, and simultaneous node-label permutation in all three windows. This authorizes only a local observational association in one tissue volume.",
       "python_asp_equivalent": true
     },
     {
-      "case": "microns_local_association_with_dependence_deficit",
+      "case": "microns_local_association_with_dyadic_control",
       "claim": "complete_entity_specific_mouse_brain_digital_twin",
       "status": "profile_not_authorized",
       "authorized": false,
@@ -1210,68 +1149,6 @@
           "missing_required_observations": []
         },
         {
-          "name": "network_dependence_control",
-          "declared_status": "requires_review",
-          "effective_status": "requires_review",
-          "source": "results/microns_q1_package/summary.json",
-          "rule": "retrospective v2 mapping of the unchanged source predicate",
-          "rationale": "unit-cluster weighted bootstrap is a stability analysis but not a complete dyadic or network-dependence estimator",
-          "observations": {
-            "inferential_unit": "neuron-weighted directed pair frame",
-            "dependence_structure": "directed pairs share pre- and postsynaptic units",
-            "method": "unit-cluster weighted bootstrap",
-            "estimand": "matched readout-location difference",
-            "result": [
-              {
-                "cohort": "discovery",
-                "distance": {
-                  "n": 300,
-                  "median": 0.021811440377764522,
-                  "ci95_low": 0.01664541931264082,
-                  "ci95_high": 0.026283913768938752
-                },
-                "degree": {
-                  "n": 300,
-                  "median": 0.04051065648360996,
-                  "ci95_low": 0.03486467417490266,
-                  "ci95_high": 0.045416980099525855
-                }
-              },
-              {
-                "cohort": "holdout_offset1000",
-                "distance": {
-                  "n": 300,
-                  "median": 0.020944034875242303,
-                  "ci95_low": 0.01421789459759002,
-                  "ci95_high": 0.026277254959318857
-                },
-                "degree": {
-                  "n": 300,
-                  "median": 0.03774194741508296,
-                  "ci95_low": 0.03214217645795173,
-                  "ci95_high": 0.04309364267864572
-                }
-              },
-              {
-                "cohort": "holdout_offset2000",
-                "distance": {
-                  "n": 300,
-                  "median": 0.018130617014715467,
-                  "ci95_low": 0.011504298671558841,
-                  "ci95_high": 0.023796608417984554
-                },
-                "degree": {
-                  "n": 300,
-                  "median": 0.028700317801537104,
-                  "ci95_low": 0.022873768722809218,
-                  "ci95_high": 0.03536698554630101
-                }
-              }
-            ]
-          },
-          "missing_required_observations": []
-        },
-        {
           "name": "biological_fidelity",
           "declared_status": "unknown",
           "effective_status": "unknown",
@@ -1304,15 +1181,17 @@
       ],
       "passed_blocks": [
         "uncertainty_quantification",
+        "network_dependence_control",
         "robustness",
         "context_of_use",
         "data_quality"
       ],
       "sources": [
         "results/microns_primary_robustness/summary.json",
-        "results/microns_q1_package/summary.json"
+        "results/microns_q1_package/summary.json",
+        "results/microns_network_inference/summary.json"
       ],
-      "interpretation": "The local endpoint, uncertainty stability, robustness, context, and data quality pass. The claim remains unauthorized because complete network-dependence inference is absent.",
+      "interpretation": "The local endpoint passes matched controls, unit-cluster stability, directed dyadic uncertainty, and simultaneous node-label permutation in all three windows. This authorizes only a local observational association in one tissue volume.",
       "python_asp_equivalent": true
     },
     {

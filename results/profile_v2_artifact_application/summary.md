@@ -2,7 +2,7 @@
 
 - Decision: `profile_v2_artifact_application_complete`
 - Cases: `5`
-- Target authorizations: `2`
+- Target authorizations: `3`
 - Strict-twin authorizations: `0`
 
 | Case | Claim | Status | Deficits |
@@ -13,8 +13,8 @@
 | `sensorium_static_bounded_prediction` | `complete_entity_specific_mouse_brain_digital_twin` | `profile_not_authorized` | 18 |
 | `dynamic_sensorium_prediction_with_quality_deficit` | `bounded_predictive_performance` | `profile_not_authorized` | 1 |
 | `dynamic_sensorium_prediction_with_quality_deficit` | `complete_entity_specific_mouse_brain_digital_twin` | `profile_not_authorized` | 19 |
-| `microns_local_association_with_dependence_deficit` | `local_observational_structure_function_association` | `profile_not_authorized` | 1 |
-| `microns_local_association_with_dependence_deficit` | `complete_entity_specific_mouse_brain_digital_twin` | `profile_not_authorized` | 17 |
+| `microns_local_association_with_dyadic_control` | `local_observational_structure_function_association` | `profile_authorized` | 0 |
+| `microns_local_association_with_dyadic_control` | `complete_entity_specific_mouse_brain_digital_twin` | `profile_not_authorized` | 16 |
 | `ibl_behavior_topology_specific_prediction` | `topology_specific_prediction` | `profile_authorized` | 0 |
 | `ibl_behavior_topology_specific_prediction` | `complete_entity_specific_mouse_brain_digital_twin` | `profile_not_authorized` | 16 |
 
