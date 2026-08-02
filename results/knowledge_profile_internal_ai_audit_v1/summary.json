@@ -1,0 +1,232 @@
+{
+  "version": "0.9.0",
+  "git_revision": "298b032fb87ac92616a1e79f4ffa70a84cd8b423",
+  "analysis": "knowledge_profile_internal_ai_audit_v1",
+  "protocol": "configs/validation/knowledge_profile_internal_ai_audit_v1.yaml",
+  "protocol_sha256": "e4aa9bc1bb8407028a49c3b7f8eecb6599e614c082c5a4a720c363b8f1b56cd3",
+  "review_sha256": "a1d27320e02fbbf519e31f14f3bf35eef00f29a5c8f2be61a8e182e70adddad0",
+  "independent_content_validation": false,
+  "human_raters_created": 0,
+  "cvi_computed": false,
+  "internal_audit_passed": false,
+  "decision": "internal_ai_audit_revision_required",
+  "items": 29,
+  "decision_counts": {
+    "critical_veto": 1,
+    "retain": 9,
+    "revise_major": 11,
+    "revise_minor": 8
+  },
+  "severity_counts": {
+    "critical": 1,
+    "major": 11,
+    "minor": 8,
+    "none": 9
+  },
+  "source_traceability": {
+    "declared_source_ids": 17,
+    "bibliography_source_ids": 46,
+    "special_protocol_source_ids": [
+      "COSMIN_CONTENT_VALIDITY",
+      "profile_rule"
+    ],
+    "unresolved_source_ids": [],
+    "passed": true
+  },
+  "exhaustive_rule_safety": {
+    "claims": {
+      "predictive": {
+        "required_blocks": 1,
+        "status_combinations": 5,
+        "executable_cases_evaluated": 5,
+        "supported_combinations": 1,
+        "unsafe_non_all_passed_supports": 0,
+        "conclusion_counts": {
+          "blocked": 1,
+          "needs_external_review": 1,
+          "out_of_scope": 1,
+          "supported": 1,
+          "uncertain": 1
+        }
+      },
+      "computationally_reproducible": {
+        "required_blocks": 1,
+        "status_combinations": 5,
+        "executable_cases_evaluated": 5,
+        "supported_combinations": 1,
+        "unsafe_non_all_passed_supports": 0,
+        "conclusion_counts": {
+          "blocked": 1,
+          "needs_external_review": 1,
+          "out_of_scope": 1,
+          "supported": 1,
+          "uncertain": 1
+        }
+      },
+      "internally_reproduced": {
+        "required_blocks": 1,
+        "status_combinations": 5,
+        "executable_cases_evaluated": 5,
+        "supported_combinations": 1,
+        "unsafe_non_all_passed_supports": 0,
+        "conclusion_counts": {
+          "blocked": 1,
+          "needs_external_review": 1,
+          "out_of_scope": 1,
+          "supported": 1,
+          "uncertain": 1
+        }
+      },
+      "externally_replicated": {
+        "required_blocks": 1,
+        "status_combinations": 5,
+        "executable_cases_evaluated": 5,
+        "supported_combinations": 1,
+        "unsafe_non_all_passed_supports": 0,
+        "conclusion_counts": {
+          "blocked": 1,
+          "needs_external_review": 1,
+          "out_of_scope": 1,
+          "supported": 1,
+          "uncertain": 1
+        }
+      },
+      "topology_specific": {
+        "required_blocks": 1,
+        "status_combinations": 5,
+        "executable_cases_evaluated": 5,
+        "supported_combinations": 1,
+        "unsafe_non_all_passed_supports": 0,
+        "conclusion_counts": {
+          "blocked": 1,
+          "needs_external_review": 1,
+          "out_of_scope": 1,
+          "supported": 1,
+          "uncertain": 1
+        }
+      },
+      "directed": {
+        "required_blocks": 1,
+        "status_combinations": 5,
+        "executable_cases_evaluated": 5,
+        "supported_combinations": 1,
+        "unsafe_non_all_passed_supports": 0,
+        "conclusion_counts": {
+          "blocked": 1,
+          "needs_external_review": 1,
+          "out_of_scope": 1,
+          "supported": 1,
+          "uncertain": 1
+        }
+      },
+      "structure_function": {
+        "required_blocks": 1,
+        "status_combinations": 5,
+        "executable_cases_evaluated": 5,
+        "supported_combinations": 1,
+        "unsafe_non_all_passed_supports": 0,
+        "conclusion_counts": {
+          "blocked": 1,
+          "needs_external_review": 1,
+          "out_of_scope": 1,
+          "supported": 1,
+          "uncertain": 1
+        }
+      },
+      "mechanistic": {
+        "required_blocks": 4,
+        "status_combinations": 625,
+        "executable_cases_evaluated": 625,
+        "supported_combinations": 1,
+        "unsafe_non_all_passed_supports": 0,
+        "conclusion_counts": {
+          "blocked": 369,
+          "needs_external_review": 175,
+          "out_of_scope": 15,
+          "supported": 1,
+          "uncertain": 65
+        }
+      },
+      "causal": {
+        "required_blocks": 1,
+        "status_combinations": 5,
+        "executable_cases_evaluated": 5,
+        "supported_combinations": 1,
+        "unsafe_non_all_passed_supports": 0,
+        "conclusion_counts": {
+          "blocked": 1,
+          "needs_external_review": 1,
+          "out_of_scope": 1,
+          "supported": 1,
+          "uncertain": 1
+        }
+      },
+      "digital_twin": {
+        "required_blocks": 10,
+        "status_combinations": 9765625,
+        "executable_cases_evaluated": 10754,
+        "supported_combinations": 1,
+        "unsafe_non_all_passed_supports": 0,
+        "conclusion_counts": {
+          "blocked": 9234,
+          "needs_external_review": 1267,
+          "out_of_scope": 57,
+          "supported": 1,
+          "uncertain": 195
+        }
+      }
+    },
+    "analytical_status_space_size": 9766290,
+    "executable_cases_evaluated": 11419,
+    "unsafe_non_all_passed_supports": 0,
+    "structural_proof": {
+      "every_nonpassed_status_has_a_higher_priority_any_rule": true,
+      "all_passed_is_the_only_terminal_support_condition": true
+    },
+    "passed": true,
+    "interpretation": "full-space structural proof plus executable boundary tests; not content validity"
+  },
+  "cross_item_challenges": [
+    {
+      "id": "profile_support_is_not_scientific_truth",
+      "severity": "critical",
+      "affected_items": [
+        "rule__all_requirements_satisfied"
+      ],
+      "finding": "The executable conclusion 'supported' can be read as scientific support, while the relation basis repeatedly says that requirements are sufficient only for profile authorization or are not scientifically sufficient.",
+      "required_action": "Rename the conclusion to profile_supported or add an unavoidable scope qualifier to every exported decision and manuscript statement."
+    },
+    {
+      "id": "mechanistic_sufficiency_gap",
+      "severity": "major",
+      "affected_claims": [
+        "mechanistic"
+      ],
+      "finding": "Prediction, internal reproduction, topology specificity, and observational direction do not jointly establish mechanism without perturbational discrimination, parameter or structural identifiability, uncertainty, and competing-mechanism analysis.",
+      "required_action": "Narrow the claim to directed_topology_consistent_prediction or add dedicated mechanistic intervention, identifiability, and alternative-model blocks."
+    },
+    {
+      "id": "generic_digital_twin_label_mismatch",
+      "severity": "major",
+      "affected_claims": [
+        "digital_twin"
+      ],
+      "finding": "The generic claim identifier is evaluated using requirements for a complete, causal, entity-specific, whole-brain and operational twin. This is safer than under-restriction but obscures the construct and rejects partial twins.",
+      "required_action": "Rename the claim to complete_entity_specific_mouse_brain_digital_twin and define separate partial-model or prototype claims if needed."
+    },
+    {
+      "id": "evidence_status_priority_is_normative",
+      "severity": "major",
+      "affected_items": [
+        "rule__failed_block_veto",
+        "rule__external_review_escalation",
+        "rule__missing_evidence_uncertainty",
+        "rule__protocol_scope_boundary"
+      ],
+      "finding": "Mixed failed, review, unknown, and not-applicable states are resolved by a fixed priority order. The implementation is deterministic, but the priority is a normative policy choice and has no independent content validation.",
+      "required_action": "Publish the mixed-status truth table and obtain explicit expert judgement on precedence, especially unknown versus not-applicable."
+    }
+  ],
+  "external_panel_status": "still_required_and_pending",
+  "claim_boundary": "Passing this audit would establish internal consistency and documented literature-grounded criticism only. It cannot establish independent content validity, human consensus, or improved human decision quality."
+}
