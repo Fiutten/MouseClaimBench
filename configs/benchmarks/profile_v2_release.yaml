@@ -1,0 +1,39 @@
+release_id: mouseclaimbench_profile_v2_hardening_release
+version: 1.0.0
+status: frozen_release_contract
+freeze_date: 2026-08-02
+
+artifacts:
+  resolution: results/profile_v2_resolution_audit/summary.json
+  mutation: results/profile_v2_contract_mutation/summary.json
+  application: results/profile_v2_artifact_application/summary.json
+  semantic_risk_v5: results/semantic_risk_v5_release/summary.json
+  ibl: results/ibl_behavior_v5_confirmation/summary.json
+  orthogonal_shifts: results/semantic_risk_orthogonal_shifts_v5_4/summary.json
+
+release_conditions:
+  - all_internal_audit_issues_mapped
+  - mutation_primary_endpoints_pass
+  - independent_asp_conformance_passes
+  - at_least_two_bounded_real_target_authorizations
+  - no_complete_twin_authorized
+  - existing_hierarchical_risk_core_confirmed
+  - real_mouse_population_evidence_present
+  - heterogeneous_shift_failures_remain_visible
+  - all_artifact_revisions_clean
+
+claim_policy:
+  external_content_validity_required: false
+  reason: >-
+    Profile v2 is presented as author-defined executable requirements
+    engineering, not as a consensus taxonomy or human-validated instrument.
+  human_utility_claim_allowed: false
+  consensus_taxonomy_claim_allowed: false
+  scientific_truth_claim_allowed: false
+  q1_acceptance_guarantee_allowed: false
+
+interpretation: >-
+  Passing this release makes the v2 package technically ready for manuscript
+  revision as a bounded formal knowledge-system contribution. It does not imply
+  editorial acceptance, scientific completeness, prospective external v2
+  validation, or improved human decisions.

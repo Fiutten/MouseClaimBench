@@ -122,6 +122,7 @@ mousebrainbench-semantic-risk-release-v5 = "mousebrainbench.benchmarks.semantic_
 mousebrainbench-profile-v2-mutation = "mousebrainbench.benchmarks.profile_v2_contract_mutation:main"
 mousebrainbench-profile-v2-resolution = "mousebrainbench.benchmarks.profile_v2_resolution_audit:main"
 mousebrainbench-profile-v2-artifacts = "mousebrainbench.benchmarks.profile_v2_artifact_application:main"
+mousebrainbench-profile-v2-release = "mousebrainbench.benchmarks.profile_v2_release:main"
 mousebrainbench-run = "mousebrainbench.cli:main"
 
 [tool.setuptools.packages.find]
