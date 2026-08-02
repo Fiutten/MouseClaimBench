@@ -40,6 +40,7 @@ def association_precondition(
     *,
     familywise_alpha: float = 0.01,
     minimum_absolute_association: float = 0.10,
+    minimum_passing_tests: int = 1,
 ) -> dict[str, Any]:
     """Screen for association before spending directional evidence.
 
@@ -68,6 +69,8 @@ def association_precondition(
         ("pearson", float(pearson.statistic), float(pearson.pvalue)),
         ("spearman", float(spearman.statistic), float(spearman.pvalue)),
     )
+    if minimum_passing_tests not in {1, 2}:
+        raise ValueError("minimum_passing_tests must be one or two")
     passing = [
         name
         for name, statistic, p_value in tests
@@ -75,7 +78,7 @@ def association_precondition(
         and min(1.0, 2.0 * p_value) < familywise_alpha
     ]
     return {
-        "established": bool(passing),
+        "established": len(passing) >= minimum_passing_tests,
         "passing_tests": passing,
         "tests": [
             {
@@ -88,6 +91,7 @@ def association_precondition(
         ],
         "familywise_alpha": familywise_alpha,
         "minimum_absolute_association": minimum_absolute_association,
+        "minimum_passing_tests": minimum_passing_tests,
         "finite_samples": len(x_values),
         "causal_or_directional_evidence": False,
     }

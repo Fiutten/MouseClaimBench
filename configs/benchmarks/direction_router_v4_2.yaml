@@ -1,0 +1,45 @@
+protocol_id: mouseclaimbench_direction_router
+version: 4.2.0
+status: frozen_after_v4_failure_before_v4_2_generation
+freeze_date: 2026-08-02
+parent_result: results/direction_router_v4_confirmation/summary.json
+
+repair_rationale: >-
+  The v4 OR-combination produced three spurious attempts among 540 independent
+  cases. The repair requires both prespecified association tests to pass at a
+  stricter familywise alpha before routing. No v4.2 sample was generated before
+  this rule was frozen.
+
+association_rule:
+  tests: [pearson, spearman]
+  multiplicity: bonferroni_two_tests
+  familywise_alpha: 0.001
+  minimum_absolute_association: 0.10
+  minimum_passing_tests: 2
+  interpretation: routing_precondition_not_direction_or_causal_evidence
+
+seed_namespace: 2026085000
+regimes:
+  - independent_beta_exponential
+  - independent_bimodal_lognormal
+  - direct_linear_logistic
+  - reverse_linear_triangular
+  - direct_arctan_additive
+  - reverse_saturating_additive
+  - confounded_cosine
+  - measured_latent_nonlinear
+sample_sizes: [200, 800, 2000]
+noise_scales: [0.5, 1.0, 1.75]
+seeds_per_cell: 30
+
+primary_endpoints:
+  spurious_attempts_in_independent_regimes: 0
+  attempted_direction_accuracy_minimum: 0.80
+  valid_route_accuracy_minimum: 0.80
+  valid_route_coverage_minimum: 0.80
+
+prohibited_interpretations:
+  - association_precondition_proves_direction
+  - observational_direction_proves_causality
+  - v4_2_repairs_the_negative_v4_result_retroactively
+
