@@ -90,3 +90,28 @@ def test_unknown_assumptions_force_abstention() -> None:
 
     assert result["attempted"] is False
     assert result["blockers"] == ["no_declared_method_matches_assumptions"]
+
+
+def test_confident_reverse_orientation_still_passes_identifiability() -> None:
+    def reverse_method(x, y, *, seed):
+        del x, y, seed
+        return {"predicted_direction": "reverse", "status": "failed"}
+
+    values = np.arange(30, dtype=float)
+    result = route_direction(
+        values,
+        values[::-1],
+        DirectionAssumptions(
+            additive_noise=True,
+            acyclic=True,
+            hidden_confounding_excluded=True,
+            selection_bias_excluded=True,
+            provenance="known reverse SEM",
+        ),
+        seed=5,
+        anm_function=reverse_method,
+    )
+
+    assert result["predicted_direction"] == "reverse"
+    assert result["status"] == "passed"
+    assert result["direction_support_allowed"] is True

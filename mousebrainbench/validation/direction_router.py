@@ -150,13 +150,17 @@ def route_direction(
         }
 
     attempted = method != "abstain" and not blockers
+    predicted_direction = evidence.get("predicted_direction", "uncertain")
+    direction_identified = attempted and predicted_direction in {"forward", "reverse"}
     return {
         "method": method if attempted else "abstain",
         "attempted": attempted,
-        "predicted_direction": evidence.get("predicted_direction", "uncertain"),
-        "status": evidence.get("status", "requires_review") if attempted else "requires_review",
-        "causal_support_allowed": attempted and method == "controlled_intervention_contrast",
-        "direction_support_allowed": attempted,
+        "predicted_direction": predicted_direction,
+        "status": "passed" if direction_identified else "requires_review",
+        "causal_support_allowed": (
+            direction_identified and method == "controlled_intervention_contrast"
+        ),
+        "direction_support_allowed": direction_identified,
         "assumption_provenance": assumptions.provenance,
         "blockers": blockers,
         "evidence": evidence,
