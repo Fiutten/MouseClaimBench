@@ -1,6 +1,6 @@
 protocol_id: mouseclaimbench_profile_v2_artifact_application
-version: 1.1.0
-status: retrospective_mapping_amended_after_v1_0_to_add_preexisting_ibl_case
+version: 1.2.0
+status: retrospective_mapping_amended_to_add_preexisting_ibl_and_dyadic_microns_artifacts
 freeze_date: 2026-08-02
 profile: mousebrainbench/knowledge/profiles/mouse_brain_claims_v2.yaml
 
@@ -17,6 +17,7 @@ cases:
   microns:
     robustness_source: results/microns_primary_robustness/summary.json
     package_source: results/microns_q1_package/summary.json
+    network_source: results/microns_network_inference/summary.json
     target_claim: local_observational_structure_function_association
   ibl:
     source: results/ibl_behavior_v5_confirmation/summary.json
@@ -24,19 +25,22 @@ cases:
     target_claim: topology_specific_prediction
 
 amendment:
-  timing: after_v1_0_artifact_decisions
-  change: add_preexisting_ibl_behavior_v5_case
+  timing: after_v1_0_artifact_decisions_and_before_v1_2_execution
+  changes:
+    - add_preexisting_ibl_behavior_v5_case
+    - replace_microns_bootstrap_only_dependence_deficit_with_preexisting_dyadic_inference
   endpoint_or_threshold_refitted: false
   interpretation: >-
-    IBL outcomes and the source protocol predate profile v2. The case increases
-    retrospective coverage only and is not a blind v2 confirmation.
+    IBL outcomes, the MICRONS dyadic analysis, and their source protocols predate
+    profile v2. These mappings increase retrospective coverage only and are not
+    blind v2 confirmations.
 
 mapping_rules:
   - Source numerical outcomes and original acceptance predicates are not changed.
   - New metadata fields may summarize explicit source-artifact content but may not add evidence.
   - Absent evidence is unknown or not-applicable, never passed.
   - Dynamic Sensorium data quality requires review because response reliability is not estimable.
-  - MICRONS network-dependence control requires review because unit-cluster weighted bootstrap is a stability analysis, not a complete dyadic or network-dependence estimator.
+  - MICRONS network-dependence passes only when the preexisting directed dyadic covariance and simultaneous node-label permutation both pass in all three cohorts.
   - Every case is also evaluated against the strict complete-twin claim.
   - IBL mappings use the original prediction, topology, mouse-level uncertainty, locked-split, and context rules without refitting.
 

@@ -307,8 +307,10 @@ def _dynamic_sensorium_case(config: dict[str, Any]) -> ArtifactCase:
 def _microns_case(config: dict[str, Any]) -> ArtifactCase:
     robustness_source = str(config["robustness_source"])
     package_source = str(config["package_source"])
+    network_source = str(config["network_source"])
     robustness = _load(robustness_source)
     package = _load(package_source)
+    network = _load(network_source)
     cohorts = package.get("cohorts", [])
     robust = (
         robustness.get("all_cohorts_robust") is True
@@ -322,6 +324,24 @@ def _microns_case(config: dict[str, Any]) -> ArtifactCase:
             "degree": row.get("unit_bootstrap", {}).get("degree_matched_delta"),
         }
         for row in cohorts
+    ]
+    network_cohorts = network.get("cohorts", [])
+    network_passed = (
+        network.get("all_cohorts_passed") is True
+        and len(network_cohorts) == 3
+        and all(row.get("network_inference_passed") is True for row in network_cohorts)
+    )
+    network_results = [
+        {
+            "cohort": row.get("cohort"),
+            "coefficient": row.get("connected_coefficient"),
+            "dyadic_standard_error": row.get("dyadic_cluster_standard_error"),
+            "dyadic_p_value": row.get("dyadic_cluster_two_sided_p_value"),
+            "node_permutation_p_value": row.get(
+                "freedman_lane_node_permutation", {}
+            ).get("one_sided_p_value"),
+        }
+        for row in network_cohorts
     ]
     blocks = {
         "structure_function_association": _fact(
@@ -340,15 +360,18 @@ def _microns_case(config: dict[str, Any]) -> ArtifactCase:
         ),
         "network_dependence_control": _fact(
             "network_dependence_control",
-            EvidenceStatus.REQUIRES_REVIEW,
-            package_source,
-            "unit-cluster weighted bootstrap is a stability analysis but not a complete dyadic or network-dependence estimator",
+            EvidenceStatus.PASSED if network_passed else EvidenceStatus.FAILED,
+            network_source,
+            "directed dyadic covariance and simultaneous node-label permutation pass in all windows",
             {
-                "inferential_unit": "neuron-weighted directed pair frame",
+                "inferential_unit": "directed neuron pair",
                 "dependence_structure": "directed pairs share pre- and postsynaptic units",
-                "method": "unit-cluster weighted bootstrap",
-                "estimand": "matched readout-location difference",
-                "result": intervals,
+                "method": [
+                    "directed dyadic cluster-robust covariance",
+                    "Freedman-Lane simultaneous node-label permutation",
+                ],
+                "estimand": "partial connected-pair coefficient for readout-location similarity",
+                "result": network_results,
             },
         ),
         "uncertainty_quantification": _fact(
@@ -403,7 +426,7 @@ def _microns_case(config: dict[str, Any]) -> ArtifactCase:
             "all declared unit and edge windows are present and contain eligible pairs",
             {
                 "source": "MICRONS CAVE-derived local exports",
-                "lineage": [robustness_source, package_source],
+                "lineage": [robustness_source, package_source, network_source],
                 "exclusions": "eligibility and window rules recorded by source scripts",
                 "missingness": "three of three declared windows are present",
                 "quality_checks": "positive unit, synapse, and connected-pair counts",
@@ -412,13 +435,14 @@ def _microns_case(config: dict[str, Any]) -> ArtifactCase:
         ),
     }
     return ArtifactCase(
-        name="microns_local_association_with_dependence_deficit",
+        name="microns_local_association_with_dyadic_control",
         target_claim=str(config["target_claim"]),
         blocks=blocks,
-        sources=(robustness_source, package_source),
+        sources=(robustness_source, package_source, network_source),
         interpretation=(
-            "The local endpoint, uncertainty stability, robustness, context, and data quality pass. "
-            "The claim remains unauthorized because complete network-dependence inference is absent."
+            "The local endpoint passes matched controls, unit-cluster stability, directed dyadic "
+            "uncertainty, and simultaneous node-label permutation in all three windows. This "
+            "authorizes only a local observational association in one tissue volume."
         ),
     )
 

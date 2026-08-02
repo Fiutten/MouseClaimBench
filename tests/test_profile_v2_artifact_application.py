@@ -25,11 +25,9 @@ def test_v2_artifact_application_is_bounded_and_semantically_equivalent() -> Non
     assert targets["dynamic_sensorium_prediction_with_quality_deficit"][
         "authorized"
     ] is False
-    microns = targets["microns_local_association_with_dependence_deficit"]
-    assert microns["authorized"] is False
-    assert any(
-        row["name"] == "network_dependence_control" for row in microns["deficits"]
-    )
+    microns = targets["microns_local_association_with_dyadic_control"]
+    assert microns["authorized"] is True
+    assert microns["deficits"] == []
     ibl = targets["ibl_behavior_topology_specific_prediction"]
     assert ibl["authorized"] is True
     assert ibl["deficits"] == []
@@ -42,6 +40,6 @@ def test_frozen_artifact_application_preserves_bounded_results() -> None:
     )
 
     assert payload["cases"] == 5
-    assert payload["target_authorizations"] == 2
+    assert payload["target_authorizations"] == 3
     assert payload["strict_twin_authorizations"] == 0
     assert not payload["git_revision"].endswith("-dirty")
