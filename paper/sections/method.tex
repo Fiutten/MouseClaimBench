@@ -1,4 +1,4 @@
-\section{Standards-Aware Knowledge-Based Method}
+\section{Integrity-Aware Knowledge-Based Method}
 \label{sec:method}
 
 MouseClaimBench receives a versioned authorization profile, a set of evidence blocks, and a manifest of the artifacts from which those blocks were produced. It returns a bounded decision, the complete set of unmet requirements, and a provenance-linked explanation. Fig.~\ref{fig:standards-workflow} shows the complete path. The three validation layers are intentionally separate because a well-formed graph can contain incoherent provenance, and an internally coherent package can still lack the scientific evidence required by a claim.
@@ -13,9 +13,10 @@ The knowledge profile is represented as
 \Pi=\langle C,E,Q,O,V,H\rangle,
 \label{eq:profile-v2}
 \end{equation}
-where $C$ is the claim vocabulary, $E$ is the evidence-block vocabulary, $Q(c)\subseteq E$ contains the mandatory blocks for claim $c$, $O(e)$ contains the observations required when block $e$ declares a pass, $V$ is the profile version, and $H$ is its SHA-256 content identity. The evaluated profile contains 10 claim types, 22 evidence-block types, and 60 claim-to-evidence requirements. Table~\ref{tab:profile-v2-claims} groups the claims by their decisive evidence. The final digital-twin claim requires 21 blocks and is not a synonym for predictive performance.
+where $C$ is the claim vocabulary, $E$ is the evidence-block vocabulary, $Q(c)\subseteq E$ contains the mandatory blocks for claim $c$, $O(e)$ contains the observations required when block $e$ declares a pass, $V$ is the profile version, and $H$ is its SHA-256 content identity. The evaluated profile contains 10 claim types, 22 evidence-block types, and 60 claim-to-evidence requirements. Table~\ref{tab:profile-v2-claims} enumerates the claim types, while Fig.~\ref{fig:claim-evidence-matrix-v2} shows every required relation. The strict digital-twin claim directly requires 21 blocks. It does not inherit authorization from the other nine claims and is not a synonym for predictive performance.
 
 \input{tables/profile_v2_claims}
+\input{figures/claim_evidence_matrix_v2}
 
 An evidence block is
 \begin{equation}
@@ -30,7 +31,7 @@ A declared pass is admissible only when the block also contains its mandatory ob
 \mathbb{1}[a=P]\prod_{o\in O(e)}\mathbb{1}[x_o\text{ is present}].
 \label{eq:admissibility}
 \end{equation}
-This rule prevents an evidence source from asserting \emph{passed} while omitting the target, split, comparator, inferential unit, uncertainty method, or other observations required by the profile. The complete scientific deficit set is
+Here, $\mathbb{1}[\cdot]$ is the indicator function. Consequently, failed, unknown, not targeted, and requires-review states are all non-admissible. This rule prevents an evidence source from asserting \emph{passed} while omitting the target, split, comparator, inferential unit, uncertainty method, or other observations required by the profile. The complete scientific deficit set is
 \begin{equation}
 \Delta_{\Pi}(c,B)=\{e\in Q(c):\operatorname{adm}_{\Pi}(b_e)=0\},
 \label{eq:scientific-deficits}
@@ -49,17 +50,9 @@ The profile and evidence package are exported as \ac{rdf} using \ac{prov}. Profi
 
 For each profile, MouseClaimBench generates \ac{shacl} shapes that require the declared profile identity, all mandatory blocks, valid statuses, and the observations needed for a passing block. A third-party \texttt{pySHACL} processor validates the resulting data graph. The \ac{shacl} report is converted into the same deficit vocabulary as the Python engine. This provides an external standards baseline. Exact equivalence means that the local implementation follows the structural contract. It does not make structural validation a new contribution.
 
-The package-integrity layer evaluates relations that cannot be reduced to the presence of individual fields. Let $M$ contain the profile identity, content-addressed artifact records, derivation edges, block-to-artifact lineage, evidence attestations, and declared independence relations. Its integrity deficit set $I_{\Pi}(M,B)$ contains the following conditions:
-\begin{itemize}
-\item profile identifier, version, or hash substitution
-\item malformed or discordant artifact hashes
-\item unresolved derivation or block-lineage references
-\item cycles in the derivation graph
-\item identical artifacts declared as independent
-\item overlap between cohorts declared disjoint
-\item contradictory attestations for one evidence block
-\item supplied evidence blocks without source lineage
-\end{itemize}
+The package-integrity layer evaluates relations that cannot be reduced to the presence of individual fields. Let $M$ contain the profile identity, content-addressed artifact records, derivation edges, block-to-artifact lineage, evidence attestations, and declared independence relations. Its integrity deficit set $I_{\Pi}(M,B)$ covers the eight conditions in Table~\ref{tab:integrity-threat-model}. The taxonomy protects contract identity, artifact content, provenance closure, derivation order, declared independence, attestation coherence, and evidence traceability. These assets follow established concerns in secure provenance, assurance cases, and the avoidance of pseudoreplication \citep{hasan2009provenance,mohamad2021assurance,lazic2010pseudoreplication}.
+
+\input{tables/integrity_threat_model}
 The cycle check uses an iterative depth-first traversal, which avoids recursion limits for large packages. Independence is evaluated from both content identity and declared study or data-generation identity. These checks establish internal package consistency under the declared metadata. They do not prove that a source is trustworthy or that two laboratories are scientifically independent.
 
 Final authorization requires both a complete scientific contract and an integrity-clean package:
@@ -69,11 +62,11 @@ A^{*}_{\Pi}(c,B,M)=A_{\Pi}(c,B)\prod_{i\in I_{\Pi}(M,B)}\mathbb{1}[i\text{ absen
 \end{equation}
 No control can compensate for another. The final explanation contains the profile, evaluated claim, authorization decision, scientific deficits, and integrity deficits. Every reported deficit retains its corresponding witness.
 
-\subsection{Independent execution, formal properties, and release control}
+\subsection{Independent execution, property-based checks, and release control}
 \label{subsec:execution-release}
 
-The authorization semantics are implemented through three execution paths. The primary Python engine evaluates the complete profile and preserves detailed source observations. A separately implemented \ac{asp} program evaluates claim status and deficits for a conformance subset. The \ac{shacl} path evaluates the graph representation with an external standards engine. These paths share the profile specification but not the same inference code. Agreement therefore detects a broader class of implementation errors than repeated calls to one function.
+The authorization semantics are implemented through three execution paths with deliberately different scopes. The primary Python engine executes source predicates, observation admissibility, domain authorization, hashes, lineage, cycle detection, dependence declarations, and detailed explanations. The external \ac{shacl} path evaluates the structural contract encoded in the \ac{rdf} graph, including mandatory blocks, statuses, and observations, but does not execute source predicates or relational integrity checks. A separately implemented \ac{asp} program evaluates authorization status and deficits for a deterministic conformance subset. The paths share the profile specification but not the same inference code. Their agreement is therefore evidence of implementation consistency only on their declared comparison sets.
 
-The verification contract contains six profile-relative properties. Soundness requires every authorized claim to have all required admissible blocks. Completeness requires every package with all required admissible blocks to be authorized. Deficit identity requires the reported set to equal the set defined in Eq.~\ref{eq:scientific-deficits}. Monotonic degradation requires replacing a passed block with a failed block to preserve or enlarge the deficit set and never create authorization. Decisions must also be invariant to evidence input order and irrelevant unprofiled blocks. Finally, claims outside $C$ must remain outside the authorization boundary. These are logical properties of $\Pi$, not statements about biological truth.
+The property-check contract contains six profile-relative properties. Soundness requires every authorized claim to have all required admissible blocks. Completeness requires every package with all required admissible blocks to be authorized. Deficit identity requires the reported set to equal the set defined in Eq.~\ref{eq:scientific-deficits}. Monotonic degradation requires replacing a passed block with a failed block to preserve or enlarge the deficit set and never create authorization. Decisions must also be invariant to evidence input order and irrelevant unprofiled blocks. Outside-profile closure is checked separately by requiring every claim outside $C$ to remain outside the authorization boundary. These are formalized properties tested over generated packages, not an exhaustive proof over arbitrary profiles and not statements about biological truth.
 
 Release artifacts record protocol hashes, profile hashes, source revisions, exact public asset identifiers, and official data hashes. A release is rejected when a required artifact is absent, any source revision ends in \texttt{-dirty}, an expected benchmark decision changes, or a broad prohibited claim becomes true. The release gate therefore checks reproducibility and scope together. It cannot guarantee journal acceptance, profile consensus, or human usefulness of an explanation.

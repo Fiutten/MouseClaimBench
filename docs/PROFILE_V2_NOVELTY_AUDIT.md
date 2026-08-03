@@ -84,7 +84,9 @@ and not a claim of universal priority.
 - Independent ASP matches all 262 selected conformance cases.
 - External pySHACL matches all 5,497 structural cases and therefore acts as a
   meaningful negative baseline for structural novelty.
-- Six formal properties hold in 55,031 frozen checks over 10,000 packages.
+- Six formalized properties and outside-profile closure show no violation in
+  55,031 deterministic checks over 10,000 generated packages. This is
+  property-based verification, not an exhaustive proof over arbitrary profiles.
 - The complete gate blocks all 360 controlled attacked packages. The
   profile-only and hash-only baselines falsely authorize 360 and 280.
 - Removing any one of eight integrity controls reintroduces exactly 10 false

@@ -1,0 +1,21 @@
+\begin{table}[t!]
+\centering
+\caption{Declared integrity threat model. Each deterministic attack changes one protected package invariant. Coverage is complete for single attacks and their pairwise combinations, but does not represent attack prevalence or adaptive adversaries.}
+\label{tab:integrity-threat-model}
+\scriptsize
+\renewcommand{\arraystretch}{1.06}
+\begin{tabularx}{\textwidth}{@{}P{0.27\textwidth}P{0.20\textwidth}Y@{}}
+\toprule
+Attack & Protected asset & Violated invariant \\
+\midrule
+Profile-version substitution & Authorization contract & Identifier, version, and profile hash must match \\
+Artifact-hash tampering & Source content & Declared and observed content identities must agree \\
+Dangling provenance reference & Derivation graph & Every referenced artifact must resolve \\
+Circular provenance & Derivation graph & Artifact derivation must be acyclic \\
+Duplicate independent artifact & Independence declaration & Independent evidence cannot share content and generation identity \\
+Overlapping independent cohorts & Inferential units & Cohorts declared disjoint cannot share subjects \\
+Contradictory attestation & Evidence status & One block cannot have incompatible source attestations \\
+Missing block lineage & Evidence trace & Every supplied block must resolve to at least one source artifact \\
+\bottomrule
+\end{tabularx}
+\end{table}

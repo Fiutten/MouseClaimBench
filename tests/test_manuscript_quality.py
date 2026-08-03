@@ -1,7 +1,12 @@
+import csv
 import re
+from collections import Counter
 from pathlib import Path
 
-from mousebrainbench.knowledge import load_authorization_profile_v2_basis
+from mousebrainbench.knowledge import (
+    load_authorization_profile_v2,
+    load_authorization_profile_v2_basis,
+)
 from scripts.build_elsevier_submission import _resolve_tex_dependencies
 
 ROOT = Path(__file__).parents[1]
@@ -103,6 +108,73 @@ def test_submission_declarations_and_title_are_present() -> None:
     assert "CRediT Authorship Contribution Statement" in main
     assert "Data and Code Availability" in main
     assert "Declaration of Generative AI and AI-Assisted Technologies" in main
+
+
+def test_engine_scope_and_property_claims_are_calibrated() -> None:
+    abstract = (ROOT / "sections" / "abstract.tex").read_text(encoding="utf-8")
+    manuscript = "\n".join(
+        path.read_text(encoding="utf-8") for path in MANUSCRIPT_PATHS
+    )
+    assert (
+        "Python and \\ac{shacl} agree on all 5,497 structural contract cases, "
+        "while an independently implemented \\ac{asp} path agrees on a "
+        "deterministically selected subset of 262 cases."
+    ) in abstract
+    assert "Three independent execution paths agree on all 5,497" not in manuscript
+    assert "formal verification results" not in manuscript.lower()
+    assert "The evaluation addresses five questions." in manuscript
+    assert "under the declared deterministic threat model" in manuscript.lower()
+
+
+def test_claim_table_is_complete_and_case_counts_match_artifact() -> None:
+    profile = load_authorization_profile_v2()
+    table = (ROOT / "tables" / "profile_v2_claims.tex").read_text(encoding="utf-8")
+    labels = (
+        "Bounded predictive performance",
+        "Clean computational reproduction",
+        "Within-resource reproduction",
+        "Independent-study replication",
+        "Topology-specific prediction",
+        "Assumption-conditional direction",
+        "Local observational structure--function association",
+        "Intervention-supported effect",
+        "Directed topology-consistent prediction",
+        "Complete entity-specific mouse-brain digital twin",
+    )
+    with (ROOT / "results/profile_v2_contract_mutation/cases.csv").open(
+        encoding="utf-8", newline=""
+    ) as handle:
+        counts = Counter(row["claim"] for row in csv.DictReader(handle))
+
+    assert len(profile.requirements) == len(labels) == 10
+    assert sum(len(row.required_blocks) for row in profile.requirements) == 60
+    assert sum(counts.values()) == 5_497
+    for index, (requirement, label) in enumerate(
+        zip(profile.requirements, labels, strict=True), start=1
+    ):
+        expected = (
+            f"C{index} & {label} & {len(requirement.required_blocks)} & "
+            f"{counts[requirement.claim]:,}"
+        )
+        assert expected in table
+
+
+def test_integrity_threat_table_covers_all_eight_attacks() -> None:
+    table = (ROOT / "tables" / "integrity_threat_model.tex").read_text(
+        encoding="utf-8"
+    )
+    attacks = (
+        "Profile-version substitution",
+        "Artifact-hash tampering",
+        "Dangling provenance reference",
+        "Circular provenance",
+        "Duplicate independent artifact",
+        "Overlapping independent cohorts",
+        "Contradictory attestation",
+        "Missing block lineage",
+    )
+    assert all(attack in table for attack in attacks)
+    assert "adaptive adversaries" in table
 
 
 def test_every_used_acronym_is_defined() -> None:

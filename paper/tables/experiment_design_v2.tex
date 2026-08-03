@@ -4,11 +4,11 @@
 \label{tab:experiment-design-v2}
 \footnotesize
 \renewcommand{\arraystretch}{1.10}
-\begin{tabularx}{\textwidth}{@{}p{0.06\textwidth}p{0.25\textwidth}p{0.29\textwidth}Y@{}}
+\begin{tabularx}{\textwidth}{@{}P{0.06\textwidth}P{0.25\textwidth}P{0.29\textwidth}Y@{}}
 \toprule
 ID & Question & Evidence unit & Maximum interpretation \\
 \midrule
-E1 & Are authorization and deficits implemented exactly? & 5,497 contract mutations, 10,000 random packages, Python, \ac{asp}, and \ac{shacl} & Profile-relative semantic and structural conformance \\
+E1 & Are authorization and deficits implemented exactly? & 5,497 Python/\ac{shacl} cases, 262 \ac{asp} cases, and 10,000 random packages & Profile-relative semantic and structural conformance \\
 E2 & Does integrity block declared package attacks? & 10 pristine and 360 attacked packages with exact witnesses & Resistance to the fixed non-adaptive threat model \\
 E3 & Is the implementation usable at larger scale? & Up to 10,000 packages and 5,000 artifacts per package & Descriptive performance on one host \\
 E4 & Does the profile preserve bounded mouse-brain interpretations? & Five target claims, five strict twin claims, and dependence-aware \ac{microns} inference & Artifact-grounded authorization under profile v2 \\

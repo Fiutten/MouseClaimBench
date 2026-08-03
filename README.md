@@ -1,6 +1,6 @@
 # MouseClaimBench
 
-MouseClaimBench is a standards-aware knowledge-based system for authorizing
+MouseClaimBench is an integrity-aware knowledge-based system for authorizing
 bounded scientific claims from computational mouse-brain evidence. It evaluates
 a versioned claim profile, typed evidence blocks, and their artifact lineage. It
 returns an authorization decision and every scientific or integrity deficit
@@ -40,7 +40,7 @@ The release gate verifies the following results from clean source revisions:
 |---|---|---|
 | Contract mutation | 5,497 cases, zero false authorizations or rejections, exact deficits | Profile-relative conformance |
 | Python/ASP/SHACL | Exact agreement on their declared comparison sets | Cross-engine implementation equivalence |
-| Formal properties | 55,031 checks over 10,000 packages, zero violations | Six properties relative to profile v2 |
+| Formalized properties | 55,031 deterministic checks over 10,000 packages, zero violations | Six properties and outside closure relative to profile v2 |
 | Integrity attacks | 360 attacked packages, zero false authorizations with the full gate | Resistance to the declared controlled attacks |
 | Integrity ablation | Removing any one control creates 10 false authorizations | Necessity under the declared attack construction |
 | Scalability | About 63,500--65,500 package decisions per second on one Apple arm64 host | Descriptive local performance only |
@@ -68,9 +68,10 @@ candidate contribution is the evaluated combination of:
 - admissibility checks for the observations behind every passing block
 - complete multi-deficit traces linked to exact source artifacts
 - relational integrity checks over provenance and declared independence
-- independent Python, ASP, and SHACL execution paths
-- controlled attacks, component ablations, and formal property checks
-- prospectively frozen positive and negative external applications
+- exact Python and SHACL execution on 5,497 structural cases, with an
+  independent ASP path on a deterministic 262-case subset
+- controlled attacks, component ablations, and deterministic property checks
+- pre-access frozen positive and negative external applications
 
 The scoped novelty audit found no inspected work with this exact evaluated
 combination. This supports differentiation and does not establish universal

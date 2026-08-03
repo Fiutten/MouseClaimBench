@@ -16,6 +16,7 @@ data/
 mousebrainbench/data/**/__pycache__/
 outputs/
 /output/
+tmp/
 runs/
 *.aux
 *.bbl

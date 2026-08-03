@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the four data-driven figures for the standards/prospective paper."""
+"""Build the five data-driven figures for the standards/prospective paper."""
 
 from __future__ import annotations
 
@@ -11,7 +11,10 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
+from matplotlib.colors import ListedColormap
 from matplotlib.patches import FancyBboxPatch
+
+from mousebrainbench.knowledge import load_authorization_profile_v2
 
 ROOT = Path(__file__).resolve().parents[1]
 FIGURES = ROOT / "figures"
@@ -127,6 +130,50 @@ def workflow() -> None:
         fontsize=10.5,
     )
     _save(fig, "standards_workflow")
+
+
+def claim_evidence_matrix() -> None:
+    """Render every direct claim-to-evidence relation in profile v2."""
+
+    profile = load_authorization_profile_v2()
+    block_names = [block.name for block in profile.evidence_blocks]
+    matrix = np.zeros((len(block_names), len(profile.requirements)), dtype=int)
+    block_index = {name: index for index, name in enumerate(block_names)}
+    for claim_index, requirement in enumerate(profile.requirements):
+        for block_name in requirement.required_blocks:
+            matrix[block_index[block_name], claim_index] = 1
+
+    labels = [name.replace("_", " ") for name in block_names]
+    fig, ax = plt.subplots(figsize=(8.8, 7.2))
+    ax.imshow(
+        matrix,
+        cmap=ListedColormap(["#f7f9fa", BLUE]),
+        vmin=0,
+        vmax=1,
+        aspect="auto",
+        interpolation="none",
+    )
+    ax.set_xticks(np.arange(len(profile.requirements)), [f"C{i}" for i in range(1, 11)])
+    ax.set_yticks(np.arange(len(labels)), labels)
+    ax.xaxis.tick_top()
+    ax.xaxis.set_label_position("top")
+    ax.set_xlabel("Claim type")
+    ax.set_ylabel("Evidence block")
+    ax.set_xticks(np.arange(-0.5, len(profile.requirements), 1), minor=True)
+    ax.set_yticks(np.arange(-0.5, len(block_names), 1), minor=True)
+    ax.grid(which="minor", color="white", linewidth=1.0)
+    ax.tick_params(which="minor", bottom=False, left=False)
+    ax.tick_params(axis="y", labelsize=8.4)
+    ax.tick_params(axis="x", length=0, pad=6)
+    ax.spines[:].set_visible(False)
+    ax.set_title(
+        "Profile v2 contains 60 direct claim-to-evidence requirements",
+        loc="left",
+        pad=30,
+        color=INK,
+        weight="bold",
+    )
+    _save(fig, "claim_evidence_matrix_v2")
 
 
 def integrity_ablation() -> None:
@@ -277,6 +324,7 @@ def prospective_applications() -> None:
 def main() -> None:
     _style()
     workflow()
+    claim_evidence_matrix()
     integrity_ablation()
     scalability()
     prospective_applications()

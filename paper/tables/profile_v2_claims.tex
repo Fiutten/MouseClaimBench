@@ -1,19 +1,25 @@
 \begin{table}[t!]
 \centering
-\caption{Claim families in profile v2 and their decisive evidence. Every row also requires the context and quality fields declared by the profile.}
+\caption{The 10 exact claim types in profile v2. Required-block counts sum to the 60 claim--evidence relations. Contract cases are generated independently for each claim and sum to 5,497.}
 \label{tab:profile-v2-claims}
 \footnotesize
 \renewcommand{\arraystretch}{1.08}
-\begin{tabularx}{\textwidth}{@{}p{0.25\textwidth}p{0.13\textwidth}Y@{}}
+\begin{tabularx}{\textwidth}{@{}p{0.08\textwidth}Y r r@{}}
 \toprule
-Claim family & Required blocks & Decisive evidence \\
+Code & Claim type & Blocks & Cases \\
 \midrule
-Bounded prediction and clean computation & 3 and 1 & Held-out target, split, metric, comparator, and clean revision \\
-Within-resource and external reproduction & 2 and 3 & Non-overlapping units, then an independent study or resource \\
-Topology and direction & 5 and 4 & Prespecified topology controls and assumption-conditional direction test \\
-Local structure--function and intervention & 6 and 5 & Matched association with dependence control, or a declared intervention \\
-Directed topology-consistent prediction & 10 & Prediction, topology, direction, uncertainty, shift, alternatives, and robustness \\
-Complete entity-specific digital twin & 21 & All previous dimensions plus causality, whole-brain coverage, entity specificity, operational update, and multiscale fidelity \\
+C1 & Bounded predictive performance & 3 & 83 \\
+C2 & Clean computational reproduction & 1 & 10 \\
+C3 & Within-resource reproduction & 2 & 40 \\
+C4 & Independent-study replication & 3 & 81 \\
+C5 & Topology-specific prediction & 5 & 215 \\
+C6 & Assumption-conditional direction & 4 & 138 \\
+C7 & Local observational structure--function association & 6 & 303 \\
+C8 & Intervention-supported effect & 5 & 213 \\
+C9 & Directed topology-consistent prediction & 10 & 830 \\
+C10 & Complete entity-specific mouse-brain digital twin & 21 & 3,584 \\
+\midrule
+Total & & 60 & 5,497 \\
 \bottomrule
 \end{tabularx}
 \end{table}
