@@ -1,4 +1,6 @@
-from scripts.build_elsevier_submission import run
+import pytest
+
+from scripts.build_elsevier_submission import _assert_unique_basenames, run
 
 
 def test_elsevier_bundle_is_flat_and_rewrites_authoring_paths(tmp_path) -> None:
@@ -12,5 +14,22 @@ def test_elsevier_bundle_is_flat_and_rewrites_authoring_paths(tmp_path) -> None:
     assert (output / "elsarticle-num.bst").exists()
     assert (output / "highlights.txt").exists()
     assert (output / "standards_workflow.pdf").exists()
+    assert (output / "integrity_ablation_v2.tex").exists()
+    assert (output / "integrity_ablation_v2_figure.tex").exists()
+    assert "fig:integrity-ablation-v2" in (
+        output / "integrity_ablation_v2_figure.tex"
+    ).read_text()
     assert not (output / "claimbench_workflow.png").exists()
     assert (output / "manifest.json").exists()
+
+
+def test_elsevier_bundle_rejects_duplicate_flat_names(tmp_path) -> None:
+    first = tmp_path / "figures" / "duplicate.tex"
+    second = tmp_path / "tables" / "duplicate.tex"
+    first.parent.mkdir()
+    second.parent.mkdir()
+    first.write_text("figure")
+    second.write_text("table")
+
+    with pytest.raises(ValueError, match="dependency collision"):
+        _assert_unique_basenames([first, second])

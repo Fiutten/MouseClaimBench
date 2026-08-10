@@ -58,6 +58,20 @@ def _resolve_tex_dependencies(entrypoint: Path) -> tuple[list[Path], list[Path]]
     return sorted(tex_sources), sorted(set(graphics))
 
 
+def _assert_unique_basenames(paths: list[Path]) -> None:
+    """Reject flat bundles that would silently overwrite a dependency."""
+
+    owner_by_name: dict[str, Path] = {}
+    for path in paths:
+        owner = owner_by_name.get(path.name)
+        if owner is not None and owner.resolve() != path.resolve():
+            raise ValueError(
+                "Flat submission dependency collision for "
+                f"{path.name}: {owner} and {path}"
+            )
+        owner_by_name[path.name] = path
+
+
 def run(output: Path = DEFAULT_OUTPUT) -> Path:
     """Create a flat source tree and a checksum manifest."""
 
@@ -66,6 +80,7 @@ def run(output: Path = DEFAULT_OUTPUT) -> Path:
     output.mkdir(parents=True)
 
     tex_sources, graphics = _resolve_tex_dependencies(ROOT / "main.tex")
+    _assert_unique_basenames([*tex_sources, *graphics])
     for source in tex_sources:
         (output / source.name).write_text(_flatten_tex(source.read_text()))
 

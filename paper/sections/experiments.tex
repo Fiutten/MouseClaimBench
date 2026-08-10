@@ -50,7 +50,7 @@ The 10,000 deterministic random packages produce 55,031 property checks with no 
 
 Under the declared deterministic threat model, the complete gate detects the exact attack set in all 370 packages. It produces no false rejection on the 10 pristine packages and no false authorization on the 360 attacked packages. The core profile does not inspect package integrity and therefore authorizes all 360 attacked packages. Hash checking alone blocks content tampering but authorizes 280 packages affected by profile substitution, broken or cyclic lineage, false independence, cohort overlap, contradictory attestations, or missing block provenance.
 
-\input{figures/integrity_ablation_v2}
+\input{figures/integrity_ablation_v2_figure}
 
 The leave-one-out result is uniform and informative. Removing any one of the eight controls creates 10 false authorizations, corresponding to the single-attack package for that omitted control in each claim. Pairwise attacks containing another enabled control remain blocked. Table~\ref{tab:integrity-ablation-v2} gives the exact values, while Fig.~\ref{fig:integrity-ablation-v2} shows the contrast between incomplete baselines and the full system. The result demonstrates necessity under the declared attack construction. It does not imply that the eight controls are sufficient for every real provenance threat.
 
