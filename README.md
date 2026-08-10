@@ -99,7 +99,20 @@ Create an isolated environment from the pinned requirements:
 python3 -m venv .venv-risk-v3
 .venv-risk-v3/bin/python -m pip install --upgrade pip
 .venv-risk-v3/bin/python -m pip install -r requirements-semantic-risk-v3-lock.txt
+.venv-risk-v3/bin/python -m pip install -r requirements-standards-lock.txt
 .venv-risk-v3/bin/python -m pip install -e .
+```
+
+Both lock files are required by the release verification. The standards lock
+provides the RDF/SHACL and property-based testing dependencies used by the
+profile-v2 standards and formal-property tests.
+
+The complete historical test suite also covers optional causal-direction
+experiments. Install their declared extra before running all tests:
+
+```bash
+.venv-risk-v3/bin/python -m pip install -e '.[hybrid-validation]'
+.venv-risk-v3/bin/python -m pytest -q
 ```
 
 Verify the frozen release from a clean checkout:
