@@ -1,6 +1,6 @@
 {
-  "version": "0.11.0",
-  "git_revision": "8d80861495efd7d318d097e65e6611ca2d918288",
+  "version": "0.11.1",
+  "git_revision": "4fa593be5fb923796357a704dbb2fc958ee6d867",
   "analysis": "dandi_threshold_sensitivity",
   "protocol": "configs/benchmarks/dandi_threshold_sensitivity.yaml",
   "protocol_sha256": "d81471fc459229c149710a3b2beb92e558ea0eead89ce756e32500e4f0e02933",

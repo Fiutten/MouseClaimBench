@@ -1,6 +1,6 @@
 {
-  "version": "0.11.0",
-  "git_revision": "8d80861495efd7d318d097e65e6611ca2d918288",
+  "version": "0.11.1",
+  "git_revision": "4fa593be5fb923796357a704dbb2fc958ee6d867",
   "analysis": "profile_v2_one_edge_structural_policy_perturbation",
   "protocol": "configs/benchmarks/profile_v2_structural_sensitivity.yaml",
   "protocol_sha256": "b3fec3477a7e37a6fe78fdf8c0d42430cdc470499a93e86d87a02592071eb8fe",

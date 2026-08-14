@@ -1,11 +1,11 @@
 {
-  "version": "0.11.0",
-  "git_revision": "8d80861495efd7d318d097e65e6611ca2d918288",
+  "version": "0.11.1",
+  "git_revision": "4fa593be5fb923796357a704dbb2fc958ee6d867",
   "analysis": "standards_prospective_release",
   "protocol": "configs/benchmarks/standards_prospective_release.yaml",
   "protocol_sha256": "12f11fa9e2aa00373b03f0eac816dd02a1f6f18263bb08e5c833e409ce592db5",
   "artifact_revisions": {
-    "contract_mutation": "8d80861495efd7d318d097e65e6611ca2d918288",
+    "contract_mutation": "4fa593be5fb923796357a704dbb2fc958ee6d867",
     "standards": "2c9ac4f",
     "formal_properties": "1e9b965",
     "provenance_attacks": "435b8e8",

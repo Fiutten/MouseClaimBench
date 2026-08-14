@@ -1,13 +1,13 @@
 {
-  "version": "0.11.0",
-  "git_revision": "8d80861495efd7d318d097e65e6611ca2d918288",
+  "version": "0.11.1",
+  "git_revision": "4fa593be5fb923796357a704dbb2fc958ee6d867",
   "analysis": "profile_v2_second_review_release",
   "protocol": "configs/benchmarks/profile_v2_second_review_release.yaml",
   "protocol_sha256": "e3c65fbf406c75bb7043e25d9eec182368b0f835d8671299dbda65996c39ee1f",
   "artifact_revisions": {
-    "major_revision": "8d80861495efd7d318d097e65e6611ca2d918288",
-    "contract_mutation": "8d80861495efd7d318d097e65e6611ca2d918288",
-    "dandi_threshold_sensitivity": "8d80861495efd7d318d097e65e6611ca2d918288"
+    "major_revision": "4fa593be5fb923796357a704dbb2fc958ee6d867",
+    "contract_mutation": "4fa593be5fb923796357a704dbb2fc958ee6d867",
+    "dandi_threshold_sensitivity": "4fa593be5fb923796357a704dbb2fc958ee6d867"
   },
   "conditions": {
     "major_revision_release_preserved": true,
