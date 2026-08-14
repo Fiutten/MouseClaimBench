@@ -40,7 +40,9 @@ EXPECTED = {
 def _generate(
     regime: str, n: int, scale: float, rng: np.random.Generator
 ) -> tuple[np.ndarray, np.ndarray]:
-    normal = lambda: rng.normal(0.0, scale, size=n)
+    def normal() -> np.ndarray:
+        return rng.normal(0.0, scale, size=n)
+
     if regime == "independent_beta_exponential":
         return rng.beta(2.0, 5.0, size=n), rng.exponential(size=n)
     if regime == "independent_bimodal_lognormal":

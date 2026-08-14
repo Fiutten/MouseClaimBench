@@ -18,12 +18,16 @@ where $C$ is the claim vocabulary, $E$ is the evidence-block vocabulary, $Q(c)\s
 \input{tables/profile_v2_claims}
 \input{figures/claim_evidence_matrix_v2}
 
+The profile content follows a recorded acquisition procedure rather than being inferred from the conformance benchmark. The procedure first defines bounded claim wording and prohibited promotions. It then identifies distinct evidence functions from methodological and mouse-brain sources, records scope and exceptions, resolves the internal adversarial audit, and verifies exact executable and bibliographic coverage. The machine-readable basis contains one stable record and one claim-specific necessity rationale for each of the 60 direct relations. It also retains the status \emph{source-grounded author requirement} and \emph{not independently validated} for every relation. The source identifiers justify the methodological function of an evidence block. They are not represented as having prescribed the complete profile.
+
+Predicate ownership is recorded separately from claim authorization. Each of the 22 predicate contracts states whether an upstream source adapter, a release adapter, or the authorization adapter evaluates the scientific or operational rule. The contracts expose 124 required observation slots. Source adapters calculate endpoint-specific statuses and preserve the rule, rationale, observations, and artifact identity. The core authorization engine consumes those attestations, checks their schema and provenance admissibility, and applies $Q(c)$. It does not impose one universal numerical threshold across prediction, topology, intervention, anatomical coverage, and reproducibility.
+
 An evidence block is
 \begin{equation}
 b_e=\langle e,s,x,\phi,r,a\rangle,
 \label{eq:evidence-block-v2}
 \end{equation}
-where $s$ is its source artifact, $x$ preserves the original-scale observations, $\phi$ is the executed source predicate, $r$ is its rationale, and $a\in\{P,F,U,N,J\}$ denotes passed, failed, unknown, not targeted, or requires review. The engine does not normalize correlation, matched-pair differences, software revisions, interventions, and anatomical coverage into a shared numerical scale.
+where $s$ is its source artifact, $x$ preserves the original-scale observations, $\phi$ is the predicate executed by the declared source adapter, $r$ is its rationale, and $a\in\{P,F,U,N,J\}$ denotes passed, failed, unknown, not targeted, or requires review. The authorization engine validates the attested predicate record rather than recomputing every source analysis. It does not normalize correlation, matched-pair differences, software revisions, interventions, and anatomical coverage into a shared numerical scale.
 
 A declared pass is admissible only when the block also contains its mandatory observation fields:
 \begin{equation}
@@ -41,7 +45,15 @@ where an absent block is materialized as unknown. Core authorization is non-comp
 A_{\Pi}(c,B)=\mathbb{1}[c\in C]\mathbb{1}[\Delta_{\Pi}(c,B)=\varnothing].
 \label{eq:core-authorization}
 \end{equation}
-The engine reports every member of $\Delta_{\Pi}$ with declared and effective states, source, predicate, rationale, observations, and missing fields. It does not select one prioritized explanation or calculate a paper-level score.
+The engine reports every member of $\Delta_{\Pi}$ with declared and effective states, source, predicate, rationale, observations, and missing fields. It does not select one prioritized explanation or calculate a paper-level score. Let $T_R(B)$ replace exactly the blocks in a reported repair set $R$ with admissible passing attestations. A complete deficit explanation is counterfactually sufficient and individually necessary when
+\begin{equation}
+A_{\Pi}(c,T_{\Delta_{\Pi}}(B))=1
+\quad\land\quad
+\forall e\in\Delta_{\Pi},\quad
+A_{\Pi}(c,T_{\Delta_{\Pi}\setminus\{e\}}(B))=0.
+\label{eq:counterfactual-explanation}
+\end{equation}
+This property establishes fidelity to the non-compensatory profile. It does not establish that a human reviewer finds the explanation useful.
 
 \subsection{Standards representation and package integrity}
 \label{subsec:standards-integrity}
@@ -65,7 +77,7 @@ No control can compensate for another. The final explanation contains the profil
 \subsection{Independent execution, property-based checks, and release control}
 \label{subsec:execution-release}
 
-The authorization semantics are implemented through three execution paths with deliberately different scopes. The primary Python engine executes source predicates, observation admissibility, domain authorization, hashes, lineage, cycle detection, dependence declarations, and detailed explanations. The external \ac{shacl} path evaluates the structural contract encoded in the \ac{rdf} graph, including mandatory blocks, statuses, and observations, but does not execute source predicates or relational integrity checks. A separately implemented \ac{asp} program evaluates authorization status and deficits for a deterministic conformance subset. The paths share the profile specification but not the same inference code. Their agreement is therefore evidence of implementation consistency only on their declared comparison sets.
+The authorization semantics are implemented through three execution paths with deliberately different scopes. Source-specific Python adapters execute the scientific predicates and construct attested evidence blocks. The primary authorization engine evaluates observation admissibility, domain requirements, hashes, lineage, cycle detection, dependence declarations, and detailed explanations. The external \ac{shacl} path evaluates the structural contract encoded in the \ac{rdf} graph, including mandatory blocks, statuses, and observations, but does not recompute source predicates or relational integrity checks. A separately implemented \ac{asp} program evaluates authorization status and deficits for a deterministic conformance subset. The paths share the profile specification but not the same inference code. Their agreement is therefore evidence of implementation consistency only on their declared comparison sets.
 
 The property-check contract contains six profile-relative properties. Soundness requires every authorized claim to have all required admissible blocks. Completeness requires every package with all required admissible blocks to be authorized. Deficit identity requires the reported set to equal the set defined in Eq.~\ref{eq:scientific-deficits}. Monotonic degradation requires replacing a passed block with a failed block to preserve or enlarge the deficit set and never create authorization. Decisions must also be invariant to evidence input order and irrelevant unprofiled blocks. Outside-profile closure is checked separately by requiring every claim outside $C$ to remain outside the authorization boundary. These are formalized properties tested over generated packages, not an exhaustive proof over arbitrary profiles and not statements about biological truth.
 

@@ -1,0 +1,106 @@
+{
+  "version": "0.10.0",
+  "git_revision": "373de377f679cca61ca238fbfc859f74e5680e69",
+  "analysis": "profile_v2_counterfactual_explanation_fidelity",
+  "protocol": "configs/benchmarks/profile_v2_explanation_fidelity.yaml",
+  "protocol_sha256": "7619c396c2230e11549be4c04a6eebb2fcae1db1c174439040f6c75511a6a340",
+  "random_packages": 10000,
+  "non_authorized_packages": 9839,
+  "repair_sufficiency_checks": 9839,
+  "repair_sufficiency_violations": 0,
+  "repair_minimality_checks": 51480,
+  "repair_minimality_violations": 0,
+  "witness_checks": 51480,
+  "witness_violations": 0,
+  "pristine_degradation_checks": 60,
+  "pristine_degradation_violations": 0,
+  "multi_deficit_packages": 8632,
+  "reported_deficits_in_multi_deficit_packages": 50273,
+  "deficits_hidden_by_single_reason_trace": 41641,
+  "per_claim": [
+    {
+      "claim": "bounded_predictive_performance",
+      "packages": 1000,
+      "non_authorized": 999,
+      "multi_deficit": 960,
+      "reported_deficits": 2593,
+      "single_reason_hidden_deficits": 1633
+    },
+    {
+      "claim": "clean_computational_reproduction",
+      "packages": 1000,
+      "non_authorized": 866,
+      "multi_deficit": 0,
+      "reported_deficits": 0,
+      "single_reason_hidden_deficits": 0
+    },
+    {
+      "claim": "within_resource_reproduction",
+      "packages": 1000,
+      "non_authorized": 977,
+      "multi_deficit": 736,
+      "reported_deficits": 1472,
+      "single_reason_hidden_deficits": 736
+    },
+    {
+      "claim": "independent_study_replication",
+      "packages": 1000,
+      "non_authorized": 997,
+      "multi_deficit": 943,
+      "reported_deficits": 2508,
+      "single_reason_hidden_deficits": 1565
+    },
+    {
+      "claim": "topology_specific_prediction",
+      "packages": 1000,
+      "non_authorized": 1000,
+      "multi_deficit": 999,
+      "reported_deficits": 4282,
+      "single_reason_hidden_deficits": 3283
+    },
+    {
+      "claim": "assumption_conditional_direction",
+      "packages": 1000,
+      "non_authorized": 1000,
+      "multi_deficit": 995,
+      "reported_deficits": 3437,
+      "single_reason_hidden_deficits": 2442
+    },
+    {
+      "claim": "local_observational_structure_function_association",
+      "packages": 1000,
+      "non_authorized": 1000,
+      "multi_deficit": 1000,
+      "reported_deficits": 5131,
+      "single_reason_hidden_deficits": 4131
+    },
+    {
+      "claim": "intervention_supported_effect",
+      "packages": 1000,
+      "non_authorized": 1000,
+      "multi_deficit": 999,
+      "reported_deficits": 4288,
+      "single_reason_hidden_deficits": 3289
+    },
+    {
+      "claim": "directed_topology_consistent_prediction",
+      "packages": 1000,
+      "non_authorized": 1000,
+      "multi_deficit": 1000,
+      "reported_deficits": 8592,
+      "single_reason_hidden_deficits": 7592
+    },
+    {
+      "claim": "complete_entity_specific_mouse_brain_digital_twin",
+      "packages": 1000,
+      "non_authorized": 1000,
+      "multi_deficit": 1000,
+      "reported_deficits": 17970,
+      "single_reason_hidden_deficits": 16970
+    }
+  ],
+  "complete_trace_information_gain": 5.82402687673772,
+  "all_explanation_properties_hold": true,
+  "claim_boundary": "These checks establish counterfactual fidelity, minimality, witness coverage, and information retention relative to profile v2. They do not establish that the profile is scientifically complete or that human reviewers find the explanations clearer, faster, or more useful.",
+  "decision": "counterfactual_explanation_fidelity_confirmed"
+}

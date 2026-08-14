@@ -1,0 +1,43 @@
+{
+  "version": "0.10.0",
+  "git_revision": "373de377f679cca61ca238fbfc859f74e5680e69",
+  "analysis": "profile_v2_knowledge_traceability_audit",
+  "protocol": "configs/validation/profile_v2_traceability.yaml",
+  "protocol_sha256": "7fcd48e46661ea9b67fa6171d06ee9c884dcc6a65adb6f0c4aab0b6a793e3180",
+  "basis_sha256": "c7a5dbba19e0b757d22ffbd5e9c321725ea86ccc61dad21f9d557b9448d1f87f",
+  "profile_id": "mouse_brain_claim_authorization",
+  "profile_version": "2.0.0",
+  "profile_hash": "sha256:9bbde507f1f3bf74f0562e896b29ec440122b2eeec20b02d464617fc3e2e2354",
+  "claims": 10,
+  "evidence_blocks": 22,
+  "claim_to_evidence_relations": 60,
+  "claim_specific_justifications": 60,
+  "unique_necessity_rationales": 60,
+  "predicate_contracts": 22,
+  "required_observation_slots": 124,
+  "declared_source_ids": 20,
+  "unresolved_source_ids": [],
+  "predicate_execution_owners": {
+    "release_and_source_adapter": 1,
+    "source_and_authorization_adapter": 1,
+    "upstream_source_adapter": 20
+  },
+  "conditions": {
+    "acquisition_steps_complete": true,
+    "relations_exactly_cover_profile": true,
+    "justifications_exactly_cover_relations": true,
+    "relation_identifiers_unique": true,
+    "necessity_rationales_present": true,
+    "necessity_rationales_relation_specific": true,
+    "predicate_contracts_exactly_cover_blocks": true,
+    "predicate_identifiers_unique": true,
+    "predicate_execution_boundary_declared": true,
+    "all_sources_resolve_to_bibliography": true,
+    "external_consensus_not_claimed": true
+  },
+  "all_conditions_passed": true,
+  "independent_content_validity": false,
+  "human_validation": false,
+  "claim_boundary": "Passing this audit establishes complete machine-readable traceability of the author-defined profile and its upstream predicate interfaces. It does not establish independent content validity, completeness, consensus, biological truth, or improved human decisions.",
+  "decision": "profile_v2_traceability_complete_author_policy_only"
+}

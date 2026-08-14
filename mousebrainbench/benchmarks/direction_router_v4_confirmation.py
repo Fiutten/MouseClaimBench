@@ -39,7 +39,9 @@ EXPECTED = {
 def _generate(
     regime: str, n: int, noise_scale: float, rng: np.random.Generator
 ) -> tuple[np.ndarray, np.ndarray]:
-    noise = lambda: rng.normal(0.0, noise_scale, size=n)
+    def noise() -> np.ndarray:
+        return rng.normal(0.0, noise_scale, size=n)
+
     if regime == "independent_student_t":
         return rng.standard_t(4, size=n), rng.laplace(size=n)
     if regime == "independent_nonlinear_marginals":

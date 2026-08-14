@@ -1,0 +1,157 @@
+{
+  "version": "0.10.0",
+  "git_revision": "373de377f679cca61ca238fbfc859f74e5680e69",
+  "analysis": "profile_v2_compositional_integrity_stress",
+  "protocol": "configs/benchmarks/profile_v2_compositional_integrity_stress.yaml",
+  "protocol_sha256": "34aedbdc7628b13ca3a13cffe566fa1c7a894dc3b16f9314b1591adec9577e14",
+  "in_model_packages": 2560,
+  "in_model_attacked_packages": 2550,
+  "in_model_false_authorizations": 0,
+  "in_model_exact_traces": 2560,
+  "in_model_exact_trace_rate": 1.0,
+  "compositions_by_attack_order": {
+    "0": 10,
+    "1": 80,
+    "2": 280,
+    "3": 560,
+    "4": 700,
+    "5": 560,
+    "6": 280,
+    "7": 80,
+    "8": 10
+  },
+  "trust_boundary_negative_controls": 20,
+  "trust_boundary_authorizations": 20,
+  "trust_boundary_rows": [
+    {
+      "claim": "bounded_predictive_performance",
+      "negative_control": "coherent_content_and_hash_replacement",
+      "authorized": true,
+      "integrity_deficits": []
+    },
+    {
+      "claim": "bounded_predictive_performance",
+      "negative_control": "coherent_independence_metadata_forgery",
+      "authorized": true,
+      "integrity_deficits": []
+    },
+    {
+      "claim": "clean_computational_reproduction",
+      "negative_control": "coherent_content_and_hash_replacement",
+      "authorized": true,
+      "integrity_deficits": []
+    },
+    {
+      "claim": "clean_computational_reproduction",
+      "negative_control": "coherent_independence_metadata_forgery",
+      "authorized": true,
+      "integrity_deficits": []
+    },
+    {
+      "claim": "within_resource_reproduction",
+      "negative_control": "coherent_content_and_hash_replacement",
+      "authorized": true,
+      "integrity_deficits": []
+    },
+    {
+      "claim": "within_resource_reproduction",
+      "negative_control": "coherent_independence_metadata_forgery",
+      "authorized": true,
+      "integrity_deficits": []
+    },
+    {
+      "claim": "independent_study_replication",
+      "negative_control": "coherent_content_and_hash_replacement",
+      "authorized": true,
+      "integrity_deficits": []
+    },
+    {
+      "claim": "independent_study_replication",
+      "negative_control": "coherent_independence_metadata_forgery",
+      "authorized": true,
+      "integrity_deficits": []
+    },
+    {
+      "claim": "topology_specific_prediction",
+      "negative_control": "coherent_content_and_hash_replacement",
+      "authorized": true,
+      "integrity_deficits": []
+    },
+    {
+      "claim": "topology_specific_prediction",
+      "negative_control": "coherent_independence_metadata_forgery",
+      "authorized": true,
+      "integrity_deficits": []
+    },
+    {
+      "claim": "assumption_conditional_direction",
+      "negative_control": "coherent_content_and_hash_replacement",
+      "authorized": true,
+      "integrity_deficits": []
+    },
+    {
+      "claim": "assumption_conditional_direction",
+      "negative_control": "coherent_independence_metadata_forgery",
+      "authorized": true,
+      "integrity_deficits": []
+    },
+    {
+      "claim": "local_observational_structure_function_association",
+      "negative_control": "coherent_content_and_hash_replacement",
+      "authorized": true,
+      "integrity_deficits": []
+    },
+    {
+      "claim": "local_observational_structure_function_association",
+      "negative_control": "coherent_independence_metadata_forgery",
+      "authorized": true,
+      "integrity_deficits": []
+    },
+    {
+      "claim": "intervention_supported_effect",
+      "negative_control": "coherent_content_and_hash_replacement",
+      "authorized": true,
+      "integrity_deficits": []
+    },
+    {
+      "claim": "intervention_supported_effect",
+      "negative_control": "coherent_independence_metadata_forgery",
+      "authorized": true,
+      "integrity_deficits": []
+    },
+    {
+      "claim": "directed_topology_consistent_prediction",
+      "negative_control": "coherent_content_and_hash_replacement",
+      "authorized": true,
+      "integrity_deficits": []
+    },
+    {
+      "claim": "directed_topology_consistent_prediction",
+      "negative_control": "coherent_independence_metadata_forgery",
+      "authorized": true,
+      "integrity_deficits": []
+    },
+    {
+      "claim": "complete_entity_specific_mouse_brain_digital_twin",
+      "negative_control": "coherent_content_and_hash_replacement",
+      "authorized": true,
+      "integrity_deficits": []
+    },
+    {
+      "claim": "complete_entity_specific_mouse_brain_digital_twin",
+      "negative_control": "coherent_independence_metadata_forgery",
+      "authorized": true,
+      "integrity_deficits": []
+    }
+  ],
+  "endpoints": {
+    "all_in_model_packages_generated": true,
+    "no_false_authorization_for_declared_invariants": true,
+    "exact_trace_for_every_declared_composition": true,
+    "all_trust_boundary_controls_generated": true,
+    "coherent_forgery_controls_escape_without_external_anchor": true
+  },
+  "all_endpoints_passed": true,
+  "claim_boundary": "Exhaustive composition establishes detection and exact trace recovery only for the eight declared invariant families. The coherent-forgery controls are expected to escape because internally consistent content and metadata cannot be authenticated without trusted archives, signatures, or external identity evidence. This benchmark is not an adaptive security guarantee.",
+  "decision": "declared_compositions_confirmed_with_explicit_trust_boundary"
+}

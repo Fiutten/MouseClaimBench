@@ -1,0 +1,18 @@
+\begin{table}[t!]
+\centering
+\caption{Structural sensitivity on the fixed set of 14 artifact decisions. A flip-producing variant changes at least one authorization. Expansions count baseline refusals that become authorized after removing a requirement. Contractions count baseline authorizations withdrawn after adding one previously unrequired block. The variants diagnose policy dependence and are not candidate profiles selected for scientific correctness.}
+\label{tab:profile-sensitivity-v2}
+\footnotesize
+\renewcommand{\arraystretch}{1.10}
+\begin{tabularx}{\textwidth}{@{}P{0.20\textwidth}rrrrY@{}}
+\toprule
+Policy set & Variants & Runs & With flips & Flips & Interpretation \\
+\midrule
+Baseline profile & 1 & 14 & -- & 0 & Four bounded authorizations \\
+Remove one required relation & 60 & 840 & 1 & 1 expansion & Removing data quality authorizes the otherwise refused Dynamic Sensorium target \\
+Add one unrequired block & 160 & 2,240 & 52 & 71 contractions & Positive cases lose authorization when the added block lacks an admissible attestation \\
+\midrule
+Total & 221 & 3,094 & 53 & 72 & One-at-a-time structural policy envelope \\
+\bottomrule
+\end{tabularx}
+\end{table}

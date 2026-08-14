@@ -1,0 +1,42 @@
+{
+  "version": "0.10.0",
+  "git_revision": "373de377f679cca61ca238fbfc859f74e5680e69",
+  "analysis": "profile_v2_major_revision_release",
+  "protocol": "configs/benchmarks/profile_v2_major_revision_release.yaml",
+  "protocol_sha256": "8e9f3c6b50d3eb009d7892124abf6faa9e4d28d30f4fe185cb429493261d0855",
+  "artifact_revisions": {
+    "parent_submission": "f87d396",
+    "knowledge_traceability": "373de377f679cca61ca238fbfc859f74e5680e69",
+    "structural_sensitivity": "373de377f679cca61ca238fbfc859f74e5680e69",
+    "explanation_fidelity": "373de377f679cca61ca238fbfc859f74e5680e69",
+    "compositional_integrity": "373de377f679cca61ca238fbfc859f74e5680e69"
+  },
+  "conditions": {
+    "parent_submission_release_preserved": true,
+    "author_policy_traceability_complete": true,
+    "structural_profile_sensitivity_complete": true,
+    "counterfactual_explanations_faithful": true,
+    "declared_attack_compositions_complete": true,
+    "trust_boundary_escape_is_reported": true,
+    "new_artifact_revisions_clean": true,
+    "prohibited_claims_remain_false": true
+  },
+  "all_release_conditions_passed": true,
+  "claim_policy": {
+    "independent_content_validity": false,
+    "human_explanation_utility": false,
+    "universal_attack_robustness": false,
+    "optimal_or_consensus_profile": false,
+    "biological_truth": false,
+    "complete_mouse_brain_twin": false
+  },
+  "remaining_limits": [
+    "profile v2 remains author-defined and not independently content-validated",
+    "counterfactual fidelity does not establish human explanation utility",
+    "structural sensitivity exposes policy dependence but does not calibrate an optimal profile",
+    "coherent metadata or content forgery remains undetectable without an external trust anchor",
+    "mouse-brain applications retain their original local and resource-specific boundaries"
+  ],
+  "interpretation": "The revision adds complete author-policy traceability, policy-structure sensitivity, counterfactual explanation fidelity, and exhaustive composition of the declared integrity invariants with explicit escaping trust-boundary controls. It does not replace independent expert content validation or human evaluation and does not turn profile conformance into biological validation.",
+  "decision": "profile_v2_major_revision_release_complete"
+}

@@ -2,6 +2,33 @@
 
 Frozen release: `results/standards_prospective_release/summary.json`
 
+Major-revision response:
+`results/profile_v2_major_revision_release/summary.json`
+
+## Construct-validity response
+
+The original standards/prospective release remains unchanged. Version 0.10.0
+adds four bounded response artifacts generated from clean revision `373de37`:
+
+- complete author-policy traceability for 10 claims, 22 predicate contracts,
+  60 relation-specific rationales, 124 observation slots, and 20 bibliography IDs
+- structural sensitivity over 221 profiles and 3,094 fixed profile-case decisions
+- counterfactual explanation checks on 10,000 packages, including 9,839 full
+  repairs and 51,480 individual necessity and witness checks
+- all 2,550 non-empty compositions of the eight declared attacks, plus 20
+  coherent-forgery controls that intentionally expose the external-trust boundary
+
+Only one relation removal expands authorization: omitting `data_quality` from
+bounded prediction changes the Dynamic Sensorium target from refusal to
+authorization. Fifty-two one-block extensions produce 71 contractions. These
+results quantify dependence on policy structure. They do not select a preferred
+profile or establish independent content validity.
+
+All declared attack compositions are blocked with exact traces. All coherent
+content/hash and independence-metadata forgeries remain authorized because the
+package provides no external truth anchor. This is an explicit negative control,
+not a universal security claim.
+
 ## Release decision
 
 All 11 frozen release conditions pass. The release is classified as a bounded

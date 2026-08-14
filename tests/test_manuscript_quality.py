@@ -122,7 +122,7 @@ def test_engine_scope_and_property_claims_are_calibrated() -> None:
     ) in abstract
     assert "Three independent execution paths agree on all 5,497" not in manuscript
     assert "formal verification results" not in manuscript.lower()
-    assert "The evaluation addresses five questions." in manuscript
+    assert "The evaluation is organized into four evidence classes." in manuscript
     assert "under the declared deterministic threat model" in manuscript.lower()
 
 

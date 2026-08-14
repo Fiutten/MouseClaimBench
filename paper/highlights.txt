@@ -1,5 +1,5 @@
-A claim profile separates prediction, mechanism, causality, and digital twins.
-Python and SHACL agree on 5,497 cases, with ASP agreement on a 262-case subset.
-The full integrity gate blocks all 360 controlled evidence-package attacks.
-Removing any integrity control reintroduces false authorization.
-Frozen DANDI protocols retain one negative and one bounded positive outcome.
+Profile v2 traces 60 claim-evidence relations and 22 predicate contracts.
+Policy sensitivity evaluates 221 profiles on 14 fixed artifact decisions.
+Counterfactual repairs confirm complete and individually necessary deficits.
+All 2,550 declared attack compositions are blocked with exact traces.
+Coherent forgery controls expose the need for external trust anchors.

@@ -14,10 +14,11 @@ This paper develops the integrity-aware authorization version of MouseClaimBench
 \paragraph{Research contributions.}\label{sec:contributions}
 The paper makes the following contributions:
 \begin{itemize}
+\item A machine-readable knowledge-acquisition record for 10 bounded claims, 22 predicate contracts, and all 60 claim--evidence relations. Every relation has a stable identifier, claim-specific necessity rationale, scope, exceptions, sources, and explicit author-policy status.
 \item An integrity-aware authorization contract that jointly binds evidence-schema admissibility, domain claim requirements, provenance relations, and non-compensatory decisions for computational mouse-brain studies.
 \item An interoperable \ac{rdf}/\ac{prov} and JSON-LD representation with independently executed \ac{shacl} shapes. Python and \ac{shacl} agree on all 5,497 structural contract cases. A separately implemented \ac{asp} path agrees on a deterministic subset of 262 cases.
-\item An integrity layer for content hashes, profile substitution, unresolved or cyclic lineage, duplicated evidence, overlapping cohorts, contradictory attestations, and missing block provenance. The layer is evaluated through single and pairwise attacks and component ablations.
-\item A property-based verification package covering authorization soundness and completeness relative to the profile, deficit identity, degradation monotonicity, input-order and irrelevant-evidence invariance, outside-profile closure, and measured scalability.
+\item A structural policy-sensitivity analysis over 221 profiles and 3,094 fixed profile--case evaluations, together with counterfactual tests of explanation sufficiency, minimality, witness coverage, and information retention.
+\item An integrity layer evaluated through component ablations, all 2,550 non-empty compositions of eight declared attacks, and 20 coherent-forgery controls that expose the unresolved external-trust boundary.
 \item Two pre-access frozen applications to external \ac{dandi}/\ac{nwb} resources and a dependence-aware \ac{microns} application. Positive and negative outcomes are preserved without changing endpoints, thresholds, or selection rules after numerical access.
 \end{itemize}
 
