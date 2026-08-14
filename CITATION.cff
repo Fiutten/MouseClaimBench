@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "If you use MouseClaimBench, cite the software release and associated article."
+title: "MouseClaimBench: Integrity-Aware Authorization of Mouse-Brain Claims"
+type: software
+version: 0.11.0
+date-released: 2026-08-15
+authors:
+  - family-names: Fernandez-Isabel
+    given-names: Alberto
+  - family-names: Martin de Diego
+    given-names: Isaac
+  - family-names: Fuentes-Fernandez
+    given-names: Ruben
+repository-code: "https://github.com/Fiutten/MouseClaimBench"
+url: "https://github.com/Fiutten/MouseClaimBench/releases/tag/v0.11.0"

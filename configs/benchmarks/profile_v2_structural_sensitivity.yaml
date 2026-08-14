@@ -1,6 +1,6 @@
-protocol_id: mouseclaimbench_profile_v2_structural_sensitivity
+protocol_id: mouseclaimbench_profile_v2_one_edge_structural_policy_perturbation
 version: 1.0.0
-status: frozen_before_structural_sensitivity_execution
+status: frozen_before_one_edge_perturbation_execution
 freeze_date: 2026-08-14
 profile: mousebrainbench/knowledge/profiles/mouse_brain_claims_v2.yaml
 artifact_protocol: configs/benchmarks/profile_v2_artifact_application.yaml
@@ -28,8 +28,7 @@ reported_endpoints:
   - decisive_relations_in_observed_cases
 
 claim_boundary: >-
-  This is a counterfactual sensitivity analysis of one author-defined policy on
-  a fixed case set. Relation removal and conservative extension do not define
-  scientifically correct alternative profiles, calibrate the policy, or provide
-  independent content validity. They expose which reported decisions depend on
-  each declared requirement.
+  This is a one-edge monotonicity probe of one author-defined policy on a fixed
+  case set. Relation removal and conservative extension do not define
+  scientifically correct alternative profiles, characterize broad policy
+  dependence, calibrate the policy, or provide independent content validity.

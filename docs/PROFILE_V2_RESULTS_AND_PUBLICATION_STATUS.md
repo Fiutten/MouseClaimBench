@@ -12,10 +12,10 @@ adds four bounded response artifacts generated from clean revision `373de37`:
 
 - complete author-policy traceability for 10 claims, 22 predicate contracts,
   60 relation-specific rationales, 124 observation slots, and 20 bibliography IDs
-- structural sensitivity over 221 profiles and 3,094 fixed profile-case decisions
+- one-edge structural policy perturbation over 221 profiles and 3,094 fixed profile-case decisions
 - counterfactual explanation checks on 10,000 packages, including 9,839 full
   repairs and 51,480 individual necessity and witness checks
-- all 2,550 non-empty compositions of the eight declared attacks, plus 20
+- 2,550 attacked packages spanning all 255 non-empty compositions of the eight declared attacks across 10 claims, plus 20
   coherent-forgery controls that intentionally expose the external-trust boundary
 
 Only one relation removal expands authorization: omitting `data_quality` from
@@ -42,7 +42,7 @@ blocked.
 The contract benchmark contains 5,497 deterministic cases. Python produces zero
 false authorizations, zero false rejections, and exact recovery of all expected
 deficit sets. The independent ASP implementation matches authorization and
-deficits in 262 selected cases.
+deficits in all 5,497 generated contract cases.
 
 All 5,497 cases are exported to RDF and evaluated by external `pySHACL` 0.40.1.
 SHACL also yields zero false authorizations or rejections and exact structural
@@ -99,7 +99,8 @@ Dynamic Sensorium remain unauthorized under their declared deficits.
 
 The MICRONS coefficient is positive in discovery and two non-overlapping
 hold-out windows. Directed dyadic standard errors are 0.00200, 0.00209, and
-0.00205. Simultaneous node-label permutation gives `p = 0.000999` in every
+0.00205. No permutation exceeds the observed statistic in 1,000 draws, giving
+the finite-permutation corrected value `p = 1/1001`, approximately `0.001`, in every
 window. All windows belong to one cortical volume. This is internal reproduction
 of a local observational association and not causal or external replication.
 

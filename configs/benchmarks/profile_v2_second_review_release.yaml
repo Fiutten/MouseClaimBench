@@ -1,0 +1,31 @@
+protocol_id: mouseclaimbench_profile_v2_second_review_release
+version: 1.0.0
+status: frozen_second_review_release_contract
+freeze_date: 2026-08-15
+
+artifacts:
+  major_revision: results/profile_v2_major_revision_release/summary.json
+  contract_mutation: results/profile_v2_contract_mutation/summary.json
+  dandi_threshold_sensitivity: results/dandi_threshold_sensitivity/summary.json
+
+requirements:
+  contract_cases: 5497
+  asp_cases: 5497
+  dandi_sensitivity_criteria: 6
+
+claim_policy:
+  independent_content_validity: false
+  human_explanation_utility: false
+  criterion_validity_of_dandi_thresholds: false
+  threshold_calibration: false
+  broad_policy_dependence: false
+  end_to_end_scalability: false
+  biological_truth: false
+  complete_mouse_brain_twin: false
+
+interpretation: >-
+  The second-review release corrects the formal authorization equations,
+  evaluates the independent ASP path on every generated contract case, and
+  exposes post-outcome DANDI decision boundaries. It does not replace the
+  pending independent expert validation, establish human utility, or convert
+  author-defined operational thresholds into criterion-validated standards.

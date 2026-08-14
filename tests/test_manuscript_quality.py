@@ -116,14 +116,42 @@ def test_engine_scope_and_property_claims_are_calibrated() -> None:
         path.read_text(encoding="utf-8") for path in MANUSCRIPT_PATHS
     )
     assert (
-        "Python and \\ac{shacl} agree on all 5,497 structural contract cases, "
-        "while an independently implemented \\ac{asp} path agrees on a "
-        "deterministically selected subset of 262 cases."
+        "Python, \\ac{shacl}, and the separately implemented \\ac{asp} path "
+        "agree on authorization and deficits across all 5,497 contract cases."
     ) in abstract
     assert "Three independent execution paths agree on all 5,497" not in manuscript
     assert "formal verification results" not in manuscript.lower()
     assert "The evaluation is organized into four evidence classes." in manuscript
     assert "under the declared deterministic threat model" in manuscript.lower()
+
+
+def test_second_review_formal_and_interpretive_corrections_are_present() -> None:
+    manuscript = "\n".join(
+        path.read_text(encoding="utf-8") for path in MANUSCRIPT_PATHS
+    )
+    method = (ROOT / "sections" / "method.tex").read_text(encoding="utf-8")
+    experiments = (ROOT / "sections" / "experiments.tex").read_text(
+        encoding="utf-8"
+    )
+
+    assert r"\mathrm{1}[I_{\Pi}(M,B)=\varnothing]" in method
+    assert r"S_{\Pi}(G)A_{\Pi}(c,B)" in method
+    assert r"T_{\Delta_{\Pi}(c,B)}" in method
+    assert "2,550 non-empty compositions" not in manuscript
+    assert "one-edge structural policy perturbation" in manuscript.lower()
+    assert "core authorization-engine microbenchmark" in manuscript.lower()
+    assert "p=1/1001\\approx0.001" in experiments
+    assert "Relationship to the preceding MouseBrainBench study" in manuscript
+    assert "Research contributions.." not in manuscript
+    assert "Lessons learned.." not in manuscript
+
+
+def test_bibliography_protects_reviewed_acronyms() -> None:
+    bibliography = (ROOT / "references.bib").read_text(encoding="utf-8")
+
+    assert "{{W3C} Recommendation" in bibliography
+    assert "{{ASME} V\\&V 40-2018}" in bibliography
+    assert "{{ICLR} 2026 submission" in bibliography
 
 
 def test_claim_table_is_complete_and_case_counts_match_artifact() -> None:

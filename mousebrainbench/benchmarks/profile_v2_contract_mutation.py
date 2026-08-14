@@ -220,7 +220,13 @@ def _deficit_set(decision) -> tuple[tuple[str, EvidenceStatus], ...]:
     )
 
 
-def _asp_selection(cases: tuple[MutationCase, ...], maximum: int) -> set[str]:
+def _asp_selection(
+    cases: tuple[MutationCase, ...], maximum: int | None = None
+) -> set[str]:
+    """Select all ASP cases or a deterministic per-family diagnostic subset."""
+
+    if maximum is None:
+        return {case.case_id for case in cases}
     selected: set[str] = set()
     families = sorted({case.family for case in cases})
     for family in families:
@@ -236,7 +242,13 @@ def evaluate(
     """Evaluate v2, transparent shortcuts, deficit recall, and ASP conformance."""
 
     profile = load_authorization_profile_v2()
-    maximum_asp = int(protocol["asp_conformance"]["maximum_cases_per_family"])
+    asp_protocol = protocol["asp_conformance"]
+    selection = asp_protocol["selection"]
+    maximum_asp = (
+        None
+        if selection == "all_generated_cases"
+        else int(asp_protocol["maximum_cases_per_family"])
+    )
     asp_selection = _asp_selection(cases, maximum_asp)
     rows: list[dict[str, Any]] = []
     comparator_false_authorizations: Counter[str] = Counter()

@@ -27,8 +27,7 @@ status_defects: [failed, unknown, not_applicable, requires_review]
 pairwise_status_design: full_cartesian_product
 metadata_design: remove_each_required_observation_once
 asp_conformance:
-  selection: first_64_lexical_case_ids_per_family
-  maximum_cases_per_family: 64
+  selection: all_generated_cases
 
 comparators:
   - raw_status_all_passed_ignoring_schema

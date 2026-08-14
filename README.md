@@ -12,9 +12,10 @@ that the supplied package satisfies the named profile version.
 
 ## Current research release
 
-The current revision candidate is the `profile-v2-major-revision` release. It
-preserves the submitted `standards-prospective-v3` release and adds construct-
-validity response artifacts without rewriting its numerical evidence. The
+The current revision candidate is the `profile-v2-second-review` release. It
+preserves the submitted `standards-prospective-v3` and first major-revision
+releases while adding exhaustive ASP conformance and descriptive DANDI
+threshold sensitivity without rewriting source-data results. The
 knowledge architecture separates three layers:
 
 1. **Graph conformance.** RDF/PROV-O represents profiles, artifacts,
@@ -46,7 +47,7 @@ The release gate verifies the following results from clean source revisions:
 | Evidence package | Frozen result | Authorized interpretation |
 |---|---|---|
 | Contract mutation | 5,497 cases, zero false authorizations or rejections, exact deficits | Profile-relative conformance |
-| Python/ASP/SHACL | Exact agreement on their declared comparison sets | Cross-engine implementation equivalence |
+| Python/ASP/SHACL | Exact agreement on their declared outputs across all 5,497 generated contract cases | Cross-engine implementation conformance |
 | Formalized properties | 55,031 deterministic checks over 10,000 packages, zero violations | Six properties and outside closure relative to profile v2 |
 | Integrity attacks | 360 attacked packages, zero false authorizations with the full gate | Resistance to the declared controlled attacks |
 | Integrity ablation | Removing any one control creates 10 false authorizations | Necessity under the declared attack construction |
@@ -55,9 +56,10 @@ The release gate verifies the following results from clean source revisions:
 | DANDI:000039 | 32 mice, median held-out correlation 0.310, bootstrap lower bound 0.207 | Bounded population-response prediction |
 | MICRONS | Positive directed dyadic and node-permutation tests in three internal windows | One local observational structure--function association |
 | Knowledge traceability | 60 relation rationales, 22 predicate contracts, 124 observation slots | Complete traceability of the author-defined policy, not external content validity |
-| Structural sensitivity | 221 profiles and 3,094 fixed profile-case evaluations | Decision dependence on relation removal or conservative extension |
+| One-edge policy perturbation | 221 profiles and 3,094 fixed profile-case evaluations | Expected monotonic changes under one relation removal or addition |
 | Explanation fidelity | 10,000 packages, 51,480 minimality and witness checks | Counterfactual fidelity and information retention, not human utility |
 | Compositional integrity | 2,550 attacked packages plus 20 trust-boundary controls | Exact declared-invariant traces and explicit coherent-forgery escapes |
+| DANDI threshold sensitivity | Six one-at-a-time operational criteria | Post-outcome decision boundaries, not criterion validity or calibration |
 
 The positive DANDI model is intentionally simple Ridge regression. It tests a
 prospective authorization workflow rather than state-of-the-art predictive
@@ -66,8 +68,9 @@ are internal reproduction and not independent biological replication.
 
 The submitted release decision remains immutable in
 `results/standards_prospective_release/summary.json`. The revision decision is
-in `results/profile_v2_major_revision_release/summary.json`. The new artifacts
-do not alter the DANDI, MICRONS, Sensorium, Allen, or IBL numerical results.
+in `results/profile_v2_second_review_release/summary.json`. The new artifacts
+do not alter the MICRONS, Sensorium, Allen, IBL, or frozen DANDI numerical
+results and do not replace either DANDI threshold profile.
 
 ## Defensible contribution
 
@@ -79,12 +82,12 @@ candidate contribution is the evaluated combination of:
 - admissibility checks for the observations behind every passing block
 - complete multi-deficit traces linked to exact source artifacts
 - relational integrity checks over provenance and declared independence
-- exact Python and SHACL execution on 5,497 structural cases, with an
-  independent ASP path on a deterministic 262-case subset
+- exact Python, SHACL, and independently implemented ASP execution on all
+  5,497 generated contract cases, within each engine's declared scope
 - controlled attacks, component ablations, and deterministic property checks
 - pre-access frozen positive and negative external applications
 - claim-specific knowledge-acquisition traceability and predicate ownership
-- structural policy sensitivity over every one-relation removal and addition
+- one-edge monotonicity probes over every one-relation removal and addition
 - counterfactual sufficiency and minimality checks for complete deficit traces
 - exhaustive compositions of declared attacks with escaping trust-boundary controls
 
@@ -141,6 +144,16 @@ Verify the major-revision response artifacts:
 ```bash
 ENV_PATH=.venv-risk-v3 bash scripts/reproduce_major_revision.sh verify
 ```
+
+Verify the second-review response and its exact paper-v2 test scope:
+
+```bash
+ENV_PATH=.venv-risk-v3 bash scripts/reproduce_second_review.sh verify
+```
+
+The current paper-v2 tests and the historical compatibility suite are separated
+in `docs/PAPER_V2_TEST_SCOPE.md`. Passing legacy tests is not additional
+scientific evidence for profile v2.
 
 Rebuilding numerical artifacts is deliberately separate:
 

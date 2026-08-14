@@ -10,7 +10,10 @@ from mousebrainbench.benchmarks.profile_v2_contract_mutation import (
 
 def _protocol():
     return {
-        "asp_conformance": {"maximum_cases_per_family": 8},
+        "asp_conformance": {
+            "selection": "deterministic_per_family_subset",
+            "maximum_cases_per_family": 8,
+        },
         "interpretation": "contract conformance only",
     }
 
@@ -44,6 +47,12 @@ def test_asp_selection_is_deterministic_and_stratified() -> None:
         assert selected == min(available, 8)
 
 
+def test_asp_selection_can_cover_every_generated_case() -> None:
+    cases = generate_cases()
+
+    assert _asp_selection(cases) == {case.case_id for case in cases}
+
+
 def test_v2_passes_mutation_endpoints_and_shortcuts_fail() -> None:
     summary, _ = evaluate(generate_cases(), _protocol())
 
@@ -68,8 +77,8 @@ def test_frozen_mutation_artifact_has_exact_counts_and_clean_revision() -> None:
     assert payload["profile_v2"]["false_authorizations"] == 0
     assert payload["profile_v2"]["exact_deficit_rate"] == 1.0
     assert payload["asp_conformance"] == {
-        "cases": 262,
-        "exact_status_and_deficit_matches": 262,
+        "cases": 5_497,
+        "exact_status_and_deficit_matches": 5_497,
         "rate": 1.0,
     }
     assert not payload["git_revision"].endswith("-dirty")

@@ -81,7 +81,7 @@ and not a claim of universal priority.
 ## Results that strengthen the novelty claim
 
 - Python classifies all 5,497 contract cases exactly.
-- Independent ASP matches all 262 selected conformance cases.
+- Independent ASP matches all 5,497 generated conformance cases.
 - External pySHACL matches all 5,497 structural cases and therefore acts as a
   meaningful negative baseline for structural novelty.
 - Six formalized properties and outside-profile closure show no violation in

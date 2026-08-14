@@ -1,9 +1,10 @@
-"""Measure profile-v2 decision sensitivity to structural policy changes.
+"""Run one-edge structural policy perturbations for profile v2.
 
 The benchmark holds every evidence package fixed and changes only the policy.
 It evaluates the baseline profile, each of 60 leave-one-relation-out profiles,
-and each of 160 one-block conservative extensions. The result measures policy
-dependence. It neither selects a preferred profile nor supplies content validity.
+and each of 160 one-block conservative extensions. The result checks expected
+monotonic behavior and identifies decisive edges in fixed packages. It does not
+characterize broad policy dependence, select a profile, or validate its content.
 """
 
 from __future__ import annotations
@@ -283,7 +284,7 @@ def _write_rows(payload: dict[str, Any], path: Path) -> None:
 def _write_markdown(payload: dict[str, Any], path: Path) -> None:
     changed = [row for row in payload["decision_rows"] if row["decision_flips"]]
     lines = [
-        "# Profile v2 structural sensitivity",
+        "# Profile v2 one-edge structural policy perturbation",
         "",
         f"- Decision: `{payload['decision']}`",
         f"- Fixed artifact decisions per profile: `{payload['fixed_cases']}`",
@@ -320,14 +321,14 @@ def run(
     payload = {
         "version": __version__,
         "git_revision": code_revision(),
-        "analysis": "profile_v2_structural_policy_sensitivity",
+        "analysis": "profile_v2_one_edge_structural_policy_perturbation",
         "protocol": str(protocol_path),
         "protocol_sha256": hashlib.sha256(protocol_path.read_bytes()).hexdigest(),
         **assessment,
         "decision": (
-            "structural_policy_sensitivity_completed"
+            "one_edge_structural_policy_perturbation_completed"
             if assessment["completed"]
-            else "structural_policy_sensitivity_incomplete"
+            else "one_edge_structural_policy_perturbation_incomplete"
         ),
     }
     output.parent.mkdir(parents=True, exist_ok=True)

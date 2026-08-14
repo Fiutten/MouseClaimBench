@@ -55,7 +55,7 @@ def evaluate(protocol: dict[str, Any]) -> dict[str, Any]:
             and trace.get("all_conditions_passed") is True
             and trace.get("independent_content_validity") is False
         ),
-        "structural_profile_sensitivity_complete": (
+        "one_edge_policy_perturbation_complete": (
             sensitivity.get("profile_variants") == required["profile_variants"]
             and sensitivity.get("profile_case_evaluations") == required["profile_case_evaluations"]
             and sensitivity.get("completed") is True
@@ -94,7 +94,7 @@ def evaluate(protocol: dict[str, Any]) -> dict[str, Any]:
         "remaining_limits": [
             "profile v2 remains author-defined and not independently content-validated",
             "counterfactual fidelity does not establish human explanation utility",
-            "structural sensitivity exposes policy dependence but does not calibrate an optimal profile",
+            "one-edge relation perturbations check monotonicity but do not validate alternative profiles",
             "coherent metadata or content forgery remains undetectable without an external trust anchor",
             "mouse-brain applications retain their original local and resource-specific boundaries",
         ],

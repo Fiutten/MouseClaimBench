@@ -14,7 +14,7 @@ artifacts:
 
 release_requirements:
   contract_cases: 5497
-  asp_cases: 262
+  asp_cases: 5497
   shacl_cases: 5497
   minimum_formal_checks: 55000
   attack_cases: 370

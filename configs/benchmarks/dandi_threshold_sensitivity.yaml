@@ -1,0 +1,54 @@
+protocol_id: mouseclaimbench_dandi_threshold_sensitivity
+version: 1.0.0
+status: post_outcome_descriptive_sensitivity
+analysis_date: 2026-08-15
+
+source_result: results/dandi_profile_v2_1/summary.json
+source_protocols:
+  contrast: configs/benchmarks/dandi_contrast_profile_v2_1.yaml
+  availability: configs/benchmarks/dandi_ach_profile_v2_1.yaml
+
+scope:
+  prospective_validity_claimed: false
+  criterion_validity_claimed: false
+  threshold_calibration_claimed: false
+  independent_content_validation_claimed: false
+  interpretation: >-
+    The frozen decisions remain the primary outcomes. This post-outcome analysis
+    changes one operational threshold at a time to expose decision boundaries.
+    It cannot validate, optimize, or retrospectively replace the frozen values.
+
+operational_rationales:
+  contrast_minimum_subjects: >-
+    Twenty-five mice was an author-defined lower bound for a multi-mouse endpoint
+    and mouse-level bootstrap. It was not derived from a formal power analysis.
+  median_subject_correlation: >-
+    A correlation of 0.10 was an author-defined minimum non-zero predictive
+    effect. It is not a biological-adequacy or criterion-validity standard.
+  bootstrap_lower_bound: >-
+    A lower bound above zero requires population-level sign stability under the
+    declared mouse bootstrap, without defining a minimum biological effect.
+  positive_subject_fraction: >-
+    A 0.65 fraction was an author-defined majority consistency requirement that
+    tolerates mouse heterogeneity. It is not a community-derived threshold.
+  mse_comparator: >-
+    Better pooled squared error than the training intercept requires incremental
+    predictive value over a trivial comparator. The frozen rule required any
+    improvement and did not prescribe a minimum relative gain.
+  availability_minimum_subjects: >-
+    Twenty subjects was an author-defined feasibility boundary for the intended
+    cross-subject endpoint. It was not a power-derived sufficiency threshold.
+
+one_at_a_time_grids:
+  contrast_minimum_subjects: [20, 25, 30, 32, 33, 35]
+  median_subject_correlation: [0.00, 0.05, 0.10, 0.20, 0.30, 0.35]
+  bootstrap_lower_bound: [0.00, 0.05, 0.10, 0.15, 0.20, 0.25]
+  positive_subject_fraction: [0.50, 0.65, 0.75, 0.90, 0.95]
+  minimum_relative_mse_improvement: [0.00, 0.025, 0.05, 0.075, 0.10]
+  availability_minimum_subjects: [5, 10, 15, 20, 25, 29]
+
+acceptance:
+  frozen_contrast_decision_reproduced: true
+  frozen_availability_decision_reproduced: true
+  every_grid_contains_frozen_threshold: true
+  no_threshold_is_replaced: true
