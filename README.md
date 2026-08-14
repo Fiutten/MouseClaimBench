@@ -12,7 +12,9 @@ that the supplied package satisfies the named profile version.
 
 ## Current research release
 
-The current submission candidate is the `standards-prospective-v3` release. Its
+The current revision candidate is the `profile-v2-major-revision` release. It
+preserves the submitted `standards-prospective-v3` release and adds construct-
+validity response artifacts without rewriting its numerical evidence. The
 knowledge architecture separates three layers:
 
 1. **Graph conformance.** RDF/PROV-O represents profiles, artifacts,
@@ -30,7 +32,12 @@ The evaluated profile is
 bounded claim types, 22 evidence-block types, and 60 claim-to-evidence
 requirements. Its curation basis is stored in
 `mouse_brain_claims_v2_basis.yaml`. The profile is author-defined and
-literature-grounded. It is not a community consensus taxonomy.
+literature-grounded. Its acquisition record now contains 60 stable relation
+identifiers and claim-specific necessity rationales, 22 predicate contracts,
+and explicit source and consensus status. It is not a community consensus
+taxonomy. Upstream adapters execute source-specific scientific predicates. The
+authorization engine consumes their attested status and checks observation,
+rule, rationale, and provenance admissibility before applying the profile.
 
 ## Frozen evidence
 
@@ -47,16 +54,20 @@ The release gate verifies the following results from clean source revisions:
 | DANDI:001176 | 5 usable subjects against a frozen minimum of 20 | No predictive authorization and no endpoint repair |
 | DANDI:000039 | 32 mice, median held-out correlation 0.310, bootstrap lower bound 0.207 | Bounded population-response prediction |
 | MICRONS | Positive directed dyadic and node-permutation tests in three internal windows | One local observational structure--function association |
+| Knowledge traceability | 60 relation rationales, 22 predicate contracts, 124 observation slots | Complete traceability of the author-defined policy, not external content validity |
+| Structural sensitivity | 221 profiles and 3,094 fixed profile-case evaluations | Decision dependence on relation removal or conservative extension |
+| Explanation fidelity | 10,000 packages, 51,480 minimality and witness checks | Counterfactual fidelity and information retention, not human utility |
+| Compositional integrity | 2,550 attacked packages plus 20 trust-boundary controls | Exact declared-invariant traces and explicit coherent-forgery escapes |
 
 The positive DANDI model is intentionally simple Ridge regression. It tests a
 prospective authorization workflow rather than state-of-the-art predictive
 performance. MICRONS uses one cortical volume, so its non-overlapping windows
 are internal reproduction and not independent biological replication.
 
-The immutable release decision is in
-`results/standards_prospective_release/summary.json`. The six experimental
-components are stored in the corresponding `results/profile_v2_*`,
-`results/dandi_profile_v2_1`, and `results/microns_q1_package` directories.
+The submitted release decision remains immutable in
+`results/standards_prospective_release/summary.json`. The revision decision is
+in `results/profile_v2_major_revision_release/summary.json`. The new artifacts
+do not alter the DANDI, MICRONS, Sensorium, Allen, or IBL numerical results.
 
 ## Defensible contribution
 
@@ -72,6 +83,10 @@ candidate contribution is the evaluated combination of:
   independent ASP path on a deterministic 262-case subset
 - controlled attacks, component ablations, and deterministic property checks
 - pre-access frozen positive and negative external applications
+- claim-specific knowledge-acquisition traceability and predicate ownership
+- structural policy sensitivity over every one-relation removal and addition
+- counterfactual sufficiency and minimality checks for complete deficit traces
+- exhaustive compositions of declared attacks with escaping trust-boundary controls
 
 The scoped novelty audit found no inspected work with this exact evaluated
 combination. This supports differentiation and does not establish universal
@@ -121,10 +136,22 @@ Verify the frozen release from a clean checkout:
 ENV_PATH=.venv-risk-v3 bash scripts/reproduce_standards_prospective_v3.sh verify
 ```
 
+Verify the major-revision response artifacts:
+
+```bash
+ENV_PATH=.venv-risk-v3 bash scripts/reproduce_major_revision.sh verify
+```
+
 Rebuilding numerical artifacts is deliberately separate:
 
 ```bash
 ENV_PATH=.venv-risk-v3 bash scripts/reproduce_standards_prospective_v3.sh rebuild
+```
+
+The revision-only artifacts can be rebuilt without downloading new raw data:
+
+```bash
+ENV_PATH=.venv-risk-v3 bash scripts/reproduce_major_revision.sh rebuild
 ```
 
 Rebuild requires the raw public data at the configured local paths. Public

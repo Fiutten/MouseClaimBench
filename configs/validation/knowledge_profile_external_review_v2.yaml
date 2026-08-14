@@ -1,0 +1,63 @@
+study_id: mouseclaimbench_knowledge_profile_v2_external_review
+version: 2.0.0
+status: protocol_complete_external_ratings_pending
+freeze_date: 2026-08-14
+profile: mousebrainbench/knowledge/profiles/mouse_brain_claims_v2.yaml
+basis: mousebrainbench/knowledge/profiles/mouse_brain_claims_v2_basis.yaml
+traceability_protocol: configs/validation/profile_v2_traceability.yaml
+
+review_universe:
+  claim_definitions: 10
+  predicate_contracts: 22
+  claim_to_evidence_relations: 60
+  total_items: 92
+  relation_dimensions:
+    - necessity
+    - scientific_safety
+    - comprehensibility
+  predicate_dimensions:
+    - relevance
+    - observability
+    - decision_boundary_clarity
+  profile_dimensions:
+    - comprehensiveness
+    - redundancy
+    - prohibited_claim_coverage
+
+panel:
+  minimum_completed_independent_experts: 7
+  minimum_years_relevant_experience: 5
+  minimum_per_expertise_stratum: 2
+  expertise_strata:
+    - causal_inference_or_causal_discovery
+    - computational_neuroscience_or_brain_modelling
+    - model_validation_reproducibility_or_digital_twins
+  author_or_system_developer_may_count_as_independent: false
+  conflicts_must_be_disclosed: true
+
+rating:
+  scale:
+    1: not_relevant_or_unsafe_or_unclear
+    2: major_revision_required
+    3: relevant_safe_clear_with_minor_revision
+    4: essential_safe_and_clear
+  rating_considered_content_valid: [3, 4]
+  critical_veto_requires_written_rationale: true
+  complete_item_response_required_per_rater: true
+
+acceptance:
+  minimum_item_cvi: 0.78
+  minimum_scale_average_cvi: 0.90
+  minimum_binary_fleiss_kappa: 0.60
+  unresolved_critical_vetoes_allowed: 0
+  all_claim_predicate_and_relation_items_must_pass: true
+
+current_status:
+  completed_independent_raters: 0
+  independent_content_validity: false
+  decision: external_content_validation_pending
+
+prohibited_claims_before_validated:
+  - consensus_validated_profile
+  - independently_validated_evidence_to_claim_mapping
+  - complete_or_universal_scientific_claim_ontology

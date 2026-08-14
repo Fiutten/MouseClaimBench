@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mouseclaimbench"
-version = "0.9.0"
+version = "0.10.0"
 description = "Evidence-constrained knowledge system for computational mouse-brain claims"
 readme = "README.md"
 requires-python = ">=3.11"
@@ -134,6 +134,11 @@ mousebrainbench-profile-v2-provenance-attacks = "mousebrainbench.benchmarks.prof
 mousebrainbench-dandi-profile-v2-1 = "mousebrainbench.benchmarks.dandi_profile_v2_1:main"
 mousebrainbench-profile-v2-scalability-ablation = "mousebrainbench.benchmarks.profile_v2_scalability_ablation:main"
 mousebrainbench-standards-prospective-release = "mousebrainbench.benchmarks.standards_prospective_release:main"
+mousebrainbench-profile-v2-traceability = "mousebrainbench.benchmarks.profile_v2_traceability:main"
+mousebrainbench-profile-v2-structural-sensitivity = "mousebrainbench.benchmarks.profile_v2_structural_sensitivity:main"
+mousebrainbench-profile-v2-explanation-fidelity = "mousebrainbench.benchmarks.profile_v2_explanation_fidelity:main"
+mousebrainbench-profile-v2-compositional-integrity = "mousebrainbench.benchmarks.profile_v2_compositional_integrity_stress:main"
+mousebrainbench-profile-v2-major-revision-release = "mousebrainbench.benchmarks.profile_v2_major_revision_release:main"
 mousebrainbench-run = "mousebrainbench.cli:main"
 
 [tool.setuptools.packages.find]

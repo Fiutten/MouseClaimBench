@@ -1,0 +1,24 @@
+protocol_id: mouseclaimbench_profile_v2_explanation_fidelity
+version: 1.0.0
+status: frozen_before_counterfactual_explanation_execution
+freeze_date: 2026-08-14
+profile: mousebrainbench/knowledge/profiles/mouse_brain_claims_v2.yaml
+
+deterministic_packages:
+  seed: 2026081402
+  packages_per_claim: 1000
+  total_packages: 10000
+
+properties:
+  - repair_all_reported_deficits_is_sufficient
+  - every_reported_deficit_is_individually_necessary
+  - repaired_package_has_no_residual_deficit
+  - every_deficit_retains_a_nonempty_witness
+  - degrading_each_pristine_requirement_yields_that_exact_deficit
+  - complete_trace_dominates_single_reason_information
+
+claim_boundary: >-
+  These checks establish counterfactual fidelity, minimality, witness coverage,
+  and information retention relative to profile v2. They do not establish that
+  the profile is scientifically complete or that human reviewers find the
+  explanations clearer, faster, or more useful.

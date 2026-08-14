@@ -1,0 +1,35 @@
+protocol_id: mouseclaimbench_profile_v2_structural_sensitivity
+version: 1.0.0
+status: frozen_before_structural_sensitivity_execution
+freeze_date: 2026-08-14
+profile: mousebrainbench/knowledge/profiles/mouse_brain_claims_v2.yaml
+artifact_protocol: configs/benchmarks/profile_v2_artifact_application.yaml
+dandi_result: results/dandi_profile_v2_1/summary.json
+
+case_design:
+  artifact_cases: 5
+  prospective_dandi_cases: 2
+  decisions_per_case:
+    - bounded_target_claim
+    - strict_complete_twin_claim
+  expected_decisions_per_profile: 14
+
+perturbations:
+  leave_one_required_relation_out: exhaustive_60_relations
+  add_one_currently_unrequired_block: exhaustive_160_relations
+  mutate_evidence_values: false
+  select_optimal_profile_from_results: false
+
+reported_endpoints:
+  - authorization_decision_flip
+  - authorization_expansion_after_relation_removal
+  - authorization_contraction_after_relation_addition
+  - deficit_set_jaccard_similarity
+  - decisive_relations_in_observed_cases
+
+claim_boundary: >-
+  This is a counterfactual sensitivity analysis of one author-defined policy on
+  a fixed case set. Relation removal and conservative extension do not define
+  scientifically correct alternative profiles, calibrate the policy, or provide
+  independent content validity. They expose which reported decisions depend on
+  each declared requirement.

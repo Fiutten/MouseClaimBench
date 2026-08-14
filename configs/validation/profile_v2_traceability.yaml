@@ -1,0 +1,33 @@
+protocol_id: mouseclaimbench_profile_v2_knowledge_traceability
+version: 1.0.0
+status: frozen_before_traceability_audit
+freeze_date: 2026-08-14
+profile: mousebrainbench/knowledge/profiles/mouse_brain_claims_v2.yaml
+basis: mousebrainbench/knowledge/profiles/mouse_brain_claims_v2_basis.yaml
+bibliography: references.bib
+
+required_acquisition_steps:
+  - define_bounded_claim_wording_and_prohibited_promotions
+  - identify_distinct_evidence_functions_from_methodological_and_domain_sources
+  - record_block_scope_exceptions_and_rejected_substitutions
+  - justify_each_claim_to_block_relation_separately
+  - distinguish_upstream_predicates_from_authorization_engine_checks
+  - resolve_internal_adversarial_audit_items_without_claiming_external_consensus
+  - verify_exact_executable_coverage_and_bibliographic_resolution
+  - evaluate_decision_sensitivity_to_relation_addition_and_removal
+
+acceptance:
+  exact_claim_coverage: true
+  exact_evidence_block_coverage: true
+  exact_relation_coverage: true
+  unique_relation_identifiers: true
+  claim_specific_necessity_rationale_required: true
+  predicate_contract_per_evidence_block: true
+  every_source_resolves_to_bibliography: true
+  external_consensus_must_remain_false: true
+
+claim_boundary: >-
+  Passing this audit establishes complete machine-readable traceability of the
+  author-defined profile and its upstream predicate interfaces. It does not
+  establish independent content validity, completeness, consensus, biological
+  truth, or improved human decisions.

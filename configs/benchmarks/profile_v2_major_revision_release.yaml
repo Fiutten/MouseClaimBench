@@ -1,0 +1,36 @@
+protocol_id: mouseclaimbench_profile_v2_major_revision_release
+version: 1.0.0
+status: frozen_major_revision_release_contract
+freeze_date: 2026-08-14
+
+artifacts:
+  parent_submission: results/standards_prospective_release/summary.json
+  knowledge_traceability: results/profile_v2_traceability/summary.json
+  structural_sensitivity: results/profile_v2_structural_sensitivity/summary.json
+  explanation_fidelity: results/profile_v2_explanation_fidelity/summary.json
+  compositional_integrity: results/profile_v2_compositional_integrity_stress/summary.json
+
+requirements:
+  claim_to_evidence_relations: 60
+  predicate_contracts: 22
+  required_observation_slots: 124
+  profile_variants: 221
+  profile_case_evaluations: 3094
+  random_explanation_packages: 10000
+  declared_compositional_attacks: 2550
+  trust_boundary_negative_controls: 20
+
+claim_policy:
+  independent_content_validity: false
+  human_explanation_utility: false
+  universal_attack_robustness: false
+  optimal_or_consensus_profile: false
+  biological_truth: false
+  complete_mouse_brain_twin: false
+
+interpretation: >-
+  The revision adds complete author-policy traceability, policy-structure
+  sensitivity, counterfactual explanation fidelity, and exhaustive composition
+  of the declared integrity invariants with explicit escaping trust-boundary
+  controls. It does not replace independent expert content validation or human
+  evaluation and does not turn profile conformance into biological validation.

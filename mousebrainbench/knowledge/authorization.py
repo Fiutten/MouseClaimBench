@@ -223,9 +223,7 @@ class ProfileAuthorizationDecision:
 
     def as_dict(self) -> dict[str, Any]:
         counts = {
-            status.value: sum(
-                fact.effective_status is status for fact in self.deficits
-            )
+            status.value: sum(fact.effective_status is status for fact in self.deficits)
             for status in EvidenceStatus
             if status is not EvidenceStatus.PASSED
         }
@@ -294,8 +292,8 @@ class ClaimAuthorizationSystem:
             if block.status is EvidenceStatus.PASSED
             else ()
         )
-        metadata_missing = not _present(block.source) or not _present(block.rule) or not _present(
-            block.rationale
+        metadata_missing = (
+            not _present(block.source) or not _present(block.rule) or not _present(block.rationale)
         )
         if metadata_missing:
             missing = (*missing, "source_rule_or_rationale")
@@ -331,9 +329,7 @@ class ClaimAuthorizationSystem:
                 facts=(),
             )
         facts = tuple(self._evaluate_fact(name) for name in requirement.required_blocks)
-        authorized = all(
-            fact.effective_status is EvidenceStatus.PASSED for fact in facts
-        )
+        authorized = all(fact.effective_status is EvidenceStatus.PASSED for fact in facts)
         return ProfileAuthorizationDecision(
             profile_id=self.profile.profile_id,
             profile_version=self.profile.version,
@@ -357,9 +353,7 @@ class ClaimAuthorizationSystem:
 def load_authorization_profile_v2() -> ClaimAuthorizationProfile:
     """Load the hardened mouse-brain claim-authorization profile."""
 
-    resource = files("mousebrainbench.knowledge.profiles").joinpath(
-        "mouse_brain_claims_v2.yaml"
-    )
+    resource = files("mousebrainbench.knowledge.profiles").joinpath("mouse_brain_claims_v2.yaml")
     source = resource.read_text(encoding="utf-8")
     payload = yaml.safe_load(source)
     if not isinstance(payload, Mapping):
@@ -372,7 +366,15 @@ def load_authorization_profile_v2() -> ClaimAuthorizationProfile:
 
 
 def load_authorization_profile_v2_basis() -> dict[str, Any]:
-    """Load and validate the complete v2 curation and internal-audit record."""
+    """Load and validate the complete v2 acquisition and traceability record.
+
+    The basis separates three levels that must not be collapsed. ``relations``
+    records the literature-grounded block semantics, ``predicate_contracts``
+    states where block decisions are evaluated, and ``relation_justifications``
+    explains why a block is mandatory for one particular claim. The last two
+    structures make the author-defined policy inspectable without presenting it
+    as an independently validated taxonomy.
+    """
 
     resource = files("mousebrainbench.knowledge.profiles").joinpath(
         "mouse_brain_claims_v2_basis.yaml"
@@ -418,4 +420,66 @@ def load_authorization_profile_v2_basis() -> dict[str, Any]:
             "v2 profile basis does not exactly cover the executable relations: "
             f"missing={sorted(expected - observed)}, extra={sorted(observed - expected)}"
         )
+
+    predicate_contracts = payload.get("predicate_contracts")
+    if not isinstance(predicate_contracts, Mapping):
+        raise TypeError("v2 profile basis must contain predicate contracts")
+    expected_blocks = {item.name for item in profile.evidence_blocks}
+    if set(predicate_contracts) != expected_blocks:
+        raise ValueError("v2 predicate contracts must exactly cover evidence blocks")
+    predicate_fields = {
+        "predicate_id",
+        "evaluation_owner",
+        "decision_rule_scope",
+        "rationale",
+        "scope",
+        "exceptions",
+        "source_ids",
+    }
+    predicate_ids: set[str] = set()
+    for name, contract in predicate_contracts.items():
+        if not isinstance(contract, Mapping) or not predicate_fields <= contract.keys():
+            raise ValueError(f"incomplete v2 predicate contract: {name}")
+        predicate_id = str(contract["predicate_id"])
+        if predicate_id in predicate_ids:
+            raise ValueError(f"duplicate v2 predicate identifier: {predicate_id}")
+        if not contract["source_ids"]:
+            raise ValueError(f"v2 predicate contract has no source: {name}")
+        predicate_ids.add(predicate_id)
+
+    justifications = payload.get("relation_justifications")
+    if not isinstance(justifications, list):
+        raise TypeError("v2 profile basis must contain relation justifications")
+    justification_fields = {
+        "relation_id",
+        "claim",
+        "evidence_block",
+        "necessity_rationale",
+        "knowledge_status",
+        "consensus_status",
+    }
+    justified: set[tuple[str, str]] = set()
+    relation_ids: set[str] = set()
+    for row in justifications:
+        if not isinstance(row, Mapping) or not justification_fields <= row.keys():
+            raise ValueError("every v2 relation requires a claim-specific justification")
+        key = (str(row["claim"]), str(row["evidence_block"]))
+        relation_id = str(row["relation_id"])
+        if key in justified or relation_id in relation_ids:
+            raise ValueError(f"duplicate v2 relation justification: {key}")
+        if not str(row["necessity_rationale"]).strip():
+            raise ValueError(f"empty v2 relation justification: {key}")
+        justified.add(key)
+        relation_ids.add(relation_id)
+    if justified != expected:
+        raise ValueError(
+            "v2 relation justifications do not exactly cover the profile: "
+            f"missing={sorted(expected - justified)}, extra={sorted(justified - expected)}"
+        )
+
+    acquisition = payload.get("knowledge_acquisition")
+    if not isinstance(acquisition, Mapping) or not acquisition.get("steps"):
+        raise ValueError("v2 profile basis requires a documented acquisition procedure")
+    if acquisition.get("independent_content_validation") != "not_performed":
+        raise ValueError("v2 basis must report the actual external-validation status")
     return dict(payload)

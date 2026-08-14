@@ -1,0 +1,27 @@
+protocol_id: mouseclaimbench_profile_v2_compositional_integrity_stress
+version: 1.0.0
+status: frozen_before_compositional_stress_execution
+freeze_date: 2026-08-14
+profile: mousebrainbench/knowledge/profiles/mouse_brain_claims_v2.yaml
+
+in_model_design:
+  attack_families: 8
+  compositions: every_nonempty_subset
+  claims: 10
+  pristine_packages: 10
+  attacked_packages: 2550
+  expected_packages: 2560
+
+trust_boundary_negative_controls:
+  families:
+    - coherent_content_and_hash_replacement
+    - coherent_independence_metadata_forgery
+  expected_cases: 20
+  expected_result: authorized_because_no_external_truth_anchor_is_available
+
+claim_boundary: >-
+  Exhaustive composition establishes detection and exact trace recovery only for
+  the eight declared invariant families. The coherent-forgery controls are
+  expected to escape because internally consistent content and metadata cannot
+  be authenticated without trusted archives, signatures, or external identity
+  evidence. This benchmark is not an adaptive security guarantee.
