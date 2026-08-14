@@ -1,6 +1,6 @@
-# Profile v2 structural sensitivity
+# Profile v2 one-edge structural policy perturbation
 
-- Decision: `structural_policy_sensitivity_completed`
+- Decision: `one_edge_structural_policy_perturbation_completed`
 - Fixed artifact decisions per profile: `14`
 - Baseline authorizations: `4`
 - Profiles evaluated: `221`
@@ -66,4 +66,4 @@
 | `add_unrequired_relation` | `local_observational_structure_function_association` | `multiscale_consistency` | 1 | microns_local_association_with_dyadic_control__target |
 | `add_unrequired_relation` | `local_observational_structure_function_association` | `entity_update` | 1 | microns_local_association_with_dyadic_control__target |
 
-This is a counterfactual sensitivity analysis of one author-defined policy on a fixed case set. Relation removal and conservative extension do not define scientifically correct alternative profiles, calibrate the policy, or provide independent content validity. They expose which reported decisions depend on each declared requirement.
+This is a one-edge monotonicity probe of one author-defined policy on a fixed case set. Relation removal and conservative extension do not define scientifically correct alternative profiles, characterize broad policy dependence, calibrate the policy, or provide independent content validity.

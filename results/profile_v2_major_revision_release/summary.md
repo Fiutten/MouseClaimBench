@@ -6,7 +6,7 @@
 |---|---:|
 | `parent_submission_release_preserved` | true |
 | `author_policy_traceability_complete` | true |
-| `structural_profile_sensitivity_complete` | true |
+| `one_edge_policy_perturbation_complete` | true |
 | `counterfactual_explanations_faithful` | true |
 | `declared_attack_compositions_complete` | true |
 | `trust_boundary_escape_is_reported` | true |
@@ -17,7 +17,7 @@
 
 - profile v2 remains author-defined and not independently content-validated
 - counterfactual fidelity does not establish human explanation utility
-- structural sensitivity exposes policy dependence but does not calibrate an optimal profile
+- one-edge relation perturbations check monotonicity but do not validate alternative profiles
 - coherent metadata or content forgery remains undetectable without an external trust anchor
 - mouse-brain applications retain their original local and resource-specific boundaries
 

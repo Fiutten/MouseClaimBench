@@ -1,9 +1,9 @@
 {
-  "version": "0.10.0",
-  "git_revision": "373de377f679cca61ca238fbfc859f74e5680e69",
-  "analysis": "profile_v2_structural_policy_sensitivity",
+  "version": "0.11.0",
+  "git_revision": "8d80861495efd7d318d097e65e6611ca2d918288",
+  "analysis": "profile_v2_one_edge_structural_policy_perturbation",
   "protocol": "configs/benchmarks/profile_v2_structural_sensitivity.yaml",
-  "protocol_sha256": "c74af98ffd2051c8d3ad52ab6e40edf3a986cf6a3ee31502ecb9bb6f0550a346",
+  "protocol_sha256": "b3fec3477a7e37a6fe78fdf8c0d42430cdc470499a93e86d87a02592071eb8fe",
   "fixed_cases": 14,
   "baseline_authorizations": 4,
   "profile_variants": 221,
@@ -3032,7 +3032,7 @@
       ]
     }
   ],
-  "claim_boundary": "This is a counterfactual sensitivity analysis of one author-defined policy on a fixed case set. Relation removal and conservative extension do not define scientifically correct alternative profiles, calibrate the policy, or provide independent content validity. They expose which reported decisions depend on each declared requirement.",
+  "claim_boundary": "This is a one-edge monotonicity probe of one author-defined policy on a fixed case set. Relation removal and conservative extension do not define scientifically correct alternative profiles, characterize broad policy dependence, calibrate the policy, or provide independent content validity.",
   "completed": true,
-  "decision": "structural_policy_sensitivity_completed"
+  "decision": "one_edge_structural_policy_perturbation_completed"
 }

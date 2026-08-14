@@ -1,0 +1,247 @@
+{
+  "version": "0.11.0",
+  "git_revision": "8d80861495efd7d318d097e65e6611ca2d918288",
+  "analysis": "dandi_threshold_sensitivity",
+  "protocol": "configs/benchmarks/dandi_threshold_sensitivity.yaml",
+  "protocol_sha256": "d81471fc459229c149710a3b2beb92e558ea0eead89ce756e32500e4f0e02933",
+  "source_result_git_revision": "3add706",
+  "observed": {
+    "contrast_minimum_subjects": 32.0,
+    "median_subject_correlation": 0.31001038394578095,
+    "bootstrap_lower_bound": 0.20680024659915142,
+    "positive_subject_fraction": 0.9375,
+    "minimum_relative_mse_improvement": 0.05431273014238209,
+    "availability_minimum_subjects": 5.0
+  },
+  "frozen_thresholds": {
+    "contrast_minimum_subjects": 25.0,
+    "median_subject_correlation": 0.1,
+    "bootstrap_lower_bound": 0.0,
+    "positive_subject_fraction": 0.65,
+    "minimum_relative_mse_improvement": 0.0,
+    "availability_minimum_subjects": 20.0
+  },
+  "threshold_operators": {
+    "contrast_minimum_subjects": ">=",
+    "median_subject_correlation": ">=",
+    "bootstrap_lower_bound": ">",
+    "positive_subject_fraction": ">=",
+    "minimum_relative_mse_improvement": ">",
+    "availability_minimum_subjects": ">="
+  },
+  "operational_rationales": {
+    "contrast_minimum_subjects": "Twenty-five mice was an author-defined lower bound for a multi-mouse endpoint and mouse-level bootstrap. It was not derived from a formal power analysis.",
+    "median_subject_correlation": "A correlation of 0.10 was an author-defined minimum non-zero predictive effect. It is not a biological-adequacy or criterion-validity standard.",
+    "bootstrap_lower_bound": "A lower bound above zero requires population-level sign stability under the declared mouse bootstrap, without defining a minimum biological effect.",
+    "positive_subject_fraction": "A 0.65 fraction was an author-defined majority consistency requirement that tolerates mouse heterogeneity. It is not a community-derived threshold.",
+    "mse_comparator": "Better pooled squared error than the training intercept requires incremental predictive value over a trivial comparator. The frozen rule required any improvement and did not prescribe a minimum relative gain.",
+    "availability_minimum_subjects": "Twenty subjects was an author-defined feasibility boundary for the intended cross-subject endpoint. It was not a power-derived sufficiency threshold."
+  },
+  "one_at_a_time_results": {
+    "contrast_minimum_subjects": [
+      {
+        "threshold": 20,
+        "operator": ">=",
+        "authorized_with_other_frozen_conditions_held": true
+      },
+      {
+        "threshold": 25,
+        "operator": ">=",
+        "authorized_with_other_frozen_conditions_held": true
+      },
+      {
+        "threshold": 30,
+        "operator": ">=",
+        "authorized_with_other_frozen_conditions_held": true
+      },
+      {
+        "threshold": 32,
+        "operator": ">=",
+        "authorized_with_other_frozen_conditions_held": true
+      },
+      {
+        "threshold": 33,
+        "operator": ">=",
+        "authorized_with_other_frozen_conditions_held": false
+      },
+      {
+        "threshold": 35,
+        "operator": ">=",
+        "authorized_with_other_frozen_conditions_held": false
+      }
+    ],
+    "median_subject_correlation": [
+      {
+        "threshold": 0.0,
+        "operator": ">=",
+        "authorized_with_other_frozen_conditions_held": true
+      },
+      {
+        "threshold": 0.05,
+        "operator": ">=",
+        "authorized_with_other_frozen_conditions_held": true
+      },
+      {
+        "threshold": 0.1,
+        "operator": ">=",
+        "authorized_with_other_frozen_conditions_held": true
+      },
+      {
+        "threshold": 0.2,
+        "operator": ">=",
+        "authorized_with_other_frozen_conditions_held": true
+      },
+      {
+        "threshold": 0.3,
+        "operator": ">=",
+        "authorized_with_other_frozen_conditions_held": true
+      },
+      {
+        "threshold": 0.35,
+        "operator": ">=",
+        "authorized_with_other_frozen_conditions_held": false
+      }
+    ],
+    "bootstrap_lower_bound": [
+      {
+        "threshold": 0.0,
+        "operator": ">",
+        "authorized_with_other_frozen_conditions_held": true
+      },
+      {
+        "threshold": 0.05,
+        "operator": ">",
+        "authorized_with_other_frozen_conditions_held": true
+      },
+      {
+        "threshold": 0.1,
+        "operator": ">",
+        "authorized_with_other_frozen_conditions_held": true
+      },
+      {
+        "threshold": 0.15,
+        "operator": ">",
+        "authorized_with_other_frozen_conditions_held": true
+      },
+      {
+        "threshold": 0.2,
+        "operator": ">",
+        "authorized_with_other_frozen_conditions_held": true
+      },
+      {
+        "threshold": 0.25,
+        "operator": ">",
+        "authorized_with_other_frozen_conditions_held": false
+      }
+    ],
+    "positive_subject_fraction": [
+      {
+        "threshold": 0.5,
+        "operator": ">=",
+        "authorized_with_other_frozen_conditions_held": true
+      },
+      {
+        "threshold": 0.65,
+        "operator": ">=",
+        "authorized_with_other_frozen_conditions_held": true
+      },
+      {
+        "threshold": 0.75,
+        "operator": ">=",
+        "authorized_with_other_frozen_conditions_held": true
+      },
+      {
+        "threshold": 0.9,
+        "operator": ">=",
+        "authorized_with_other_frozen_conditions_held": true
+      },
+      {
+        "threshold": 0.95,
+        "operator": ">=",
+        "authorized_with_other_frozen_conditions_held": false
+      }
+    ],
+    "minimum_relative_mse_improvement": [
+      {
+        "threshold": 0.0,
+        "operator": ">",
+        "authorized_with_other_frozen_conditions_held": true
+      },
+      {
+        "threshold": 0.025,
+        "operator": ">",
+        "authorized_with_other_frozen_conditions_held": true
+      },
+      {
+        "threshold": 0.05,
+        "operator": ">",
+        "authorized_with_other_frozen_conditions_held": true
+      },
+      {
+        "threshold": 0.075,
+        "operator": ">",
+        "authorized_with_other_frozen_conditions_held": false
+      },
+      {
+        "threshold": 0.1,
+        "operator": ">",
+        "authorized_with_other_frozen_conditions_held": false
+      }
+    ],
+    "availability_minimum_subjects": [
+      {
+        "threshold": 5,
+        "operator": ">=",
+        "authorized_with_other_frozen_conditions_held": true
+      },
+      {
+        "threshold": 10,
+        "operator": ">=",
+        "authorized_with_other_frozen_conditions_held": false
+      },
+      {
+        "threshold": 15,
+        "operator": ">=",
+        "authorized_with_other_frozen_conditions_held": false
+      },
+      {
+        "threshold": 20,
+        "operator": ">=",
+        "authorized_with_other_frozen_conditions_held": false
+      },
+      {
+        "threshold": 25,
+        "operator": ">=",
+        "authorized_with_other_frozen_conditions_held": false
+      },
+      {
+        "threshold": 29,
+        "operator": ">=",
+        "authorized_with_other_frozen_conditions_held": false
+      }
+    ]
+  },
+  "decision_boundaries": {
+    "contrast_maximum_subject_requirement_that_passes": 32,
+    "contrast_maximum_median_correlation_threshold_that_passes": 0.31001038394578095,
+    "contrast_maximum_bootstrap_lower_threshold_that_passes": 0.20680024659915142,
+    "contrast_maximum_positive_fraction_threshold_that_passes": 0.9375,
+    "contrast_maximum_relative_mse_improvement_that_passes": 0.05431273014238209,
+    "availability_maximum_subject_requirement_that_passes": 5
+  },
+  "conditions": {
+    "frozen_contrast_decision_reproduced": true,
+    "frozen_availability_decision_reproduced": true,
+    "every_grid_contains_frozen_threshold": true,
+    "no_threshold_is_replaced": true
+  },
+  "completed": true,
+  "scope": {
+    "prospective_validity_claimed": false,
+    "criterion_validity_claimed": false,
+    "threshold_calibration_claimed": false,
+    "independent_content_validation_claimed": false,
+    "interpretation": "The frozen decisions remain the primary outcomes. This post-outcome analysis changes one operational threshold at a time to expose decision boundaries. It cannot validate, optimize, or retrospectively replace the frozen values."
+  },
+  "decision": "dandi_threshold_sensitivity_complete"
+}

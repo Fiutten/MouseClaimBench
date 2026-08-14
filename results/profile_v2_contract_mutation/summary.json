@@ -1,9 +1,9 @@
 {
-  "version": "0.9.0",
-  "git_revision": "93433ee1677d899b2536ad620d3d0503b0d1c59e",
+  "version": "0.11.0",
+  "git_revision": "8d80861495efd7d318d097e65e6611ca2d918288",
   "analysis": "profile_v2_contract_mutation",
   "protocol": "configs/benchmarks/profile_v2_contract_mutation.yaml",
-  "protocol_sha256": "071875041dee952750fd13113b60a954c61d7afeb062b51a7c940a14a45c08f2",
+  "protocol_sha256": "fc8041d5843a9dc010d3a24afb6d7b65249c906fbd4a6594c045c88434460902",
   "profile_id": "mouse_brain_claim_authorization",
   "profile_version": "2.0.0",
   "profile_hash": "sha256:9bbde507f1f3bf74f0562e896b29ec440122b2eeec20b02d464617fc3e2e2354",
@@ -33,8 +33,8 @@
     "raw_status_all_passed_ignoring_schema": 339
   },
   "asp_conformance": {
-    "cases": 262,
-    "exact_status_and_deficit_matches": 262,
+    "cases": 5497,
+    "exact_status_and_deficit_matches": 5497,
     "rate": 1.0
   },
   "primary_endpoints": {
