@@ -50,6 +50,19 @@
 \newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
 \modulolinenumbers[5]
 \setlength{\emergencystretch}{2em}
+\setcounter{topnumber}{3}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{5}
+\renewcommand{\topfraction}{0.92}
+\renewcommand{\bottomfraction}{0.80}
+\renewcommand{\textfraction}{0.08}
+\renewcommand{\floatpagefraction}{0.72}
+\makeatletter
+\AtBeginDocument{%
+  \setlength{\@fptop}{0pt}%
+  \setlength{\@dblfptop}{0pt}%
+}
+\makeatother
 
 \begin{document}
 

@@ -98,6 +98,7 @@ The dependence-aware \ac{microns} analysis changes the status of the local assoc
 The two prospective DANDI outcomes are deliberately asymmetric. DANDI:001176 fails the frozen availability condition with 5 usable subjects against a minimum of 20. No predictive fit is reported, and the endpoint is not weakened after seeing the catalog. DANDI:000039 yields 32 selected and usable mice. Its median held-out correlation is 0.310, the mouse-bootstrap 95\% interval is $[0.207,0.369]$, and 93.75\% of subjects have positive correlation. Pooled model squared error is 11.579 compared with 12.244 for the training-intercept baseline. All five frozen acceptance conditions pass, so the system authorizes only bounded population-response prediction within this resource.
 
 \input{figures/prospective_applications_v2}
+\FloatBarrier
 
 The positive result is not a state-of-the-art model claim. Ridge regression was chosen because the experiment tests prospective authorization rather than neural architecture. The negative result is equally part of the method evaluation. Together they show that a frozen knowledge contract can preserve both authorization and refusal without post-outcome threshold repair. The final release verifies all source revisions, profile and protocol hashes, exact public DANDI asset identifiers, and the absence of \texttt{-dirty} artifacts.
 
