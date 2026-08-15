@@ -9,6 +9,8 @@ Revision metadata for this audit:
 - manuscript and software version: `0.12.3`
 - executable source commit used by the regenerated MICRONS revision artifact:
   `e7b9e4f7ebd839aea77d9b829ed3ac182522705a`
+- executable source commit used by the regenerated extended-integrity artifact:
+  `865f5aea8b87b5e30aceff4ee47b593318e2c456`
 - planned release tag: `v0.12.3`
 - canonical manuscript sources: `main.tex`, `sections/`, and `tables/`
 

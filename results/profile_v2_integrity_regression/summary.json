@@ -1,13 +1,13 @@
 {
-  "version": "0.12.0",
-  "git_revision": "396347dc133aad6b0e1418f486395efc7cf84588",
+  "version": "0.12.3",
+  "git_revision": "v0.12.2-2-g865f5ae",
   "analysis": "profile_v2_extended_integrity_regression",
   "protocol": "configs/benchmarks/profile_v2_integrity_regression.yaml",
   "protocol_sha256": "07925bf49d771fa3bf94280eb231e18f4dece7c97c4fca71c0192e94d2aeb2c0",
   "cases": 100,
   "pristine_cases": 10,
   "attacked_cases": 90,
-  "attack_families": [
+  "regression_families": [
     "dangling_attestation_artifact",
     "dangling_independence_left",
     "dangling_independence_right",
