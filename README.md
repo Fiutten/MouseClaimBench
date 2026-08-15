@@ -12,7 +12,7 @@ that the supplied package satisfies the named profile version.
 
 ## Current research release
 
-The current revision candidate is the `v0.12.2` three-gate release. It
+The current revision candidate is the `v0.12.3` three-gate release. It
 preserves the submitted data analyses while aligning the mathematical model,
 software, tests, benchmarks, and manuscript. The knowledge architecture
 separates three layers and composes them only at the final gate:
@@ -54,6 +54,11 @@ irreflexive. Data-generation identity is the composite
 `(study_id, data_generation_id)` when both values are non-empty. A generation
 identifier is not assumed to be globally unique across studies.
 
+Integrity evaluation uses five distinct units that must not be conflated: 13
+deficit types, eight historical attack families, nine extended regression
+families, six direct API edge cases, and two trust-boundary control families.
+Their corresponding package counts are reported separately below.
+
 The evaluated profile is
 `mousebrainbench/knowledge/profiles/mouse_brain_claims_v2.yaml`. It contains 10
 bounded claim types, 22 evidence-block types, and 60 claim-to-evidence
@@ -78,7 +83,7 @@ The release gate verifies the following results from clean source revisions:
 | Final gate | All 8 logical combinations reproduce `S && A && I` | Non-compensatory composition only |
 | Domain-gate properties | 55,031 deterministic checks over 10,000 packages, zero violations | Six properties and outside closure for core authorization, not arbitrary final-package changes |
 | JSON-LD interchange | Five representative package graphs preserve graph isomorphism | Serializer interoperability across pristine, failed, incomplete, rich-manifest, and large-package cases |
-| Integrity attacks | 360 attacked packages, zero false authorizations with the complete domain-plus-integrity configuration | Resistance to the declared controlled attacks |
+| Original integrity benchmark | 370 packages: 10 pristine and 360 single/pairwise attacked packages over eight historical families | Resistance to the declared original attacks |
 | Integrity ablation | Seven original omissions create 10 false authorizations each; contradiction removal creates none because status mismatch is a second detector | Domain-plus-integrity configurations with the structural gate excluded to isolate manifest controls |
 | Scalability | About 27,700--52,800 package decisions per second on one Apple arm64 host | Descriptive local performance only |
 | DANDI:001176 | 5 usable subjects against a frozen minimum of 20 | No predictive authorization and no endpoint repair |
@@ -88,8 +93,10 @@ The release gate verifies the following results from clean source revisions:
 | Knowledge traceability | 60 relation rationales, 22 predicate contracts, 124 observation slots | Complete traceability of the author-defined policy, not external content validity |
 | One-edge policy perturbation | 221 profiles and 3,094 fixed profile-case evaluations | Expected monotonic changes under one relation removal or addition |
 | Explanation fidelity | 10,000 packages, 51,480 minimality and witness checks | Counterfactual fidelity and information retention, not human utility |
-| Compositional integrity | 2,550 attacked packages plus 20 trust-boundary controls | Exact declared-invariant traces and explicit coherent-forgery escapes |
-| Extended integrity regression | 100 frozen packages across 9 edge-case families plus 6 direct API regressions | Reference closure, identifier uniqueness, irreflexive relations, and attestation consistency |
+| Compositional integrity | 2,550 attacked packages spanning all 255 non-empty compositions of the eight historical families | Exact declared-invariant traces for the frozen attack universe |
+| Extended integrity regression | 100 frozen packages across nine reference- and attestation-level regression families | Reference closure and attestation consistency |
+| Direct API edge cases | Six regressions outside the 100-package suite | Identifier uniqueness, irreflexive relations, and composite generation identity |
+| Trust-boundary controls | 20 internally coherent forgery packages | Explicit escapes when no external truth anchor is available |
 | DANDI threshold sensitivity | Six one-at-a-time operational criteria | Post-outcome decision boundaries, not criterion validity or calibration |
 
 The positive DANDI model is intentionally simple Ridge regression. It tests a

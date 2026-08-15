@@ -1,26 +1,26 @@
 \begin{table}[!htbp]
 \centering
-\caption{Thirteen-type declared integrity threat model. The original benchmark covers eight attack families individually, pairwise, and in every non-empty composition. Extended regressions cover duplicate identifiers, reflexive relations, dangling references, unknown blocks, status disagreement, and missing attestations. Neither experiment represents attack prevalence or adaptive adversaries.}
+\caption{Thirteen-type integrity model and evaluated coverage. O: 370-case original benchmark. C: 2,550-package compositional stress test. E: 100-package extended regression suite. D: six direct API edge-case regressions. O and C use the same eight historical attack families. The 20 trust-boundary controls are separate. These tests do not estimate attack prevalence or adaptive robustness.}
 \label{tab:integrity-threat-model}
 \scriptsize
 \renewcommand{\arraystretch}{1.06}
-\begin{tabularx}{\textwidth}{@{}P{0.27\textwidth}P{0.20\textwidth}Y@{}}
+\begin{tabularx}{\textwidth}{@{}P{0.24\textwidth}P{0.16\textwidth}P{0.11\textwidth}Y@{}}
 \toprule
-Attack & Protected asset & Violated invariant \\
+Integrity condition & Protected asset & Evaluation & Violated invariant \\
 \midrule
-Profile-version substitution & Authorization contract & Identifier, version, and profile hash must match \\
-Duplicate artifact identifier & Package namespace & Every artifact identifier must be unique within a package \\
-Duplicate block lineage & Evidence trace & Every block must have one consolidated lineage declaration \\
-Artifact-hash tampering & Source content & Declared and observed content identities must agree \\
-Dangling provenance reference & Derivation graph & Every referenced artifact must resolve \\
-Circular provenance & Derivation graph & Artifact derivation must be acyclic \\
-Duplicate independent artifact & Independence declaration & Independence pairs must be irreflexive and cannot share content or composite generation identity \\
-Overlapping independent cohorts & Inferential units & Cohort-disjointness pairs must be irreflexive and cannot share subjects \\
-Contradictory attestation & Evidence status & One block cannot have incompatible source attestations \\
-Missing block lineage & Evidence trace & Every supplied block must resolve to at least one source artifact \\
-Unknown block reference & Evidence trace & Lineage and attestations must reference supplied blocks \\
-Block--attestation mismatch & Evidence status & Every direct attestation must agree with the represented block status \\
-Missing block attestation & Evidence trace & Every supplied block must have at least one source attestation \\
+Profile-version substitution & Authorization contract & O, C & Identifier, version, and profile hash must match \\
+Duplicate artifact identifier & Package namespace & D & Every artifact identifier must be unique within a package \\
+Duplicate block lineage & Evidence trace & D & Every block must have one consolidated lineage declaration \\
+Artifact-hash tampering & Source content & O, C & Declared and observed content identities must agree \\
+Dangling provenance reference & Derivation graph & O, C, E & Every referenced artifact must resolve \\
+Circular provenance & Derivation graph & O, C & Artifact derivation must be acyclic \\
+Duplicate independent artifact & Independence declaration & O, C, D & Independence pairs must be irreflexive and cannot share content or composite generation identity \\
+Overlapping independent cohorts & Inferential units & O, C, D & Cohort-disjointness pairs must be irreflexive and cannot share subjects \\
+Contradictory attestation & Evidence status & O, C & One block cannot have incompatible source attestations \\
+Missing block lineage & Evidence trace & O, C & Every supplied block must resolve to at least one source artifact \\
+Unknown block reference & Evidence trace & E & Lineage and attestations must reference supplied blocks \\
+Block--attestation mismatch & Evidence status & O, C, E & Every direct attestation must agree with the represented block status \\
+Missing block attestation & Evidence trace & E & Every supplied block must have at least one source attestation \\
 \bottomrule
 \end{tabularx}
 \end{table}

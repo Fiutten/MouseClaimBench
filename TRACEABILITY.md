@@ -6,10 +6,10 @@ provide independent scientific content validity.
 
 Revision metadata for this audit:
 
-- manuscript and software version: `0.12.2`
+- manuscript and software version: `0.12.3`
 - executable source commit used by the regenerated MICRONS revision artifact:
   `e7b9e4f7ebd839aea77d9b829ed3ac182522705a`
-- planned release tag: `v0.12.2`
+- planned release tag: `v0.12.3`
 - canonical manuscript sources: `main.tex`, `sections/`, and `tables/`
 
 Every result row below points to a JSON artifact that records its own clean
@@ -37,9 +37,11 @@ their LaTeX labels so that numbering changes do not break this ledger.
 | Manuscript result | Source implementation | Test or audit | Result artifact |
 |---|---|---|---|
 | 55,031 deterministic property checks | `profile_v2_formal_properties.py` | `tests/test_profile_v2_formal_properties.py` | `results/profile_v2_formal_properties/summary.json` |
+| 370-case original integrity benchmark: 10 pristine and 360 attacked packages over eight historical families | `profile_v2_provenance_attacks.py` | `tests/test_profile_v2_provenance_attacks.py` | `results/profile_v2_provenance_attacks/summary.json` |
 | 2,550 attacked packages spanning 255 non-empty compositions across 10 claims | `profile_v2_compositional_integrity_stress.py` | `tests/test_profile_v2_compositional_integrity_stress.py` | `results/profile_v2_compositional_integrity_stress/summary.json` |
-| 100 extended integrity regression packages | `profile_v2_integrity_regression.py` | `tests/test_profile_v2_integrity_regression.py` | `results/profile_v2_integrity_regression/summary.json` |
-| 6 direct integrity API edge cases | `validate_evidence_manifest()` and `FinalAuthorizationSystem` | `tests/test_profile_v2_provenance_attacks.py` | Software regression tests, not a numerical benchmark artifact |
+| 100-package extended suite: 10 pristine and 90 attacked packages over nine regression families | `profile_v2_integrity_regression.py` | `tests/test_profile_v2_integrity_regression.py` | `results/profile_v2_integrity_regression/summary.json` |
+| Six direct integrity API edge cases | `validate_evidence_manifest()` and `FinalAuthorizationSystem` | `tests/test_profile_v2_provenance_attacks.py` | Software regression tests outside the 100-package suite |
+| 20 trust-boundary controls over two internally coherent forgery families | `profile_v2_compositional_integrity_stress.py` | `tests/test_profile_v2_compositional_integrity_stress.py` | `results/profile_v2_compositional_integrity_stress/summary.json` |
 | Table `tab:scalability-results`, 25, 100, 1,000, and 5,000 artifacts | `profile_v2_scalability_ablation.py` | `tests/test_profile_v2_scalability_ablation.py` | `results/profile_v2_scalability_ablation/summary.json` |
 | Experiments Eq. `eq:dandi-pooled-mse` and Table `tab:prospective-applications` | `dandi_profile_v2_1.py` | `tests/test_dandi_profile_v2_1.py` | `results/dandi_profile_v2_1/summary.json` |
 | Descriptive DANDI train/test stimulus coverage audit | `dandi_stimulus_coverage.py` | `tests/test_dandi_stimulus_coverage.py` | `results/dandi_stimulus_coverage/summary.json` |
@@ -54,5 +56,5 @@ their LaTeX labels so that numbering changes do not break this ledger.
   and dependencies are available. No result JSON is manually edited.
 - The manuscript mirror under `paper/` is generated from the canonical root
   manuscript by `scripts/sync_manuscript_mirror.py`.
-- Tag `v0.12.2` identifies the complete revision snapshot. Each generated
+- Tag `v0.12.3` identifies the complete revision snapshot. Each generated
   artifact records the clean source commit from which that artifact was run.

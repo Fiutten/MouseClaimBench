@@ -6,6 +6,7 @@ import yaml
 
 from mousebrainbench.benchmarks.profile_v2_contract_mutation import _block, _complete_blocks
 from mousebrainbench.benchmarks.profile_v2_provenance_attacks import (
+    ORIGINAL_ATTACK_FAMILIES,
     _apply_attack,
     _base_manifest,
     evaluate,
@@ -22,6 +23,10 @@ from mousebrainbench.validation.evidence_contract import EvidenceStatus
 
 def test_integrity_taxonomy_declares_thirteen_deficit_types() -> None:
     assert len(IntegrityDeficitCode) == 13
+
+
+def test_original_integrity_benchmark_has_eight_historical_families() -> None:
+    assert len(ORIGINAL_ATTACK_FAMILIES) == 8
 
 
 def test_each_integrity_attack_is_detected_without_masking() -> None:

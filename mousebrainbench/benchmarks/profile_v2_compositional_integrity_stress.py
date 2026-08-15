@@ -17,7 +17,7 @@ from mousebrainbench import __version__
 from mousebrainbench.artifacts import code_revision
 from mousebrainbench.benchmarks.profile_v2_contract_mutation import _complete_blocks
 from mousebrainbench.benchmarks.profile_v2_provenance_attacks import (
-    ATTACK_TO_DEFICIT,
+    ORIGINAL_ATTACK_FAMILIES,
     _apply_attack,
     _base_manifest,
     _digest,
@@ -80,7 +80,12 @@ def evaluate(protocol: dict[str, Any]) -> dict[str, Any]:
     """Evaluate every attack subset and two deliberately unobservable forgeries."""
 
     profile = load_authorization_profile_v2()
-    attacks = tuple(ATTACK_TO_DEFICIT)
+    attacks = ORIGINAL_ATTACK_FAMILIES
+    expected_families = int(protocol["in_model_design"]["attack_families"])
+    if len(attacks) != expected_families:
+        raise ValueError(
+            "the compositional protocol must use the eight historical attack families"
+        )
     subsets = _all_subsets(attacks)
     in_model_packages = attacked_packages = false_authorizations = exact_traces = 0
     by_order: Counter[int] = Counter()

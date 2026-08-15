@@ -4,6 +4,9 @@ from pathlib import Path
 import yaml
 
 from mousebrainbench.benchmarks.profile_v2_compositional_integrity_stress import evaluate
+from mousebrainbench.benchmarks.profile_v2_provenance_attacks import (
+    ORIGINAL_ATTACK_FAMILIES,
+)
 
 
 def test_all_declared_attack_compositions_and_trust_boundary_controls() -> None:
@@ -12,6 +15,7 @@ def test_all_declared_attack_compositions_and_trust_boundary_controls() -> None:
     )
     result = evaluate(protocol)
 
+    assert len(ORIGINAL_ATTACK_FAMILIES) == 8
     assert result["in_model_packages"] == 2560
     assert result["in_model_attacked_packages"] == 2550
     assert result["in_model_false_authorizations"] == 0

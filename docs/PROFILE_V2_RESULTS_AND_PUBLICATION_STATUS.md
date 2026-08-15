@@ -15,7 +15,7 @@ adds four bounded response artifacts generated from clean revision `373de37`:
 - one-edge structural policy perturbation over 221 profiles and 3,094 fixed profile-case decisions
 - counterfactual explanation checks on 10,000 packages, including 9,839 full
   repairs and 51,480 individual necessity and witness checks
-- 2,550 attacked packages spanning all 255 non-empty compositions of the eight declared attacks across 10 claims, plus 20
+- 2,550 attacked packages spanning all 255 non-empty compositions of the eight historical attack families across 10 claims, plus 20
   coherent-forgery controls that intentionally expose the external-trust boundary
 
 Only one relation removal expands authorization: omitting `data_quality` from

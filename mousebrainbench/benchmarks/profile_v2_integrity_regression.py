@@ -30,7 +30,10 @@ DEFAULT_PROTOCOL = Path("configs/benchmarks/profile_v2_integrity_regression.yaml
 DEFAULT_OUTPUT = Path("results/profile_v2_integrity_regression/summary.json")
 DEFAULT_MARKDOWN = Path("results/profile_v2_integrity_regression/summary.md")
 
-ATTACKS = (
+# These are targeted software-regression families, not additional historical
+# attack families. Their separation prevents the 13-type deficit taxonomy from
+# being conflated with either integrity benchmark.
+EXTENDED_REGRESSION_FAMILIES = (
     "dangling_attestation_artifact",
     "dangling_independence_left",
     "dangling_independence_right",
@@ -133,7 +136,7 @@ def generate_cases() -> tuple[IntegrityRegressionCase, ...]:
                 (),
             )
         )
-        for attack in ATTACKS:
+        for attack in EXTENDED_REGRESSION_FAMILIES:
             blocks, manifest, expected = _mutate(
                 attack, _complete_blocks(claim), _base_manifest(claim)
             )
@@ -152,7 +155,7 @@ def evaluate(protocol: dict[str, Any]) -> dict[str, Any]:
     if len(cases) != expected_cases:
         raise RuntimeError(f"generated {len(cases)} cases, expected {expected_cases}")
     exact_traces = false_authorizations = false_rejections = 0
-    family_detection = {name: 0 for name in ATTACKS}
+    family_detection = {name: 0 for name in EXTENDED_REGRESSION_FAMILIES}
     for case in cases:
         decision = FinalAuthorizationSystem(
             profile, case.blocks, case.manifest
@@ -175,7 +178,7 @@ def evaluate(protocol: dict[str, Any]) -> dict[str, Any]:
         "cases": len(cases),
         "pristine_cases": len(profile.requirements),
         "attacked_cases": len(cases) - len(profile.requirements),
-        "attack_families": list(ATTACKS),
+        "regression_families": list(EXTENDED_REGRESSION_FAMILIES),
         "exact_integrity_traces": exact_traces,
         "exact_integrity_trace_rate": exact_traces / len(cases),
         "false_authorizations": false_authorizations,

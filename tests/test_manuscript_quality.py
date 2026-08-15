@@ -1,5 +1,6 @@
 import csv
 import re
+import tomllib
 from collections import Counter
 from pathlib import Path
 
@@ -207,8 +208,8 @@ def test_integrity_threat_table_covers_all_eight_attacks() -> None:
     assert "Missing block attestation" in table
     assert "Duplicate artifact identifier" in table
     assert "Duplicate block lineage" in table
-    assert "Thirteen-type declared integrity threat model" in table
-    assert "adaptive adversaries" in table
+    assert "Thirteen-type integrity model and evaluated coverage" in table
+    assert "adaptive robustness" in table
 
 
 def test_minor_revision_terminology_and_microns_roles_are_consistent() -> None:
@@ -226,6 +227,45 @@ def test_minor_revision_terminology_and_microns_roles_are_consistent() -> None:
     assert "Full integrity gate" in figure_source
     assert "The discovery window fixes the positive direction" in manuscript
     assert "both pre-fixed hold-outs" in manuscript
+
+
+def test_integrity_evaluation_units_use_canonical_nonconflated_terms() -> None:
+    manuscript = "\n".join(
+        path.read_text(encoding="utf-8") for path in MANUSCRIPT_PATHS
+    )
+    threat_table = (ROOT / "tables/integrity_threat_model.tex").read_text(
+        encoding="utf-8"
+    )
+    design_table = (ROOT / "tables/experiment_design_v2.tex").read_text(
+        encoding="utf-8"
+    )
+
+    assert "first eight attacks" not in manuscript.lower()
+    assert "eight historical attack families" in manuscript.lower()
+    assert "370-case original benchmark" in manuscript.lower()
+    assert "2,550 attacked packages spanning all 255 compositions" in manuscript
+    assert "100-package nine-family regression suite" in manuscript.lower()
+    assert "six direct API edge cases" in manuscript
+    assert "20 coherent-forgery controls" in manuscript
+    assert "Evaluation" in threat_table
+    assert "O: 370-case original benchmark" in threat_table
+    assert "C: 2,550-package compositional stress test" in threat_table
+    assert "E: 100-package extended regression suite" in threat_table
+    assert "D: six direct API edge-case regressions" in threat_table
+    assert "six direct API edge cases" in design_table
+
+
+def test_release_version_is_consistent_across_user_facing_metadata() -> None:
+    project = tomllib.loads((ROOT / "pyproject.toml").read_text(encoding="utf-8"))
+    version = project["project"]["version"]
+    citation = (ROOT / "CITATION.cff").read_text(encoding="utf-8")
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    main = (ROOT / "main.tex").read_text(encoding="utf-8")
+
+    assert version == "0.12.3"
+    assert f"version: {version}" in citation
+    assert f"v{version}" in readme
+    assert f"v{version}" in main
 
 
 def test_every_used_acronym_is_defined() -> None:

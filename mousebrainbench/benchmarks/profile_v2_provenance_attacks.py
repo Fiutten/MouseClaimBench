@@ -40,6 +40,12 @@ ATTACK_TO_DEFICIT = {
     "missing_block_lineage": IntegrityDeficitCode.MISSING_BLOCK_LINEAGE,
 }
 
+# Frozen order from the original 370-case integrity protocol. These eight
+# historical families also define the compositional stress-test universe. They
+# are distinct from the complete integrity-deficit taxonomy and from later
+# reference/attestation regression families.
+ORIGINAL_ATTACK_FAMILIES = tuple(ATTACK_TO_DEFICIT)
+
 
 def expected_deficits_for_attacks(
     attacks: tuple[str, ...],
@@ -190,6 +196,11 @@ def _apply_attack(
 def generate_cases(protocol: dict[str, Any]) -> tuple[AttackCase, ...]:
     profile = load_authorization_profile_v2()
     attacks = tuple(protocol["attack_families"])
+    if attacks != ORIGINAL_ATTACK_FAMILIES:
+        raise ValueError(
+            "the original integrity protocol must preserve its eight historical "
+            "attack families and their frozen order"
+        )
     cases: list[AttackCase] = []
     attack_sets = ((), *((name,) for name in attacks), *combinations(attacks, 2))
     for requirement in profile.requirements:
@@ -291,7 +302,7 @@ def _write_markdown(payload: dict[str, Any], path: Path) -> None:
         f"- Decision: `{payload['decision']}`",
         f"- Cases: `{payload['cases']}`",
         f"- Attacked cases: `{payload['attacked_cases']}`",
-        f"- Full-gate false authorizations: `{gate['false_authorizations']}`",
+        f"- Full-integrity-gate false authorizations: `{gate['false_authorizations']}`",
         f"- Exact attack-trace rate: `{gate['exact_attack_trace_rate']:.4f}`",
         "",
         "| Attack | Cases | Detected |",
