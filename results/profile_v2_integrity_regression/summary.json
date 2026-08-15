@@ -1,0 +1,45 @@
+{
+  "version": "0.12.0",
+  "git_revision": "396347dc133aad6b0e1418f486395efc7cf84588",
+  "analysis": "profile_v2_extended_integrity_regression",
+  "protocol": "configs/benchmarks/profile_v2_integrity_regression.yaml",
+  "protocol_sha256": "07925bf49d771fa3bf94280eb231e18f4dece7c97c4fca71c0192e94d2aeb2c0",
+  "cases": 100,
+  "pristine_cases": 10,
+  "attacked_cases": 90,
+  "attack_families": [
+    "dangling_attestation_artifact",
+    "dangling_independence_left",
+    "dangling_independence_right",
+    "dangling_cohort_left",
+    "dangling_cohort_right",
+    "unknown_attested_block",
+    "attestation_failed_block_passed",
+    "attestation_passed_block_failed",
+    "missing_block_attestation"
+  ],
+  "exact_integrity_traces": 100,
+  "exact_integrity_trace_rate": 1.0,
+  "false_authorizations": 0,
+  "false_rejections": 0,
+  "family_detection": {
+    "dangling_attestation_artifact": 10,
+    "dangling_independence_left": 10,
+    "dangling_independence_right": 10,
+    "dangling_cohort_left": 10,
+    "dangling_cohort_right": 10,
+    "unknown_attested_block": 10,
+    "attestation_failed_block_passed": 10,
+    "attestation_passed_block_failed": 10,
+    "missing_block_attestation": 10
+  },
+  "endpoints": {
+    "exact_integrity_traces_equal_1": true,
+    "false_authorizations_equal_0": true,
+    "false_rejections_equal_0": true,
+    "every_regression_family_detected_for_all_claims": true
+  },
+  "all_endpoints_passed": true,
+  "interpretation": "This regression suite verifies reference closure and block-attestation consistency for nine newly explicit edge cases. It complements the frozen eight-attack composition benchmark and does not estimate robustness against attacks outside the declared integrity model.",
+  "decision": "extended_integrity_regression_confirmed"
+}

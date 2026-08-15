@@ -1,17 +1,20 @@
 {
-  "version": "0.11.1",
-  "git_revision": "4fa593be5fb923796357a704dbb2fc958ee6d867",
+  "version": "0.12.0",
+  "git_revision": "396347dc133aad6b0e1418f486395efc7cf84588",
   "analysis": "profile_v2_contract_mutation",
   "protocol": "configs/benchmarks/profile_v2_contract_mutation.yaml",
-  "protocol_sha256": "fc8041d5843a9dc010d3a24afb6d7b65249c906fbd4a6594c045c88434460902",
+  "protocol_sha256": "e3d1da8b7417490c63ed58da2e8fa045e332916e7dda2bf0f5e89e0f7cfd4fd6",
   "profile_id": "mouse_brain_claim_authorization",
   "profile_version": "2.0.0",
   "profile_hash": "sha256:9bbde507f1f3bf74f0562e896b29ec440122b2eeec20b02d464617fc3e2e2354",
-  "cases": 5497,
+  "cases": 5677,
   "pristine_cases": 10,
-  "mutation_cases": 5487,
+  "mutation_cases": 5667,
   "family_counts": {
+    "missing_rationale": 60,
     "missing_required_observation": 339,
+    "missing_rule": 60,
+    "missing_source": 60,
     "omitted_required_block": 60,
     "pairwise_mixed_status_defects": 4848,
     "pristine_complete": 10,
@@ -20,21 +23,21 @@
   "profile_v2": {
     "false_authorizations": 0,
     "false_rejections": 0,
-    "exact_deficit_sets": 5497,
+    "exact_deficit_sets": 5677,
     "exact_deficit_rate": 1.0
   },
   "prioritized_single_reason_trace": {
     "exact_deficit_sets": 1522,
-    "exact_deficit_rate": 0.27687829725304713
+    "exact_deficit_rate": 0.26809934824731374
   },
   "comparator_false_authorizations": {
-    "equal_weight_75_percent_ignoring_schema": 4674,
-    "prediction_shortcut_ignoring_schema": 4242,
-    "raw_status_all_passed_ignoring_schema": 339
+    "equal_weight_75_percent_ignoring_schema": 4854,
+    "prediction_shortcut_ignoring_schema": 4422,
+    "raw_status_all_passed_ignoring_schema": 519
   },
   "asp_conformance": {
-    "cases": 5497,
-    "exact_status_and_deficit_matches": 5497,
+    "cases": 5677,
+    "exact_status_and_deficit_matches": 5677,
     "rate": 1.0
   },
   "primary_endpoints": {

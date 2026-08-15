@@ -58,7 +58,7 @@ The release gate verifies the following results from clean source revisions:
 | Formalized properties | 55,031 deterministic checks over 10,000 packages, zero violations | Six properties and outside closure relative to profile v2 |
 | Integrity attacks | 360 attacked packages, zero false authorizations with the full gate | Resistance to the declared controlled attacks |
 | Integrity ablation | Seven original omissions create 10 false authorizations each; contradiction removal creates none because status mismatch is a second detector | Conditional necessity and one explicit redundancy under the declared attack construction |
-| Scalability | About 63,500--65,500 package decisions per second on one Apple arm64 host | Descriptive local performance only |
+| Scalability | About 27,700--52,800 package decisions per second on one Apple arm64 host | Descriptive local performance only |
 | DANDI:001176 | 5 usable subjects against a frozen minimum of 20 | No predictive authorization and no endpoint repair |
 | DANDI:000039 | 32 mice, median held-out correlation 0.310, bootstrap lower bound 0.207 | Bounded population-response prediction |
 | MICRONS | Positive directed dyadic and node-permutation tests in three internal windows | One local observational structure--function association |

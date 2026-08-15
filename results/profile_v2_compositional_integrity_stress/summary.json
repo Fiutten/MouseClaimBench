@@ -1,6 +1,6 @@
 {
-  "version": "0.10.0",
-  "git_revision": "373de377f679cca61ca238fbfc859f74e5680e69",
+  "version": "0.12.0",
+  "git_revision": "396347dc133aad6b0e1418f486395efc7cf84588",
   "analysis": "profile_v2_compositional_integrity_stress",
   "protocol": "configs/benchmarks/profile_v2_compositional_integrity_stress.yaml",
   "protocol_sha256": "34aedbdc7628b13ca3a13cffe566fa1c7a894dc3b16f9314b1591adec9577e14",

@@ -86,10 +86,10 @@ declared deterministic threat model. It is not an adaptive security evaluation.
 
 ## Scalability
 
-On one Apple arm64 host with Python 3.14.4, median throughput remains between
-63,504 and 65,465 package decisions per second for batches of 100, 1,000, and
-10,000. Median time is 0.154 s for 10,000 packages. Integrity evaluation of one
-valid package takes 0.0498 ms with 25 artifacts and 2.545 ms with 5,000. The
+On one Apple arm64 host with Python 3.12.13, median throughput ranges from 27,653
+to 52,816 package decisions per second for batches of 100, 1,000, and 10,000.
+Median time is 0.362 s for 10,000 packages. Integrity evaluation of one valid
+package takes 0.149 ms with 25 artifacts and 5.328 ms with 5,000. The
 reported log-log slope is descriptive and not an asymptotic proof.
 
 ## Mouse-brain applications

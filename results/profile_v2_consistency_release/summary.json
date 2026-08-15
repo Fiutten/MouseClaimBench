@@ -1,0 +1,49 @@
+{
+  "version": "0.12.0",
+  "git_revision": "396347dc133aad6b0e1418f486395efc7cf84588",
+  "analysis": "profile_v2_paper_code_result_consistency_release",
+  "protocol": "configs/benchmarks/profile_v2_consistency_release.yaml",
+  "protocol_sha256": "4680b47195a10f99e58ac5b7bf56bef1f5108cde40c95ebcb3905c496659f2b2",
+  "artifact_revisions": {
+    "parent_second_review": "4fa593be5fb923796357a704dbb2fc958ee6d867",
+    "contract_mutation": "396347dc133aad6b0e1418f486395efc7cf84588",
+    "structural_conformance": "396347dc133aad6b0e1418f486395efc7cf84588",
+    "provenance_attacks": "396347dc133aad6b0e1418f486395efc7cf84588",
+    "compositional_integrity": "396347dc133aad6b0e1418f486395efc7cf84588",
+    "integrity_regression": "396347dc133aad6b0e1418f486395efc7cf84588",
+    "final_gate": "396347dc133aad6b0e1418f486395efc7cf84588",
+    "scalability": "396347dc133aad6b0e1418f486395efc7cf84588",
+    "prospective_dandi": "3add706"
+  },
+  "conditions": {
+    "parent_release_preserved": true,
+    "domain_contract_exact": true,
+    "structural_contract_exact": true,
+    "original_integrity_benchmark_preserved": true,
+    "compositional_integrity_exact": true,
+    "extended_integrity_regression_exact": true,
+    "three_gate_composition_exact": true,
+    "scalability_and_ablation_current": true,
+    "dandi_outcomes_unchanged": true,
+    "new_artifact_revisions_clean": true,
+    "prohibited_claims_remain_false": true
+  },
+  "all_release_conditions_passed": true,
+  "claim_policy": {
+    "scientific_content_validity": false,
+    "human_explanation_utility": false,
+    "external_trust_authentication": false,
+    "biological_truth": false,
+    "causal_mechanism": false,
+    "complete_mouse_brain_twin": false
+  },
+  "remaining_limits": [
+    "profile v2 remains author-defined and lacks independent content validation",
+    "SHACL validates graph structure rather than scientific truth",
+    "integrity tests remain conditional on declared invariants",
+    "coherent forgery remains outside the trust model",
+    "no new biological dataset or outcome is introduced by this revision"
+  ],
+  "interpretation": "Passing this release establishes exact alignment among the declared mathematical gates, their software implementation, regression tests, and reported conformance artifacts. It does not independently validate the author-defined scientific profile or any biological claim.",
+  "decision": "profile_v2_consistency_release_complete"
+}

@@ -1,0 +1,76 @@
+{
+  "version": "0.12.0",
+  "git_revision": "396347dc133aad6b0e1418f486395efc7cf84588",
+  "analysis": "profile_v2_three_gate_composition",
+  "logical_combinations": 8,
+  "exact_combinations": 8,
+  "truth_table": [
+    {
+      "structural_conforms": false,
+      "domain_authorized": false,
+      "integrity_conforms": false,
+      "expected_authorized": false,
+      "observed_authorized": false,
+      "exact": true
+    },
+    {
+      "structural_conforms": false,
+      "domain_authorized": false,
+      "integrity_conforms": true,
+      "expected_authorized": false,
+      "observed_authorized": false,
+      "exact": true
+    },
+    {
+      "structural_conforms": false,
+      "domain_authorized": true,
+      "integrity_conforms": false,
+      "expected_authorized": false,
+      "observed_authorized": false,
+      "exact": true
+    },
+    {
+      "structural_conforms": false,
+      "domain_authorized": true,
+      "integrity_conforms": true,
+      "expected_authorized": false,
+      "observed_authorized": false,
+      "exact": true
+    },
+    {
+      "structural_conforms": true,
+      "domain_authorized": false,
+      "integrity_conforms": false,
+      "expected_authorized": false,
+      "observed_authorized": false,
+      "exact": true
+    },
+    {
+      "structural_conforms": true,
+      "domain_authorized": false,
+      "integrity_conforms": true,
+      "expected_authorized": false,
+      "observed_authorized": false,
+      "exact": true
+    },
+    {
+      "structural_conforms": true,
+      "domain_authorized": true,
+      "integrity_conforms": false,
+      "expected_authorized": false,
+      "observed_authorized": false,
+      "exact": true
+    },
+    {
+      "structural_conforms": true,
+      "domain_authorized": true,
+      "integrity_conforms": true,
+      "expected_authorized": true,
+      "observed_authorized": true,
+      "exact": true
+    }
+  ],
+  "all_endpoints_passed": true,
+  "interpretation": "This verifies the executable Boolean composition S and A and I. It does not validate the scientific content of any gate.",
+  "decision": "three_gate_composition_confirmed"
+}
