@@ -58,7 +58,11 @@ class FinalAuthorizationDecision:
 
 
 class FinalAuthorizationSystem:
-    """Evaluate all three gates over one shared claim-package-manifest input."""
+    """Evaluate all three gates over one shared claim-package-manifest input.
+
+    The structural gate requires the optional ``full-authorization`` or
+    backward-compatible ``standards-validation`` dependency group.
+    """
 
     def __init__(
         self,

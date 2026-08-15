@@ -22,7 +22,7 @@ from mousebrainbench.validation.evidence_contract import EvidenceBlock, Evidence
 
 @dataclass(frozen=True)
 class AspProfileAuthorizationDecision:
-    """One unique ASP authorization and its complete deficit set."""
+    """One unique ASP authorization and its full domain-deficit set."""
 
     claim: str
     status: ProfileAuthorizationStatus

@@ -205,7 +205,27 @@ def test_integrity_threat_table_covers_all_eight_attacks() -> None:
     assert all(attack in table for attack in attacks)
     assert "Block--attestation mismatch" in table
     assert "Missing block attestation" in table
+    assert "Duplicate artifact identifier" in table
+    assert "Duplicate block lineage" in table
+    assert "Thirteen-type declared integrity threat model" in table
     assert "adaptive adversaries" in table
+
+
+def test_minor_revision_terminology_and_microns_roles_are_consistent() -> None:
+    manuscript = "\n".join(
+        path.read_text(encoding="utf-8") for path in MANUSCRIPT_PATHS
+    )
+    figure_source = (ROOT / "scripts" / "build_standards_prospective_figures.py").read_text(
+        encoding="utf-8"
+    )
+
+    assert "Eight mandatory controls" not in manuscript
+    assert "2,550 attacked compositions" not in manuscript
+    assert "360 original attacks" not in manuscript
+    assert "Full gate" not in figure_source
+    assert "Full integrity gate" in figure_source
+    assert "The discovery window fixes the positive direction" in manuscript
+    assert "both pre-fixed hold-outs" in manuscript
 
 
 def test_every_used_acronym_is_defined() -> None:

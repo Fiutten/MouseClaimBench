@@ -1,10 +1,11 @@
 """Network-dependent inference for the fixed MICRONS primary endpoint.
 
-The analysis fits the same prespecified connected-pair coefficient in three
-non-overlapping cohorts. Pair-level OLS uncertainty is reported only as a naive
-reference. Primary uncertainty uses a directed dyadic sandwich in which two
-observations may be dependent whenever their pairs share either neuron. A
-Freedman--Lane simultaneous node-label permutation is the corroborating test.
+The discovery cohort fixes the positive direction. The same connected-pair
+coefficient is then evaluated confirmatorily in two non-overlapping hold-outs.
+Pair-level OLS uncertainty is reported only as a naive reference. Primary
+uncertainty uses a directed dyadic sandwich in which two observations may be
+dependent whenever their pairs share either neuron. A Freedman--Lane
+simultaneous node-label permutation is the corroborating test.
 
 Positive output remains a local observational association. Neither estimator
 identifies a biological causal mechanism.
@@ -30,18 +31,17 @@ SCRIPTS_DIR = Path(__file__).resolve().parents[2] / "scripts"
 if str(SCRIPTS_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPTS_DIR))
 
-from scripts.run_microns_stratified_structure_function import (  # noqa: E402
+from scripts.run_microns_stratified_structure_function import (
     _add_metric_columns,
     _build_pair_frame,
     _parse_position,
 )
-from scripts.run_microns_structure_function_pilot import (  # noqa: E402
+from scripts.run_microns_structure_function_pilot import (
     FUNCTION_COLUMNS,
     SPATIAL_COLUMNS,
     _prepare_edges,
     _prepare_units,
 )
-
 
 DEFAULT_OUTPUT = Path("results/microns_network_inference/summary.json")
 DEFAULT_MARKDOWN = Path("results/microns_network_inference/summary.md")
@@ -319,6 +319,22 @@ def _cohort_result(
     }
 
 
+def _confirmation_status(cohorts: list[dict[str, Any]]) -> dict[str, object]:
+    """Separate discovery direction selection from hold-out confirmation."""
+
+    if len(cohorts) != 3:
+        raise ValueError("MICRONS confirmation requires one discovery and two hold-outs")
+    discovery_direction_positive = bool(cohorts[0]["connected_coefficient"] > 0.0)
+    holdout_results = tuple(
+        bool(row["network_inference_passed"]) for row in cohorts[1:]
+    )
+    return {
+        "discovery_direction_positive": discovery_direction_positive,
+        "holdout_results": holdout_results,
+        "confirmation_passed": discovery_direction_positive and all(holdout_results),
+    }
+
+
 def run(
     *,
     output: Path = DEFAULT_OUTPUT,
@@ -327,7 +343,7 @@ def run(
     n_permutations: int = 1_000,
     seed: int = 2_026_080_201,
 ) -> Path:
-    """Execute both network-dependent tests in all three fixed cohorts."""
+    """Select direction in discovery and test it in two fixed hold-outs."""
 
     cohorts = [
         _cohort_result(
@@ -338,7 +354,10 @@ def run(
         )
         for index, spec in enumerate(COHORTS)
     ]
-    all_passed = all(row["network_inference_passed"] for row in cohorts)
+    confirmation = _confirmation_status(cohorts)
+    all_descriptive_criteria_met = all(
+        row["network_inference_passed"] for row in cohorts
+    )
     payload = {
         "version": __version__,
         "git_revision": code_revision(),
@@ -351,19 +370,28 @@ def run(
         "corroborating_inference": "Freedman-Lane simultaneous node-label permutation",
         "permutation_unit": "neuron identifier applied simultaneously to sender and receiver labels",
         "permutation_seed_streams": [seed + index for index in range(len(COHORTS))],
+        "discovery_role": (
+            "select the positive direction and freeze the analysis specification; "
+            "its one-sided permutation value is descriptive"
+        ),
+        "confirmation_cohorts": [row["cohort"] for row in cohorts[1:]],
         "cohorts": cohorts,
-        "all_cohorts_passed": all_passed,
+        "all_cohorts_descriptive_criteria_met": all_descriptive_criteria_met,
+        **confirmation,
         "decision": (
             "microns_fixed_endpoint_survives_network_dependent_inference"
-            if all_passed
+            if confirmation["confirmation_passed"]
             else "microns_fixed_endpoint_not_confirmed_by_network_dependent_inference"
         ),
         "interpretation": (
-            "A positive decision supports only a local observational association after "
-            "the fixed controls. Dyadic covariance assumes pairs without a shared unit "
-            "are independent. The permutation test additionally assumes exchangeability "
-            "of reduced-model residual arrays under node relabeling. Neither assumption "
-            "establishes causality or independent biological replication."
+            "Discovery selects the positive direction and its one-sided permutation "
+            "value is descriptive. Confirmation requires the fixed conjunction in both "
+            "hold-outs. A positive decision supports only a local observational "
+            "association after the fixed controls. Dyadic covariance assumes pairs "
+            "without a shared unit are independent. The permutation test additionally "
+            "assumes exchangeability of reduced-model residual arrays under node "
+            "relabeling. Neither assumption establishes causality or independent "
+            "biological replication."
         ),
         "method_references": [
             {

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mouseclaimbench"
-version = "0.12.1"
+version = "0.12.2"
 description = "Evidence-constrained knowledge system for computational mouse-brain claims"
 readme = "README.md"
 requires-python = ">=3.11"
@@ -53,6 +53,10 @@ semantic-risk-v3 = [
   "requests>=2.32,<3",
 ]
 standards-validation = [
+  "pyshacl>=0.30,<1",
+  "rdflib>=7.1,<8",
+]
+full-authorization = [
   "pyshacl>=0.30,<1",
   "rdflib>=7.1,<8",
 ]

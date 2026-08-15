@@ -15,7 +15,6 @@ from mousebrainbench.artifacts import code_revision
 from mousebrainbench.benchmarks.prospective_probabilistic_baseline import _protocol_hash
 from mousebrainbench.knowledge import load_default_profile_basis
 
-
 DEFAULT_OUTPUT = Path("results/prospective_publication_audit/summary.json")
 DEFAULT_MARKDOWN = Path("results/prospective_publication_audit/summary.md")
 
@@ -80,7 +79,12 @@ def run(
     }
     artifacts_clean = all(_is_clean_revision(value) for value in artifact_revisions.values())
     synthetic_primary_passed = bool(prospective["primary_endpoint"]["passed"])
-    microns_passed = bool(microns["all_cohorts_passed"])
+    # v0.12.2 separates direction selection in discovery from confirmation in
+    # the two pre-fixed hold-outs. The fallback keeps historical artifacts
+    # readable without assigning their legacy field the new semantics.
+    microns_passed = bool(
+        microns.get("confirmation_passed", microns.get("all_cohorts_passed", False))
+    )
     dyadic_calibration_passed = bool(calibration["calibration_sane"])
     expert_validation_performed = basis.get("independent_expert_validation") != "not_performed"
 
@@ -93,7 +97,10 @@ def run(
         {
             "finding": "network-aware MICRONS association",
             "supported": microns_passed,
-            "scope": "fixed local observational endpoint in three non-overlapping windows",
+            "scope": (
+                "fixed local observational endpoint confirmed in two pre-fixed "
+                "hold-out windows after discovery selected the direction"
+            ),
         },
         {
             "finding": "dyadic covariance implementation sanity",
@@ -251,4 +258,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

@@ -503,7 +503,7 @@ def build_ablation() -> Image.Image:
         ("Topology only", "topology_only"),
         ("No topology block", "ablated_claim_gate_no_topology"),
         ("No direction block", "ablated_claim_gate_no_directed"),
-        ("Legacy v2 full gate", "claim_gate"),
+        ("Legacy v2 claim gate", "claim_gate"),
     ]
 
     img = Image.new("RGB", (1800, 800), WHITE)

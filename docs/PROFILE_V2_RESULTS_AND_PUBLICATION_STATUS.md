@@ -76,7 +76,7 @@ applies eight single attacks and every pairwise combination to all 10 claims.
 The complete integrity gate has zero false authorization and zero false
 rejection. It also recovers the exact attack trace in all 370 packages.
 
-The core profile alone falsely authorizes all 360 attacks. A hash-only baseline
+The core profile alone falsely authorizes all 360 attacked packages. A hash-only baseline
 falsely authorizes 280. Seven original leave-one-integrity-control-out systems
 falsely authorize 10 packages, corresponding to the omitted single attack in
 every claim. Removing the contradiction check alone authorizes none because the

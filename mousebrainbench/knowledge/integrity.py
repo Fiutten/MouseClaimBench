@@ -27,6 +27,8 @@ class IntegrityDeficitCode(str, Enum):
     """Non-compensatory package-integrity failures."""
 
     PROFILE_IDENTITY_MISMATCH = "profile_identity_mismatch"
+    DUPLICATE_ARTIFACT_ID = "duplicate_artifact_id"
+    DUPLICATE_BLOCK_LINEAGE = "duplicate_block_lineage"
     ARTIFACT_HASH_MISMATCH = "artifact_hash_mismatch"
     UNKNOWN_PROVENANCE_REFERENCE = "unknown_provenance_reference"
     PROVENANCE_CYCLE = "provenance_cycle"
@@ -75,17 +77,31 @@ class EvidencePackageManifest:
     independent_artifact_pairs: tuple[tuple[str, str], ...] = ()
     disjoint_cohort_pairs: tuple[tuple[str, str], ...] = ()
 
+    def duplicate_artifact_ids(self) -> tuple[str, ...]:
+        """Return repeated artifact identifiers in deterministic order."""
+
+        counts: dict[str, int] = defaultdict(int)
+        for artifact in self.artifacts:
+            counts[artifact.artifact_id] += 1
+        return tuple(sorted(name for name, count in counts.items() if count > 1))
+
+    def duplicate_block_lineages(self) -> tuple[str, ...]:
+        """Return block names with more than one lineage declaration."""
+
+        counts: dict[str, int] = defaultdict(int)
+        for block_name, _ in self.block_artifacts:
+            counts[block_name] += 1
+        return tuple(sorted(name for name, count in counts.items() if count > 1))
+
     def artifact_index(self) -> dict[str, ArtifactRecord]:
-        indexed = {artifact.artifact_id: artifact for artifact in self.artifacts}
-        if len(indexed) != len(self.artifacts):
-            raise ValueError("manifest repeats an artifact identifier")
-        return indexed
+        """Index artifacts while leaving duplicate rejection to the validator."""
+
+        return {artifact.artifact_id: artifact for artifact in self.artifacts}
 
     def block_index(self) -> dict[str, tuple[str, ...]]:
-        indexed = dict(self.block_artifacts)
-        if len(indexed) != len(self.block_artifacts):
-            raise ValueError("manifest repeats block lineage")
-        return indexed
+        """Index lineage while leaving duplicate rejection to the validator."""
+
+        return dict(self.block_artifacts)
 
 
 @dataclass(frozen=True)
@@ -106,7 +122,7 @@ class IntegrityDeficit:
 
 @dataclass(frozen=True)
 class IntegrityAwareDecision:
-    """Core profile decision gated by complete package-integrity deficits."""
+    """Core profile decision gated by category-complete integrity deficits."""
 
     core: ProfileAuthorizationDecision
     integrity_deficits: tuple[IntegrityDeficit, ...]
@@ -164,11 +180,29 @@ def validate_evidence_manifest(
     evidence_blocks: dict[str, EvidenceBlock],
     manifest: EvidencePackageManifest,
 ) -> tuple[IntegrityDeficit, ...]:
-    """Return every detected integrity deficit without priority masking."""
+    """Return every detected deficit category without priority masking."""
 
+    deficits: list[IntegrityDeficit] = []
+    duplicate_artifact_ids = manifest.duplicate_artifact_ids()
+    if duplicate_artifact_ids:
+        deficits.append(
+            IntegrityDeficit(
+                IntegrityDeficitCode.DUPLICATE_ARTIFACT_ID,
+                duplicate_artifact_ids,
+                "artifact identifiers must be unique within an evidence package",
+            )
+        )
+    duplicate_block_lineages = manifest.duplicate_block_lineages()
+    if duplicate_block_lineages:
+        deficits.append(
+            IntegrityDeficit(
+                IntegrityDeficitCode.DUPLICATE_BLOCK_LINEAGE,
+                duplicate_block_lineages,
+                "each evidence block must have one consolidated lineage declaration",
+            )
+        )
     artifacts = manifest.artifact_index()
     block_artifacts = manifest.block_index()
-    deficits: list[IntegrityDeficit] = []
     if (
         manifest.profile_id != profile.profile_id
         or manifest.profile_version != profile.version
@@ -252,15 +286,18 @@ def validate_evidence_manifest(
         )
     duplicate_pairs = []
     for left, right in manifest.independent_artifact_pairs:
+        if left == right:
+            duplicate_pairs.append(f"{left}|{right}:reflexive")
+            continue
         if left in artifacts and right in artifacts:
             first, second = artifacts[left], artifacts[right]
             if (
                 first.declared_sha256 == second.declared_sha256
                 or (
                     first.study_id
-                    and first.study_id == second.study_id
                     and first.data_generation_id
-                    and first.data_generation_id == second.data_generation_id
+                    and (first.study_id, first.data_generation_id)
+                    == (second.study_id, second.data_generation_id)
                 )
             ):
                 duplicate_pairs.append(f"{left}|{right}")
@@ -269,11 +306,15 @@ def validate_evidence_manifest(
             IntegrityDeficit(
                 IntegrityDeficitCode.DUPLICATE_INDEPENDENT_ARTIFACT,
                 tuple(duplicate_pairs),
-                "artifacts declared independent share content or a data-generation identity",
+                "independence pairs must be irreflexive and cannot share content or "
+                "a composite study and data-generation identity",
             )
         )
     overlapping_pairs = []
     for left, right in manifest.disjoint_cohort_pairs:
+        if left == right:
+            overlapping_pairs.append(f"{left}|{right}:reflexive")
+            continue
         if left in artifacts and right in artifacts:
             overlap = set(artifacts[left].cohorts) & set(artifacts[right].cohorts)
             if overlap:
@@ -283,7 +324,7 @@ def validate_evidence_manifest(
             IntegrityDeficit(
                 IntegrityDeficitCode.OVERLAPPING_INDEPENDENT_COHORTS,
                 tuple(overlapping_pairs),
-                "cohorts declared disjoint contain shared independent units",
+                "cohort-disjointness pairs must be irreflexive and cannot share units",
             )
         )
     statuses: dict[str, set[EvidenceStatus]] = defaultdict(set)

@@ -1,6 +1,7 @@
 import numpy as np
 
 from mousebrainbench.benchmarks.microns_network_inference import (
+    _confirmation_status,
     _dyadic_meat,
     _freedman_lane_node_permutation,
     _linear_inference,
@@ -77,3 +78,32 @@ def test_freedman_lane_node_permutation_is_deterministic() -> None:
     assert first["observed_coefficient"] > 0
     assert 0 <= first["one_sided_p_value"] <= 1
 
+
+def test_confirmation_uses_direction_from_discovery_and_both_holdouts() -> None:
+    cohorts = [
+        {"connected_coefficient": 0.2, "network_inference_passed": False},
+        {"connected_coefficient": 0.1, "network_inference_passed": True},
+        {"connected_coefficient": 0.1, "network_inference_passed": True},
+    ]
+
+    status = _confirmation_status(cohorts)
+
+    assert status["discovery_direction_positive"] is True
+    assert status["holdout_results"] == (True, True)
+    assert status["confirmation_passed"] is True
+
+
+def test_confirmation_rejects_negative_discovery_direction_or_failed_holdout() -> None:
+    negative_discovery = [
+        {"connected_coefficient": -0.2, "network_inference_passed": True},
+        {"connected_coefficient": 0.1, "network_inference_passed": True},
+        {"connected_coefficient": 0.1, "network_inference_passed": True},
+    ]
+    failed_holdout = [
+        {"connected_coefficient": 0.2, "network_inference_passed": True},
+        {"connected_coefficient": 0.1, "network_inference_passed": False},
+        {"connected_coefficient": 0.1, "network_inference_passed": True},
+    ]
+
+    assert _confirmation_status(negative_discovery)["confirmation_passed"] is False
+    assert _confirmation_status(failed_holdout)["confirmation_passed"] is False

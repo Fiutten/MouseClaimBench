@@ -22,8 +22,15 @@ exchangeability of the reduced-model residual array. Cell-type and spatial
 heterogeneity can violate that assumption, so this p-value is corroborating
 rather than a replacement for scientific judgment.
 
+The discovery window selects the positive direction and freezes the analysis
+specification. Its one-sided permutation value is descriptive because the same
+window selected that direction. Confirmatory one-sided permutation tests are
+applied only to the two pre-fixed non-overlapping hold-outs. Confirmation
+requires a positive coefficient, a two-sided directed-dyadic p-value no greater
+than 0.05, and a one-sided permutation p-value no greater than 0.05 in both
+hold-outs.
+
 Both analyses estimate an association conditional on log distance, squared log
 distance, pre- and post-synaptic degree, and coarse cell-type agreement. They do
 not identify a causal synaptic effect. A positive outcome remains local to the
 co-registered MICRONS windows and is not an independent biological replication.
-

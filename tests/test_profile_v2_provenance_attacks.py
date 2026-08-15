@@ -10,7 +10,7 @@ from mousebrainbench.benchmarks.profile_v2_provenance_attacks import (
     _base_manifest,
     evaluate,
 )
-from mousebrainbench.knowledge import load_authorization_profile_v2
+from mousebrainbench.knowledge import FinalAuthorizationSystem, load_authorization_profile_v2
 from mousebrainbench.knowledge.integrity import (
     DomainIntegrityAuthorizationSystem,
     EvidenceAttestation,
@@ -18,6 +18,10 @@ from mousebrainbench.knowledge.integrity import (
     validate_evidence_manifest,
 )
 from mousebrainbench.validation.evidence_contract import EvidenceStatus
+
+
+def test_integrity_taxonomy_declares_thirteen_deficit_types() -> None:
+    assert len(IntegrityDeficitCode) == 13
 
 
 def test_each_integrity_attack_is_detected_without_masking() -> None:
@@ -158,6 +162,105 @@ def test_every_supplied_block_requires_an_attestation() -> None:
     assert IntegrityDeficitCode.MISSING_BLOCK_ATTESTATION in {
         row.code for row in deficits
     }
+
+
+def test_duplicate_artifact_identifiers_return_a_structured_final_refusal() -> None:
+    profile = load_authorization_profile_v2()
+    claim = "bounded_predictive_performance"
+    blocks = _complete_blocks(claim)
+    manifest = _base_manifest(claim)
+    duplicate = replace(
+        manifest.artifacts[1], artifact_id=manifest.artifacts[0].artifact_id
+    )
+    malformed = replace(
+        manifest, artifacts=(manifest.artifacts[0], duplicate, *manifest.artifacts[2:])
+    )
+
+    decision = FinalAuthorizationSystem(profile, blocks, malformed).infer(claim)
+
+    assert decision.authorized is False
+    assert IntegrityDeficitCode.DUPLICATE_ARTIFACT_ID in {
+        row.code for row in decision.integrity_deficits
+    }
+
+
+def test_duplicate_block_lineage_returns_a_structured_final_refusal() -> None:
+    profile = load_authorization_profile_v2()
+    claim = "bounded_predictive_performance"
+    blocks = _complete_blocks(claim)
+    manifest = _base_manifest(claim)
+    malformed = replace(
+        manifest, block_artifacts=(*manifest.block_artifacts, manifest.block_artifacts[0])
+    )
+
+    decision = FinalAuthorizationSystem(profile, blocks, malformed).infer(claim)
+
+    assert decision.authorized is False
+    assert IntegrityDeficitCode.DUPLICATE_BLOCK_LINEAGE in {
+        row.code for row in decision.integrity_deficits
+    }
+
+
+@pytest.mark.parametrize(
+    ("relation", "expected"),
+    (
+        ("independence", IntegrityDeficitCode.DUPLICATE_INDEPENDENT_ARTIFACT),
+        ("cohort", IntegrityDeficitCode.OVERLAPPING_INDEPENDENT_COHORTS),
+    ),
+)
+def test_reflexive_relations_are_rejected_even_with_empty_cohorts(
+    relation: str, expected: IntegrityDeficitCode
+) -> None:
+    profile = load_authorization_profile_v2()
+    claim = "bounded_predictive_performance"
+    blocks = _complete_blocks(claim)
+    manifest = _base_manifest(claim)
+    artifact_id = manifest.artifacts[0].artifact_id
+    artifacts = (replace(manifest.artifacts[0], cohorts=()), *manifest.artifacts[1:])
+    if relation == "independence":
+        malformed = replace(
+            manifest,
+            artifacts=artifacts,
+            independent_artifact_pairs=((artifact_id, artifact_id),),
+        )
+    else:
+        malformed = replace(
+            manifest,
+            artifacts=artifacts,
+            disjoint_cohort_pairs=((artifact_id, artifact_id),),
+        )
+
+    deficits = validate_evidence_manifest(profile, blocks, malformed)
+
+    matching = tuple(row for row in deficits if row.code is expected)
+    assert len(matching) == 1
+    assert matching[0].witnesses == (f"{artifact_id}|{artifact_id}:reflexive",)
+
+
+@pytest.mark.parametrize(("same_study", "rejected"), ((False, False), (True, True)))
+def test_data_generation_identity_is_scoped_by_study(
+    same_study: bool, rejected: bool
+) -> None:
+    profile = load_authorization_profile_v2()
+    claim = "bounded_predictive_performance"
+    blocks = _complete_blocks(claim)
+    manifest = _base_manifest(claim)
+    first, second = manifest.artifacts[:2]
+    second = replace(
+        second,
+        study_id=first.study_id if same_study else "independent-study",
+        data_generation_id=first.data_generation_id,
+    )
+    compared = replace(
+        manifest,
+        artifacts=(first, second, *manifest.artifacts[2:]),
+        independent_artifact_pairs=((first.artifact_id, second.artifact_id),),
+    )
+
+    deficits = validate_evidence_manifest(profile, blocks, compared)
+    codes = {row.code for row in deficits}
+
+    assert (IntegrityDeficitCode.DUPLICATE_INDEPENDENT_ARTIFACT in codes) is rejected
 
 
 def test_frozen_attack_benchmark_has_exact_traces() -> None:

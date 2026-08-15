@@ -288,7 +288,7 @@ def integrity_ablation() -> None:
         "No cohort-overlap check",
         "No contradiction check",
         "No block lineage",
-        "Full gate",
+        "Full integrity gate",
     ]
     values = [systems[name]["false_authorizations"] for name in order]
     colors = [RED, AMBER, *([GRAY] * 8), TEAL]

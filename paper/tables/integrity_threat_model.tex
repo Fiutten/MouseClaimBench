@@ -1,6 +1,6 @@
 \begin{table}[!htbp]
 \centering
-\caption{Declared integrity threat model. The original benchmark covers the first eight attack families individually, pairwise, and in every non-empty composition. The extended regression suite covers dangling attestation and pair references, unknown blocks, status disagreement, and missing attestations. Neither experiment represents attack prevalence or adaptive adversaries.}
+\caption{Thirteen-type declared integrity threat model. The original benchmark covers eight attack families individually, pairwise, and in every non-empty composition. Extended regressions cover duplicate identifiers, reflexive relations, dangling references, unknown blocks, status disagreement, and missing attestations. Neither experiment represents attack prevalence or adaptive adversaries.}
 \label{tab:integrity-threat-model}
 \scriptsize
 \renewcommand{\arraystretch}{1.06}
@@ -9,11 +9,13 @@
 Attack & Protected asset & Violated invariant \\
 \midrule
 Profile-version substitution & Authorization contract & Identifier, version, and profile hash must match \\
+Duplicate artifact identifier & Package namespace & Every artifact identifier must be unique within a package \\
+Duplicate block lineage & Evidence trace & Every block must have one consolidated lineage declaration \\
 Artifact-hash tampering & Source content & Declared and observed content identities must agree \\
 Dangling provenance reference & Derivation graph & Every referenced artifact must resolve \\
 Circular provenance & Derivation graph & Artifact derivation must be acyclic \\
-Duplicate independent artifact & Independence declaration & Independent evidence cannot share content and generation identity \\
-Overlapping independent cohorts & Inferential units & Cohorts declared disjoint cannot share subjects \\
+Duplicate independent artifact & Independence declaration & Independence pairs must be irreflexive and cannot share content or composite generation identity \\
+Overlapping independent cohorts & Inferential units & Cohort-disjointness pairs must be irreflexive and cannot share subjects \\
 Contradictory attestation & Evidence status & One block cannot have incompatible source attestations \\
 Missing block lineage & Evidence trace & Every supplied block must resolve to at least one source artifact \\
 Unknown block reference & Evidence trace & Lineage and attestations must reference supplied blocks \\

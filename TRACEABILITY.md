@@ -6,10 +6,10 @@ provide independent scientific content validity.
 
 Revision metadata for this audit:
 
-- manuscript and software version: `0.12.1`
+- manuscript and software version: `0.12.2`
 - executable source commit used by regenerated artifacts:
   `3746a46b58666a71a79619072dfe7663e3671348`
-- planned release tag: `v0.12.1`
+- planned release tag: `v0.12.2`
 - canonical manuscript sources: `main.tex`, `sections/`, and `tables/`
 
 Every result row below points to a JSON artifact that repeats the source commit
@@ -29,7 +29,7 @@ LaTeX labels so that numbering changes do not break this ledger.
 | Methods Eq. `eq:package-rdf` | RDF graph derived from the same claim, blocks, and manifest | `evidence_package_to_rdf()` | JSON-LD isomorphism across five representative package classes and manifest serialization tests | `results/profile_v2_standards/summary.json` |
 | Structural gate `S` | External graph-contract conformance | `validate_structure_with_shacl_v2()` | pristine, missing block, missing metadata, missing observation, and `FAILED`-but-well-formed cases | `results/profile_v2_standards/summary.json` |
 | Domain gate `A` | Profile-relative scientific authorization | Python and independently derived ASP rules | Python/ASP status and deficit agreement | `results/profile_v2_contract_mutation/summary.json` |
-| Integrity set `I` | Relational package-integrity deficits | `validate_evidence_manifest()` | original attack tests and extended reference-attestation regressions | `results/profile_v2_provenance_attacks/summary.json` and `results/profile_v2_integrity_regression/summary.json` |
+| Integrity set `I` | Thirteen relational package-integrity deficit types | `validate_evidence_manifest()` | original attacks, reference-attestation regressions, duplicate identifiers, reflexive relations, and composite generation identity | `results/profile_v2_provenance_attacks/summary.json` and `results/profile_v2_integrity_regression/summary.json` |
 | Methods Eq. `eq:integrity-authorization` | Final `S and A and I` decision | `FinalAuthorizationSystem` and `compose_final_authorization()` | all eight logical states plus integrated pristine and bounded-refusal cases | `results/profile_v2_final_gate/summary.json` |
 
 ## Empirical and performance results
@@ -37,13 +37,14 @@ LaTeX labels so that numbering changes do not break this ledger.
 | Manuscript result | Source implementation | Test or audit | Result artifact |
 |---|---|---|---|
 | 55,031 deterministic property checks | `profile_v2_formal_properties.py` | `tests/test_profile_v2_formal_properties.py` | `results/profile_v2_formal_properties/summary.json` |
-| 2,550 original attack compositions | `profile_v2_compositional_integrity_stress.py` | `tests/test_profile_v2_compositional_integrity_stress.py` | `results/profile_v2_compositional_integrity_stress/summary.json` |
+| 2,550 attacked packages spanning 255 non-empty compositions across 10 claims | `profile_v2_compositional_integrity_stress.py` | `tests/test_profile_v2_compositional_integrity_stress.py` | `results/profile_v2_compositional_integrity_stress/summary.json` |
 | 100 extended integrity regression packages | `profile_v2_integrity_regression.py` | `tests/test_profile_v2_integrity_regression.py` | `results/profile_v2_integrity_regression/summary.json` |
+| 6 direct integrity API edge cases | `validate_evidence_manifest()` and `FinalAuthorizationSystem` | `tests/test_profile_v2_provenance_attacks.py` | Software regression tests, not a numerical benchmark artifact |
 | Table `tab:scalability-results`, 25, 100, 1,000, and 5,000 artifacts | `profile_v2_scalability_ablation.py` | `tests/test_profile_v2_scalability_ablation.py` | `results/profile_v2_scalability_ablation/summary.json` |
 | Experiments Eq. `eq:dandi-pooled-mse` and Table `tab:prospective-applications` | `dandi_profile_v2_1.py` | `tests/test_dandi_profile_v2_1.py` | `results/dandi_profile_v2_1/summary.json` |
 | Descriptive DANDI train/test stimulus coverage audit | `dandi_stimulus_coverage.py` | `tests/test_dandi_stimulus_coverage.py` | `results/dandi_stimulus_coverage/summary.json` |
 | Table `tab:dandi-threshold-sensitivity` | `dandi_threshold_sensitivity.py` | `tests/test_dandi_threshold_sensitivity.py` | `results/dandi_threshold_sensitivity/summary.json` |
-| Experiments Eq. `eq:microns-full-model` and Table `tab:prospective-applications` | `microns_network_inference.py` | `tests/test_microns_network_inference.py` | `results/microns_network_inference/summary.json` |
+| Experiments Eq. `eq:microns-full-model` and Table `tab:microns-dyadic-results` | `microns_network_inference.py` | discovery-direction and two-hold-out confirmation tests in `tests/test_microns_network_inference.py` | `results/microns_network_inference/summary.json` |
 
 ## Release rules
 
@@ -53,5 +54,5 @@ LaTeX labels so that numbering changes do not break this ledger.
   and dependencies are available. No result JSON is manually edited.
 - The manuscript mirror under `paper/` is generated from the canonical root
   manuscript by `scripts/sync_manuscript_mirror.py`.
-- Tag `v0.12.1` identifies the complete revision snapshot. Each generated
+- Tag `v0.12.2` identifies the complete revision snapshot. Each generated
   artifact records the clean source commit from which that artifact was run.

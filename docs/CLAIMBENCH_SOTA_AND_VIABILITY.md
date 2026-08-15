@@ -70,7 +70,7 @@ idea is:
   artifacts.
 
 This is publishable only if the repository proves that shortcut evaluators
-over-authorize unsupported claims while the full gate remains conservative, and
+over-authorize unsupported claims while the complete authorization configuration remains conservative, and
 if the text clearly states that this is a validation layer rather than a new
 brain simulator.
 

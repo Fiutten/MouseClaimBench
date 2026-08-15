@@ -326,11 +326,13 @@ def _microns_case(config: dict[str, Any]) -> ArtifactCase:
         for row in cohorts
     ]
     network_cohorts = network.get("cohorts", [])
-    network_passed = (
-        network.get("all_cohorts_passed") is True
-        and len(network_cohorts) == 3
-        and all(row.get("network_inference_passed") is True for row in network_cohorts)
-    )
+    confirmation_status = network.get("confirmation_passed")
+    if confirmation_status is None:
+        # Historical v0.12.1 artifacts predate the explicit discovery/hold-out
+        # split. Retain read compatibility without reusing this legacy field in
+        # newly generated results.
+        confirmation_status = network.get("all_cohorts_passed")
+    network_passed = bool(confirmation_status) and len(network_cohorts) == 3
     network_results = [
         {
             "cohort": row.get("cohort"),
@@ -440,9 +442,10 @@ def _microns_case(config: dict[str, Any]) -> ArtifactCase:
         blocks=blocks,
         sources=(robustness_source, package_source, network_source),
         interpretation=(
-            "The local endpoint passes matched controls, unit-cluster stability, directed dyadic "
-            "uncertainty, and simultaneous node-label permutation in all three windows. This "
-            "authorizes only a local observational association in one tissue volume."
+            "The local endpoint passes matched controls and unit-cluster stability. Discovery "
+            "fixes the positive direction, and both hold-outs pass directed dyadic uncertainty "
+            "and simultaneous node-label permutation. This authorizes only a local "
+            "observational association in one tissue volume."
         ),
     )
 

@@ -63,7 +63,7 @@ The defensible candidate contribution is the evaluated composition of:
 3. complete multi-deficit traces instead of one prioritized rejection reason
 4. RDF/PROV-O exchange and third-party SHACL structural conformance
 5. exact Python/ASP domain agreement and separate SHACL structural agreement
-6. eleven relational integrity deficits over artifacts, lineage, cohorts,
+6. thirteen relational integrity deficits over identifiers, artifacts, lineage, cohorts,
    attestations, and profile identity, including eight original attack families
 7. deterministic single and pairwise attacks plus leave-one-control-out ablation
 8. formal property checks and measured scalability to 10,000 packages and 5,000
