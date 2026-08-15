@@ -28,13 +28,16 @@ from mousebrainbench.knowledge.final_authorization import (
 )
 from mousebrainbench.knowledge.integrity import (
     ArtifactRecord,
+    DomainIntegrityAuthorizationSystem,
     EvidenceAttestation,
     EvidencePackageManifest,
-    IntegrityAwareAuthorizationSystem,
     IntegrityAwareDecision,
     IntegrityDeficit,
     IntegrityDeficitCode,
     validate_evidence_manifest,
+)
+from mousebrainbench.knowledge.integrity import (
+    IntegrityAwareAuthorizationSystem as IntegrityAwareAuthorizationSystem,
 )
 from mousebrainbench.knowledge.profile import (
     InferenceRule,
@@ -62,6 +65,7 @@ __all__ = [
     "ClaimAuthorizationProfile",
     "ClaimAuthorizationSystem",
     "ClaimKnowledgeSystem",
+    "DomainIntegrityAuthorizationSystem",
     "EvaluatedEvidenceFact",
     "EvidenceAttestation",
     "EvidenceBlockSpecification",
@@ -70,7 +74,6 @@ __all__ = [
     "FinalAuthorizationSystem",
     "InferenceRule",
     "InferenceStep",
-    "IntegrityAwareAuthorizationSystem",
     "IntegrityAwareDecision",
     "IntegrityDeficit",
     "IntegrityDeficitCode",

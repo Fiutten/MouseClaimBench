@@ -1,6 +1,6 @@
 {
-  "version": "0.12.0",
-  "git_revision": "396347dc133aad6b0e1418f486395efc7cf84588",
+  "version": "0.12.1",
+  "git_revision": "v0.12.0-dirty",
   "analysis": "profile_v2_prov_o_shacl_conformance",
   "protocol": "configs/benchmarks/profile_v2_standards.yaml",
   "protocol_sha256": "7c78f6b2527868018121c16c9b7687899778fcbf629e9ef87bb18923922adcc3",
@@ -19,8 +19,8 @@
     "exact_structural_deficit_rate": 1.0,
     "structurally_valid_domain_refusals": 5088,
     "workers": 8,
-    "elapsed_seconds": 836.620948249998,
-    "cases_per_second": 6.785629754878676
+    "elapsed_seconds": 625.5570294579957,
+    "cases_per_second": 9.075111832599418
   },
   "rdf": {
     "profile_triples": 318,
@@ -28,7 +28,35 @@
     "exported_evidence_blocks": 22,
     "example_package_triples": 55,
     "example_shape_triples": 226,
-    "json_ld_round_trip_isomorphic": true
+    "json_ld_round_trip_case_count": 5,
+    "json_ld_round_trip_isomorphic": true,
+    "json_ld_round_trip_cases": [
+      {
+        "case": "pristine_package",
+        "triples": 55,
+        "isomorphic": true
+      },
+      {
+        "case": "scientifically_failed_structurally_conformant",
+        "triples": 55,
+        "isomorphic": true
+      },
+      {
+        "case": "structurally_incomplete_package",
+        "triples": 54,
+        "isomorphic": true
+      },
+      {
+        "case": "rich_manifest_multiple_attestations",
+        "triples": 308,
+        "isomorphic": true
+      },
+      {
+        "case": "large_digital_twin_with_dependence_relations",
+        "triples": 633,
+        "isomorphic": true
+      }
+    ]
   },
   "endpoints": {
     "shacl_false_conformances_equal_0": true,
@@ -36,7 +64,7 @@
     "shacl_exact_structural_deficit_rate_equal_1": true,
     "structurally_valid_domain_refusals_present": true,
     "prov_profile_contains_all_claims_and_blocks": true,
-    "json_ld_round_trip_preserves_graph_isomorphism": true
+    "five_json_ld_round_trips_preserve_graph_isomorphism": true
   },
   "all_endpoints_passed": true,
   "interpretation": "SHACL is a real external standard baseline for the structural evidence contract. Scientific pass or failure is evaluated by the separate domain gate. Exact SHACL conformance shows that schema validation and complete structural deficit reporting are not novel by themselves.",

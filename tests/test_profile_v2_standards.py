@@ -6,32 +6,33 @@ from mousebrainbench.benchmarks.profile_v2_contract_mutation import (
     _complete_blocks,
     generate_cases,
 )
+from mousebrainbench.benchmarks.profile_v2_standards import (
+    _representative_round_trip_graphs,
+)
 from mousebrainbench.knowledge import load_authorization_profile_v2
 from mousebrainbench.knowledge.authorization import ClaimAuthorizationSystem
 from mousebrainbench.knowledge.standards import (
-    evidence_package_to_rdf,
     profile_to_rdf,
     validate_structure_with_shacl_v2,
 )
 from mousebrainbench.validation.evidence_contract import EvidenceStatus
 
 
-def test_prov_o_profile_and_json_ld_round_trip_are_nonempty() -> None:
+def test_prov_o_profile_and_representative_json_ld_round_trips_are_nonempty() -> None:
     from rdflib import Graph
     from rdflib.compare import isomorphic
 
     profile = load_authorization_profile_v2()
     profile_graph = profile_to_rdf(profile)
-    case = generate_cases()[0]
-    package_graph, _ = evidence_package_to_rdf(
-        profile, case.claim, case.blocks, package_id=case.case_id
-    )
-    round_trip = Graph().parse(
-        data=package_graph.serialize(format="json-ld"), format="json-ld"
-    )
-
     assert len(profile_graph) > 100
-    assert isomorphic(package_graph, round_trip)
+    cases = _representative_round_trip_graphs(profile, generate_cases())
+    assert len(cases) == 5
+    for _, package_graph in cases:
+        round_trip = Graph().parse(
+            data=package_graph.serialize(format="json-ld"), format="json-ld"
+        )
+        assert len(package_graph) > 0
+        assert isomorphic(package_graph, round_trip)
 
 
 def test_shacl_matches_all_single_and_metadata_mutations_structurally() -> None:

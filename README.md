@@ -12,7 +12,7 @@ that the supplied package satisfies the named profile version.
 
 ## Current research release
 
-The current revision candidate is the `profile-v2-three-gate` release. It
+The current revision candidate is the `v0.12.1` three-gate release. It
 preserves the submitted data analyses while aligning the mathematical model,
 software, tests, benchmarks, and manuscript. The knowledge architecture
 separates three layers and composes them only at the final gate:
@@ -32,6 +32,17 @@ Final authorization is exactly `structural && domain && integrity`. A dedicated
 decision object preserves all three outputs. SHACL validates graph structure
 and does not require a scientific block to pass. A well-formed failed block can
 therefore be structurally conformant and scientifically unauthorized.
+`FinalAuthorizationSystem` is the canonical public API for this paper-level
+decision. `DomainIntegrityAuthorizationSystem` intentionally omits SHACL and is
+reserved for component ablations. The historical
+`IntegrityAwareAuthorizationSystem` name remains only as a deprecated
+compatibility import and is not part of the public `__all__` contract.
+
+The SHACL contract in this release applies to RDF graphs emitted by the typed
+MouseClaimBench serializer. It is not claimed to be a complete validator for
+arbitrary hostile third-party RDF graphs with duplicated or contradictory
+singleton values. Profile identity is checked at both the graph boundary and
+the manifest boundary as deliberate defense in depth.
 
 The evaluated profile is
 `mousebrainbench/knowledge/profiles/mouse_brain_claims_v2.yaml`. It contains 10
@@ -55,12 +66,14 @@ The release gate verifies the following results from clean source revisions:
 | Python/ASP | Exact domain-status and deficit agreement across all 5,677 cases | Independent rule-execution conformance |
 | SHACL | Exact structural conformance and structural deficits across the same 5,677 packages | External graph-contract conformance |
 | Final gate | All 8 logical combinations reproduce `S && A && I` | Non-compensatory composition only |
-| Formalized properties | 55,031 deterministic checks over 10,000 packages, zero violations | Six properties and outside closure relative to profile v2 |
+| Domain-gate properties | 55,031 deterministic checks over 10,000 packages, zero violations | Six properties and outside closure for core authorization, not arbitrary final-package changes |
+| JSON-LD interchange | Five representative package graphs preserve graph isomorphism | Serializer interoperability across pristine, failed, incomplete, rich-manifest, and large-package cases |
 | Integrity attacks | 360 attacked packages, zero false authorizations with the full gate | Resistance to the declared controlled attacks |
-| Integrity ablation | Seven original omissions create 10 false authorizations each; contradiction removal creates none because status mismatch is a second detector | Conditional necessity and one explicit redundancy under the declared attack construction |
+| Integrity ablation | Seven original omissions create 10 false authorizations each; contradiction removal creates none because status mismatch is a second detector | Domain-plus-integrity configurations with the structural gate excluded to isolate manifest controls |
 | Scalability | About 27,700--52,800 package decisions per second on one Apple arm64 host | Descriptive local performance only |
 | DANDI:001176 | 5 usable subjects against a frozen minimum of 20 | No predictive authorization and no endpoint repair |
 | DANDI:000039 | 32 mice, median held-out correlation 0.310, bootstrap lower bound 0.207 | Bounded population-response prediction |
+| DANDI stimulus coverage | All 32 mice have complete train support for held-out contrast-direction conditions | Descriptive split transparency with no decision change |
 | MICRONS | Positive directed dyadic and node-permutation tests in three internal windows | One local observational structure--function association |
 | Knowledge traceability | 60 relation rationales, 22 predicate contracts, 124 observation slots | Complete traceability of the author-defined policy, not external content validity |
 | One-edge policy perturbation | 221 profiles and 3,094 fixed profile-case evaluations | Expected monotonic changes under one relation removal or addition |
@@ -101,7 +114,7 @@ candidate contribution is the evaluated combination of:
 - exhaustive compositions of declared attacks with escaping trust-boundary controls
 - targeted regression coverage for dangling references and attestation consistency
 
-The scoped novelty audit found no inspected work with this exact evaluated
+The targeted review of representative work found no inspected system with this exact evaluated
 combination. This supports differentiation and does not establish universal
 priority. See `docs/PROFILE_V2_NOVELTY_AUDIT.md` and
 `docs/PROFILE_V2_RESULTS_AND_PUBLICATION_STATUS.md`.
@@ -134,6 +147,14 @@ python3 -m venv .venv-risk-v3
 Both lock files are required by the release verification. The standards lock
 provides the RDF/SHACL and property-based testing dependencies used by the
 profile-v2 standards and formal-property tests.
+
+The lightweight DANDI stimulus-coverage audit uses HTTP range requests and does
+not download the selected 7.6 GB corpus:
+
+```bash
+.venv/bin/python -m pip install -e '.[dandi-remote]'
+.venv/bin/python scripts/analyze_dandi_stimulus_coverage.py
+```
 
 The complete historical test suite also covers optional causal-direction
 experiments. Install their declared extra before running all tests:

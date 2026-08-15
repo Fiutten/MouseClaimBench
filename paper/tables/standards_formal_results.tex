@@ -1,6 +1,6 @@
 \begin{table}[!htbp]
 \centering
-\caption{Conformance and property-based results. Exactness is relative to the frozen profile-v2 contract, and each engine is reported only for its evaluated comparison set.}
+\caption{Conformance and domain-gate property results. Exactness is relative to the frozen profile-v2 contract, and each engine is reported only for its evaluated comparison set.}
 \label{tab:standards-formal-results}
 \footnotesize
 \renewcommand{\arraystretch}{1.08}
@@ -12,8 +12,8 @@ Python contract mutations & 5,677 & 0 & Exact domain authorization and deficits 
 Independent \ac{asp} conformance & 5,677 & 0 & 100\% domain-status and deficit agreement \\
 External \ac{shacl} conformance & 5,677 & 0 & Exact structural conformance and structural deficits \\
 Three-gate composition & 8 states & 0 & Exact $S\land A\land I$ truth table \\
-JSON-LD round trip & 1 graph & 0 & Isomorphic \ac{rdf} graph \\
-Deterministic property benchmark & 55,031 & 0 & Six internal properties and outside closure hold \\
+JSON-LD round trips & 5 graphs & 0 & Isomorphic \ac{rdf} graphs \\
+Domain-gate property benchmark & 55,031 & 0 & Six core properties and outside closure hold \\
 \bottomrule
 \end{tabularx}
 \end{table}

@@ -1,12 +1,12 @@
 \begin{table}[!htbp]
 \centering
-\caption{False authorizations and false rejections in the 370-case integrity benchmark. Seven original controls are uniquely necessary for their constructed single-attack families. Removing the contradiction check alone produces no false authorization because block--attestation status consistency independently detects the same contradictory package.}
+\caption{False authorizations and false rejections for domain-plus-integrity configurations in the 370-case integrity benchmark. The structural gate is excluded to isolate manifest-level controls. Seven original controls are uniquely necessary for their constructed single-attack families. Removing the contradiction check alone produces no false authorization because block--attestation status consistency independently detects the same contradictory package.}
 \label{tab:integrity-ablation-v2}
 \footnotesize
 \renewcommand{\arraystretch}{1.05}
 \begin{tabularx}{\textwidth}{@{}Y r r@{}}
 \toprule
-Authorization system & False authorizations / 360 & False rejections / 10 \\
+Integrity configuration & False authorizations / 360 & False rejections / 10 \\
 \midrule
 Profile without integrity & 360 & 0 \\
 Hash-only integrity & 280 & 0 \\

@@ -28,7 +28,7 @@ from mousebrainbench.benchmarks.profile_v2_provenance_attacks import (
 from mousebrainbench.knowledge import ClaimAuthorizationSystem, load_authorization_profile_v2
 from mousebrainbench.knowledge.integrity import (
     ArtifactRecord,
-    IntegrityAwareAuthorizationSystem,
+    DomainIntegrityAuthorizationSystem,
     IntegrityDeficitCode,
     validate_evidence_manifest,
 )
@@ -117,7 +117,7 @@ def evaluate_scaling(protocol: dict[str, Any]) -> dict[str, Any]:
     profile = load_authorization_profile_v2()
     claims = tuple(item.claim for item in profile.requirements)
     systems = tuple(
-        IntegrityAwareAuthorizationSystem(
+        DomainIntegrityAuthorizationSystem(
             profile, _complete_blocks(claim), _base_manifest(claim)
         )
         for claim in claims
@@ -156,7 +156,7 @@ def evaluate_scaling(protocol: dict[str, Any]) -> dict[str, Any]:
     artifact_repetitions = int(protocol["artifact_scaling"]["repetitions"])
     for artifact_count in protocol["artifact_scaling"]["artifact_counts"]:
         count = int(artifact_count)
-        system = IntegrityAwareAuthorizationSystem(
+        system = DomainIntegrityAuthorizationSystem(
             profile, blocks, _expanded_manifest(claim, count)
         )
 

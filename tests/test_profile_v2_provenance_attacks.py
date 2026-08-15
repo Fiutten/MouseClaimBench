@@ -1,5 +1,5 @@
-from pathlib import Path
 from dataclasses import replace
+from pathlib import Path
 
 import pytest
 import yaml
@@ -12,8 +12,8 @@ from mousebrainbench.benchmarks.profile_v2_provenance_attacks import (
 )
 from mousebrainbench.knowledge import load_authorization_profile_v2
 from mousebrainbench.knowledge.integrity import (
+    DomainIntegrityAuthorizationSystem,
     EvidenceAttestation,
-    IntegrityAwareAuthorizationSystem,
     IntegrityDeficitCode,
     validate_evidence_manifest,
 )
@@ -37,7 +37,7 @@ def test_each_integrity_attack_is_detected_without_masking() -> None:
     attacked = manifest
     for attack in expected:
         attacked = _apply_attack(attacked, attack)
-    decision = IntegrityAwareAuthorizationSystem(
+    decision = DomainIntegrityAuthorizationSystem(
         profile, _complete_blocks(claim), attacked
     ).infer(claim)
 
@@ -51,7 +51,7 @@ def test_each_integrity_attack_is_detected_without_masking() -> None:
 def test_pristine_manifest_preserves_profile_authorization() -> None:
     profile = load_authorization_profile_v2()
     claim = "bounded_predictive_performance"
-    decision = IntegrityAwareAuthorizationSystem(
+    decision = DomainIntegrityAuthorizationSystem(
         profile, _complete_blocks(claim), _base_manifest(claim)
     ).infer(claim)
 

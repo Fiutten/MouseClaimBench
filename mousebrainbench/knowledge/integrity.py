@@ -8,6 +8,7 @@ scientifically correct or that a source is trustworthy.
 from __future__ import annotations
 
 import re
+import warnings
 from collections import defaultdict
 from dataclasses import dataclass
 from enum import Enum
@@ -344,8 +345,14 @@ def validate_evidence_manifest(
     return tuple(sorted(deficits, key=lambda row: row.code.value))
 
 
-class IntegrityAwareAuthorizationSystem:
-    """Compose profile authorization with non-compensatory manifest integrity."""
+class DomainIntegrityAuthorizationSystem:
+    """Compose only the domain and manifest-integrity gates.
+
+    This partial system is useful for integrity ablations. It is not the
+    canonical paper-level API because it does not execute external structural
+    conformance. Use ``FinalAuthorizationSystem`` for the complete S and A and
+    I decision.
+    """
 
     def __init__(
         self,
@@ -363,3 +370,22 @@ class IntegrityAwareAuthorizationSystem:
             self.profile, self.evidence_blocks, self.manifest
         )
         return IntegrityAwareDecision(core=core, integrity_deficits=integrity)
+
+
+class IntegrityAwareAuthorizationSystem(DomainIntegrityAuthorizationSystem):
+    """Deprecated compatibility name for the domain-plus-integrity subsystem."""
+
+    def __init__(
+        self,
+        profile: ClaimAuthorizationProfile,
+        evidence_blocks: dict[str, EvidenceBlock],
+        manifest: EvidencePackageManifest,
+    ) -> None:
+        warnings.warn(
+            "IntegrityAwareAuthorizationSystem is a partial domain-plus-integrity "
+            "subsystem; use DomainIntegrityAuthorizationSystem for ablations or "
+            "FinalAuthorizationSystem for the canonical three-gate decision.",
+            DeprecationWarning,
+            stacklevel=2,
+        )
+        super().__init__(profile, evidence_blocks, manifest)

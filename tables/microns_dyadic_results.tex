@@ -1,0 +1,17 @@
+\begin{table}[!htbp]
+\centering
+\caption{Dependence-aware \ac{microns} inference for the fixed all-pairs/readout-location endpoint. Candidate and connected counts refer to directed pairs. Confidence intervals use the same unit-based degrees of freedom as the directed dyadic test. The permutation test is one-sided because the positive direction was fixed from discovery before hold-out evaluation. A cohort passes only when $\widehat{\beta}>0$, two-sided $p_{\mathrm{dyadic}}\leq0.05$, and one-sided $p_{\mathrm{perm}}\leq0.05$. The endpoint requires this conjunction in all three windows.}
+\label{tab:microns-dyadic-results}
+\scriptsize
+\renewcommand{\arraystretch}{1.05}
+\setlength{\tabcolsep}{5pt}
+\begin{tabularx}{\textwidth}{@{}Y r r r r r r@{}}
+\toprule
+Cohort & Units & Pairs (connected) & $\widehat{\beta}$ (SE) & 95\% CI & $p_d$ & $p_p$ \\
+\midrule
+Discovery & 1,000 & 999,000 (2,095) & 0.0106 (0.00200) & [0.00668, 0.01451] & $1.39\times10^{-7}$ & 0.0010 \\
+Hold-out 1 & 992 & 983,072 (1,926) & 0.0178 (0.00209) & [0.01372, 0.02192] & $5.78\times10^{-17}$ & 0.0010 \\
+Hold-out 2 & 999 & 997,002 (1,922) & 0.0117 (0.00205) & [0.00763, 0.01569] & $1.76\times10^{-8}$ & 0.0010 \\
+\bottomrule
+\end{tabularx}
+\end{table}

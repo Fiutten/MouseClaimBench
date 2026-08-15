@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mouseclaimbench"
-version = "0.12.0"
+version = "0.12.1"
 description = "Evidence-constrained knowledge system for computational mouse-brain claims"
 readme = "README.md"
 requires-python = ">=3.11"
@@ -24,6 +24,11 @@ dev = [
   "hypothesis>=6.130,<7",
   "pytest>=8,<10",
   "ruff>=0.9,<1",
+]
+dandi-remote = [
+  "aiohttp>=3.10,<4",
+  "fsspec>=2024.6,<2027",
+  "requests>=2.32,<3",
 ]
 legacy-cognitive = [
   "gymnasium>=1.0,<2",

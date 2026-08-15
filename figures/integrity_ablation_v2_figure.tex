@@ -1,6 +1,6 @@
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width=0.96\textwidth]{figures/integrity_ablation_v2.pdf}
-\caption{False authorizations under 360 controlled attacks across 10 profile claims, where lower values are better. The profile-only baseline authorizes all 360 attacked packages. The hash-only baseline authorizes 280 attacks involving identity, lineage, dependence, conflict, or provenance. The complete gate blocks every declared attack. Seven original control omissions expose 10 packages each. Removing the contradiction check alone exposes none because block--attestation status consistency detects the same contradictory packages.}
+\caption{False authorizations under 360 controlled attacks across 10 profile claims, where lower values are better. The structural gate is excluded to isolate the domain-plus-integrity configurations. The profile-only baseline authorizes all 360 attacked packages. The hash-only baseline authorizes 280 attacks involving identity, lineage, dependence, conflict, or provenance. The complete domain-plus-integrity configuration blocks every declared attack. Seven original control omissions expose 10 packages each. Removing the contradiction check alone exposes none because block--attestation status consistency detects the same contradictory packages.}
 \label{fig:integrity-ablation-v2}
 \end{figure}

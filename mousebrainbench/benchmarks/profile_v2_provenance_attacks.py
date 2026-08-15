@@ -18,9 +18,9 @@ from mousebrainbench.benchmarks.profile_v2_contract_mutation import _complete_bl
 from mousebrainbench.knowledge import ClaimAuthorizationSystem, load_authorization_profile_v2
 from mousebrainbench.knowledge.integrity import (
     ArtifactRecord,
+    DomainIntegrityAuthorizationSystem,
     EvidenceAttestation,
     EvidencePackageManifest,
-    IntegrityAwareAuthorizationSystem,
     IntegrityDeficitCode,
 )
 from mousebrainbench.validation.evidence_contract import EvidenceStatus
@@ -227,7 +227,7 @@ def evaluate(protocol: dict[str, Any]) -> dict[str, Any]:
     family_detection = {name: {"cases": 0, "detected": 0} for name in ATTACK_TO_DEFICIT}
     for case in cases:
         blocks = _complete_blocks(case.claim)
-        full = IntegrityAwareAuthorizationSystem(
+        full = DomainIntegrityAuthorizationSystem(
             profile, blocks, case.manifest
         ).infer(case.claim)
         observed = tuple(row.code for row in full.integrity_deficits)

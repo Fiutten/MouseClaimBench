@@ -6,10 +6,10 @@ provide independent scientific content validity.
 
 Revision metadata for this audit:
 
-- manuscript and software version: `0.12.0`
+- manuscript and software version: `0.12.1`
 - executable source commit used by regenerated artifacts:
   `396347dc133aad6b0e1418f486395efc7cf84588`
-- planned release tag: `v0.12.0`
+- planned release tag: `v0.12.1`
 - canonical manuscript sources: `main.tex`, `sections/`, and `tables/`
 
 Every result row below points to a JSON artifact that repeats the source commit
@@ -26,7 +26,7 @@ LaTeX labels so that numbering changes do not break this ledger.
 | Methods Eq. `eq:scientific-deficits` | Complete domain-deficit set | `ProfileAuthorizationDecision.deficits` | exact-deficit and multi-deficit tests | `results/profile_v2_contract_mutation/summary.json` |
 | Methods Eq. `eq:core-authorization` | Non-compensatory domain authorization | `ClaimAuthorizationSystem.infer()` | all generated domain cases and formal properties | `results/profile_v2_contract_mutation/summary.json` |
 | Methods Eq. `eq:counterfactual-explanation` | Sufficiency and individual necessity of repairs | `profile_v2_explanation_fidelity.py` | counterfactual repair and restoration tests | `results/profile_v2_explanation_fidelity/summary.json` |
-| Methods Eq. `eq:package-rdf` | RDF graph derived from the same claim, blocks, and manifest | `evidence_package_to_rdf()` | JSON-LD isomorphism and manifest serialization tests | `results/profile_v2_standards/summary.json` |
+| Methods Eq. `eq:package-rdf` | RDF graph derived from the same claim, blocks, and manifest | `evidence_package_to_rdf()` | JSON-LD isomorphism across five representative package classes and manifest serialization tests | `results/profile_v2_standards/summary.json` |
 | Structural gate `S` | External graph-contract conformance | `validate_structure_with_shacl_v2()` | pristine, missing block, missing metadata, missing observation, and `FAILED`-but-well-formed cases | `results/profile_v2_standards/summary.json` |
 | Domain gate `A` | Profile-relative scientific authorization | Python and independently derived ASP rules | Python/ASP status and deficit agreement | `results/profile_v2_contract_mutation/summary.json` |
 | Integrity set `I` | Relational package-integrity deficits | `validate_evidence_manifest()` | original attack tests and extended reference-attestation regressions | `results/profile_v2_provenance_attacks/summary.json` and `results/profile_v2_integrity_regression/summary.json` |
@@ -41,6 +41,7 @@ LaTeX labels so that numbering changes do not break this ledger.
 | 100 extended integrity regression packages | `profile_v2_integrity_regression.py` | `tests/test_profile_v2_integrity_regression.py` | `results/profile_v2_integrity_regression/summary.json` |
 | Table `tab:scalability-results`, 25, 100, 1,000, and 5,000 artifacts | `profile_v2_scalability_ablation.py` | `tests/test_profile_v2_scalability_ablation.py` | `results/profile_v2_scalability_ablation/summary.json` |
 | Experiments Eq. `eq:dandi-pooled-mse` and Table `tab:prospective-applications` | `dandi_profile_v2_1.py` | `tests/test_dandi_profile_v2_1.py` | `results/dandi_profile_v2_1/summary.json` |
+| Descriptive DANDI train/test stimulus coverage audit | `dandi_stimulus_coverage.py` | `tests/test_dandi_stimulus_coverage.py` | `results/dandi_stimulus_coverage/summary.json` |
 | Table `tab:dandi-threshold-sensitivity` | `dandi_threshold_sensitivity.py` | `tests/test_dandi_threshold_sensitivity.py` | `results/dandi_threshold_sensitivity/summary.json` |
 | Experiments Eq. `eq:microns-full-model` and Table `tab:prospective-applications` | `microns_network_inference.py` | `tests/test_microns_network_inference.py` | `results/microns_network_inference/summary.json` |
 
@@ -52,5 +53,5 @@ LaTeX labels so that numbering changes do not break this ledger.
   and dependencies are available. No result JSON is manually edited.
 - The manuscript mirror under `paper/` is generated from the canonical root
   manuscript by `scripts/sync_manuscript_mirror.py`.
-- Tag `v0.12.0` identifies the complete revision snapshot. Each generated
+- Tag `v0.12.1` identifies the complete revision snapshot. Each generated
   artifact records the clean source commit from which that artifact was run.

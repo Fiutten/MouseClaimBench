@@ -9,6 +9,7 @@ import json
 import multiprocessing
 import time
 from concurrent.futures import ProcessPoolExecutor
+from dataclasses import replace
 from pathlib import Path
 from typing import Any
 
@@ -16,7 +17,11 @@ import yaml
 
 from mousebrainbench import __version__
 from mousebrainbench.artifacts import code_revision
-from mousebrainbench.benchmarks.profile_v2_contract_mutation import generate_cases
+from mousebrainbench.benchmarks.profile_v2_contract_mutation import (
+    _complete_blocks,
+    generate_cases,
+)
+from mousebrainbench.benchmarks.profile_v2_provenance_attacks import _base_manifest
 from mousebrainbench.knowledge import ClaimAuthorizationSystem, load_authorization_profile_v2
 from mousebrainbench.knowledge.standards import (
     evidence_package_to_rdf,
@@ -55,6 +60,73 @@ def _evaluate_case(case) -> tuple[bool, bool, bool, bool]:
     )
 
 
+def _representative_round_trip_graphs(profile, cases) -> tuple[tuple[str, Any], ...]:
+    """Build five structurally distinct JSON-LD interoperability cases."""
+
+    pristine = next(
+        case
+        for case in cases
+        if case.family == "pristine_complete"
+        and case.claim == "bounded_predictive_performance"
+    )
+    failed = next(
+        case
+        for case in cases
+        if case.family == "single_status_defect"
+        and case.claim == "bounded_predictive_performance"
+    )
+    incomplete = next(
+        case
+        for case in cases
+        if case.family == "missing_required_observation"
+        and case.claim == "bounded_predictive_performance"
+    )
+
+    rich_claim = "directed_topology_consistent_prediction"
+    rich_manifest = _base_manifest(rich_claim)
+    rich_graph, _ = evidence_package_to_rdf(
+        profile,
+        rich_claim,
+        _complete_blocks(rich_claim),
+        package_id="round-trip-rich-manifest",
+        manifest=replace(rich_manifest, package_id="round-trip-rich-manifest"),
+    )
+
+    twin_claim = "complete_entity_specific_mouse_brain_digital_twin"
+    twin_manifest = _base_manifest(twin_claim)
+    left, right = (row.artifact_id for row in twin_manifest.artifacts[:2])
+    twin_manifest = replace(
+        twin_manifest,
+        package_id="round-trip-digital-twin",
+        independent_artifact_pairs=((left, right),),
+        disjoint_cohort_pairs=((left, right),),
+    )
+    twin_graph, _ = evidence_package_to_rdf(
+        profile,
+        twin_claim,
+        _complete_blocks(twin_claim),
+        package_id=twin_manifest.package_id,
+        manifest=twin_manifest,
+    )
+
+    generated = []
+    for name, case in (
+        ("pristine_package", pristine),
+        ("scientifically_failed_structurally_conformant", failed),
+        ("structurally_incomplete_package", incomplete),
+    ):
+        graph, _ = evidence_package_to_rdf(
+            profile,
+            case.claim,
+            case.blocks,
+            package_id=f"round-trip-{name}",
+        )
+        generated.append((name, graph))
+    return (
+        *generated,
+        ("rich_manifest_multiple_attestations", rich_graph),
+        ("large_digital_twin_with_dependence_relations", twin_graph),
+    )
 def evaluate(protocol: dict[str, Any]) -> tuple[dict[str, Any], Any, Any, Any]:
     """Evaluate every mutation package with an external SHACL processor."""
 
@@ -111,8 +183,21 @@ def evaluate(protocol: dict[str, Any]) -> tuple[dict[str, Any], Any, Any, Any]:
         package_id=example.case_id,
     )
     shapes = shacl_shapes_for_claim(profile, example.claim, package_node=package)
-    json_ld = example_graph.serialize(format="json-ld", indent=2)
-    round_trip = Graph().parse(data=json_ld, format="json-ld")
+    round_trip_results = []
+    for name, graph in _representative_round_trip_graphs(profile, cases):
+        round_trip = Graph().parse(
+            data=graph.serialize(format="json-ld", indent=2), format="json-ld"
+        )
+        round_trip_results.append(
+            {
+                "case": name,
+                "triples": len(graph),
+                "isomorphic": isomorphic(graph, round_trip),
+            }
+        )
+    all_round_trips_isomorphic = all(
+        row["isomorphic"] for row in round_trip_results
+    )
     endpoints = {
         "shacl_false_conformances_equal_0": false_conformances == 0,
         "shacl_false_nonconformances_equal_0": false_nonconformances == 0,
@@ -124,8 +209,8 @@ def evaluate(protocol: dict[str, Any]) -> tuple[dict[str, Any], Any, Any, Any]:
             exported_claims == len(profile.requirements)
             and exported_blocks == len(profile.evidence_blocks)
         ),
-        "json_ld_round_trip_preserves_graph_isomorphism": isomorphic(
-            example_graph, round_trip
+        "five_json_ld_round_trips_preserve_graph_isomorphism": (
+            len(round_trip_results) == 5 and all_round_trips_isomorphic
         ),
     }
     summary = {
@@ -153,7 +238,9 @@ def evaluate(protocol: dict[str, Any]) -> tuple[dict[str, Any], Any, Any, Any]:
             "exported_evidence_blocks": exported_blocks,
             "example_package_triples": len(example_graph),
             "example_shape_triples": len(shapes),
-            "json_ld_round_trip_isomorphic": isomorphic(example_graph, round_trip),
+            "json_ld_round_trip_case_count": len(round_trip_results),
+            "json_ld_round_trip_isomorphic": all_round_trips_isomorphic,
+            "json_ld_round_trip_cases": round_trip_results,
         },
         "endpoints": endpoints,
         "all_endpoints_passed": all(endpoints.values()),

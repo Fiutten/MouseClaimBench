@@ -25,7 +25,7 @@ from mousebrainbench.benchmarks.profile_v2_provenance_attacks import (
     expected_deficits_for_attacks,
 )
 from mousebrainbench.knowledge import load_authorization_profile_v2
-from mousebrainbench.knowledge.integrity import IntegrityAwareAuthorizationSystem
+from mousebrainbench.knowledge.integrity import DomainIntegrityAuthorizationSystem
 
 DEFAULT_PROTOCOL = Path("configs/benchmarks/profile_v2_compositional_integrity_stress.yaml")
 DEFAULT_OUTPUT = Path("results/profile_v2_compositional_integrity_stress/summary.json")
@@ -90,7 +90,7 @@ def evaluate(protocol: dict[str, Any]) -> dict[str, Any]:
             manifest = _base_manifest(requirement.claim)
             for attack in selected:
                 manifest = _apply_attack(manifest, attack)
-            decision = IntegrityAwareAuthorizationSystem(profile, blocks, manifest).infer(
+            decision = DomainIntegrityAuthorizationSystem(profile, blocks, manifest).infer(
                 requirement.claim
             )
             expected = expected_deficits_for_attacks(tuple(selected))
@@ -110,7 +110,7 @@ def evaluate(protocol: dict[str, Any]) -> dict[str, Any]:
         blocks = _complete_blocks(requirement.claim)
         for name, builder in boundary_builders.items():
             manifest = builder(_base_manifest(requirement.claim))
-            decision = IntegrityAwareAuthorizationSystem(profile, blocks, manifest).infer(
+            decision = DomainIntegrityAuthorizationSystem(profile, blocks, manifest).infer(
                 requirement.claim
             )
             boundary_rows.append(
