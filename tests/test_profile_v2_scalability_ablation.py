@@ -8,6 +8,7 @@ from mousebrainbench.benchmarks.profile_v2_scalability_ablation import (
     evaluate_ablation,
     evaluate_scaling,
 )
+from mousebrainbench.benchmarks.profile_v2_contract_mutation import _complete_blocks
 from mousebrainbench.knowledge import load_authorization_profile_v2
 from mousebrainbench.knowledge.integrity import validate_evidence_manifest
 
@@ -18,7 +19,8 @@ def test_iterative_cycle_check_handles_thousands_of_artifacts() -> None:
         "complete_entity_specific_mouse_brain_digital_twin", 2500
     )
 
-    assert validate_evidence_manifest(profile, {}, manifest) == ()
+    blocks = _complete_blocks("complete_entity_specific_mouse_brain_digital_twin")
+    assert validate_evidence_manifest(profile, blocks, manifest) == ()
 
     first = manifest.artifacts[0]
     last = manifest.artifacts[-1]
@@ -27,12 +29,12 @@ def test_iterative_cycle_check_handles_thousands_of_artifacts() -> None:
     artifacts[-1] = replace(last, derived_from=(first.artifact_id,))
 
     deficits = validate_evidence_manifest(
-        profile, {}, replace(manifest, artifacts=tuple(artifacts))
+        profile, blocks, replace(manifest, artifacts=tuple(artifacts))
     )
     assert any(row.code.value == "provenance_cycle" for row in deficits)
 
 
-def test_ablation_requires_every_integrity_control() -> None:
+def test_ablation_reports_declared_control_redundancy() -> None:
     protocol = yaml.safe_load(
         Path("configs/benchmarks/profile_v2_provenance_attacks.yaml").read_text()
     )
@@ -42,10 +44,16 @@ def test_ablation_requires_every_integrity_control() -> None:
     assert result["systems"]["full_integrity"]["false_authorizations"] == 0
     assert result["systems"]["profile_only"]["false_authorizations"] == 360
     assert result["systems"]["hash_only"]["false_authorizations"] == 280
-    assert all(
-        row["false_authorizations"] > 0
+    omissions = {
+        name: row["false_authorizations"]
         for name, row in result["systems"].items()
         if name.startswith("without_")
+    }
+    assert omissions["without_contradictory_attestation"] == 0
+    assert all(
+        count == 10
+        for name, count in omissions.items()
+        if name != "without_contradictory_attestation"
     )
 
 

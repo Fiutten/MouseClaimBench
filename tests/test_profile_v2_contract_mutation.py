@@ -27,6 +27,9 @@ def test_mutation_design_covers_every_declared_family() -> None:
         "single_status_defect",
         "omitted_required_block",
         "missing_required_observation",
+        "missing_source",
+        "missing_rule",
+        "missing_rationale",
         "pairwise_mixed_status_defects",
     }
     assert len(cases) > 5_000
@@ -72,13 +75,13 @@ def test_frozen_mutation_artifact_has_exact_counts_and_clean_revision() -> None:
         Path("results/profile_v2_contract_mutation/summary.json").read_text()
     )
 
-    assert payload["cases"] == 5_497
-    assert payload["mutation_cases"] == 5_487
+    assert payload["cases"] == 5_677
+    assert payload["mutation_cases"] == 5_667
     assert payload["profile_v2"]["false_authorizations"] == 0
     assert payload["profile_v2"]["exact_deficit_rate"] == 1.0
     assert payload["asp_conformance"] == {
-        "cases": 5_497,
-        "exact_status_and_deficit_matches": 5_497,
+        "cases": 5_677,
+        "exact_status_and_deficit_matches": 5_677,
         "rate": 1.0,
     }
     assert not payload["git_revision"].endswith("-dirty")

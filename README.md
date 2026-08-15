@@ -3,8 +3,8 @@
 MouseClaimBench is an integrity-aware knowledge-based system for authorizing
 bounded scientific claims from computational mouse-brain evidence. It evaluates
 a versioned claim profile, typed evidence blocks, and their artifact lineage. It
-returns an authorization decision and every scientific or integrity deficit
-that prevents authorization.
+returns one final decision and separate structural, scientific, and integrity
+deficit traces.
 
 MouseClaimBench is not a simulator, an automated peer reviewer, a biological
 truth engine, or a complete digital mouse brain. An authorization means only
@@ -12,21 +12,26 @@ that the supplied package satisfies the named profile version.
 
 ## Current research release
 
-The current revision candidate is the `profile-v2-second-review` release. It
-preserves the submitted `standards-prospective-v3` and first major-revision
-releases while adding exhaustive ASP conformance and descriptive DANDI
-threshold sensitivity without rewriting source-data results. The
-knowledge architecture separates three layers:
+The current revision candidate is the `profile-v2-three-gate` release. It
+preserves the submitted data analyses while aligning the mathematical model,
+software, tests, benchmarks, and manuscript. The knowledge architecture
+separates three layers and composes them only at the final gate:
 
 1. **Graph conformance.** RDF/PROV-O represents profiles, artifacts,
    derivations, evidence blocks, and decisions. Independently executed SHACL
    shapes validate structural requirements.
-2. **Package integrity.** Eight non-compensatory controls inspect profile
-   substitution, hashes, broken or cyclic lineage, duplicated evidence,
-   overlapping cohorts, contradictory attestations, and missing provenance.
+2. **Package integrity.** Eleven non-compensatory deficit types inspect profile
+   substitution, hashes, reference closure, cyclic lineage, duplicated
+   evidence, overlapping cohorts, attestation consistency, and missing lineage
+   or attestations.
 3. **Scientific authorization.** Profile v2 requires every typed evidence block
    and its mandatory observations. Prediction cannot compensate for absent
    topology, direction, intervention, replication, or anatomical coverage.
+
+Final authorization is exactly `structural && domain && integrity`. A dedicated
+decision object preserves all three outputs. SHACL validates graph structure
+and does not require a scientific block to pass. A well-formed failed block can
+therefore be structurally conformant and scientifically unauthorized.
 
 The evaluated profile is
 `mousebrainbench/knowledge/profiles/mouse_brain_claims_v2.yaml`. It contains 10
@@ -46,11 +51,13 @@ The release gate verifies the following results from clean source revisions:
 
 | Evidence package | Frozen result | Authorized interpretation |
 |---|---|---|
-| Contract mutation | 5,497 cases, zero false authorizations or rejections, exact deficits | Profile-relative conformance |
-| Python/ASP/SHACL | Exact agreement on their declared outputs across all 5,497 generated contract cases | Cross-engine implementation conformance |
+| Contract mutation | 5,677 cases, zero false authorizations or rejections, exact domain deficits | Profile-relative conformance |
+| Python/ASP | Exact domain-status and deficit agreement across all 5,677 cases | Independent rule-execution conformance |
+| SHACL | Exact structural conformance and structural deficits across the same 5,677 packages | External graph-contract conformance |
+| Final gate | All 8 logical combinations reproduce `S && A && I` | Non-compensatory composition only |
 | Formalized properties | 55,031 deterministic checks over 10,000 packages, zero violations | Six properties and outside closure relative to profile v2 |
 | Integrity attacks | 360 attacked packages, zero false authorizations with the full gate | Resistance to the declared controlled attacks |
-| Integrity ablation | Removing any one control creates 10 false authorizations | Necessity under the declared attack construction |
+| Integrity ablation | Seven original omissions create 10 false authorizations each; contradiction removal creates none because status mismatch is a second detector | Conditional necessity and one explicit redundancy under the declared attack construction |
 | Scalability | About 63,500--65,500 package decisions per second on one Apple arm64 host | Descriptive local performance only |
 | DANDI:001176 | 5 usable subjects against a frozen minimum of 20 | No predictive authorization and no endpoint repair |
 | DANDI:000039 | 32 mice, median held-out correlation 0.310, bootstrap lower bound 0.207 | Bounded population-response prediction |
@@ -59,6 +66,7 @@ The release gate verifies the following results from clean source revisions:
 | One-edge policy perturbation | 221 profiles and 3,094 fixed profile-case evaluations | Expected monotonic changes under one relation removal or addition |
 | Explanation fidelity | 10,000 packages, 51,480 minimality and witness checks | Counterfactual fidelity and information retention, not human utility |
 | Compositional integrity | 2,550 attacked packages plus 20 trust-boundary controls | Exact declared-invariant traces and explicit coherent-forgery escapes |
+| Extended integrity regression | 100 packages across 9 new edge-case families | Reference closure and attestation consistency |
 | DANDI threshold sensitivity | Six one-at-a-time operational criteria | Post-outcome decision boundaries, not criterion validity or calibration |
 
 The positive DANDI model is intentionally simple Ridge regression. It tests a
@@ -66,7 +74,7 @@ prospective authorization workflow rather than state-of-the-art predictive
 performance. MICRONS uses one cortical volume, so its non-overlapping windows
 are internal reproduction and not independent biological replication.
 
-The submitted release decision remains immutable in
+The submitted release decision is retained unchanged in
 `results/standards_prospective_release/summary.json`. The revision decision is
 in `results/profile_v2_second_review_release/summary.json`. The new artifacts
 do not alter the MICRONS, Sensorium, Allen, IBL, or frozen DANDI numerical
@@ -82,14 +90,16 @@ candidate contribution is the evaluated combination of:
 - admissibility checks for the observations behind every passing block
 - complete multi-deficit traces linked to exact source artifacts
 - relational integrity checks over provenance and declared independence
-- exact Python, SHACL, and independently implemented ASP execution on all
-  5,497 generated contract cases, within each engine's declared scope
+- exact Python and independently implemented ASP domain execution on all 5,677
+  cases, plus external SHACL structural validation over the same packages
+- executable three-gate composition with layer-resolved deficit traces
 - controlled attacks, component ablations, and deterministic property checks
 - pre-access frozen positive and negative external applications
 - claim-specific knowledge-acquisition traceability and predicate ownership
 - one-edge monotonicity probes over every one-relation removal and addition
 - counterfactual sufficiency and minimality checks for complete deficit traces
 - exhaustive compositions of declared attacks with escaping trust-boundary controls
+- targeted regression coverage for dangling references and attestation consistency
 
 The scoped novelty audit found no inspected work with this exact evaluated
 combination. This supports differentiation and does not establish universal
@@ -149,6 +159,12 @@ Verify the second-review response and its exact paper-v2 test scope:
 
 ```bash
 ENV_PATH=.venv-risk-v3 bash scripts/reproduce_second_review.sh verify
+```
+
+Verify the paper-code-result consistency revision:
+
+```bash
+ENV_PATH=.venv-risk-v3 bash scripts/reproduce_consistency_release.sh verify
 ```
 
 The current paper-v2 tests and the historical compatibility suite are separated

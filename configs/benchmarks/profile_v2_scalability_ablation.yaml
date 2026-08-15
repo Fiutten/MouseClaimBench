@@ -22,7 +22,7 @@ ablation:
 endpoints:
   all_pristine_scaling_decisions_authorized: true
   full_gate_false_authorizations: 0
-  every_leave_one_out_ablation_exposes_at_least_one_false_authorization: true
+  leave_one_out_matches_declared_redundancy_pattern: true
 
 claim_boundary: >-
   Timings describe this implementation and host only. The controlled ablation

@@ -22,6 +22,7 @@ from mousebrainbench.benchmarks.profile_v2_provenance_attacks import (
     _base_manifest,
     _digest,
     _replace_artifact,
+    expected_deficits_for_attacks,
 )
 from mousebrainbench.knowledge import load_authorization_profile_v2
 from mousebrainbench.knowledge.integrity import IntegrityAwareAuthorizationSystem
@@ -92,12 +93,7 @@ def evaluate(protocol: dict[str, Any]) -> dict[str, Any]:
             decision = IntegrityAwareAuthorizationSystem(profile, blocks, manifest).infer(
                 requirement.claim
             )
-            expected = tuple(
-                sorted(
-                    (ATTACK_TO_DEFICIT[name] for name in selected),
-                    key=lambda value: value.value,
-                )
-            )
+            expected = expected_deficits_for_attacks(tuple(selected))
             observed = tuple(row.code for row in decision.integrity_deficits)
             in_model_packages += 1
             attacked_packages += int(bool(selected))

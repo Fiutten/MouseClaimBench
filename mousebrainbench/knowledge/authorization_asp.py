@@ -1,4 +1,9 @@
-"""Independent ASP execution of the hardened profile-authorization semantics."""
+"""Independent ASP execution of the hardened profile-authorization semantics.
+
+The ASP program receives declared states and field-presence facts. It derives
+admissibility, effective states, deficits, and the final domain decision inside
+Clingo instead of consuming an effective status precomputed by Python.
+"""
 
 from __future__ import annotations
 
@@ -65,27 +70,6 @@ def _present(value: Any) -> bool:
     return True
 
 
-def _effective_status(
-    profile: ClaimAuthorizationProfile,
-    block_name: str,
-    block: EvidenceBlock | None,
-) -> EvidenceStatus:
-    if block is None:
-        return EvidenceStatus.UNKNOWN
-    if block.status is not EvidenceStatus.PASSED:
-        return block.status
-    specification = profile.block_specification(block_name)
-    observations = dict(block.observations)
-    complete = all(
-        field in observations and _present(observations[field])
-        for field in specification.required_observations_when_passed
-    )
-    complete = complete and all(
-        _present(value) for value in (block.source, block.rule, block.rationale)
-    )
-    return EvidenceStatus.PASSED if complete else EvidenceStatus.REQUIRES_REVIEW
-
-
 def build_authorization_asp_program(
     profile: ClaimAuthorizationProfile,
     claim: str,
@@ -101,11 +85,44 @@ def build_authorization_asp_program(
         )
     lines = [f"claim({_quoted(claim)})."]
     for block_name in requirement.required_blocks:
-        status = _effective_status(profile, block_name, evidence_blocks.get(block_name))
+        block = evidence_blocks.get(block_name)
         lines.append(f"required({_quoted(claim)},{_quoted(block_name)}).")
-        lines.append(f"effective({_quoted(block_name)},{_quoted(status.value)}).")
+        if block is None:
+            continue
+        lines.append(
+            f"declared({_quoted(block_name)},{_quoted(block.status.value)})."
+        )
+        for field, value in (
+            ("source", block.source),
+            ("rule", block.rule),
+            ("rationale", block.rationale),
+        ):
+            if _present(value):
+                lines.append(
+                    f"metadata_present({_quoted(block_name)},{_quoted(field)})."
+                )
+        observations = dict(block.observations)
+        specification = profile.block_specification(block_name)
+        for field in specification.required_observations_when_passed:
+            lines.append(
+                f"required_observation({_quoted(block_name)},{_quoted(field)})."
+            )
+            if field in observations and _present(observations[field]):
+                lines.append(
+                    f"observation_present({_quoted(block_name)},{_quoted(field)})."
+                )
     lines.extend(
         (
+            'metadata_missing(B) :- declared(B,"passed"), not metadata_present(B,"source").',
+            'metadata_missing(B) :- declared(B,"passed"), not metadata_present(B,"rule").',
+            'metadata_missing(B) :- declared(B,"passed"), not metadata_present(B,"rationale").',
+            'observation_missing(B) :- declared(B,"passed"), required_observation(B,O), not observation_present(B,O).',
+            'incomplete(B) :- metadata_missing(B).',
+            'incomplete(B) :- observation_missing(B).',
+            'effective(B,"unknown") :- required(C,B), not declared(B,_).',
+            'effective(B,"requires_review") :- declared(B,"passed"), incomplete(B).',
+            'effective(B,"passed") :- declared(B,"passed"), not incomplete(B).',
+            'effective(B,S) :- declared(B,S), S != "passed".',
             'deficit(C,B,S) :- required(C,B), effective(B,S), S != "passed".',
             "has_deficit(C) :- deficit(C,_,_).",
             'decision(C,"profile_not_authorized") :- claim(C), has_deficit(C).',

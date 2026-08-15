@@ -1,6 +1,6 @@
 \begin{table}[!htbp]
 \centering
-\caption{Declared integrity threat model. Each deterministic attack changes one protected package invariant. The original benchmark covers single and pairwise attacks. Section~\ref{subsec:integrity-results} additionally evaluates every non-empty composition of the eight declared attacks. Neither experiment represents attack prevalence or adaptive adversaries.}
+\caption{Declared integrity threat model. The original benchmark covers the first eight attack families individually, pairwise, and in every non-empty composition. The extended regression suite covers dangling attestation and pair references, unknown blocks, status disagreement, and missing attestations. Neither experiment represents attack prevalence or adaptive adversaries.}
 \label{tab:integrity-threat-model}
 \scriptsize
 \renewcommand{\arraystretch}{1.06}
@@ -16,6 +16,9 @@ Duplicate independent artifact & Independence declaration & Independent evidence
 Overlapping independent cohorts & Inferential units & Cohorts declared disjoint cannot share subjects \\
 Contradictory attestation & Evidence status & One block cannot have incompatible source attestations \\
 Missing block lineage & Evidence trace & Every supplied block must resolve to at least one source artifact \\
+Unknown block reference & Evidence trace & Lineage and attestations must reference supplied blocks \\
+Block--attestation mismatch & Evidence status & Every direct attestation must agree with the represented block status \\
+Missing block attestation & Evidence trace & Every supplied block must have at least one source attestation \\
 \bottomrule
 \end{tabularx}
 \end{table}

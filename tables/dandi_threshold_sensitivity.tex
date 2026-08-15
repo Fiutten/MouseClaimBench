@@ -1,19 +1,19 @@
 \begin{table}[!htbp]
 \centering
-\caption{Post-outcome, one-at-a-time sensitivity of the author-defined DANDI acceptance criteria. The frozen threshold is the prospective decision rule. The last column is the nearest stricter tested value that changes the reported decision, not a recommended replacement or a criterion-valid standard.}
+\caption{Post-outcome, one-at-a-time sensitivity of the author-defined DANDI acceptance criteria. The frozen threshold is the prospective decision rule. The last column reports the nearest tested decision boundary or, when no boundary is crossed, the observed outcome. It is not a recommended replacement or a criterion-valid standard.}
 \label{tab:dandi-threshold-sensitivity}
 \scriptsize
 \renewcommand{\arraystretch}{1.02}
-\begin{tabularx}{\textwidth}{@{}Y r r r@{}}
+\begin{tabularx}{\textwidth}{@{}Y r r P{0.34\textwidth}@{}}
 \toprule
-Criterion & Frozen & Observed & First tested failure \\
+Criterion & Frozen & Observed & Sensitivity boundary or outcome \\
 \midrule
 DANDI:000039 usable mice & $\geq25$ & 32 & $\geq33$ \\
 Median mouse correlation & $\geq0.10$ & 0.310 & $\geq0.35$ \\
 Bootstrap lower bound & $>0$ & 0.207 & $>0.25$ \\
 Positive-mouse fraction & $\geq0.65$ & 0.938 & $\geq0.95$ \\
 Relative squared-error gain & $>0$ & 5.43\% & $>7.5\%$ \\
-DANDI:001176 usable subjects & $\geq20$ & 5 & $\geq10$ remains negative \\
+DANDI:001176 usable subjects & $\geq20$ & 5 & Negative at every tested minimum $\geq10$ and available only at $\leq5$ \\
 \bottomrule
 \end{tabularx}
 \end{table}

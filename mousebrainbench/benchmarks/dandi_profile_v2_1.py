@@ -308,6 +308,9 @@ def _contrast_evaluation(
     positive_fraction = float(np.mean(correlations > 0)) if len(correlations) else 0.0
     model_sse = sum(float(row["model_mse_sum"]) for row in usable)
     baseline_sse = sum(float(row["baseline_mse_sum"]) for row in usable)
+    held_out_trials = sum(int(row["test_trials"]) for row in usable)
+    model_mse = model_sse / held_out_trials if held_out_trials else float("nan")
+    baseline_mse = baseline_sse / held_out_trials if held_out_trials else float("nan")
     conditions = {
         "minimum_subjects": len(usable) >= int(acceptance["minimum_subjects"]),
         "median_correlation": median >= float(
@@ -319,7 +322,7 @@ def _contrast_evaluation(
         "positive_subject_fraction": positive_fraction >= float(
             acceptance["minimum_fraction_positive_subjects"]
         ),
-        "mse_better_than_intercept": model_sse < baseline_sse,
+        "mse_better_than_intercept": model_mse < baseline_mse,
     }
     prediction_passed = all(conditions.values())
     quality_passed = conditions["minimum_subjects"]
@@ -344,6 +347,9 @@ def _contrast_evaluation(
                     "positive_subject_fraction": positive_fraction,
                     "model_sse": model_sse,
                     "baseline_sse": baseline_sse,
+                    "held_out_trials": held_out_trials,
+                    "model_pooled_mse": model_mse,
+                    "baseline_pooled_mse": baseline_mse,
                 },
             },
         ),
@@ -409,6 +415,9 @@ def _contrast_evaluation(
             "positive_subject_fraction": positive_fraction,
             "model_sse": model_sse,
             "baseline_sse": baseline_sse,
+            "held_out_trials": held_out_trials,
+            "model_pooled_mse": model_mse,
+            "baseline_pooled_mse": baseline_mse,
         },
         "conditions": conditions,
         "authorization": decision.as_dict(),

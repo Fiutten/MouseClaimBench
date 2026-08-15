@@ -62,21 +62,61 @@ def _save(fig: plt.Figure, name: str) -> None:
 
 
 def workflow() -> None:
-    fig, ax = plt.subplots(figsize=(8.8, 3.2))
+    fig, ax = plt.subplots(figsize=(8.8, 4.2))
     ax.set_xlim(0, 12)
-    ax.set_ylim(0, 4)
+    ax.set_ylim(0, 6)
     ax.axis("off")
-    stages = [
-        (0.25, "1. Evidence", "Artifacts\nPredicates\nObservations\nAttestations", BLUE),
-        (3.20, "2. Structure", "RDF / PROV-O\nExternal SHACL\nreport", TEAL),
-        (6.15, "3. Integrity", "Hashes and lineage\nCycles and conflicts\nIndependence", AMBER),
-        (9.10, "4. Authorization", "Required evidence\nComplete deficits\nBounded decision", RED),
+    input_box = FancyBboxPatch(
+        (0.25, 2.05),
+        2.25,
+        2.0,
+        boxstyle="round,pad=0.03,rounding_size=0.07",
+        linewidth=1.2,
+        edgecolor=BLUE,
+        facecolor="white",
+    )
+    ax.add_patch(input_box)
+    ax.add_patch(
+        FancyBboxPatch(
+            (0.25, 3.67),
+            2.25,
+            0.38,
+            boxstyle="round,pad=0.03,rounding_size=0.07",
+            linewidth=0,
+            facecolor=BLUE,
+        )
+    )
+    ax.text(
+        1.375,
+        3.86,
+        "Evidence input",
+        color="white",
+        weight="bold",
+        ha="center",
+        va="center",
+        fontsize=9.6,
+    )
+    ax.text(
+        1.375,
+        2.88,
+        "Claim and profile\nEvidence blocks\nArtifact manifest\nAttestations",
+        ha="center",
+        va="center",
+        color=INK,
+        linespacing=1.25,
+        fontsize=10.2,
+    )
+
+    gates = [
+        (4.45, "Structural gate  S", "RDF / PROV-O graph\nExternal SHACL conformance", TEAL),
+        (2.90, "Domain gate  A", "Admissible required blocks\nComplete scientific deficits", RED),
+        (1.35, "Integrity gate  I", "Closed references and hashes\nLineage, cohorts, attestations", AMBER),
     ]
-    for index, (x, title, body, color) in enumerate(stages):
+    for y, title, body, color in gates:
         box = FancyBboxPatch(
-            (x, 1.15),
-            2.55,
-            1.75,
+            (3.45, y),
+            4.65,
+            1.12,
             boxstyle="round,pad=0.03,rounding_size=0.07",
             linewidth=1.2,
             edgecolor=color,
@@ -85,49 +125,94 @@ def workflow() -> None:
         ax.add_patch(box)
         ax.add_patch(
             FancyBboxPatch(
-                (x, 2.55),
-                2.55,
-                0.35,
+                (3.45, y + 0.80),
+                4.65,
+                0.32,
                 boxstyle="round,pad=0.03,rounding_size=0.07",
                 linewidth=0,
                 facecolor=color,
             )
         )
         ax.text(
-            x + 0.14,
-            2.72,
+            5.775,
+            y + 0.96,
             title,
             color="white",
             weight="bold",
+            ha="center",
             va="center",
-            fontsize=11.5,
+            fontsize=10.4,
         )
         ax.text(
-            x + 1.275,
-            1.87,
+            5.775,
+            y + 0.40,
             body,
             ha="center",
             va="center",
             color=INK,
-            linespacing=1.25,
-            fontsize=10.5,
+            linespacing=1.15,
+            fontsize=9.7,
         )
-        if index < len(stages) - 1:
-            ax.annotate(
-                "",
-                xy=(x + 2.93, 2.02),
-                xytext=(x + 2.60, 2.02),
-                arrowprops={"arrowstyle": "-|>", "color": GRAY, "lw": 1.2},
-            )
+
+    ax.plot([2.50, 2.88], [3.05, 3.05], color=GRAY, lw=1.2)
+    ax.plot([2.88, 2.88], [1.91, 5.01], color=GRAY, lw=1.2)
+    for y in (1.91, 3.46, 5.01):
+        ax.annotate(
+            "",
+            xy=(3.42, y),
+            xytext=(2.88, y),
+            arrowprops={"arrowstyle": "-|>", "color": GRAY, "lw": 1.2},
+        )
+
+    final_box = FancyBboxPatch(
+        (9.05, 2.05),
+        2.55,
+        2.0,
+        boxstyle="round,pad=0.03,rounding_size=0.07",
+        linewidth=1.2,
+        edgecolor=INK,
+        facecolor="white",
+    )
+    ax.add_patch(final_box)
+    ax.add_patch(
+        FancyBboxPatch(
+            (9.05, 3.67),
+            2.55,
+            0.38,
+            boxstyle="round,pad=0.03,rounding_size=0.07",
+            linewidth=0,
+            facecolor=INK,
+        )
+    )
+    ax.text(10.325, 3.86, "Final decision", color="white", weight="bold", ha="center", va="center")
+    ax.text(
+        10.325,
+        2.88,
+        r"$A^{*}=S\wedge A\wedge I_{\mathrm{clean}}$" "\n\nLayer-resolved\ndeficit traces",
+        ha="center",
+        va="center",
+        color=INK,
+        fontsize=10.4,
+    )
+    ax.plot([8.10, 8.55], [5.01, 5.01], color=GRAY, lw=1.2)
+    ax.plot([8.10, 8.55], [3.46, 3.46], color=GRAY, lw=1.2)
+    ax.plot([8.10, 8.55], [1.91, 1.91], color=GRAY, lw=1.2)
+    ax.plot([8.55, 8.55], [1.91, 5.01], color=GRAY, lw=1.2)
+    ax.annotate(
+        "",
+        xy=(9.02, 3.05),
+        xytext=(8.55, 3.05),
+        arrowprops={"arrowstyle": "-|>", "color": GRAY, "lw": 1.2},
+    )
     ax.text(
         6,
         0.55,
-        "Authorization requires structural conformance, package integrity,\nand every mandatory scientific block",
+        "The same claim, evidence blocks, and manifest are evaluated by every gate",
         ha="center",
         va="center",
         color=INK,
         weight="bold",
-        fontsize=10.5,
+        fontsize=10.2,
     )
     _save(fig, "standards_workflow")
 
@@ -201,7 +286,7 @@ def integrity_ablation() -> None:
         "No cycle check",
         "No duplicate check",
         "No cohort-overlap check",
-        "No attestation check",
+        "No contradiction check",
         "No block lineage",
         "Full gate",
     ]
@@ -214,7 +299,7 @@ def integrity_ablation() -> None:
     ax.invert_yaxis()
     ax.set_xlim(0, 385)
     ax.set_xlabel("False authorizations among 360 attacked packages")
-    ax.set_title("Integrity controls are non-compensatory")
+    ax.set_title("Integrity controls combine necessity and defensive overlap")
     ax.grid(axis="x", color=LIGHT, linewidth=0.8)
     ax.set_axisbelow(True)
     ax.spines[["top", "right", "left"]].set_visible(False)

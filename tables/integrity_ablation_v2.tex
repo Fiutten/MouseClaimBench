@@ -1,6 +1,6 @@
 \begin{table}[!htbp]
 \centering
-\caption{False authorizations and false rejections in the 370-case integrity benchmark. Each leave-one-out system exposes the 10 single attacks governed only by the omitted control.}
+\caption{False authorizations and false rejections in the 370-case integrity benchmark. Seven original controls are uniquely necessary for their constructed single-attack families. Removing the contradiction check alone produces no false authorization because block--attestation status consistency independently detects the same contradictory package.}
 \label{tab:integrity-ablation-v2}
 \footnotesize
 \renewcommand{\arraystretch}{1.05}
@@ -17,7 +17,7 @@ Without resolved lineage & 10 & 0 \\
 Without cycle detection & 10 & 0 \\
 Without duplicate-independence check & 10 & 0 \\
 Without cohort-overlap check & 10 & 0 \\
-Without attestation consistency & 10 & 0 \\
+Without contradictory-attestation check & 0 & 0 \\
 Without block lineage & 10 & 0 \\
 \bottomrule
 \end{tabularx}

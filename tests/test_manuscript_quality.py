@@ -116,10 +116,10 @@ def test_engine_scope_and_property_claims_are_calibrated() -> None:
         path.read_text(encoding="utf-8") for path in MANUSCRIPT_PATHS
     )
     assert (
-        "Python, \\ac{shacl}, and the separately implemented \\ac{asp} path "
-        "agree on authorization and deficits across all 5,497 contract cases."
+        "Python and a separately implemented \\ac{asp} path agree on domain "
+        "authorization and deficits across 5,677 contract cases."
     ) in abstract
-    assert "Three independent execution paths agree on all 5,497" not in manuscript
+    assert "Python, \\ac{shacl}, and the separately implemented" not in abstract
     assert "formal verification results" not in manuscript.lower()
     assert "The evaluation is organized into four evidence classes." in manuscript
     assert "under the declared deterministic threat model" in manuscript.lower()
@@ -135,7 +135,8 @@ def test_second_review_formal_and_interpretive_corrections_are_present() -> None
     )
 
     assert r"\mathrm{1}[I_{\Pi}(M,B)=\varnothing]" in method
-    assert r"S_{\Pi}(G)A_{\Pi}(c,B)" in method
+    assert r"S_{\Pi}(G_{\Pi}(c,B,M))A_{\Pi}(c,B)" in method
+    assert r"G_{\Pi}(c,B,M)=\operatorname{RDF}_{\Pi}(c,B,M)" in method
     assert r"T_{\Delta_{\Pi}(c,B)}" in method
     assert "2,550 non-empty compositions" not in manuscript
     assert "one-edge structural policy perturbation" in manuscript.lower()
@@ -176,7 +177,7 @@ def test_claim_table_is_complete_and_case_counts_match_artifact() -> None:
 
     assert len(profile.requirements) == len(labels) == 10
     assert sum(len(row.required_blocks) for row in profile.requirements) == 60
-    assert sum(counts.values()) == 5_497
+    assert sum(counts.values()) == 5_677
     for index, (requirement, label) in enumerate(
         zip(profile.requirements, labels, strict=True), start=1
     ):
@@ -202,6 +203,8 @@ def test_integrity_threat_table_covers_all_eight_attacks() -> None:
         "Missing block lineage",
     )
     assert all(attack in table for attack in attacks)
+    assert "Block--attestation mismatch" in table
+    assert "Missing block attestation" in table
     assert "adaptive adversaries" in table
 
 

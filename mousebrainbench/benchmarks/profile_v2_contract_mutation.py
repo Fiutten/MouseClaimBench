@@ -46,6 +46,8 @@ class MutationCase:
     blocks: dict[str, EvidenceBlock]
     expected_authorized: bool
     expected_deficits: tuple[tuple[str, EvidenceStatus], ...]
+    expected_structural_conforms: bool
+    expected_structural_deficits: tuple[tuple[str, str], ...]
 
 
 def _complete_observations(block_name: str) -> dict[str, Any]:
@@ -61,13 +63,16 @@ def _block(
     status: EvidenceStatus = EvidenceStatus.PASSED,
     *,
     observations: dict[str, Any] | None = None,
+    source: str = "frozen-contract-mutation-case",
+    rule: str = "controlled profile-v2 predicate",
+    rationale: str = "the mutation truth is fixed by the executable contract",
 ) -> EvidenceBlock:
     return EvidenceBlock.from_mapping(
         name=name,
         status=status,
-        source="frozen-contract-mutation-case",
-        rule="controlled profile-v2 predicate",
-        rationale="the mutation truth is fixed by the executable contract",
+        source=source,
+        rule=rule,
+        rationale=rationale,
         observations=(
             _complete_observations(name) if observations is None else observations
         ),
@@ -97,6 +102,8 @@ def generate_cases() -> tuple[MutationCase, ...]:
                 blocks=_complete_blocks(claim),
                 expected_authorized=True,
                 expected_deficits=(),
+                expected_structural_conforms=True,
+                expected_structural_deficits=(),
             )
         )
         for block_name in requirement.required_blocks:
@@ -111,6 +118,8 @@ def generate_cases() -> tuple[MutationCase, ...]:
                         blocks=blocks,
                         expected_authorized=False,
                         expected_deficits=((block_name, status),),
+                        expected_structural_conforms=True,
+                        expected_structural_deficits=(),
                     )
                 )
             blocks = _complete_blocks(claim)
@@ -123,6 +132,10 @@ def generate_cases() -> tuple[MutationCase, ...]:
                     blocks=blocks,
                     expected_authorized=False,
                     expected_deficits=((block_name, EvidenceStatus.UNKNOWN),),
+                    expected_structural_conforms=False,
+                    expected_structural_deficits=(
+                        ("missing_required_block", block_name),
+                    ),
                 )
             )
             specification = profile.block_specification(block_name)
@@ -133,12 +146,41 @@ def generate_cases() -> tuple[MutationCase, ...]:
                 blocks[block_name] = _block(block_name, observations=observations)
                 cases.append(
                     MutationCase(
-                        case_id=f"{claim}__metadata__{block_name}__{field}",
+                        case_id=f"{claim}__observation__{block_name}__{field}",
                         family="missing_required_observation",
                         claim=claim,
                         blocks=blocks,
                         expected_authorized=False,
                         expected_deficits=((block_name, EvidenceStatus.REQUIRES_REVIEW),),
+                        expected_structural_conforms=False,
+                        expected_structural_deficits=(
+                            ("missing_required_observation", block_name),
+                        ),
+                    )
+                )
+            for metadata_field in ("source", "rule", "rationale"):
+                blocks = _complete_blocks(claim)
+                kwargs = {
+                    "source": blocks[block_name].source,
+                    "rule": blocks[block_name].rule,
+                    "rationale": blocks[block_name].rationale,
+                }
+                kwargs[metadata_field] = ""
+                blocks[block_name] = _block(block_name, **kwargs)
+                cases.append(
+                    MutationCase(
+                        case_id=f"{claim}__metadata__{block_name}__{metadata_field}",
+                        family=f"missing_{metadata_field}",
+                        claim=claim,
+                        blocks=blocks,
+                        expected_authorized=False,
+                        expected_deficits=(
+                            (block_name, EvidenceStatus.REQUIRES_REVIEW),
+                        ),
+                        expected_structural_conforms=False,
+                        expected_structural_deficits=(
+                            ("missing_fact_metadata", block_name),
+                        ),
                     )
                 )
         for left, right in combinations(requirement.required_blocks, 2):
@@ -162,6 +204,8 @@ def generate_cases() -> tuple[MutationCase, ...]:
                                 key=lambda item: item[0],
                             )
                         ),
+                        expected_structural_conforms=True,
+                        expected_structural_deficits=(),
                     )
                 )
     identifiers = [case.case_id for case in cases]

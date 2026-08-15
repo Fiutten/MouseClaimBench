@@ -39,16 +39,18 @@ blocked.
 
 ## Executable contract and standards baseline
 
-The contract benchmark contains 5,497 deterministic cases. Python produces zero
+The contract benchmark contains 5,677 deterministic cases. Python produces zero
 false authorizations, zero false rejections, and exact recovery of all expected
 deficit sets. The independent ASP implementation matches authorization and
-deficits in all 5,497 generated contract cases.
+deficits in all 5,677 generated contract cases.
 
-All 5,497 cases are exported to RDF and evaluated by external `pySHACL` 0.40.1.
-SHACL also yields zero false authorizations or rejections and exact structural
-deficits. The profile graph contains 318 triples. JSON-LD serialization preserves
-graph isomorphism. These results establish standards conformance and also show
-that structural validation alone is not novel.
+All 5,677 packages are exported to RDF and evaluated by external `pySHACL`
+0.40.1. SHACL evaluates structural conformance rather than scientific
+authorization. It recovers every expected structural decision and deficit,
+including structurally valid packages whose scientific status is non-passing.
+The profile graph contains 318 triples. JSON-LD serialization preserves graph
+isomorphism. These results establish standards conformance and also show that
+structural validation alone is not novel.
 
 ## Formal properties
 
@@ -75,10 +77,12 @@ The complete integrity gate has zero false authorization and zero false
 rejection. It also recovers the exact attack trace in all 370 packages.
 
 The core profile alone falsely authorizes all 360 attacks. A hash-only baseline
-falsely authorizes 280. Each leave-one-integrity-control-out system falsely
-authorizes 10 packages, corresponding to the omitted single attack in every
-claim. The result establishes necessity only under the declared deterministic
-threat model. It is not an adaptive security evaluation.
+falsely authorizes 280. Seven original leave-one-integrity-control-out systems
+falsely authorize 10 packages, corresponding to the omitted single attack in
+every claim. Removing the contradiction check alone authorizes none because the
+block--attestation mismatch invariant is an independent detector. The result
+establishes conditional necessity and one defensive redundancy under the
+declared deterministic threat model. It is not an adaptive security evaluation.
 
 ## Scalability
 

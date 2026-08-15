@@ -1,5 +1,5 @@
 Profile v2 traces 60 claim-evidence relations and 22 predicate contracts.
-Policy sensitivity evaluates 221 profiles on 14 fixed artifact decisions.
+Structural, domain, and integrity gates are executed and reported separately.
 Counterfactual repairs confirm complete and individually necessary deficits.
 All 2,550 declared attack compositions are blocked with exact traces.
 Coherent forgery controls expose the need for external trust anchors.

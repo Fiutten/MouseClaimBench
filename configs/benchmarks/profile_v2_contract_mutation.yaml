@@ -1,6 +1,6 @@
 protocol_id: mouseclaimbench_profile_v2_contract_mutation
-version: 1.0.0
-status: frozen_before_outcome_execution
+version: 1.1.0
+status: extended_after_external_code_audit
 freeze_date: 2026-08-02
 profile: mousebrainbench/knowledge/profiles/mouse_brain_claims_v2.yaml
 
@@ -8,6 +8,11 @@ scientific_question: >-
   Does the hardened profile authorizer reject every controlled contract defect,
   preserve all simultaneous deficits, and remain semantically equivalent to an
   independent ASP implementation while transparent shortcuts fail?
+
+revision_note: >-
+  Version 1.1.0 adds source, rule, and rationale omissions after an external
+  consistency audit. Expected decisions still follow directly from the
+  declared executable semantics and are not empirical scientific outcomes.
 
 scope:
   estimand: executable_contract_conformance
@@ -21,11 +26,16 @@ case_families:
   - single_status_defect
   - omitted_required_block
   - missing_required_observation
+  - missing_source
+  - missing_rule
+  - missing_rationale
   - pairwise_mixed_status_defects
 
 status_defects: [failed, unknown, not_applicable, requires_review]
 pairwise_status_design: full_cartesian_product
-metadata_design: remove_each_required_observation_once
+metadata_design: >-
+  Remove each required observation once and independently remove source, rule,
+  and rationale once for every claim-to-block relation.
 asp_conformance:
   selection: all_generated_cases
 

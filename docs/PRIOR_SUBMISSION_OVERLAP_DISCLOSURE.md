@@ -24,7 +24,7 @@ first manuscript:
 - profile-v2 authorization with complete multi-deficit output
 - observation admissibility for every passing evidence block
 - RDF/PROV-O representation and external SHACL execution
-- independent Python, ASP, and SHACL conformance
+- exact Python/ASP domain conformance and separate external SHACL structural conformance
 - eight relational package-integrity controls
 - 360 controlled attacks and leave-one-control-out ablation
 - six formal profile-relative properties over 10,000 packages

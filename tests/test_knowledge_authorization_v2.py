@@ -82,7 +82,7 @@ def test_all_complete_passed_blocks_produce_profile_authorization() -> None:
         assert decision.deficits == ()
 
 
-def test_passed_block_with_missing_required_metadata_is_not_authorized() -> None:
+def test_passed_block_with_missing_required_observation_is_not_authorized() -> None:
     profile = load_authorization_profile_v2()
     blocks = _complete_case("bounded_predictive_performance")
     prediction = blocks["prediction"]
@@ -99,6 +99,29 @@ def test_passed_block_with_missing_required_metadata_is_not_authorized() -> None
     assert deficit.declared_status is EvidenceStatus.PASSED
     assert deficit.effective_status is EvidenceStatus.REQUIRES_REVIEW
     assert deficit.missing_required_observations == ("comparator",)
+
+
+def test_passed_block_with_missing_required_metadata_is_not_authorized() -> None:
+    profile = load_authorization_profile_v2()
+    blocks = _complete_case("bounded_predictive_performance")
+    prediction = blocks["prediction"]
+    blocks["prediction"] = EvidenceBlock.from_mapping(
+        name=prediction.name,
+        status=prediction.status,
+        source="",
+        rule=prediction.rule,
+        rationale=prediction.rationale,
+        observations=dict(prediction.observations),
+    )
+
+    decision = ClaimAuthorizationSystem(profile, blocks).infer(
+        "bounded_predictive_performance"
+    )
+
+    deficit = next(item for item in decision.deficits if item.name == "prediction")
+    assert deficit.effective_status is EvidenceStatus.REQUIRES_REVIEW
+    assert deficit.missing_required_observations == ()
+    assert deficit.missing_required_metadata == ("source",)
 
 
 def test_every_single_status_defect_blocks_every_claim() -> None:

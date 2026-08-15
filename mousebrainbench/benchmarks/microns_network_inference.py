@@ -313,6 +313,7 @@ def _cohort_result(
             "dyadic_cluster_two_sided_p_value"
         ],
         "dyadic_to_naive_se_ratio": inference["dyadic_to_naive_se_ratio"],
+        "permutation_seed": seed,
         "freedman_lane_node_permutation": permutation,
         "network_inference_passed": passed,
     }
@@ -344,8 +345,12 @@ def run(
         "analysis": "microns_fixed_endpoint_network_dependent_inference",
         "primary_endpoint": f"all_pairs/{PRIMARY_METRIC}",
         "controls": list(CONTROL_NAMES),
+        "full_model": "readout_similarity ~ connected + fixed_controls",
+        "reduced_model": "readout_similarity ~ fixed_controls",
         "primary_inference": "directed dyadic cluster-robust linear model",
         "corroborating_inference": "Freedman-Lane simultaneous node-label permutation",
+        "permutation_unit": "neuron identifier applied simultaneously to sender and receiver labels",
+        "permutation_seed_streams": [seed + index for index in range(len(COHORTS))],
         "cohorts": cohorts,
         "all_cohorts_passed": all_passed,
         "decision": (
@@ -431,4 +436,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

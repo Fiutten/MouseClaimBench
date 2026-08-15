@@ -1,24 +1,30 @@
 protocol_id: mouseclaimbench_profile_v2_standards_conformance
-version: 1.0.0
-status: frozen_before_standards_benchmark_execution
+version: 1.1.0
+status: revised_after_external_code_audit
 freeze_date: 2026-08-02
 profile: mousebrainbench/knowledge/profiles/mouse_brain_claims_v2.yaml
 
+revision_note: >-
+  Version 1.1.0 separates structural conformance from scientific authorization
+  and evaluates the extended contract cases against structural expectations.
+
 case_selection:
   all_contract_mutation_cases: true
-  expected_cases: 5497
+  expected_cases: 5677
+
+execution:
+  workers: 8
 
 endpoints:
-  shacl_false_authorizations: 0
-  shacl_false_rejections: 0
-  shacl_exact_deficit_rate: 1.0
-  python_shacl_equivalence_rate: 1.0
+  shacl_false_conformances: 0
+  shacl_false_nonconformances: 0
+  shacl_exact_structural_deficit_rate: 1.0
+  structurally_valid_domain_refusals_present: true
   prov_profile_contains_all_claims_and_blocks: true
   json_ld_round_trip_preserves_graph_isomorphism: true
 
 interpretation: >-
   SHACL is a real external standard baseline for the structural evidence
-  contract. Exact SHACL conformance would show that schema validation and
-  complete structural deficit reporting are not novel by themselves. The
-  remaining candidate contribution must therefore be evaluated at the domain
-  authorization, evidence-dependence, hierarchical-risk, and application levels.
+  contract. Scientific pass or failure is evaluated by the separate domain
+  gate. Exact SHACL conformance shows that schema validation and complete
+  structural deficit reporting are not novel by themselves.

@@ -21,6 +21,11 @@ from mousebrainbench.knowledge.engine import (
     InferenceStep,
     KnowledgeInference,
 )
+from mousebrainbench.knowledge.final_authorization import (
+    FinalAuthorizationDecision,
+    FinalAuthorizationSystem,
+    compose_final_authorization,
+)
 from mousebrainbench.knowledge.integrity import (
     ArtifactRecord,
     EvidenceAttestation,
@@ -39,10 +44,14 @@ from mousebrainbench.knowledge.profile import (
 )
 from mousebrainbench.knowledge.standards import (
     ShaclAuthorizationDecision,
+    StructuralConformanceDecision,
+    StructuralDeficit,
+    StructuralDeficitCode,
     authorize_with_shacl_v2,
     evidence_package_to_rdf,
     profile_to_rdf,
     shacl_shapes_for_claim,
+    validate_structure_with_shacl_v2,
 )
 
 __all__ = [
@@ -57,6 +66,8 @@ __all__ = [
     "EvidenceAttestation",
     "EvidenceBlockSpecification",
     "EvidencePackageManifest",
+    "FinalAuthorizationDecision",
+    "FinalAuthorizationSystem",
     "InferenceRule",
     "InferenceStep",
     "IntegrityAwareAuthorizationSystem",
@@ -68,8 +79,12 @@ __all__ = [
     "ProfileAuthorizationDecision",
     "ProfileAuthorizationStatus",
     "ShaclAuthorizationDecision",
+    "StructuralConformanceDecision",
+    "StructuralDeficit",
+    "StructuralDeficitCode",
     "authorize_with_clingo_v2",
     "authorize_with_shacl_v2",
+    "compose_final_authorization",
     "evidence_package_to_rdf",
     "infer_with_clingo",
     "load_authorization_profile_v2",
@@ -79,4 +94,5 @@ __all__ = [
     "profile_to_rdf",
     "shacl_shapes_for_claim",
     "validate_evidence_manifest",
+    "validate_structure_with_shacl_v2",
 ]

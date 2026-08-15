@@ -184,6 +184,7 @@ class EvaluatedEvidenceFact:
     rationale: str
     observations: tuple[tuple[str, Any], ...]
     missing_required_observations: tuple[str, ...]
+    missing_required_metadata: tuple[str, ...]
 
     def as_dict(self) -> dict[str, Any]:
         return {
@@ -195,6 +196,7 @@ class EvaluatedEvidenceFact:
             "rationale": self.rationale,
             "observations": dict(self.observations),
             "missing_required_observations": list(self.missing_required_observations),
+            "missing_required_metadata": list(self.missing_required_metadata),
         }
 
 
@@ -280,10 +282,11 @@ class ClaimAuthorizationSystem:
                 rationale="required evidence block is absent",
                 observations=(),
                 missing_required_observations=(),
+                missing_required_metadata=(),
             )
         specification = self.profile.block_specification(name)
         observations = dict(block.observations)
-        missing = (
+        missing_observations = (
             tuple(
                 field
                 for field in specification.required_observations_when_passed
@@ -292,14 +295,19 @@ class ClaimAuthorizationSystem:
             if block.status is EvidenceStatus.PASSED
             else ()
         )
-        metadata_missing = (
-            not _present(block.source) or not _present(block.rule) or not _present(block.rationale)
+        missing_metadata = tuple(
+            field
+            for field, value in (
+                ("source", block.source),
+                ("rule", block.rule),
+                ("rationale", block.rationale),
+            )
+            if not _present(value)
         )
-        if metadata_missing:
-            missing = (*missing, "source_rule_or_rationale")
         effective = (
             EvidenceStatus.REQUIRES_REVIEW
-            if block.status is EvidenceStatus.PASSED and missing
+            if block.status is EvidenceStatus.PASSED
+            and (missing_observations or missing_metadata)
             else block.status
         )
         return EvaluatedEvidenceFact(
@@ -310,7 +318,8 @@ class ClaimAuthorizationSystem:
             rule=block.rule,
             rationale=block.rationale,
             observations=block.observations,
-            missing_required_observations=tuple(missing),
+            missing_required_observations=tuple(missing_observations),
+            missing_required_metadata=tuple(missing_metadata),
         )
 
     def infer(self, claim: str) -> ProfileAuthorizationDecision:

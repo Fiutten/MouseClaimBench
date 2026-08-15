@@ -1,0 +1,15 @@
+protocol_id: mouseclaimbench_profile_v2_extended_integrity_regression
+version: 1.0.0
+status: regression_protocol_added_after_external_code_audit
+profile: mousebrainbench/knowledge/profiles/mouse_brain_claims_v2.yaml
+
+design:
+  pristine_package_per_claim: 1
+  one_case_per_claim_and_regression_family: 1
+  expected_cases: 100
+
+interpretation: >-
+  This regression suite verifies reference closure and block-attestation
+  consistency for nine newly explicit edge cases. It complements the frozen
+  eight-attack composition benchmark and does not estimate robustness against
+  attacks outside the declared integrity model.

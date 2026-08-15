@@ -20,6 +20,7 @@ from mousebrainbench import __version__
 from mousebrainbench.artifacts import code_revision
 from mousebrainbench.benchmarks.profile_v2_contract_mutation import _complete_blocks
 from mousebrainbench.benchmarks.profile_v2_provenance_attacks import (
+    ATTACK_TO_DEFICIT,
     _base_manifest,
     _digest,
     generate_cases,
@@ -79,7 +80,7 @@ def evaluate_ablation(attack_protocol: dict[str, Any]) -> dict[str, Any]:
     control_sets.update(
         {
             f"without_{omitted.value}": all_controls - {omitted}
-            for omitted in IntegrityDeficitCode
+            for omitted in set(ATTACK_TO_DEFICIT.values())
         }
     )
     counters = {
@@ -197,6 +198,10 @@ def evaluate(protocol: dict[str, Any]) -> dict[str, Any]:
         for name, row in ablation["systems"].items()
         if name.startswith("without_")
     }
+    expected_omission_false_authorizations = {
+        name: (0 if name == "without_contradictory_attestation" else 10)
+        for name in omissions
+    }
     endpoints = {
         "all_pristine_scaling_decisions_authorized": scaling[
             "all_pristine_decisions_authorized"
@@ -205,12 +210,15 @@ def evaluate(protocol: dict[str, Any]) -> dict[str, Any]:
             full["false_authorizations"] == 0
         ),
         "full_gate_false_rejections_equal_0": full["false_rejections"] == 0,
-        "every_leave_one_out_exposes_false_authorization": all(
-            row["false_authorizations"] > 0 for row in omissions.values()
+        "leave_one_out_matches_declared_redundancy_pattern": all(
+            row["false_authorizations"]
+            == expected_omission_false_authorizations[name]
+            for name, row in omissions.items()
         ),
     }
     return {
         "ablation": ablation,
+        "expected_omission_false_authorizations": expected_omission_false_authorizations,
         "scalability": scaling,
         "endpoints": endpoints,
         "all_endpoints_passed": all(endpoints.values()),

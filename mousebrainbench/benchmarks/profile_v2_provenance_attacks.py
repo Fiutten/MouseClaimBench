@@ -41,6 +41,21 @@ ATTACK_TO_DEFICIT = {
 }
 
 
+def expected_deficits_for_attacks(
+    attacks: tuple[str, ...],
+) -> tuple[IntegrityDeficitCode, ...]:
+    """Return every deficit implied by the selected declared attacks."""
+
+    deficits = {ATTACK_TO_DEFICIT[name] for name in attacks}
+    # A contradictory pair necessarily contains at least one attestation that
+    # disagrees with the single status represented by its evidence block. Both
+    # invariants are reported because integrity validation does not mask one
+    # violation behind another.
+    if "contradictory_attestation" in attacks:
+        deficits.add(IntegrityDeficitCode.ATTESTATION_BLOCK_STATUS_MISMATCH)
+    return tuple(sorted(deficits, key=lambda value: value.value))
+
+
 @dataclass(frozen=True)
 class AttackCase:
     case_id: str
@@ -192,12 +207,7 @@ def generate_cases(protocol: dict[str, Any]) -> tuple[AttackCase, ...]:
                         manifest,
                         package_id=f"{requirement.claim}__{identifier}",
                     ),
-                    expected_deficits=tuple(
-                        sorted(
-                            (ATTACK_TO_DEFICIT[name] for name in selected),
-                            key=lambda value: value.value,
-                        )
-                    ),
+                    expected_deficits=expected_deficits_for_attacks(tuple(selected)),
                 )
             )
     expected = int(protocol["design"]["expected_cases"])

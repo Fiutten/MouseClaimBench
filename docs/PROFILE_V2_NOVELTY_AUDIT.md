@@ -61,10 +61,10 @@ The defensible candidate contribution is the evaluated composition of:
    evidence-block types, and mandatory source observations
 2. profile-relative, non-compensatory authorization rather than truth scoring
 3. complete multi-deficit traces instead of one prioritized rejection reason
-4. RDF/PROV-O exchange and third-party SHACL conformance
-5. independent Python, ASP, and SHACL execution with exact deficit agreement
-6. eight relational integrity controls over artifacts, lineage, cohorts,
-   attestations, and profile identity
+4. RDF/PROV-O exchange and third-party SHACL structural conformance
+5. exact Python/ASP domain agreement and separate SHACL structural agreement
+6. eleven relational integrity deficits over artifacts, lineage, cohorts,
+   attestations, and profile identity, including eight original attack families
 7. deterministic single and pairwise attacks plus leave-one-control-out ablation
 8. formal property checks and measured scalability to 10,000 packages and 5,000
    artifacts
@@ -80,17 +80,20 @@ and not a claim of universal priority.
 
 ## Results that strengthen the novelty claim
 
-- Python classifies all 5,497 contract cases exactly.
-- Independent ASP matches all 5,497 generated conformance cases.
-- External pySHACL matches all 5,497 structural cases and therefore acts as a
+- Python classifies all 5,677 domain-contract cases exactly.
+- Independent ASP matches all 5,677 domain decisions and deficit sets.
+- External pySHACL matches all 5,677 structural expectations and therefore acts as a
   meaningful negative baseline for structural novelty.
+- The final gate reproduces all eight combinations of structural conformance,
+  domain authorization, and integrity conformance.
 - Six formalized properties and outside-profile closure show no violation in
   55,031 deterministic checks over 10,000 generated packages. This is
   property-based verification, not an exhaustive proof over arbitrary profiles.
 - The complete gate blocks all 360 controlled attacked packages. The
   profile-only and hash-only baselines falsely authorize 360 and 280.
-- Removing any one of eight integrity controls reintroduces exactly 10 false
-  authorizations under the declared attack construction.
+- Removing any of seven original integrity controls reintroduces exactly 10
+  false authorizations. Removing the contradiction check alone reintroduces
+  none because block--attestation status consistency detects the same package.
 - One prospective DANDI protocol remains negative without endpoint repair. A
   second authorizes only held-out population-response prediction in 32 mice.
 - MICRONS authorizes one local observational association after directed dyadic

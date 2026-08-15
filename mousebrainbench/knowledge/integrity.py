@@ -32,7 +32,10 @@ class IntegrityDeficitCode(str, Enum):
     DUPLICATE_INDEPENDENT_ARTIFACT = "duplicate_independent_artifact"
     OVERLAPPING_INDEPENDENT_COHORTS = "overlapping_independent_cohorts"
     CONTRADICTORY_ATTESTATION = "contradictory_attestation"
+    ATTESTATION_BLOCK_STATUS_MISMATCH = "attestation_block_status_mismatch"
+    UNKNOWN_BLOCK_REFERENCE = "unknown_block_reference"
     MISSING_BLOCK_LINEAGE = "missing_block_lineage"
+    MISSING_BLOCK_ATTESTATION = "missing_block_attestation"
 
 
 @dataclass(frozen=True)
@@ -191,26 +194,50 @@ def validate_evidence_manifest(
                 "declared and observed content hashes must be identical SHA-256 values",
             )
         )
-    unknown = sorted(
-        {
-            parent
-            for artifact in manifest.artifacts
-            for parent in artifact.derived_from
-            if parent not in artifacts
-        }
-        | {
-            artifact_id
-            for sources in block_artifacts.values()
-            for artifact_id in sources
-            if artifact_id not in artifacts
-        }
+    referenced_artifacts = {
+        parent
+        for artifact in manifest.artifacts
+        for parent in artifact.derived_from
+    }
+    referenced_artifacts.update(
+        artifact_id
+        for sources in block_artifacts.values()
+        for artifact_id in sources
     )
+    referenced_artifacts.update(
+        attestation.artifact_id for attestation in manifest.attestations
+    )
+    referenced_artifacts.update(
+        artifact_id
+        for pair in manifest.independent_artifact_pairs
+        for artifact_id in pair
+    )
+    referenced_artifacts.update(
+        artifact_id
+        for pair in manifest.disjoint_cohort_pairs
+        for artifact_id in pair
+    )
+    unknown = sorted(referenced_artifacts - set(artifacts))
     if unknown:
         deficits.append(
             IntegrityDeficit(
                 IntegrityDeficitCode.UNKNOWN_PROVENANCE_REFERENCE,
                 tuple(unknown),
-                "every provenance and block-lineage reference must resolve",
+                "every provenance, attestation, independence, and cohort reference must resolve",
+            )
+        )
+    supplied_blocks = set(evidence_blocks)
+    referenced_blocks = set(block_artifacts)
+    referenced_blocks.update(
+        attestation.block_name for attestation in manifest.attestations
+    )
+    unknown_blocks = tuple(sorted(referenced_blocks - supplied_blocks))
+    if unknown_blocks:
+        deficits.append(
+            IntegrityDeficit(
+                IntegrityDeficitCode.UNKNOWN_BLOCK_REFERENCE,
+                unknown_blocks,
+                "block lineage and attestations must reference supplied evidence blocks",
             )
         )
     cycle = _has_cycle(artifacts)
@@ -272,6 +299,23 @@ def validate_evidence_manifest(
                 "the package contains incompatible statuses for the same evidence block",
             )
         )
+    mismatches = tuple(
+        sorted(
+            f"{attestation.block_name}:{evidence_blocks[attestation.block_name].status.value}"
+            f"!={attestation.status.value}@{attestation.artifact_id}"
+            for attestation in manifest.attestations
+            if attestation.block_name in evidence_blocks
+            and evidence_blocks[attestation.block_name].status is not attestation.status
+        )
+    )
+    if mismatches:
+        deficits.append(
+            IntegrityDeficit(
+                IntegrityDeficitCode.ATTESTATION_BLOCK_STATUS_MISMATCH,
+                mismatches,
+                "an unambiguous direct attestation must match the represented block status",
+            )
+        )
     missing_lineage = tuple(
         sorted(
             name
@@ -285,6 +329,16 @@ def validate_evidence_manifest(
                 IntegrityDeficitCode.MISSING_BLOCK_LINEAGE,
                 missing_lineage,
                 "every supplied evidence block must identify at least one source artifact",
+            )
+        )
+    attested_blocks = {row.block_name for row in manifest.attestations}
+    missing_attestations = tuple(sorted(supplied_blocks - attested_blocks))
+    if missing_attestations:
+        deficits.append(
+            IntegrityDeficit(
+                IntegrityDeficitCode.MISSING_BLOCK_ATTESTATION,
+                missing_attestations,
+                "every supplied evidence block must have at least one attestation",
             )
         )
     return tuple(sorted(deficits, key=lambda row: row.code.value))

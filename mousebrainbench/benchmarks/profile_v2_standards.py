@@ -6,7 +6,9 @@ import argparse
 import hashlib
 import importlib.metadata
 import json
+import multiprocessing
 import time
+from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path
 from typing import Any
 
@@ -15,15 +17,12 @@ import yaml
 from mousebrainbench import __version__
 from mousebrainbench.artifacts import code_revision
 from mousebrainbench.benchmarks.profile_v2_contract_mutation import generate_cases
-from mousebrainbench.knowledge import (
-    ClaimAuthorizationSystem,
-    load_authorization_profile_v2,
-)
+from mousebrainbench.knowledge import ClaimAuthorizationSystem, load_authorization_profile_v2
 from mousebrainbench.knowledge.standards import (
-    authorize_with_shacl_v2,
     evidence_package_to_rdf,
     profile_to_rdf,
     shacl_shapes_for_claim,
+    validate_structure_with_shacl_v2,
 )
 
 DEFAULT_PROTOCOL = Path("configs/benchmarks/profile_v2_standards.yaml")
@@ -32,6 +31,28 @@ DEFAULT_MARKDOWN = Path("results/profile_v2_standards/summary.md")
 DEFAULT_PROFILE_RDF = Path("results/profile_v2_standards/profile.ttl")
 DEFAULT_EXAMPLE_JSONLD = Path("results/profile_v2_standards/example_package.jsonld")
 DEFAULT_EXAMPLE_SHAPES = Path("results/profile_v2_standards/example_shapes.ttl")
+
+
+def _evaluate_case(case) -> tuple[bool, bool, bool, bool]:
+    """Evaluate one picklable mutation case in an isolated SHACL worker."""
+
+    profile = load_authorization_profile_v2()
+    decision = validate_structure_with_shacl_v2(
+        profile,
+        case.claim,
+        case.blocks,
+        package_id=case.case_id,
+    )
+    domain = ClaimAuthorizationSystem(profile, case.blocks).infer(case.claim)
+    observed_deficits = tuple(
+        (row.code.value, row.witness) for row in decision.deficits
+    )
+    return (
+        decision.conforms is case.expected_structural_conforms,
+        observed_deficits == case.expected_structural_deficits,
+        decision.conforms and not case.expected_structural_conforms,
+        decision.conforms and not domain.authorized,
+    )
 
 
 def evaluate(protocol: dict[str, Any]) -> tuple[dict[str, Any], Any, Any, Any]:
@@ -48,32 +69,32 @@ def evaluate(protocol: dict[str, Any]) -> tuple[dict[str, Any], Any, Any, Any]:
         raise RuntimeError("standards protocol case count does not match mutation generator")
     started = time.perf_counter()
     exact = 0
-    python_shacl_exact = 0
-    false_authorizations = 0
-    false_rejections = 0
-    for case in cases:
-        decision = authorize_with_shacl_v2(
-            profile,
-            case.claim,
-            case.blocks,
-            package_id=case.case_id,
+    conformance_matches = 0
+    false_conformances = 0
+    false_nonconformances = 0
+    structurally_valid_domain_refusals = 0
+    workers = max(1, int(protocol.get("execution", {}).get("workers", 1)))
+    if workers == 1:
+        evaluated = map(_evaluate_case, cases)
+    else:
+        context_name = (
+            "fork" if "fork" in multiprocessing.get_all_start_methods() else "spawn"
         )
-        python = ClaimAuthorizationSystem(profile, case.blocks).infer(case.claim)
-        python_deficits = tuple(
-            sorted(
-                (
-                    (fact.name, fact.effective_status)
-                    for fact in python.deficits
-                ),
-                key=lambda item: item[0],
-            )
+        executor = ProcessPoolExecutor(
+            max_workers=workers,
+            mp_context=multiprocessing.get_context(context_name),
         )
-        exact += int(decision.deficits == case.expected_deficits)
-        python_shacl_exact += int(
-            decision.status is python.status and decision.deficits == python_deficits
-        )
-        false_authorizations += int(decision.authorized and not case.expected_authorized)
-        false_rejections += int(not decision.authorized and case.expected_authorized)
+        evaluated = executor.map(_evaluate_case, cases, chunksize=8)
+    try:
+        for conformance_match, exact_deficits, false_conformance, domain_refusal in evaluated:
+            conformance_matches += int(conformance_match)
+            exact += int(exact_deficits)
+            false_conformances += int(false_conformance)
+            false_nonconformances += int(not conformance_match and not false_conformance)
+            structurally_valid_domain_refusals += int(domain_refusal)
+    finally:
+        if workers > 1:
+            executor.shutdown()
     elapsed = time.perf_counter() - started
 
     profile_graph = profile_to_rdf(profile)
@@ -93,10 +114,12 @@ def evaluate(protocol: dict[str, Any]) -> tuple[dict[str, Any], Any, Any, Any]:
     json_ld = example_graph.serialize(format="json-ld", indent=2)
     round_trip = Graph().parse(data=json_ld, format="json-ld")
     endpoints = {
-        "shacl_false_authorizations_equal_0": false_authorizations == 0,
-        "shacl_false_rejections_equal_0": false_rejections == 0,
-        "shacl_exact_deficit_rate_equal_1": exact == len(cases),
-        "python_shacl_equivalence_rate_equal_1": python_shacl_exact == len(cases),
+        "shacl_false_conformances_equal_0": false_conformances == 0,
+        "shacl_false_nonconformances_equal_0": false_nonconformances == 0,
+        "shacl_exact_structural_deficit_rate_equal_1": exact == len(cases),
+        "structurally_valid_domain_refusals_present": (
+            structurally_valid_domain_refusals > 0
+        ),
         "prov_profile_contains_all_claims_and_blocks": (
             exported_claims == len(profile.requirements)
             and exported_blocks == len(profile.evidence_blocks)
@@ -113,12 +136,14 @@ def evaluate(protocol: dict[str, Any]) -> tuple[dict[str, Any], Any, Any, Any]:
         "shacl": {
             "backend": f"pyshacl-{importlib.metadata.version('pyshacl')}",
             "rdflib": importlib.metadata.version("rdflib"),
-            "false_authorizations": false_authorizations,
-            "false_rejections": false_rejections,
-            "exact_deficit_sets": exact,
-            "exact_deficit_rate": exact / len(cases),
-            "python_equivalent_cases": python_shacl_exact,
-            "python_equivalence_rate": python_shacl_exact / len(cases),
+            "false_conformances": false_conformances,
+            "false_nonconformances": false_nonconformances,
+            "conformance_matches": conformance_matches,
+            "conformance_match_rate": conformance_matches / len(cases),
+            "exact_structural_deficit_sets": exact,
+            "exact_structural_deficit_rate": exact / len(cases),
+            "structurally_valid_domain_refusals": structurally_valid_domain_refusals,
+            "workers": workers,
             "elapsed_seconds": elapsed,
             "cases_per_second": len(cases) / elapsed,
         },
@@ -144,9 +169,10 @@ def _write_markdown(payload: dict[str, Any], path: Path) -> None:
         "",
         f"- Decision: `{payload['decision']}`",
         f"- Cases: `{payload['cases']}`",
-        f"- SHACL false authorizations: `{shacl['false_authorizations']}`",
-        f"- SHACL false rejections: `{shacl['false_rejections']}`",
-        f"- Exact deficit rate: `{shacl['exact_deficit_rate']:.4f}`",
+        f"- SHACL false conformances: `{shacl['false_conformances']}`",
+        f"- SHACL false non-conformances: `{shacl['false_nonconformances']}`",
+        f"- Exact structural-deficit rate: `{shacl['exact_structural_deficit_rate']:.4f}`",
+        f"- Structurally valid domain refusals: `{shacl['structurally_valid_domain_refusals']}`",
         f"- Throughput: `{shacl['cases_per_second']:.2f}` cases/s",
         "",
         payload["interpretation"],

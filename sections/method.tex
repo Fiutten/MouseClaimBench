@@ -26,18 +26,27 @@ Predicate ownership is recorded separately from claim authorization. Each of the
 
 An evidence block is
 \begin{equation}
-b_e=\langle e,s,x,\phi,r,a\rangle,
+b_e=\langle e,a,x,s,\phi,r\rangle,
 \label{eq:evidence-block-v2}
 \end{equation}
-where $s$ is its source artifact, $x$ preserves the original-scale observations, $\phi$ is the predicate executed by the declared source adapter, $r$ is its rationale, and $a\in\{P,F,U,N,J\}$ denotes passed, failed, unknown, not targeted, or requires review. The authorization engine validates the attested predicate record rather than recomputing every source analysis. It does not normalize correlation, matched-pair differences, software revisions, interventions, and anatomical coverage into a shared numerical scale.
+where $a\in\{P,F,U,N,J\}$ denotes passed, failed, unknown, not targeted, or requires review, $x$ preserves the original-scale observations, $s$ identifies the source artifact, $\phi$ is the predicate executed by the declared source adapter, and $r$ is its rationale. The authorization engine validates the attested predicate record rather than recomputing every source analysis. It does not normalize correlation, matched-pair differences, software revisions, interventions, and anatomical coverage into a shared numerical scale. Let
+\begin{equation}
+\operatorname{present}(z)=
+\begin{cases}
+1, & z\text{ exists and is non-empty},\\
+0, & \text{otherwise}.
+\end{cases}
+\label{eq:field-presence}
+\end{equation}
 
 A declared pass is admissible only when the block also contains its mandatory observation fields:
 \begin{equation}
 \operatorname{adm}_{\Pi}(b_e)=
-\mathrm{1}[a=P]\prod_{o\in O(e)}\mathrm{1}[x_o\text{ is present}].
+\mathrm{1}[a=P]\operatorname{present}(s)\operatorname{present}(\phi)
+\operatorname{present}(r)\prod_{o\in O(e)}\operatorname{present}(x_o).
 \label{eq:admissibility}
 \end{equation}
-Here, $\mathrm{1}[\cdot]$ is the indicator function. Consequently, failed, unknown, not targeted, and requires-review states are all non-admissible. This rule prevents an evidence source from asserting \emph{passed} while omitting the target, split, comparator, inferential unit, uncertainty method, or other observations required by the profile. The complete scientific deficit set is
+Here, $\mathrm{1}[\cdot]$ is the indicator function. Consequently, failed, unknown, not targeted, and requires-review states are all non-admissible. A declared pass is also non-admissible when its source, predicate, rationale, or a required observation is absent. This rule prevents an evidence source from asserting \emph{passed} while omitting the target, split, comparator, inferential unit, uncertainty method, or other observations required by the profile. The complete scientific deficit set is
 \begin{equation}
 \Delta_{\Pi}(c,B)=\{e\in Q(c):\operatorname{adm}_{\Pi}(b_e)=0\},
 \label{eq:scientific-deficits}
@@ -62,25 +71,30 @@ This property establishes fidelity to the non-compensatory profile. It does not 
 
 The profile and evidence package are exported as \ac{rdf} using \ac{prov}. Profiles, claims, evidence blocks, artifacts, activities, and decisions receive stable identifiers. Artifact derivation uses PROV relations, while profile-specific predicates represent mandatory evidence and authorization status. The same graph can be serialized as Turtle or JSON-LD. This layer supports exchange and inspection. It does not replace the executable profile.
 
-For each profile, MouseClaimBench generates \ac{shacl} shapes that require the declared profile identity, all mandatory blocks, valid statuses, and the observations needed for a passing block. A third-party \texttt{pySHACL} processor validates the resulting data graph. The \ac{shacl} report is converted into the same deficit vocabulary as the Python engine. This provides an external standards baseline. Exact equivalence means that the local implementation follows the structural contract. It does not make structural validation a new contribution.
+For each profile, MouseClaimBench generates \ac{shacl} shapes that require the package and profile identity, all mandatory block records, a status from the allowed vocabulary, source, rule, rationale, and the observations required when a block declares a pass. A third-party \texttt{pySHACL} processor validates the resulting graph and returns structural deficits. The shapes do not require \texttt{passed}. A complete block with \texttt{failed} status is therefore structurally conformant but scientifically non-admissible. This distinction permits $S_{\Pi}=1$ and $A_{\Pi}=0$ for the same package. \ac{shacl} provides an external structural baseline. It does not authorize a scientific claim or make schema validation a new contribution.
 
-The package-integrity layer evaluates relations that cannot be reduced to the presence of individual fields. Let $M$ contain the profile identity, content-addressed artifact records, derivation edges, block-to-artifact lineage, evidence attestations, and declared independence relations. Its integrity deficit set $I_{\Pi}(M,B)$ covers the eight conditions in Table~\ref{tab:integrity-threat-model}. The taxonomy protects contract identity, artifact content, provenance closure, derivation order, declared independence, attestation coherence, and evidence traceability. These assets follow established concerns in secure provenance, assurance cases, and the avoidance of pseudoreplication \citep{hasan2009provenance,mohamad2021assurance,lazic2010pseudoreplication}.
+The package-integrity layer evaluates relations that cannot be reduced to the presence of individual fields. Let $M$ contain the profile identity, content-addressed artifact records, derivation edges, block-to-artifact lineage, evidence attestations, and declared independence relations. Its integrity deficit set $I_{\Pi}(M,B)$ covers the conditions in Table~\ref{tab:integrity-threat-model}. All artifact references from derivations, block lineage, attestations, independence pairs, and disjoint-cohort pairs must resolve. Block lineage and attestations must reference supplied evidence blocks. Every supplied block requires lineage and at least one attestation, while each direct attestation must agree with the represented block status. The taxonomy also protects contract identity, artifact content, derivation order, and declared independence. These assets follow established concerns in secure provenance, assurance cases, and the avoidance of pseudoreplication \citep{hasan2009provenance,mohamad2021assurance,lazic2010pseudoreplication}.
 
 \input{tables/integrity_threat_model}
 The cycle check uses an iterative depth-first traversal, which avoids recursion limits for large packages. Independence is evaluated from both content identity and declared study or data-generation identity. These checks establish internal package consistency under the declared metadata. They do not prove that a source is trustworthy or that two laboratories are scientifically independent.
 
-Structural conformance remains an independently executed gate. For a serialized evidence graph $G$, let $S_{\Pi}(G)=1$ exactly when the external \ac{shacl} validation reports no structural violation against the shapes generated from $\Pi$. The field checks in $S_{\Pi}$ intentionally overlap with defensive admissibility checks in the Python core, but $S_{\Pi}$ is not absorbed into $A_{\Pi}$. Final authorization requires structural conformance, a complete scientific contract, and an integrity-clean package:
+Structural conformance remains an independently executed gate. The graph is deterministically derived from the same claim, evidence blocks, and manifest evaluated by the other gates:
 \begin{equation}
-A^{*}_{\Pi}(c,B,M,G)=S_{\Pi}(G)A_{\Pi}(c,B)
+G_{\Pi}(c,B,M)=\operatorname{RDF}_{\Pi}(c,B,M).
+\label{eq:package-rdf}
+\end{equation}
+Let $S_{\Pi}(G)=1$ exactly when external \ac{shacl} validation reports no structural violation against the shapes generated from $\Pi$. The field checks in $S_{\Pi}$ intentionally overlap with defensive admissibility checks in the Python core, but $S_{\Pi}$ is not absorbed into $A_{\Pi}$. Final authorization requires structural conformance, a complete scientific contract, and an integrity-clean package:
+\begin{equation}
+A^{*}_{\Pi}(c,B,M)=S_{\Pi}(G_{\Pi}(c,B,M))A_{\Pi}(c,B)
 \mathrm{1}[I_{\Pi}(M,B)=\varnothing].
 \label{eq:integrity-authorization}
 \end{equation}
-No control can compensate for another. The final explanation contains the profile, evaluated claim, authorization decision, scientific deficits, and integrity deficits. Every reported deficit retains its corresponding witness.
+No control can compensate for another. A dedicated final authorization object executes this equation and preserves separate structural, domain, and integrity traces. Every reported deficit retains its corresponding witness.
 
 \subsection{Independent execution, property-based checks, and release control}
 \label{subsec:execution-release}
 
-The authorization semantics are implemented through three execution paths with deliberately different scopes. Source-specific Python adapters execute the scientific predicates and construct attested evidence blocks. The primary authorization engine evaluates observation admissibility, domain requirements, hashes, lineage, cycle detection, dependence declarations, and detailed explanations. The external \ac{shacl} path evaluates the structural contract encoded in the \ac{rdf} graph, including mandatory blocks, statuses, and observations, but does not recompute source predicates or relational integrity checks. A separately implemented \ac{asp} program evaluates authorization status and deficits for all generated contract cases. The paths share the profile specification but not the same inference code. Their agreement is therefore evidence of implementation consistency only on their declared outputs and does not validate the shared scientific policy.
+The authorization semantics are implemented through three execution paths with deliberately different scopes. Source-specific Python adapters execute the scientific predicates and construct attested evidence blocks. The primary Python engine evaluates field presence, observation admissibility, domain requirements, and detailed scientific explanations. The external \ac{shacl} path evaluates only the structural contract encoded in the \ac{rdf} graph. A separately implemented \ac{asp} program receives declared statuses, metadata-presence facts, and observation-presence facts. It derives effective states, authorization, and deficits within Clingo for every generated domain-contract case. Relational package integrity is evaluated by its own Python component before the three gate results are composed. The paths share the profile specification but not the same inference code. Agreement between Python and \ac{asp}, and conformance of \ac{shacl} to structural expectations, provide implementation evidence only within their declared scopes. They do not validate the shared scientific policy.
 
 The property-check contract contains six profile-relative properties. Soundness requires every authorized claim to have all required admissible blocks. Completeness requires every package with all required admissible blocks to be authorized. Deficit identity requires the reported set to equal the set defined in Eq.~\ref{eq:scientific-deficits}. Monotonic degradation requires replacing a passed block with a failed block to preserve or enlarge the deficit set and never create authorization. Decisions must also be invariant to evidence input order and irrelevant unprofiled blocks. Outside-profile closure is checked separately by requiring every claim outside $C$ to remain outside the authorization boundary. These are formalized properties tested over generated packages, not an exhaustive proof over arbitrary profiles and not statements about biological truth.
 
