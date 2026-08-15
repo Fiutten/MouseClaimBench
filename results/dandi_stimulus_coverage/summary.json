@@ -1,6 +1,6 @@
 {
-  "version": "0.12.0",
-  "git_revision": "v0.12.0-dirty",
+  "version": "0.12.1",
+  "git_revision": "v0.12.0-1-g3746a46",
   "analysis": "descriptive_dandi_chronological_stimulus_coverage",
   "resource": "DANDI:000039",
   "resource_version": "0.230223.1216",

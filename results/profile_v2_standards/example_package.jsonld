@@ -1,11 +1,5 @@
 [
   {
-    "@id": "https://w3id.org/mouseclaimbench/source/49a70a8865fc0a848d996868d22f22773fba27752adc1e42b00e4365a734cb63",
-    "@type": [
-      "http://www.w3.org/ns/prov#Entity"
-    ]
-  },
-  {
     "@id": "https://w3id.org/mouseclaimbench/package/bounded_predictive_performance__pristine",
     "@type": [
       "https://w3id.org/mouseclaimbench/EvidencePackage",
@@ -50,91 +44,6 @@
     "https://w3id.org/mouseclaimbench/profileVersion": [
       {
         "@value": "2.0.0"
-      }
-    ]
-  },
-  {
-    "@id": "https://w3id.org/mouseclaimbench/fact/bounded_predictive_performance__pristine-prediction",
-    "@type": [
-      "https://w3id.org/mouseclaimbench/EvidenceFact",
-      "http://www.w3.org/ns/prov#Entity"
-    ],
-    "http://www.w3.org/ns/prov#wasDerivedFrom": [
-      {
-        "@id": "https://w3id.org/mouseclaimbench/source/49a70a8865fc0a848d996868d22f22773fba27752adc1e42b00e4365a734cb63"
-      }
-    ],
-    "https://w3id.org/mouseclaimbench/blockName": [
-      {
-        "@value": "prediction"
-      }
-    ],
-    "https://w3id.org/mouseclaimbench/declaredStatus": [
-      {
-        "@value": "passed"
-      }
-    ],
-    "https://w3id.org/mouseclaimbench/observation/comparator": [
-      {
-        "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#JSON",
-        "@value": "\"declared-comparator\""
-      }
-    ],
-    "https://w3id.org/mouseclaimbench/observation/metric": [
-      {
-        "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#JSON",
-        "@value": "\"declared-metric\""
-      }
-    ],
-    "https://w3id.org/mouseclaimbench/observation/split": [
-      {
-        "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#JSON",
-        "@value": "\"declared-split\""
-      }
-    ],
-    "https://w3id.org/mouseclaimbench/observation/split_integrity": [
-      {
-        "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#JSON",
-        "@value": "\"declared-split_integrity\""
-      }
-    ],
-    "https://w3id.org/mouseclaimbench/observation/target": [
-      {
-        "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#JSON",
-        "@value": "\"declared-target\""
-      }
-    ],
-    "https://w3id.org/mouseclaimbench/observation/target_population": [
-      {
-        "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#JSON",
-        "@value": "\"declared-target_population\""
-      }
-    ],
-    "https://w3id.org/mouseclaimbench/observation/threshold": [
-      {
-        "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#JSON",
-        "@value": "\"declared-threshold\""
-      }
-    ],
-    "https://w3id.org/mouseclaimbench/observation/value": [
-      {
-        "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#JSON",
-        "@value": "\"declared-value\""
-      }
-    ],
-    "https://w3id.org/mouseclaimbench/rationale": [
-      {
-        "@value": "the mutation truth is fixed by the executable contract"
-      }
-    ],
-    "https://w3id.org/mouseclaimbench/rule": [
-      {
-        "@value": "controlled profile-v2 predicate"
-      }
-    ],
-    "https://w3id.org/mouseclaimbench/source": [
-      {
-        "@value": "frozen-contract-mutation-case"
       }
     ]
   },
@@ -276,6 +185,97 @@
       {
         "@value": "frozen-contract-mutation-case"
       }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/mouseclaimbench/fact/bounded_predictive_performance__pristine-prediction",
+    "@type": [
+      "https://w3id.org/mouseclaimbench/EvidenceFact",
+      "http://www.w3.org/ns/prov#Entity"
+    ],
+    "http://www.w3.org/ns/prov#wasDerivedFrom": [
+      {
+        "@id": "https://w3id.org/mouseclaimbench/source/49a70a8865fc0a848d996868d22f22773fba27752adc1e42b00e4365a734cb63"
+      }
+    ],
+    "https://w3id.org/mouseclaimbench/blockName": [
+      {
+        "@value": "prediction"
+      }
+    ],
+    "https://w3id.org/mouseclaimbench/declaredStatus": [
+      {
+        "@value": "passed"
+      }
+    ],
+    "https://w3id.org/mouseclaimbench/observation/comparator": [
+      {
+        "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#JSON",
+        "@value": "\"declared-comparator\""
+      }
+    ],
+    "https://w3id.org/mouseclaimbench/observation/metric": [
+      {
+        "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#JSON",
+        "@value": "\"declared-metric\""
+      }
+    ],
+    "https://w3id.org/mouseclaimbench/observation/split": [
+      {
+        "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#JSON",
+        "@value": "\"declared-split\""
+      }
+    ],
+    "https://w3id.org/mouseclaimbench/observation/split_integrity": [
+      {
+        "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#JSON",
+        "@value": "\"declared-split_integrity\""
+      }
+    ],
+    "https://w3id.org/mouseclaimbench/observation/target": [
+      {
+        "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#JSON",
+        "@value": "\"declared-target\""
+      }
+    ],
+    "https://w3id.org/mouseclaimbench/observation/target_population": [
+      {
+        "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#JSON",
+        "@value": "\"declared-target_population\""
+      }
+    ],
+    "https://w3id.org/mouseclaimbench/observation/threshold": [
+      {
+        "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#JSON",
+        "@value": "\"declared-threshold\""
+      }
+    ],
+    "https://w3id.org/mouseclaimbench/observation/value": [
+      {
+        "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#JSON",
+        "@value": "\"declared-value\""
+      }
+    ],
+    "https://w3id.org/mouseclaimbench/rationale": [
+      {
+        "@value": "the mutation truth is fixed by the executable contract"
+      }
+    ],
+    "https://w3id.org/mouseclaimbench/rule": [
+      {
+        "@value": "controlled profile-v2 predicate"
+      }
+    ],
+    "https://w3id.org/mouseclaimbench/source": [
+      {
+        "@value": "frozen-contract-mutation-case"
+      }
+    ]
+  },
+  {
+    "@id": "https://w3id.org/mouseclaimbench/source/49a70a8865fc0a848d996868d22f22773fba27752adc1e42b00e4365a734cb63",
+    "@type": [
+      "http://www.w3.org/ns/prov#Entity"
     ]
   }
 ]

@@ -1,6 +1,6 @@
 {
   "version": "0.12.1",
-  "git_revision": "v0.12.0-dirty",
+  "git_revision": "v0.12.0-1-g3746a46",
   "analysis": "profile_v2_prov_o_shacl_conformance",
   "protocol": "configs/benchmarks/profile_v2_standards.yaml",
   "protocol_sha256": "7c78f6b2527868018121c16c9b7687899778fcbf629e9ef87bb18923922adcc3",
@@ -19,8 +19,8 @@
     "exact_structural_deficit_rate": 1.0,
     "structurally_valid_domain_refusals": 5088,
     "workers": 8,
-    "elapsed_seconds": 625.5570294579957,
-    "cases_per_second": 9.075111832599418
+    "elapsed_seconds": 658.5668387500045,
+    "cases_per_second": 8.62023361330378
   },
   "rdf": {
     "profile_triples": 318,

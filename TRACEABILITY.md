@@ -8,7 +8,7 @@ Revision metadata for this audit:
 
 - manuscript and software version: `0.12.1`
 - executable source commit used by regenerated artifacts:
-  `396347dc133aad6b0e1418f486395efc7cf84588`
+  `3746a46b58666a71a79619072dfe7663e3671348`
 - planned release tag: `v0.12.1`
 - canonical manuscript sources: `main.tex`, `sections/`, and `tables/`
 
