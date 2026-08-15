@@ -11,4 +11,4 @@
 
 ## Interpretation
 
-A positive decision supports only a local observational association after the fixed controls. Dyadic covariance assumes pairs without a shared unit are independent. The permutation test additionally assumes exchangeability of reduced-model residual arrays under node relabeling. Neither assumption establishes causality or independent biological replication.
+Discovery selects the positive direction and its one-sided permutation value is descriptive. Confirmation requires the fixed conjunction in both hold-outs. A positive decision supports only a local observational association after the fixed controls. Dyadic covariance assumes pairs without a shared unit are independent. The permutation test additionally assumes exchangeability of reduced-model residual arrays under node relabeling. Neither assumption establishes causality or independent biological replication.

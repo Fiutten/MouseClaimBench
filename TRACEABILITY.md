@@ -7,14 +7,14 @@ provide independent scientific content validity.
 Revision metadata for this audit:
 
 - manuscript and software version: `0.12.2`
-- executable source commit used by regenerated artifacts:
-  `3746a46b58666a71a79619072dfe7663e3671348`
+- executable source commit used by the regenerated MICRONS revision artifact:
+  `e7b9e4f7ebd839aea77d9b829ed3ac182522705a`
 - planned release tag: `v0.12.2`
 - canonical manuscript sources: `main.tex`, `sections/`, and `tables/`
 
-Every result row below points to a JSON artifact that repeats the source commit
-in its `git_revision` field. Exact equations and tables are identified by their
-LaTeX labels so that numbering changes do not break this ledger.
+Every result row below points to a JSON artifact that records its own clean
+source commit in `git_revision`. Exact equations and tables are identified by
+their LaTeX labels so that numbering changes do not break this ledger.
 
 ## Formal and executable contract
 

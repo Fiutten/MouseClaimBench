@@ -1,6 +1,6 @@
 {
-  "version": "0.8.0",
-  "git_revision": "ada300a9f19e8d3191542e6f40133a81d7a53be7",
+  "version": "0.12.2",
+  "git_revision": "v0.12.1-1-ge7b9e4f",
   "analysis": "microns_fixed_endpoint_network_dependent_inference",
   "primary_endpoint": "all_pairs/readout_location",
   "controls": [
@@ -10,8 +10,21 @@
     "log1p_post_degree",
     "same_coarse_cell_type"
   ],
+  "full_model": "readout_similarity ~ connected + fixed_controls",
+  "reduced_model": "readout_similarity ~ fixed_controls",
   "primary_inference": "directed dyadic cluster-robust linear model",
   "corroborating_inference": "Freedman-Lane simultaneous node-label permutation",
+  "permutation_unit": "neuron identifier applied simultaneously to sender and receiver labels",
+  "permutation_seed_streams": [
+    2026080201,
+    2026080202,
+    2026080203
+  ],
+  "discovery_role": "select the positive direction and freeze the analysis specification; its one-sided permutation value is descriptive",
+  "confirmation_cohorts": [
+    "holdout_offset1000",
+    "holdout_offset2000"
+  ],
   "cohorts": [
     {
       "cohort": "discovery",
@@ -39,6 +52,7 @@
       "dyadic_cluster_degrees_of_freedom": 999,
       "dyadic_cluster_two_sided_p_value": 1.3892528931684694e-07,
       "dyadic_to_naive_se_ratio": 1.784696012043933,
+      "permutation_seed": 2026080201,
       "freedman_lane_node_permutation": {
         "statistic": "partial connected-pair regression coefficient",
         "observed_coefficient": 0.010595405354180826,
@@ -77,6 +91,7 @@
       "dyadic_cluster_degrees_of_freedom": 991,
       "dyadic_cluster_two_sided_p_value": 5.77638956597364e-17,
       "dyadic_to_naive_se_ratio": 1.6652901599295808,
+      "permutation_seed": 2026080202,
       "freedman_lane_node_permutation": {
         "statistic": "partial connected-pair regression coefficient",
         "observed_coefficient": 0.01781805781391933,
@@ -115,6 +130,7 @@
       "dyadic_cluster_degrees_of_freedom": 998,
       "dyadic_cluster_two_sided_p_value": 1.7627017885002266e-08,
       "dyadic_to_naive_se_ratio": 1.5669843300191286,
+      "permutation_seed": 2026080203,
       "freedman_lane_node_permutation": {
         "statistic": "partial connected-pair regression coefficient",
         "observed_coefficient": 0.01165983795344705,
@@ -128,9 +144,15 @@
       "network_inference_passed": true
     }
   ],
-  "all_cohorts_passed": true,
+  "all_cohorts_descriptive_criteria_met": true,
+  "discovery_direction_positive": true,
+  "holdout_results": [
+    true,
+    true
+  ],
+  "confirmation_passed": true,
   "decision": "microns_fixed_endpoint_survives_network_dependent_inference",
-  "interpretation": "A positive decision supports only a local observational association after the fixed controls. Dyadic covariance assumes pairs without a shared unit are independent. The permutation test additionally assumes exchangeability of reduced-model residual arrays under node relabeling. Neither assumption establishes causality or independent biological replication.",
+  "interpretation": "Discovery selects the positive direction and its one-sided permutation value is descriptive. Confirmation requires the fixed conjunction in both hold-outs. A positive decision supports only a local observational association after the fixed controls. Dyadic covariance assumes pairs without a shared unit are independent. The permutation test additionally assumes exchangeability of reduced-model residual arrays under node relabeling. Neither assumption establishes causality or independent biological replication.",
   "method_references": [
     {
       "citation": "Aronow, Samii, and Assenova (2015)",

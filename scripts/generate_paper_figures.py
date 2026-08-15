@@ -15,7 +15,6 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
 
-
 ROOT = Path(__file__).resolve().parents[1]
 FIGURE_DIRS = (ROOT / "figures", ROOT / "paper" / "figures")
 
@@ -76,7 +75,7 @@ def _box(draw: ImageDraw.ImageDraw, xyxy: tuple[int, int, int, int], title: str,
          body: str, *, fill: str = GREY, outline: str = LINE) -> None:
     """Draw a rounded block used by the workflow and dashboard figures."""
     draw.rounded_rectangle(xyxy, radius=18, fill=fill, outline=outline, width=3)
-    x0, y0, x1, y1 = xyxy
+    x0, y0, x1, _ = xyxy
     cx = (x0 + x1) // 2
     _wrapped(draw, (cx, y0 + 28), title, font=HEAD, width=22)
     _wrapped(draw, (cx, y0 + 88), body, font=BODY, fill=MUTED, width=26)
@@ -512,7 +511,7 @@ def build_ablation() -> Image.Image:
     chart_x0, chart_x1 = 500, 1660
     chart_y0, chart_y1 = 55, 695
     max_x = 0.55
-    for tick in range(0, 12):
+    for tick in range(12):
         value = tick * 0.05
         x = chart_x0 + int((chart_x1 - chart_x0) * value / max_x)
         draw.line((x, chart_y0, x, chart_y1), fill="#d1d5db", width=2)
