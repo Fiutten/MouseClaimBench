@@ -87,8 +87,13 @@ def evaluate(protocol: dict[str, Any]) -> dict[str, Any]:
             == required["final_gate_combinations"]
             and final_gate.get("all_endpoints_passed") is True
         ),
-        "scalability_table_complete": artifact_points
-        == required["artifact_scaling_points"],
+        "scalability_and_ablation_current": (
+            artifact_points == required["artifact_scaling_points"]
+            and scaling.get("endpoints", {}).get(
+                "leave_one_out_matches_declared_redundancy_pattern"
+            )
+            is True
+        ),
         "dandi_outcomes_unchanged": (
             dandi.get("decision") == "prospective_dandi_profile_v2_1_complete"
             and dandi.get("positive_authorizations") == 1
@@ -104,6 +109,7 @@ def evaluate(protocol: dict[str, Any]) -> dict[str, Any]:
                 "compositional_integrity",
                 "integrity_regression",
                 "final_gate",
+                "scalability",
             }
         ),
         "prohibited_claims_remain_false": not any(protocol["claim_policy"].values()),

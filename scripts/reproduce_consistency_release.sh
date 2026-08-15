@@ -25,6 +25,7 @@ if [[ "$mode" == "rebuild" ]]; then
   "$python" -m mousebrainbench.benchmarks.profile_v2_compositional_integrity_stress
   "$python" -m mousebrainbench.benchmarks.profile_v2_integrity_regression
   "$python" -m mousebrainbench.benchmarks.profile_v2_final_gate
+  "$python" -m mousebrainbench.benchmarks.profile_v2_scalability_ablation
   "$python" -m mousebrainbench.benchmarks.profile_v2_consistency_release
 elif [[ "$mode" != "verify" ]]; then
   echo "Usage: $0 [verify|rebuild]" >&2
