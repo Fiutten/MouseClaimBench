@@ -85,7 +85,9 @@ def run(output: Path = DEFAULT_OUTPUT) -> Path:
         (output / source.name).write_text(_flatten_tex(source.read_text()))
 
     for support_file in (
+        "figure_captions.txt",
         "highlights.txt",
+        "related_manuscript_statement.txt",
         "references.bib",
         "elsarticle.cls",
         "elsarticle-num.bst",

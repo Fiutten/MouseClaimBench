@@ -6,12 +6,12 @@ provide independent scientific content validity.
 
 Revision metadata for this audit:
 
-- manuscript and software version: `0.12.3`
+- manuscript and software version: `0.12.4`
 - executable source commit used by the regenerated MICRONS revision artifact:
   `e7b9e4f7ebd839aea77d9b829ed3ac182522705a`
 - executable source commit used by the regenerated extended-integrity artifact:
   `865f5aea8b87b5e30aceff4ee47b593318e2c456`
-- planned release tag: `v0.12.3`
+- release tag: `v0.12.4`
 - canonical manuscript sources: `main.tex`, `sections/`, and `tables/`
 
 Every result row below points to a JSON artifact that records its own clean
@@ -31,8 +31,8 @@ their LaTeX labels so that numbering changes do not break this ledger.
 | Methods Eq. `eq:package-rdf` | RDF graph derived from the same claim, blocks, and manifest | `evidence_package_to_rdf()` | JSON-LD isomorphism across five representative package classes and manifest serialization tests | `results/profile_v2_standards/summary.json` |
 | Structural gate `S` | External graph-contract conformance | `validate_structure_with_shacl_v2()` | pristine, missing block, missing metadata, missing observation, and `FAILED`-but-well-formed cases | `results/profile_v2_standards/summary.json` |
 | Domain gate `A` | Profile-relative scientific authorization | Python and independently derived ASP rules | Python/ASP status and deficit agreement | `results/profile_v2_contract_mutation/summary.json` |
-| Integrity set `I` | Thirteen relational package-integrity deficit types | `validate_evidence_manifest()` | original attacks, reference-attestation regressions, duplicate identifiers, reflexive relations, and composite generation identity | `results/profile_v2_provenance_attacks/summary.json` and `results/profile_v2_integrity_regression/summary.json` |
-| Methods Eq. `eq:integrity-authorization` | Final `S and A and I` decision | `FinalAuthorizationSystem` and `compose_final_authorization()` | all eight logical states plus integrated pristine and bounded-refusal cases | `results/profile_v2_final_gate/summary.json` |
+| Integrity set `I` and predicate `I_clean` | Thirteen relational package-integrity deficit types and the Boolean empty-set test | `validate_evidence_manifest()` | original attacks, reference-attestation regressions, duplicate identifiers, order invariance, reflexive relations, and composite generation identity | `results/profile_v2_provenance_attacks/summary.json` and `results/profile_v2_integrity_regression/summary.json` |
+| Methods Eq. `eq:integrity-authorization` | Final `S and A and I_clean` decision | `FinalAuthorizationSystem` and `compose_final_authorization()` | all eight logical states plus integrated pristine and bounded-refusal cases | `results/profile_v2_final_gate/summary.json` |
 
 ## Empirical and performance results
 
@@ -58,5 +58,5 @@ their LaTeX labels so that numbering changes do not break this ledger.
   and dependencies are available. No result JSON is manually edited.
 - The manuscript mirror under `paper/` is generated from the canonical root
   manuscript by `scripts/sync_manuscript_mirror.py`.
-- Tag `v0.12.3` identifies the complete revision snapshot. Each generated
+- Tag `v0.12.4` identifies the complete revision snapshot. Each generated
   artifact records the clean source commit from which that artifact was run.

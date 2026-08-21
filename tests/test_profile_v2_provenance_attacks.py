@@ -206,6 +206,106 @@ def test_duplicate_block_lineage_returns_a_structured_final_refusal() -> None:
     }
 
 
+def _deficit_codes(manifest) -> set[IntegrityDeficitCode]:
+    """Return category-level integrity outcomes for order-invariance regressions."""
+
+    profile = load_authorization_profile_v2()
+    claim = "bounded_predictive_performance"
+    return {
+        row.code
+        for row in validate_evidence_manifest(
+            profile, _complete_blocks(claim), manifest
+        )
+    }
+
+
+def test_duplicate_lineage_does_not_mask_dangling_reference_under_reordering() -> None:
+    manifest = _base_manifest("bounded_predictive_performance")
+    original = manifest.block_artifacts[0]
+    dangling = (original[0], ("missing-artifact",))
+    remainder = manifest.block_artifacts[1:]
+    first = replace(manifest, block_artifacts=(original, dangling, *remainder))
+    second = replace(manifest, block_artifacts=(dangling, original, *remainder))
+
+    assert _deficit_codes(first) == _deficit_codes(second)
+    assert {
+        IntegrityDeficitCode.DUPLICATE_BLOCK_LINEAGE,
+        IntegrityDeficitCode.UNKNOWN_PROVENANCE_REFERENCE,
+    } <= _deficit_codes(first)
+
+
+def test_duplicate_artifact_does_not_mask_cycle_under_reordering() -> None:
+    manifest = _base_manifest("bounded_predictive_performance")
+    first, second, *remainder = manifest.artifacts
+    cycle_first = replace(first, derived_from=(second.artifact_id,))
+    cycle_second = replace(second, derived_from=(first.artifact_id,))
+    order_a = replace(
+        manifest,
+        artifacts=(first, cycle_first, cycle_second, *remainder),
+    )
+    order_b = replace(
+        manifest,
+        artifacts=(cycle_first, first, cycle_second, *remainder),
+    )
+
+    assert _deficit_codes(order_a) == _deficit_codes(order_b)
+    assert {
+        IntegrityDeficitCode.DUPLICATE_ARTIFACT_ID,
+        IntegrityDeficitCode.PROVENANCE_CYCLE,
+    } <= _deficit_codes(order_a)
+
+
+def test_duplicate_artifact_does_not_mask_dependence_under_reordering() -> None:
+    manifest = _base_manifest("bounded_predictive_performance")
+    first, second, *remainder = manifest.artifacts
+    conflicting_first = replace(
+        first,
+        declared_sha256=second.declared_sha256,
+        observed_sha256=second.observed_sha256,
+        cohorts=second.cohorts,
+        study_id=second.study_id,
+        data_generation_id=second.data_generation_id,
+    )
+    relations = {
+        "independent_artifact_pairs": ((first.artifact_id, second.artifact_id),),
+        "disjoint_cohort_pairs": ((first.artifact_id, second.artifact_id),),
+    }
+    order_a = replace(
+        manifest,
+        artifacts=(first, conflicting_first, second, *remainder),
+        **relations,
+    )
+    order_b = replace(
+        manifest,
+        artifacts=(conflicting_first, first, second, *remainder),
+        **relations,
+    )
+
+    assert _deficit_codes(order_a) == _deficit_codes(order_b)
+    assert {
+        IntegrityDeficitCode.DUPLICATE_ARTIFACT_ID,
+        IntegrityDeficitCode.DUPLICATE_INDEPENDENT_ARTIFACT,
+        IntegrityDeficitCode.OVERLAPPING_INDEPENDENT_COHORTS,
+    } <= _deficit_codes(order_a)
+
+
+def test_convenience_indexes_reject_duplicates_instead_of_overwriting() -> None:
+    manifest = _base_manifest("bounded_predictive_performance")
+    duplicate_artifact = replace(
+        manifest,
+        artifacts=(*manifest.artifacts, manifest.artifacts[0]),
+    )
+    duplicate_lineage = replace(
+        manifest,
+        block_artifacts=(*manifest.block_artifacts, manifest.block_artifacts[0]),
+    )
+
+    with pytest.raises(ValueError, match="duplicate artifact identifiers"):
+        duplicate_artifact.artifact_index()
+    with pytest.raises(ValueError, match="duplicate block-lineage declarations"):
+        duplicate_lineage.block_index()
+
+
 @pytest.mark.parametrize(
     ("relation", "expected"),
     (

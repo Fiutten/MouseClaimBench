@@ -1,6 +1,6 @@
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width=0.98\textwidth]{figures/standards_workflow.pdf}
-\caption{Three-gate MouseClaimBench workflow. The same claim, evidence blocks, and manifest determine the RDF/PROV-O representation and enter structural conformance $S$, domain authorization $A$, and package integrity $I$. The gates execute separately and are composed only by $A^{*}=S\land A\land I$. A failure at any gate prevents authorization, while the output preserves every violated structural, scientific, and integrity category with an actionable witness.}
+\caption{Three-gate MouseClaimBench workflow. The same claim, evidence blocks, and manifest determine the RDF/PROV-O representation and enter structural conformance $S$, domain authorization $A$, and integrity analysis $I$. Only the empty-set predicate $I^{\mathrm{clean}}$ enters the Boolean composition $A^{*}=S\land A\land I^{\mathrm{clean}}$. A failure at any gate prevents authorization, while the output preserves every violated structural, scientific, and integrity category with an actionable witness.}
 \label{fig:standards-workflow}
 \end{figure}

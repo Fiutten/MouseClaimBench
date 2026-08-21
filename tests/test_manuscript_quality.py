@@ -108,7 +108,12 @@ def test_submission_declarations_and_title_are_present() -> None:
     assert "Declaration of Competing Interest" in main
     assert "CRediT Authorship Contribution Statement" in main
     assert "Data and Code Availability" in main
-    assert "Declaration of Generative AI and AI-Assisted Technologies" in main
+    assert (
+        "Declaration of generative AI and AI-assisted technologies in the "
+        "manuscript preparation process"
+    ) in main
+    assert "\\section*{Funding}" in main
+    assert "The funder had no role" in main
 
 
 def test_engine_scope_and_property_claims_are_calibrated() -> None:
@@ -135,8 +140,10 @@ def test_second_review_formal_and_interpretive_corrections_are_present() -> None
         encoding="utf-8"
     )
 
+    assert r"I^{\mathrm{clean}}_{\Pi}(M,B)=" in method
     assert r"\mathrm{1}[I_{\Pi}(M,B)=\varnothing]" in method
     assert r"S_{\Pi}(G_{\Pi}(c,B,M))A_{\Pi}(c,B)" in method
+    assert r"I^{\mathrm{clean}}_{\Pi}(M,B)." in method
     assert r"G_{\Pi}(c,B,M)=\operatorname{RDF}_{\Pi}(c,B,M)" in method
     assert r"T_{\Delta_{\Pi}(c,B)}" in method
     assert "2,550 non-empty compositions" not in manuscript
@@ -255,6 +262,24 @@ def test_integrity_evaluation_units_use_canonical_nonconflated_terms() -> None:
     assert "six direct API edge cases" in design_table
 
 
+def test_final_review_integrity_notation_and_editorial_files_are_consistent() -> None:
+    manuscript = "\n".join(
+        path.read_text(encoding="utf-8") for path in MANUSCRIPT_PATHS
+    )
+    relationship = (ROOT / "tables/mousebrainbench_relationship.tex").read_text()
+    applications = (ROOT / "tables/prospective_applications.tex").read_text()
+    captions = (ROOT / "figure_captions.txt").read_text()
+
+    assert "Eight relational controls" not in manuscript
+    assert "Thirteen declared integrity-deficit types" in relationship
+    assert "Direction fixed in discovery." in applications
+    assert "Both pre-fixed hold-outs pass" in applications
+    assert r"S\land A\land I$" not in manuscript
+    assert r"S_{\Pi}\land A_{\Pi}\land I_{\Pi}" not in manuscript
+    assert r"I^{\mathrm{clean}}" in manuscript
+    assert captions.count("Figure ") == 5
+
+
 def test_release_version_is_consistent_across_user_facing_metadata() -> None:
     project = tomllib.loads((ROOT / "pyproject.toml").read_text(encoding="utf-8"))
     version = project["project"]["version"]
@@ -262,7 +287,7 @@ def test_release_version_is_consistent_across_user_facing_metadata() -> None:
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
     main = (ROOT / "main.tex").read_text(encoding="utf-8")
 
-    assert version == "0.12.3"
+    assert version == "0.12.4"
     assert f"version: {version}" in citation
     assert f"v{version}" in readme
     assert f"v{version}" in main

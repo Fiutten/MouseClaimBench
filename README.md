@@ -12,7 +12,7 @@ that the supplied package satisfies the named profile version.
 
 ## Current research release
 
-The current revision candidate is the `v0.12.3` three-gate release. It
+The current revision candidate is the `v0.12.4` three-gate release. It
 preserves the submitted data analyses while aligning the mathematical model,
 software, tests, benchmarks, and manuscript. The knowledge architecture
 separates three layers and composes them only at the final gate:
@@ -28,7 +28,7 @@ separates three layers and composes them only at the final gate:
    and its mandatory observations. Prediction cannot compensate for absent
    topology, direction, intervention, replication, or anatomical coverage.
 
-Final authorization is exactly `structural && domain && integrity`. A dedicated
+Final authorization is exactly `structural && domain && integrity_clean`. A dedicated
 decision object preserves all three outputs. SHACL validates graph structure
 and does not require a scientific block to pass. A well-formed failed block can
 therefore be structurally conformant and scientifically unauthorized.
@@ -49,7 +49,9 @@ the manifest boundary as deliberate defense in depth.
 
 Artifact identifiers and block-lineage declarations must be unique. Duplicate
 identifiers produce structured integrity refusals at the canonical API rather
-than exceptions. Independence and cohort-disjointness pairs must be
+than exceptions. Validation retains every duplicate declaration while computing
+reference closure, cycles, independence, and cohort overlap, so input order
+cannot mask another deficit category. Independence and cohort-disjointness pairs must be
 irreflexive. Data-generation identity is the composite
 `(study_id, data_generation_id)` when both values are non-empty. A generation
 identifier is not assumed to be globally unique across studies.
@@ -242,10 +244,11 @@ Synchronize and verify it with:
 The manuscript uses the Elsevier `elsarticle` class, a single abstract below
 250 words, six English keywords, numbered references, editable tables, and a
 separate `highlights.txt` file containing five highlights of at most 85
-characters. Build the flat Editorial Manager package with:
+characters. `figure_captions.txt` and `related_manuscript_statement.txt` are
+also included for the Editorial Manager workflow. Build the flat package with:
 
 ```bash
-.venv-risk-v3/bin/python scripts/build_elsevier_submission.py
+.venv/bin/python scripts/build_elsevier_submission.py
 ```
 
 ## Research history

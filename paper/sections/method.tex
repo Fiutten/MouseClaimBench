@@ -76,7 +76,13 @@ For each profile, MouseClaimBench generates \ac{shacl} shapes that require the p
 The package-integrity layer evaluates relations that cannot be reduced to the presence of individual fields. Let $M$ contain the profile identity, content-addressed artifact records, derivation edges, block-to-artifact lineage, evidence attestations, and declared independence relations. Its integrity deficit set $I_{\Pi}(M,B)$ covers the 13 conditions in Table~\ref{tab:integrity-threat-model}. Artifact identifiers and block-lineage declarations must be unique. All artifact references from derivations, block lineage, attestations, independence pairs, and disjoint-cohort pairs must resolve. Block lineage and attestations must reference supplied evidence blocks. Every supplied block requires lineage and at least one attestation, while each direct attestation must agree with the represented block status. Independence and cohort-disjointness relations must be irreflexive. The taxonomy also protects contract identity, artifact content, derivation order, and declared independence. These assets follow established concerns in secure provenance, assurance cases, and the avoidance of pseudoreplication \citep{hasan2009provenance,mohamad2021assurance,lazic2010pseudoreplication}.
 
 \input{tables/integrity_threat_model}
-The cycle check uses an iterative depth-first traversal, which avoids recursion limits for large packages. Independence is evaluated from content identity and from the composite identity $(\texttt{study\_id},\texttt{data\_generation\_id})$ when both fields are non-empty. The implementation does not assume that \texttt{data\_generation\_id} is globally unique across studies. These checks establish internal package consistency under the declared metadata. They do not prove that a source is trustworthy or that two laboratories are scientifically independent. Profile identity is intentionally checked at both the structural graph boundary and the manifest-integrity boundary. The structural check prevents a graph from masquerading as an instance of a different executable profile, while the integrity check preserves the same invariant in the package manifest. This defense-in-depth overlap is reported explicitly rather than treated as evidence that the two gates are disjoint.
+The cycle check uses an iterative depth-first traversal. Independence is evaluated from content identity and from the composite identity $(\texttt{study\_id},\texttt{data\_generation\_id})$ when both fields are non-empty. The implementation does not assume that \texttt{data\_generation\_id} is globally unique. Duplicate identifiers remain invalid, but validation groups every declaration instead of collapsing them. Reference closure uses all declarations, cycle adjacency uses the union of their derivation edges, independence evaluates all compatible record pairs, and cohort checks use the union declared for each identifier. Input order therefore cannot mask a second deficit category. These checks establish internal consistency, not source trust or scientific independence. Profile identity is checked at both the structural graph and manifest boundaries as explicit defense in depth.
+
+Because $I_{\Pi}(M,B)$ denotes the set of integrity deficits, its Boolean conformance predicate is defined separately:
+\begin{equation}
+I^{\mathrm{clean}}_{\Pi}(M,B)=\mathrm{1}[I_{\Pi}(M,B)=\varnothing].
+\label{eq:integrity-clean}
+\end{equation}
 
 Structural conformance remains an independently executed gate. The graph is deterministically derived from the same claim, evidence blocks, and manifest evaluated by the other gates:
 \begin{equation}
@@ -86,7 +92,7 @@ G_{\Pi}(c,B,M)=\operatorname{RDF}_{\Pi}(c,B,M).
 Let $S_{\Pi}(G)=1$ exactly when external \ac{shacl} validation reports no structural violation against the shapes generated from $\Pi$. The field checks in $S_{\Pi}$ intentionally overlap with defensive admissibility checks in the Python core, but $S_{\Pi}$ is not absorbed into $A_{\Pi}$. Final authorization requires structural conformance, a complete scientific contract, and an integrity-clean package:
 \begin{equation}
 A^{*}_{\Pi}(c,B,M)=S_{\Pi}(G_{\Pi}(c,B,M))A_{\Pi}(c,B)
-\mathrm{1}[I_{\Pi}(M,B)=\varnothing].
+I^{\mathrm{clean}}_{\Pi}(M,B).
 \label{eq:integrity-authorization}
 \end{equation}
 No control can compensate for another. A dedicated final authorization object executes this equation and preserves separate structural, domain, and integrity traces. Every reported deficit retains its corresponding witness.

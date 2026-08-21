@@ -1,0 +1,5 @@
+Related manuscript disclosure
+
+MouseBrainBench is a companion manuscript under review. Five frozen MouseBrainBench result packages are reused in MouseClaimBench as retrospective inputs and are not counted as new external validation. MouseClaimBench addresses a different research question and contributes the versioned authorization profile, observation admissibility, the three-gate structural/domain/integrity architecture, RDF/PROV-O and external SHACL conformance, separately implemented ASP domain inference, relational integrity controls, controlled package attacks, counterfactual explanations, and two pre-access frozen DANDI protocols. The relationship and the allocation of contributions are reported explicitly in Table 2 of the submitted manuscript.
+
+The authors will declare this concurrent related manuscript in Editorial Manager and provide it to the editor if requested.

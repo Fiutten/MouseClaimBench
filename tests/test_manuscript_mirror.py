@@ -5,6 +5,11 @@ def test_overleaf_root_and_structured_paper_mirror_are_identical() -> None:
     pairs = [
         (Path("main.tex"), Path("paper/main.tex")),
         (Path("highlights.txt"), Path("paper/highlights.txt")),
+        (Path("figure_captions.txt"), Path("paper/figure_captions.txt")),
+        (
+            Path("related_manuscript_statement.txt"),
+            Path("paper/related_manuscript_statement.txt"),
+        ),
         (Path("references.bib"), Path("paper/references.bib")),
         (Path("elsarticle-num.bst"), Path("paper/elsarticle-num.bst")),
     ]

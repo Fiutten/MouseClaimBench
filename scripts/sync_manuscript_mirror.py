@@ -14,7 +14,9 @@ def run() -> None:
 
     for filename in (
         "main.tex",
+        "figure_captions.txt",
         "highlights.txt",
+        "related_manuscript_statement.txt",
         "references.bib",
         "elsarticle.cls",
         "elsarticle-num.bst",

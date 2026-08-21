@@ -93,15 +93,44 @@ class EvidencePackageManifest:
             counts[block_name] += 1
         return tuple(sorted(name for name, count in counts.items() if count > 1))
 
-    def artifact_index(self) -> dict[str, ArtifactRecord]:
-        """Index artifacts while leaving duplicate rejection to the validator."""
+    def artifact_groups(self) -> dict[str, tuple[ArtifactRecord, ...]]:
+        """Group every artifact declaration without discarding duplicates."""
 
-        return {artifact.artifact_id: artifact for artifact in self.artifacts}
+        groups: dict[str, list[ArtifactRecord]] = defaultdict(list)
+        for artifact in self.artifacts:
+            groups[artifact.artifact_id].append(artifact)
+        return {name: tuple(records) for name, records in groups.items()}
+
+    def block_groups(self) -> dict[str, tuple[tuple[str, ...], ...]]:
+        """Group every block-lineage declaration without discarding duplicates."""
+
+        groups: dict[str, list[tuple[str, ...]]] = defaultdict(list)
+        for block_name, sources in self.block_artifacts:
+            groups[block_name].append(sources)
+        return {name: tuple(lineages) for name, lineages in groups.items()}
+
+    def artifact_index(self) -> dict[str, ArtifactRecord]:
+        """Index an already-unique artifact collection.
+
+        Validation uses :meth:`artifact_groups` so malformed packages retain all
+        declarations. This convenience index rejects duplicates instead of
+        silently applying order-dependent last-write-wins semantics.
+        """
+
+        groups = self.artifact_groups()
+        duplicates = tuple(sorted(name for name, rows in groups.items() if len(rows) > 1))
+        if duplicates:
+            raise ValueError(f"duplicate artifact identifiers: {duplicates}")
+        return {name: records[0] for name, records in groups.items()}
 
     def block_index(self) -> dict[str, tuple[str, ...]]:
-        """Index lineage while leaving duplicate rejection to the validator."""
+        """Index already-consolidated block lineage without silent overwrites."""
 
-        return dict(self.block_artifacts)
+        groups = self.block_groups()
+        duplicates = tuple(sorted(name for name, rows in groups.items() if len(rows) > 1))
+        if duplicates:
+            raise ValueError(f"duplicate block-lineage declarations: {duplicates}")
+        return {name: lineages[0] for name, lineages in groups.items()}
 
 
 @dataclass(frozen=True)
@@ -139,11 +168,11 @@ class IntegrityAwareDecision:
         }
 
 
-def _has_cycle(artifacts: dict[str, ArtifactRecord]) -> tuple[str, ...]:
+def _has_cycle(parents_by_artifact: dict[str, tuple[str, ...]]) -> tuple[str, ...]:
     # Iterative depth-first search avoids Python's recursion limit for evidence
     # packages containing thousands of artifacts.
     state: dict[str, int] = {}
-    for root in sorted(artifacts):
+    for root in sorted(parents_by_artifact):
         if state.get(root, 0) != 0:
             continue
         stack: list[tuple[str, int]] = [(root, 0)]
@@ -155,11 +184,11 @@ def _has_cycle(artifacts: dict[str, ArtifactRecord]) -> tuple[str, ...]:
                 state[node] = 1
                 positions[node] = len(path)
                 path.append(node)
-            parents = artifacts[node].derived_from
+            parents = parents_by_artifact[node]
             if parent_index < len(parents):
                 parent = parents[parent_index]
                 stack[-1] = (node, parent_index + 1)
-                if parent not in artifacts:
+                if parent not in parents_by_artifact:
                     continue
                 parent_state = state.get(parent, 0)
                 if parent_state == 1:
@@ -201,8 +230,9 @@ def validate_evidence_manifest(
                 "each evidence block must have one consolidated lineage declaration",
             )
         )
-    artifacts = manifest.artifact_index()
-    block_artifacts = manifest.block_index()
+    artifact_groups = manifest.artifact_groups()
+    lineage_groups = manifest.block_groups()
+    artifact_ids = set(artifact_groups)
     if (
         manifest.profile_id != profile.profile_id
         or manifest.profile_version != profile.version
@@ -236,7 +266,7 @@ def validate_evidence_manifest(
     }
     referenced_artifacts.update(
         artifact_id
-        for sources in block_artifacts.values()
+        for _, sources in manifest.block_artifacts
         for artifact_id in sources
     )
     referenced_artifacts.update(
@@ -252,7 +282,7 @@ def validate_evidence_manifest(
         for pair in manifest.disjoint_cohort_pairs
         for artifact_id in pair
     )
-    unknown = sorted(referenced_artifacts - set(artifacts))
+    unknown = sorted(referenced_artifacts - artifact_ids)
     if unknown:
         deficits.append(
             IntegrityDeficit(
@@ -262,7 +292,7 @@ def validate_evidence_manifest(
             )
         )
     supplied_blocks = set(evidence_blocks)
-    referenced_blocks = set(block_artifacts)
+    referenced_blocks = set(lineage_groups)
     referenced_blocks.update(
         attestation.block_name for attestation in manifest.attestations
     )
@@ -275,7 +305,19 @@ def validate_evidence_manifest(
                 "block lineage and attestations must reference supplied evidence blocks",
             )
         )
-    cycle = _has_cycle(artifacts)
+    parents_by_artifact = {
+        artifact_id: tuple(
+            sorted(
+                {
+                    parent
+                    for artifact in records
+                    for parent in artifact.derived_from
+                }
+            )
+        )
+        for artifact_id, records in artifact_groups.items()
+    }
+    cycle = _has_cycle(parents_by_artifact)
     if cycle:
         deficits.append(
             IntegrityDeficit(
@@ -289,9 +331,10 @@ def validate_evidence_manifest(
         if left == right:
             duplicate_pairs.append(f"{left}|{right}:reflexive")
             continue
-        if left in artifacts and right in artifacts:
-            first, second = artifacts[left], artifacts[right]
-            if (
+        if (
+            left in artifact_groups
+            and right in artifact_groups
+            and any(
                 first.declared_sha256 == second.declared_sha256
                 or (
                     first.study_id
@@ -299,8 +342,11 @@ def validate_evidence_manifest(
                     and (first.study_id, first.data_generation_id)
                     == (second.study_id, second.data_generation_id)
                 )
-            ):
-                duplicate_pairs.append(f"{left}|{right}")
+                for first in artifact_groups[left]
+                for second in artifact_groups[right]
+            )
+        ):
+            duplicate_pairs.append(f"{left}|{right}")
     if duplicate_pairs:
         deficits.append(
             IntegrityDeficit(
@@ -315,8 +361,14 @@ def validate_evidence_manifest(
         if left == right:
             overlapping_pairs.append(f"{left}|{right}:reflexive")
             continue
-        if left in artifacts and right in artifacts:
-            overlap = set(artifacts[left].cohorts) & set(artifacts[right].cohorts)
+        if left in artifact_groups and right in artifact_groups:
+            left_cohorts = {
+                cohort for artifact in artifact_groups[left] for cohort in artifact.cohorts
+            }
+            right_cohorts = {
+                cohort for artifact in artifact_groups[right] for cohort in artifact.cohorts
+            }
+            overlap = left_cohorts & right_cohorts
             if overlap:
                 overlapping_pairs.append(f"{left}|{right}:{','.join(sorted(overlap))}")
     if overlapping_pairs:
@@ -362,7 +414,8 @@ def validate_evidence_manifest(
         sorted(
             name
             for name in evidence_blocks
-            if name not in block_artifacts or not block_artifacts[name]
+            if name not in lineage_groups
+            or not any(sources for sources in lineage_groups[name])
         )
     )
     if missing_lineage:
