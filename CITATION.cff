@@ -3,7 +3,7 @@ message: "If you use MouseClaimBench, cite the software release and associated a
 title: "MouseClaimBench: Integrity-Aware Authorization of Mouse-Brain Claims"
 type: software
 version: 0.12.4
-date-released: 2026-08-21
+date-released: 2026-08-22
 authors:
   - family-names: Fernandez-Isabel
     given-names: Alberto
