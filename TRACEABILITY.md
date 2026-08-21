@@ -11,6 +11,8 @@ Revision metadata for this audit:
   `e7b9e4f7ebd839aea77d9b829ed3ac182522705a`
 - executable source commit used by the regenerated extended-integrity artifact:
   `865f5aea8b87b5e30aceff4ee47b593318e2c456`
+- source commit closing duplicate-order invariance and the KBS package:
+  `2b34a082c42996795f3565191b426a6848375788`
 - release tag: `v0.12.4`
 - canonical manuscript sources: `main.tex`, `sections/`, and `tables/`
 
