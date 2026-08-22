@@ -13,6 +13,8 @@ Revision metadata for this audit:
   `865f5aea8b87b5e30aceff4ee47b593318e2c456`
 - source commit closing duplicate-order invariance and the KBS package:
   `2b34a082c42996795f3565191b426a6848375788`
+- source commit applying the v0.12.5 KBS closure corrections:
+  `731135ccebeed25c8efa0b1c455912e78728920c`
 - release tag: `v0.12.5`
 - canonical manuscript sources: `main.tex`, `sections/`, and `tables/`
 
