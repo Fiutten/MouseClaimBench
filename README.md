@@ -12,7 +12,7 @@ that the supplied package satisfies the named profile version.
 
 ## Current research release
 
-The current revision candidate is the `v0.12.4` three-gate release. It
+The current revision candidate is the `v0.12.5` three-gate release. It
 preserves the submitted data analyses while aligning the mathematical model,
 software, tests, benchmarks, and manuscript. The knowledge architecture
 separates three layers and composes them only at the final gate:
@@ -82,7 +82,7 @@ The release gate verifies the following results from clean source revisions:
 | Contract mutation | 5,677 cases, zero false authorizations or rejections, exact domain deficits | Profile-relative conformance |
 | Python/ASP | Exact domain-status and deficit agreement across all 5,677 cases | Independent rule-execution conformance |
 | SHACL | Exact structural conformance and structural deficits across the same 5,677 packages | External graph-contract conformance |
-| Final gate | All 8 logical combinations reproduce `S && A && I` | Non-compensatory composition only |
+| Final gate | All 8 logical combinations reproduce `S && A && I_clean` | Non-compensatory composition only |
 | Domain-gate properties | 55,031 deterministic checks over 10,000 packages, zero violations | Six properties and outside closure for core authorization, not arbitrary final-package changes |
 | JSON-LD interchange | Five representative package graphs preserve graph isomorphism | Serializer interoperability across pristine, failed, incomplete, rich-manifest, and large-package cases |
 | Original integrity benchmark | 370 packages: 10 pristine and 360 single/pairwise attacked packages over eight historical families | Resistance to the declared original attacks |

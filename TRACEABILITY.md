@@ -6,14 +6,14 @@ provide independent scientific content validity.
 
 Revision metadata for this audit:
 
-- manuscript and software version: `0.12.4`
+- manuscript and software version: `0.12.5`
 - executable source commit used by the regenerated MICRONS revision artifact:
   `e7b9e4f7ebd839aea77d9b829ed3ac182522705a`
 - executable source commit used by the regenerated extended-integrity artifact:
   `865f5aea8b87b5e30aceff4ee47b593318e2c456`
 - source commit closing duplicate-order invariance and the KBS package:
   `2b34a082c42996795f3565191b426a6848375788`
-- release tag: `v0.12.4`
+- release tag: `v0.12.5`
 - canonical manuscript sources: `main.tex`, `sections/`, and `tables/`
 
 Every result row below points to a JSON artifact that records its own clean
@@ -60,5 +60,5 @@ their LaTeX labels so that numbering changes do not break this ledger.
   and dependencies are available. No result JSON is manually edited.
 - The manuscript mirror under `paper/` is generated from the canonical root
   manuscript by `scripts/sync_manuscript_mirror.py`.
-- Tag `v0.12.4` identifies the complete revision snapshot. Each generated
+- Tag `v0.12.5` identifies the complete revision snapshot. Each generated
   artifact records the clean source commit from which that artifact was run.

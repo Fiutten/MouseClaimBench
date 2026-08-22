@@ -280,6 +280,49 @@ def test_final_review_integrity_notation_and_editorial_files_are_consistent() ->
     assert captions.count("Figure ") == 5
 
 
+def test_submission_closure_editorial_guards() -> None:
+    manuscript = "\n".join(
+        path.read_text(encoding="utf-8") for path in MANUSCRIPT_PATHS
+    )
+    highlights = (ROOT / "highlights.txt").read_text(encoding="utf-8")
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    bibliography = (ROOT / "references.bib").read_text(encoding="utf-8")
+    figure_source = (
+        ROOT / "scripts" / "build_standards_prospective_figures.py"
+    ).read_text(encoding="utf-8")
+
+    assert "2,550 declared attack compositions" not in highlights
+    assert (
+        "All 2,550 attacked packages across 255 compositions are blocked with exact traces."
+        in highlights
+    )
+    assert "complete and individually necessary deficits" not in highlights
+    assert "sufficient and individually necessary deficit sets" in highlights
+    assert "naive pair-level inference is anti-conservative" not in manuscript
+    assert (
+        "Shared-neuron dependence is explicitly addressed rather than treating "
+        "directed pairs as independent."
+    ) in manuscript
+    assert (
+        "Both DANDI outcomes are preserved without post-access changes to "
+        "endpoints, thresholds, or selection rules."
+    ) in manuscript
+    assert (
+        "For \\ac{microns}, the analysis direction is fixed in discovery and "
+        "subsequently evaluated in two pre-fixed hold-outs."
+    ) in manuscript
+    assert (
+        "dyadic covariance addresses the anti-conservative risk of treating "
+        "directed pairs as independent."
+    ) in manuscript
+    assert '"No duplicate check"' not in figure_source
+    assert '"No duplicate-independence check"' in figure_source
+    assert "`S && A && I`" not in readme
+    assert "`S && A && I_clean`" in readme
+    assert "10.18653/v1/2025.ijcnlp-long.127" in bibliography
+    assert "10.52202/079017-3777" in bibliography
+
+
 def test_release_version_is_consistent_across_user_facing_metadata() -> None:
     project = tomllib.loads((ROOT / "pyproject.toml").read_text(encoding="utf-8"))
     version = project["project"]["version"]
@@ -287,7 +330,7 @@ def test_release_version_is_consistent_across_user_facing_metadata() -> None:
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
     main = (ROOT / "main.tex").read_text(encoding="utf-8")
 
-    assert version == "0.12.4"
+    assert version == "0.12.5"
     assert f"version: {version}" in citation
     assert f"v{version}" in readme
     assert f"v{version}" in main

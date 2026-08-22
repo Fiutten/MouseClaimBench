@@ -284,7 +284,7 @@ def integrity_ablation() -> None:
         "No content hash",
         "No resolved lineage",
         "No cycle check",
-        "No duplicate check",
+        "No duplicate-independence check",
         "No cohort-overlap check",
         "No contradiction check",
         "No block lineage",
