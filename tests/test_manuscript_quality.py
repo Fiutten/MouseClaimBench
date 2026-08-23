@@ -330,10 +330,31 @@ def test_release_version_is_consistent_across_user_facing_metadata() -> None:
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
     main = (ROOT / "main.tex").read_text(encoding="utf-8")
 
-    assert version == "0.12.5"
+    assert version == "0.12.6"
     assert f"version: {version}" in citation
     assert f"v{version}" in readme
     assert f"v{version}" in main
+
+
+def test_v0126_final_editorial_closure_is_unambiguous() -> None:
+    manuscript = "\n".join(path.read_text(encoding="utf-8") for path in MANUSCRIPT_PATHS)
+    relationship = (ROOT / "tables" / "mousebrainbench_relationship.tex").read_text(
+        encoding="utf-8"
+    )
+    bibliography = (ROOT / "references.bib").read_text(encoding="utf-8")
+
+    assert "complete witnesses" not in manuscript
+    assert "independently pass" not in manuscript
+    assert (
+        "typed statuses, category-complete deficits, actionable witnesses, "
+        "and non-compensatory authorization"
+    ) in relationship
+    assert ("returns every detected deficit category with an actionable witness.") in manuscript
+    assert (
+        "Both pre-fixed hold-outs pass the positive-coefficient, two-sided "
+        "dyadic, and one-sided permutation criteria."
+    ) in manuscript
+    assert "note = {{Datasets and Benchmarks Track}}" in bibliography
 
 
 def test_every_used_acronym_is_defined() -> None:

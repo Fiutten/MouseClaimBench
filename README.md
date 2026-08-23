@@ -12,7 +12,7 @@ that the supplied package satisfies the named profile version.
 
 ## Current research release
 
-The current revision candidate is the `v0.12.5` three-gate release. It
+The current revision candidate is the `v0.12.6` three-gate release. It
 preserves the submitted data analyses while aligning the mathematical model,
 software, tests, benchmarks, and manuscript. The knowledge architecture
 separates three layers and composes them only at the final gate:
