@@ -26,9 +26,9 @@ Local build verified on 20 November 2026: 47 A4 pages, no undefined references, 
 
 ## Submission status
 
-**Editorial candidate — not submitted and not yet approved by all coauthors.** Experimental results were not rerun. The profile is author-defined, not consensus-validated, and its domain portability, adaptive-adversary resistance, human explanatory utility and trust-anchor assumptions have not been established. A companion MouseBrainBench manuscript is disclosed in the text, with clear distinction from the authorization architecture.
+**Submitted to Knowledge and Information Systems on 20 November 2026 (as reported by the corresponding author).** The KAIS manuscript number and portal acknowledgement have not yet been provided; the exact portal-uploaded files have not been independently compared with this prepared source. Coauthor-approval records have not been independently inspected. Experimental results were not rerun. The profile is author-defined, not consensus-validated, and its domain portability, adaptive-adversary resistance, human explanatory utility and trust-anchor assumptions have not been established. A companion MouseBrainBench manuscript is disclosed in the text, with clear distinction from the authorization architecture.
 
-Review [the documented adaptations and residual risks](../../docs/KAIS_MANUSCRIPT_TRACEABILITY_20261120.md) and the cover letter in this directory before submission.
+The submission event is recorded in [editorial history](../../docs/EDITORIAL_SUBMISSIONS.md). The [adaptations and residual risks](../../docs/KAIS_MANUSCRIPT_TRACEABILITY_20261120.md) and cover letter remain available for future editorial responses.
 
 ## Publisher requirements
 
