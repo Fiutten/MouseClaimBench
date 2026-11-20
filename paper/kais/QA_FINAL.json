@@ -26,6 +26,15 @@
   "source_manifest_entries": 37,
   "original_experiments_rerun": false,
   "original_scientific_numbers_changed": false,
-  "review_status": "awaiting coauthor approval; not submitted",
-  "notes": "Common article class is permitted for initial KAIS submission, but it is not the Springer Nature sn-jnl production template; the frozen-profile content has not been independently validated."
+  "review_status": "pre-submission QA snapshot, completed 2026-11-20; submission recorded separately",
+  "notes": "Common article class is permitted for initial KAIS submission, but it is not the Springer Nature sn-jnl production template; the frozen-profile content has not been independently validated.",
+  "editorial_submission": {
+    "journal": "Knowledge and Information Systems",
+    "date_author_reported": "2026-11-20",
+    "status": "submitted (reported by corresponding author)",
+    "journal_manuscript_id": null,
+    "acknowledgement_independently_verified": false,
+    "exact_portal_upload_compared": false,
+    "submission_log": "docs/EDITORIAL_SUBMISSIONS.md"
+  }
 }
