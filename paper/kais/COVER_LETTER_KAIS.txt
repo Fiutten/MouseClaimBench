@@ -1,0 +1,31 @@
+20 November 2026
+
+Editors
+Knowledge and Information Systems
+Springer Nature
+
+Subject: Submission of “MouseClaimBench: Non-Compensatory Knowledge-Based Authorization of Scientific Claims with Evidence Integrity”
+
+Dear Editors,
+
+Please consider our manuscript, “MouseClaimBench: Non-Compensatory Knowledge-Based Authorization of Scientific Claims with Evidence Integrity,” as an original research article in Knowledge and Information Systems.
+
+The manuscript addresses a knowledge-based decision problem that is distinct from scientific fact-checking or predictive scoring: whether a heterogeneous scientific evidence package authorizes a specified, bounded claim under an explicit versioned profile. MouseClaimBench integrates non-compensatory scientific requirements, graph conformance, and relational artifact-integrity checks, preserving complete, actionable deficit traces rather than replacing missing evidence with a favorable aggregate score. The evaluated implementation includes separately developed Python and Answer Set Programming authorization paths, RDF/PROV-O and JSON-LD interchange, external SHACL conformance checking, counterfactual explanation tests, integrity attacks and ablations, and frozen evidence-protocol applications.
+
+The evidence includes 5,677 controlled contract cases, 55,031 deterministic property checks, and 2,550 attacked packages spanning the declared compositions of eight attack families. We characterize limitations as carefully as successful results: an author-defined evidence profile is not expert consensus, graph conformance does not establish biological truth, and internally coherent forgeries cannot be resolved without external trust anchors.
+
+We believe the contribution fits the journal's interests in knowledge-based systems, knowledge representation, explainable reasoning, integrity of structured information, and intelligent decision support. Computational neuroscience provides the application setting, while the methodological question concerns auditable authorization of scientific claims.
+
+A related companion manuscript, MouseBrainBench, is identified in the submission. Five frozen evidence packages from that work are reused only as retrospective authorization inputs; the present manuscript's knowledge profile, authorization logic, relational-integrity framework, attacks, independent reasoning implementations and prospective DANDI protocols are separate contributions. The overlap and its boundaries are disclosed in the manuscript.
+
+Source code, profiles, tests, frozen protocols and lightweight result artifacts are accessible at https://github.com/Fiutten/MouseClaimBench (frozen software tag v0.12.6). No new experiments were introduced for journal adaptation.
+
+All coauthors will review and approve the final submitted manuscript, its declarations, and this letter before submission.
+
+Sincerely,
+
+Alberto Fernández-Isabel
+Corresponding author
+Data Science Laboratory
+Rey Juan Carlos University
+alberto.fernandez.isabel@urjc.es
