@@ -48,3 +48,7 @@ The paper and its companion **must remain distinguishable**: five frozen MouseBr
 Obtain coauthor approval for authorship, funding, declarations, manuscript text and AI-assisted editing disclosure; confirm the exact companion submission status and code/data links; verify current KAIS website word-count and manuscript policies at submission date. **Do not submit solely because the source compiles.**
 
 Official: https://link.springer.com/journal/10115/submission-guidelines
+
+## Editorial submission update — 20 November 2026
+
+The corresponding author has reported that the revised MouseClaimBench manuscript has now been **submitted to Knowledge and Information Systems (Springer Nature)**. This is a user-confirmed event; the journal portal, timestamp, manuscript identifier, and byte-for-byte uploaded source have not been independently inspected. The pre-submission checklist above is retained as a historical quality-control record, not a claim that approval is still outstanding or verified. No source code, experiments, original figures, or results were changed by this log update. See [editorial submission history](EDITORIAL_SUBMISSIONS.md).
