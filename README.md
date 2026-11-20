@@ -10,6 +10,12 @@ MouseClaimBench is not a simulator, an automated peer reviewer, a biological
 truth engine, or a complete digital mouse brain. An authorization means only
 that the supplied package satisfies the named profile version.
 
+## Editorial status (author-reported)
+
+**Submitted on 20 November 2026** to *Knowledge and Information Systems* (Springer Nature): *MouseClaimBench: Non-Compensatory Knowledge-Based Authorization of Scientific Claims with Evidence Integrity*. This submission was confirmed by the corresponding author; a KAIS manuscript number and editorial acknowledgement have not yet been provided.
+
+The [submission history](docs/EDITORIAL_SUBMISSIONS.md) records this event and the prior DKE scope rejection. The [KAIS submission manuscript and QA records](https://github.com/Fiutten/MouseClaimBench/tree/work/kais-single-source-20261120/paper/kais) remain on the dedicated `work/kais-single-source-20261120` branch; the current branch's historical experiments and release are unchanged.
+
 ## Current research release
 
 The current revision candidate is the `v0.12.6` three-gate release. It
